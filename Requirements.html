@@ -166,13 +166,84 @@ test
 					<h3 class="subheading"> Product perspective </h3>
 					<ol>
 						<li>
-							What the product is
+							<b>What the product is</b>
+							<ul>
+								<li>
+								Pong Tracker is a web-based database for tracking statistics of a given individual’s Beer Pong performance. It collects a number of different metrics via its intuitive real-time collection interface. Using this data, a leaderboard as well as user analytics will be readily available for users to see.
+								</li>
+							</ul>
 						</li>
 						<li>
-							How to use it
+							<b>How to use it</b>
+							<ul>
+								<li>
+								Users will have the ability to search other users and challenge them to a game. One user will be responsible for the operation of the interface, then following a confirmation from one member of the opposite team, will successfully store the data of one game.
+								Pong Tracker also offers the ability to view analytics of players. The analytics page is essentially a user friendly display of all stats gathered from the interface. 
+								A leaderboard, filtered by user region or institution, will also be available to define the strongest users. To accomplish the task of ranking users, an algorithm such as Microsoft TrueSkill™ will be implemented. 
+								</li>
+							</ul>
 						</li>
 						<li>
-							Rules
+							<b> Beer Pong Rules </b>
+							<ol>
+								<li>
+								<b>Eye-to-eye</b> determines the first team to shoot 
+									<ul><li>
+									Should both parties hit their eye-to-eye, eye-to-eye resumes until only one team scores
+									</li></ul>
+								</li>
+								<li>
+								Should both members of a team score, they shoot again 
+								</li>
+								<li>
+								Should after a shot, the ball spin in the rim of the opponents' cup, the defending team may attempt to blow the ball out of the cup. If the ball is ejected and remains dry, no cup is scored
+								</li>
+								<li>
+								<b>Air balls</b> result in a loss of turn, if it was the second shot you're lucky
+								</li>
+								<li>
+								Should a shot roll/bounce back on the table (never once touching the ground) the shooting team member may attempt a <b>trick shot</b> 
+								</li>
+								<li>
+								Each team is entitled to one <b>re-rack</b> at any point throughout the game
+								</li>
+								<li>
+								Bounce shots count as two cups scored, the cup hit, as well as one selected by the offending team are counted 
+									<ul><li>
+									The defending team may attempt to disrupt the ball once it has made contact with the table.
+									</li></ul>
+								</li>
+								<li>
+								Should two non-bounce shots hit the same cup, the cup hit, as well as two selected by the offending team are counted
+								</li>
+								<li>
+								Any knocking over of a cup is considered a <b>Party Foul</b> and all disrupted cups are to be removed at the discredit of the offender. 
+								</li>
+								<li>
+								If the ball is disrupted by the defending team (BEFORE it has made contact with the table) a cup is lost by the defending team this is also considered a <b>Party Foul</b>
+								</li>
+								<li>
+								Should a cup in the hand of a player be sunk, the offending team is automatically victorious and the Game Over option should be selected.
+								</li>
+							</ol>
+							<b>Terminology</b>
+							<ul>
+								<li>
+								<b>Air Balls:</b> A shot that misses the table altogether
+								</li>
+								<li>
+								<b>Eye-to-eye:</b> A means of deciding the first team to shoot. Consists of a member of each team simultaneously shooting while making full eye contact with the other party. Should a cup be scored, the offending party is awarded the first shot.
+								</li>
+								<li>
+								<b>Party Foul:</b> An infringement on the rules of the game, or knocking over a cup, spilling its contents.
+								</li>
+								<li>
+								<b>Re-Rack:</b> A request to shuffle the orientation of the remaining cups on the opposing side.
+								</li>
+								<li>
+								<b>Trick Shots:</b> any shot containing either multi-directional trajectory OR non-standard origination
+								</li>	
+							</ul>
 						</li>
 					</ol>
 					<h3 class="subheading"> Product Functions </h3>
@@ -214,10 +285,24 @@ test
 					<h3 class="subheading"> Operating environment </h3>
 					<ol>
 						<li>
-							Hopper server?
+							Pong Tracker will be required to run off of a unix server, namely <a href="http://hopper.wlu.ca">Hopper</a>.
 						</li>
 					</ol>
 					<h3 class="subheading"> Constraints (technical constraints) </h3>
+					<ol>
+						<li>
+						Both desktop and mobile friendly views. 
+						</li>
+						<li>
+						SQL database architecture
+						</li>
+						<li>
+						Be able to support multiple interfaces writing to the database simultaneously.
+						</li>
+						<li>
+						Designed to be implemented on a Unix server with various accompanying plugins (such as SQL, SSL etc.) also functional.
+						</li>
+					</ol>
 				</section>
 
 				<section id="interface">
