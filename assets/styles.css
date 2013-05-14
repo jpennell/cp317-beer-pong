@@ -1,3 +1,9 @@
 .nav-sidebar {
 	top: 40px;
 }
+
+.subheading {
+	font-size: 19px;
+	line-height: 21px;
+	text-transform: capitalize;
+}
