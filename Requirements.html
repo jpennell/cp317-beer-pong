@@ -40,6 +40,85 @@
 					</div>
 				</div>
 
+<<<<<<< HEAD
+<ol>
+<li>Introduction</li>
+<ol>
+<li>Product purpose (what is it providing)</li>
+<ol><li>for society</li>
+<li>for customer</li>
+<ol>
+<li>competition</li>
+<li>entertainment</li></ol>
+<li>Terminology (common terms used in this document that will need a definition - ie. trick shot or bounce shot)</li>
+<li>Audience</li>
+<li>Product scope (how are we approaching this product)</li>
+<li>Assumptions and independencies</li>
+<li>Evolution of plans (ie. starting with WLU and expanding later)</li>
+<li>References (? do we have any)</li>
+<li>Contributors (CP317 class - summer 2013)</li>
+<li>Overview of Requirements document (what the document will provide and how it is formatted)</li>
+</ol>
+<br/>
+<li>Product description</li>
+<ol>
+<li>product perspective</li>
+<ol><li>what the product is</li>
+<li>how to use it</li>
+<li>rules</li></ol>
+<li>product functions</li>
+<ol><li>start new game</li>
+<li>viewing leaderboard</li>
+<li>viewing personal stats</li>
+<li>loging in</li>
+<li>signing up (?)</li></ol>
+<li>actors and use cases</li>
+<li>Operating environment</li>
+<ol><li>Hopper server?</li></ol>
+<li>constraints (technical constraints)</li>
+</ol>
+ <br/>
+<li>External interface requirements</li>
+<ol>
+<li>user interface</li>
+<li>software interface</li>
+<ol><li>True skill (?) - analytic software</li>
+<li>OpenID</li></ol>
+<li>communications interface (where our website is)</li>
+<li>Specific requirements (outlines all software being used)</li>
+<ol><li>functions (ie. software shall validate the user has used valid email address)</li>
+<li>database</li>
+<li>performance requirements</li></ol></ol>
+<br/>
+<li>Systems Features
+<ol><li>new game</li>
+<li>select a cup</li>
+<li>create tournament (?)</li>
+<li>record stats</li>
+<li>updating live leaderboard</li>
+<li>filtering names in a game</li>
+<li>filtering top 5 games personal</li></ol>
+<br/>
+<li>Other Non-functional requirements</li>
+<ol><li>performance</li>
+<ol><li>when stats are updated</li></ol>
+<li>security</li>
+<ol><li>user login</li>
+<li>admin login</li></ol>
+<li>Software Quality Attributes</li>
+</ol>
+<br/>
+<li>Other Requirements (?)</li>
+<li>Elements of project plan</li>
+<ol><li>standards we are using</li>
+<li>control plan</li>
+<ol>
+<li>quality control plan</li>
+<li>scheduling plan</li></ol></ol>
+</ol>
+test
+</body>
+=======
 				<section id="introduction">
 					<h2 class="section-heading"> Introduction </h2>
 					<h3 class="subheading"> Product purpose (what is it providing) </h3>
@@ -86,25 +165,42 @@
 							Rules
 						</li>
 					</ol>
-					<h3 class="subheading"> product functions </h3>
-					<ol>
-						<li>
-							Start new game
-						</li>
-						<li>
-							Viewing leaderboard
-						</li>
-						<li>
-							Viewing personal stats
-						</li>
-						<li>
-							Logging in
-						</li>
-						<li>
-							Signing up (?)
-						</li>
-					</ol>
-					<h3 class="subheading"> Actors and use cases </h3>
+					<h3 class="subheading"> Product Functions </h3>
+						<ol>
+							<li>A user friendly, web-based application (computer and mobile) in which users can create and score beer pong games while they are being played</li>
+							<li>Must have the ability to show personal statistics regarding wins, losses, cups sunk, and preferred partner</li>
+							<li>Must have the ability to show which end user is the best beer pong player using ranking system defined in section (insert section reference here)</li>
+						</ol>
+					<h3 class="subheading"> Actors and Use Cases </h3>
+						<p>Actors for this product include: </p>
+						<ol>
+							<li>Administrator - is an individual who has special privileges within the website. An administrator can login, logout, add an institution, delete an institution, ban a user, and unban a user. Administrators and end user accounts are completely separate.</li>
+							<li>End User - is an individual who uses the website for active game play. In terms of game play, the end user may create, score or confirm a game.  End users can view the entire leaderboard, login, logout, inactivate their account, view their personal statistics, and view other players' statistics.</li>
+							<li>Guest - is an individual who is not using the site for active game play. A guest may view a limited version of the leaderboard and may register. Once a guest has registered, they become an end user.</li>
+						</ol>
+						<br>
+						<p>Use cases for the actor's listed above include:</p>
+						<ol>
+							<li>Admin Login - an administrator must provide their username and password as discussed in section (reference to section here) to authenticate their identity</li>
+							<li>Admin Logout - an administrator need only select the "Logout" option to have access to their account session terminated</li>
+							<li>Add Institution - an administrator has the ability to add institutions that guests select when registering to become a user. </li>
+							<li>Delete Institution - an administrator has the ability to delete institutions that guests select when registering to become a user.</li>
+							<li>Ban User - an administrator can ban a user who has not conformed to the site's rules or policies</li>
+							<li>Unban User - an administrator can lift a ban on a user who has not confirmed to the site's rules or policies</li>
+							<li>User Login - an end user must provide their username and password as discussed in section (reference to section here) to authenticate their identity </li>
+							<li>User Logout - an end user need only select the "Logout" option to have access to their account session terminated</li>
+							<li>Create Game - an end user can create a beer pong game</li>
+							<li>Score Game - once a beer pong game has been created, an end user uses the interface to record the results of the game as it is being played</li>
+							<li>Confirm Game Results - once a game has been completed, an end user must confirm the results of the game in order for the game data in question to be used and considered in the statistics and leaderboard areas</li>
+							<li>View Personal Statistics - an end user may view their personal statistics at any time given they are logged in. The statistics shown here include only games that have been confirmed by players involved in a particular game.</li>
+							<li>View Other Users' Statistics - an end user may view other players' personal statistics at any time given they are logged in. The statistics shown here include only games that have been confirmed by players involved in a particular game.</li>
+							<li>View Full Leaderboard - an end user may view the entire leaderboard at any time given they are logged in. The statistics shown here include only games that have been confirmed by players involved in a particular game.</li>
+							<li>Register - a guest must provide information as stated in section (reference to section here) in order to facilitate the login functionality</li>
+							<li>View Limited Leaderboard - a guest can see the top ten players on the website. For full access to the leaderboard, a guest must become a user</li>
+						</ol>
+						<figure>
+							<img src="UseCaseDiagram.svg" alt="Use Case Diagram" width = "500">
+						</figure>
 					<h3 class="subheading"> Operating environment </h3>
 					<ol>
 						<li>
@@ -368,4 +464,5 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 	</body>
+>>>>>>> origin/master
 </html>
