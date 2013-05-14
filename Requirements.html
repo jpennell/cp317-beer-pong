@@ -11,6 +11,7 @@
 
 	<body data-spy="scroll" data-target=".nav-sidebar">
 		<div class="row">
+			<!------ SIDEBAR ------>
 			<div class="span3 nav-sidebar">
 				<ul class="nav nav-list nav-sidebar affix">
 					<li>
@@ -40,7 +41,7 @@
 						<h1>Requirements Document</h1>
 					</div>
 				</div>
-
+				<!------ INTRODUCTION ------>
 				<section id="introduction">
 					<h2> Introduction </h2>
 					<ol>
@@ -89,7 +90,7 @@
 						</li>
 					</ol>
 				</section>
-
+				<!------ DESCRIPTION ------>
 				<section id="description">
 					<h2> Product description </h2>
 					<ol>
@@ -143,78 +144,115 @@
 						</li>
 					</ol>
 				</section>
-
+				<!------ INTERFACE ------>
 				<section id="interface">
-					<h2> External interface requirements </h2>
+					<h2 class="section-heading"> External interface requirements </h2>
+					<h3 class="subheading">User interface</h3>
 					<ol>
 						<li>
-							User interface
+							The user interface for the beer pong network is
+							a dynamic website.
 						</li>
 						<li>
-							Software interface
-						</li>
-						<ol>
-							<li>
-								The system operates on standard internet browsers (Internet Explorer 6/7/8/9/10, FireFox, Google Chrome, Safari).
-							</li>
-							<li>
-								The system uses a database.
-							</li>
-							<li>
-								<b>Analytic Algorithm</b>
-								<ul>
-									<li>
-										The system implements a library which contains an analytic algorithm
-									</li>
-									<li>
-										The library allows us to specify what inputs we give the algorithm which then calculates the skill level in comparision to other users.
-									</li>
-									<li>
-										Some documentation is available here <a href="https://github.com/saulabs/trueskill/blob/master/README.md">GitHub TrueSkill Readme</a>, <a href="http://trueskill.org/">TrueSkill Site</a> and here <a href="http://en.wikipedia.org/wiki/Elo_rating_system">Elo Rating System Documentation</a>
-									</li>
-									<li>
-										We are permitted to use the algorithm
-									</li>
-								</ul>
-							</li>
-							<li>
-								<b>OpenID</b>
-								<ul>
-									<li>
-										The system allows a user to login with an OpenID account
-									</li>
-									<li>
-										Supported providers are Google and FaceBook.
-									</li>
-									<li>
-										The library allows us to grab a user's profile information from either an active session or by redirecting them to their providers login page
-									</li>
-									<li>
-										Some documentation is available here <a href="https://github.com/openid/ruby-openid">GitHub Ruby-OpenID</a> and here <a href="http://openid.net/">The OpenID Site</a>
-									</li>
-								</ul>
-							</li>
-						</ol>
-						<li>
-							communications interface (where our website is)
+							Users log in, and the content
+							changes according to their account level.
 						</li>
 						<li>
-							Specific requirements (outlines all software being used)
+							Users will see a front page with their
+							current statistics. They have the ability
+							to create a new game.
 						</li>
-						<ol>
+						<li>
+							The function of the interface is to input
+							data about the game into the database as easily
+							and intuitively as possible.
+						</li>
+						<li>
+							<b>Mobile Component</b>
+						</li>
+						<ul>
 							<li>
-								Functions (ie. software shall validate the user has used valid email address)
+								In order to make data entry more accessible,
+								we hope to implement a mobile-ready version of
+								the web user interface
 							</li>
 							<li>
-								Database
+								The mobile website will be a simplified version
+								of the main website &mdash; but it <em>must</em>
+								be able to fully support game data entry
 							</li>
-							<li>
-								Performance requirements
-							</li>
-						</ol>
+						</ul>
+					</ol>
+					<h3 class="subheading"> Software interface </h3>
+					<ol>
+						<li>
+							The system operates on standard internet browsers (Internet Explorer 6/7/8/9/10, FireFox, Google Chrome, Safari).
+						</li>
+						<li>
+							The system uses a database.
+						</li>
+						<li>
+							<b>Analytic Algorithm</b>
+							<ul>
+								<li>
+									The system implements a library which contains an analytic algorithm
+								</li>
+								<li>
+									The library allows us to specify what inputs we give the algorithm which then calculates the skill level in comparision to other users.
+								</li>
+								<li>
+									Some documentation is available here <a href="https://github.com/saulabs/trueskill/blob/master/README.md">GitHub TrueSkill Readme</a>, <a href="http://trueskill.org/">TrueSkill Site</a> and here <a href="http://en.wikipedia.org/wiki/Elo_rating_system">Elo Rating System Documentation</a>
+								</li>
+								<li>
+									We are permitted to use the algorithm
+								</li>
+							</ul>
+						</li>
+						<li>
+							<b>OpenID</b>
+							<ul>
+								<li>
+									The system allows a user to login with an OpenID account
+								</li>
+								<li>
+									Supported providers are Google and FaceBook.
+								</li>
+								<li>
+									The library allows us to grab a user's profile information from either an active session or by redirecting them to their providers login page
+								</li>
+								<li>
+									Some documentation is available here <a href="https://github.com/openid/ruby-openid">GitHub Ruby-OpenID</a> and here <a href="http://openid.net/">The OpenID Site</a>
+								</li>
+							</ul>
+						<li>
+							<b>Facebook Login For Web</b>
+							<ul>
+								<li>
+									The system allows a user to login with their Facebook account
+								</li>
+								<li>
+									The SDK will allow the system to grab a user's profile information
+								</li>
+							</ul>
+						</li>
+					</ol>
+					<li>
+						communications interface (where our website is)
+					</li>
+					<h3 class="subheading"> Specific requirements (outlines all software being used) </h3>
+					<ol>
+						<li>
+							Functions (ie. software shall validate the user has used valid email address)
+						</li>
+						<li>
+							Database
+						</li>
+						<li>
+							Performance requirements
+						</li>
 					</ol>
 				</section>
-
+				<!------ FEATURES ------>
 				<section id="features">
 					<h2> Systems Features</h2>
 					<ol>
@@ -240,9 +278,8 @@
 							Filtering top 5 games personal
 						</li>
 					</ol>
-
 				</section>
-
+				<!------ OTHER NON-FUNCTIONAL REQUIREMENTS ------>
 				<section id="non-functional-reqs">
 					<h2> Other Non-functional requirements </h2>
 					<ol>
@@ -270,7 +307,7 @@
 						</li>
 					</ol>
 				</section>
-
+				<!------ OTHER REQUIREMENTS ------>
 				<section id="other-reqs">
 					<h2> Other Requirements (?) </h2>
 					<li>
@@ -295,5 +332,8 @@
 				</section>
 			</div>
 		</div>
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
 	</body>
 </html>
