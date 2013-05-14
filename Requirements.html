@@ -45,9 +45,27 @@
 <li>External interface requirements</li>
 <ol>
 <li>user interface</li>
-<li>software interface</li>
-<ol><li>True skill (?) - analytic software</li>
-<li>OpenID</li></ol>
+<li>Software interface</li>
+				<ol>
+					<li>The system operates on standard internet browsers (Internet Explorer 6/7/8/9/10, FireFox, Google Chrome, Safari).</li>
+					<li>The system uses a database.</li>
+					<li> <b>Analytic Algorithm</b>
+						<ul>
+							<li>The system implements a library which contains an analytic algorithm</li>
+							<li>The library allows us to specify what inputs we give the algorithm which then calculates the skill level in comparision to other users.</li>
+							<li>Some documentation is available here <a href="https://github.com/saulabs/trueskill/blob/master/README.md">GitHub TrueSkill Readme</a>, <a href="http://trueskill.org/">TrueSkill Site</a> and here <a href="http://en.wikipedia.org/wiki/Elo_rating_system">Elo Rating System Documentation</a> </li>
+							<li>We are permitted to use the algorithm</li>		
+						</ul>
+					</li>
+					<li><b>OpenID</b>
+						<ul>
+							<li>The system allows a user to login with an OpenID account</li>
+							<li>Supported providers are Google and FaceBook.</li>
+							<li>The library allows us to grab a user's profile information from either an active session or by redirecting them to their providers login page</li> 
+							<li>Some documentation is available here <a href="https://github.com/openid/ruby-openid">GitHub Ruby-OpenID</a>  and here <a href="http://openid.net/">The OpenID Site</a>  </li>
+						</ul>
+					</li>
+				</ol>
 <li>communications interface (where our website is)</li>
 <li>Specific requirements (outlines all software being used)</li>
 <ol><li>functions (ie. software shall validate the user has used valid email address)</li>
