@@ -1,18 +1,22 @@
-.nav-sidebar {
-	top: 40px;
+.document {
+	font-size: 15px;
+	font-family: Sans-serif;
+	margin-left: 10%;
+	margin-right: 10%;
 }
 
-.section-heading {
-	font-size: 33px;
-	display: inline-block;
+.doctitle {
+	font-size: 42px
 }
 
-.subheading {
-	font-size: 20px;
-	line-height: 21px;
-	display: inline-block;
+.section {
+	font-size: 31px;
 }
 
-OL { counter-reset: item }
-LI { display: block; }
-LI:before { content: counters(item, ".") " "; counter-increment: item; }
+.subsection {
+	font-size: 22px;
+}
+
+.subsection2 {
+	font-size: 18px;
+}
