@@ -216,14 +216,103 @@
 				</section>
 
 				<section id="features">
-					<h2 class="section-heading"> Systems Features</h2>
-					<h3 class="subheading"> new game </h3>
-					<h3 class="subheading"> Select a cup </h3>
-					<h3 class="subheading"> Create tournament (?) </h3>
-					<h3 class="subheading"> Record stats </h3>
-					<h3 class="subheading"> Updating live leaderboard </h3>
-					<h3 class="subheading"> Filtering names in a game </h3>
-					<h3 class="subheading"> Filtering top 5 games personal </h3>
+					<h2 class="section-heading">System Features</h2>
+					<h3 class="subheading"> User Profile </h3>
+					<ul>
+					<li>Desciption<br/>
+							Users register in order to play games and record stats. Users have the option to create an account directly on the website, or to login and register with Facebook Login. The user profile page displays personal information and stats.
+						<br/></li>
+					<li>Stimulus/Response Sequence<br/>
+							From the main page, selecting login, a user can login to the website, or through Facebook Login.
+						<br/></li>
+					<li>Functional Requirements<br/>
+							REQ-1	Only one user is logged in at one time<br/>
+							REQ-2	Only the logged in users personal information and stats are displayed
+						<br/></li>
+					</ul>
+					<h3 class="subheading"> Create a Game </h3>
+					<ul>
+					<li>Desciption<br/>
+							Games are the main feature of the website.
+						<br/></li>
+					<li>Stimulus/Response Sequence<br/>
+							A new game is created by a registered user. A game consists of four players. When a new game is created, the registered users invite other players to join the game, up to a maximum of 3. When three players are invited, the game starts, and the registered user who created the game sees the game user-interface.
+						<br/></li>
+					<li>Functional Requirements<br/>
+							REQ-1	The user who creates a game must be registered<br/>
+							REQ-2	The user who creates the game must not be in another game at the same time<br/>
+							REQ-3	There must be at least two registered users in a game<br/>
+							REQ-4	Each team must have at least one registered user
+						<br/></li>
+					</ul>
+					<h3 class="subheading"> Play a Game </h3>
+					<ul>
+					<li>Desciption<br/>
+							During a game, players interact with the game user-interface. Actions in the physical game are recorded in the game user-interface by selecting a player, a cup, and the applicable action. This is required for advancement of the game.
+						<br/></li>
+					<li>Stimulus/Response Sequence<br/>
+							Actions by a player, associated with specific cups, are selected throughout the game, as they are done in the physical game.
+						<br/></li>
+					<li>Functional Requirements<br/>
+							REQ-1	Only one cup is selected at a time<br/>
+							REQ-2	Only one action per cup is selected at a time<br/>
+							REQ-3	Only one player can be associated with an action
+						<br/>	</li>
+					</ul>
+					<h3 class="subheading"> Validate a Game </h3>
+					<ul>
+					<li>Desciption<br/>
+							At the conclusion of a game, a game must be confirmed for validity.
+						<br/></li>
+					<li>Stimulus/Response Sequence<br/>
+							At the end of a game, one registered user from each team must confirm validity. Once the game is finished, it is considered completely finished, and stats will be calculated and recorded. A team/registered user may deny validity, and the game will not be factored into stats.
+						<br/></li>
+					<li>Functional Requirements<br/>
+							REQ-1	One registered user from each team must confirm validity for a game to be included in the stats <br/>
+							REQ-2	A team/registered user must be able to deny validity of a game
+						<br/></li>
+					</ul>
+					<h3 class="subheading"> Create a Tournament </h3>
+					<ul>
+					<li>Desciption<br/>
+							A tournament is a sequential group of n games played by at least m number of teams. At the end of the tournament, the rank of each team is calculated by the system.
+						<br/></li>
+					<li>Stimulus/Response Sequence<br/>
+							A tournament is created by a registered user. A tournament consists of m teams of two. When a tournament is created, registered users invite other players to join the tournament. When every team has two players, registered users view the tournament user-interface. From the tournament user-interface, registered users choose to start a game. Games are played in an order determined by the teams.
+						<br/></li>
+					<li>Functional Requirements<br/>
+							REQ-1	There must be at least two teams in a tournament<br/>
+							REQ-2	Each game in the tournament has the same functional requirements as a regular game<br/>
+							REQ-3	A registered user from every game must be logged in, so there is a user-interface for each game<br/>
+							REQ-4	A team can only be in one game at a time
+						<br/></li>
+					</ul>
+					<h3 class="subheading"> Statistics </h3>
+					<ul>
+					<li>Desciption<br/>
+							Stats are viewable throughout the website. Stats are calculated by the server are stored in a database. Stats are recorded for registered users only. The top ten players are displayed on the main page of the website, while all other stats are viewable by registered users only. Stats are searchable by user.
+						<br/></li>
+					<li>Stimulus/Response Sequence<br/>
+							At the end of a game, the system will calculate and record analytics. Going to the user profile page displays the user’s personal stats. Going to the statistics page displays the top players, and is searchable by user(s).
+						<br/></li>
+					<li>Functional Requirements<br/>
+							REQ-1	A game must finish completely – confirmed by all necessary players – before stats are calculated and committed to the database <br/>
+							REQ-2	Analytics are only calculated and recorded for registered users
+						<br/></li>
+					</ul>
+					<h3 class="subheading"> Social Media </h3>
+					<ul>
+					<li>Desciption<br/>
+							Registered users logged in using Facebook Login post status updates regarding actions in a game, the result of a game or tournament, or stats of the user.
+						<br/></li>
+					<li>Stimulus/Response Sequence<br/>
+							Throughout the user-interface of the website, including the game and tournament user-interface, a player selects whether to post a status to Facebook.
+						<br/></li>
+					<li>Functional Requirements<br/>
+							REQ-1	A registered user must be logged in using Facebook Login<br/>
+							REQ-2	A user must choose to post a status – the system cannot post a status without permission
+						<br/></li>
+					</ul>
 
 				</section>
 
