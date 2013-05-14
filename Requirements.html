@@ -1,14 +1,46 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-<link rel="stylesheet" type="text/css" href="bootstrap\css\bootstrap.css">
-</head>
+	<head>
+		<title>CP317 | Requirements Document</title>
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+		<link href="assets/styles.css" rel="stylesheet" type="text/css">
+	</head>
 
-<body>
+	<body data-spy="scroll" data-target=".nav-sidebar">
+		<div class="row">
+			<div class="span3 nav-sidebar">
+				<ul class="nav nav-list nav-sidebar affix">
+					<li class>
+						<a href="#introduction">Introduction</a>
+					</li>
+					<li class>
+						<a href="#description">Description</a>
+					</li>
+					<li class>
+						<a href="#interface">Interface</a>
+					</li>
+					<li class>
+						<a href="#features">Features</a>
+					</li>
+					<li class>
+						<a href="#non-function-reqs">Other Non-Functional Requirements</a>
+					</li>
+					<li class>
+						<a href="#other-reqs">Other Requirements</a>
+					</li>
+				</ul>
+			</div>
 
-<h1>Requirements Document</h1>
+			<div class="content span9">
+				<div class="row">
+					<div class="page-header">
+						<h1>Requirements Document</h1>
+					</div>
+				</div>
 
+<<<<<<< HEAD
 <ol>
 <li>Introduction</li>
 <ol>
@@ -86,4 +118,234 @@
 </ol>
 test
 </body>
+=======
+				<section id="introduction">
+					<h2 class="section-heading"> Introduction </h2>
+					<h3 class="subheading"> Product purpose (what is it providing) </h3>
+					<ol>
+						<li>
+							For society
+						</li>
+						<li>
+							For customer
+						</li>
+						<ul>
+							<li>
+								Competition
+							</li>
+							<li>
+								Entertainment
+							</li>
+						</ul>
+					</ol>
+					<h3 class="subheading"> Terminology (common terms used in this document that will need a definition - ie. trick shot or bounce shot) </h3>
+					<h3 class="subheading"> Audience </h3>
+					<h3 class="subheading"> Product scope (how are we approaching this product) </h3>
+					<h3 class="subheading"> Assumptions and independencies </h3>
+					<h3 class="subheading"> Evolution of plans (ie. starting with WLU and expanding later) </h3>
+					<h3 class="subheading"> References (? do we have any) </h3>
+					<h3 class="subheading"> Contributors (CP317 class - summer 2013) </h3>
+					<li>
+						George Lifchits
+					</li>
+					<h3 class="subheading"> Overview of Requirements document (what the document will provide and how it is formatted) </h3>
+				</section>
+
+				<section id="description">
+					<h2 class="section-heading"> Product description </h2>
+					<h3 class="subheading"> Product perspective </h3>
+					<ol>
+						<li>
+							What the product is
+						</li>
+						<li>
+							How to use it
+						</li>
+						<li>
+							Rules
+						</li>
+					</ol>
+					<h3 class="subheading"> product functions </h3>
+					<ol>
+						<li>
+							Start new game
+						</li>
+						<li>
+							Viewing leaderboard
+						</li>
+						<li>
+							Viewing personal stats
+						</li>
+						<li>
+							Logging in
+						</li>
+						<li>
+							Signing up (?)
+						</li>
+					</ol>
+					<h3 class="subheading"> Actors and use cases </h3>
+					<h3 class="subheading"> Operating environment </h3>
+					<ol>
+						<li>
+							Hopper server?
+						</li>
+					</ol>
+					<h3 class="subheading"> Constraints (technical constraints) </h3>
+				</section>
+
+				<section id="interface">
+					<h2 class="section-heading"> External interface requirements </h2>
+					<h3 class="subheading">User interface</h3>
+					<ul>
+						<li>
+							The user interface for the beer pong network is
+							a dynamic website.
+						</li>
+						<li>
+							Users log in, and the content
+							changes according to their account level.
+						</li>
+						<li>
+							Users will see a front page with their
+							current statistics. They have the ability
+							to create a new game.
+						</li>
+						<li>
+							The game interface will be entirely visual,
+							to simulate the experience of a Pong game.
+						</li>
+						<li>
+							The function of the interface is to input
+							data about the game into the database as easily
+							and intuitively as possible.
+						</li>
+						<li>
+							<b>Mobile Component</b>
+						</li>
+						<ul>
+							<li>
+								In order to make data entry more accessible,
+								we hope to implement a mobile-ready version of
+								the web user interface
+							</li>
+							<li>
+								The mobile website will be a simplified version 
+								of the main website &mdash; but it <em>must</em>
+								be able to fully support game data entry
+							</li>
+						</ul>
+					</ul>
+					<h3 class="subheading"> Software interface </h3>
+					<ol>
+						<li>
+							The system operates on standard internet browsers (Internet Explorer 6/7/8/9/10,
+							Firefox, Google Chrome, Safari).
+						</li>
+						<li>
+							The system uses a database.
+						</li>
+						<li>
+							<b>Analytic Algorithm</b>
+							<ul>
+								<li>
+									The system implements a library which contains an analytic algorithm
+								</li>
+								<li>
+									The library allows us to specify what inputs we give the algorithm which then calculates the skill level in comparision to other users.
+								</li>
+								<li>
+									Some documentation is available here <a href="https://github.com/saulabs/trueskill/blob/master/README.md">GitHub TrueSkill Readme</a>, <a href="http://trueskill.org/">TrueSkill Site</a> and here <a href="http://en.wikipedia.org/wiki/Elo_rating_system">Elo Rating System Documentation</a>
+								</li>
+								<li>
+									We are permitted to use the algorithm
+								</li>
+							</ul>
+						</li>
+						<li>
+							<b>OpenID</b>
+							<ul>
+								<li>
+									The system allows a user to login with an OpenID account
+								</li>
+								<li>
+									Supported providers are Google and FaceBook.
+								</li>
+								<li>
+									The library allows us to grab a user's profile information from either an active session or by redirecting them to their providers login page
+								</li>
+								<li>
+									Some documentation is available here <a href="https://github.com/openid/ruby-openid">GitHub Ruby-OpenID</a> and here <a href="http://openid.net/">The OpenID Site</a>
+								</li>
+							</ul>
+						</li>
+					</ol>
+					<h3 class="subheading"> communications interface (where our website is) </h3>
+					<h3 class="subheading"> Specific requirements (outlines all software being used) </h3>
+					<ol>
+						<li>
+							Functions (ie. software shall validate the user has used valid email address)
+						</li>
+						<li>
+							Database
+						</li>
+						<li>
+							Performance requirements
+						</li>
+					</ol>
+				</section>
+
+				<section id="features">
+					<h2 class="section-heading"> Systems Features</h2>
+					<h3 class="subheading"> new game </h3>
+					<h3 class="subheading"> Select a cup </h3>
+					<h3 class="subheading"> Create tournament (?) </h3>
+					<h3 class="subheading"> Record stats </h3>
+					<h3 class="subheading"> Updating live leaderboard </h3>
+					<h3 class="subheading"> Filtering names in a game </h3>
+					<h3 class="subheading"> Filtering top 5 games personal </h3>
+
+				</section>
+
+				<section id="non-functional-reqs">
+					<h2 class="section-heading"> Other Non-functional requirements </h2>
+					<h3 class="subheading"> Performance </h3>
+					<ol>
+						<li>
+							When stats are updated
+						</li>
+					</ol>
+					<h3 class="subheading"> Security </h3>
+					<ol>
+						<li>
+							User login
+						</li>
+						<li>
+							Admin login
+						</li>
+					</ol>
+					<h3 class="subheading"> Software Quality Attributes </h3>
+				</section>
+
+				<section id="other-reqs">
+					<h2 class="section-heading"> Other Requirements </h2>
+					<h3 class="subheading"> Elements of project plan </h3>
+					<h3 class="subheading"> Standards we are using </h3>
+					<h3 class="subheading"> Control plan </h3>
+					<ol>
+						<li>
+							Quality control plan
+						</li>
+						<li>
+							Scheduling plan
+						</li>
+					</ol>
+				</section>
+			</div>
+		</div>
+
+		<!-- jQuery / other scripts -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+	</body>
+>>>>>>> origin/master
 </html>
