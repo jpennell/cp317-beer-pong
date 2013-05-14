@@ -1,139 +1,309 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-	<link rel="stylesheet" type="text/css" href="bootstrap\css\bootstrap.css">
-</head>
+	<head>
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+		<link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css">
+		<link href="bootstrap/css/docs.css" rel="stylesheet" type="text/css">
+		<link href="assets/styles.css" rel="stylesheet" type="text/css">
+	</head>
 
-<body>
-	<h1>Requirements Document</h1>
-	<ol>
-		<li>Introduction</li>
-			<ol>
-				<li>Product purpose (what is it providing)</li>
-				<ol>
-					<li>For society</li>
-					<li>For customer</li>
-					<ul>
-						<li>Competition</li>
-						<li>Entertainment</li>
-					</ul>
-				</ol>
-				<li>Terminology (common terms used in this document that will need a definition - ie. trick shot or bounce shot)</li>
-				<li>Audience</li>
-				<li>Product scope (how are we approaching this product)</li>
-				<li>Assumptions and independencies</li>
-				<li>Evolution of plans (ie. starting with WLU and expanding later)</li>
-				<li>References (? do we have any)</li>
-				<li>Contributors (CP317 class - summer 2013)</li>
-				<li>Overview of Requirements document (what the document will provide and how it is formatted)</li>
-			</ol>
-	
-		<br/>
-		<li>Product description</li>
-			<ol>
-				<li>Product perspective</li>
-				<ol>
-					<li>What the product is</li>
-					<li>How to use it</li>
-					<li>Rules</li>
-				</ol>
-				<li>product functions</li>
-				<ol>
-					<li>Start new game</li>
-					<li>Viewing leaderboard</li>
-					<li>Viewing personal stats</li>
-					<li>Loging in</li>
-					<li>Signing up (?)</li>
-				</ol>
-				<li>Actors and use cases</li>
-				<li>Operating environment</li>
-				<ol>
-					<li>Hopper server?</li>
-				</ol>
-				<li>Constraints (technical constraints)</li>
-			</ol>
-			
-		<br/>
-		<li>External interface requirements</li>
-			<ol>
-				<li>User interface</li>
-				<li>Software interface</li>
-				<ol>
-					<li>The system operates on standard internet browsers (Internet Explorer 9/10, FireFox, Google Chrome, Safari).</li>
-					<li>The system uses a database.</li>
-					<li> <b>Analytic Algorithm</b>
-						<ul>
-							<li>The system implements a library which contains an analytic algorithm</li>
-							<li>The library allows us to specify what inputs we give the algorithm which then calculates the skill level in comparision to other users.</li>
-							<li>Some documentation is available here <a href="https://github.com/saulabs/trueskill/blob/master/README.md">GitHub TrueSkill Readme</a>, <a href="http://trueskill.org/">TrueSkill Site</a> and here <a href="http://en.wikipedia.org/wiki/Elo_rating_system">Elo Rating System Documentation</a> </li>
-							<li>We are permitted to use the algorithm</li>		
-						</ul>
+	<body data-spy="scroll" data-target=".nav-sidebar">
+		<div class="row">
+			<div class="span3 nav-sidebar">
+				<ul class="nav nav-list nav-sidebar affix">
+					<li>
+						<a href="#introduction">Introduction</a>
 					</li>
-					<li><b>OpenID</b>
-						<ul>
-							<li>The system allows a user to login with an OpenID account</li>
-							<li>The library allows us to grab a user's profile information from either an active session or by redirecting them to their providers login page</li> 
-							<li>Some documentation is available here <a href="https://github.com/openid/ruby-openid">GitHub Ruby-OpenID</a>  and here <a href="http://openid.net/">The OpenID Site</a>  </li>
-						</ul>
+					<li>
+						<a href="#description">Description</a>
 					</li>
-					<li><b>Facebook Login For Web</b>
-						<ul>
-							<li>The system allows a user to login with their Facebook account</li>
-							<li>The SDK will allow the system to grab a user's profile information</li>
-						</ul>
+					<li>
+						<a href="#interface">Interface</a>
 					</li>
-				</ol>
-				<li>Communications Interface</li>
-					<ul>
-						The site is deployed on the hopper server.
-					</ul>
-				<li>Specific requirements (outlines all software being used)</li>
-				<ol>
-					<li>Functions (ie. software shall validate the user has used valid email address)</li>
-					<li>Database</li>
-					<li>Performance requirements</li>
-				</ol>
-			</ol>
-		
-		<br/>
-		<li>Systems Features
-			<ol>
-				<li>new game</li>
-				<li>Select a cup</li>
-				<li>Create tournament (?)</li>
-				<li>Record stats</li>
-				<li>Updating live leaderboard</li>
-				<li>Filtering names in a game</li>
-				<li>Filtering top 5 games personal</li>
-			</ol>
-		
-		<br/>
-		<li>Other Non-functional requirements</li>
-			<ol>
-				<li>Performance</li>
-				<ol>
-					<li>When stats are updated</li>
-				</ol>
-				<li>Security</li>
-				<ol>
-					<li>User login</li>
-					<li>Admin login</li>
-				</ol>
-				<li>Software Quality Attributes</li>
-			</ol>
-		
-		<br/>
-			<li>Other Requirements (?)</li>
-			<li>Elements of project plan</li>
-			<ol>
-				<li>Standards we are using</li>
-				<li>Control plan</li>
-				<ol>
-					<li>Quality control plan</li>
-					<li>Scheduling plan</li>
-				</ol>
-			</ol>
-	</ol>
-</body>
+					<li>
+						<a href="#features">Features</a>
+					</li>
+					<li>
+						<a href="#non-function-reqs">Other Non-Functional Requirements</a>
+					</li>
+					<li>
+						<a href="#other-reqs">Other Requirements</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="content span9">
+				<div class="row">
+					<div class="page-header">
+						<h1>Requirements Document</h1>
+					</div>
+				</div>
+
+				<section id="introduction">
+					<h2> Introduction </h2>
+					<ol>
+						<li>
+							Product purpose (what is it providing)
+						</li>
+						<ol>
+							<li>
+								For society
+							</li>
+							<li>
+								For customer
+							</li>
+							<ul>
+								<li>
+									Competition
+								</li>
+								<li>
+									Entertainment
+								</li>
+							</ul>
+						</ol>
+						<li>
+							Terminology (common terms used in this document that will need a definition - ie. trick shot or bounce shot)
+						</li>
+						<li>
+							Audience
+						</li>
+						<li>
+							Product scope (how are we approaching this product)
+						</li>
+						<li>
+							Assumptions and independencies
+						</li>
+						<li>
+							Evolution of plans (ie. starting with WLU and expanding later)
+						</li>
+						<li>
+							References (? do we have any)
+						</li>
+						<li>
+							Contributors (CP317 class - summer 2013)
+						</li>
+						<li>
+							Overview of Requirements document (what the document will provide and how it is formatted)
+						</li>
+					</ol>
+				</section>
+
+				<section id="description">
+					<h2> Product description </h2>
+					<ol>
+						<li>
+							Product perspective
+						</li>
+						<ol>
+							<li>
+								What the product is
+							</li>
+							<li>
+								How to use it
+							</li>
+							<li>
+								Rules
+							</li>
+						</ol>
+						<li>
+							product functions
+						</li>
+						<ol>
+							<li>
+								Start new game
+							</li>
+							<li>
+								Viewing leaderboard
+							</li>
+							<li>
+								Viewing personal stats
+							</li>
+							<li>
+								Logging in
+							</li>
+							<li>
+								Signing up (?)
+							</li>
+						</ol>
+						<li>
+							Actors and use cases
+						</li>
+						<li>
+							Operating environment
+						</li>
+						<ol>
+							<li>
+								Hopper server?
+							</li>
+						</ol>
+						<li>
+							Constraints (technical constraints)
+						</li>
+					</ol>
+				</section>
+
+				<section id="interface">
+					<h2> External interface requirements </h2>
+					<ol>
+						<li>
+							User interface
+						</li>
+						<li>
+							Software interface
+						</li>
+						<ol>
+							<li>
+								The system operates on standard internet browsers (Internet Explorer 6/7/8/9/10, FireFox, Google Chrome, Safari).
+							</li>
+							<li>
+								The system uses a database.
+							</li>
+							<li>
+								<b>Analytic Algorithm</b>
+								<ul>
+									<li>
+										The system implements a library which contains an analytic algorithm
+									</li>
+									<li>
+										The library allows us to specify what inputs we give the algorithm which then calculates the skill level in comparision to other users.
+									</li>
+									<li>
+										Some documentation is available here <a href="https://github.com/saulabs/trueskill/blob/master/README.md">GitHub TrueSkill Readme</a>, <a href="http://trueskill.org/">TrueSkill Site</a> and here <a href="http://en.wikipedia.org/wiki/Elo_rating_system">Elo Rating System Documentation</a>
+									</li>
+									<li>
+										We are permitted to use the algorithm
+									</li>
+								</ul>
+							</li>
+							<li>
+								<b>OpenID</b>
+								<ul>
+									<li>
+										The system allows a user to login with an OpenID account
+									</li>
+									<li>
+										Supported providers are Google and FaceBook.
+									</li>
+									<li>
+										The library allows us to grab a user's profile information from either an active session or by redirecting them to their providers login page
+									</li>
+									<li>
+										Some documentation is available here <a href="https://github.com/openid/ruby-openid">GitHub Ruby-OpenID</a> and here <a href="http://openid.net/">The OpenID Site</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<b>Facebook Login For Web</b>
+								<ul>
+									<li>
+										The system allows a user to login with their Facebook account
+									</li>
+									<li>
+										The SDK will allow the system to grab a user's profile information
+									</li>
+								</ul>
+							</li>
+						</ol>
+						<li>
+							communications interface (where our website is)
+						</li>
+						<li>
+							Specific requirements (outlines all software being used)
+						</li>
+						<ol>
+							<li>
+								Functions (ie. software shall validate the user has used valid email address)
+							</li>
+							<li>
+								Database
+							</li>
+							<li>
+								Performance requirements
+							</li>
+						</ol>
+					</ol>
+				</section>
+
+				<section id="features">
+					<h2> Systems Features</h2>
+					<ol>
+						<li>
+							new game
+						</li>
+						<li>
+							Select a cup
+						</li>
+						<li>
+							Create tournament (?)
+						</li>
+						<li>
+							Record stats
+						</li>
+						<li>
+							Updating live leaderboard
+						</li>
+						<li>
+							Filtering names in a game
+						</li>
+						<li>
+							Filtering top 5 games personal
+						</li>
+					</ol>
+
+				</section>
+
+				<section id="non-functional-reqs">
+					<h2> Other Non-functional requirements </h2>
+					<ol>
+						<li>
+							Performance
+						</li>
+						<ol>
+							<li>
+								When stats are updated
+							</li>
+						</ol>
+						<li>
+							Security
+						</li>
+						<ol>
+							<li>
+								User login
+							</li>
+							<li>
+								Admin login
+							</li>
+						</ol>
+						<li>
+							Software Quality Attributes
+						</li>
+					</ol>
+				</section>
+
+				<section id="other-reqs">
+					<h2> Other Requirements (?) </h2>
+					<li>
+						Elements of project plan
+					</li>
+					<ol>
+						<li>
+							Standards we are using
+						</li>
+						<li>
+							Control plan
+						</li>
+						<ol>
+							<li>
+								Quality control plan
+							</li>
+							<li>
+								Scheduling plan
+							</li>
+						</ol>
+					</ol>
+				</section>
+			</div>
+		</div>
+	</body>
 </html>
