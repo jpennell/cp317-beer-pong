@@ -171,7 +171,30 @@ test
 							<li>Must have the ability to show personal statistics regarding wins, losses, cups sunk, and preferred partner</li>
 							<li>Must have the ability to show which end user is the best beer pong player using ranking system defined in section (insert section reference here)</li>
 						</ol>
-					<h3 class="subheading"> Actors and use cases </h3>
+					<h3 class="subheading"> Actors and Use Cases </h3>
+						<ol>
+							<li>Administrator – is an individual who has special privileges within the website. An administrator can login, logout, add an institution, delete an institution, ban a user, and unban a user. Administrators and end user accounts are completely separate.</li>
+							<li>End User – is an individual who uses the website for active game play. In terms of game play, the end user may create, score or confirm a game.  End users can view the entire leaderboard, login, logout, inactivate their account, view their personal statistics, and view other players’ statistics.</li>
+							<li>Guest – is an individual who is not using the site for active game play. A guest may view a limited version of the leaderboard and may register. Once a guest has registered, they become an end user.</li>
+						</ol>
+						<ol>
+							<li>Admin Login – an administrator must provide their username and password as discussed in section (reference to section here) to authenticate their identity</li>
+							<li>Admin Logout – an administrator need only select the “Logout” option to have access to their account session terminated</li>
+							<li>Add Institution – an administrator has the ability to add institutions that guests select when registering to become a user. </li>
+							<li>Delete Institution – an administrator has the ability to delete institutions that guests select when registering to become a user.</li>
+							<li>Ban User – an administrator can ban a user who has not conformed to the site’s rules or policies</li>
+							<li>Unban User – an administrator can lift a ban on a user who has not confirmed to the site’s rules or policies</li>
+							<li>User Login – an end user must provide their username and password as discussed in section (reference to section here) to authenticate their identity </li>
+							<li>User Logout – an end user need only select the “Logout” option to have access to their account session terminated</li>
+							<li>Create Game – an end user can create a beer pong game</li>
+							<li>Score Game – once a beer pong game has been created, an end user uses the interface to record the results of the game as it is being played</li>
+							<li>Confirm Game Results – once a game has been completed, an end user must confirm the results of the game in order for the game data in question to be used and considered in the statistics and leaderboard areas</li>
+							<li>View Personal Statistics – an end user may view their personal statistics at any time given they are logged in. The statistics shown here include only games that have been confirmed by players involved in a particular game.</li>
+							<li>View Other Users’ Statistics – an end user may view other players’ personal statistics at any time given they are logged in. The statistics shown here include only games that have been confirmed by players involved in a particular game.</li>
+							<li>View Full Leaderboard – an end user may view the entire leaderboard at any time given they are logged in. The statistics shown here include only games that have been confirmed by players involved in a particular game.</li>
+							<li>Register – a guest must provide information as stated in section (reference to section here) in order to facilitate the login functionality</li>
+							<li>View Limited Leaderboard – a guest can see the top ten players on the website. For full access to the leaderboard, a guest must become a user</li>
+						</ol>
 					<h3 class="subheading"> Operating environment </h3>
 					<ol>
 						<li>
