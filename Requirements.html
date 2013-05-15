@@ -429,8 +429,7 @@
 							<br/>From the main page, selecting login, a user can login to the website, or through Facebook Login.
 						<br/><br/></li>
 					<li>Functional Requirements<br/>
-							<br/>REQ-1	Only one user is logged in at one time<br/>
-							<br/>REQ-2	Only the logged in users personal information and stats are displayed
+							<br/>REQ-1	Only one user is in a session at one time<br/>
 						<br/><br/></li>
 					</ul>
 					
@@ -440,7 +439,7 @@
 							<br/>Games are the main feature of the website.
 						<br/><br/></li>
 					<li>Stimulus/Response Sequence<br/>
-							<br/>A new game is created by a registered user. A game consists of four players. When a new game is created, the registered users invite other players to join the game, up to a maximum of 3. When three players are invited, the game starts, and the registered user who created the game sees the game user-interface.
+							<br/>A new game is created by a registered user. A game consists of four players. When a new game is created, the registered users select other players in the game, up to a maximum of 3. When three players are selected, the game starts, and the registered user who created the game sees the game user-interface.
 						<br/><br/></li>
 					<li>Functional Requirements<br/>
 							<br/>REQ-1	The user who creates a game must be registered<br/>
@@ -479,37 +478,21 @@
 						<br/><br/></li>
 					</ul>
 					
-					<h3 class="subsection">4.5 Create a Tournament </h3>
+					<h3 class="subsection">4.5 Statistics and Leaderboard</h3>
 					<ul>
 					<li>Desciption<br/>
-							<br/>A tournament is a sequential group of n games played by at least m number of teams. At the end of the tournament, the rank of each team is calculated by the system.
-						<br/></li>
-					<li>Stimulus/Response Sequence<br/>
-							<br/>A tournament is created by a registered user. A tournament consists of m teams of two. When a tournament is created, registered users invite other players to join the tournament. When every team has two players, registered users view the tournament user-interface. From the tournament user-interface, registered users choose to start a game. Games are played in an order determined by the teams.
-						<br><br/></li>
-					<li>Functional Requirements<br/>
-							<br/>REQ-1	There must be at least two teams in a tournament<br/>
-							<br/>REQ-2	Each game in the tournament has the same functional requirements as a regular game<br/>
-							<br/>REQ-3	A registered user from every game must be logged in, so there is a user-interface for each game<br/>
-							<br/>REQ-4	A team can only be in one game at a time
-						<br/><br/></li>
-					</ul>
-					
-					<h3 class="subsection">4.6 Statistics </h3>
-					<ul>
-					<li>Desciption<br/>
-							<br/>Stats are viewable throughout the website. Stats are calculated by the server are stored in a database. Stats are recorded for registered users only. The top ten players are displayed on the main page of the website, while all other stats are viewable by registered users only. Stats are searchable by user.
+							<br/>Stats are viewable throughout the website. Stats are calculated by the server are stored in a database. Stats are recorded for registered users only. The leaderboard is displayed on the main page of the website, while all other stats are viewable by registered users only. Stats are searchable by user.
 						<br/><br/></li>
 					<li>Stimulus/Response Sequence<br/>
-						<br/>	At the end of a game, the system will calculate and record analytics. Going to the user profile page displays the user’s personal stats. Going to the statistics page displays the top players, and is searchable by user(s).
+						<br/>	At the end of a game, the system will calculate and record users stats. Going to the user profile page displays the user’s personal stats. Going to the statistics page displays a leaderboard, which is searchable by user(s).
 						<br/><br/></li>
 					<li>Functional Requirements<br/>
 							<br/>REQ-1	A game must finish completely – confirmed by all necessary players – before stats are calculated and committed to the database <br/>
-							<br/>REQ-2	Analytics are only calculated and recorded for registered users
+							<br/>REQ-2	Stats are only calculated and recorded for registered users
 						<br/><br/></li>
 					</ul>
 					
-					<h3 class="subsection">4.7 Social Media </h3>
+					<h3 class="subsection">4.6 Social Media </h3>
 					<ul>
 					<li>Desciption<br/>
 							<br/>Registered users logged in using Facebook Login post status updates regarding actions in a game, the result of a game or tournament, or stats of the user.
