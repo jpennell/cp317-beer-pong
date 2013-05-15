@@ -16,3 +16,7 @@
 OL { counter-reset: item }
 LI { display: block; }
 LI:before { content: counters(item, ".") " "; counter-increment: item }
+
+H2, H3 {
+	    display: inline-block;
+}
