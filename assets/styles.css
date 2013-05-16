@@ -1,14 +1,22 @@
-.nav-sidebar {
-	top: 40px;
+.document {
+	font-size: 15px;
+	font-family: Sans-serif;
+	margin-left: 10%;
+	margin-right: 10%;
 }
 
-.section-heading {
-	font-size: 33px;
-	text-transform: capitalize;
+.doctitle {
+	font-size: 42px
 }
 
-.subheading {
-	font-size: 19px;
-	line-height: 21px;
-	text-transform: capitalize;
+.section {
+	font-size: 31px;
+}
+
+.subsection {
+	font-size: 22px;
+}
+
+.subsection2 {
+	font-size: 18px;
 }
