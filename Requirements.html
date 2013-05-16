@@ -347,57 +347,36 @@
 							The system uses a database.
 						</li>
 						<li>
-							<b>Analytic Algorithm</b>
+							<b>Statistical Algorithm Library</b>
 							<ul>
 								<li>
-									The system implements a library which contains an analytic algorithm
+									The library allows us to specify what inputs go into the algorithm. The algorithm then calculates the user's skill level 
+									in comparison to other users.
 								</li>
 								<li>
-									The library allows us to specify what inputs we give the algorithm which then calculates the skill level in comparision to other users.
+									Documentation is available at <a href="https://github.com/saulabs/trueskill/blob/master/README.md">GitHub TrueSkill Readme</a>, 
+									<a href="http://trueskill.org/">TrueSkill Site,</a> and <a href="http://en.wikipedia.org/wiki/Elo_rating_system">Elo Rating System 
+									Documentation.</a>
 								</li>
 								<li>
-									Some documentation is available here <a href="https://github.com/saulabs/trueskill/blob/master/README.md">GitHub TrueSkill Readme</a>, <a href="http://trueskill.org/">TrueSkill Site</a> and here <a href="http://en.wikipedia.org/wiki/Elo_rating_system">Elo Rating System Documentation</a>
-								</li>
-								<li>
-									We are permitted to use the algorithm
+									We are permitted to use the algorithm.
 								</li>
 							</ul>
 						</li>
 						<li>
-							<b>OpenID</b>
-							<ul>
-								<li>
-									The system allows a user to login with an OpenID account
-								</li>
-								<li>
-									Supported providers are Google and FaceBook.
-								</li>
-								<li>
-									The library allows us to grab a user's profile information from either an active session or by redirecting them to their providers login page
-								</li>
-								<li>
-									Some documentation is available here <a href="https://github.com/openid/ruby-openid">GitHub Ruby-OpenID</a> and here <a href="http://openid.net/">The OpenID Site</a>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<b>Facebook Login For Web</b>
-							<ul>
-								<li>
-									The system allows a user to login with their Facebook account
-								</li>
-								<li>
-									The SDK will allow the system to grab a user's profile information
-								</li>
-							</ul>
+							<p>
+							The system implements thirdparty login methods. These methods allow a user to login into our site with an existing
+							account from another site. These sites provide libraries which we use to obtain a user's profile information. Possible 
+							tools are <a href="http://openid.net/">The OpenID</a> and <a href="https://developers.facebook.com/docs/facebook-login/">Facebook login for web</a>
+							</p>
 						</li>
 					</ul>
 				</p>
 
 			<h3 class="subsection">3.3 Communications Interface (where our website is)</h3>
-
+			
 				<p>
-					The site is deployed on a server.
+					The code and the database will be located on a server; the user's device will also handle some computation.
 				</p>
 
 			<h3 class="subsection">3.4 Specific requirements (outlines all software being used)</h3>
@@ -567,11 +546,37 @@
 
 			<h3 class="subsection">5.3 Software Quality Attributes</h3>
 
-				<p>
-					NEEDS CONTENT!!
-				</p>
+				<h3 class="subsection2">5.3.1 Usability</h3>
+			
+					<p>
+						Given the nature of the product's users, the game UI must be as intuitive and user-friendly as possible and cause little frustration.
+					</p>
+					
+				<h3 class="subsection2">5.3.1 Interoperability</h3>
+			
+					<p>
+						The website should be usable across varying web browsers in particular the more recent versions of Internet Explorer, Firefox and Google Chrome.
+					</p>
+					
+				<h3 class="subsection2">5.3.2 Portability</h3>
+			
+					<p>
+						Users should also be able to access the game UI and website via cell phone.
+					</p>
+					
+				<h3 class="subsection2">5.3.3 Maintainability</h3>
+			
+					<p>
+						The client expects to be able to make changes to the website in the future therefore the website must be easy to maintain and well-documented.
+					</p>
+					
+				<h3 class="subsection2">5.3.4 Scalability</h3>
+			
+					<p>
+						The website should have the potential to be expanded to handle larger amounts of users should it become more popular.
+					</p>
 
-
+		
 
 			<br>
 			<h2 class="section">6 Other Requirements</h2>
