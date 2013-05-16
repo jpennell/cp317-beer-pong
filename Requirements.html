@@ -169,7 +169,7 @@ test
 							<b>What the product is</b>
 							<ul>
 								<li>
-								Pong Tracker is a web-based database for tracking statistics of a given individual’s Beer Pong performance. It collects a number of different metrics via its intuitive real-time collection interface. Using this data, a leaderboard as well as user analytics will be readily available for users to see.
+								Pong Tracker is a web-based database for tracking statistics of a given individualï¿½s Beer Pong performance. It collects a number of different metrics via its intuitive real-time collection interface. Using this data, a leaderboard as well as user analytics will be readily available for users to see.
 								</li>
 							</ul>
 						</li>
@@ -179,7 +179,7 @@ test
 								<li>
 								Users will have the ability to search other users and challenge them to a game. One user will be responsible for the operation of the interface, then following a confirmation from one member of the opposite team, will successfully store the data of one game.
 								Pong Tracker also offers the ability to view analytics of players. The analytics page is essentially a user friendly display of all stats gathered from the interface. 
-								A leaderboard, filtered by user region or institution, will also be available to define the strongest users. To accomplish the task of ranking users, an algorithm such as Microsoft TrueSkill™ will be implemented. 
+								A leaderboard, filtered by user region or institution, will also be available to define the strongest users. To accomplish the task of ranking users, an algorithm such as Microsoft TrueSkillï¿½ will be implemented. 
 								</li>
 							</ul>
 						</li>
@@ -523,7 +523,7 @@ test
 					<br/>
 						<h3>5.1 Performance Requirements</h3>
 						<br/>
-						<p>The front-end pages of the Beer-Pong site must be loaded quickly and seamlessly with little time between transitions and virtually no load time between sequential pop-ups. Automation and the front-end interface must be flawless as the database driving the Stats page will hold valuable records.</p>
+						<p>The front-end pages Pong Tracker must be loaded quickly and seamlessly with little time between transitions and virtually no load time between sequential pop-ups. Automation and the front-end interface must be flawless as the database driving the Stats page will hold valuable records. Large volumes of users are expected, so software built to handle these loads should be implemented to avoid login queues or site crashing.</p>
 						<br/>
 							<h3>5.1.1 Front-end pages must be loaded quickly and without error.</h3>
 							<br/>
@@ -533,17 +533,24 @@ test
 							<br/>
 							<p>The Stats page in particular will contain a large database that must be built with error-free automation and load sufficient software for future growth.<p>
 							<br/>
+							<h3>5.1.3 Large volumes of users and heavy site traffic must not be a problem.</h3>
+							<br/>
+							<p>Pong Tracker must be built with software capable of handling heavy site traffic and large login queues, as to avoid the site crashing or long waits.</p>
+							<br/>
 						<h3>5.2 Security Requirements</h3>
 						<br/>
-						<p>For security, only two base requirements are needed which are: a login page for general users and a login page for administrative users.<p>
+						<p>For security, three base requirements are needed which are: a login page for general users, a login page for administrative users and password security.<p>
 						<br/>
 							<h3>5.2.1 General user login page.</h3>
 							<br/>
-							<p>This will be the main hub for non-administrative users to enter the Beer-Pong site and access their personal stats, teams and records. These users will not have access to any site changes and will not even know another login page exists for admin users.</p>
+							<p>This will be the main hub for non-administrative users to enter Pong Tracker and access their personal stats, teams and records. These users will not have access to any site changes and will not even know another login page exists for admin users.</p>
 							<br/>
 							<h3>5.2.2 Administrator user login page.</h3>
 							<br/>
 							<p>A second login page that will exist unbeknownst to the general users as this will be where an administrator will enter the Beer-Pong site to make necessary changes and updates.</p>
+							<br/>
+							<h3>5.2.3 Password Security.</h3>
+							<p>A system must be in place to protect the passwords of general users and administrators from hack attempts and fraudulent data.</p>
 							<br/>
 					<h3 class="subheading"> Software Quality Attributes </h3>
 				</section>
