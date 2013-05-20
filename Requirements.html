@@ -48,41 +48,31 @@
 				<h3 class="subsection"><span class="numbering">1.5</span> Evolution of Plans</h3>
 				<p>
 					The Project Evolution Plan includes:
-					<ul>
-						<b> Short Term: </b>
-						<ul>
-							<li>
-								Allow individuals to participate who do not belong to a post-gradute institution
-							</li>
-						</ul>
-						<b> Long Term: </b>
-						<ul>
-							<li>
-								Allowing advertising on the website
-							</li>
-							<li>
-								Moving to multi-server
-							</li>
-						</ul>
-					</ul>
 				</p>
+								<p>
+								Allowing advertising on the website
+								</p>
+
+								<p>
+								Moving to multi-server
+								</p>
 
 				<h3 class="subsection"><span class="numbering">1.6</span> References</h3>
 				<p>
 					This document follows the standards set by the following publication:
-					<dd>
+				</p>
+				<p>
 						IEEE Std 610.12-1990, IEEE Standard for Software Project Management Plans
 						<br/>
 						<a href ="http://bohr.wlu.ca/cp317/notes/IEEE_1058.pdf">http://bohr.wlu.ca/cp317/notes/IEEE_1058.pdf</a>
-					</dd>
 				</p>
 
 				<h3 class="subsection"><span class="numbering">1.7</span> Contributors (CP317 class - summer 2013)</h3>
 
 				<p>
 					This standard was developed by the summer 2013 class of Software Engineering (CP 317). The following individuals contributed to the development of this document:
-
-					<table class="project-contributors">
+				</p>
+					<table class="project-contributors table">
 						<tbody>
 							<tr>
 								<td>Quinton Black</td>
@@ -110,7 +100,7 @@
 				<p>
 					The following individuals contributed the editing of this document:
 				</p>
-				<table class="project-contributors">
+				<table class="project-contributors table">
 					<tbody>
 						<tr>
 							<td>Carlie Ferguson</td>
@@ -128,7 +118,7 @@
 				<p>
 					The following individuals took a leadership role in the creation of the Requirement Documentation:
 				</p>
-				<table class="project-contributors">
+				<table class="project-contributors table">
 					<tbody>
 						<tr>
 							<td>Henry Goddard</td>
@@ -164,7 +154,7 @@
 				</p>
 
 				<h3 class="subsection2"><span class="numbering">2.1.3</span> Beer Pong Rules</h3>
-				<h4>Setting Up</h4>
+				<h4 class="subsection3">Setting Up</h4>
 				<p>
 					Twelve cups are arranged as shown below. The table should be no less than 7 feet long.
 				</p>
@@ -174,8 +164,8 @@
 						Standard Arrangement of Beer Pong
 					</figcaption>
 				</figure>
-				<h4>Gameplay</h4>
-				<p>
+				<h4 class="subsection3">Gameplay</h4>
+				<div class="indent">
 					<ul>
 						<li>
 							<b>Eye-to-eye</b> determines the first team to shoot.
@@ -234,9 +224,10 @@
 						</li>
 
 					</ul>
-				</p>
-				<h4>Ending a Game</h4>
-				<p>
+				</div>
+				
+				<h4 class="subsection3">Ending a Game</h4>
+				<div class="indent">
 					<ul>
 						<li>
 							If a cup in the hand of a player is sunk, the offending team is automatically victorious and the <b>Game Over</b> option is selected.
@@ -264,9 +255,9 @@
 							If both players sink the last remaining cup, or it is a bounce, the defending team is not eligible for redemption.
 						</li>
 					</ul>
-				</p>
+				</div>
 				<h3 class="subsection"><span class="numbering">2.2</span> Product Functions</h3>
-				<p>
+				<div class="indent">
 					<ul>
 						<li>
 							A user friendly, web-based application (computer and mobile) in which users can create and score beer pong games while they are being played
@@ -278,21 +269,22 @@
 							Must have the ability to show which user is the best beer pong player
 						</li>
 					</ul>
-				</p>
+				</div>
 
 				<h3 class="subsection"><span class="numbering">2.3</span> Actors and Use Cases</h3>
-				<figure>
+				<center>
 					<img src="UseCaseDiagram.svg" alt="Use Case Diagram" width = "750">
 					<figcaption>
 						UML Use Case Diagram for Pong Tracker
 					</figcaption>
-				</figure>
+				</center>
 				<p>
 					<strong>Actors</strong>
 
 				<p>
 					The following are a list of actors that are associated with Pong Tracker. Actors described here are illustrated in the Use Case Diagram shown above.
 				</p>
+				<div class="indent">
 				<ul>
 					<li>
 						Administrator - an individual who has special privileges within the website. An administrator can login, logout, add an institution, delete an institution, ban a user, and unban a user. Administrators and end user accounts are completely separate.
@@ -304,11 +296,13 @@
 						Guest - an individual who is not using the site for active game play. A guest may view a limited version of the leaderboard and may register. Once a guest has registered, they become a user.
 					</li>
 				</ul>
+				</div>
 				<br>
-				<strong>Use Cases</strong>
+				<h3 class="subsection3"><strong>Use Cases</strong></h3>
 				<p>
 					The following are a list of use cases that are associated with the actors listed above. The use cases described here are illustrated in the Use Case Diagram shown above.
 				</p>
+				<div class="indent">
 				<ul>
 					<li>
 						Admin Login - a separate page from where a user logs in where an administrator must provide their username and password as discussed in section to authenticate their identity
@@ -365,6 +359,7 @@
 						View Limited Leaderboard - a guest can see the top ten players on the website. For full access to the leaderboard, a guest must become a user
 					</li>
 				</ul>
+				</div>
 
 				<h3 class="subsection"><span class="numbering">2.4</span> Operating Environment</h3>
 
@@ -374,7 +369,7 @@
 
 				<h3 class="subsection"><span class="numbering">2.5</span> Technical Constraints</h3>
 
-				<p>
+				<div class="indent">
 					<ul>
 						<li>
 							Both desktop and mobile friendly views.
@@ -389,12 +384,17 @@
 							Designed to be implemented on a Unix server with various accompanying plugins (such as SQL, SSL etc.) also functional.
 						</li>
 					</ul>
-				</p>
+				</div>
 			</section>
 
 			<section id="interface">
 				<h2 class="section"><span class="numbering">3</span> External Interface Requirements</h2>
 				<h3 class="subsection"><span class="numbering">3.1</span> User Interface</h3>
+				<p>
+				The user interface must be designed to be engaging and simple for the user. The user interface must also emphasize the display of user statistics, since this is a key feature for our competitive user base.
+				To make this possible, both a <b>desktop</b> and a <b>mobile</b> form factor of the website are to be developed.
+				</p>
+				<div class="indent">
 				<ul>
 					<li>
 						The user interface for the beer pong network is a dynamic website.
@@ -412,11 +412,14 @@
 						The game interface is entirely visual and engaging in order to simulate the experience of a beer pong game.
 					</li>
 				</ul>
-				The user interface must be designed to be engaging and simple for the user. The user interface must also emphasize the display of user statistics, since this is a key feature for our competitive user base.
-				To make this possible, both a <b>desktop</b> and a <b>mobile</b> form factor of the website are to be developed.
+				</div>
+				
 
-				<h4>Desktop Site</h4>
+				<h3 class="subsection2"><span class="numbering">3.1.1</span>    Desktop Site</h4>
+				<p>
 				The desktop version sees more usage by people in their free time since it is unlikely that people have their laptop with them during agame of beer pong.
+				</p>
+				<div class="indent">
 				<ul>
 					<li>
 						Greater range of leaderboard data
@@ -428,9 +431,13 @@
 						Access to personal account administrative features
 					</li>
 				</ul>
+				</div>
 
-				<h4>Mobile Site</h4>
+				<h3 class="subsection2"><span class="numbering">3.1.2</span>     Mobile Site</h4>
+				<p>
 				The mobile version, for the most part, affects the users who are currently participating in a beer pong game and are therefore interacting with the main product features.
+				</p>
+				<div class="indent">
 				<ul>
 					<li>
 						Highly reactive, intuitive, and well-designed user interface to facilitate data entry
@@ -442,8 +449,10 @@
 						Limited delivery of statistics
 					</li>
 				</ul>
+				</div>
 
 				<h3 class="subsection"><span class="numbering">3.2</span> Software Interface</h3>
+				<div class="indent">
 				<ul>
 					<li>
 						Pong Tracker operates on modern, standard internet browsers (Internet Explorer 9/10, Firefox, Google Chrome, and Safari).
@@ -452,7 +461,9 @@
 						The system uses a relational database.
 					</li>
 				</ul>
-				<h4>Statistical Algorithm Library</h4>
+				</div>
+				<h4 class="subsection3">Statistical Algorithm Library</h4>
+				<div class="indent">
 				<ul>
 					<li>
 						The library allows developers to specify what inputs go into the algorithm. The algorithm then calculates the user's skill level in comparison to other users.
@@ -465,8 +476,10 @@
 						We are permitted to use the algorithm.
 					</li>
 				</ul>
+				</div>
 
-				<h4>Login Methods</h4>
+				<h4 class="subsection3">Login Methods</h4>
+				<div class="indent">
 				<ul>
 					<li>
 						Pong Tracker implements third party login methods.
@@ -482,6 +495,7 @@
 						Possible tools are <a href="http://openid.net/">The OpenID</a> and <a href="https://developers.facebook.com/docs/facebook-login/">Facebook Login for Web</a>
 					</li>
 				</ul>
+				</div>
 
 				<h3 class="subsection"><span class="numbering">3.3</span> Communications Interface</h3>
 				<p>
@@ -493,29 +507,39 @@
 				<h2 class="section"><span class="numbering">4</span> System Features</h2>
 				<h3 class="subsection"><span class="numbering">4.1</span> Profile </h3>
 
-				<h4>Description</h4>
+				<h4 class="subsection3">Description</h4>
+				<p>
 				Guests register in order to play games and record statistics. Guests have the option to create an account directly on the website, or to register using a third party login. A guest becomes a user once they have registered. The user profile page displays personal information and statistics.
-
-				<h4>Stimulus/Response Sequence</h4>
+				</p>
+				
+				<h4 class="subsection3">Stimulus/Response Sequence</h4>
+				<p>
 				From the main page, by selecting login, a user can login to the website, or through the third party login.
+				</p>
 
-				<h4>Functional Requirements</h4>
+				<h4 class="subsection3">Functional Requirements</h4>
 
+				<div class="indent">
 				<ul>
 					<li>
 						<span class="req">REQ-1</span> Only one user is in a session at one time
 					</li>
 				</ul>
+				</div>
 
 				<h3 class="subsection"><span class="numbering">4.2</span> Create a Game </h3>
 
-				<h4>Description</h4>
+				<h4 class="subsection3">Description</h4>
+				<p>
 				Games are the main feature of the website.
+				</p>
 
-				<h4>Stimulus/Response Sequence</h4>
+				<h4 class="subsection3">Stimulus/Response Sequence</h4>
+				<p>
 				A new game is created by a user. A game consists of four players. When a new game is created, the user who created the game, selects and adds other players to the game, up to a maximum of 3. A user may add a guest as a player. Note that the guest does not have their statistics recorded, nor can they interact with the game user interface.  When three players are selected, the game starts, and the registered user who created the game sees the game interface.
-
-				<h4>Functional Requirements</h4>
+				<p>
+				<h4 class="subsection3">Functional Requirements</h4>
+				<div class="indent">
 				<ul>
 					<li>
 						<span class="req">REQ-1</span> The user who creates a game must be registered.
@@ -530,16 +554,20 @@
 						<span class="req">REQ-4</span> Each team must have at least one registered user.
 					</li>
 				</ul>
+				</div>
 
 				<h3 class="subsection"><span class="numbering">4.3</span> Play a Game </h3>
 
-				<h4>Description</h4>
+				<h4 class="subsection3">Description</h4>
+				<p>
 				During a game, a user interacts with the game user interface. Actions in the physical game are recorded in the game user interface by selecting a player, a cup, and the applicable action. This is required for advancement of the game.
-
-				<h4>Stimulus/Response Sequence</h4>
+				</p>
+				<h4 class="subsection3">Stimulus/Response Sequence</h4>
+				<p>
 				Actions by a player, associated with specific cups, are selected throughout the game, as they are done in the physical game.
-
-				<h4>Functional Requirements</h4>
+				</p>
+				<h4 class="subsection3">Functional Requirements</h4>
+				<div class="indent">
 				<ul>
 					<li>
 						<span class="req">REQ-1</span> Only one cup is selected at a time.
@@ -551,16 +579,20 @@
 						<span class="req">REQ-3</span> Only one player can be associated with an action.
 					</li>
 				</ul>
+				</div>
 
 				<h3 class="subsection"><span class="numbering">4.4</span> Validate a Game </h3>
 
-				<h4>Description</h4>
+				<h4 class="subsection3">Description</h4>
+				<p>
 				At the conclusion of a game, a game must be confirmed for validity.
-
-				<h4>Stimulus/Response Sequence</h4>
+				</p>
+				<h4 class="subsection3">Stimulus/Response Sequence</h4>
+				<p>
 				At the end of a game, one user from the opposing team must confirm results of the game. Once the game is confirmed, it is considered completely finished, and statistics are calculated and recorded. A team/user may deny validity in which case the game is not factored into statistics.
-
-				<h4>Functional Requirements</h4>
+				</p>
+				<h4 class="subsection3">Functional Requirements</h4>
+				<div class="indent">
 				<ul>
 					<li>
 						<span class="req">REQ-1</span> One user from the opposing team must confirm validity for a game to be included in the statistics.
@@ -569,16 +601,20 @@
 						<span class="req">REQ-2</span> A team/user must have the ability to deny the validity of a game.
 					</li>
 				</ul>
+				</div>
 
 				<h3 class="subsection"><span class="numbering">4.5</span> Statistics and Leaderboard</h3>
 
-				<h4>Description</h4>
+				<h4 class="subsection3">Description</h4>
+				<p>
 				Statistics are viewable throughout the website. Statistics are calculated by the server are stored in a database. Statistics are recorded for users only. The leaderboard is displayed on the main page of the website and is viewable to users. A limited leaderboard consisting of the top ten players is viewable to guests. Personal and other user statistics are viewable by users only. Statistics are searchable by user.
-
-				<h4>Stimulus/Response Sequence</h4>
+				</p>
+				<h4 class="subsection3">Stimulus/Response Sequence</h4>
+				<p>
 				At the end of a game, the Pong Tracker calculates and records users' statistics. Going to the user profile page displays the user's personal statistics. The user profile page also has the  functionality to search for other users in order to view their statistics. Going to the main page displays a leaderboard.
-
-				<h4>Functional Requirements</h4>
+				</p>
+				<h4 class="subsection3">Functional Requirements</h4>
+				<div class="indent">
 				<ul>
 					<li>
 						<span class="req">REQ-1</span> A game must finish completely and be confirmed by all necessary players before statistics are calculated and committed to the database.
@@ -587,16 +623,20 @@
 						<span class="req">REQ-2</span> Statistics are only calculated and recorded for users.
 					</li>
 				</ul>
+				</div>
 
 				<h3 class="subsection"><span class="numbering">4.6</span> Social Media</h3>
 
-				<h4>Description</h4>
+				<h4 class="subsection3">Description</h4>
+				<p>
 				Users who entered the site using a third party login can send updates to the third party website regarding actions in a game, the result of a game or tournament, or statistics of the user.
-
-				<h4>Stimulus/Response Sequence</h4>
+				</p>
+				<h4 class="subsection3">Stimulus/Response Sequence</h4>
+				<p>
 				Throughout the user interface of the website a player selects whether they would like to update the third party website with game information.
-
-				<h4>Functional Requirements</h4>
+				</p>
+				<h4 class="subsection3">Functional Requirements</h4>
+				<div class="indent">
 				<ul>
 					<li>
 						<span class="req">REQ-1</span> A user must be logged in using a third party login.
@@ -605,6 +645,7 @@
 						<span class="req">REQ-2</span> A user must choose to post a status and the system cannot send information without permission.
 					</li>
 				</ul>
+				</div>
 			</section>
 
 			<section id="nonfunctional-reqs">
@@ -615,6 +656,7 @@
 					The front-end pages Pong Tracker must be loaded quickly and seamlessly with little time between transitions and virtually no load time between sequential pop-ups. An initial user volume consisting of post-secondary students in Ontario is expected and as such the software must be built in a way to handle this loads.
 				</p>
 
+				<div class="indent">
 				<ul>
 					<li>
 						Front-end pages must be loaded quickly and without error
@@ -627,6 +669,7 @@
 						Pong Tracker must be built with software capable of handling heavy site traffic and large login queues, as to avoid the site crashing or long waits.
 					</li>
 				</ul>
+				</div>
 
 				<h3 class="subsection"><span class="numbering">5.2</span> Security Requirements</h3>
 
@@ -634,6 +677,7 @@
 					For security, three base requirements are needed which are: a login page for general users, a login page for administrative users and password security.
 				</p>
 
+				<div class="indent">
 				<ul>
 					<li>
 						User Login Page
@@ -651,6 +695,7 @@
 						An encryption method must be in place to protect the passwords of users and administrators.
 					</li>
 				</ul>
+				</div>
 
 				<h3 class="subsection"><span class="numbering">5.3</span> Software Quality Attributes</h3>
 
@@ -689,8 +734,11 @@
 				<h2 class="section"><span class="numbering">6</span> Elements of Project Plan</h2>
 				<h3 class="subsection"><span class="numbering">6.1</span> Control Plan</h3>
 
-				<h4>Platforms</h4>
+				<h4 class="subsection3">Platforms</h4>
+				<p>
 				The platforms being used for effective execution of Pong Tracker are:
+				</p>
+				<div class="indent">
 				<ul>
 					<li>
 						Wiggio - used for team communication and scheduling
@@ -701,12 +749,14 @@
 						GitHub - used for versioning
 					</li>
 				</ul>
+				</div>
 
-				<h4>Quality Control Plan</h4>
+				<h4 class="subsection3">Quality Control Plan</h4>
 
 				<p>
 					The management of this project has been divided 5 major parts. Assigned to each part, is an individual who is responsible for delegating responsibilities to others and ensuring deadlines are met. The following is a list of the major parts, and the individuals assigned as "task manager".
 				</p>
+				<div class="indent">
 				<ol>
 					<li>
 						Requirements Document - Carlie
@@ -724,11 +774,13 @@
 						Software Quality Assurance - Matt
 					</li>
 				</ol>
+				</div>
 
-				<h4> Scheduling Plan </h4>
+				<h4 class="subsection3"> Scheduling Plan </h4>
 				<p>
 					Henry has been appointed to set final deadlines for the parts listed above.
 				</p>
+				<div class="indent">
 				<ul>
 					<li>
 						Requirements Document is due May 21, 2013
@@ -743,11 +795,13 @@
 						Final product implementation and documentation is due August 2, 2013
 					</li>
 				</ul>
+				</div>
 			</section>
 
 			<section id="appendix">
+				
 				<h2 class="section">Appendix</h2>
-
+				<div class="indent">
 				<span class="def">Air Balls</span> A shot that misses the table altogether
 				<br/>
 				<span class="def">Eye-to-eye</span> A means of deciding the first team to shoot.  Consists of a member of each team simultaneously shooting while making full eye contact with the other party.  Should a cup be scored, the offending party is awarded the first shot.
@@ -759,6 +813,7 @@
 				<span class="def">Trick Shots</span> any shot containing either multi-directional trajectory OR non-standard origination.
 				<br/>
 				<span class="def">WLU</span> Wilfrid Laurier University.
+				</div>
 			</section>
 
 		</div>
