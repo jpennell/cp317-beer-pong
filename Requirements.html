@@ -15,359 +15,295 @@
 
 			<h2 class="section">1 Introduction</h2>
 
-			<h3 class="subsection">1.1 Product Purpose</h3>
+			<ul>
+				<h3 class="subsection">1.1 Product Purpose</h3>
 
+					<dd>
+						The Pong Tracker website is a site that provides users the chance to record and view analytics of Beer Pong games played by themselves and fellow Laurier students. WLU Pong will allow students to enter every detail of the game they are playing while they are playing the game, contributing to both society as a whole as well as individuals. This document outlines the expected project, including a description of the product, the design software interfaces, system features, as well as how the project will be approached.
+					</dd>
+
+
+				<ul>
+					<h3 class="subsection2">1.1.1 Contributions to Society</h3>
+
+						<p>
+							An increasing trend in today&#39s society is social media. As a site that allows fellow students to come together, record, and share their Beer Pong statistics, WLU Pong feeds the students&#39 need to stay connected, meet new people, and opportunity to share their interest of the game. WLU Pong introduces the collaboration of social media with in person interaction.
+						</p>
+
+					<h3 class="subsection2">1.1.2 Contributions to Individuals</h3>
+
+						<p>
+							WLU Pong creates a friendly, competitive and entertaining environment for every individual involved.
+						</p>
+				</ul>
+
+
+				<h3 class="subsection">1.2 Terminology</h3>
+
+					<dd>
+						Appendix A has a glossary of common terms used.
+					</dd>
+
+				<h3 class="subsection">1.3 Audience</h3>
+
+					<dd>
+						The targeted audience for this product is web-enabled beer pong players. Each team must consist of one player signed up with the site. WLU Pong does allow guests to participate temporarily.
+					</dd>
+
+				<h3 class="subsection">1.4 Product Scope</h3>
+
+					<dd>
+						The scope of this project serves people who want to record Beer Pong online. This is to be done by HTML pages and providing users with an interesting and webpage based interface that allows them to record, compete with other players and also the system will record them win and lose times in their account.
+					</dd>
+
+				<h3 class="subsection">1.5 Assumptions and Dependencies</h3>
+
+					<dd>
+						This section provides the known dependencies and assumptions at the start of the project; all subsequent additions shall be managed within project objects (e.g., risk, project schedule, etc.)
+						<br><br>
+						Moreover,this section specifies completed, ongoing or future projects or the linkages to established programs, on which this project depends in order to be successful, or which are dependent on this project.Now no know dependencies.
+					</dd>
+
+				<h3 class="subsection">1.6 Evolution of plans (ie. starting with WLU and expanding later)</h3>
+
+					<dd>
+						The Project Evolution Plan will preserve and grow in website
+						<ul>
+							<li>Allow advertising on site</li>
+							<li>Moving to mult-server</li>
+							<li>Make available for mobile</li>
+						</ul>
+					</dd>
+
+				<h3 class="subsection">1.7 References</h3>
+
+					<dd>
+						This document follows the standards set by the following publication:
+						<br><br>
+						IEEE Std 610.12-1990, IEEE Standard for Software Project Management Plans
+						<br><br>
+						<a href ="http://bohr.wlu.ca/cp317/notes/IEEE_1058.pdf" style="text-indent: 50px">http://bohr.wlu.ca/cp317/notes/IEEE_1058.pdf</a>
+					</dd>
+
+				<h3 class="subsection">1.8 Contributors (CP317 class - summer 2013)</h3>
+
+					<dd>
+						This standard was developed by the summer 2013 class of Software Engineering (CP 317). The following individuals contributed to the development of this document:
+
+							<table><tbody><tr><td>
+							<tr><td style="text-indent: 50px">Quinton Black</td>
+							<td style="text-indent: 50px">Reese Garth</td>
+							<td style="text-indent: 50px">George Lifchits</td></tr>
+							<tr><td style="text-indent: 50px">Erin Cramer</td>
+							<td style="text-indent: 50px">Henry Goddard</td>
+							<td style="text-indent: 50px">Robin Tang</td></tr>
+							<tr><td style="text-indent: 50px">Richard Douglas</td>
+							<td style="text-indent: 50px">Colin Hagerman</td>
+							<td style="text-indent: 50px">Yulou (Chris) Ye</td></tr>
+							<tr><td style="text-indent: 50px">Carlie Ferguson</td>
+							<td style="text-indent: 50px">Matt Hengeveld</td></tr>
+							</tbody></table><br>
+
+							<p>The following individuals contributed the editing of this document:</p>
+							<table><tbody><tr><td>
+							<tr><td style="text-indent: 50px">Carlie Ferguson</td>
+							<td style="text-indent: 50px">Richard Douglas</td>
+							<td style="text-indent: 50px">Matt Hengeveld</td></tr>
+							<tr><td style="text-indent: 50px">Erin Cramer</td>
+							<td style="text-indent: 50px">Chris Ye</td></tr>
+							</tbody></table><br>
+
+							<p>The following individuals took a leadership role in the creation of the Requirement Documentation:</p>
+							<table><tbody><tr><td>
+							<tr><td style="text-indent: 50px">Henry Goddard</td>
+							<td style="text-indent: 50px">Carlie Ferguson</td></tr>
+							<tr><td style="text-indent: 50px"><em>Project Sponsor</em></td>
+							<td style="text-indent: 50px"><em>Phase Manager</em></td></tr>
+							</tbody></table><br>
+					</dd>
+
+				<h3 class="subsection">1.9 Overview</h3>
 				<p>
-					The WLU Pong website is a site that provides users the chance to record and view analytics of Beer Pong games played by themselves and fellow Laurier students. WLU Pong will allow students to enter every detail of the game they are playing while they are playing the game, contributing to both society as a whole as well as individuals. This document outlines the expected project, including a description of the product, the design software interfaces, system features, as well as how the project will be approached.
+					<dd>
+						This requirements document has 7 predominant sections to it. Section 1 outlines the audience, thought process being applied and some base terminology to be used throughout the document. Section 2 brings attention to the service to be created and the environment with which it operates. In section 3 the document explains how a user finds and interacts with the service and any related constraints add-on software has. Section 4 highlights the underlying relation between user features and their connection to the database for other functionality. The 5th section will bring attention to the planned performance and security of the software to be integrated in the development of this project as well as the characteristics with which the software possesses. Section 6 mentions how the project is monitored to ensure progress is being made. The final section, 7, lists other requirements attached to this project regarding future expansion of the service.
+					</dd>
+
 				</p>
-
-			<h3 class="subsection2">1.1.1 Contributions to Society</h3>
-
-				<p>
-					An increasing trend in today’s society is social media. As a site that allows fellow students to come together, record, and share their Beer Pong statistics, WLU Pong feeds the students’ need to stay connected, meet new people, and opportunity to share their interest of the game. WLU Pong introduces the collaboration of social media with in person interaction.
-				</p>
-
-			<h3 class="subsection2">1.1.2 Contributions to Individuals</h3>
-
-				<p>
-					WLU Pong creates a friendly, competitive and entertaining environment for every individual involved.
-				</p>
-
-			<h3 class="subsection">1.2 Terminology</h3>
-
-				<p>
-					Appendix A has a glossary of common terms used.
-				</p>
-
-			<h3 class="subsection">1.3 Audience</h3>
-
-				<p>
-					The targeted audience for this product is web-enabled beer pong players. Each team must consist of one player signed up with the site. WLU Pong does allow guests to participate temporarily.
-				</p>
-
-			<h3 class="subsection">1.4 Product Scope</h3>
-
-				<p>
-					The scope of this project serves people who want to record Beer Pong online. This is to be done by HTML pages and providing users with an interesting and webpage based interface that allows them to record, compete with other players and also the system will record them win and lose times in their account.
-				</p>
-
-			<h3 class="subsection">1.5 Assumptions and Dependencies</h3>
-
-				<p>
-					This section provides the known dependencies and assumptions at the start of the project; all subsequent additions shall be managed within project objects (e.g., risk, project schedule, etc.)
-					<br><br>
-					Moreover,this section specifies completed, ongoing or future projects or the linkages to established programs, on which this project depends in order to be successful, or which are dependent on this project. (!!Now no know dependencies. Add later.)
-				</p>
-
-			<h3 class="subsection">1.6 Evolution of plans (ie. starting with WLU and expanding later)</h3>
-
-				<p>
-					The Project Evolution Plan will preserve and grow in website
-
-					<ul>
-						<li>Allow advertising on site</li>
-						<li>Moving to mult-server</li>
-						<li>Make available for mobile</li>
-					</ul>
-				</p>
-
-			<h3 class="subsection">1.7 References</h3>
-
-				<p>
-					This document follows the standards set by the following publication:
-					<br><br>
-					IEEE Std 610.12-1990, IEEE Standard for Software Project Management Plans
-					<br><br>
-					<a href ="http://bohr.wlu.ca/cp317/notes/IEEE_1058.pdf" style="text-indent: 50px">http://bohr.wlu.ca/cp317/notes/IEEE_1058.pdf</a
-				</p>
-
-			<h3 class="subsection">1.8 Contributors (CP317 class - summer 2013)</h3>
-
-				<p>
-					This standard was developed by the summer 2013 class of Software Engineering (CP 317). The following individuals contributed to the development of this document:
-
-						<table><tbody><tr><td>
-						<tr><td style="text-indent: 50px">Quinton Black</td>
-						<td style="text-indent: 50px">Reese Garth</td>
-						<td style="text-indent: 50px">George Lifchits</td></tr>
-						<tr><td style="text-indent: 50px">Erin Cramer</td>
-						<td style="text-indent: 50px">Henry Goddard</td>
-						<td style="text-indent: 50px">Robin Tang</td></tr>
-						<tr><td style="text-indent: 50px">Richard Douglas</td>
-						<td style="text-indent: 50px">Colin Hagerman</td>
-						<td style="text-indent: 50px">Yulou (Chris) Ye</td></tr>
-						<tr><td style="text-indent: 50px">Carlie Ferguson</td>
-						<td style="text-indent: 50px">Matt Hengeveld</td></tr>
-						</tbody></table><br>
-
-						<p>The following individuals contributed the editing of this document:</p>
-						<table><tbody><tr><td>
-						<tr><td style="text-indent: 50px">Carlie Ferguson</td>
-						<td style="text-indent: 50px">Richard Douglas</td>
-						<td style="text-indent: 50px">Matt Hengeveld</td></tr>
-						<tr><td style="text-indent: 50px">Erin Cramer</td></tr>
-						</tbody></table><br>
-
-						<p>The following individuals took a leadership role in the creation of the Requirement Documentation:</p>
-						<table><tbody><tr><td>
-						<tr><td style="text-indent: 50px">Henry Goddard</td>
-						<td style="text-indent: 50px">Carlie Ferguson</td></tr>
-						<tr><td style="text-indent: 50px"><em>Project Sponsor</em></td>
-						<td style="text-indent: 50px"><em>Phase Manager</em></td></tr>
-						</tbody></table><br>
-				</p>
-
-			<h3 class="subsection">1.9 Overview</h3>
-
-				<p>
-					This requirements document has 7 predominant sections to it. Section 1 outlines the audience, thought process being applied and some base terminology to be used throughout the document. Section 2 brings attention to the service to be created and the environment with which it operates. In section 3 the document explains how a user finds and interacts with the service and any related constraints add-on software has. Section 4 highlights the underlying relation between user features and their connection to the database for other functionality. The 5th section will bring attention to the planned performance and security of the software to be integrated in the development of this project as well as the characteristics with which the software possesses. Section 6 mentions how the project is monitored to ensure progress is being made. The final section, 7, lists other requirements attached to this project regarding future expansion of the service.
-				</p>
-
+			</ul>
 
 
 
 			<br>
 			<h2 class="section">2 Product description</h2>
+			<ul>
+				<h3 class="subsection">2.1 Product perspective</h3>
+				<ul>
+					<h3 class="subsection2">2.1.1 What the product is</h3>
 
-			<h3 class="subsection">2.1 Product perspective</h3>
+						<p>
+							Pong Tracker is a web-based database for tracking statistics of a given individual&#39s Beer Pong performance. It collects a number of different metrics via its intuitive real-time collection interface. Using this data, a leaderboard as well as user analytics will be readily available for users to see.
+						</p>
 
-				<h3 class="subsection2">2.1.1 What the product is</h3>
+					<h3 class="subsection2">2.1.2 How to use it</h3>
 
-					<p>
-						Pong Tracker is a web-based database for tracking statistics of a given individualï¿½s Beer Pong performance. It collects a number of different metrics via its intuitive real-time collection interface. Using this data, a leaderboard as well as user analytics will be readily available for users to see.
-					</p>
-
-				<h3 class="subsection2">2.1.2 How to use it</h3>
-
-					<p>
-						Users will have the ability to search other users and challenge them to a game. One user will be responsible for the operation of the interface, then following a confirmation from one member of the opposite team, will successfully store the data of one game. Pong Tracker also offers the ability to view analytics of players. The analytics page is essentially a user friendly display of all stats gathered from the interface. A leaderboard, filtered by user region or institution, will also be available to define the strongest users. To accomplish the task of ranking users, an algorithm such as Microsoft TrueSkillï¿½ will be implemented.
-					</p>
+						<p>
+							Users will have the ability to search other users and challenge them to a game. One user will be responsible for the operation of the interface, then following a confirmation from one member of the opposite team, will successfully store the data of one game. Pong Tracker also offers the ability to view analytics of players. The analytics page is essentially a user friendly display of all stats gathered from the interface. A leaderboard, filtered by user region or institution, will also be available to define the strongest users. To accomplish the task of ranking users, an algorithm such as Microsoft TrueSkill&#39 will be implemented.
+						</p>
 
 				<h3 class="subsection2">2.1.3 Beer Pong Rules</h3>
+					<p>
+						<dd>
+							<li><b>Eye-to-eye</b> determines the first team to shoot</li>
+								<ul>
+									<li>Should both parties hit their eye-to-eye, eye-to-eye resumes until only one team scores</li>
+								</ul>
+							<li>Should both members of a team score, they shoot again</li>
+							<li>Should after a shot, the ball spin in the rim of the opponents&#39 cup, the defending team may attempt to blow the ball out of the cup. If the ball is ejected and remains dry, no cup is scored</li>
+							<li><b>Air balls</b> result in a loss of turn, if it was the second shot you&#39re lucky<li>
+							<li>Should a shot roll/bounce back on the table (never once touching the ground) the shooting team member may attempt a <b>trick shot</b><li>
+							<li>Each team is entitled to one <b>re-rack</b> at any point throughout the game</li>
+							<li>Bounce shots count as two cups scored, the cup hit, as well as one selected by the offending team are counted</li>
+								<ul>
+									<li>The defending team may attempt to disrupt the ball once it has made contact with the table.</li>
+								</ul>
+							<li>Should two non-bounce shots hit the same cup, the cup hit, as well as two selected by the offending team are counted</li>
+							<li>Any knocking over of a cup is considered a <b>Party Foul</b> and all disrupted cups are to be removed at the discredit of the offender.</li>
+							<li>If the ball is disrupted by the defending team (BEFORE it has made contact with the table) a cup is lost by the defending team this is also considered a <b>Party Foul</b></li>
+							<li>Should a cup in the hand of a player be sunk, the offending team is automatically victorious and the Game Over option should be selected.</li>
+						</dd>
+
+						<b>Terminology</b>
+						<dd>
+								<li><b>Air Balls:</b> A shot that misses the table altogether</li>
+								<li><b>Eye-to-eye:</b> A means of deciding the first team to shoot. Consists of a member of each team simultaneously shooting while making full eye contact with the other party. Should a cup be scored, the offending party is awarded the first shot.</li>
+								<li><b>Party Foul:</b> An infringement on the rules of the game, or knocking over a cup, spilling its contents.</li>
+								<li><b>Re-Rack:</b> A request to shuffle the orientation of the remaining cups on the opposing side.</li>
+								<li><b>Trick Shots:</b> any shot containing either multi-directional trajectory OR non-standard origination</li>
+						</dd>
+					</p>
+				</ul>
+				<h3 class="subsection">2.2 Product Functions</h3>
+					<p>
+						<ul>
+							<li>A user friendly, web-based application (computer and mobile) in which users can create and score beer pong games while they are being played</li>
+							<li>Must have the ability to show personal statistics regarding wins, losses, cups sunk, and preferred partner</li>
+							<li>Must have the ability to show which end user is the best beer pong player using ranking system defined in section (insert section reference here)</li>
+						</ul>
+					</p>
+
+				<h3 class="subsection">2.3 Actors and Use Cases</h3>
+					<figure>
+						<img src="UseCaseDiagram.svg" alt="Use Case Diagram" width = "750">
+						<figcaption>UML Use Case Diagram for Pong Tracker</figcaption>
+					</figure>
+					<p>
+						<strong>Actors</strong>
+
+							<p>The following are a list of actors that are associated with Pong Tracker. Actors described here are illustrated in the Use Case Diagram shown above.</p>
+							<ul>
+								<li>Administrator - an individual who has special privileges within the website. An administrator can login, logout, add an institution, delete an institution, ban a user, and unban a user. Administrators and end user accounts are completely separate.</li>
+								<li>User - an individual who uses the website for active game play. In terms of game play, the end user may create, score or confirm a game.  Users can view the entire leaderboard, login, logout, inactivate their account, view their personal statistics, and view other players&#39 statistics.</li>
+								<li>Guest - an individual who is not using the site for active game play. A guest may view a limited version of the leaderboard and may register. Once a guest has registered, they become a user.</li>
+							</ul>
+
+						<strong>Use Cases</strong>
+							<p>The following are a list of use cases that are associated with the actors listed above. The use cases described here are illustrated in the Use Case Diagram shown above.</p>
+							<ul>
+								<li>Admin Login - a separate page from where a user logs in where an administrator must provide their username and password as discussed in section (reference to section here) to authenticate their identity</li>
+								<li>Admin Logout - an administrator need only select the "Logout" option to have access to their account session terminated</li>
+								<li>Add Institution - an administrator has the ability to add institutions that guests select when registering to become a user. </li>
+								<li>Delete Institution - an administrator has the ability to delete institutions that guests select when registering to become a user.</li>
+								<li>Ban User - an administrator can ban a user who has not conformed to the site&#39s rules or policies</li>
+								<li>Unban User - an administrator can lift a ban on a user who has not confirmed to the site&#39s rules or policies</li>
+								<li>User Login -  a separate page from where an administrator logs in where a user must provide their username and password as discussed in section (reference to section here) to authenticate their identity </li>
+								<li>User Logout - a user need only select the "Logout" option to have access to their account session terminated</li>
+								<li>Create Game - a user can create a beer pong game</li>
+								<li>Score Game - once a beer pong game has been created, a user uses the interface to record the results of the game as it is being played</li>
+								<li>Confirm Game Results - once a game has been completed, a user must confirm the results of the game in order for the game data in question to be used and considered in the statistics and leaderboard areas</li>
+								<li>View Personal Statistics - a user may view their personal statistics at any time given they are logged in. The statistics shown here include only games that have been confirmed by players involved in a particular game.</li>
+								<li>View Other Users&#39 Statistics - a user may view other players&#39 personal statistics at any time given they are logged in. The statistics shown here include only games that have been confirmed by players involved in a particular game.</li>
+								<li>Delete Account - a user can delete their account at any time</li>
+								<li>View Rules - a guest or user can view the rules of pong at any given time</li>
+								<li>View Full Leaderboard - a user may view the entire leaderboard at any time given they are logged in. The statistics shown here include only games that have been confirmed by players involved in a particular game.</li>
+								<li>Register - a guest must provide information as stated in section (reference to section here) in order to facilitate the login functionality</li>
+								<li>View Limited Leaderboard - a guest can see the top ten players on the website. For full access to the leaderboard, a guest must become a user</li>
+							</ul>
+
+					</p>
+
+				<h3 class="subsection">2.4 Operating environment</h3>
+
+					<dd>
+						Pong Tracker will be required to run off of a unix server, namely <a href="http://hopper.wlu.ca">Hopper</a>.
+					</dd>
+
+				<h3 class="subsection">2.5 Constraints (technical constraints)</h3>
 
 					<p>
 						<ul>
-							<li>
-							<b>Eye-to-eye</b> determines the first team to shoot
-								<ul>
-									<li>
-									Should both parties hit their eye-to-eye, eye-to-eye resumes until only one team scores
-									</li>
-								</ul>
-							</li>
-							<li>
-							Should both members of a team score, they shoot again
-							</li>
-							<li>
-							Should after a shot, the ball spin in the rim of the opponents' cup, the defending team may attempt to blow the ball out of the cup. If the ball is ejected and remains dry, no cup is scored
-							</li>
-							<li>
-							<b>Air balls</b> result in a loss of turn, if it was the second shot you're lucky
-							</li>
-							<li>
-							Should a shot roll/bounce back on the table (never once touching the ground) the shooting team member may attempt a <b>trick shot</b>
-							</li>
-							<li>
-							Each team is entitled to one <b>re-rack</b> at any point throughout the game
-							</li>
-							<li>
-							Bounce shots count as two cups scored, the cup hit, as well as one selected by the offending team are counted
-								<ul>
-									<li>
-									The defending team may attempt to disrupt the ball once it has made contact with the table.
-									</li>
-								</ul>
-							</li>
-							<li>
-							Should two non-bounce shots hit the same cup, the cup hit, as well as two selected by the offending team are counted
-							</li>
-							<li>
-							Any knocking over of a cup is considered a <b>Party Foul</b> and all disrupted cups are to be removed at the discredit of the offender.
-							</li>
-							<li>
-							If the ball is disrupted by the defending team (BEFORE it has made contact with the table) a cup is lost by the defending team this is also considered a <b>Party Foul</b>
-							</li>
-							<li>
-							Should a cup in the hand of a player be sunk, the offending team is automatically victorious and the Game Over option should be selected.
-							</li>
+							<li>Both desktop and mobile friendly views.</li>
+							<li>SQL database architecture</li>
+							<li>Be able to support multiple interfaces writing to the database simultaneously.</li>
+							<li>Designed to be implemented on a Unix server with various accompanying plugins (such as SQL, SSL etc.) also functional.</li>
 						</ul>
-
-						<b>Terminology</b>
-							<ul>
-								<li>
-								<b>Air Balls:</b> A shot that misses the table altogether
-								</li>
-								<li>
-								<b>Eye-to-eye:</b> A means of deciding the first team to shoot. Consists of a member of each team simultaneously shooting while making full eye contact with the other party. Should a cup be scored, the offending party is awarded the first shot.
-								</li>
-								<li>
-								<b>Party Foul:</b> An infringement on the rules of the game, or knocking over a cup, spilling its contents.
-								</li>
-								<li>
-								<b>Re-Rack:</b> A request to shuffle the orientation of the remaining cups on the opposing side.
-								</li>
-								<li>
-								<b>Trick Shots:</b> any shot containing either multi-directional trajectory OR non-standard origination
-								</li>
-							</ul>
 					</p>
-
-			<h3 class="subsection">2.2 Product Functions</h3>
-
-				<p>
-					<ul>
-						<li>A user friendly, web-based application (computer and mobile) in which users can create and score beer pong games while they are being played</li>
-						<li>Must have the ability to show personal statistics regarding wins, losses, cups sunk, and preferred partner</li>
-						<li>Must have the ability to show which end user is the best beer pong player using ranking system defined in section (insert section reference here)</li>
-					</ul>
-				</p>
-
-			<h3 class="subsection">2.3 Actors and Use Cases</h3>
-				<figure>
-					<img src="UseCaseDiagram.svg" alt="Use Case Diagram" width = "750">
-					<figcaption>UML Use Case Diagram for Pong Tracker</figcaption>
-				</figure>
-				<p>
-					<strong>Actors</strong>
-
-						<p>The following are a list of actors that are associated with Pong Tracker. Actors described here are illustrated in the Use Case Diagram shown above.</p>
-						<ul>
-							<li>Administrator - an individual who has special privileges within the website. An administrator can login, logout, add an institution, delete an institution, ban a user, and unban a user. Administrators and end user accounts are completely separate.</li>
-							<li>User - an individual who uses the website for active game play. In terms of game play, the end user may create, score or confirm a game.  Users can view the entire leaderboard, login, logout, inactivate their account, view their personal statistics, and view other players' statistics.</li>
-							<li>Guest - an individual who is not using the site for active game play. A guest may view a limited version of the leaderboard and may register. Once a guest has registered, they become a user.</li>
-						</ul>
-
-					<strong>Use Cases</strong>
-						<p>The following are a list of use cases that are associated with the actors listed above. The use cases described here are illustrated in the Use Case Diagram shown above.</p>
-						<ul>
-							<li>Admin Login - a separate page from where a user logs in where an administrator must provide their username and password as discussed in section (reference to section here) to authenticate their identity</li>
-							<li>Admin Logout - an administrator need only select the "Logout" option to have access to their account session terminated</li>
-							<li>Add Institution - an administrator has the ability to add institutions that guests select when registering to become a user. </li>
-							<li>Delete Institution - an administrator has the ability to delete institutions that guests select when registering to become a user.</li>
-							<li>Ban User - an administrator can ban a user who has not conformed to the site's rules or policies</li>
-							<li>Unban User - an administrator can lift a ban on a user who has not confirmed to the site's rules or policies</li>
-							<li>User Login -  a separate page from where an administrator logs in where a user must provide their username and password as discussed in section (reference to section here) to authenticate their identity </li>
-							<li>User Logout - a user need only select the "Logout" option to have access to their account session terminated</li>
-							<li>Create Game - a user can create a beer pong game</li>
-							<li>Score Game - once a beer pong game has been created, a user uses the interface to record the results of the game as it is being played</li>
-							<li>Confirm Game Results - once a game has been completed, a user must confirm the results of the game in order for the game data in question to be used and considered in the statistics and leaderboard areas</li>
-							<li>View Personal Statistics - a user may view their personal statistics at any time given they are logged in. The statistics shown here include only games that have been confirmed by players involved in a particular game.</li>
-							<li>View Other Users' Statistics - a user may view other players' personal statistics at any time given they are logged in. The statistics shown here include only games that have been confirmed by players involved in a particular game.</li>
-							<li>Delete Account - a user can delete their account at any time</li>
-							<li>View Rules - a guest or user can view the rules of pong at any given time</li>
-							<li>View Full Leaderboard - a user may view the entire leaderboard at any time given they are logged in. The statistics shown here include only games that have been confirmed by players involved in a particular game.</li>
-							<li>Register - a guest must provide information as stated in section (reference to section here) in order to facilitate the login functionality</li>
-							<li>View Limited Leaderboard - a guest can see the top ten players on the website. For full access to the leaderboard, a guest must become a user</li>
-						</ul>
-
-				</p>
-
-			<h3 class="subsection">2.4 Operating environment</h3>
-
-				<p>
-					Pong Tracker will be required to run off of a unix server, namely <a href="http://hopper.wlu.ca">Hopper</a>.
-				</p>
-
-			<h3 class="subsection">2.5 Constraints (technical constraints)</h3>
-
-				<p>
-					<ul>
-						<li>
-						Both desktop and mobile friendly views.
-						</li>
-						<li>
-						SQL database architecture
-						</li>
-						<li>
-						Be able to support multiple interfaces writing to the database simultaneously.
-						</li>
-						<li>
-						Designed to be implemented on a Unix server with various accompanying plugins (such as SQL, SSL etc.) also functional.
-						</li>
-					</ul>
-				</p>
-
+			</ul>
 
 
 			<br>
 			<h2 class="section">3 External Interface Requirements</h2>
+			<ul>
+			<h3 class="subsection">3.1 User interface</h3>
 
-			<h3 class="subsection">3.1 User interfac</h3>
-
-				<p>
-					<ul>
+				<ul>
+						<li>The user interface must be designed to be engaging for the end user.It makes the data entry tasks that are required of the analyticssystem a pleasurable and straightforward action. It alsoemphasizes the display your personal statistics and analytics, since thisis a key feature for our competitive user base.</li>
+						<li>To make this possible, both a <b>desktop</b> and a <b>mobile</b>form factor of the website are to be developed.</li>
 						<li>
-							The user interface for the beer pong network is
-							a dynamic website.
+							<b>Desktop Site</b><br />The desktop version sees more usage by people in their free time,since it is unlikely that people will have their laptop with them at agame of beer pong.
+							<ul>
+								<li>Greater access to a full set of analytics &mdash; data visualization</li>
+								<li>More features to connect with and browse other users</li>
+								<li>Access to account administrative features</li>
+							</ul>
 						</li>
 						<li>
-							Users log in, and the content
-							changes according to their account level.
+							<b>Mobile Site</b><br />The mobile version affects the users who are at a beer pong game andtrying to connect with the product.
+							<ul>
+								<li>Highly reactive, intuitive, and well-designed user interface tofacilitate data entry</li>
+								<li>Less emphasis on full set of social networking capabilities</li>
+								<li>Priority based delivery of analytics</li>
+							</ul>
 						</li>
-						<li>
-							Users will see a front page with their
-							current statistics. They have the ability
-							to create a new game.
-						</li>
-						<li>
-							The game interface will be entirely visual,
-							to simulate the experience of a Pong game.
-						</li>
-						<li>
-							The function of the interface is to input
-							data about the game into the database as easily
-							and intuitively as possible.
-						</li>
-						<li>
-							Mobile Component
-						</li>
-						<ul>
-							<li>
-								In order to make data entry more accessible,
-								we hope to implement a mobile-ready version of
-								the web user interface
-							</li>
-							<li>
-								The mobile website will be a simplified version
-								of the main website &mdash; but it <em>must</em>
-								be able to fully support game data entry
-							</li>
-						</ul>
+						<li>The user interface for the beer pong network isa dynamic website.</li>
+						<li>Users log in, and the content changes according totheir account level (user, admin)</li>
+						<li>Users see a front page with theircurrent statistics. They have the abilityto create a new game.</li>
+						<li>The function of the interface is to inputdata about the game into the database as easilyand intuitively as possible.</li>
+						<li>The game interface is entirely visual and engagingto simulate the experience of a beer pong game.</li>
 					</ul>
-				</p>
 
 			<h3 class="subsection">3.2 Software interface</h3>
 
 				<p>
 					<ul>
-						<li>
-							The system operates on modern, standard internet browsers (Internet Explorer 9/10,
-							Firefox, Google Chrome, and Safari).
-						</li>
-						<li>
-							The system uses a database.
-						</li>
+						<li>The system operates on modern, standard internet browsers (Internet Explorer 9/10,Firefox, Google Chrome, and Safari).</li>
+						<li>The system uses a database.</li>
 						<li>
 							<b>Statistical Algorithm Library</b>
 							<ul>
-								<li>
-									The library allows us to specify what inputs go into the algorithm. The algorithm then calculates the user's skill level 
-									in comparison to other users.
+								<li>The library allows us to specify what inputs go into the algorithm. The algorithm then calculates the user&#39s skill level in comparison to other users.
 								</li>
 								<li>
-									Documentation is available at <a href="https://github.com/saulabs/trueskill/blob/master/README.md">GitHub TrueSkill Readme</a>, 
-									<a href="http://trueskill.org/">TrueSkill Site,</a> and <a href="http://en.wikipedia.org/wiki/Elo_rating_system">Elo Rating System 
+									Documentation is available at <a href="https://github.com/saulabs/trueskill/blob/master/README.md">GitHub TrueSkill Readme</a>,
+									<a href="http://trueskill.org/">TrueSkill Site,</a> and <a href="http://en.wikipedia.org/wiki/Elo_rating_system">Elo Rating System
 									Documentation.</a>
 								</li>
-								<li>
-									We are permitted to use the algorithm.
-								</li>
+								<li>We are permitted to use the algorithm.</li>
 							</ul>
 						</li>
 						<li>
 							<p>
 							The system implements third party login methods. These methods allow a user to login into our site with an existing
-							account from another site. These sites provide libraries which we use to obtain a user's profile information. Possible 
+							account from another site. These sites provide libraries which we use to obtain a user&#39s profile information. Possible
 							tools are <a href="http://openid.net/">The OpenID</a> and <a href="https://developers.facebook.com/docs/facebook-login/">Facebook login for web</a>
 							</p>
 						</li>
@@ -375,10 +311,10 @@
 				</p>
 
 			<h3 class="subsection">3.3 Communications Interface (where our website is)</h3>
-		
-				<p>
-					The code and the database will be located on a server; the user's device will also handle some computation.
-				</p>
+
+				<dd>
+					The code and the database will be located on a server; the user&#39s device will also handle some computation.
+				</dd>
 
 			<h3 class="subsection">3.4 Specific requirements (outlines all software being used)</h3>
 
@@ -395,7 +331,7 @@
 						</li>
 					</ul>
 				</p>
-
+			</ul>
 
 
 			<br>
@@ -464,13 +400,13 @@
 					<ul>
 					<li>Desciption<br/>
 							<br/>Stats are viewable throughout the website. Stats are calculated by the server are stored in a database. Stats are recorded for registered users only. The leaderboard is displayed on the main page of the website, while all other stats are viewable by registered users only. Stats are searchable by user.
-					
+
 						<br/><br/></li>
 					<li>Stimulus/Response Sequence<br/>
-						<br/>	At the end of a game, the system will calculate and record users stats. Going to the user profile page displays the user’s personal stats. Going to the statistics page displays a leaderboard, which is searchable by user(s).
+						<br/>	At the end of a game, the system will calculate and record users stats. Going to the user profile page displays the user&#39s personal stats. Going to the statistics page displays a leaderboard, which is searchable by user(s).
 						<br/><br/></li>
 					<li>Functional Requirements<br/>
-							<br/>REQ-1	A game must finish completely – confirmed by all necessary players – before stats are calculated and committed to the database <br/>
+							<br/>REQ-1	A game must finish completely and confirmed by all necessary players before stats are calculated and committed to the database <br/>
 							<br/>REQ-2	Stats are only calculated and recorded for registered users
 						<br/><br/></li>
 					</ul>
@@ -485,110 +421,144 @@
 						<br><br/></li>
 					<li>Functional Requirements<br/>
 							<br/>REQ-1	A registered user must be logged in using Facebook Login<br/>
-							<br/>REQ-2	A user must choose to post a status – the system cannot post a status without permission
+							<br/>REQ-2	A user must choose to post a status and the system cannot post a status without permission
 						<br/><br/></li>
 					</ul>
-
+				</ul>
 
 			<br>
 			<h2 class="section">5 Other Non-Functional Requirements</h2>
+			<ul>
 
 			<h3 class="subsection">5.1 Performance Requirements</h3>
 
 				<p>
-					The front-end pages of the Beer-Pong site must be loaded quickly and seamlessly with little time between transitions and virtually no load time between sequential pop-ups. Automation and the front-end interface must be flawless as the database driving the Stats page will hold valuable records.
+					The front-end pages Pong Tracker must be loaded quickly and seamlessly with little time between transitions and virtually no load time between sequential pop-ups. Automation and the front-end interface must be flawless as the database driving the Stats page will hold valuable records. Large volumes of users are expected, so software built to handle these loads should be implemented to avoid login queues or site crashing.
 				</p>
 
 				<ul>
 					<li>Front-end pages must be loaded quickly and without error
 						<br><br>
-						As the Beer-Pong site is in its earliest stages, front-end pages must be built with fast and reliable software that can be updated easily for future enhancements and additions. Also, information searches based on previously selected data must be quick and efficient.
+						As Pong Tracker is in its earliest stages, front-end pages must be built with fast and reliable software that can be updated easily for future enhancements and additions. Also, information searches based on previously selected data must be quick and efficient.
 					</li>
 					<br>
 					<li>Automation and the front-end interface must be quick and reliable
 						<br><br>
 						The Stats page in particular will contain a large database that must be built with error-free automation and load sufficient software for future growth.
 					</li>
+					<br>
+					<li>Large volumes of users and heavy site traffic must not be a problem
+						<br><br>
+						Pong Tracker must be built with software capable of handling heavy site traffic and large login queues, as to avoid the site crashing or long waits.
+					</li>
 				</ul>
 
 			<h3 class="subsection">5.2 Security Requirements</h3>
 
-				<p>
-					For security, only two base requirements are needed which are: a login page for general users and a login page for administrative users.
-				</p>
+				<dd>
+					For security, three base requirements are needed which are: a login page for general users, a login page for administrative users and password security.
+				</dd>
 
 				<ul>
 					<li>General user login page
 						<br><br>
-						This will be the main hub for non-administrative users to enter the Beer-Pong site and access their personal stats, teams and records. These users will not have access to any site changes and will not even know another login page exists for admin users.
+						This will be the main hub for non-administrative users to enter Pong Tracker and access their personal stats, teams and records. These users will not have access to any site changes and will not even know another login page exists for admin users.
 					</li>
 					<br>
 					<li>Administrator user login page
 						<br><br>
-						A second login page that will exist unbeknownst to the general users as this will be where an administrator will enter the Beer-Pong site to make necessary changes and updates.
+						A second login page that will exist unbeknownst to the general users as this will be where an administrator will enter Pong Tracker to make necessary changes and updates.
+					</li>
+					<br>
+					<li>Password security
+						<br><br>
+						A system must be in place to protect the passwords of general users and administrators from hack attempts and fraudulent data.
 					</li>
 				</ul>
 
 			<h3 class="subsection">5.3 Software Quality Attributes</h3>
-
+				<ul>
 				<h3 class="subsection2">5.3.1 Usability</h3>
-			
+
 					<p>
-						Given the nature of the product's users, the game UI must be as intuitive and user-friendly as possible and cause little frustration.
+						Given the nature of the product&#39s users, the game UI must be as intuitive and user-friendly as possible and cause little frustration.
 					</p>
-					
-				<h3 class="subsection2">5.3.1 Interoperability</h3>
-			
+
+				<h3 class="subsection2">5.3.2 Interoperability</h3>
+
 					<p>
 						The website should be usable across varying web browsers in particular the more recent versions of Internet Explorer, Firefox and Google Chrome.
 					</p>
-					
-				<h3 class="subsection2">5.3.2 Portability</h3>
-			
+
+				<h3 class="subsection2">5.3.3 Portability</h3>
+
 					<p>
 						Users should also be able to access the game UI and website via cell phone.
 					</p>
-					
-				<h3 class="subsection2">5.3.3 Maintainability</h3>
-			
+
+				<h3 class="subsection2">5.3.4 Maintainability</h3>
+
 					<p>
 						The client expects to be able to make changes to the website in the future therefore the website must be easy to maintain and well-documented.
 					</p>
-					
-				<h3 class="subsection2">5.3.4 Scalability</h3>
-			
+
+				<h3 class="subsection2">5.3.5 Scalability</h3>
+
 					<p>
 						The website should have the potential to be expanded to handle larger amounts of users should it become more popular.
 					</p>
-
-				
+				</ul>
+			</ul>
 
 			<br>
 			<h2 class="section">6 Other Requirements</h2>
+			<ul>
 
 			<h3 class="subsection">6.1 Heading</h3>
 
-				<p>
-					Content?????
-				</p>
-
+				<dd>
+					<Add Content Here>
+				</dd>
+			</ul>
 
 
 			<br>
 			<h2 class="section">7 Elements of Project Plan</h2>
+			<ul>
 
 			<h3 class="subsection">7.1 Standards we are using</h3>
 
-				<p>
-					Content???????
-				</p>
+				<dd>
+					Must implement Microsoft TrueSkill or a similar algorithm that can keep track of the leader board.Must work with the customer (Henry) and do things in both parties best interest.Must meet HTML and CSS requirements.Must be usable for common browsers such as IE - version 8 or 9, FireFox and Google Chrome.
+				</dd>
 
 			<h3 class="subsection">7.2 Control plan</h3>
-
+			<dd>
+				We decided to use 3 platforms for our project; Wiggio, Trello and GitHub. For project management we are using Wiggio. For organizing tasks, and assigning things that we need to do - we are using Trello. For coding and document versioning we are using Git; as we can roll back and track versions and comments. For code review, we will be using PasteBin or another program that everyone is comfortable with.
+			</dd>
 				<p>
 					<ul>
 						<li>Quality control plan</li>
-						<li>Scheduling plan</li>
+						<p>
+							We have divided this project into 5 major parts:
+						</p>
+						<ol>
+							<li>Requirements - Carlie</li>
+							<li>Analysis - Colin</li>
+							<li>Design - Erin</li>
+							<li>Coding and Implementation - Quinton</li>
+							<li>SQA - Matt</li>
+							<p> These are the key people that are in charged of managing these sections.  Afterwards, we have people volunteering to review and edit to ensure everything has been covered </p>
+						</ol>
+							<li>Scheduling plan</li>
+							<p> We have appointed Henry to be the person that sets all the deadlines. </p>
+						<ul>
+							<li>Rough copy of the Requirement Document for the group to edit was due May 14th</li>
+							<li>Good copy merged into the master branch on Git is due May 21st</li>
+							<li>Analysis Document is due May 30th</li>
+							<li>Design Document is due June 27th</li>
+							<li>Implementation and final steps are to be done before August 2nd</li>
+						</ul>
 					</ul>
 				</p>
 
@@ -596,7 +566,6 @@
 
 			<br>
 			<h2 class="section">Appendix A</h2>
-
 				<p><strong>Air Balls:</strong> A shot that misses the table altogether
 				<br/>
 				<strong>Eye-to-eye:</strong> A means of deciding the first team to shoot.  Consists of a member of each team simultaneously shooting while making full eye contact with the other party.  Should a cup be scored, the offending party is awarded the first shot.
@@ -608,8 +577,6 @@
 				<strong>Trick Shots:</strong> any shot containing either multi-directional trajectory OR non-standard origination.
 				<br/>
 				<strong>WLU:</strong> Wilfrid Laurier University.</p>
-
-
 			<br><br><br>
 
 		</div>
