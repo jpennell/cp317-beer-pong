@@ -1,12 +1,21 @@
 .document {
 	font-size: 15px;
-	font-family: Sans-serif;
+	font-family: sans-serif;
 	margin-left: 10%;
 	margin-right: 10%;
 }
 
+.numbering {
+	display: inline-block;
+	width: 0.8in;
+}
+
 .doctitle {
-	font-size: 42px
+	font-size: 42px;
+}
+
+section {
+	margin-top: 0.5in;
 }
 
 .section {
@@ -19,4 +28,26 @@
 
 .subsection2 {
 	font-size: 18px;
+}
+
+.req {
+	display: inline-block;
+	width: 0.7in;
+	font-weight: bold;
+}
+
+.def {
+	display: inline-block;
+	padding-top: 8px;
+	width: 1.2in;
+	font-weight: bold;
+}
+
+.project-contributors td {
+	padding-right: 50px;
+}
+
+.caption {
+	text-align: center;
+	font-style: italic;
 }
