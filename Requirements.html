@@ -393,123 +393,121 @@
 			</section>
 
 			<section id="interface">
-			<h2 class="section">3 External Interface Requirements</h2>
-			<ul>
-				<h3 class="subsection">3.1 User Interface</h3>
+				<h2 class="section">3 External Interface Requirements</h2>
+					<h3 class="subsection">3.1 User Interface</h3>
 
-				<ul>
-					<li>
-						The user interface must be designed to be engaging and simple for the user. The user interface must also emphasize the display of user statistics, since this is a key feature for our competitive user base.
-					</li>
-					<li>
-						To make this possible, both a <b>desktop</b> and a <b>mobile</b> form factor of the website are to be developed.
-					</li>
-					<li>
-						<b>Desktop Site</b>
-						<br />
-						The desktop version sees more usage by people in their free time since it is unlikely that people have their laptop with them during agame of beer pong.
-						<ul>
-							<li>
-								Greater range of leaderboard data
-							</li>
-							<li>
-								More features to connect with and browse other users
-							</li>
-							<li>
-								Access to personal account administrative features
-							</li>
-						</ul>
-					</li>
-					<li>
-						<b>Mobile Site</b>
-						<br />
-						The mobile version, for the most part, affects the users who are currently participating in a beer pong game and are therefore interacting with the main product features.
-						<ul>
-							<li>
-								Highly reactive, intuitive, and well-designed user interface to facilitate data entry
-							</li>
-							<li>
-								Less emphasis on full set of social networking capabilities
-							</li>
-							<li>
-								Limited delivery of statistics
-							</li>
-						</ul>
-					</li>
-					<li>
-						The user interface for the beer pong network is a dynamic website.
-					</li>
-					<li>
-						Users log in, and the content changes according to their account level (user vs. admin)
-					</li>
-					<li>
-						Users see a front page with their current statistics. They have the ability to create a new game.
-					</li>
-					<li>
-						The function of the interface is to input data about the game into the database as easily and intuitively as possible.
-					</li>
-					<li>
-						The game interface is entirely visual and engaging in order to simulate the experience of a beer pong game.
-					</li>
-				</ul>
-
-				<h3 class="subsection">3.2 Software Interface</h3>
-
-				<p>
 					<ul>
 						<li>
-							Pong Tracker operates on modern, standard internet browsers (Internet Explorer 9/10, Firefox, Google Chrome, and Safari).
+							The user interface must be designed to be engaging and simple for the user. The user interface must also emphasize the display of user statistics, since this is a key feature for our competitive user base.
 						</li>
 						<li>
-							The system uses a relational database.
+							To make this possible, both a <b>desktop</b> and a <b>mobile</b> form factor of the website are to be developed.
 						</li>
 						<li>
-							<b>Statistical Algorithm Library</b>
+							<b>Desktop Site</b>
+							<br />
+							The desktop version sees more usage by people in their free time since it is unlikely that people have their laptop with them during agame of beer pong.
 							<ul>
 								<li>
-									The library allows developers to specify what inputs go into the algorithm. The algorithm then calculates the user's skill level in comparison to other users.
+									Greater range of leaderboard data
 								</li>
 								<li>
-									Documentation is available at <a href="https://github.com/saulabs/trueskill/blob/master/README.md">GitHub TrueSkill Readme</a>, <a href="http://trueskill.org/">TrueSkill Site,</a> and <a href="http://en.wikipedia.org/wiki/Elo_rating_system">Elo Rating System
-									Documentation.</a>
+									More features to connect with and browse other users
 								</li>
 								<li>
-									We are permitted to use the algorithm.
+									Access to personal account administrative features
 								</li>
 							</ul>
 						</li>
 						<li>
-							<p>
-								Pong Tracker implements third party login methods. These methods allow a user to login into the website with an existing
-								account from another website. These website provide libraries which developers use to obtain a user's profile information. Possible
-								tools are <a href="http://openid.net/">The OpenID</a> and <a href="https://developers.facebook.com/docs/facebook-login/">Facebook Login for Web</a>
-							</p>
+							<b>Mobile Site</b>
+							<br />
+							The mobile version, for the most part, affects the users who are currently participating in a beer pong game and are therefore interacting with the main product features.
+							<ul>
+								<li>
+									Highly reactive, intuitive, and well-designed user interface to facilitate data entry
+								</li>
+								<li>
+									Less emphasis on full set of social networking capabilities
+								</li>
+								<li>
+									Limited delivery of statistics
+								</li>
+							</ul>
+						</li>
+						<li>
+							The user interface for the beer pong network is a dynamic website.
+						</li>
+						<li>
+							Users log in, and the content changes according to their account level (user vs. admin)
+						</li>
+						<li>
+							Users see a front page with their current statistics. They have the ability to create a new game.
+						</li>
+						<li>
+							The function of the interface is to input data about the game into the database as easily and intuitively as possible.
+						</li>
+						<li>
+							The game interface is entirely visual and engaging in order to simulate the experience of a beer pong game.
 						</li>
 					</ul>
-				</p>
 
-				<h3 class="subsection">3.3 Communications Interface</h3>
+					<h3 class="subsection">3.2 Software Interface</h3>
 
-				<p>
-					The underlying programming language and the database are located on a server; the user's device also handles some computation.
-				</p>
+					<p>
+						<ul>
+							<li>
+								Pong Tracker operates on modern, standard internet browsers (Internet Explorer 9/10, Firefox, Google Chrome, and Safari).
+							</li>
+							<li>
+								The system uses a relational database.
+							</li>
+							<li>
+								<b>Statistical Algorithm Library</b>
+								<ul>
+									<li>
+										The library allows developers to specify what inputs go into the algorithm. The algorithm then calculates the user's skill level in comparison to other users.
+									</li>
+									<li>
+										Documentation is available at <a href="https://github.com/saulabs/trueskill/blob/master/README.md">GitHub TrueSkill Readme</a>, <a href="http://trueskill.org/">TrueSkill Site,</a> and <a href="http://en.wikipedia.org/wiki/Elo_rating_system">Elo Rating System
+										Documentation.</a>
+									</li>
+									<li>
+										We are permitted to use the algorithm.
+									</li>
+								</ul>
+							</li>
+							<li>
+								<p>
+									Pong Tracker implements third party login methods. These methods allow a user to login into the website with an existing
+									account from another website. These website provide libraries which developers use to obtain a user's profile information. Possible
+									tools are <a href="http://openid.net/">The OpenID</a> and <a href="https://developers.facebook.com/docs/facebook-login/">Facebook Login for Web</a>
+								</p>
+							</li>
+						</ul>
+					</p>
 
-				<h3 class="subsection">3.4 Specific Requirements - THIS IS SUPER AMBIGUOUS. SHOULD BE REMOVED OR ELABORATED?</h3>
+					<h3 class="subsection">3.3 Communications Interface</h3>
 
-				<p>
-					<ul>
-						<li>
-							Functions (ie. software shall validate the user has used valid email address)
-						</li>
-						<li>
-							Database
-						</li>
-						<li>
-							Performance requirements
-						</li>
-					</ul>
-				</p>
-			</ul>
+					<p>
+						The underlying programming language and the database are located on a server; the user's device also handles some computation.
+					</p>
+
+					<h3 class="subsection">3.4 Specific Requirements - THIS IS SUPER AMBIGUOUS. SHOULD BE REMOVED OR ELABORATED?</h3>
+
+					<p>
+						<ul>
+							<li>
+								Functions (ie. software shall validate the user has used valid email address)
+							</li>
+							<li>
+								Database
+							</li>
+							<li>
+								Performance requirements
+							</li>
+						</ul>
+					</p>
 			</section>
 
 			<h2 class="section">4 System Features</h2>
