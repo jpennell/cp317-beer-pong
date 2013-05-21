@@ -444,61 +444,57 @@
 				</ul>
 
 				<h3 class="subsection">3.2 Software Interface</h3>
+				<ul>
+					<li>
+						Pong Tracker operates on modern, standard internet browsers (Internet Explorer 9/10, Firefox, Google Chrome, and Safari).
+					</li>
+					<li>
+						The system uses a relational database.
+					</li>
+				</ul>
+				<h4>Statistical Algorithm Library</h4>
+				<ul>
+					<li>
+						The library allows developers to specify what inputs go into the algorithm. The algorithm then calculates the user's skill level in comparison to other users.
+					</li>
+					<li>
+						Documentation is available at <a href="https://github.com/saulabs/trueskill/blob/master/README.md">GitHub TrueSkill Readme</a>, <a href="http://trueskill.org/">TrueSkill Site,</a> and <a href="http://en.wikipedia.org/wiki/Elo_rating_system">Elo Rating System
+						Documentation.</a>
+					</li>
+					<li>
+						We are permitted to use the algorithm.
+					</li>
+				</ul>
 
-				<p>
-					<ul>
-						<li>
-							Pong Tracker operates on modern, standard internet browsers (Internet Explorer 9/10, Firefox, Google Chrome, and Safari).
-						</li>
-						<li>
-							The system uses a relational database.
-						</li>
-					</ul>
-					<h4>Statistical Algorithm Library</h4>
-					<ul>
-						<li>
-							The library allows developers to specify what inputs go into the algorithm. The algorithm then calculates the user's skill level in comparison to other users.
-						</li>
-						<li>
-							Documentation is available at <a href="https://github.com/saulabs/trueskill/blob/master/README.md">GitHub TrueSkill Readme</a>, <a href="http://trueskill.org/">TrueSkill Site,</a> and <a href="http://en.wikipedia.org/wiki/Elo_rating_system">Elo Rating System
-							Documentation.</a>
-						</li>
-						<li>
-							We are permitted to use the algorithm.
-						</li>
-					</ul>
+				<h4>Login Methods</h4>
+				<ul>
+					<li>
+						Pong Tracker implements third party login methods.
+					</li>
+					<li>
+						These methods allow a user to login into the website with an existing
+						account from another website.
+					</li>
+					<li>
+						These website provide libraries which developers use to obtain a user's profile information.
+					</li>
+					<li>
+						Possible tools are <a href="http://openid.net/">The OpenID</a> and <a href="https://developers.facebook.com/docs/facebook-login/">Facebook Login for Web</a>
+					</li>
+				</ul>
 
-					<h4>Login Methods</h4>
-					<ul>
-						<li>
-							Pong Tracker implements third party login methods.
-						</li>
-						<li>
-							These methods allow a user to login into the website with an existing
-							account from another website.
-						</li>
-						<li>
-							These website provide libraries which developers use to obtain a user's profile information.
-						</li>
-						<li>
-							Possible tools are <a href="http://openid.net/">The OpenID</a> and <a href="https://developers.facebook.com/docs/facebook-login/">Facebook Login for Web</a>
-						</li>
-					</ul>
-
-					<h3 class="subsection">3.3 Communications Interface</h3>
-
+				<h3 class="subsection">3.3 Communications Interface</h3>
 				<p>
 					The underlying programming language and the database are located on a server; the user's device also handles some computation.
 				</p>
 			</section>
 
-			<h2 class="section">4 System Features</h2>
-
-			<ul>
+			<section id="sysfeatures">
+				<h2 class="section">4 System Features</h2>
 				<h3 class="subsection">4.1 User Profile </h3>
 				<ul>
 					<li>
-						Desciption
+						Description
 						<br/>
 						<br/>
 						Guests register in order to play games and record statistics. Guests have the option to create an account directly on the website, or to register using a third party login. A guest becomes a user once they have registered. The user profile page displays personal information and statistics.
@@ -527,7 +523,7 @@
 				<h3 class="subsection">4.2 Create a Game </h3>
 				<ul>
 					<li>
-						Desciption
+						Description
 						<br/>
 						<br/>
 						Games are the main feature of the website.
@@ -564,7 +560,7 @@
 				<h3 class="subsection">4.3 Play a Game </h3>
 				<ul>
 					<li>
-						Desciption
+						Description
 						<br/>
 						<br/>
 						During a game, a user interacts with the game user interface. Actions in the physical game are recorded in the game user interface by selecting a player, a cup, and the applicable action. This is required for advancement of the game.
@@ -598,7 +594,7 @@
 				<h3 class="subsection">4.4 Validate a Game </h3>
 				<ul>
 					<li>
-						Desciption
+						Description
 						<br/>
 						<br/>
 						At the conclusion of a game, a game must be confirmed for validity.
@@ -629,7 +625,7 @@
 				<h3 class="subsection">4.5 Statistics and Leaderboard</h3>
 				<ul>
 					<li>
-						Desciption
+						Description
 						<br/>
 						<br/>
 						Statistics are viewable throughout the website. Statistics are calculated by the server are stored in a database. Statistics are recorded for users only. The leaderboard is displayed on the main page of the website and is viewable to users. A limited leaderboard consisting of the top ten players is viewable to guests. Personal and other user statistics are viewable by users only. Statistics are searchable by user.
@@ -661,7 +657,7 @@
 				<h3 class="subsection">4.6 Social Media</h3>
 				<ul>
 					<li>
-						Desciption
+						Description
 						<br/>
 						<br/>
 						Users who entered the site using a third party login can send updates to the third party website regarding actions in a game, the result of a game or tournament, or statistics of the user.
@@ -688,28 +684,27 @@
 						<br/>
 					</li>
 				</ul>
-			</ul>
 
-			<br>
-			<h2 class="section">5 Other Non-Functional Requirements</h2>
-			<h3 class="subsection">5.1 Performance Requirements</h3>
+				<h2 class="section">5 Other Non-Functional Requirements</h2>
+				<h3 class="subsection">5.1 Performance Requirements</h3>
 
-			<p>
-				The front-end pages Pong Tracker must be loaded quickly and seamlessly with little time between transitions and virtually no load time between sequential pop-ups. An initial user volume consisting of post-secondary students in Ontario is expected and as such the software must be built in a way to handle this loads.
-			</p>
+				<p>
+					The front-end pages Pong Tracker must be loaded quickly and seamlessly with little time between transitions and virtually no load time between sequential pop-ups. An initial user volume consisting of post-secondary students in Ontario is expected and as such the software must be built in a way to handle this loads.
+				</p>
 
-			<ul>
-				<li>
-					Front-end pages must be loaded quickly and without error
-					<br/>
-					As Pong Tracker is in its earliest stages, front-end pages must be built with fast and reliable software that can be updated easily for future enhancements and additions. Also, information searches based on previously selected data must be quick and efficient.
-				</li>
-				<li>
-					Large volumes of users and heavy site traffic must not be a problem
-					<br/>
-					Pong Tracker must be built with software capable of handling heavy site traffic and large login queues, as to avoid the site crashing or long waits.
-				</li>
-			</ul>
+				<ul>
+					<li>
+						Front-end pages must be loaded quickly and without error
+						<br/>
+						As Pong Tracker is in its earliest stages, front-end pages must be built with fast and reliable software that can be updated easily for future enhancements and additions. Also, information searches based on previously selected data must be quick and efficient.
+					</li>
+					<li>
+						Large volumes of users and heavy site traffic must not be a problem
+						<br/>
+						Pong Tracker must be built with software capable of handling heavy site traffic and large login queues, as to avoid the site crashing or long waits.
+					</li>
+				</ul>
+			</section>
 
 			<h3 class="subsection">5.2 Security Requirements</h3>
 
