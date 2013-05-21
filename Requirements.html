@@ -490,198 +490,119 @@
 			</section>
 
 			<section id="sysfeatures">
-				<h2 class="section">4 System Features</h2>
-				<h3 class="subsection">4.1 User Profile </h3>
+				<h2 class="section"><span class="numbering">4</span> System Features</h2>
+				<h3 class="subsection"><span class="numbering">4.1</span> Profile </h3>
+
+				<h4>Description</h4>
+				Guests register in order to play games and record statistics. Guests have the option to create an account directly on the website, or to register using a third party login. A guest becomes a user once they have registered. The user profile page displays personal information and statistics.
+
+				<h4>Stimulus/Response Sequence</h4>
+				From the main page, by selecting login, a user can login to the website, or through the third party login.
+
+				<h4>Functional Requirements</h4>
+
 				<ul>
 					<li>
-						Description
-						<br/>
-						<br/>
-						Guests register in order to play games and record statistics. Guests have the option to create an account directly on the website, or to register using a third party login. A guest becomes a user once they have registered. The user profile page displays personal information and statistics.
-						<br/>
-						<br/>
-					</li>
-					<li>
-						Stimulus/Response Sequence
-						<br/>
-						<br/>
-						From the main page, by selecting login, a user can login to the website, or through the third party login.
-						<br/>
-						<br/>
-					</li>
-					<li>
-						Functional Requirements
-						<br/>
-						<br/>
-						REQ-1	Only one user is in a session at one time
-						<br/>
-						<br/>
-						<br/>
+						<span class="req">REQ-1</span> Only one user is in a session at one time
 					</li>
 				</ul>
 
-				<h3 class="subsection">4.2 Create a Game </h3>
+				<h3 class="subsection"><span class="numbering">4.2</span> Create a Game </h3>
+
+				<h4>Description</h4>
+				Games are the main feature of the website.
+
+				<h4>Stimulus/Response Sequence</h4>
+				A new game is created by a user. A game consists of four players. When a new game is created, the user who created the game, selects and adds other players to the game, up to a maximum of 3. A user may add a guest as a player. Note that the guest does not have their statistics recorded, nor can they interact with the game user interface.  When three players are selected, the game starts, and the registered user who created the game sees the game interface.
+
+				<h4>Functional Requirements</h4>
 				<ul>
 					<li>
-						Description
-						<br/>
-						<br/>
-						Games are the main feature of the website.
-						<br/>
-						<br/>
+						<span class="req">REQ-1</span> The user who creates a game must be registered.
 					</li>
 					<li>
-						Stimulus/Response Sequence
-						<br/>
-						<br/>
-						A new game is created by a user. A game consists of four players. When a new game is created, the user who created the game, selects and adds other players to the game, up to a maximum of 3. A user may add a guest as a player. Note that the guest does not have their statistics recorded, nor can they interact with the game user interface.  When three players are selected, the game starts, and the registered user who created the game sees the game interface.
-						<br/>
-						<br/>
+						<span class="req">REQ-2</span> The user who creates the game must not be in another game at the same time.
 					</li>
 					<li>
-						Functional Requirements
-						<br/>
-						<br/>
-						REQ-1	The user who creates a game must be registered.
-						<br/>
-						<br/>
-						REQ-2	The user who creates the game must not be in another game at the same time.
-						<br/>
-						<br/>
-						REQ-3	There must be at least two registered users in a game.
-						<br/>
-						<br/>
-						REQ-4	Each team must have at least one registered user.
-						<br/>
-						<br/>
+						<span class="req">REQ-3</span> There must be at least two registered users in a game.
+					</li>
+					<li>
+						<span class="req">REQ-4</span> Each team must have at least one registered user.
 					</li>
 				</ul>
 
-				<h3 class="subsection">4.3 Play a Game </h3>
+				<h3 class="subsection"><span class="numbering">4.3</span> Play a Game </h3>
+
+				<h4>Description</h4>
+				During a game, a user interacts with the game user interface. Actions in the physical game are recorded in the game user interface by selecting a player, a cup, and the applicable action. This is required for advancement of the game.
+
+				<h4>Stimulus/Response Sequence</h4>
+				Actions by a player, associated with specific cups, are selected throughout the game, as they are done in the physical game.
+
+				<h4>Functional Requirements</h4>
 				<ul>
 					<li>
-						Description
-						<br/>
-						<br/>
-						During a game, a user interacts with the game user interface. Actions in the physical game are recorded in the game user interface by selecting a player, a cup, and the applicable action. This is required for advancement of the game.
-						<br/>
-						<br/>
+						<span class="req">REQ-1</span> Only one cup is selected at a time.
 					</li>
 					<li>
-						Stimulus/Response Sequence
-						<br/>
-						<br/>
-						Actions by a player, associated with specific cups, are selected throughout the game, as they are done in the physical game.
-						<br/>
-						<br/>
+						<span class="req">REQ-2</span> Only one action per cup can be selected.
 					</li>
 					<li>
-						Functional Requirements
-						<br/>
-						<br/>
-						REQ-1	Only one cup is selected at a time.
-						<br/>
-						<br/>
-						REQ-2	Only one action per cup can be selected.
-						<br/>
-						<br/>
-						REQ-3	Only one player can be associated with an action.
-						<br/>
-						<br/>
+						<span class="req">REQ-3</span> Only one player can be associated with an action.
 					</li>
 				</ul>
 
-				<h3 class="subsection">4.4 Validate a Game </h3>
+				<h3 class="subsection"><span class="numbering">4.4</span> Validate a Game </h3>
+
+				<h4>Description</h4>
+				At the conclusion of a game, a game must be confirmed for validity.
+
+				<h4>Stimulus/Response Sequence</h4>
+				At the end of a game, one user from the opposing team must confirm results of the game. Once the game is confirmed, it is considered completely finished, and statistics are calculated and recorded. A team/user may deny validity in which case the game is not factored into statistics.
+
+				<h4>Functional Requirements</h4>
 				<ul>
 					<li>
-						Description
-						<br/>
-						<br/>
-						At the conclusion of a game, a game must be confirmed for validity.
-						<br/>
-						<br/>
+						<span class="req">REQ-1</span> One user from the opposing team must confirm validity for a game to be included in the statistics.
 					</li>
 					<li>
-						Stimulus/Response Sequence
-						<br/>
-						<br/>
-						At the end of a game, one user from the opposing team must confirm results of the game. Once the game is confirmed, it is considered completely finished, and statistics are calculated and recorded. A team/user may deny validity in which case the game is not factored into statistics.
-						<br/>
-						<br/>
-					</li>
-					<li>
-						Functional Requirements
-						<br/>
-						<br/>
-						REQ-1	One user from the opposing team must confirm validity for a game to be included in the statistics.
-						<br/>
-						<br/>
-						REQ-2	A team/user must have the ability to deny the validity of a game.
-						<br/>
-						<br/>
+						<span class="req">REQ-2</span> A team/user must have the ability to deny the validity of a game.
 					</li>
 				</ul>
 
-				<h3 class="subsection">4.5 Statistics and Leaderboard</h3>
+				<h3 class="subsection"><span class="numbering">4.5</span> Statistics and Leaderboard</h3>
+
+				<h4>Description</h4>
+				Statistics are viewable throughout the website. Statistics are calculated by the server are stored in a database. Statistics are recorded for users only. The leaderboard is displayed on the main page of the website and is viewable to users. A limited leaderboard consisting of the top ten players is viewable to guests. Personal and other user statistics are viewable by users only. Statistics are searchable by user.
+
+				<h4>Stimulus/Response Sequence</h4>
+				At the end of a game, the Pong Tracker calculates and records users' statistics. Going to the user profile page displays the user's personal statistics. The user profile page also has the  functionality to search for other users in order to view their statistics. Going to the main page displays a leaderboard.
+
+				<h4>Functional Requirements</h4>
 				<ul>
 					<li>
-						Description
-						<br/>
-						<br/>
-						Statistics are viewable throughout the website. Statistics are calculated by the server are stored in a database. Statistics are recorded for users only. The leaderboard is displayed on the main page of the website and is viewable to users. A limited leaderboard consisting of the top ten players is viewable to guests. Personal and other user statistics are viewable by users only. Statistics are searchable by user.
-
-						<br/>
-						<br/>
+						<span class="req">REQ-1</span> A game must finish completely and be confirmed by all necessary players before statistics are calculated and committed to the database.
 					</li>
 					<li>
-						Stimulus/Response Sequence
-						<br/>
-						<br/>
-						At the end of a game, the Pong Tracker calculates and records users' statistics. Going to the user profile page displays the user's personal statistics. The user profile page also has the  functionality to search for other users in order to view their statistics. Going to the main page displays a leaderboard.
-						<br/>
-						<br/>
-					</li>
-					<li>
-						Functional Requirements
-						<br/>
-						<br/>
-						REQ-1	A game must finish completely and be confirmed by all necessary players before statistics are calculated and committed to the database.
-						<br/>
-						<br/>
-						REQ-2	Statistics are only calculated and recorded for users.
-						<br/>
-						<br/>
+						<span class="req">REQ-2</span> Statistics are only calculated and recorded for users.
 					</li>
 				</ul>
 
-				<h3 class="subsection">4.6 Social Media</h3>
+				<h3 class="subsection"><span class="numbering">4.6</span> Social Media</h3>
+
+				<h4>Description</h4>
+				Users who entered the site using a third party login can send updates to the third party website regarding actions in a game, the result of a game or tournament, or statistics of the user.
+
+				<h4>Stimulus/Response Sequence</h4>
+				Throughout the user interface of the website a player selects whether they would like to update the third party website with game information.
+
+				<h4>Functional Requirements</h4>
 				<ul>
 					<li>
-						Description
-						<br/>
-						<br/>
-						Users who entered the site using a third party login can send updates to the third party website regarding actions in a game, the result of a game or tournament, or statistics of the user.
-						<br>
-						<br/>
+						<span class="req">REQ-1</span> A user must be logged in using a third party login.
 					</li>
 					<li>
-						Stimulus/Response Sequence
-						<br/>
-						<br/>
-						Throughout the user interface of the website a player selects whether they would like to update the third party website with game information.
-						<br>
-						<br/>
-					</li>
-					<li>
-						Functional Requirements
-						<br/>
-						<br/>
-						REQ-1	A user must be logged in using a third party login.
-						<br/>
-						<br/>
-						REQ-2	A user must choose to post a status and the system cannot send information without permission.
-						<br/>
-						<br/>
+						<span class="req">REQ-2</span> A user must choose to post a status and the system cannot send information without permission.
 					</li>
 				</ul>
 

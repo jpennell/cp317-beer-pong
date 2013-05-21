@@ -30,6 +30,12 @@ section {
 	font-size: 18px;
 }
 
+.req {
+	display: inline-block;
+	width: 0.7in;
+	font-weight: bold;
+}
+
 .project-contributors td {
 	padding-right: 50px;
 }
