@@ -14,6 +14,10 @@
 	font-size: 42px;
 }
 
+section {
+	margin-top: 0.5in;
+}
+
 .section {
 	font-size: 31px;
 }
@@ -29,7 +33,6 @@
 .project-contributors td {
 	padding-right: 50px;
 }
-
 
 .caption {
 	text-align: center;
