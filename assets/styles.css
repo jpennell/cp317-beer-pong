@@ -36,6 +36,13 @@ section {
 	font-weight: bold;
 }
 
+.def {
+	display: inline-block;
+	padding-top: 8px;
+	width: 1.2in;
+	font-weight: bold;
+}
+
 .project-contributors td {
 	padding-right: 50px;
 }
