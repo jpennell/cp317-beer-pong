@@ -1,8 +1,13 @@
 .document {
 	font-size: 15px;
-	font-family: Sans-serif;
+	font-family: sans-serif;
 	margin-left: 10%;
 	margin-right: 10%;
+}
+
+.numbering {
+	display: inline-block;
+	width: 0.8in;
 }
 
 .doctitle {
