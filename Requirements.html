@@ -3,7 +3,7 @@
 
 	<head>
 		<a id="top">
-		<title> CP317 | Requirements Document</title>
+		<title> Pong Tracker Requirements Document</title>
 		<link href="assets/styles.css" rel="stylesheet" type="text/css">
 		</a>
 	</head>
@@ -14,7 +14,7 @@
 
 			<h1 class="doctitle">Pong Tracker Requirements Document</h1>
 			
-				<table class="project-contributors table">
+				<table class="doc-by">
 						<tbody>
 							<tr>
 								<td>Quinton Black</td>
@@ -37,8 +37,21 @@
 							</tr>
 						</tbody>
 					</table>
+					<br><br>
 					
-					<h1>contents here</h1>
+					<div class="menu">
+						<table class="menu-table">
+							<tr>
+								<td>Introduction</td>
+								<td>Product Description</td>
+								<td>External Interface Requirements</td>
+								<td>System Features</td>
+								<td>Other Requirements</td>
+								<td>Elements of Project Plan</td>
+								<td>Appendix</td>
+							</tr>
+						</table>
+					</div>
 
 			<section id="introduction">
 				<h2 class="section"><span class="numbering">1</span> Introduction</h2>
@@ -154,8 +167,33 @@
 
 				<h3 class="subsection"><span class="numbering">1.9</span> Overview</h3>
 				<p>
-					This requirements document has 7 predominant sections to it. Section 1 outlines the audience, thought process being applied and some basic terminology to be used throughout the document. Section 2 brings attention to the service to be created and the environment in which said service operates. In section 3 the document explains how a user finds and interacts with the service and any related constraints add-on software has. Section 4 highlights the underlying relation between user features and their connection to the database for other functionality. The 5th section brings attention to the planned performance and security of the software to be integrated in the development of this project as well as the characteristics with which the software possesses. Section 6 mentions how the project is monitored to ensure progress is being made. The final section, 7, lists other requirements attached to this project regarding future expansion of the service.
+					This requirements document has seven predominant sections. 
 				</p>
+				<div class="indent">
+				<ul>
+					<li>
+						The introduction outlines the audience, thought process being applied and some basic terminology to be used throughout the document.
+					</li>
+					<li>
+						The product description 
+					</li>
+					<li>
+						Section 3 the document explains how a user finds and interacts with the service and any related constraints add-on software has.
+					</li>
+					<li>
+						Section 4 highlights the underlying relation between user features and their connection to the database for other functionality.
+					</li>
+					<li>
+						Section 5 brings attention to the planned performance and security of the software to be integrated in the development of this project as well as the characteristics with which the software possesses.
+					</li>
+					<li>
+						Section 6 mentions how the project is monitored to ensure progress is being made.
+					</li>
+					<li>
+						Section 7 lists other requirements attached to this project regarding future expansion of the service.
+					</li>
+				</ul>
+				</div>
 				
 				<a href="#top">Back to Top</a>
 			</section>
@@ -618,7 +656,7 @@
 
 				<h4 class="subsection3">Description</h4>
 				<p>
-				Statistics are viewable throughout the website. Statistics are calculated by the server are stored in a database. Statistics are recorded for users only. The leaderboard is displayed on the main page of the website and is viewable to users. A limited leaderboard consisting of the top ten players is viewable to guests. Personal and other user statistics are viewable by users only. Statistics are searchable by user.
+				Statistics are viewable throughout the website. Statistics are calculated by the server  and are stored in a database. Statistics are recorded for users only. The leaderboard is displayed on the main page of the website and is viewable to users. A limited leaderboard consisting of the top ten players is viewable to guests. Personal and other user statistics are viewable by users only. Statistics are searchable by user.
 				</p>
 				<h4 class="subsection3">Stimulus/Response Sequence</h4>
 				<p>
@@ -630,33 +668,10 @@
 					<li>
 						<span class="req">REQ-1</span> A game must finish completely and be confirmed by all necessary players before statistics are calculated and committed to the database.
 					</li>
-					<li>
-						<span class="req">REQ-2</span> Statistics are only calculated and recorded for users.
-					</li>
 				</ul>
 				</div>
 
-				<h3 class="subsection"><span class="numbering">4.6</span> Social Media</h3>
-
-				<h4 class="subsection3">Description</h4>
-				<p>
-				Users who entered the website using a third party login can send updates to the third party website regarding actions in a game, the result of a game or tournament, or statistics of the user.
-				</p>
-				<h4 class="subsection3">Stimulus/Response Sequence</h4>
-				<p>
-				Throughout the user interface of the website a player selects whether they would like to update the third party website with game information.
-				</p>
-				<h4 class="subsection3">Functional Requirements</h4>
-				<div class="indent">
-				<ul>
-					<li>
-						<span class="req">REQ-1</span> A user must be logged in using a third party login.
-					</li>
-					<li>
-						<span class="req">REQ-2</span> A user must choose to post a status and the system cannot send information without permission.
-					</li>
-				</ul>
-				</div>
+			
 				<a href="#top">Back to Top</a>
 			</section>
 
@@ -668,25 +683,10 @@
 					The front-end pages Pong Tracker must be loaded quickly and seamlessly with little time between transitions and virtually no load time between sequential pop-ups. An initial user volume consisting of post-secondary students in Ontario is expected and as such the software must be built in a way to handle this loads.
 				</p>
 
-				<div class="indent">
-				<ul>
-					<li>
-						Front-end pages must be loaded quickly and without error
-						<br/>
-						As Pong Tracker is in its earliest stages, front-end pages must be built with fast and reliable software that can be updated easily for future enhancements and additions. Information searches based on previously selected data must be quick and efficient.
-					</li>
-					<li>
-						Large volumes of users and heavy website traffic must not be a problem
-						<br/>
-						Pong Tracker must be built with software capable of handling heavy website traffic and large login queues, as to avoid the website crashing or long waits.
-					</li>
-				</ul>
-				</div>
-
 				<h3 class="subsection"><span class="numbering">5.2</span> Security Requirements</h3>
 
 				<p>
-					For security, three base requirements are needed which are: a login page for general users, a login page for administrative users and password security.
+					For security, there are three requirements:
 				</p>
 
 				<div class="indent">
@@ -699,7 +699,7 @@
 					<li>
 						Administrator User Login Page
 						<br/>
-						A second login page exists unbeknownst to users where adminstrators enter Pong Tracker to make changes to sensitive information.
+						A second login page exists that is invisible to users, where adminstrators enter Pong Tracker to make changes to sensitive information.
 					</li>
 					<li>
 						Password Security
