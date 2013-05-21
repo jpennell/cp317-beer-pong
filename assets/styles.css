@@ -25,3 +25,7 @@
 .subsection2 {
 	font-size: 18px;
 }
+
+.project-contributors td {
+	padding-right: 50px;
+}
