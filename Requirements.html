@@ -385,7 +385,7 @@
 					The underlying programming language and the database are located on a server; the user's device also handles some computation.
 				</dd>
 
-			<h3 class="subsection">3.4 Specific Requirements - THIS IS SUPER AMBIGUOUS AND DOESN'T MEAN A LOT. SHOULD BE REMOVED OR ELABORATED?</h3>
+			<h3 class="subsection">3.4 Specific Requirements - THIS IS SUPER AMBIGUOUS. SHOULD BE REMOVED OR ELABORATED?</h3>
 
 				<p>
 					<ul>
@@ -410,10 +410,10 @@
 					<h3 class="subsection">4.1 User Profile </h3>
 					<ul>
 					<li>Desciption<br/>
-							<br/>Users register in order to play games and record stats. Users have the option to create an account directly on the website, or to login and register with Facebook Login. The user profile page displays personal information and stats.
+							<br/>Guests register in order to play games and record statistics. Guests have the option to create an account directly on the website, or to register using a third party login. A guest becomes a user once they have registered. The user profile page displays personal information and statistics.
 						<br/><br/></li>
 					<li>Stimulus/Response Sequence<br/>
-							<br/>From the main page, selecting login, a user can login to the website, or through Facebook Login.
+							<br/>From the main page, by selecting login, a user can login to the website, or through the third party login.
 						<br/><br/></li>
 					<li>Functional Requirements<br/>
 							<br/>REQ-1	Only one user is in a session at one time<br/>
@@ -426,28 +426,28 @@
 							<br/>Games are the main feature of the website.
 						<br/><br/></li>
 					<li>Stimulus/Response Sequence<br/>
-							<br/>A new game is created by a registered user. A game consists of four players. When a new game is created, the registered users select other players in the game, up to a maximum of 3. When three players are selected, the game starts, and the registered user who created the game sees the game user-interface.
+							<br/>A new game is created by a user. A game consists of four players. When a new game is created, the user who created the game, selects and adds other players to the game, up to a maximum of 3. A user may add a guest as a player. Note that the guest does not have their statistics recorded, nor can they interact with the game user interface.  When three players are selected, the game starts, and the registered user who created the game sees the game interface.
 						<br/><br/></li>
 					<li>Functional Requirements<br/>
-							<br/>REQ-1	The user who creates a game must be registered<br/>
-							<br/>REQ-2	The user who creates the game must not be in another game at the same time<br/>
-							<br/>REQ-3	There must be at least two registered users in a game<br/>
-							<br/>REQ-4	Each team must have at least one registered user
+							<br/>REQ-1	The user who creates a game must be registered.<br/>
+							<br/>REQ-2	The user who creates the game must not be in another game at the same time.<br/>
+							<br/>REQ-3	There must be at least two registered users in a game.<br/>
+							<br/>REQ-4	Each team must have at least one registered user.
 						<br/><br/></li>
 					</ul>
 
 					<h3 class="subsection">4.3 Play a Game </h3>
 					<ul>
 					<li>Desciption<br/>
-							<br/>During a game, players interact with the game user-interface. Actions in the physical game are recorded in the game user-interface by selecting a player, a cup, and the applicable action. This is required for advancement of the game.
+							<br/>During a game, a user interacts with the game user interface. Actions in the physical game are recorded in the game user interface by selecting a player, a cup, and the applicable action. This is required for advancement of the game.
 						<br/><br/></li>
 					<li>Stimulus/Response Sequence<br/>
 							<br/>Actions by a player, associated with specific cups, are selected throughout the game, as they are done in the physical game.
 						<br/><br/></li>
 					<li>Functional Requirements<br/>
-							<br/>REQ-1	Only one cup is selected at a time<br/>
-							<br/>REQ-2	Only one action per cup is selected at a time<br/>
-							<br/>REQ-3	Only one player can be associated with an action
+							<br/>REQ-1	Only one cup is selected at a time.<br/>
+							<br/>REQ-2	Only one action per cup can be selected.<br/>
+							<br/>REQ-3	Only one player can be associated with an action.
 						<br/><br/></li>
 					</ul>
 
@@ -457,40 +457,40 @@
 							<br/>At the conclusion of a game, a game must be confirmed for validity.
 						<br/><br/></li>
 					<li>Stimulus/Response Sequence<br/>
-							<br/>At the end of a game, one registered user from each team must confirm validity. Once the game is finished, it is considered completely finished, and stats will be calculated and recorded. A team/registered user may deny validity, and the game will not be factored into stats.
+							<br/>At the end of a game, one user from the opposing team must confirm results of the game. Once the game is confirmed, it is considered completely finished, and statistics will be calculated and recorded. A team/user may deny validity, and the game is not factored into statistics.
 						<br/><br/></li>
 					<li>Functional Requirements<br/>
-							<br/>REQ-1	One registered user from each team must confirm validity for a game to be included in the stats <br/>
-							<br/>REQ-2	A team/registered user must be able to deny validity of a game
+							<br/>REQ-1	One user from the opposing team must confirm validity for a game to be included in the statistics.<br/>
+							<br/>REQ-2	A team/user must have the ability to deny the validity of a game.
 						<br/><br/></li>
 					</ul>
 
 					<h3 class="subsection">4.5 Statistics and Leaderboard</h3>
 					<ul>
 					<li>Desciption<br/>
-							<br/>Stats are viewable throughout the website. Stats are calculated by the server are stored in a database. Stats are recorded for registered users only. The leaderboard is displayed on the main page of the website, while all other stats are viewable by registered users only. Stats are searchable by user.
+							<br/>Statistics are viewable throughout the website. Statistics are calculated by the server are stored in a database. Statistics are recorded for users only. The leaderboard is displayed on the main page of the website and is viewable to users. A limited leaderboard consisting of the top ten players is viewable to guests. Personal and other user statistics are viewable by users only. Statistics are searchable by user.
 
 						<br/><br/></li>
 					<li>Stimulus/Response Sequence<br/>
-						<br/>	At the end of a game, the system will calculate and record users stats. Going to the user profile page displays the user's personal stats. Going to the statistics page displays a leaderboard, which is searchable by user(s).
+						<br/>	At the end of a game, the Pong Tracker calculates and records users' statistics. Going to the user profile page displays the user's personal statistics. The user profile page also has the  functionality to search for other users in order to view their statistics. Going to the main page displays a leaderboard.
 						<br/><br/></li>
 					<li>Functional Requirements<br/>
-							<br/>REQ-1	A game must finish completely and confirmed by all necessary players before stats are calculated and committed to the database <br/>
-							<br/>REQ-2	Stats are only calculated and recorded for registered users
+							<br/>REQ-1	A game must finish completely and be confirmed by all necessary players before statistics are calculated and committed to the database.<br/>
+							<br/>REQ-2	Statistics are only calculated and recorded for users.
 						<br/><br/></li>
 					</ul>
 
-					<h3 class="subsection">4.6 Social Media </h3>
+					<h3 class="subsection">4.6 Social Media</h3>
 					<ul>
 					<li>Desciption<br/>
-							<br/>Registered users logged in using Facebook Login post status updates regarding actions in a game, the result of a game or tournament, or stats of the user.
+							<br/>Users who entered the site using a third party login can send updates to the third party website regarding actions in a game, the result of a game or tournament, or statistics of the user.
 						<br><br/></li>
 					<li>Stimulus/Response Sequence<br/>
-							<br/>Throughout the user-interface of the website, including the game and tournament user-interface, a player selects whether to post a status to Facebook.
+							<br/>Throughout the user interface of the website a player selects whether they would like to update the third party website with game information.
 						<br><br/></li>
 					<li>Functional Requirements<br/>
-							<br/>REQ-1	A registered user must be logged in using Facebook Login<br/>
-							<br/>REQ-2	A user must choose to post a status and the system cannot post a status without permission
+							<br/>REQ-1	A user must be logged in using a third party login.<br/>
+							<br/>REQ-2	A user must choose to post a status and the system cannot send information without permission.
 						<br/><br/></li>
 					</ul>
 				</ul>
@@ -502,7 +502,7 @@
 			<h3 class="subsection">5.1 Performance Requirements</h3>
 
 				<p>
-					The front-end pages Pong Tracker must be loaded quickly and seamlessly with little time between transitions and virtually no load time between sequential pop-ups. Automation and the front-end interface must be flawless as the database driving the Stats page will hold valuable records. Large volumes of users are expected, so software built to handle these loads should be implemented to avoid login queues or site crashing.
+					The front-end pages Pong Tracker must be loaded quickly and seamlessly with little time between transitions and virtually no load time between sequential pop-ups. Automation and the front-end interface must be flawless as the database driving the statistics page will hold valuable records. Large volumes of users are expected, so software built to handle these loads should be implemented to avoid login queues or site crashing.
 				</p>
 
 				<ul>
@@ -513,7 +513,7 @@
 					<br>
 					<li>Automation and the front-end interface must be quick and reliable
 						<br><br>
-						The Stats page in particular will contain a large database that must be built with error-free automation and load sufficient software for future growth.
+						The statistics page in particular will contain a large database that must be built with error-free automation and load sufficient software for future growth.
 					</li>
 					<br>
 					<li>Large volumes of users and heavy site traffic must not be a problem
@@ -531,7 +531,7 @@
 				<ul>
 					<li>General user login page
 						<br><br>
-						This will be the main hub for non-administrative users to enter Pong Tracker and access their personal stats, teams and records. These users will not have access to any site changes and will not even know another login page exists for admin users.
+						This will be the main hub for non-administrative users to enter Pong Tracker and access their personal statistics, teams and records. These users will not have access to any site changes and will not even know another login page exists for admin users.
 					</li>
 					<br>
 					<li>Administrator user login page
