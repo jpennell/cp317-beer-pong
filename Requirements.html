@@ -56,14 +56,6 @@
 						The scope of this project serves people who want to record Beer Pong online. This is to be done by HTML pages and providing users with an interesting and webpage based interface that allows them to record, compete with other players and also the system will record them win and lose times in their account.
 					</dd>
 
-				<h3 class="subsection">1.5 Assumptions and Dependencies</h3>
-
-					<dd>
-						This section provides the known dependencies and assumptions at the start of the project; all subsequent additions shall be managed within project objects (e.g., risk, project schedule, etc.)
-						<br><br>
-						Moreover,this section specifies completed, ongoing or future projects or the linkages to established programs, on which this project depends in order to be successful, or which are dependent on this project.Now no know dependencies.
-					</dd>
-
 				<h3 class="subsection">1.6 Evolution of plans (ie. starting with WLU and expanding later)</h3>
 
 					<dd>
@@ -136,52 +128,127 @@
 			<br>
 			<h2 class="section">2 Product description</h2>
 			<ul>
-				<h3 class="subsection">2.1 Product perspective</h3>
-				<ul>
-					<h3 class="subsection2">2.1.1 What the product is</h3>
+<h3 class="subsection">2.1 Product Perspective</h3>
 
-						<p>
-							Pong Tracker is a web-based database for tracking statistics of a given individual&#39s Beer Pong performance. It collects a number of different metrics via its intuitive real-time collection interface. Using this data, a leaderboard as well as user analytics will be readily available for users to see.
-						</p>
+				<h3 class="subsection2">2.1.1 Product Overview</h3>
 
-					<h3 class="subsection2">2.1.2 How to use it</h3>
+					<p>
+						Pong Tracker is a web-based utility for tracking statistics of a given individual&#39s Beer Pong performance. It collects a number of different metrics via its intuitive real-time collection interface. Using this data, a leaderboard as well as user statistics will be readily available for users to see.
+					</p>
 
-						<p>
-							Users will have the ability to search other users and challenge them to a game. One user will be responsible for the operation of the interface, then following a confirmation from one member of the opposite team, will successfully store the data of one game. Pong Tracker also offers the ability to view analytics of players. The analytics page is essentially a user friendly display of all stats gathered from the interface. A leaderboard, filtered by user region or institution, will also be available to define the strongest users. To accomplish the task of ranking users, an algorithm such as Microsoft TrueSkill&#39 will be implemented.
-						</p>
+				<h3 class="subsection2">2.1.2 Product Usage</h3>
+
+					<p>
+					Users have the ability to search other users and challenge them to a game. One user is responsible for the operation of the interface. The interface offers a simulation of what a Beer Pong game looks like in real life. The user selects the cup that was sunk, then the action, then the user who committed the action. Before the game is valid, a confirmation from one member of the opposite team will be required.
+					</p>
+					<p>
+					Pong Tracker also offers the ability to view their as well as other player&#39s statistics. A leaderboard, filtered by user region or institution, will also be available to define the strongest users. To accomplish the task of ranking users, an algorithm such as Microsoft TrueSkill will be implemented.
+					</p>
 
 				<h3 class="subsection2">2.1.3 Beer Pong Rules</h3>
-					<p>
-						<dd>
-							<li><b>Eye-to-eye</b> determines the first team to shoot</li>
-								<ul>
-									<li>Should both parties hit their eye-to-eye, eye-to-eye resumes until only one team scores</li>
-								</ul>
-							<li>Should both members of a team score, they shoot again</li>
-							<li>Should after a shot, the ball spin in the rim of the opponents&#39 cup, the defending team may attempt to blow the ball out of the cup. If the ball is ejected and remains dry, no cup is scored</li>
-							<li><b>Air balls</b> result in a loss of turn, if it was the second shot you&#39re lucky<li>
-							<li>Should a shot roll/bounce back on the table (never once touching the ground) the shooting team member may attempt a <b>trick shot</b><li>
-							<li>Each team is entitled to one <b>re-rack</b> at any point throughout the game</li>
-							<li>Bounce shots count as two cups scored, the cup hit, as well as one selected by the offending team are counted</li>
-								<ul>
-									<li>The defending team may attempt to disrupt the ball once it has made contact with the table.</li>
-								</ul>
-							<li>Should two non-bounce shots hit the same cup, the cup hit, as well as two selected by the offending team are counted</li>
-							<li>Any knocking over of a cup is considered a <b>Party Foul</b> and all disrupted cups are to be removed at the discredit of the offender.</li>
-							<li>If the ball is disrupted by the defending team (BEFORE it has made contact with the table) a cup is lost by the defending team this is also considered a <b>Party Foul</b></li>
-							<li>Should a cup in the hand of a player be sunk, the offending team is automatically victorious and the Game Over option should be selected.</li>
-						</dd>
+					<h4>Setting Up</h4>
+						<p>
+							<ul>
+								<li>
+								Twelve cups are arranged as shown below. The table should be no less than 7&#39 long.
+								</li>
+							</ul>
+						</p>
+						<figure>
+							<img src="PongLayout.png" alt="Beer Pong Layout" width = "800">
+							<figcaption>Standard arrangement of Beer Pong</figcaption>
+						</figure>
+					<h4>Gameplay</h4>
+						<p>
+							<ul>
+								<li>
+								<b>Eye-to-eye</b> determines the first team to shoot.
+									<ul>
+										<li>
+										One person from each team begins the process. After each failed attempt, the two team members swap places.
+										</li>
+										<li>
+										If both parties hit their eye-to-eye in a given turn, eye-to-eye resumes until only one team scores.
+										</li>
+									</ul>
+								</li>
 
-						<b>Terminology</b>
-						<dd>
-								<li><b>Air Balls:</b> A shot that misses the table altogether</li>
-								<li><b>Eye-to-eye:</b> A means of deciding the first team to shoot. Consists of a member of each team simultaneously shooting while making full eye contact with the other party. Should a cup be scored, the offending party is awarded the first shot.</li>
-								<li><b>Party Foul:</b> An infringement on the rules of the game, or knocking over a cup, spilling its contents.</li>
-								<li><b>Re-Rack:</b> A request to shuffle the orientation of the remaining cups on the opposing side.</li>
-								<li><b>Trick Shots:</b> any shot containing either multi-directional trajectory OR non-standard origination</li>
-						</dd>
-					</p>
-				</ul>
+								<li>
+								Players take turns attempting to throw the ping pong ball into the cups of the other team. A successfully sunk cup results in that cup being removed.
+								</li>
+								<li>
+								If both members of a team sink their cups in one turn, they shoot again essentially skipping the other team&#39s turn.
+								</li>
+								<li>
+								If after a shot, the ball spins in the rim of the opponents&#39 cup, the defending team may attempt to blow the ball out of the cup. If the ball is ejected and remains dry, no cup is scored.
+								</li>
+								<li>
+								<b>Air balls</b> result in a loss of the current turn.
+									<ul>
+										<li>
+											If the first shooter <b>Air Balls</b> then the second shooter must forfeit his/her shot.
+										</li>
+										<li>
+											If the second shooter <b>Air Balls</b> then play resumes as though the turn ended normally.
+										</li>
+									</ul>
+								</li>
+								<li>
+								If a shot rolls/bounces back to the shooting team on the table (never once touching the ground) and the shooting team gains possesion, a member may attempt a <b>trick shot</b>.
+								</li>
+								<li>
+								Each team is entitled to one <b>re-rack</b> at any point throughout the game.
+								</li>
+								<li>
+								Bounce shots count as two cups scored, the cup hit, as well as one selected by the offending team.
+									<ul>
+										<li>
+										To combat this, the defending team may attempt to disrupt the ball once it has made contact with the table.
+										</li>
+									</ul>
+								</li>
+								<li>
+								If two non-bounce shots hit the same cup, the cup hit, as well as two selected by the offending team are counted and removed.
+								</li>
+								<li>
+								Any knocking over of a cup is considered a <b>Party Foul</b> and all disrupted cups are to be removed at the discredit of the offender.
+								</li>
+								<li>
+								If the ball is disrupted by the defending team (BEFORE it has made contact with the table) a cup is lost by the defending team. This is also considered a <b>Party Foul</b>
+								</li>
+
+							</ul>
+						</p>
+					<h4>Ending a Game</h4>
+						<p>
+							<ul>
+								<li>
+								If a cup in the hand of a player is sunk, the offending team is automatically victorious and the <b>Game Over</b> option is selected.
+									<ul>
+										<li>
+										Losing team does not qualify for redemption
+										</li>
+									</ul>
+								</li>
+								<li>
+								If all the cups on one side are sunk, that team is eligible for <b>Redemption</b>.
+									<ul>
+										<li>
+											The objective of redemption is to sink the remaining cups on the other team&#39s side.
+										</li>
+										<li>
+											Both players on the redeeming team keep shooting until they miss.
+										</li>
+										<li>
+											If one player misses, the other may continue to shoot.
+										</li>
+									</ul>
+								</li>
+								<li>
+								If both players sink the last remaining cup, or it is a bounce, the defending team is not eligible for redemption.
+								</li>
+							</ul>
+						</p>
 				<h3 class="subsection">2.2 Product Functions</h3>
 					<p>
 						<ul>
@@ -237,7 +304,7 @@
 						Pong Tracker will be required to run off of a unix server, namely <a href="http://hopper.wlu.ca">Hopper</a>.
 					</dd>
 
-				<h3 class="subsection">2.5 Constraints (technical constraints)</h3>
+				<h3 class="subsection">2.5 Technical Constraints</h3>
 
 					<p>
 						<ul>
