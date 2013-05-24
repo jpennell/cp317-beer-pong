@@ -239,7 +239,7 @@
 					</ul>
 				</div>
 				<figure>
-					<img src="PongLayout.png" alt="Beer Pong Layout" width="100%">
+					<img src="PongLayout.png" alt="Beer Pong Layout" width="100%" border="2">
 					<figcaption class="caption">
 						Standard Arrangement of Beer Pong
 					</figcaption>
@@ -360,9 +360,12 @@
 				</p>
 
 				<h3 class="subsection"><span class="numbering">2.2</span> Actors and Use Cases</h3>
-				<figure>
-					<img src="UseCaseDiagram.svg" alt="Use Case Diagram" width = "50%">
-				</figure>
+				<div class="indent">
+					<figure>
+						<img src="UseCaseDiagram.svg" alt="Use Case Diagram" width = "50%" border="2">
+						<figcaption>Use Case Diagram for Pong Tracker</figcaption>
+					</figure>
+				</div>
 				<p>
 					<strong>Actors</strong>
 
@@ -418,6 +421,9 @@
 					</li>
 					<li>
 						Score Game - following Create Game, a user interacts with the interface to record the results of the game as it is being played.
+					</li>
+					<li>
+						End Game - a user can finish a beer pong game.
 					</li>
 					<li>
 						Confirm Game - once a game has been completed, a user from the team who was not tracking must confirm the results of the game.
