@@ -3,7 +3,7 @@
 
 	<head>
 		<a id="top">
-		<title> Pong Tracker Requirements Document</title>
+		<title> Pong Tracker Software Requirements</title>
 		<link href="assets/styles.css" rel="stylesheet" type="text/css">
 		</a>
 	</head>
@@ -12,206 +12,193 @@
 
 		<div class="document">
 
-			<h1 class="doctitle">Pong Tracker Requirements Document</h1>
+			<h1 class="doctitle">Pong Tracker Software Requirements</h1>
+			<br>
 
-				<table class="doc-by">
-						<tbody>
-							<tr>
-								<td>Quinton Black</td>
-								<td>Reese Garth</td>
-								<td>George Lifchits</td>
-							</tr>
-							<tr>
-								<td>Erin Cramer</td>
-								<td>Henry Goddard</td>
-								<td>Robin Tang</td>
-							</tr>
-							<tr>
-								<td>Richard Douglas</td>
-								<td>Colin Hagerman</td>
-								<td>Yulou (Chris) Ye</td>
-							</tr>
-							<tr>
-								<td>Carlie Ferguson</td>
-								<td>Matt Hengeveld</td>
-							</tr>
-						</tbody>
-					</table>
-					<br><br>
-
-					<h2 class="section">Table of Contents</h2>
+			<div class="contents">
+				<h3>Table of Contents</h2>
 					<a href="#introduction">1 Introduction</a><br>
 					<a href="#description">2 Product Description</a><br>
 					<a href="#interface">3 External Interface Requirements</a><br>
 					<a href="#sysfeatures">4 System Features</a><br>
 					<a href="#nonfunctional-reqs">5 Other Requirements</a><br>
 					<a href="#project-plan">6 Elements of Project Plan</a><br>
-					<a href="#appendix">Appendix</a><br>
+					<a href="#appendix">Appendix</a>
+			</div>
+			
+			<br>
 
 			<section id="introduction">
-				<h2 class="section"><span class="numbering">1</span> Introduction</h2>
-				<p> This section outlines and describes what to expect from the Pong Tracker Requirements Document as well as introduces the Pong Tracker website.
-				</P>
+				<h2 class="section">1 Introduction</h2>
+					<p> 
+						This section outlines and describes what to expect from the Pong Tracker Requirements Document as well as introduces the Pong Tracker website.
+					</p>
 				
-				<h3 class="subsection"><span class="numbering">1.1</span> Document Purpose</h3>
-				<p>
-					This document summarizes the Pong Tracker website for the client and project team. It includes a description of the product, design and software interfaces, system features, as well as the project approach.
-				</p>
+					<h3 class="subsection">1.1 Document Purpose</h3>
+						<p>
+							This document summarizes the Pong Tracker website for the client and project team. It includes a description of the product, design and software interfaces, system features, as well as the project approach.
+						</p>
 
-				<h3 class="subsection"><span class="numbering">1.2</span> Terminology</h3>
-				<p>
-					<a href="#appendix">Appendix A</a> has a glossary of common terms used.
-				</p>
+					<h3 class="subsection">1.2 Terminology</h3>
+						<p>
+							<a href="#appendix">Appendix A</a> has a glossary of common terms used.
+						</p>
 
-				<h3 class="subsection"><span class="numbering">1.3</span> Typography</h3>
-				<p>
-					<i>guest</i>
-				</p>
-				<p>
-					<b>user</b>
-				</p>
+					<h3 class="subsection">1.3 Typography</h3>
+						<p>
+							<i>guest</i>
+						</p>
+						<p>
+							<b>user</b>
+						</p>
 
-				<h3 class="subsection"><span class="numbering">1.4</span> Audience</h3>
-				<p>
-					The targeted audience for this product is beer pong players. Players must have access to the internet, and must attend an Ontario, post-secondary institution. Each team consists of at least one user. A <a href="#user_desc">user</a> is registered with Pong Tracker. A <a href="#guest_desc">guest<a/> is allowed to participate in a game. A guest is not registered with Pong Tracker.
-				</p>
+					<h3 class="subsection">1.4 Audience</h3>
+						<p>
+							The targeted audience for this product is beer pong players. Players must have access to the internet, and must attend an Ontario, post-secondary institution. Each team consists of at least one user. A <a href="#user_desc">user</a> is registered with Pong Tracker. A <a href="#guest_desc">guest<a/> is allowed to participate in a game. A guest is not registered with Pong Tracker.
+						</p>
 
-				<h3 class="subsection"><span class="numbering">1.5</span> Product Scope</h3>
-				<p>
-					Pong Tracker is a website that provides users the chance to record and view statistics of beer pong games played by themselves and Pong Tracker users. The website allows users to enter every detail of the game they are playing in real time. The scope of this project includes both a desktop, web-accessible browser, as well as a mobile oriented website. The scope does not include native applications for any mobile device.
-				</p>
+					<h3 class="subsection">1.5 Product Scope</h3>
+						<p>
+							Pong Tracker is a website that provides users the chance to record and view statistics of beer pong games played by themselves and Pong Tracker users. The website allows users to enter every detail of the game they are playing in real time. The scope of this project includes both a desktop, web-accessible browser, as well as a mobile oriented website. The scope does not include native applications for any mobile device.
+						</p>
 
-				<h3 class="subsection2"><span class="numbering">1.5.1</span> Value to Society</h3>
-				<p>
-					Pong Tracker allows users to come together to record and share their Beer Pong statistics. Pong Tracker feeds the users&#39; need to stay connected, meet new people, and creates an opportunity to share their interest of the game beer pong.
-				</p>
+					<h3 class="subsection2">1.5.1 Value to Society</h3>
+						<p>
+							Pong Tracker allows users to come together to record and share their Beer Pong statistics. Pong Tracker feeds the users&#39; need to stay connected, meet new people, and creates an opportunity to share their interest of the game beer pong.
+						</p>
 
-				<h3 class="subsection2"><span class="numbering">1.5.2</span> Value to Individuals</h3>
-				<p>
-					Pong Tracker creates a friendly, competitive and entertaining environment for every user and guest involved.
-				</p>
+					<h3 class="subsection2">1.5.2 Value to Individuals</h3>
+						<p>
+							Pong Tracker creates a friendly, competitive and entertaining environment for every user and guest involved.
+						</p>
 
-				<h3 class="subsection"><span class="numbering">1.6</span> Future Plans</h3>
-				<p>
-					Future plans for Pong Tracker include:
-				</p>
-								<h3 class="subsection2"><span class="numbering">1.6.1</span> Advertising</h3>
-								<p>
-								In the future, the client will be able to advertise on the Pong Tracker website.
-								</p>
-								<h3 class="subsection2"><span class="numbering">1.6.2</span> Multi-server</h3>
-								<p>
-								Future expansion in target audience will require Pong Tracker to move to a multi-server.
-								</p>
+					<h3 class="subsection">1.6 Future Plans</h3>
+						<p>
+							Future plans for Pong Tracker include:
+						</p>
+				
+					<h3 class="subsection2">1.6.1 Advertising</h3>
+						<p>
+							In the future, the client will be able to advertise on the Pong Tracker website.
+						</p>
+						
+					<h3 class="subsection2">1.6.2 Multi-server</h3>
+						<p>
+							Future expansion in target audience will require Pong Tracker to move to a multi-server.
+						</p>
 
-				<h3 class="subsection"><span class="numbering">1.7</span> References</h3>
-				<p>
-					This document follows the standards set by the following publication:
-				</p>
-				<p>
-						IEEE Std 610.12-1990, IEEE Standard for Software Project Management Plans
-						<br/>
-						<a href ="http://bohr.wlu.ca/cp317/notes/IEEE_1058.pdf">http://bohr.wlu.ca/cp317/notes/IEEE_1058.pdf</a>
-				</p>
+					<h3 class="subsection">1.7 References</h3>
+						<p>
+							This document follows the standards set by the following publication:
+						</p>
+						<p>
+								IEEE Std 610.12-1990, IEEE Standard for Software Project Management Plans
+								<br>
+								<a href ="http://bohr.wlu.ca/cp317/notes/IEEE_1058.pdf">http://bohr.wlu.ca/cp317/notes/IEEE_1058.pdf</a>
+						</p>
 
-				<h3 class="subsection"><span class="numbering">1.8</span> Contributors</h3>
+					<h3 class="subsection">1.8 Contributors</h3>
+						<p>
+							This standard was developed by the Spring 2013 class of Software Engineering (CP 317). The following individuals contributed to the development of this document:
+						</p>
+						
+						<table class="project-contributors table">
+							<tbody>
+								<tr>
+									<td>Quinton Black</td>
+									<td>Reese Garth</td>
+									<td>George Lifchits</td>
+								</tr>
+								<tr>
+									<td>Erin Cramer</td>
+									<td>Henry Goddard</td>
+									<td>Robin Tang</td>
+								</tr>
+								<tr>
+									<td>Richard Douglas</td>
+									<td>Colin Hagerman</td>
+									<td>Yulou (Chris) Ye</td>
+								</tr>
+								<tr>
+									<td>Carlie Ferguson</td>
+									<td>Matt Hengeveld</td>
+								</tr>
+							</tbody>
+						</table>
+						<br>
 
-				<p>
-					This standard was developed by the Spring 2013 class of Software Engineering (CP 317). The following individuals contributed to the development of this document:
-				</p>
-					<table class="project-contributors table">
-						<tbody>
-							<tr>
-								<td>Quinton Black</td>
-								<td>Reese Garth</td>
-								<td>George Lifchits</td>
-							</tr>
-							<tr>
-								<td>Erin Cramer</td>
-								<td>Henry Goddard</td>
-								<td>Robin Tang</td>
-							</tr>
-							<tr>
-								<td>Richard Douglas</td>
-								<td>Colin Hagerman</td>
-								<td>Yulou (Chris) Ye</td>
-							</tr>
-							<tr>
-								<td>Carlie Ferguson</td>
-								<td>Matt Hengeveld</td>
-							</tr>
-						</tbody>
-					</table>
-					<br>
+						<p>
+							The following individuals contributed to the editing of this document:
+						</p>
+						
+						<table class="project-contributors table">
+							<tbody>
+								<tr>
+									<td>Carlie Ferguson</td>
+									<td>Richard Douglas</td>
+									<td>Matt Hengeveld</td>
+								</tr>
+								<tr>
+									<td>Erin Cramer</td>
+									<td>Chris Ye</td>
+									<td>George Lifchits</td>
+								</tr>
+							</tbody>
+						</table>
+						<br>
 
-				<p>
-					The following individuals contributed to the editing of this document:
-				</p>
-				<table class="project-contributors table">
-					<tbody>
-						<tr>
-							<td>Carlie Ferguson</td>
-							<td>Richard Douglas</td>
-							<td>Matt Hengeveld</td>
-						</tr>
-						<tr>
-							<td>Erin Cramer</td>
-							<td>Chris Ye</td>
-							<td>George Lifchits</td>
-						</tr>
-					</tbody>
-				</table>
-				<br>
+					<h3 class="subsection">1.9 Overview</h3>
+						<p>
+							The Pong Tracker Requirements Document summarizes the following:
+						</p>
+						
+						<div class="indent">
+							<ul>
+								<li>
+									The audience, thought process being applied and some basic terminology to be used throughout the document.
+								</li>
+								<li>
+									The product description.
+								</li>
+								<li>
+									How a user finds and interacts with the service and any related constraints add-on software has.
+								</li>
+								<li>
+									The underlying relation between user features and their connection to the database for other functionality.
+								</li>
+								<li>
+									The planned performance and security of the software to be integrated in the development of this project. 
+								</li>
+								<li>
+									The characteristics with which the software possesses.
+								</li>
+								<li>
+									How the project is monitored to ensure progress is being made.
+								</li>
+								<li>
+									Other requirements of this project regarding future expansion of the service.
+								</li>
+							</ul>
+						</div>
 
-				<h3 class="subsection"><span class="numbering">1.9</span> Overview</h3>
-				<p>
-					The Pong Tracker Requirements Document summarizes the following:
-				</p>
-				<div class="indent">
-				<ul>
-					<li>
-						The audience, thought process being applied and some basic terminology to be used throughout the document.
-					</li>
-					<li>
-						The product description.
-					</li>
-					<li>
-						How a user finds and interacts with the service and any related constraints add-on software has.
-					</li>
-					<li>
-						The underlying relation between user features and their connection to the database for other functionality.
-					</li>
-					<li>
-						The planned performance and security of the software to be integrated in the development of this project. 
-					</li>
-					<li>
-						The characteristics with which the software possesses.
-					</li>
-					<li>
-						How the project is monitored to ensure progress is being made.
-					</li>
-					<li>
-						Other requirements of this project regarding future expansion of the service.
-					</li>
-				</ul>
-				</div>
-
-				<p class="back-top">
-					<a href="#top">Back to Top</a>
-				</p>
+						<p class="back-top">
+							<a href="#top">Back to Top</a>
+						</p>
 			</section>
+			
+			
 
 			<section id="description">
-				<h2 class="section"><span class="numbering">2</span> Product Description</h2>
-				<h3 class="subsection"><span class="numbering">2.1</span> Product Perspective</h3>
-				<h3 class="subsection2"><span class="numbering">2.1.1</span> Product Overview</h3>
+				<h2 class="section">2 Product Description</h2>
+				<h3 class="subsection">2.1 Product Perspective</h3>
+				<h3 class="subsection2">2.1.1 Product Overview</h3>
 				<p>
 					Pong Tracker is a web-based utility for tracking statistics of a given user&#39;s beer pong performance. It collects a number of different metrics via its intuitive real-time collection interface. Using this data, a leaderboard as well as user statistics is readily available for users to see.
 				</p>
 
 
 
-				<h3 class="subsection2"><span class="numbering">2.1.2</span> Pre-Game</h3>
+				<h3 class="subsection2">2.1.2 Pre-Game</h3>
 				<p>
 					Listed are the materials for a game of Beer Pong, as well as the way to set up a game.
 				</p>
@@ -253,7 +240,7 @@
 					</figcaption>
 				</figure>
 				
-				<h3 class="subsection2"><span class="numbering">2.1.3</span> Beer Pong Rules</h3>
+				<h3 class="subsection2">2.1.3 Beer Pong Rules</h3>
 				<p>
 					Listed are the rules for a game of Beer Pong, as assumed by Pong Tracker. Rules may be modified by the teams playing.
 				</p>
@@ -383,14 +370,14 @@
 					</ul>
 				</div>
 
-				<h3 class="subsection2"><span class="numbering">2.1.4</span> Product Usage</h3>
+				<h3 class="subsection2">2.1.4 Product Usage</h3>
 				<p>
 					Users can search other users and challenge them to a game. Only one user, from one team is responsible for the operation of the interface. The interface offers a simulation of a beer pong game. The user selects the cup that was sunk, then the action, then the user who performed the action. Before the game is valid, a confirmation from one member of the team who wasn't tracking the game is required.
 				</p>
 				<p>
 					Pong Tracker can view their own statistics as well as other users'. A leaderboard is available to define the strongest users.
 				</p>
-				<h3 class="subsection2"><span class="numbering">2.1.5</span>Website Rules</h3>
+				<h3 class="subsection2">2.1.5Website Rules</h3>
 					<p>
 						The following are the website rules for Pong Tracker. Any non-compliance can result in a user ban.
 					</p>
@@ -412,7 +399,7 @@
 					</div>
 
 
-				<h3 class="subsection"><span class="numbering">2.2</span> Actors and Use Cases</h3>
+				<h3 class="subsection">2.2 Actors and Use Cases</h3>
 				<div class="indent">
 					<figure>
 						<center>
@@ -506,13 +493,13 @@
 				</ul>
 				</div>
 
-				<h3 class="subsection"><span class="numbering">2.4</span> Operating Environment</h3>
+				<h3 class="subsection">2.4 Operating Environment</h3>
 
 				<p>
 					Pong Tracker is be required to run on a Unix server (<a href="http://hopper.wlu.ca">Hopper</a>).
 				</p>
 
-				<h3 class="subsection"><span class="numbering">2.5</span> Technical Constraints</h3>
+				<h3 class="subsection">2.5 Technical Constraints</h3>
 
 				<div class="indent">
 					<ul>
@@ -536,8 +523,8 @@
 			</section>
 
 			<section id="interface">
-				<h2 class="section"><span class="numbering">3</span> External Interface Requirements</h2>
-				<h3 class="subsection"><span class="numbering">3.1</span> User Interface</h3>
+				<h2 class="section">3 External Interface Requirements</h2>
+				<h3 class="subsection">3.1 User Interface</h3>
 				<p>
 				There is both a desktop and a mobile layout of the website. The user interface for Pong Tacker follows the following characteristics:
 				</p>
@@ -559,7 +546,7 @@
 				</div>
 
 
-				<h3 class="subsection"><span class="numbering">3.2</span> Software Interface</h3>
+				<h3 class="subsection">3.2 Software Interface</h3>
 				<div class="indent">
 						Pong Tracker operates on modern, standard internet browsers.
 						<ul>
@@ -610,7 +597,7 @@
 				</ul>
 				</div>
 
-				<h3 class="subsection"><span class="numbering">3.3</span> Communications Interface</h3>
+				<h3 class="subsection">3.3 Communications Interface</h3>
 				<p>
 					The website and server system use multiple protocols for communicating over the internet. Described here are some of the application layer protocols.
 				</p>
@@ -628,7 +615,7 @@
 				</ul>
 				</div>
 				
-				<h3 class="subsection"><span class="numbering">3.4</span> Hardware Interface</h3>
+				<h3 class="subsection">3.4 Hardware Interface</h3>
 				<p>
 					Minimal hardware is needed for the use of Pong Tracker.
 				</p>
@@ -650,8 +637,8 @@
 			
 
 			<section id="sysfeatures">
-				<h2 class="section"><span class="numbering">4</span> System Features</h2>
-				<h3 class="subsection"><span class="numbering">4.1</span> Profile </h3>
+				<h2 class="section">4 System Features</h2>
+				<h3 class="subsection">4.1 Profile </h3>
 
 				<h4 class="subsection3">Description</h4>
 				<p>
@@ -668,12 +655,12 @@
 				<div class="indent">
 				<ul>
 					<li>
-						<span class="req">REQ-1</span> Only one user is in a <a href="#appendix">session</a> at one time.
+						<span class="req">REQ-1 Only one user is in a <a href="#appendix">session</a> at one time.
 					</li>
 				</ul>
 				</div>
 
-				<h3 class="subsection"><span class="numbering">4.2</span> Create a Game </h3>
+				<h3 class="subsection">4.2 Create a Game </h3>
 
 				<h4 class="subsection3">Description</h4>
 				<p>
@@ -702,7 +689,7 @@
 				</ul>
 				</div>
 
-				<h3 class="subsection" id="score-game"><span class="numbering">4.3</span> Score a Game </h3>
+				<h3 class="subsection" id="score-game">4.3 Score a Game </h3>
 
 				<h4 class="subsection3">Description</h4>
 				<p>
@@ -724,7 +711,7 @@
 				</ul>
 				</div>
 
-				<h3 class="subsection"><span class="numbering">4.4</span> Validate a Game </h3>
+				<h3 class="subsection">4.4 Validate a Game </h3>
 
 				<h4 class="subsection3">Description</h4>
 				<p>
@@ -746,7 +733,7 @@
 				</ul>
 				</div>
 
-				<h3 class="subsection"><span class="numbering">4.5</span> Statistics and Leaderboard</h3>
+				<h3 class="subsection">4.5 Statistics and Leaderboard</h3>
 
 				<h4 class="subsection3">Description</h4>
 				<p>
@@ -771,14 +758,14 @@
 			</section>
 
 			<section id="nonfunctional-reqs">
-				<h2 class="section"><span class="numbering">5</span> Other Non-Functional Requirements</h2>
-				<h3 class="subsection"><span class="numbering">5.1</span> Performance Requirements</h3>
+				<h2 class="section">5 Other Non-Functional Requirements</h2>
+				<h3 class="subsection">5.1 Performance Requirements</h3>
 
 				<p>
 					The front-end pages for Pong Tracker must be loaded quickly and seamlessly with little time between transitions to other pages, and the game interface's dialog boxes should take virtually no time to load. An initial user volume consisting of post-secondary students in Ontario is expected and as such the software must be built to handle this workload.
 				</p>
 
-				<h3 class="subsection"><span class="numbering">5.2</span> Security Requirements</h3>
+				<h3 class="subsection">5.2 Security Requirements</h3>
 
 				<p>
 					For security, there are three requirements:
@@ -804,15 +791,15 @@
 				</ul>
 				</div>
 
-				<h3 class="subsection"><span class="numbering">5.3</span> Software Quality Attributes</h3>
+				<h3 class="subsection">5.3 Software Quality Attributes</h3>
 
-				<h3 class="subsection2"><span class="numbering">5.3.1</span> Maintainability</h3>
+				<h3 class="subsection2">5.3.1 Maintainability</h3>
 
 				<p>
 					The client expects to be able to make changes to the website in the future therefore the website must be easy to maintain and well-documented.
 				</p>
 
-				<h3 class="subsection2"><span class="numbering">5.3.2</span> Scalability</h3>
+				<h3 class="subsection2">5.3.2 Scalability</h3>
 
 				<p>
 					The website must have the potential to be expanded to handle larger amounts of users should it become more popular.
@@ -823,8 +810,8 @@
 			</section>
 
 			<section id="project-plan">
-				<h2 class="section"><span class="numbering">6</span> Elements of Project Plan</h2>
-				<h3 class="subsection"><span class="numbering">6.1</span> Control Plan</h3>
+				<h2 class="section">6 Elements of Project Plan</h2>
+				<h3 class="subsection">6.1 Control Plan</h3>
 
 				<h4 class="subsection3">6.1.1 Platforms</h4>
 				<p>
@@ -962,7 +949,7 @@
 						<td width="80%">
 							Standard Cup for Beer Pong
 							<br><br>
-							<img src="redsolocup.jpg" alt="Red Solo Cup" width="25%" height="25%">
+							<img src="redsolocup.jpg" alt="Red Solo Cup" width="25%">
 						</td>
 					</tr>
 					
