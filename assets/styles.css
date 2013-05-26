@@ -56,9 +56,7 @@ section {
 }
 
 .def {
-	display: inline-block;
 	padding-top: 8px;
-	width: 1.2in;
 	font-weight: bold;
 }
 
@@ -83,4 +81,8 @@ section {
 
 .menu-table {
 	width: 100%;
+}
+
+.back-top {
+	text-align: right;
 }
