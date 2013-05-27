@@ -613,6 +613,8 @@
 					
 				<a href="#top">Back to Top</a>
 			</section>
+			
+			
 
 			<section id="sysfeatures">
 				<h2 class="section"><span class="numbering">4</span> System Features</h2>
@@ -633,7 +635,7 @@
 				<div class="indent">
 				<ul>
 					<li>
-						<span class="req">REQ-1</span> Only one user is in a session at one time
+						<span class="req">REQ-1</span> Only one user is in a <a href="#appendix">session</a> at one time
 					</li>
 				</ul>
 				</div>
@@ -647,7 +649,7 @@
 
 				<h4 class="subsection3">Stimulus/Response Sequence</h4>
 				<p>
-				A new game is created by a user. A game consists of four players. When a new game is created, the user who created the game, selects and adds other players to the game, up to a maximum of 3. A user may add a guest as a player. Note that the guest does not have their statistics recorded, nor can they interact with the game user interface.  When three players are selected, the game starts, and the user who created the game sees the game interface.
+				A new game is created by a user. A game consists of four players. When a new game is created, the user who created the game, selects and adds other players to the game, up to a maximum of 3. A user may add a guest as a player. A guest can not interact with the game user interface, however, their statistics are kept after the game.  When three players are selected, the game starts, and the user who created the game sees the game interface.
 				<p>
 				<h4 class="subsection3">Functional Requirements</h4>
 				<div class="indent">
@@ -667,11 +669,11 @@
 				</ul>
 				</div>
 
-				<h3 class="subsection"><span class="numbering">4.3</span> Play a Game </h3>
+				<h3 class="subsection"><span class="numbering">4.3</span> Score a Game </h3>
 
 				<h4 class="subsection3">Description</h4>
 				<p>
-				During a game, a user interacts with the game user interface. Actions in the physical game are recorded in the game user interface by selecting a player, a cup, and the applicable action. This is required for advancement of the game.
+				During a game, a user interacts with the game user interface. Actions in the physical game are recorded in the game user interface by selecting a cup, an action, and the apllicable player. This is required for advancement of the game.
 				</p>
 				<h4 class="subsection3">Stimulus/Response Sequence</h4>
 				<p>
@@ -685,9 +687,6 @@
 					</li>
 					<li>
 						<span class="req">REQ-2</span> Only one action per cup can be selected.
-					</li>
-					<li>
-						<span class="req">REQ-3</span> Only one player can be associated with an action.
 					</li>
 				</ul>
 				</div>
@@ -732,7 +731,6 @@
 					</li>
 				</ul>
 				</div>
-
 
 				<a href="#top">Back to Top</a>
 			</section>
@@ -877,7 +875,9 @@
 					<span class="def">Re-rack</span> A request to shuffle the orientation of the remaining cups on the opposing side.
 					<br/>
 					<span class="def">Redemption</span> A chance for the losing team to come back.
-					<br>
+					<br/>
+					<span class="def">Session</span> The period from which the user logs in, to when the user either logs out, or closes the internet browser.
+					<br/>
 					<span class="def">Shooting team</span> The team who is currently in possession of the ping pong balls.
 					<br/>
 					<span class="def" id="cup">Solo cup</span>
@@ -887,13 +887,15 @@
 								Standard Cup for Beer Pong
 							</figcaption>
 					</figure>
-					<br>
+					<br/>
 					<span class="def">Trick shots</span> Any shot containing either multi-directional trajectory OR non-standard origination.
 					<br/>
 					<span class="def">User</span> A player that is registered with the website.
 					<br/>
 				</div>
+				<br>
 				<a href="#top">Back to Top</a>
+				<br><br>
 			</section>
 
 		</div>
