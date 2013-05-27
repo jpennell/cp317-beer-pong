@@ -635,7 +635,7 @@
 				<div class="indent">
 				<ul>
 					<li>
-						<span class="req">REQ-1</span> Only one user is in a <a href="#appendix">session</a> at one time
+						<span class="req">REQ-1</span> Only one user is in a <a href="#appendix">session</a> at one time.
 					</li>
 				</ul>
 				</div>
@@ -669,7 +669,7 @@
 				</ul>
 				</div>
 
-				<h3 class="subsection"><span class="numbering">4.3</span> Score a Game </h3>
+				<h3 class="subsection" id="score-game"><span class="numbering">4.3</span> Score a Game </h3>
 
 				<h4 class="subsection3">Description</h4>
 				<p>
@@ -699,13 +699,13 @@
 				</p>
 				<h4 class="subsection3">Stimulus/Response Sequence</h4>
 				<p>
-				At the end of a game, one user from the opposing team must confirm results of the game. Once the game is confirmed, it is considered completely finished, and statistics are calculated and recorded. A team/user may deny validity in which case the game is not factored into statistics.
+				At the end of a game, one user from the team that does not score the game (as outlined in <a href="#score-game">4.3 Score a Game</a>), must confirm results of the game. Once the game is confirmed, it is considered completely finished, and statistics are calculated and recorded. A team/user may deny validity in which case the game is not factored into statistics.
 				</p>
 				<h4 class="subsection3">Functional Requirements</h4>
 				<div class="indent">
 				<ul>
 					<li>
-						<span class="req">REQ-1</span> One user from the opposing team must confirm validity for a game to be included in the statistics.
+						<span class="req">REQ-1</span> One user from the team that does not score the game must confirm validity for a game to be included in the statistics.
 					</li>
 					<li>
 						<span class="req">REQ-2</span> A team/user can deny the validity of a game.
@@ -717,11 +717,11 @@
 
 				<h4 class="subsection3">Description</h4>
 				<p>
-				Statistics are viewable throughout the website. Statistics are calculated by the server  and are stored in a database. Statistics are recorded for users only. The leaderboard is displayed on the main page of the website and is viewable to users. A limited leaderboard consisting of the top ten players is viewable to guests. Personal and other user statistics are viewable by users only. Statistics are searchable by user.
+				Statistics are viewable throughout the website. Statistics are calculated by the server and are stored in a database. The leaderboard is displayed on the main page of the website and is viewable to users. A limited leaderboard consisting of the top ten players is viewable to guests. Personal and other user statistics are viewable by users only. Statistics are searchable by user.
 				</p>
 				<h4 class="subsection3">Stimulus/Response Sequence</h4>
 				<p>
-				At the end of a game, the Pong Tracker calculates and records users&#39; statistics. Going to the user profile page displays the user&#39;s personal statistics. The user profile page has the  functionality to search for other users in order to view their statistics. Going to the main page displays a leaderboard.
+				At the end of a game, the Pong Tracker calculates and records users&#39; statistics. Going to the user profile page displays the user&#39;s personal statistics. The user profile page has the functionality to search for other users in order to view their statistics.
 				</p>
 				<h4 class="subsection3">Functional Requirements</h4>
 				<div class="indent">
