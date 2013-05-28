@@ -73,14 +73,6 @@ section {
 	font-weight: bold;
 }
 
-
-
-.table {
-	margin-left: 140px;
-}
-
-
-
 .def {
 	font-weight: bold;
 }
@@ -89,23 +81,9 @@ section {
 	padding-right: 50px;
 }
 
-.doc-by td{
-	padding-left: 50px;
-}
-
 .caption {
 	text-align: center;
 	font-style: italic;
-}
-
-.menu {
-	margin-left: 2%;
-	margin-right: 2%;
-	background-color:#F5F5F5;
-}
-
-.menu-table {
-	width: 100%;
 }
 
 .back-top {
