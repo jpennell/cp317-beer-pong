@@ -32,7 +32,7 @@
 			
 				<h2 class="section-title">1 Introduction</h2>
 					<p> 
-						This section outlines and describes what to expect from the Pong Tracker Requirements Document as well as introduces the Pong Tracker website.
+						This section outlines and describes what to expect from the Pong Tracker Software Requirements document as well as introduces the Pong Tracker website.
 					</p>
 				
 					<div class="subsection1">
@@ -61,27 +61,27 @@
 								</ul>
 							</p>
 							<p>
-								Keywords are printed in <a href="#appendix">blue underline</a>, and are explained in <a href="#appendix">Appendix A</a>.
+								Keywords are printed in <a href="#appendix"><b>bold, blue underline</b></a>, and are explained in <a href="#appendix">Appendix A</a>.
 								<ul>
-									<li>Ex. <a href="#appendix">redemption</a></li>
+									<li>Ex. <a href="#appendix"><b>redemption</b></a></li>
 								</ul>
 							</p>
 
 						<h3 class="subsection1-title">1.4 Audience</h3>
 							<p>
-								The targeted audience for this product is beer pong players. Players must have access to the internet, and must attend an Ontario, post-secondary institution. Each team consists of at least one <i>user</i>. A <a href="#user_desc"><i>user</i></a> is registered with Pong Tracker. A <a href="#guest_desc"><i>guest</i><a/> is allowed to participate in a game. A <i>guest</i> is not registered with Pong Tracker.
+								The targeted audience for this product is Beer Pong players. Players must have access to the internet, and must attend an Ontario, post-secondary institution. Each team consists of at least one <i>user</i>. A <a href="#user_desc"><i><b>user</b></i></a> is registered with Pong Tracker. A <a href="#guest_desc"><i><b>guest</b></i><a/> is allowed to participate in a game. A <i>guest</i> is not registered with Pong Tracker.
 							</p>
 
 						<h3 class="subsection1-title">1.5 Product Scope</h3>
 							<p>
-								Pong Tracker is a website that provides users the chance to record and view statistics of beer pong games played by themselves and Pong Tracker users. The website allows a <i>user</i> to enter every detail of the game they are playing in real time. The scope of this project includes both a desktop, web-accessible browser, as well as a mobile oriented website. The scope does not include native applications for any mobile device.
+								Pong Tracker is a website that provides <i>users</i> the chance to record and view statistics of Beer Pong games played by themselves and other Pong Tracker <i>users</i>. The website allows a <i>user</i> to enter every detail of the game they are playing in real time. The scope of this project includes both a desktop, as well as a mobile oriented website. The scope does not include native applications for any mobile device.
 							</p>
 
 						<div class="subsection2">
 							
 							<h3 class="subsection2-title">1.5.1 Value to Society</h3>
 								<p>
-									Pong Tracker allows users to come together to record and share their Beer Pong statistics. Pong Tracker feeds the users&#39; need to stay connected, meet new people, and creates an opportunity to share their interest of the game beer pong.
+									Pong Tracker allows <i>users</i> to come together to record and share their Beer Pong statistics. Pong Tracker feeds the <i>users&#39;</i> need to stay connected, meet new people, and creates an opportunity to share their interest of the game Beer Pong.
 								</p>
 
 							<h3 class="subsection2-title">1.5.2 Value to Individuals</h3>
@@ -100,12 +100,12 @@
 						
 							<h3 class="subsection2-title">1.6.1 Advertising</h3>
 								<p>
-									In the future, the client will be able to advertise on the Pong Tracker website.
+									The client will include advertising space on Pong Tracker.
 								</p>
 								
 							<h3 class="subsection2-title">1.6.2 Multi-server</h3>
 								<p>
-									Future expansion in target audience will require Pong Tracker to move to a multi-server.
+									Future expansion of the target audience will require Pong Tracker to move to a multi-server architecture.
 								</p>
 								
 						</div>
@@ -174,34 +174,25 @@
 
 						<h3 class="subsection1-title">1.9 Overview</h3>
 							<p>
-								The Pong Tracker Requirements Document summarizes the following:
+								The Pong Tracker Requirements document summarizes the following:
 							</p>
 							
 							<div class="indent10">
 								<ul>
 									<li>
-										The audience, thought process being applied and some basic terminology to be used throughout the document.
-									</li>
-									<li>
 										The product description.
 									</li>
 									<li>
-										How a <i>user</i> finds and interacts with the service and any related constraints add-on software has.
-									</li>
-									<li>
-										The underlying relation between user features and their connection to the database for other functionality.
+										<i>User</i> interactions with Pong Tracker and any related constraints.
 									</li>
 									<li>
 										The planned performance and security of the software to be integrated in the development of this project. 
 									</li>
 									<li>
-										The characteristics with which the software possesses.
+										The characteristics the software possesses.
 									</li>
 									<li>
-										How the project is monitored to ensure progress is being made.
-									</li>
-									<li>
-										Other requirements of this project regarding future expansion of the service.
+										Project management techniques.
 									</li>
 								</ul>
 							</div>
@@ -218,51 +209,47 @@
 			<section id="description">
 				<h2 class="section-title">2 Product Description</h2>
 				
+					<p>
+						This section describes the specifics of Pong Tracker.
+					</p>
+				
 				<div class="subsection1">
 				
 					<h3 class="subsection1-title">2.1 Product Perspective</h3>
 					
 					<div class="subsection2">
-					
-						<h3 class="subsection2-title">2.1.1 Product Overview</h3>
-							<p>
-								Pong Tracker is a web-based utility for tracking performance statistics of a given Beer Pong <i>user</i>. It collects a number of different metrics via its intuitive real-time collection interface. Using this data, a leaderboard, as well as users statistics, is readily available for users to see.
-							</p>
 
-						<h3 class="subsection2-title">2.1.2 Pre-Game</h3>
+						<h3 class="subsection2-title">2.1.1 Game Requirements</h3>
 							<p>
 								Listed are the materials for a game of Beer Pong, as well as the way to set up a game.
 							</p>
 							
 							<div class="subsection3">
 							
-							<h4 class="subsection3-title">2.1.2.1 Materials Required</h4>
+							<h4 class="subsection3-title">2.1.1.1 Materials Required</h4>
 							
 								<div class="indent10">
 									<ul>
 										<li>1 table no less than 7 feet (2 m) long and no less than 2 feet (0.6 m) wide.</li>
-										<li>12 red <a href="#cup">Solo cups</a>.</li>
+										<li>12 red <a href="#cup"><b>Solo cups</b></a>.</li>
 										<li>2 ping pong balls.</li>
 										<li>Any beverage.</li>
 									</ul>
 									
 								</div>
 							
-							<h4 class="subsection3-title">2.1.2.2 Setting Up the Game</h4>
+							<h4 class="subsection3-title">2.1.1.2 Setting Up the Game</h4>
 							
 								<div class="indent10">
 									<ul>
-										<li>
-											Twelve cups are arranged as shown below.
-										</li>
-										<li>
-											Fill each cup a quarter of the way full. This may be altered depending on the beverage.
-										</li>
 										<li>
 											Choose teams. Each team consists of two players.
 										</li>
 										<li>
 											Each team sets up six red Solo cups, as in <a href="#dia2_1">Diagram 2.1</a>.
+										</li>
+										<li>
+											Fill each cup a quarter of the way full.
 										</li>
 										<li>
 											Players stand at the ends of the table, behind their team's cups.
@@ -281,7 +268,7 @@
 				
 							</div>
 				
-					<h3 class="subsection2-title">2.1.3 Beer Pong Rules</h3>
+					<h3 class="subsection2-title">2.1.2 Beer Pong Rules</h3>
 				
 						<p>
 							Listed are the rules for a game of Beer Pong, as assumed by Pong Tracker. Rules may be modified by the teams playing.
@@ -289,18 +276,18 @@
 				
 						<div class="subsection3">
 				
-							<h4 class="subsection3-title">2.1.3.1 Gameplay</h4>
+							<h4 class="subsection3-title">2.1.2.1 Gameplay</h4>
 						
 								<div class="indent10">
 									<ul>
 										<li>
-											To determine the first team to shoot, players participate in <a href="#appendix">eye-to-eye</a>. Eye-to-eye consists of a member from each team shooting simultaneously at the opposing team's cups while making full eye contact with the opposing shooter.
+											To determine the first team to shoot, players participate in <a href="#appendix"><b>eye-to-eye</b></a>. Eye-to-eye consists of a member from each team shooting simultaneously at the opposing team's cups while making full eye contact with the opposing shooter.
 											<ul>
 												<li>
 													One person from each team begins. After each failed attempt, the two team members swap places.
 												</li>
 												<li>
-													When a ball is successfully sunk, the scoring team is awarded the first shot. The cup that is sunk is <i>not</i> counted during eye-to-eye.
+													When a ball is successfully sunk, the scoring team is awarded the first shot. The cup that is sunk is not counted during eye-to-eye.
 												</li>
 												<li>
 													If both teams hit their  in a given turn, eye-to-eye resumes until only one team scores.
@@ -309,7 +296,7 @@
 										</li>
 
 										<li>
-											Teams take turns attempting to throw the ping pong ball into the cups of the opposing team. The team who is currently shooting is called the <a href="#appendix">shooting team</a>. The team who is being shot at is called the <a href="#appendix">defending team</a>. 
+											Teams take turns attempting to throw the ping pong ball into the cups of the opposing team. The team who is currently shooting is called the <a href="#appendix"><b>shooting team</b></a>. The team who is being shot at is called the <a href="#appendix"><b>defending team</b></a>. 
 										</li>
 										<li>
 											When a ball has been sunk in a cup, that cup is removed from the table by the defending team. The defending team must drink the contents of that cup in a timely fashion (see <a href="#end">Ending a Game</a>).
@@ -318,25 +305,33 @@
 											If both members of the shooting team sink any two of the defending team's cups in one turn, they shoot again.
 										</li>
 										<li>
-											If after a shot, the ball spins in the rim of the defending team's cup, the defending team can attempt to blow the ball out of the cup. If the ball is ejected and remains dry, no cup is removed.
+											After a shot, the ball spins in the rim of the defending team's cup, the defending team can attempt to blow the ball out of the cup. If the ball is ejected and remains dry, no cup is removed.
 										</li>
 										<li>
-											An <a href="#appendix">air ball</a> is a shot that does not hit the table nor any cup on the table.
+											An <a href="#appendix"><b>air ball</b></a> is a shot that does not hit the table, nor any cup on the table.
 											<ul>
 												<li>
-													If the first shooter air balls then the second shooter must forfeit their shot.
+													If the first shooter air balls, then the second shooter must forfeit their shot.
 												</li>
 												<li>
-													If the second shooter air balls then play resumes as though the turn ended normally.
+													If the second shooter air balls, then play resumes as though the turn ended normally.
 												</li>
 											</ul>
 										</li>
 										<li>
-											If the ball rolls or bounces back to the shooting team on the table (never once touching the ground), a member of the shooting team can attempt a <a href="#appendix">trick shot</a>. 
+											If the ball rolls or bounces back to the shooting team on the table (never once touching the ground), a member of the shooting team can attempt a <a href="#appendix"><b>trick shot</b></a>. 
 										</li>
 										<ul>
 											<li>
 												A trick shot is any shot containing either multi-directional trajectory or non-standard origination.
+												<ul>
+													<li>
+														Bouncing the ball off an adjacent wall.
+													</li>
+													<li>
+														Throwing the ball facing the opposite direction of the table.
+													</li>
+												</ul>
 											</li>
 											<li>
 												A trick shot does not follow the standard rules for shooting, such as air ball.
@@ -346,10 +341,10 @@
 											</li>
 										</ul>
 										<li>
-											Each team is entitled to one <a href="#appendix">re-rack</a> at any point during the game. A re-rack is a request to shuffle the orientation of the remaining cups of the opposing team.
+											Each team is entitled to one <a href="#appendix"><b>re-rack</b></a> at any point during the game. A re-rack is a request to shuffle the orientation of the remaining cups of the opposing team.
 										</li>
 										<li>
-											A <a href="#appendix">bounce shot</a> counts as two cups sunk. A bounce shot hits the table before entering a cup. The sunk cup and another chosen by the <a href="#appendix">scoring team</a> are removed.
+											A <a href="#appendix"><b>bounce shot</b></a> counts as two cups sunk. A bounce shot hits the table before entering a cup. The sunk cup and another chosen by the <a href="#appendix"><b>scoring team</b></a> are removed.
 											<ul>
 												<li>
 													The defending team can attempt to disrupt the ball after it has made contact with the table.
@@ -360,7 +355,7 @@
 											If two non-bounce shots hit the same cup, then the sunk cup, and another selected by the scoring team are removed.
 										</li>
 										<li>
-											A <a href="#appendix">party foul</a> is any infringement on the rules of the game. In particular:
+											A <a href="#appendix"><b>party foul</b></a> is any infringement on the rules of the game. In particular:
 										</li>
 										<ul>
 											<li>
@@ -373,14 +368,19 @@
 									</ul>
 								</div>
 
-							<h4 class="subsection3-title">2.1.3.2 Ending a Game</h4>
+							<h4 class="subsection3-title">2.1.2.2 Ending a Game</h4>
 						
 								<div class="indent10">
 									<ul>
-										<li>A game is over when a team's cups are all removed from the table.</li>
 										<li>
-											Before the game is complete, the team with no remaining cups is eligible for <a href="#appendix">redemption</a>.
+											A game is over when a team's cups are all removed from the table.
+										</li>
+										<li>
+											Before the game is complete, the team with no remaining cups is eligible for <a href="#appendix"><b>redemption</b></a>.
 											<ul>
+												<li>
+													If a team is sucessful, then the game resumes, with each team having three cups.
+												</li>
 												<li>
 													The objective of redemption is to sink the opposing team's remaining cups.
 												</li>
@@ -401,16 +401,11 @@
 														<li>
 															The remaining cup is sunk via a bounce shot.
 														</li>
+														<li>
+															If a cup in the hand of a player is sunk, the scoring team is automatically victorious.
+														</li>
 													</ul>
 												</ul>
-											</ul>
-										</li>
-										<li id="end">
-											If a cup in the hand of a player is sunk, the scoring team is automatically victorious.
-											<ul>
-												<li>
-													Losing team is not eligible for redemption.
-												</li>
 											</ul>
 										</li>
 									</ul>
@@ -418,19 +413,16 @@
 								
 						</div>
 
-					<h3 class="subsection2-title">2.1.4 Product Usage</h3>
+					<h3 class="subsection2-title">2.1.3 Product Usage</h3>
 					
 						<p>
-							A <i>user</i> can search other users and challenge them to a game. Only one <i>user</i>, from one team, is responsible for the operation of the interface. The interface offers a simulation of a beer pong game. The <i>user</i> selects the cup that was sunk, then the action, then the user who performed the action. Before the game is valid, a confirmation from one member of the team who wasn't tracking the game is required.
-						</p>
-						<p>
-							Pong Tracker can view their own statistics as well as other users'. A leaderboard is available to showcase the strongest users.
+							A <i>user</i> can search other <i>users</i> and challenge them to a game. Only one <i>user</i>, from one team, is responsible for the operation of the interface. The interface offers a simulation of a Beer Pong game. The <i>user</i> selects the cup that was sunk, then the action, followed by the <i>user</i> who performed the action. Before the game is valid, a confirmation from one member of the team who wasn't tracking the game is required. A leaderboard is available to showcase the strongest <i>users</i>.
 						</p>
 						
-					<h3 class="subsection2-title">2.1.5 Website Rules</h3>
+					<h3 class="subsection2-title">2.1.4 Website Rules</h3>
 					
 						<p>
-							The following are the website rules for Pong Tracker. Any non-compliance can result in a user ban.
+							The following are the website rules for Pong Tracker. Any non-compliance can result in a <i>user</i> ban.
 						</p>
 						
 						<div class="indent10">
@@ -476,10 +468,10 @@
 							<div class="indent10">
 								<ul>
 									<li>
-										<i>Administrator</i> - an individual who has special privileges within the website. An <i>administrator</i> can login, logout, add an institution, delete an institution, ban a user, and unban a user. <i>Administrator</i> and <i>user</i> accounts are completely separate.
+										<i>Administrator</i> - an individual who has special privileges within the website. An <i>administrator</i> can login, logout, add an institution, delete an institution, ban a <i>user</i>, and unban a <i>user</i>. <i>Administrator</i> and <i>user</i> accounts are completely separate.
 									</li>
 									<li>
-										<a id="user_desc"><i>User</i></a> - an individual who uses the website for active game play. A <i>user</i> can create, score or confirm a game, view the entire leaderboard, view rules, login, logout, delete their account, view their personal statistics, and view other players' statistics.
+										<a id="user_desc"><i>User</i></a> - an individual who uses the website for active game play. A <i>user</i> can create, score or confirm a game, view the entire leaderboard, view rules, login, logout, delete their account, view their personal statistics, and view other <i>users'</i> statistics.
 									</li>
 									<li>
 										<a id="guest_desc"><i>Guest</i></a> - an individual who is not using the website for active game play. A <i>guest</i> can view a limited version of the leaderboard, register and view the rules. Once a <i>guest</i> has registered, they become a <i>user</i>.
@@ -511,7 +503,7 @@
 										<b>Ban User</b> - an <i>administrator</i> can ban a <i>user</i> who has not conformed to Pong Tracker's rules.
 									</li>
 									<li>
-										<b>Unban User</b> - an <i>administrator</i> can lift a ban on a <i>user</i> who has not confirmed to the Pong Tracker's rules.
+										<b>Unban User</b> - an <i>administrator</i> can lift a ban on a <i>user</i> who has not conformed to Pong Tracker's rules.
 									</li>
 									<li>
 										<b>User Login</b> -  a separate page from where an <i>administrator</i> logs in. A <i>user</i> must provide their username and password to authenticate their identity.
@@ -520,13 +512,13 @@
 										<b>User Logout</b> - a <i>user</i> selects the "Logout" option to have their session terminated.
 									</li>
 									<li>
-										<b>Create Game</b> - a <i>user</i> can start tracking a beer pong game.
+										<b>Create Game</b> - a <i>user</i> can start tracking a Beer Pong game.
 									</li>
 									<li>
 										<b>Score Game</b> - following Create Game, a <i>user</i> interacts with the interface to record the results of the game as it is being played.
 									</li>
 									<li>
-										<b>End Game</b> - the <i>user</i> scoring a beer pong game can end it.
+										<b>End Game</b> - the <i>user</i> scoring a Beer Pong game can end it.
 									</li>
 									<li>
 										<b>Confirm Game</b> - once a game has been completed, a <i>user</i> from the team who was not tracking must confirm the results of the game.
@@ -534,49 +526,43 @@
 									<li>
 										<b>View Personal Statistics</b> - a <i>user</i> can view their personal statistics at any time given they are logged in. The statistics shown here include only games that have been confirmed.
 									<li>
-										<b>View Other Users' Statistics</b> - a <i>user</i> can view other players' personal statistics at any time given they are logged in. The statistics shown here include only games that have been confirmed.
+										<b>View Other Users' Statistics</b> - a <i>user</i> can view other <i>users'</i> personal statistics at any time given they are logged in. The statistics shown here include only games that have been confirmed.
 									</li>
 									<li>
 										<b>Delete Account</b> - a <i>user</i> can delete their account at any time. The <i>user</i> must provide their password to delete their account.
 									</li>
 									<li>
-										<b>View Rules</b> - a <i>guest</i> or user can view the rules of beer pong, and the website's rules at any given time.
+										<b>View Rules</b> - a <i>guest</i> or <i>user</i> can view the rules of Beer Pong, and Pong Tracker's rules at any given time.
 									</li>
 									<li>
-										<b>View Full Leaderboard</b> - a <i>user</i> can view the entire leaderboard at any time given they are logged in. The statistics shown here include only games that have been confirmed by players.
+										<b>View Full Leaderboard</b> - a <i>user</i> can view the entire leaderboard at any time given they are logged in. The statistics shown here include only games that have been confirmed.
 									</li>
 									<li>
 										<b>Register</b> - a <i>guest</i> must provide personal information in order to facilitate the login functionality.
 									</li>
 									<li>
-										<b>View Limited Leaderboard</b> - a <i>guest</i> can see the top ten players on the website. For full access to the leaderboard, a <i>guest</i> must become a <i>user</i>.
+										<b>View Limited Leaderboard</b> - a <i>guest</i> can see the top ten <i>users</i> on the website. For full access to the leaderboard, a <i>guest</i> must become a <i>user</i>.
 									</li>
 								</ul>
 							</div>
 
 					</div>
 
-					<h3 class="subsection1-title">2.4 Operating Environment</h3>
+					<h3 class="subsection1-title">2.3 Operating Environment</h3>
 
 						<p>
 							Pong Tracker is be required to run on a Unix server (<a href="http://hopper.wlu.ca">Hopper</a>).
 						</p>
 
-					<h3 class="subsection1-title">2.5 Technical Constraints</h3>
+					<h3 class="subsection1-title">2.4 Technical Constraints</h3>
 
 						<div class="indent10">
 							<ul>
 								<li>
-									Both desktop and mobile friendly views.
+									Pong Tracker is designed 
 								</li>
 								<li>
 									Relational database architecture
-								</li>
-								<li>
-									Be able to support multiple users writing to the database simultaneously.
-								</li>
-								<li>
-									Designed to be implemented on a Unix server with various accompanying plugins (such as SQL, SSL etc.) also functional.
 								</li>
 							</ul>
 						</div>
@@ -649,7 +635,7 @@
 						<div class="indent10">
 						<ul>
 							<li>
-								The library allows developers to specify what inputs go into the algorithm. The algorithm then calculates the user&#39;s skill level in comparison to other users.
+								The library allows developers to specify what inputs go into the algorithm. The algorithm then calculates the <i>user&#39;s</i> skill level in comparison to other <i>users</i>.
 							</li>
 							<li>
 								Documentation is available at <a href="https://github.com/saulabs/trueskill/blob/master/README.md">GitHub TrueSkill Readme</a>, <a href="http://trueskill.org/">TrueSkill Website,</a> and <a href="http://en.wikipedia.org/wiki/Elo_rating_system">Elo Rating System
@@ -747,7 +733,7 @@
 						<h4 class="subsection2-title">Description</h4>
 						
 							<p>
-							A <i>guest</i> registers in order to play games and record statistics. A <i>guest</i> has the option to create an account directly on the website, or to register using a third party login. A <i>guest</i> becomes a <i>user</i> once they have registered. The user profile page displays personal information and statistics.
+								A <i>guest</i> registers in order to play games and record statistics. A <i>guest</i> has the option to create an account directly on the website, or to register using a third party login. A <i>guest</i> becomes a <i>user</i> once they have registered. The <i>users</i> profile page displays personal information and statistics.
 							</p>
 
 						<h4 class="subsection2-title">Stimulus/Response Sequence</h4>
@@ -761,7 +747,7 @@
 							<div class="indent10">
 							<ul>
 								<li>
-									<span class="req">REQ-1</span> Only one <i>user</i> is in a <a href="#appendix">session</a> at one time.
+									<span class="req">REQ-1</span> Only one <i>user</i> is in a <a href="#appendix"><b>session</b></a> at one time.
 								</li>
 							</ul>
 							</div>
@@ -781,7 +767,7 @@
 						<h4 class="subsection2-title">Stimulus/Response Sequence</h4>
 						
 							<p>
-							A new game is created by a <i>user</i>. A game consists of four players. When a new game is created, the <i>user</i> who created the game, selects and adds other players to the game, up to a maximum of 3. A <i>user</i> may add a <i>guest</i> as a player. A <i>guest</i> can not interact with the game user interface, however, their statistics are kept after the game.  When three players are selected, the game starts, and the <i>user</i> who created the game sees the game interface.
+							A new game is created by a <i>user</i>. A game consists of four players. When a new game is created, the <i>user</i> who created the game, selects and adds other players to the game, up to a maximum of 3. A <i>user</i> may add a <i>guest</i> as a player. A <i>guest</i> cannot interact with the game user interface, however, their statistics are kept up to 2 days.  When three players are selected, the game starts, and the <i>user</i> who created the game sees the game interface.
 							<p>
 							
 						<h4 class="subsection2-title">Functional Requirements</h4>
@@ -812,7 +798,7 @@
 						<h4 class="subsection2-title">Description</h4>
 						
 							<p>
-							During a game, a <i>user</i> interacts with the game user interface. Actions in the physical game are recorded in the game user interface by selecting a cup, an action, and the apllicable player. This is required for advancement of the game.
+							During a game, a <i>user</i> interacts with the game user interface. Actions in the physical game are recorded in the game user interface by selecting a cup, an action, and the applicable player. This is required for advancement of the game.
 							</p>
 							
 						<h4 class="subsection2-title">Stimulus/Response Sequence</h4>
@@ -849,7 +835,7 @@
 						<h4 class="subsection2-title">Stimulus/Response Sequence</h4>
 						
 							<p>
-							At the end of a game, one <i>user</i> from the team that does not score the game (as outlined in <a href="#score-game">4.3 Score a Game</a>), must confirm results of the game. Once the game is confirmed, it is considered completely finished, and statistics are calculated and recorded. A team/<i>user</i> may deny validity in which case the game is not factored into statistics.
+							At the end of a game, one <i>user</i> from the team that does not score the game (as outlined in <a href="#score-game">4.3 Score a Game</a>), must confirm results of the game. Once the game is confirmed, it is considered completely finished, and statistics are calculated and recorded. A <i>user</i> may deny validity in which case the game is not factored into statistics.
 							</p>
 							
 						<h4 class="subsection2-title">Functional Requirements</h4>
@@ -860,7 +846,7 @@
 									<span class="req">REQ-1</span> One <i>user</i> from the team that does not score the game must confirm validity for a game to be included in the statistics.
 								</li>
 								<li>
-									<span class="req">REQ-2</span> A team/<i>user</i> can deny the validity of a game.
+									<span class="req">REQ-2</span> A <i>user</i> can deny the validity of a game.
 								</li>
 							</ul>
 							</div>
@@ -874,13 +860,13 @@
 						<h4 class="subsection2-title">Description</h4>
 						
 							<p>
-							Statistics are viewable throughout the website. Statistics are calculated by the server and are stored in a database. The leaderboard is displayed on the main page of the website and is viewable to users. A limited leaderboard consisting of the top ten players is viewable to guests. Personal and other user statistics are viewable by users only. Statistics are searchable by user.
+							Statistics are viewable throughout the website. Statistics are calculated by the server and are stored in a database. The leaderboard is displayed on the main page of the website and is viewable to <i>users</i>. A limited leaderboard consisting of the top ten <i>users</i> is viewable to <i>guests</i>. Personal and other <i>user</i> statistics are viewable by <i>users</i> only. Statistics are searchable by <i>user</i>.
 							</p>
 							
 						<h4 class="subsection2-title">Stimulus/Response Sequence</h4>
 						
 							<p>
-							At the end of a game, the Pong Tracker calculates and records users&#39; statistics. Going to the user profile page displays the user&#39;s personal statistics. The user profile page has the functionality to search for other users in order to view their statistics.
+							At the end of a game, Pong Tracker calculates and records <i>users&#39;</i> statistics. Going to the <i>user</i> profile page displays the <i>user&#39;s</i> personal statistics. The <i>user</i> profile page has the functionality to search for other <i>users</i> in order to view their statistics.
 							</p>
 							
 						<h4 class="subsection2-title">Functional Requirements</h4>
@@ -888,7 +874,7 @@
 							<div class="indent10">
 							<ul>
 								<li>
-									<span class="req">REQ-1</span> A game must finish completely and be confirmed by all necessary players before statistics are calculated and committed to the database.
+									<span class="req">REQ-1</span> A game must finish completely and be confirmed before statistics are calculated and committed to the database.
 								</li>
 							</ul>
 							</div>
@@ -923,17 +909,17 @@
 							<li>
 								<i>User</i> Login Page
 								<br/>
-								This is the main login page for a <i>user</i> to enter Pong Tracker in order to access their personal statistics and engage in game play. These users do not have access to any website changes.
+								This is the main login page for a <i>user</i> to enter Pong Tracker in order to access their personal statistics and engage in game play. These <i>users</i> do not have access to any website changes.
 							</li>
 							<li>
 								<i>Administrator</i> Login Page
 								<br/>
-								A second login page exists that is invisible to users, where an <i>administrator</i> enter Pong Tracker to make changes to sensitive information.
+								A second login page exists that is invisible to <i>users</i>, where an <i>administrator</i> enter Pong Tracker to make changes to sensitive information.
 							</li>
 							<li>
 								Password Security
 								<br/>
-								An encryption method must be in place to protect the passwords of users and administrators.
+								An encryption method must be in place to protect the passwords of <i>users</i> and <i>administrators</i>.
 							</li>
 						</ul>
 						</div>
@@ -1019,29 +1005,6 @@
 							</ul>
 							</div>
 
-						<h4 class="subsection2-title">6.1.3 Scheduling Plan </h4>
-
-							<p>
-								Henry has been appointed to set final deadlines for the parts listed above.
-							</p>
-							
-							<div class="indent10">
-							<ul>
-								<li>
-									Requirements Document is due May 21, 2013.
-								</li>
-								<li>
-									Analysis Document is due June 4, 2013.
-								</li>
-								<li>
-									Design Document is due June 27, 2013.
-								</li>
-								<li>
-									Final product implementation and documentation is due August 2, 2013.
-								</li>
-							</ul>
-							</div>
-
 					</div>
 							
 				</div>
@@ -1061,8 +1024,8 @@
 					</tr>
 					
 					<tr  height="30px">
-						<td width="20%" class="def">Admin</td>
-						<td width="80%">An individual that is in charge of the Pong Tracker website.</td>
+						<td width="20%" class="def"><i>Administrator</i></td>
+						<td width="80%">An individual that is in charge of Pong Tracker.</td>
 					</tr>
 					
 					<tr  height="30px">
@@ -1086,7 +1049,7 @@
 					</tr>
 					
 					<tr  height="30px">
-						<td width="20%" class="def"><i>guest</i></td>
+						<td width="20%" class="def"><i>Guest</i></td>
 						<td width="80%">A player that is involved in a game, but is not registered with the website. </td>
 					</tr>
 					
@@ -1130,7 +1093,7 @@
 					</tr>
 					
 					<tr  height="30px">
-						<td width="20%" class="def"><i>user</i></td>
+						<td width="20%" class="def"><i>User</i></td>
 						<td width="80%">A player that is registered with the website. </td>
 					</tr>
 
