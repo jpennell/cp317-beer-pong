@@ -41,7 +41,7 @@ section {
 
 .table-head {
 	height: 50px;
-	background-color: #E5E5E5;
+	background-color: #E0E0E0;
 }
 
 .table-body {
@@ -92,10 +92,15 @@ td
 }
 
 .odd {
-	background-color: #F4F4F4;
+	background-color: #EEEEEE;
 }
 
 .major-rev {
-	font-size: 16px;
+	font-size: 17px;
+	font-weight: bold;
+}
+
+.final-rev {
+	font-size: 22px;
 	font-weight: bold;
 }
