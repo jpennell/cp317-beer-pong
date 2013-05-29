@@ -90,3 +90,11 @@ td
 .fixed {
 	background-color: #75FF47;
 }
+
+.odd {
+	background-color: #F4F4F4;
+}
+
+.major-rev {
+	font-weight: bold;
+}
