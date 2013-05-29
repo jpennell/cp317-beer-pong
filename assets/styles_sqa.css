@@ -18,7 +18,13 @@
 }
 
 section {
-	margin-top: 60px;
+	margin-top: 30px;
+}
+
+.back-top {
+	margin-top: 25px;
+	margin-bottom: 5px;
+	text-align: right;
 }
 
 .section-title {
