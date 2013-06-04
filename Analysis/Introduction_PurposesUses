@@ -1,0 +1,28 @@
+Introduction
+
+Pong Tracker provides users with a centralized website for recording and viewing statistics of Beer Pong games, played
+by themselves and other Pong Tracker users. Details of each game are entered into the website as users are playing in 
+real time. 
+
+This analysis document details how the Pong Tracker product will work. It provides models on long-term information, 
+user interfaces, and the associations between them.
+
+
+
+Purposes and Uses
+
+The purpose of Pong Tracker is to provide a service to users that is simple, intuitive and attractive, so that users 
+can gain from competition, without the complexity of managing the system themselves.
+
+Pong Tracker provides:
+●  Users
+  ○	Ability to create and score games
+  ○	Ability to track personal statistics
+  ○	Ability to view other users statistics
+  ○	Ability to view a leaderboard
+●	Guests
+  ○	Ability to participate in a game
+  ○	Ability to view a leaderboard
+●	Administrators
+  ○	Ability to manage Institutions
+  ○	Ability to ban and unban users
