@@ -1,3 +1,3 @@
 Things that need to be changed in the Requirements stemming from Analysis:
 
-->Use case diagram for guests
+->Use case diagram in total
