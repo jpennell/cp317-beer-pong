@@ -3,7 +3,7 @@
 Game - represents a game simulation in Pong Tracker. A game has two teams.
 Cup - represents a cup used in a game on a team. Each team has six cups.
 Team - represents a team participating in a game. A team has one to two users, and zero to one guests.
-Stat - encompasses the statistics stored for a user or guest. Each user has two statistics: one for their current game's scores, and one for their overall scores.
+Stats - encompasses the statistics stored for a user or guest. Each user has two statistics: one for their current game's scores, and one for their overall scores.
 Institution - represents the institution a user is enrolled in.
 Administrator - represents the actor named Administrator who has special permissions within Pong Tracker.
 User - represents the actor named User who engages in active game play.
@@ -11,30 +11,31 @@ Guest - represents the actor named Guest who cannot engage in active game play.
 
 3.2 Boundary Objects
 
-Registration View - where a Guest registers to become a user.
-Create Game View - where a User creates a new game for simulation.
-Score Game View - where a User scores a game by selecting cups.
-End Game View - where a User selects the winning team.	
+Registration View - where a Guest registers to become a User
+Create Game View - where a User creates a new Game for simulation.
+Score Game View - where a User scores a game by selecting Cups.
+End Game View - where a User selects the winning Team.
+	Select Winner View - where a User selects the winning Team
+	Attribute Cups View - where a User selects any remaining Cups and assigns them to a User
 Confirm Game View - where a User approves or denies the validity of the game.
 Rules View - where a User can read the rules of Pong Tracker
-Leaderboard View - where a User can see the top ranke players.
+Leaderboard View - where a User can see the top ranked players.
 Statistics View - where a User sees their own or other users' statistics.
-	Select User View - where a User can select another to view their statistics
+	Select User View - where a User can select another User to view their statistics
 Login View - where a User logs into Pong Tracker
 Logout View - where a User logs out of Pong Tracker
 Delete Account View - where a User may delete their account from Pong Tracker
 
 3.3 Control Objects
 
-End Game Controller - coordinates the actions involved with ending 
-	Attribute Cups Controller - coordinates 
+End Game Controller - coordinates the actions involved with ending a Game.
 Leaderboard Controller - retrieves User data to display on Leaderboard View.
-Statistics Controller - retrieves User data to display on Statistics View.
-Search User Controller - retrieves User data to display on Select User View. Enables the Search Users capability.
+Statistics Controller - coordinates retrieving and recording Stats about a User.
+Search User Controller - retrieves User data to display on Select User View. .
 Login Controller - retrieves User data to verify identity.
 Logout Controller - terminates User session on Pong Tracker.
-Delete Account Controller - coordinates deleting a User account
-Create Game Controller - coordinates creating a Game
-Score Game Controller - coordinates updating a Game
-Confirm Game Controller - coordinates confirming a Game
-Register User Controller - coordinates registering a User.
+Delete Account Controller - coordinates deleting a User.
+Create Game Controller - coordinates creating a Game.
+Score Game Controller - coordinates updating a Game.
+Confirm Game Controller - coordinates confirming validity of a Game.
+Register User Controller - coordinates adding a User.
