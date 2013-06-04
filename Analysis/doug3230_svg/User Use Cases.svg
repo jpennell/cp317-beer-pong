@@ -68,28 +68,6 @@
     ><g fill="white" stroke="white"
     ><rect x="0" width="816" height="523" y="-5" clip-path="url(#clipPath1)" stroke="none"
     /></g
-    ><g fill="rgb(221,221,221)" font-style="italic" text-rendering="geometricPrecision" font-size="24" transform="translate(122.7388,61.5244) rotate(-20.1176) translate(-154.7388,-70.5244)" stroke="rgb(221,221,221)"
-    ><text x="-766" xml:space="preserve" y="70" clip-path="url(#clipPath2)" stroke="none"
-      >Academic Version for Teaching Only</text
-      ><text x="-766" xml:space="preserve" y="98" clip-path="url(#clipPath2)" stroke="none"
-      >Commercial Development is strictly Prohibited</text
-      ><text x="154" xml:space="preserve" y="70" clip-path="url(#clipPath2)" stroke="none"
-      >Academic Version for Teaching Only</text
-      ><text x="154" xml:space="preserve" y="98" clip-path="url(#clipPath2)" stroke="none"
-      >Commercial Development is strictly Prohibited</text
-      ><text x="-459" xml:space="preserve" y="407" clip-path="url(#clipPath2)" stroke="none"
-      >Academic Version for Teaching Only</text
-      ><text x="-459" xml:space="preserve" y="435" clip-path="url(#clipPath2)" stroke="none"
-      >Commercial Development is strictly Prohibited</text
-      ><text x="462" xml:space="preserve" y="407" clip-path="url(#clipPath2)" stroke="none"
-      >Academic Version for Teaching Only</text
-      ><text x="462" xml:space="preserve" y="435" clip-path="url(#clipPath2)" stroke="none"
-      >Commercial Development is strictly Prohibited</text
-      ><text x="-151" xml:space="preserve" y="744" clip-path="url(#clipPath2)" stroke="none"
-      >Academic Version for Teaching Only</text
-      ><text x="-151" xml:space="preserve" y="772" clip-path="url(#clipPath2)" stroke="none"
-      >Commercial Development is strictly Prohibited</text
-    ></g
     ><g text-rendering="geometricPrecision" font-size="11" font-weight="bold" transform="translate(-32,-9)"
     ><text x="516.5" space="preserve" y="307.1379" clip-path="url(#clipPath3)" stroke="none"
       >Create Game Controller</text
