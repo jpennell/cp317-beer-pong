@@ -1,3 +1,4 @@
 Things that need to be changed in the Requirements stemming from Analysis:
 
 ->Use case diagram in total
+->add death cup definition
