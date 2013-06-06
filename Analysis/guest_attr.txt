@@ -1,0 +1,13 @@
+Registration View:
+-txtUserName: text box
+-txtFirstName: text box
+-txtLastName: text box
+-txtHeightFeet: text box
+-txtHeightInches: text box
+-txtEmail: text box
+-ddlInstitution: drop down list
+-txtGradYear: text box
+-btnSignUp: button
+
+Limited Leaderboard View:
+-no attributes

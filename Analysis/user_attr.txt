@@ -1,0 +1,40 @@
+Don't access stats directly
+
+Create Game View:
+-txtPlayerName1: textbox
+-txtPlayerName2: textbox
+-txtPlayerName3: textbox
+-txtPlayerName4: textbox
+-cbIsGuest2: checkbox
+-cbIsGuest4: checkbox
+-btnBack: button
+-btnCreate: button
+
+Score Game:
+TBD
+
+Login View:
+-txtUserName: textbox
+-txtPassword: textbox
+-btnSubmit: button
+
+Logout View:
+-btnLogout: button
+
+Delete Account View
+-btnDeleteAccount: button
+
+Leaderboard View:
+-ddlFilter: drop down list
+
+Rules View
+
+Confirm Game View
+-btnConfirm: button
+-btnDeny: button
+
+End Game View:
+-rbtnWinner: radio button (Team 1, Team 2)
+-rbtnCause: radio button (Death Cup, Forfeit)
+-btnConfirm: button
+

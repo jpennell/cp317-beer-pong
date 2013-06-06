@@ -1,0 +1,23 @@
+Administrator Login View:
+-txtUserName: textbox
+-txtPassword: textbox
+-btnSubmit: button
+
+Administrator Logout View:
+-btnLogout: button
+
+Add Institution View:
+-btnAdd: button
+-txtInstitutionName: textbox
+
+Delete Institution View:
+-btnDelete: button
+-cbInstitution: combo box
+
+Ban User View:
+-btnBan: button
+-txtUser: text box
+
+Unban User View:
+-btnUnban: button
+-txtUser: text box
