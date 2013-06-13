@@ -4,6 +4,6 @@
 1. **Section 4** - Architecture
 1. **Section 4.1** - Entity Class Diagram
 1. **Section 4.2** - Boundary/Entity/Control Diagrams
-** Appropriate subsections per file names in github
+  * Appropriate subsections per file names in github
 1. **Section 4.3** - Use Case Class Diagrams
-** Appropriate subsections per file names in github
+  * Appropriate subsections per file names in github
