@@ -7,7 +7,9 @@
   * Appropriate subsections per file names in github
 1. **Section 4.3** - Use Case Class Diagrams
   * Section 4.3.1 - User Class Diagrams
+     * Appropriate subsections per file names in github
   * Section 4.3.2 - Administrator Class Diagrams
      * Appropriate subsections per file names in github
   * Section 4.3.3 - Guest Class Diagrams
-  
+     * Appropriate subsections per file names in github
+1. **Section 5** - References
