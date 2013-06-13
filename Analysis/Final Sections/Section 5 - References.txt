@@ -1,0 +1,5 @@
+This analysis document takes ideas from the following analysis template:
+ee.oulu.fi/research/tklab/courses/521496S/analysis_template.doc (link)
+
+Pong Tracker Requirements Document:
+http://hopper.wlu.ca/~heng7500/Requirements.html (link)
