@@ -14,14 +14,11 @@ Guest - represents the actor named Guest who cannot engage in active game play.
 Registration View - where a Guest registers to become a User
 Create Game View - where a User creates a new Game for simulation.
 Score Game View - where a User scores a game by selecting Cups.
-End Game View - where a User selects the winning Team.
-	Select Winner View - where a User selects the winning Team
-	Attribute Cups View - where a User selects any remaining Cups and assigns them to a User
+End Game View - where a User selects the winning Team, and under what circumstances the win was obtained.
 Confirm Game View - where a User approves or denies the validity of the game.
 Rules View - where a User can read the rules of Pong Tracker
 Leaderboard View - where a User can see the top ranked players.
 Statistics View - where a User sees their own or other users' statistics.
-	Select User View - where a User can select another User to view their statistics
 Login View - where a User logs into Pong Tracker
 Logout View - where a User logs out of Pong Tracker
 Delete Account View - where a User may delete their account from Pong Tracker
@@ -31,7 +28,7 @@ Delete Account View - where a User may delete their account from Pong Tracker
 End Game Controller - coordinates the actions involved with ending a Game.
 Leaderboard Controller - retrieves User data to display on Leaderboard View.
 Statistics Controller - coordinates retrieving and recording Stats about a User.
-Search User Controller - retrieves User data to display on Select User View. .
+Search User Controller - retrieves User data on other Users. Used for looking at other User's statistics.
 Login Controller - retrieves User data to verify identity.
 Logout Controller - terminates User session on Pong Tracker.
 Delete Account Controller - coordinates deleting a User.
