@@ -71,23 +71,34 @@ td
 }
 
 .high {
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
 	background-color: #FF0000;
 	color: #FFFFFF;
 }
 
 .med {
-	background-color: #FF7519;
+	text-align: center;
+	vertical-align: middle;
+	background-color: #FFA000;
 }
 
 .low {
+	text-align: center;
+	vertical-align: middle;
 	background-color: #FFFF00;
 }
 
 .dismiss {
+	text-align: center;
+	vertical-align: middle;
 	background-color: #FFFF00;
 }
 
 .fixed {
+	text-align: center;
+	vertical-align: middle;
 	background-color: #75FF47;
 }
 
