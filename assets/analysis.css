@@ -59,8 +59,3 @@ table.term-def td {
 table.term-def td:first-child {
 	font-weight: bold;
 }
-
-#architecture embed {
-	width: 100%;
-	height: 100%;
-}
