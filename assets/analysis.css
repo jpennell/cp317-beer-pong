@@ -1,13 +1,37 @@
 body {
-  padding:0px;
+	padding: 0px;
 }
 
 #content {
-  margin: 0px auto;
-  width:800px;
+	margin: 0px auto;
+	padding: 20px;
+	max-width: 800px;
+	min-width: 300px;
+}
+
+#table-of-contents {
+	padding: 20px;
+	background-color: #F5F5F5;
+	width: 300px;
 }
 
 .number {
-  display: inline-block;
-  width: 1in;
+	display: inline-block;
+	width: 0.7in;
+}
+
+.code {
+	font-family: monospace;
+}
+
+table.term-def td {
+	padding-right: 30px;
+}
+
+table.term-def td:first-child {
+	font-weight: bold;
+}
+
+#architecture embed {
+	width: 100%;
 }
