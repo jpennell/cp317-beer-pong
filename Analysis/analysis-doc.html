@@ -2,230 +2,269 @@
 <html>
 <head>
   <title>CP317 Analysis Document</title>
+  <link href="../assets/styles.css" rel="stylesheet" type="text/css">
+  <link href="../assets/analysis.css" rel="stylesheet" type="text/css">
+  <link href="../bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-  <h1 class="title">CP317 Analysis Document</h1>
-
-  <section id="intro">  
-    <h2 class="heading1"><span class="number">1</span> Introduction</h2>
-    <p>Pong Tracker provides users with a centralized website for recording and viewing statistics 
-       of Beer Pong games, played by themselves and other Pong Tracker users. Details of each game 
-       are entered into the website as users are playing in real time. 
-
-       This analysis document details how the Pong Tracker product will work. It provides models on 
-       long-term information, user interfaces, and the associations between them.
-    </p>  
-  </section>
-
-  <section id="purpose">
-    <h2 class="heading1"><span class=number">2</span> Purpose &amp; Uses</h2>
-    <p>
-      The purpose of Pong Tracker is to provide a service to users that is simple, intuitive and 
-      attractive, so that users can gain from competition, without the complexity of managing the 
-      system themselves.
-
-      Pong Tracker provides:
-      <ul>
-        <li>Users
-        <ul>
-          <li>Ability to create and score games
-          <li>Ability to track personal statistics
-          <li>Ability to view other users statistics
-          <li>Ability to view a leaderboard
-        </ul>
-        <li>Guests
-        <ul>
-          <li>Ability to participate in a game
-          <li>Ability to view a leaderboard
-        </ul>
-        <li>Administrators
-        <ul>
-          <li>Ability to manage Institutions
-          <li>Ability to ban and unban users
-        </ul>
-      </ul>
-    </p>         
-  </section>
-  
-  <section id="objects">
-    <h2 class="heading1"><span class="number">3</span> Object Classification</h2>
-    
-    <h3 class="heading2"><span class="number">3.1</span> Entity Objects</h3>
-
-	<table>
-		<tr>
-		<td>Game</td><td>represents a game simulation in Pong Tracker. A game has two teams.</td>
-		</tr>
-		<tr>
-		<td>Cup</td><td>represents a cup used in a game on a team. Each team has six cups.</td>
-		</tr>
-		<tr>
-		<td>Team</td><td>represents a team participating in a game. A team has one to two users, and zero to one guests.</td>
-		</tr>
-		<tr>
-		<td>Stats</td><td>encompasses the statistics stored for a user or guest. Each user has two statistics: one for their current game's scores, and one for their overall scores.</td>
-		</tr>
-		<tr>
-		<td>Institution</td><td>represents the institution a user is enrolled in.</td>
-		</tr>
-		<tr>
-		<td>Administrator</td><td>represents the actor named Administrator who has special permissions within Pong Tracker.</td>
-		</tr>
-		<tr>
-		<td>User</td><td>represents the actor named User who engages in active game play.</td>
-		</tr>
-		<tr>
-		<td>Guest</td><td>represents the actor named Guest who cannot engage in active game play.</td>
-		</tr>
-	</table>
+  <div id="content">
+	  <h1 class="title">CP317 Analysis Document</h1>
 	
-	<h3 class="heading2"><span class="number">3.2</span> Boundary Objects</h3>
+	  <section id="intro">  
+	    <h2 class="heading1"><span class="number">1</span> Introduction</h2>
+	    <p>Pong Tracker provides users with a centralized website for recording and viewing statistics 
+	       of Beer Pong games, played by themselves and other Pong Tracker users. Details of each game 
+	       are entered into the website as users are playing in real time. 
 	
-	<table>
-		<tr>
-		<td>Registration View</td><td>where a Guest registers to become a User</td>
-		</tr>
-		<tr>
-		<td>Create Game View</td><td>where a User creates a new Game for simulation.</td>
-		</tr>
-		<tr>
-		<td>Score Game View</td><td>where a User scores a game by selecting Cups.</td>
-		</tr>
-		<tr>
-		<td>End Game View</td><td>where a User selects the winning Team, and under what circumstances the win was obtained.</td>
-		</tr>
-		<tr>
-		<td>Confirm Game View</td><td>where a User approves or denies the validity of the game.</td>
-		</tr>
-		<tr>
-		<td>Rules View</td><td>where a User can read the rules of Pong Tracker</td>
-		</tr>
-		<tr>
-		<td>Leaderboard View</td><td>where a User can see the top ranked players.</td>
-		</tr>
-		<tr>
-		<td>Statistics View</td><td>where a User sees their own or other users' statistics.</td>
-		</tr>
-		<tr>
-		<td>Login View</td><td>where a User logs into Pong Tracker</td>
-		</tr>
-		<tr>
-		<td>Logout View</td><td>where a User logs out of Pong Tracker</td>
-		</tr>
-		<tr>
-		<td>Delete Account View</td><td>where a User may delete their account from Pong Tracker</td>
-		</tr>
-	</table>
+	       This analysis document details how the Pong Tracker product will work. It provides models on 
+	       long-term information, user interfaces, and the associations between them.
+	    </p>  
+	  </section>
 	
-	<h3 class="heading2"><span class="number">3.3</span> Control Objects</h3>
+	  <section id="purpose">
+	    <h2 class="heading1"><span class="number">2</span> Purpose &amp; Uses</h2>
+	    <p>
+	      The purpose of Pong Tracker is to provide a service to users that is simple, intuitive and 
+	      attractive, so that users can gain from competition, without the complexity of managing the 
+	      system themselves.
 	
-	<table>
-		<tr>
-		<td>End Game Controller</td><td>coordinates the actions involved with ending a Game.
-		</tr>
-		<tr>
-		<td>Leaderboard Controller</td><td>retrieves User data to display on Leaderboard View.
-		</tr>
-		<tr>
-		<td>Statistics Controller</td><td>coordinates retrieving and recording Stats about a User.
-		</tr>
-		<tr>
-		<td>Search User Controller</td><td>retrieves User data on other Users. Used for looking at other User's statistics.
-		</tr>
-		<tr>
-		<td>Login Controller</td><td>retrieves User data to verify identity.
-		</tr>
-		<tr>
-		<td>Logout Controller</td><td>terminates User session on Pong Tracker.
-		</tr>
-		<tr>
-		<td>Delete Account Controller</td><td>coordinates deleting a User.
-		</tr>
-		<tr>
-		<td>Create Game Controller</td><td>coordinates creating a Game.
-		</tr>
-		<tr>
-		<td>Score Game Controller</td><td>coordinates updating a Game.
-		</tr>
-		<tr>
-		<td>Confirm Game Controller</td><td>coordinates confirming validity of a Game.
-		</tr>
-		<tr>
-		<td>Register User Controller</td><td>coordinates adding a User.
-		</tr>
-	</table>
-  </section>
-
-  <section id="architecture">
-    <h2 class="heading1"><span class="number">4</span> Architecture</h2>
-
-	<section>
-	    <h3 class="heading2"><span class="number">4.1</span> Entity Class Diagram</h3>
-	    <embed src="images/4-1-entity.svg" type="image/svg+xml" />
-	</section>
-
-	<section>
-	    <h3 class="heading2"><span class="number">4.2</span> Boundary/Entity/Control Diagrams</h3>	    
-	    <embed src="images/4-2-1-UserBCE.svg" type="image/svg+xml" />
-	    <embed src="images/4-2-2-AdminBCE.svg" type="image/svg+xml" /	    
-    	<embed src="images/4-2-3-GuestBCE.svg" type="image/svg+xml" />
-    </section>
-
-	<section>
-	    <h3 class="heading2"><span class="number">4.3</span> Use Case Class Diagrams</h3>
+	      Pong Tracker provides:
+	      <ul>
+	        <li>Users
+	        <ul>
+	          <li>Ability to create and score games
+	          <li>Ability to track personal statistics
+	          <li>Ability to view other users statistics
+	          <li>Ability to view a leaderboard
+	        </ul>
+	        <li>Guests
+	        <ul>
+	          <li>Ability to participate in a game
+	          <li>Ability to view a leaderboard
+	        </ul>
+	        <li>Administrators
+	        <ul>
+	          <li>Ability to manage Institutions
+	          <li>Ability to ban and unban users
+	        </ul>
+	      </ul>
+	    </p>         
+	  </section>
+	  
+	  <section id="objects">
+	    <h2 class="heading1"><span class="number">3</span> Object Classification</h2>
+	    
+	    <h3 class="heading2"><span class="number">3.1</span> Entity Objects</h3>
+	
+		<table class="term-def">
+			<tr>
+			<td>Game</td><td>represents a game simulation in Pong Tracker. A game has two teams.</td>
+			</tr>
+			<tr>
+			<td>Cup</td><td>represents a cup used in a game on a team. Each team has six cups.</td>
+			</tr>
+			<tr>
+			<td>Team</td><td>represents a team participating in a game. A team has one to two users, and zero to one guests.</td>
+			</tr>
+			<tr>
+			<td>Stats</td><td>encompasses the statistics stored for a user or guest. Each user has two statistics: one for their current game's scores, and one for their overall scores.</td>
+			</tr>
+			<tr>
+			<td>Institution</td><td>represents the institution a user is enrolled in.</td>
+			</tr>
+			<tr>
+			<td>Administrator</td><td>represents the actor named Administrator who has special permissions within Pong Tracker.</td>
+			</tr>
+			<tr>
+			<td>User</td><td>represents the actor named User who engages in active game play.</td>
+			</tr>
+			<tr>
+			<td>Guest</td><td>represents the actor named Guest who cannot engage in active game play.</td>
+			</tr>
+		</table>
+		
+		<h3 class="heading2"><span class="number">3.2</span> Boundary Objects</h3>
+		
+		<table class="term-def">
+			<tr>
+			<td>Registration View</td><td>where a Guest registers to become a User</td>
+			</tr>
+			<tr>
+			<td>Create Game View</td><td>where a User creates a new Game for simulation.</td>
+			</tr>
+			<tr>
+			<td>Score Game View</td><td>where a User scores a game by selecting Cups.</td>
+			</tr>
+			<tr>
+			<td>End Game View</td><td>where a User selects the winning Team, and under what circumstances the win was obtained.</td>
+			</tr>
+			<tr>
+			<td>Confirm Game View</td><td>where a User approves or denies the validity of the game.</td>
+			</tr>
+			<tr>
+			<td>Rules View</td><td>where a User can read the rules of Pong Tracker</td>
+			</tr>
+			<tr>
+			<td>Leaderboard View</td><td>where a User can see the top ranked players.</td>
+			</tr>
+			<tr>
+			<td>Statistics View</td><td>where a User sees their own or other users' statistics.</td>
+			</tr>
+			<tr>
+			<td>Login View</td><td>where a User logs into Pong Tracker</td>
+			</tr>
+			<tr>
+			<td>Logout View</td><td>where a User logs out of Pong Tracker</td>
+			</tr>
+			<tr>
+			<td>Delete Account View</td><td>where a User may delete their account from Pong Tracker</td>
+			</tr>
+		</table>
+		
+		<h3 class="heading2"><span class="number">3.3</span> Control Objects</h3>
+		
+		<table class="term-def">
+			<tr>
+			<td>End Game Controller</td><td>coordinates the actions involved with ending a Game.
+			</tr>
+			<tr>
+			<td>Leaderboard Controller</td><td>retrieves User data to display on Leaderboard View.
+			</tr>
+			<tr>
+			<td>Statistics Controller</td><td>coordinates retrieving and recording Stats about a User.
+			</tr>
+			<tr>
+			<td>Search User Controller</td><td>retrieves User data on other Users. Used for looking at other User's statistics.
+			</tr>
+			<tr>
+			<td>Login Controller</td><td>retrieves User data to verify identity.
+			</tr>
+			<tr>
+			<td>Logout Controller</td><td>terminates User session on Pong Tracker.
+			</tr>
+			<tr>
+			<td>Delete Account Controller</td><td>coordinates deleting a User.
+			</tr>
+			<tr>
+			<td>Create Game Controller</td><td>coordinates creating a Game.
+			</tr>
+			<tr>
+			<td>Score Game Controller</td><td>coordinates updating a Game.
+			</tr>
+			<tr>
+			<td>Confirm Game Controller</td><td>coordinates confirming validity of a Game.
+			</tr>
+			<tr>
+			<td>Register User Controller</td><td>coordinates adding a User.
+			</tr>
+		</table>
+	  </section>
+	
+	  <section id="architecture">
+	    <h2 class="heading1"><span class="number">4</span> Architecture</h2>
+	
 		<section>
-		    <h4 class="heading3"><span class="number">4.3.1</span> User Class Diagrams</h4>
-		    <embed src="images/4-3-1-1-End Game Class Diagram.svg" type="image/svg+xml" />
-		    <embed src="images/4-3-1-2-View Statistics Class Diagram.svg" type="image/svg+xml" />
-		    <embed src="images/4-3-1-3-View Leader Board Class Diagram.svg" type="image/svg+xml" />
-		    <embed src="images/4-3-1-4-View Rules Class Diagram.svg" type="image/svg+xml" />
-		    <embed src="images/4-3-1-5-View Other Users' Statistics Class Diagram.svg" type="image/svg+xml" />
-		    <embed src="images/4-3-1-6-Confirm Game Class Diagram.svg" type="image/svg+xml" />
-			<embed src="images/4-3-1-7-Create Game Class Diagram.svg" type="image/svg+xml" />
-			<embed src="images/4-3-1-8-User Logout Diagram.svg" type="image/svg+xml" />
-			<embed src="images/4-3-1-9-Score Game Class Diagram.svg" type="image/svg+xml" />
-			<embed src="images/4-3-1-10-User Login Class Diagram.svg" type="image/svg+xml" />
-			<embed src="images/4-3-1-11-Delete Account Class Diagram.svg" type="image/svg+xml" />
+		    <h3 class="heading2"><span class="number">4.1</span> Entity Class Diagram</h3>
+		    <embed src="images/4-1-entity.svg" type="image/svg+xml" />
 		</section>
 	
-	    <h4 class="heading3"><span class="number">4.3.2</span> Administrator Class Diagrams</h4> 
-	    <section>
-	    	<embed src="images/4-3-2-1-Add Institution Class Diagram.svg" type="image/svg+xml" />
-	    	<embed src="images/4-3-2-2-Delete Institution Class Diagram.svg" type="image/svg+xml" />
-	    	<embed src="images/4-3-2-3-Unban User Class Diagram.svg" type="image/svg+xml" />
-	    	<embed src="images/4-3-2-4-Ban User Class Diagram.svg" type="image/svg+xml" />
-	    	<embed src="images/4-3-2-5-Admin Login Class Diagram.svg" type="image/svg+xml" />
-	    	<embed src="images/4-3-2-6-Admin Logout Class Diagram.svg" type="image/svg+xml" />
-		</section>
-		
-	    <h4 class="heading3"><span class="number">4.3.3</span> Guest Class Diagrams</h4>
-	    <section>
-	    	<embed src="images/4-3-3-1-Registration Class Diagram.svg" type="image/svg+xml" />
-	    	<embed src="images/4-3-3-2-Leaderboard Class Diagram.svg" type="image/svg+xml" />
-		</section>
-		
-	</section>
+		<section>
+		    <h3 class="heading2"><span class="number">4.2</span> Boundary/Entity/Control Diagrams</h3>	    
+		    <embed src="images/4-2-1-UserBCE.svg" type="image/svg+xml" />
+		    <embed src="images/4-2-2-AdminBCE.svg" type="image/svg+xml" /	    
+	    	<embed src="images/4-2-3-GuestBCE.svg" type="image/svg+xml" />
+	    </section>
 	
-  </section>
-
-  <section id="references">
-    <h2 class="heading1"><span class="number">5</span> References</h2>
-    
-    This analysis document takes ideas from the following analysis template:<br/>
-	<span class="code">
-		ee.oulu.fi/research/tklab/courses/521496S/analysis_template.doc 
-	</span>
-	<a href="ee.oulu.fi/research/tklab/courses/521496S/analysis_template.doc">(link)</a>
-	<br/>
-
-	Pong Tracker Requirements Document:<br/>
-	<span class='code'>
-		http://hopper.wlu.ca/~heng7500/Requirements.html
-	</span>
-	<a href="http://hopper.wlu.ca/~heng7500/Requirements.html">(link)</a>
-	<br/>
-    
-  </section>
-
+		<section>
+		    <h3 class="heading2"><span class="number">4.3</span> Use Case Class Diagrams</h3>
+			<section>
+			    <h4 class="heading3"><span class="number">4.3.1</span> User Class Diagrams</h4>
+			    <embed src="images/4-3-1-1-End Game Class Diagram.svg" type="image/svg+xml" />
+			    <p class="caption">End Game Class Diagram</p>
+			    
+			    <embed src="images/4-3-1-2-View Statistics Class Diagram.svg" type="image/svg+xml" />
+			    <p class="caption">View Statistics Class Diagram</p>
+			    
+			    <embed src="images/4-3-1-3-View Leader Board Class Diagram.svg" type="image/svg+xml" />
+			    <p class="caption">View Leader Board Class Diagram</p>
+			    
+			    <embed src="images/4-3-1-4-View Rules Class Diagram.svg" type="image/svg+xml" />
+			    <p class="caption">View Rules Class Diagram</p>
+			    
+			    <embed src="images/4-3-1-5-View Other Users' Statistics Class Diagram.svg" type="image/svg+xml" />
+			    <p class="caption">View Other Users' Statistics Class Diagram</p>
+			    
+			    <embed src="images/4-3-1-6-Confirm Game Class Diagram.svg" type="image/svg+xml" />
+			    <p class="caption">Confirm Game Class Diagram</p>
+			    
+				<embed src="images/4-3-1-7-Create Game Class Diagram.svg" type="image/svg+xml" />
+				<p class="caption">Create Game Class Diagram</p>
+				
+				<embed src="images/4-3-1-8-User Logout Diagram.svg" type="image/svg+xml" />
+				<p class="caption">User Logout Class Diagram</p>
+				
+				<embed src="images/4-3-1-9-Score Game Class Diagram.svg" type="image/svg+xml" />
+				<p class="caption">Score Game Class Diagram</p>
+				
+				<embed src="images/4-3-1-10-User Login Class Diagram.svg" type="image/svg+xml" />
+				<p class="caption">User Login Class Diagram</p>
+				
+				<embed src="images/4-3-1-11-Delete Account Class Diagram.svg" type="image/svg+xml" />
+				<p class="caption">Delete Account Class Diagram</p>
+			</section>
+		
+		    <h4 class="heading3"><span class="number">4.3.2</span> Administrator Class Diagrams</h4> 
+		    <section>
+		    	<embed src="images/4-3-2-1-Add Institution Class Diagram.svg" type="image/svg+xml" />
+		    	<p class="caption">Add Institution Class Diagram</p>
+		    	
+		    	<embed src="images/4-3-2-2-Delete Institution Class Diagram.svg" type="image/svg+xml" />
+		    	<p class="caption">Delete Institution Class Diagram</p>
+		    	
+		    	<embed src="images/4-3-2-3-Unban User Class Diagram.svg" type="image/svg+xml" />
+		    	<p class="caption">Unban User Class Diagram</p>
+		    	
+		    	<embed src="images/4-3-2-4-Ban User Class Diagram.svg" type="image/svg+xml" />
+		    	<p class="caption">Ban User Class Diagram</p>
+		    	
+		    	<embed src="images/4-3-2-5-Admin Login Class Diagram.svg" type="image/svg+xml" />
+		    	<p class="caption">Admin Login Class Diagram</p>
+		    	
+		    	<embed src="images/4-3-2-6-Admin Logout Class Diagram.svg" type="image/svg+xml" />
+		    	<p class="caption">Admin Logout Class Diagram</p>
+			</section>
+			
+		    <h4 class="heading3"><span class="number">4.3.3</span> Guest Class Diagrams</h4>
+		    <section>
+		    	<embed src="images/4-3-3-1-Registration Class Diagram.svg" type="image/svg+xml" />
+		    	<p class="caption">Registration Class Diagram</p>
+		    	
+		    	<embed src="images/4-3-3-2-Leaderboard Class Diagram.svg" type="image/svg+xml" />
+		    	<p class="caption">Leaderboard Class Diagram</p>
+			</section>
+			
+		</section>
+		
+	  </section>
+	
+	  <section id="references">
+	    <h2 class="heading1"><span class="number">5</span> References</h2>
+	    
+	    This analysis document takes ideas from the following analysis template:<br/>
+		<span class="code">
+			ee.oulu.fi/research/tklab/courses/521496S/analysis_template.doc 
+		</span>
+		<a href="ee.oulu.fi/research/tklab/courses/521496S/analysis_template.doc">(link)</a>
+		<br/>
+	
+		Pong Tracker Requirements Document:<br/>
+		<span class='code'>
+			http://hopper.wlu.ca/~heng7500/Requirements.html
+		</span>
+		<a href="http://hopper.wlu.ca/~heng7500/Requirements.html">(link)</a>
+		<br/>
+	    
+	  </section>
+	</div>
 </body>
 </html>
