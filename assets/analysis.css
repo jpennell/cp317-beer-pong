@@ -9,6 +9,14 @@ body {
 	min-width: 300px;
 }
 
+#content > section {
+	margin-left: -40px;
+}
+
+section {
+	padding-left: 40px;
+}
+
 #table-of-contents {
 	padding: 20px;
 	background-color: #F5F5F5;
