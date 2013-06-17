@@ -59,3 +59,11 @@ table.term-def td {
 table.term-def td:first-child {
 	font-weight: bold;
 }
+
+#architecture img {
+	padding: 10px;
+	border: 2px solid #ddd;
+}
+#architecture .caption {
+	margin-bottom: 50px;
+}

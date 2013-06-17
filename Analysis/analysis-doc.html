@@ -9,7 +9,7 @@
 <body>
 	<div id="content">
 		<h1 class="title">Pong Tracker Analysis Document</h1>
-		
+
 		<h4>Authors</h4>
 		<ul id="authors">
 			<li>Quinton Black</li>
@@ -39,21 +39,21 @@
 		<section id="intro">
 			<h2 class="heading1"><span class="number">1</span>Introduction</h2>
 			<p>
-				Pong Tracker provides users with a centralized website for recording and viewing statistics
-				of Beer Pong games, played by themselves and other Pong Tracker users. Details of each game
-				are entered into the website as users are playing in real time.
+				Pong Tracker provides users with a centralized website for recording and viewing
+				statistics of Beer Pong games, played by themselves and other Pong Tracker users.
+				Details of each game are entered into the website as users are playing in real time.
 
-				This analysis document details how the Pong Tracker product will work. It provides models on
-				long-term information, user interfaces, and the associations between them.
+				This analysis document details how the Pong Tracker product will work. It provides
+				models on long-term information, user interfaces, and the associations between them.
 			</p>
 		</section>
 
 		<section id="purpose">
 			<h2 class="heading1"><span class="number">2</span>Purpose &amp; Uses</h2>
 			<p>
-				The purpose of Pong Tracker is to provide a service to users that is simple, intuitive and
-				attractive, so that users can gain from competition, without the complexity of managing the
-				system themselves.
+				The purpose of Pong Tracker is to provide a service to users that is simple,
+				intuitive and attractive, so that users can gain from competition, without the
+				complexity of managing the system themselves.
 
 				Pong Tracker provides:
 				<ul>
@@ -86,28 +86,41 @@
 
 				<table class="term-def">
 					<tr>
-						<td>Game</td><td>represents a game simulation in Pong Tracker. A game has two teams.</td>
+						<td>Game</td>
+						<td>represents a game simulation in Pong Tracker. A game has two teams.</td>
 					</tr>
 					<tr>
-						<td>Cup</td><td>represents a cup used in a game on a team. Each team has six cups.</td>
+						<td>Cup</td>
+						<td>represents a cup used in a game on a team. Each team has six cups.</td>
 					</tr>
 					<tr>
-						<td>Team</td><td>represents a team participating in a game. A team has one to two users, and zero to one guests.</td>
+						<td>Team</td>
+						<td>represents a team participating in a game. A team has one to two users,
+						and zero to one guests.</td>
 					</tr>
 					<tr>
-						<td>Stats</td><td>encompasses the statistics stored for a user or guest. Each user has two statistics: one for their current game's scores, and one for their overall scores.</td>
+						<td>Stats</td>
+						<td>encompasses the statistics stored for a user or guest. Each user has 
+							two statistics: one for their current game's scores, and one for their 
+							overall scores.</td>
 					</tr>
 					<tr>
-						<td>Institution</td><td>represents the institution a user is enrolled in.</td>
+						<td>Institution</td>
+						<td>represents the institution a user is enrolled in.</td>
 					</tr>
 					<tr>
-						<td>Administrator</td><td>represents the actor named Administrator who has special permissions within Pong Tracker.</td>
+						<td>Administrator</td>
+						<td>represents the actor named Administrator who has special permissions 
+							within Pong Tracker.</td>
 					</tr>
 					<tr>
-						<td>User</td><td>represents the actor named User who engages in active game play.</td>
+						<td>User</td>
+						<td>represents the actor named User who engages in active game play.</td>
 					</tr>
 					<tr>
-						<td>Guest</td><td>represents the actor named Guest who cannot engage in active game play.</td>
+						<td>Guest</td>
+						<td>represents the actor named Guest who cannot engage in active game 
+							play.</td>
 					</tr>
 				</table>
 			</section>
@@ -117,37 +130,49 @@
 
 				<table class="term-def">
 					<tr>
-						<td>Registration View</td><td>where a Guest registers to become a User</td>
+						<td>Registration View</td>
+						<td>where a Guest registers to become a User</td>
 					</tr>
 					<tr>
-						<td>Create Game View</td><td>where a User creates a new Game for simulation.</td>
+						<td>Create Game View</td>
+						<td>where a User creates a new Game for simulation.</td>
 					</tr>
 					<tr>
-						<td>Score Game View</td><td>where a User scores a game by selecting Cups.</td>
+						<td>Score Game View</td>
+						<td>where a User scores a game by selecting Cups.</td>
 					</tr>
 					<tr>
-						<td>End Game View</td><td>where a User selects the winning Team, and under what circumstances the win was obtained.</td>
+						<td>End Game View</td>
+						<td>where a User selects the winning Team, and under what circumstances the
+							win was obtained.</td>
 					</tr>
 					<tr>
-						<td>Confirm Game View</td><td>where a User approves or denies the validity of the game.</td>
+						<td>Confirm Game View</td>
+						<td>where a User approves or denies the validity of the game.</td>
 					</tr>
 					<tr>
-						<td>Rules View</td><td>where a User can read the rules of Pong Tracker</td>
+						<td>Rules View</td>
+						<td>where a User can read the rules of Pong Tracker</td>
 					</tr>
 					<tr>
-						<td>Leaderboard View</td><td>where a User can see the top ranked players.</td>
+						<td>Leaderboard View</td>
+						<td>where a User can see the top ranked players.</td>
 					</tr>
 					<tr>
-						<td>Statistics View</td><td>where a User sees their own or other users' statistics.</td>
+						<td>Statistics View</td>
+						<td>where a User sees their own or other users' statistics.</td>
 					</tr>
 					<tr>
-						<td>Login View</td><td>where a User logs into Pong Tracker</td>
+						<td>Login View</td>
+						<td>where a User logs into Pong Tracker</td>
 					</tr>
 					<tr>
-						<td>Logout View</td><td>where a User logs out of Pong Tracker</td>
+						<td>Logout View</td>
+						<td>where a User logs out of Pong Tracker</td>
 					</tr>
 					<tr>
-						<td>Delete Account View</td><td>where a User may delete their account from Pong Tracker</td>
+						<td>Delete Account View</td>
+						<td>where a User may delete their account from Pong Tracker</td>
 					</tr>
 				</table>
 			</section>
@@ -157,37 +182,49 @@
 
 				<table class="term-def">
 					<tr>
-						<td>End Game Controller</td><td>coordinates the actions involved with ending a Game.
+						<td>End Game Controller</td>
+						<td>coordinates the actions involved with ending a Game.</td>
 					</tr>
 					<tr>
-						<td>Leaderboard Controller</td><td>retrieves User data to display on Leaderboard View.
+						<td>Leaderboard Controller</td>
+						<td>retrieves User data to display on Leaderboard View.</td>
 					</tr>
 					<tr>
-						<td>Statistics Controller</td><td>coordinates retrieving and recording Stats about a User.
+						<td>Statistics Controller</td>
+						<td>coordinates retrieving and recording Stats about a User.</td>
 					</tr>
 					<tr>
-						<td>Search User Controller</td><td>retrieves User data on other Users. Used for looking at other User's statistics.
+						<td>Search User Controller</td>
+						<td>retrieves User data on other Users. Used for looking at other User's 
+							statistics.</td>
 					</tr>
 					<tr>
-						<td>Login Controller</td><td>retrieves User data to verify identity.
+						<td>Login Controller</td>
+						<td>retrieves User data to verify identity.</td>
 					</tr>
 					<tr>
-						<td>Logout Controller</td><td>terminates User session on Pong Tracker.
+						<td>Logout Controller</td>
+						<td>terminates User session on Pong Tracker.</td>
 					</tr>
 					<tr>
-						<td>Delete Account Controller</td><td>coordinates deleting a User.
+						<td>Delete Account Controller</td>
+						<td>coordinates deleting a User.</td>
 					</tr>
 					<tr>
-						<td>Create Game Controller</td><td>coordinates creating a Game.
+						<td>Create Game Controller</td>
+						<td>coordinates creating a Game.</td>
 					</tr>
 					<tr>
-						<td>Score Game Controller</td><td>coordinates updating a Game.
+						<td>Score Game Controller</td>
+						<td>coordinates updating a Game.</td>
 					</tr>
 					<tr>
-						<td>Confirm Game Controller</td><td>coordinates confirming validity of a Game.
+						<td>Confirm Game Controller</td>
+						<td>coordinates confirming validity of a Game.</td>
 					</tr>
 					<tr>
-						<td>Register User Controller</td><td>coordinates adding a User.
+						<td>Register User Controller</td>
+						<td>coordinates adding a User.</td>
 					</tr>
 				</table>
 			</section>
@@ -204,13 +241,19 @@
 			<section>
 				<h3 class="heading2"><span class="number">4.2</span>Boundary/Entity/Control Diagrams</h3>
 				<img src="images/4-2-1-UserBCE.svg"></img>
-				<p class="caption">User Boundary/Entity/Control Diagram</p>
-				
+				<p class="caption">
+					User Boundary/Entity/Control Diagram
+				</p>
+
 				<img src="images/4-2-2-AdminBCE.svg"></img>
-				<p class="caption">Administrator Boundary/Entity/Control Diagram</p>
-				
+				<p class="caption">
+					Administrator Boundary/Entity/Control Diagram
+				</p>
+
 				<img src="images/4-2-3-GuestBCE.svg"></img>
-				<p class="caption">Guest Boundary/Entity/Control Diagram</p>
+				<p class="caption">
+					Guest Boundary/Entity/Control Diagram
+				</p>
 			</section>
 
 			<section>
