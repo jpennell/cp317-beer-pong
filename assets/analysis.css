@@ -60,7 +60,7 @@ table.term-def td:first-child {
 	font-weight: bold;
 }
 
-#architecture img {
+#architecture embed {
 	padding: 10px;
 	border: 2px solid #ddd;
 }
