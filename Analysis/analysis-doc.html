@@ -87,7 +87,7 @@
 				<table class="term-def">
 					<tr>
 						<td>Game</td>
-						<td>represents a Game simulation in Pong Tracker. A Game has two teams.</td>
+						<td>represents a Game being recorded using Pong Tracker. A Game has two Teams.</td>
 					</tr>
 					<tr>
 						<td>Cup</td>
@@ -100,7 +100,7 @@
 					</tr>
 					<tr>
 						<td>Stats</td>
-						<td>encompasses the statistics stored for a user or guest. Each user has
+						<td>encompasses the statistics stored for a User or Guest. Each User has
 							two statistics: one for their current game's scores, and one for their
 							overall scores.</td>
 					</tr>
@@ -130,7 +130,7 @@
 				<table class="term-def">
 					<tr>
 						<td>Registration View</td>
-						<td>where a Guest registers to become a User</td>
+						<td>where a Guest registers to become a User.</td>
 					</tr>
 					<tr>
 						<td>Create Game View</td>
@@ -138,7 +138,7 @@
 					</tr>
 					<tr>
 						<td>Score Game View</td>
-						<td>where a User scores a game</td>
+						<td>where a User scores a Game.</td>
 					</tr>
 					<tr>
 						<td>End Game View</td>
@@ -151,7 +151,7 @@
 					</tr>
 					<tr>
 						<td>Rules View</td>
-						<td>where a User can read the rules of Pong Tracker</td>
+						<td>where a User can read the rules of Pong Tracker.</td>
 					</tr>
 					<tr>
 						<td>LeaderBoard View</td>
@@ -163,27 +163,43 @@
 					</tr>
 					<tr>
 						<td>User Login View</td>
-						<td>where a User logs into Pong Tracker</td>
+						<td>where a User logs into Pong Tracker.</td>
 					</tr>
 					<tr>
 						<td>User Logout View</td>
-						<td>where a User logs out of Pong Tracker</td>
-					</tr>
-					<tr>
-						<td>Administrator Login View</td>
-						<td>where an Administrator logs into Pong Tracker</td>
-					</tr>
-					<tr>
-						<td>Administrator Logout View</td>
-						<td>where an Administrator logs out of Pong Tracker</td>
+						<td>where a User logs out of Pong Tracker.</td>
 					</tr>
 					<tr>
 						<td>Delete Account View</td>
-						<td>where a User may delete their account from Pong Tracker</td>
+						<td>where a User may delete their account from Pong Tracker.</td>
 					</tr>
 					<tr>
 						<td>Limited LeaderBoard View</td>
-						<td>shows the top ten Users on Pong Tracker</td>
+						<td>shows the top ten Users on Pong Tracker.</td>
+					</tr>
+					<tr>
+						<td>Administrator Login View</td>
+						<td>where an Administrator logs into Pong Tracker.</td>
+					</tr>
+					<tr>
+						<td>Administrator Logout View</td>
+						<td>where an Administrator logs out of Pong Tracker.</td>
+					</tr>
+					<tr>
+						<td>Delete Institution View</td>
+						<td>where an Administrator deletes an Institution.</td>
+					</tr>
+					<tr>
+						<td>Add Institution View</td>
+						<td>where an Administrator adds an Institution.</td>
+					</tr>
+					<tr>
+						<td>Ban User View</td>
+						<td>where an Administrator bans a User.</td>
+					</tr>
+					<tr>
+						<td>Unban User View</td>
+						<td>where an Administrator removes a ban from a User.</td>
 					</tr>
 				</table>
 			</section>
@@ -210,14 +226,13 @@
 							statistics.</td>
 					</tr>
 					<tr>
-						<td>Login Controller</td>
+						<td>User Login Controller</td>
 						<td>retrieves User data to verify identity.</td>
 					</tr>
 					<tr>
-						<td>Logout Controller</td>
+						<td>User Logout Controller</td>
 						<td>terminates User session on Pong Tracker.</td>
 					</tr>
-					<tr>
 						<td>Delete Account Controller</td>
 						<td>coordinates deleting a User.</td>
 					</tr>
@@ -234,8 +249,32 @@
 						<td>coordinates confirming validity of a Game.</td>
 					</tr>
 					<tr>
-						<td>Register User Controller</td>
+						<td>Register Controller</td>
 						<td>coordinates adding a User.</td>
+					</tr>
+					<tr>
+						<td>Administrator Login Controller</td>
+						<td>retrieves Administrator data to verify identity.</td>
+					</tr>
+					<tr>
+						<td>Administrator Logout Controller</td>
+						<td>terminates Administrator session on Pong Tracker.</td>
+					</tr>
+					<tr>
+						<td>Delete Institution Controller</td>
+						<td>coordinates the actions involved when an Administrator deletes an Institution.</td>
+					</tr>
+					<tr>
+						<td>Add Institution Controller</td>
+						<td>coordinates the actions involved when an Administrator adds an Institution.</td>
+					</tr>
+					<tr>
+						<td>Ban User Controller</td>
+						<td>coordinates the actions involved when an Administrator bans a User.</td>
+					</tr>
+					<tr>
+						<td>Unban User Controller</td>
+						<td>coordinates the actions involved when an Administrator removes a ban from a User.</td>
 					</tr>
 				</table>
 			</section>
