@@ -102,6 +102,12 @@ td
 	background-color: #75FF47;
 }
 
+.convo {
+	text-align: center;
+	vertical-align: middle;
+	background-color: #FE2E64;
+}
+
 .odd {
 	background-color: #EEEEEE;
 }
