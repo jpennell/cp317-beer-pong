@@ -52,13 +52,21 @@ section {
 	font-family: monospace;
 }
 
+/* Term-Defintion tables */
+table.term-def tr {
+	vertical-align: top;
+	margin-bottom: 20px;
+}
 table.term-def td {
 	padding-right: 30px;
+	padding-bottom: 10px;
 }
-
-table.term-def td:first-child {
+table.term-def td:first-child { /* first cell is bold (the term being defined ) */
 	font-weight: bold;
 }
+
+
+/* Architecture section */
 
 #architecture embed {
 	padding: 10px;
