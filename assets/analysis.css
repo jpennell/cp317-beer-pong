@@ -43,13 +43,19 @@ section {
 	width: 300px;
 }
 
-.number {
+span.number {
 	display: inline-block;
 	width: 0.7in;
 }
 
-.code {
+span.code {
 	font-family: monospace;
+}
+
+span.to-top {
+	display: block;
+	text-align: right;
+	font-size: 12px;
 }
 
 /* Term-Defintion tables */
