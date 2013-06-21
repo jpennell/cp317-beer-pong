@@ -29,11 +29,11 @@ ul#authors {
 }
 
 #content > section {
-	margin-left: -0.7in;
+	margin-left: -8%;
 }
 
 section {
-	padding-left: 0.7in;
+	padding-left: 8%;
 }
 
 #table-of-contents {
@@ -45,7 +45,7 @@ section {
 
 span.number {
 	display: inline-block;
-	width: 0.7in;
+	padding-right: 0.28in;
 }
 
 span.code {
@@ -56,6 +56,13 @@ span.to-top {
 	display: block;
 	text-align: right;
 	font-size: 12px;
+}
+
+p.diagram-label {
+	margin-top: 35px;
+	margin-bottom: 8px !important;
+	font-size: 16px;
+	color: #777;
 }
 
 /* Term-Defintion tables */
