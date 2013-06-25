@@ -1,9 +1,9 @@
 #login-form {
-	margin-left: 67%;
+	margin-left: 0 auto;
 	width: 250px;
 	border-style:solid;
 	border-width:2px;
-	border-color:#eee;
+	border-color:#888;
 }
 #login-form * {
 	margin-top: 0px;
@@ -12,11 +12,11 @@
 	width: 85%;
 }
 #register-form {
-	margin-left: 67%;
+	margin-left: 0 auto;
 	width: 250px;
 	border-style:solid;
 	border-width:2px;
-	border-color:#eee;
+	border-color:#888;
 }
 #register-form * {
 	margin-top: 5px;
