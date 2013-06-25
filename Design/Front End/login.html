@@ -36,8 +36,8 @@
 		<!------ CONTENT --------->
 		<div id="page-content">
 			<table width="90%" align="center">
-				<tr>
-					<td width="40%">
+				<tr style="vertical-align: top;">
+					<td  width="40%" style="vertical-align: top;">
 						<h3>Leaderboard </h3>
 						<ol>
 							<li>Player 1</li>
@@ -52,22 +52,25 @@
 							<li>Player 10</li>
 						</ol>
 					</td>
-					<td width="40%"  style="vertical-align: top;">
-						<h3>Login</h3>
-						<form action="main.html" name="login">
-							<input name="username" type="text" placeholder="username"><br/>
-							<input name="password" type="password" placeholder="password"><br/>
-							<button name="submit" class="btn" type="submit" action="login">Login</button>
-						</form>
-						
+					<td width="40%" style="vertical-align: top;" >
+						<div id="login-form">
+							<h3>Login</h3>
+							<form action="main.html" name="login">
+								<input name="username" type="text" placeholder="username"><br/>
+								<input name="password" type="password" placeholder="password"><br/>
+								<button name="submit" class="btn" type="submit" action="login">Login</button>
+							</form>
+						</div>
 					</td>
-					<td width="40%"  style="vertical-align: top;">
-						<h3>Register</h3>
-						<form action="main.html" name="register">
-						<input name="email" type="text" placeholder="email"><br/>
-						<input name="username" type="text" placeholder="username"><br/>
-						<button name="submit" class="btn" type="submit" action="register">Submit</button>
-						
+					<td width="40%" style="vertical-align: top;">
+						<div id="register-form">
+							<h3>Register</h3>
+							<form action="main.html" name="register" >
+								<input name="email" type="text" placeholder="email"><br/>
+								<input name="username" type="text" placeholder="username"><br/>
+								<button name="submit" class="btn" type="submit" action="register">Submit</button>
+							</form>
+						</div>
 					</td>
 				</tr>
 			</table>
