@@ -73,6 +73,7 @@ table.term-def tr {
 table.term-def td {
 	padding-right: 30px;
 	padding-bottom: 10px;
+
 }
 table.term-def td:first-child { /* first cell is bold (the term being defined ) */
 	font-weight: bold;
