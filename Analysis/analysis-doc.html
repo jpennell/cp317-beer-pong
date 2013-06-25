@@ -90,39 +90,41 @@
 				<table class="term-def">
 					<tr>
 						<td>Game</td>
-						<td>Represents a Game being recorded using Pong Tracker. A Game has two Teams.</td>
+						<td>A Game being recorded using Pong Tracker. A Game has two Teams.</td>
 					</tr>
 					<tr>
 						<td>Cup</td>
-						<td>Represents a Cup used in a Game on a Team. Each team has six Cups.</td>
+						<td>A Cup used in a Game on a Team. Each team has six Cups.</td>
 					</tr>
 					<tr>
 						<td>Team</td>
-						<td>Represents a Team participating in a Game. A Team has one to two Users,
+						<td>A Team participating in a Game. A Team has one to two Users,
 						and zero to one Guests.</td>
 					</tr>
 					<tr>
-						<td>Stats</td>
-						<td>Encompasses the individual statistics collected and stored for a User or Guest. Each User has
-						two Stats: one for their current Game's scores, and one for their
-						overall scores. A Guest has one Stat which is for their current Game only.</td>
+						<td>LifeStats</td>
+						<td>The cumulative statistics collected and stored for a User or Guest over time.</td>
+					</tr>
+					<tr>
+						<td>Event</td>
+						<td>An individual statistic collected and stored for a User or Guest.</td>
 					</tr>
 					<tr>
 						<td>Institution</td>
-						<td>Represents the Institution a User is enrolled in.</td>
+						<td>The Institution a User is enrolled in.</td>
 					</tr>
 					<tr>
 						<td>Administrator</td>
-						<td>Represents the actor named Administrator who has special permissions
+						<td>The actor named Administrator who has special permissions
 						within Pong Tracker.</td>
 					</tr>
 					<tr>
 						<td>User</td>
-						<td>Represents the actor named User.</td>
+						<td>The actor named User.</td>
 					</tr>
 					<tr>
 						<td>Guest</td>
-						<td>Represents the actor named Guest.</td>
+						<td>The actor named Guest.</td>
 					</tr>
 				</table>
 			</section>
@@ -414,7 +416,7 @@
 
 				<section>
 					<h4 class="heading3"><span class="number">4.3.3</span>Guest Class Diagrams</h4>
-					
+
 					<p class="diagram-label">
 						Registration Class Diagram
 					</p>
