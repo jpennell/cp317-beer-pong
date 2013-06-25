@@ -1,10 +1,26 @@
 #login-form {
-	margin: 0 auto;
-	width: 300px;
+	margin-left: 67%;
+	width: 250px;
+	border-style:solid;
+	border-width:2px;
+	border-color:#eee;
 }
 #login-form * {
-	margin-top: 5px;
+	margin-top: 0px;
 }
 #login-form input {
-	width: 100%;
+	width: 85%;
+}
+#register-form {
+	margin-left: 67%;
+	width: 250px;
+	border-style:solid;
+	border-width:2px;
+	border-color:#eee;
+}
+#register-form * {
+	margin-top: 5px;
+}
+#register-form input {
+	width: 85%;
 }
