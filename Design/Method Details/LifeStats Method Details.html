@@ -38,7 +38,7 @@
 </tr><tr>
 <td>Return Type</td> <td><em> int Wins </em></td>
 </tr><tr>
-<td>Input Arguments</td> <td> LifeStat UserStat </td>
+<td>Input Arguments</td> <td> None </td>
 </tr><tr>
 <td>Output Arguments</td> <td> Wins - Number of wins the user has </td>
 </tr><tr>
@@ -91,7 +91,7 @@
 </tr><tr>
 <td>Return Type</td> <td><em> int Losses </em></td>
 </tr><tr>
-<td>Input Arguments</td> <td> LifeStat UserStat </td>
+<td>Input Arguments</td> <td> None </td>
 </tr><tr>
 <td>Output Arguments</td> <td> Losses - Number of losses the user has </td>
 </tr><tr>
@@ -144,7 +144,7 @@
 </tr><tr>
 <td>Return Type</td> <td><em> int BounceShot </em></td>
 </tr><tr>
-<td>Input Arguments</td> <td> LifeStat UserStat </td>
+<td>Input Arguments</td> <td> None </td>
 </tr><tr>
 <td>Output Arguments</td> <td> BounceShot - Number of successful bounce shots the user has </td>
 </tr><tr>
@@ -197,7 +197,7 @@
 </tr><tr>
 <td>Return Type</td> <td><em> int PartyFoul </em></td>
 </tr><tr>
-<td>Input Arguments</td> <td> LifeStat UserStat </td>
+<td>Input Arguments</td> <td> None </td>
 </tr><tr>
 <td>Output Arguments</td> <td> PartyFoul - Number of party fouls the user has made </td>
 </tr><tr>
@@ -250,7 +250,7 @@
 </tr><tr>
 <td>Return Type</td> <td><em> int Redemption </em></td>
 </tr><tr>
-<td>Input Arguments</td> <td> LifeStat UserStat </td>
+<td>Input Arguments</td> <td> None </td>
 </tr><tr>
 <td>Output Arguments</td> <td> Redemption - Number of redemptions the user has earned</td>
 </tr><tr>
@@ -301,11 +301,11 @@
 </tr><tr>
 <td>Method State</td> <td><em> Private </em></td>
 </tr><tr>
-<td>Return Type</td> <td><em> Integer Array Cups </em></td>
+<td>Return Type</td> <td><em> Integer Cups </em></td>
 </tr><tr>
-<td>Input Arguments</td> <td> LifeStat UserStat </td>
+<td>Input Arguments</td> <td> int cup - the specific cup which is to return how many times it has been sunk</td>
 </tr><tr>
-<td>Output Arguments</td> <td> Cups - [# of Cup1 sunk, # of Cup2 sunk, ..., # of Cup6 sunk]</td>
+<td>Output Arguments</td> <td> Cups - # of cups sunk for indicated cup</td>
 </tr><tr>
 <td>Error Messages</td> <td> None </td>
 </tr><tr>
@@ -315,7 +315,7 @@
 </tr><tr>
 <td>Methods Invoked</td> <td> None </td>
 </tr><tr>
-<td>Description</td> <td> This method returns the number of wins a user has</td>
+<td>Description</td> <td> This method returns the number of cups a user has sunk where the cup <br> desired is specified by Cup parameter</td>
 </tr></table>
 <br>
 <table border="1">
@@ -328,7 +328,8 @@
 </tr><tr>
 <td>Return Type</td> <td><em> None </em></td>
 </tr><tr>
-<td>Input Arguments</td> <td> Integer Array Cups <br> [# of Cups1 sunk, # of Cups2 sunk, ..., # of Cups6 Sunk] </td>
+<td>Input Arguments</td> <td> int CupsSunk, int Cup <br> CupsSunk - the number of cups which have been sunk for a specific cup
+													<br> Cup - the specific cup which has been sunk</td>
 </tr><tr>
 <td>Output Arguments</td> <td> None </td>
 </tr><tr>
