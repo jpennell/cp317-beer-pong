@@ -104,6 +104,10 @@
 						<td>An individual statistic collected and stored for a User.</td>
 					</tr>
 					<tr>
+						<td>EventType</td>
+						<td>The description of with an Event.</td>
+					</tr>
+					<tr>
 						<td>Institution</td>
 						<td>The Institution a User is enrolled in.</td>
 					</tr>
@@ -125,81 +129,81 @@
 
 				<table class="term-def">
 					<tr>
-						<td>Registration View</td>
-						<td>Where a Guest registers to become a User.</td>
+						<td>RegistrationView</td>
+						<td>Where a User registers with Pong Tracker.</td>
 					</tr>
 					<tr>
-						<td>Create Game View</td>
+						<td>EditProfileView</td>
+						<td>Where a User edits their profile on Pong Tracker.</td>
+					</tr>
+					<tr>
+						<td>CreateGameView</td>
 						<td>Where a User creates a new Game for simulation.</td>
 					</tr>
 					<tr>
-						<td>Score Game View</td>
+						<td>ScoreGameView</td>
 						<td>Where a User scores a Game.</td>
 					</tr>
 					<tr>
-						<td>End Game View</td>
+						<td>EndGameView</td>
 						<td>Where a User selects the winning Team, and under what circumstances the
 						win was obtained.</td>
 					</tr>
 					<tr>
-						<td>Confirm Game View</td>
+						<td>ConfirmGameView</td>
 						<td>Where a User approves or denies the validity of the Game.</td>
 					</tr>
 					<tr>
-						<td>Rules View</td>
+						<td>RulesView</td>
 						<td>Where a User can read the rules of Pong Tracker.</td>
 					</tr>
 					<tr>
-						<td>LeaderBoard View</td>
+						<td>LeaderBoardView</td>
 						<td>Where a User can see the top ranked Users.</td>
 					</tr>
 					<tr>
-						<td>Statistics View</td>
+						<td>StatisticsView</td>
 						<td>Where a User sees their own or other Users' statistics.</td>
 					</tr>
 					<tr>
-						<td>Search User View</td>
+						<td>SearchUserView</td>
 						<td>Where a User can search for other Users.</td>
 					</tr>
 					<tr>
-						<td>User Login View</td>
+						<td>UserLoginView</td>
 						<td>Where a User logs into Pong Tracker.</td>
 					</tr>
 					<tr>
-						<td>User Logout View</td>
+						<td>UserLogoutView</td>
 						<td>Where a User logs out of Pong Tracker.</td>
 					</tr>
 
 					<tr>
-						<td>Delete Account View</td>
+						<td>DeleteAccountView</td>
 						<td>Where a User may delete their account from Pong Tracker.</td>
 					</tr>
 					<tr>
-						<td>Limited LeaderBoard View</td>
-						<td>Shows the top ten Users on Pong Tracker.</td>
-					</tr>
-					<tr>
-						<td>Administrator Login View</td>
+						<td>AdministratorLoginView</td>
 						<td>Where an Administrator logs into Pong Tracker.</td>
 					</tr>
 					<tr>
-						<td>Administrator Logout View</td>
+						<td>AdministratorLogoutView</td>
 						<td>Where an Administrator logs out of Pong Tracker.</td>
 					</tr>
 					<tr>
-						<td>Delete Institution View</td>
+						<td>DeleteInstitutionView</td>
 						<td>Where an Administrator deletes an Institution.</td>
 					</tr>
 					<tr>
-						<td>Add Institution View</td>
+						<td>AddInstitutionView</td>
 						<td>Where an Administrator adds an Institution.</td>
 					</tr>
 					<tr>
-						<td>Ban User View</td>
+						<td>BanUserView</td>
 						<td>Where an Administrator bans a User.</td>
 					</tr>
 					<tr>
-						<td>Unban User View</td>
+						<td>UnbanUserView</td>
 						<td>Where an Administrator removes a ban from a User.</td>
 					</tr>
 				</table>
@@ -210,72 +214,72 @@
 
 				<table class="term-def">
 					<tr>
-						<td>End Game Controller</td>
+						<td>EndGameController</td>
 						<td>Coordinates the actions involved with ending a Game.</td>
 					</tr>
 					<tr>
-						<td>LeaderBoard Controller</td>
+						<td>LeaderBoardController</td>
 						<td>Retrieves User data to display on LeaderBoard View.</td>
 					</tr>
 					<tr>
-						<td>Statistics Controller</td>
+						<td>StatisticsController</td>
 						<td>Coordinates retrieving and recording Stats about a User.</td>
 					</tr>
 					<tr>
-						<td>Search User Controller</td>
+						<td>SearchUserController</td>
 						<td>Retrieves User data on other Users. Used for looking at other User's
 						statistics.</td>
 					</tr>
 					<tr>
-						<td>User Login Controller</td>
+						<td>UserLoginController</td>
 						<td>Retrieves User data to verify identity.</td>
 					</tr>
 					<tr>
-						<td>User Logout Controller</td>
+						<td>UserLogoutController</td>
 						<td>Terminates User session on Pong Tracker.</td>
 					</tr>
 					<tr>
-						<td>Delete Account Controller</td>
+						<td>DeleteAccountController</td>
 						<td>Coordinates deleting a User.</td>
 					</tr>
 					<tr>
-						<td>Create Game Controller</td>
+						<td>CreateGameController</td>
 						<td>Coordinates creating a Game.</td>
 					</tr>
 					<tr>
-						<td>Score Game Controller</td>
+						<td>ScoreGameController</td>
 						<td>Coordinates updating a Game.</td>
 					</tr>
 					<tr>
-						<td>Confirm Game Controller</td>
+						<td>ConfirmGameController</td>
 						<td>Coordinates confirming validity of a Game.</td>
 					</tr>
 					<tr>
-						<td>Register Controller</td>
+						<td>RegisterController</td>
 						<td>Coordinates adding a User.</td>
 					</tr>
 					<tr>
-						<td>Administrator Login Controller</td>
+						<td>AdministratorLoginController</td>
 						<td>Retrieves Administrator data to verify identity.</td>
 					</tr>
 					<tr>
-						<td>Administrator Logout Controller</td>
+						<td>AdministratorLogoutController</td>
 						<td>Terminates Administrator session on Pong Tracker.</td>
 					</tr>
 					<tr>
-						<td>Delete Institution Controller</td>
+						<td>DeleteInstitutionController</td>
 						<td>Coordinates the actions involved when an Administrator deletes an Institution.</td>
 					</tr>
 					<tr>
-						<td>Add Institution Controller</td>
+						<td>AddInstitutionController</td>
 						<td>Coordinates the actions involved when an Administrator adds an Institution.</td>
 					</tr>
 					<tr>
-						<td>Ban User Controller</td>
+						<td>BanUserController</td>
 						<td>Coordinates the actions involved when an Administrator bans a User.</td>
 					</tr>
 					<tr>
-						<td>Unban User Controller</td>
+						<td>UnbanUserController</td>
 						<td>Coordinates the actions involved when an Administrator removes a ban from a User.</td>
 					</tr>
 				</table>
@@ -302,7 +306,7 @@
 				<section>
 					<h5 class="heading4"><span class="number">4.2.2</span>Administrator Boundary/Entity/Control Diagram </h5>
 					<embed src="images/4-2-2-AdminBCE.svg"></embed>
-				</section>	
+				</section>
 			</section>
 
 			<section>
@@ -364,7 +368,7 @@
 						<h5 class="heading4"><span class="number">4.3.1.11</span>Delete Account Class Diagram </h5>
 						<embed src="images/4-3-1-11-Delete Account Class Diagram.svg"></embed>
 					</section>
-					
+
 					<section>
 						<h5 class="heading4"><span class="number">4.3.1.12</span>Edit Profile Class Diagram </h5>
 						<embed src="images/4-x-x-x-Edit Profile Class Diagram.svg"></embed>
