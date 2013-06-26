@@ -1,0 +1,10 @@
+Henry: Your 6 Use Cases (SQA when applicable)
+Richard: Your 6 Use Cases
+Chris: Your 6 Use Cases
+.
+Carlie: Your 2 Uses Cases + Game Methods (3ish)
+Reese: Institution, Event Type, & Team Methods (6ish)
+Robin: Administrator Methods (8ish)
+Colin: Life Stats (Approximated to "A Lot") + SQA when applicable
+.
+Matt, Erin, and George left to focus on completing Analysis document. George has agreed to help with SQA. Matt & Erin will focus on assigned parts in earlier document when their resources become available. Quinton will focus on this with them as well when not doing SQA
