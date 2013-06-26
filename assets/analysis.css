@@ -9,24 +9,34 @@ body {
 	min-width: 300px;
 }
 
+/* headings */
+
 .title {
 	padding: 30px 0px;
 	font-size: 44px;
 }
 
+.heading4 {
+	font-size: 16px;
+}
+
+/* Authors list at the top */
 ul#authors {
 	list-style: none;
 	margin: 0 0 0 0 !important;
 }
-
 #authors li {
 	display: inline-block;
 	width: 120px;
 }
 
+/* Paragraph styling */
+
 #content p {
 	margin-bottom: 15px;
 }
+
+/* section indenting */
 
 #content > section {
 	margin-left: -5%;
@@ -36,12 +46,7 @@ section {
 	padding-left: 5%;
 }
 
-#table-of-contents {
-	margin-top: 50px;
-	padding: 20px;
-	background-color: #F5F5F5;
-	width: 300px;
-}
+/* Spans */
 
 span.number {
 	display: inline-block;
@@ -63,6 +68,15 @@ p.diagram-label {
 	margin-bottom: 8px !important;
 	font-size: 16px;
 	color: #777;
+}
+
+/* Table of contents */
+
+#table-of-contents {
+	margin-top: 50px;
+	padding: 20px;
+	background-color: #F5F5F5;
+	width: 300px;
 }
 
 /* Term-Defintion tables */
