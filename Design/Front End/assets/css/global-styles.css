@@ -1,0 +1,90 @@
+/* General styling */
+
+/* Purple color: #9400D3 */
+
+body {
+	margin: 0 auto;
+	width: 1000px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+	color: #9400D3
+}
+
+/* Log in at the top */
+#login {
+	display: block;
+	text-align: right;
+	margin-top: 20px;
+}
+#login a {
+	color: #888;
+}
+
+/* Header styling */
+#header {
+	margin-top: 30px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #888;
+	margin-bottom: 30px;
+}
+#header table {
+	width: 100%;
+}
+#logo {
+	font-size: 24px;
+	font-weight: bold;
+}
+#nav {
+	text-align: right;
+}
+#nav ul {
+	list-style: none;
+	margin: 0 0 0 0;
+}
+#nav li {
+	display: inline-block;
+}
+#nav a {
+	color: #222;
+	text-transform: uppercase;
+	font-size: 11px;
+	padding: 5px;
+}
+#nav a.active {
+	border-bottom: 4px solid #9400D3;
+}
+
+/* Banner */
+#banner {
+	max-width: 100%;
+	min-height: 170px;
+	padding: 20px;
+	background-image: url('../img/binding_dark.png');
+	background-repeat: repeat;
+	color: #fff !important;
+	margin-bottom: 20px;
+}
+
+/* Page content */
+#page-content {
+	padding: 20px;
+}
+
+/* Footer */
+#footer {
+	border-top: 1px solid #ccc;
+	margin-top: 20px;
+	padding-top: 10px;
+	margin-bottom: 30px;
+	color: #bbb;
+}
+#footer table {
+	width: 100%;
+}
+#footer td {
+}
+#footer td.right {
+	text-align: right;
+}
