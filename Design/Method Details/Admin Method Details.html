@@ -1,0 +1,225 @@
+
+
+<table border="1">
+<tr>
+<td><strong>Class Name</strong></td> <td><strong> Administrator </strong></td>
+</tr>
+<tr>
+<td>Method Name</td> <td><em> Add Institution </em></td>
+</tr>
+<tr>
+<td>Method State</td> <td><em> Private </em></td>
+</tr>
+<tr>
+<td>Return Type</td> <td><em> None </em></td>
+</tr>
+<tr>
+<td>Input Arguments</td> <td> String Institution Name </td>
+</tr>
+<tr>
+<td>Output Arguments</td> <td> None </td>
+</tr>
+<tr>
+<td>Error Messages</td> <td> if it has been added then,
+							<br>***Instituion has already been added*** </td>
+</tr>
+<tr>
+<td>External Accesses</td> <td> Institution database table</td>
+</tr>
+<tr>
+<td>External Changes</td> <td> None </td>
+</tr>
+<tr>
+<td>Other Methods Invoked</td> <td> None </td>
+</tr>
+<tr>
+<td>Description</td> <td> This will add an institution </td>
+</tr>
+</table>
+
+
+<table border="1">
+<tr>
+<td><strong>Class Name</strong></td> <td><strong> Administrator </strong></td>
+</tr>
+<tr>
+<td>Method Name</td> <td><em> Delete Institution </em></td>
+</tr>
+<tr>
+<td>Method State</td> <td><em> Private </em></td>
+</tr>
+<tr>
+<td>Return Type</td> <td><em> None </em></td>
+</tr>
+<tr>
+<td>Input Arguments</td> <td> String Institution Name </td>
+</tr>
+<tr>
+<td>Output Arguments</td> <td> None </td>
+</tr>
+<tr>
+<td>Error Messages</td> <td> If institution doesn't exist,
+							<br>***Instituion does not exist*** </td>
+</tr>
+<tr>
+<td>External Accesses</td> <td> Institution database table</td>
+</tr>
+<tr>
+<td>External Changes</td> <td> None </td>
+</tr>
+<tr>
+<td>Other Methods Invoked</td> <td> None </td>
+</tr>
+<tr>
+<td>Description</td> <td> This will delete an institution </td>
+</tr>
+</table>
+
+
+<table border="1">
+<tr>
+<td><strong>Class Name</strong></td> <td><strong> Administrator </strong></td>
+</tr>
+<tr>
+<td>Method Name</td> <td><em> Unban User </em></td>
+</tr>
+<tr>
+<td>Method State</td> <td><em> Private </em></td>
+</tr>
+<tr>
+<td>Return Type</td> <td><em> None </em></td>
+</tr>
+<tr>
+<td>Input Arguments</td> <td> String Username</td>
+</tr>
+<tr>
+<td>Output Arguments</td> <td> None </td>
+</tr>
+<tr>
+<td>Error Messages</td> <td> If the user doesn't exist then,
+							<br>***Unable to find UserName: xxxxx*** </td>
+</tr>
+<tr>
+<td>External Accesses</td> <td> None</td>
+</tr>
+<tr>
+<td>External Changes</td> <td> None </td>
+</tr>
+<tr>
+<td>Other Methods Invoked</td> <td> getUser </td>
+</tr>
+<tr>
+<td>Description</td> <td> This method will find the user, then unban the user</td>
+</tr>
+</table>
+
+<table border="1">
+<tr>
+<td><strong>Class Name</strong></td> <td><strong> Administrator </strong></td>
+</tr>
+<tr>
+<td>Method Name</td> <td><em> Ban User </em></td>
+</tr>
+<tr>
+<td>Method State</td> <td><em> Private </em></td>
+</tr>
+<tr>
+<td>Return Type</td> <td><em> None </em></td>
+</tr>
+<tr>
+<td>Input Arguments</td> <td> String Username</td>
+</tr>
+<tr>
+<td>Output Arguments</td> <td> None </td>
+</tr>
+<tr>
+<td>Error Messages</td> <td> If the user doesn't exist then,
+							<br>***Unable to find UserName: xxxxx*** </td>
+</tr>
+<tr>
+<td>External Accesses</td> <td> None</td>
+</tr>
+<tr>
+<td>External Changes</td> <td> None </td>
+</tr>
+<tr>
+<td>Other Methods Invoked</td> <td> getUser </td>
+</tr>
+<tr>
+<td>Description</td> <td> This method will find the user, then ban the user</td>
+</tr>
+</table>
+
+<table border="1">
+<tr>
+<td><strong>Class Name</strong></td> <td><strong> Administrator </strong></td>
+</tr>
+<tr>
+<td>Method Name</td> <td><em> Admin Login </em></td>
+</tr>
+<tr>
+<td>Method State</td> <td><em> Private </em></td>
+</tr>
+<tr>
+<td>Return Type</td> <td><em> None </em></td>
+</tr>
+<tr>
+<td>Input Arguments</td> <td> String Username, String Password</td>
+</tr>
+<tr>
+<td>Output Arguments</td> <td> None </td>
+</tr>
+<tr>
+<td>Error Messages</td> <td> If the username or password is invalid,
+							<br>***Unable to log in, please try again*** </td>
+</tr>
+<tr>
+<td>External Accesses</td> <td> None</td>
+</tr>
+<tr>
+<td>External Changes</td> <td> None </td>
+</tr>
+<tr>
+<td>Other Methods Invoked</td> <td> getUser, encryptPassword </td>
+</tr>
+<tr>
+<td>Description</td> <td> This method will try to log in with the input values</td>
+</tr>
+</table>
+
+<table border="1">
+<tr>
+<td><strong>Class Name</strong></td> <td><strong> Administrator </strong></td>
+</tr>
+<tr>
+<td>Method Name</td> <td><em> Admin Logout </em></td>
+</tr>
+<tr>
+<td>Method State</td> <td><em> Private </em></td>
+</tr>
+<tr>
+<td>Return Type</td> <td><em> None </em></td>
+</tr>
+<tr>
+<td>Input Arguments</td> <td> String Username</td>
+</tr>
+<tr>
+<td>Output Arguments</td> <td> None </td>
+</tr>
+<tr>
+<td>Error Messages</td> <td> If the username,
+							<br>***Unable to log out, please try again*** </td>
+</tr>
+<tr>
+<td>External Accesses</td> <td> None</td>
+</tr>
+<tr>
+<td>External Changes</td> <td> None </td>
+</tr>
+<tr>
+<td>Other Methods Invoked</td> <td> getUser </td>
+</tr>
+<tr>
+<td>Description</td> <td> This method will find the user, and set the state to log out</td>
+</tr>
+</table>
