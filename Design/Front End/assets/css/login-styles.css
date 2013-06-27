@@ -1,0 +1,10 @@
+#login-form {
+	margin: 0 auto;
+	width: 300px;
+}
+#login-form * {
+	margin-top: 5px;
+}
+#login-form input {
+	width: 100%;
+}

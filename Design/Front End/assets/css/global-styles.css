@@ -12,13 +12,13 @@ h1, h2, h3, h4, h5 {
 	color: #9400D3
 }
 
-/* Log in at the top */
-#login {
+/* Log out at the top */
+#logout {
 	display: block;
 	text-align: right;
 	margin-top: 20px;
 }
-#login a {
+#logout a, p {
 	color: #888;
 }
 
