@@ -104,3 +104,7 @@ table.term-def td:first-child { /* first cell is bold (the term being defined ) 
 #architecture .caption {
 	margin-bottom: 50px;
 }
+
+#architecture p {
+	margin: 10px auto;
+}
