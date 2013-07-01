@@ -316,66 +316,67 @@
 				<h3 class="heading2"><span class="number">4.3</span>Use Case Class Diagrams</h3>
 				<section>
 					<h4 class="heading3"><span class="number">4.3.1</span>User Class Diagrams</h4>
+					<section>
+						<h5 class="heading4"><span class="number">4.3.1.1</span>Create Game Class Diagram </h5>
+						<embed src="images/4-3-1-7-Create Game Class Diagram.svg"></embed>
+						<P>The CreateGameView has four textboxes (txtPlayerName1-txtPlayerName4). A User enters the name of all Users participating in the Game in the textboxes. The create button (btnCreate) is selected when all fields have been entered. There is an option to go back (btnBack) if the User no longer wants to create a Game.</P>
+					</section>
 
 					<section>
-						<h5 class="heading4"><span class="number">4.3.1.1</span>End Game Class Diagram </h5>
+						<h5 class="heading4"><span class="number">4.3.1.2</span>Score Game Class Diagram </h5>
+						<embed src="images/4-3-1-9-Score Game Class Diagram.svg"></embed>
+						<p>The ScoreGameView has 12 buttons, each representing a Cup (btnTeam1Cup1-btnTeam2Cup6). When a cup is sunk, a User selects the matching Cup button on the form. A User then selects how the cup was sunk which is either by a trick shot (btnTrickShot), by a bounce shot (btnBounceShot),  by a party foul (btnPartyFoul), or by a simply sinking the ball (btnCupSunk). Lastly, a User selects which player sunk the Cup (btnPlayer1-btnPlayer4). A User may end the Game at any point by selecting abort (btnAbort) which cancels the Game without recording the information, or by selecting the end game button (btnEndGame) which brings the User to the EndGameView.</p>
+					</section>
+
+					<section>
+						<h5 class="heading4"><span class="number">4.3.1.3</span>End Game Class Diagram </h5>
 						<embed src="images/4-3-1-1-End Game Class Diagram.svg"></embed>
 						<p>The EndGameView has two sets of radio buttons. A User must select the winning team (rbtnWinner), and how the win was obtained (rbtnCause). Once the radio buttons have been selected, a User hits a confirm button (btnConfirm) to complete the form.</p>
 					</section>
 
 					<section>
-						<h5 class="heading4"><span class="number">4.3.1.2</span>View Statistics Class Diagram </h5>
-						<embed src="images/4-3-1-2-View Statistics Class Diagram.svg"></embed>
-						<p>The StatisticsView shows statistics of a given User. There are no form elements on this page.</p>
-					</section>
-
-					<section>
-						<h5 class="heading4"><span class="number">4.3.1.3</span>View Leader Board Class Diagram </h5>
-						<embed src="images/4-3-1-3-View Leader Board Class Diagram.svg"></embed>
-						<p>The LeaderBoardView has a dynamic drop down list for filtering the list.</p>
-					</section>
-
-					<section>
-						<h5 class="heading4"><span class="number">4.3.1.4</span>View Rules Class Diagram </h5>
-						<embed src="images/4-3-1-4-View Rules Class Diagram.svg"></embed>
-						<p>The RulesView is a static html page with no form elements.</p>
-					</section>
-
-					<section>
-						<h5 class="heading4"><span class="number">4.3.1.5</span>View Other Users' Statistics Class Diagram </h5>
-						<embed src="images/4-3-1-5-View Other Users' Statistics Class Diagram.svg"></embed>
-						<p>The SearchUserView has a textbox (txtSearchUser) where a User enters their search criteria. Clicking the search button (btnSearch) executes the search.</p>
-					</section>
-
-					<section>
-						<h5 class="heading4"><span class="number">4.3.1.6</span>Confirm Game Class Diagram </h5>
+						<h5 class="heading4"><span class="number">4.3.1.4</span>Confirm Game Class Diagram </h5>
 						<embed src="images/4-3-1-6-Confirm Game Class Diagram.svg"></embed>
 						<p>The ConfirmGameView has two buttons. There is a button to confirm (btnConfirm) or deny (btnDeny) the validity of the game. A User only selects one button. Once one button has been selected, the form is complete.</p>
 					</section>
 
 					<section>
-						<h5 class="heading4"><span class="number">4.3.1.7</span>Create Game Class Diagram </h5>
-						<embed src="images/4-3-1-7-Create Game Class Diagram.svg"></embed>
-						<P>The CreateGameView has four textboxes (txtPlayerName1-txtPlayerName4). A User enters the name of all Users participating in the Game in the textboxes. The create button (btnCreate) is selected when all fields have been entered. There is an option to go back (btnBack) if the User no longer wants to create a game.</P>
+						<h5 class="heading4"><span class="number">4.3.1.5</span>View Statistics Class Diagram </h5>
+						<embed src="images/4-3-1-2-View Statistics Class Diagram.svg"></embed>
+						<p>The StatisticsView shows statistics of a given User. There are no form elements on this page.</p>
 					</section>
 
 					<section>
-						<h5 class="heading4"><span class="number">4.3.1.8</span>User Logout Class Diagram </h5>
+						<h5 class="heading4"><span class="number">4.3.1.6</span>View Other Users' Statistics Class Diagram </h5>
+						<embed src="images/4-3-1-5-View Other Users' Statistics Class Diagram.svg"></embed>
+						<p>The SearchUserView has a textbox (txtSearchUser) where a User enters their search criteria. Clicking the search button (btnSearch) executes the search.</p>
+					</section>
+
+					<section>
+						<h5 class="heading4"><span class="number">4.3.1.7</span>View Leader Board Class Diagram </h5>
+						<embed src="images/4-3-1-3-View Leader Board Class Diagram.svg"></embed>
+						<p>The LeaderBoardView has a dynamic drop down list for filtering the list.</p>
+					</section>
+
+					<section>
+						<h5 class="heading4"><span class="number">4.3.1.8</span>View Rules Class Diagram </h5>
+						<embed src="images/4-3-1-4-View Rules Class Diagram.svg"></embed>
+						<p>The RulesView is a static html page with no form elements.</p>
+					</section>
+
+
+					<section>
+						<h5 class="heading4"><span class="number">4.3.1.9</span>User Login Class Diagram </h5>
+						<embed src="images/4-3-1-10-User Login Class Diagram.svg"></embed>
+						<p>The UserLoginView has a textbox where a User enters their username (txtUsername), and a textbox where the User enters their password (txtPassword). Upon completion of these fields, a User selects the submit button (btnSubmit) in order to complete their login request.</p>
+					</section>
+
+					<section>
+						<h5 class="heading4"><span class="number">4.3.1.10</span>User Logout Class Diagram </h5>
 						<embed src="images/4-3-1-8-User Logout Diagram.svg"></embed>
 						<p>The LogoutView has a button to logout (btnLogout). Selecting this button, terminates a User's session.</p>
 					</section>
 
-					<section>
-						<h5 class="heading4"><span class="number">4.3.1.9</span>Score Game Class Diagram </h5>
-						<embed src="images/4-3-1-9-Score Game Class Diagram.svg"></embed>
-						<p>Test</p>
-					</section>
-
-					<section>
-						<h5 class="heading4"><span class="number">4.3.1.10</span>User Login Class Diagram </h5>
-						<embed src="images/4-3-1-10-User Login Class Diagram.svg"></embed>
-						<p>The UserLoginView has a textbox where a User enters their username (txtUsername), and a textbox where the User enters their password (txtPassword). Upon completion of these fields, a User selects the submit button (btnSubmit) in order to complete their login request.</p>
-					</section>
 
 					<section>
 						<h5 class="heading4"><span class="number">4.3.1.11</span>Delete Account Class Diagram </h5>
