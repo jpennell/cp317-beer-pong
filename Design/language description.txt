@@ -1,0 +1,12 @@
+Pong Tracker is hosted on a Sun Microsystem Linux Server with a MySQL database. The Linux server must be able to render HTML 5, CSS 3, Python 2.7, and JavaScript. The server is also required to integrate with the Django web framework and Github. Django and python were selected as the development team has python experience. Django is a strong web framework with many tools built in such as sessions, and database apis. The only concern we have at present is that we are implemented in python 2.7 when the current version is 3.3.2. We selected 2.7 because Django support for 3.3.2 is currently only in an an experimental version.
+
+Coding Guidelines and Conventions:
+- Must meet HTML 5 and CSS 3
+- Must be coded in python 2.7 excluding JavaScript
+- Must be object oriented
+- Variables shall be named with Camel Case
+
+Testing:
+- All functions shall be unit tested and committed with their tests.
+- Acceptance testing must also be preformed
+
