@@ -1,0 +1,283 @@
+<!-- Leaderboard Controller Method Details -->
+
+
+<table border="1">
+	<tr>
+		<td>
+			<strong>Controller Name</strong>
+		</td> 
+		<td>
+			<strong> Leaderboard </strong>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Method Name
+		</td> 
+		<td>
+			<em> getInstitutionRank </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Method State
+		</td> 
+		<td>
+			<em> Public </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Return Type
+		</td> 
+		<td>
+			<em> int institutionRank </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Input Arguments
+		</td> 
+		<td> 
+			User userName 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Output Arguments
+		</td> 
+		<td> 
+			None 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Error Messages
+		</td> 
+		<td> 
+			if unable to retrieve a rank, then this fail
+								<br>***Unable to find a ranking for userName, institutionName*** 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			External Accesses
+		</td> 
+		<td> 
+			None 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			External Changes
+		</td> 
+		<td> 
+			None 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Other Methods Invoked
+		</td> 
+		<td> 
+			getTrueSkill <br> getInstitution 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Description
+		</td> 
+		<td> 
+			This method finds and retrieve's a User's ranking within their own institution 
+		</td>
+	</tr>
+</table>
+<br>
+
+<table border="1">
+	<tr>
+		<td>
+			<strong>Controller Name</strong>
+		</td> 
+		<td>
+			<strong> Leaderboard </strong>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Method Name
+		</td> 
+		<td>
+			<em> getOverallRank </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Method State
+		</td> 
+		<td>
+			<em> Public </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Return Type
+		</td> 
+		<td>
+			<em> int overallRank </em>
+		</td>
+	</tr>
+		<tr>
+		<td>
+			Input Arguments
+		</td> 
+		<td> 
+			User userName
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Output Arguments
+		</td> 
+		<td> 
+		None 
+		</td>
+	</tr>
+	<tr>
+		<td>
+		Error Messages
+		</td> 
+		<td> 
+			if unable to find overall rank, then this fail
+								<br>***Unable to find a ranking for userName*** 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			External Accesses
+		</td> 
+		<td> 
+			None 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			External Changes
+		</td> 
+		<td> 
+			None 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Other Methods Invoked
+		</td> 
+		<td> 
+			getTruskill 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Description
+		</td> 
+		<td> 
+			This method retireves a user's overall ranking 
+		</td>
+	</tr>
+</table>
+<br>
+
+<table border="1">
+	<tr>
+		<td>
+			<strong>Controller Name</strong>
+		</td> 
+		<td>
+			<strong> Leaderboard </strong>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Method Name
+		</td> 
+		<td>
+			<em> getLeaders </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Method State
+		</td> 
+		<td>
+			<em> Public </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Return Type
+		</td> 
+		<td>
+			<em> User[] leadUsers </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Input Arguments
+		</td> 
+		<td> 
+			int numberOfUsers <br> String institution 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Output Arguments
+		</td> 
+		<td> 
+			None 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Error Messages
+		</td> 
+		<td> 
+			if unable to find institution, then this fail
+								<br>***Unable to find institution*** 
+						   <br>  if unable to find number of users, then this fail
+								<br>***Unable to find that number of users*** 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			External Accesses
+		</td> 
+		<td> 
+			None 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			External Changes
+		</td> 
+		<td> 
+			None 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Other Methods Invoked
+		</td> 
+		<td> 
+			getUser 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Description
+		</td> 
+		<td> 
+			This method retrieves a list of length numberOfUsers of the top ranking users at institution specified
+		</td>
+	</tr>
+</table>
+<br>
