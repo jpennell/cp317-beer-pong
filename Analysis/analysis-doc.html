@@ -150,7 +150,7 @@
 					</tr>
 					<tr>
 						<td>StatisticsView</td>
-						<td>Where a User sees their own or other Users' statistics.</td>
+						<td>Where a User sees their own or other Users' statistics and general profile information.</td>
 					</tr>
 					<tr>
 						<td>SearchUserView</td>
@@ -162,7 +162,7 @@
 					</tr>
 					<tr>
 						<td>RulesView</td>
-						<td>Where a User can read the rules of Pong Tracker.</td>
+						<td>Where a User can read the rules of Pong Tracker and Beer Pong.</td>
 					</tr>
 
 					<tr>
@@ -333,7 +333,7 @@
 					<section>
 						<h5 class="heading4"><span class="number">4.3.1.2</span>Score Game Class Diagram </h5>
 						<embed src="images/4-3-1-9-Score Game Class Diagram.svg"></embed>
-						<p>The ScoreGameView has 12 buttons, each representing a Cup (btnTeam1Cup1-btnTeam2Cup6). When a cup is sunk, a User selects the matching Cup button on the form. A User then selects how the cup was sunk which is either by a trick shot (btnTrickShot), by a bounce shot (btnBounceShot),  by a party foul (btnPartyFoul), or by a simply sinking the ball (btnCupSunk). Lastly, a User selects which player sunk the Cup (btnPlayer1-btnPlayer4). A User may end the Game at any point by selecting abort (btnAbort) which cancels the Game without recording the information, or by selecting the end game button (btnEndGame) which brings the User to the EndGameView.</p>
+						<p>The ScoreGameView has 12 buttons, each representing a Cup (btnTeam1Cup1-btnTeam2Cup6). When a Cup is sunk, a User selects the matching Cup button on the form. A User then selects how the cup was sunk which is either by a trick shot (btnTrickShot), by a bounce shot (btnBounceShot),  by a party foul (btnPartyFoul), or by a simply sinking the ball (btnCupSunk). Lastly, a User selects which player sunk the Cup (btnPlayer1-btnPlayer4). A User may end the Game at any point by selecting abort (btnAbort) which cancels the Game without recording the information, or by selecting the end game button (btnEndGame) which brings the User to the EndGameView.</p>
 					</section>
 
 					<section>
@@ -351,7 +351,7 @@
 					<section>
 						<h5 class="heading4"><span class="number">4.3.1.5</span>View Statistics Class Diagram </h5>
 						<embed src="images/4-3-1-2-View Statistics Class Diagram.svg"></embed>
-						<p>The StatisticsView shows statistics of a given User. There are no form elements on this page.</p>
+						<p>The StatisticsView shows statistics of a given User, along with their general profile information (username, first name, last name, etc.). There are no form elements on this page.</p>
 					</section>
 
 					<section>
@@ -369,7 +369,7 @@
 					<section>
 						<h5 class="heading4"><span class="number">4.3.1.8</span>View Rules Class Diagram </h5>
 						<embed src="images/4-3-1-4-View Rules Class Diagram.svg"></embed>
-						<p>The RulesView is a static html page with no form elements.</p>
+						<p>The RulesView is a static html page with no form elements. It has Beer Pong and Pong Tracker website rules.</p>
 					</section>
 
 					<section>
@@ -441,7 +441,7 @@
 					<section>
 						<h5 class="heading4"><span class="number">4.3.2.5</span>Admin Login Class Diagram </h5>
 						<embed src="images/4-3-2-5-Admin Login Class Diagram.svg"></embed>
-						<p>The AdministratorLoginView has a textbox where an ADministrator enters their username (txtUsername), and a textbox where the Administrator enters their password (txtPassword). Upon completion of these fields, an Administrator selects the submit button (btnSubmit) in order to complete their login request.</p>
+						<p>The AdministratorLoginView has a textbox where an Administrator enters their username (txtUsername), and a textbox where the Administrator enters their password (txtPassword). Upon completion of these fields, an Administrator selects the submit button (btnSubmit) in order to complete their login request.</p>
 					</section>
 
 					<section>
