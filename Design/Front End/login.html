@@ -1,122 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Pong Tracker | Log In</title>
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
-	<link href='assets/bootstrap-css/bootstrap.css' rel='stylesheet' type='text/css'>
-	<link href='assets/css/global-styles.css' rel='stylesheet' type='text/css'>
-	<link href='assets/css/login-styles.css' rel='stylesheet' type='text/css'>
+    <title>Pong Tracker | Log In</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+    <link href='assets/bootstrap-css/bootstrap.css' rel='stylesheet' type='text/css'>
+    <link href='assets/css/global-styles.css' rel='stylesheet' type='text/css'>
+    <link href='assets/css/login-styles.css' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<div id="container">
-		
-		<!------ HEADER --------->
-		<div id="header">
-			<table>
-				<tr>
-					<td id="logo">Pong Tracker</td>
-					<td id="nav">
-					<ul>
-						<li><a href="#">Rules</a></li>
-					</ul></td>
-					
-				</tr>
-			</table>
-		</div>
-		<!------ BANNER --------->
-		<div id="banner">
-		<br/>
-			<h1>Welcome</h1>
-			<p style="margin-top:20px;">
-				Pong Tracker provides Users with a website for recording and viewing
-				statistics of Beer Pong games. Details of each game are entered into the website as users are
-				playing in real time. 
-			</p>
-		</div>
-		<!------ CONTENT --------->
-		<div id="page-content">
-			<table width="90%" align="center">
-				<tr style="vertical-align: top;">
-					<td  width="40%" style="vertical-align: top;">
-						<h3>Leaderboard </h3>
-						<ol>
-							<li>Player 1</li>
-							<li>Player 2</li>
-							<li>Player 3</li>
-							<li>Player 4</li>
-							<li>Player 5</li>
-							<li>Player 6</li>
-							<li>Player 7</li>
-							<li>Player 8</li>
-							<li>Player 9</li>
-							<li>Player 10</li>
-						</ol>
-					</td>
-					<td width="40%" style="vertical-align: top;" >
-						<div id="login-form">
-							<h3>Login</h3>
-							<form action="main.html" name="login">
-								<input name="username" type="text" placeholder="username"><br/>
-								<input name="password" type="password" placeholder="password"><br/>
-								<button name="submit" class="btn" type="submit" action="login">Login</button>
-							</form>
-						</div>
-					</td>
-					<td width="40%" style="vertical-align: top;">
-						<div id="register-form">
-							<h3>Register</h3>
-							<form action="main.html" name="register" >
-								<input name="email" type="text" placeholder="email"><br/>
-								<input name="username" type="text" placeholder="username"><br/>
-								<button name="submit" class="btn" type="submit" action="register">Submit</button>
-							</form>
-						</div>
-					</td>
-				</tr>
-			</table>
-					
-						
-	<!---		<div id="limitedLeaderboard">
-				<h3>Leaderboard </h3>
-				<ol>
-					<li>Player 1</li>
-					<li>Player 2</li>
-					<li>Player 3</li>
-					<li>Player 4</li>
-					<li>Player 5</li>
-					<li>Player 6</li>
-					<li>Player 7</li>
-					<li>Player 8</li>
-					<li>Player 9</li>
-					<li>Player 10</li>
-				</ol>
-			</div>
-			<div id="login-form">
-				<h3>Login</h3>
-				<form action="main.html" name="login">
-					<input name="username" type="text" placeholder="username"><br/>
-					<input name="password" type="password" placeholder="password"><br/>
-					<button name="submit" class="btn" type="submit" action="login">Login</button>
-				</form>
-			</div>
-			<br/>
-			<br/>
-			<div id="register-form">
-				<h3>Register</h3>
-				<form action="main.html" name="register">
-					<input name="email" type="text" placeholder="email"><br/>
-					<input name="username" type="text" placeholder="username"><br/>
-					<button name="submit" class="btn" type="submit" action="register">Submit</button>
-		</div>---->
-		<!------- FOOTER --------->
-		<div id="footer">
-			<table>
-				<tr>
-					<td class="left">CP317 Software Engineering</td>
-					<td class="right">Wilfrid Laurier University, 2013</td>
-				</tr>
-			</table>
-		</div>
-	</div>
+    <div id="container">
+
+        <!------ HEADER --------->
+        <div id="header">
+            <table>
+                <tr>
+                    <td id="logo">
+                        Pong Tracker
+                    </td>
+                    <td id="nav">
+                        <ul>
+                            <li><a href="#">Rules</a></li>
+                        </ul>
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+        <!------ BANNER --------->
+        <div id="banner">
+            <br/>
+            <h1>Welcome</h1>
+            <p style="margin-top:20px;">
+                Pong Tracker provides Users with a website for recording and viewing
+                statistics of Beer Pong games. Details of each game are entered into the website as users are
+                playing in real time.
+            </p>
+        </div>
+        <!------ CONTENT --------->
+        <div id="page-content">
+            <table>
+                <tr>
+                    <td>
+                        <div id="limited-leaderboard">
+                            <h3>Leaderboard</h3>
+                            <ol>
+                                <li>Player 1</li>
+                                <li>Player 2</li>
+                                <li>Player 3</li>
+                                <li>Player 4</li>
+                                <li>Player 5</li>
+                                <li>Player 6</li>
+                                <li>Player 7</li>
+                                <li>Player 8</li>
+                                <li>Player 9</li>
+                                <li>Player 10</li>
+                            </ol>
+                        </div>
+                    </td>
+                    <td>
+                        <div id="login-form">
+                            <h3>Log In</h3>
+                            <form action="main.html" name="login">
+                                <input name="username" type="text" placeholder="username">
+                                <br/>
+                                <input name="password" type="password" placeholder="password">
+                                <br/>
+                                <button name="submit" class="btn" type="submit" action="login">
+                                    Log In
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                    <td>
+                        <div id="register-form">
+                            <h3>Register</h3>
+                            <form action="main.html" name="register" >
+                                <input name="email" type="text" placeholder="email">
+                                <br/>
+                                <input name="username" type="text" placeholder="username">
+                                <br/>
+                                <button name="submit" class="btn" type="submit" action="register">
+                                    Submit
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <!------- FOOTER --------->
+            <div id="footer">
+                <table>
+                    <tr>
+                        <td class="left">
+                            CP317 Software Engineering
+                        </td>
+                        <td class="right">
+                            Wilfrid Laurier University, 2013
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
 </body
 </html>
