@@ -43,7 +43,7 @@
 				Pong Tracker provides Users with a centralized website for recording and viewing
 				statistics of Beer Pong games. Details of each game are entered into the website as Users are playing in real time.
 
-				This analysis document details how the Pong Tracker product work. It provides
+				This analysis document details how the Pong Tracker product works. It provides
 				information on models, user interfaces, and the associations between them.
 			</p>
 			<span class="to-top"><a href="#top">Back to Top</a></span>
@@ -66,7 +66,7 @@
 						<li> Ability to view a leaderboard </li>
 						<li> Ability to register, login and logout.</li>
 						<li> Ability to view rules</li>
-						<li> Ability to delete account</li>
+						<li> Ability to delete their account</li>
 					</ul>
 					<li> Administrators </li>
 					<ul>
@@ -112,12 +112,12 @@
 					</tr>
 					<tr>
 						<td>Institution</td>
-						<td>The Institution a User is enrolled in.</td>
+						<td>The school a User is enrolled in.</td>
 					</tr>
 					<tr>
 						<td>Administrator</td>
 						<td>The actor named Administrator who has special permissions
-						within Pong Tracker.</td>
+						within Pong Tracker. Administrators are not involved in Games.</td>
 					</tr>
 					<tr>
 						<td>User</td>
@@ -131,14 +131,6 @@
 				<h3 class="heading2"><span class="number">3.2</span>Boundary Objects</h3>
 
 				<table class="term-def">
-					<tr>
-						<td>RegistrationView</td>
-						<td>Where a User registers with Pong Tracker.</td>
-					</tr>
-					<tr>
-						<td>EditProfileView</td>
-						<td>Where a User edits their profile on Pong Tracker.</td>
-					</tr>
 					<tr>
 						<td>CreateGameView</td>
 						<td>Where a User creates a new Game for tracking.</td>
@@ -157,20 +149,29 @@
 						<td>Where a User approves or denies the validity of the Game.</td>
 					</tr>
 					<tr>
-						<td>RulesView</td>
-						<td>Where a User can read the rules of Pong Tracker.</td>
-					</tr>
-					<tr>
-						<td>LeaderBoardView</td>
-						<td>Where a User can see the top ranked Users.</td>
-					</tr>
-					<tr>
 						<td>StatisticsView</td>
 						<td>Where a User sees their own or other Users' statistics.</td>
 					</tr>
 					<tr>
 						<td>SearchUserView</td>
 						<td>Where a User can search for other Users.</td>
+					</tr>
+					<tr>
+						<td>LeaderBoardView</td>
+						<td>Where a User can see the top ranked Users.</td>
+					</tr>
+					<tr>
+						<td>RulesView</td>
+						<td>Where a User can read the rules of Pong Tracker.</td>
+					</tr>
+
+					<tr>
+						<td>RegistrationView</td>
+						<td>Where a User registers with Pong Tracker.</td>
+					</tr>
+					<tr>
+						<td>EditProfileView</td>
+						<td>Where a User edits their profile on Pong Tracker.</td>
 					</tr>
 					<tr>
 						<td>UserLoginView</td>
@@ -185,22 +186,16 @@
 						<td>DeleteAccountView</td>
 						<td>Where a User may delete their account from Pong Tracker.</td>
 					</tr>
+
 					<tr>
-						<td>AdministratorLoginView</td>
-						<td>Where an Administrator logs into their Pong Tracker administrative account.</td>
-					</tr>
-					<tr>
-						<td>AdministratorLogoutView</td>
-						<td>Where an Administrator logs out of their Pong Tracker administrative account.</td>
+						<td>AddInstitutionView</td>
+						<td>Where an Administrator adds an Institution.</td>
 					</tr>
 					<tr>
 						<td>DeleteInstitutionView</td>
 						<td>Where an Administrator deletes an Institution.</td>
 					</tr>
-					<tr>
-						<td>AddInstitutionView</td>
-						<td>Where an Administrator adds an Institution.</td>
-					</tr>
+
 					<tr>
 						<td>BanUserView</td>
 						<td>Where an Administrator bans a User.</td>
@@ -208,6 +203,14 @@
 					<tr>
 						<td>UnbanUserView</td>
 						<td>Where an Administrator removes a ban from a User.</td>
+					</tr>
+					<tr>
+						<td>AdministratorLoginView</td>
+						<td>Where an Administrator logs into their Pong Tracker administrative account.</td>
+					</tr>
+					<tr>
+						<td>AdministratorLogoutView</td>
+						<td>Where an Administrator logs out of their Pong Tracker administrative account.</td>
 					</tr>
 				</table>
 			</section>
@@ -217,12 +220,20 @@
 
 				<table class="term-def">
 					<tr>
+						<td>CreateGameController</td>
+						<td>Coordinates creating a Game.</td>
+					</tr>
+					<tr>
+						<td>ScoreGameController</td>
+						<td>Coordinates scoring a Game.</td>
+					</tr>
+					<tr>
 						<td>EndGameController</td>
 						<td>Coordinates the actions involved with ending a Game.</td>
 					</tr>
 					<tr>
-						<td>LeaderBoardController</td>
-						<td>Retrieves User data to display on LeaderBoard View.</td>
+						<td>ConfirmGameController</td>
+						<td>Coordinates confirming validity of a Game.</td>
 					</tr>
 					<tr>
 						<td>StatisticsController</td>
@@ -232,6 +243,18 @@
 						<td>SearchUserController</td>
 						<td>Retrieves User data on other Users. Used for looking at other User's
 						statistics.</td>
+					</tr>
+					<tr>
+						<td>LeaderBoardController</td>
+						<td>Retrieves User data to display on LeaderBoard View.</td>
+					</tr>
+					<tr>
+						<td>RegistrationController</td>
+						<td>Coordinates adding a User.</td>
+					</tr>
+					<tr>
+						<td>EditProfileController</td>
+						<td>Coordinates updating User information.</td>
 					</tr>
 					<tr>
 						<td>UserLoginController</td>
@@ -246,36 +269,12 @@
 						<td>Coordinates deleting a User.</td>
 					</tr>
 					<tr>
-						<td>CreateGameController</td>
-						<td>Coordinates creating a Game.</td>
-					</tr>
-					<tr>
-						<td>ScoreGameController</td>
-						<td>Coordinates updating a Game.</td>
-					</tr>
-					<tr>
-						<td>ConfirmGameController</td>
-						<td>Coordinates confirming validity of a Game.</td>
-					</tr>
-					<tr>
-						<td>RegistrationController</td>
-						<td>Coordinates adding a User.</td>
-					</tr>
-					<tr>
-						<td>AdministratorLoginController</td>
-						<td>Retrieves Administrator data to verify identity.</td>
-					</tr>
-					<tr>
-						<td>AdministratorLogoutController</td>
-						<td>Terminates Administrator session on Pong Tracker.</td>
+						<td>AddInstitutionController</td>
+						<td>Coordinates the actions involved when an Administrator adds an Institution.</td>
 					</tr>
 					<tr>
 						<td>DeleteInstitutionController</td>
 						<td>Coordinates the actions involved when an Administrator deletes an Institution.</td>
-					</tr>
-					<tr>
-						<td>AddInstitutionController</td>
-						<td>Coordinates the actions involved when an Administrator adds an Institution.</td>
 					</tr>
 					<tr>
 						<td>BanUserController</td>
@@ -285,6 +284,15 @@
 						<td>UnbanUserController</td>
 						<td>Coordinates the actions involved when an Administrator removes a ban from a User.</td>
 					</tr>
+					<tr>
+						<td>AdministratorLoginController</td>
+						<td>Retrieves Administrator data to verify identity.</td>
+					</tr>
+					<tr>
+						<td>AdministratorLogoutController</td>
+						<td>Terminates Administrator session on Pong Tracker.</td>
+					</tr>
+
 				</table>
 			</section>
 			<span class="to-top"><a href="#top">Back to Top</a></span>
@@ -364,37 +372,40 @@
 						<p>The RulesView is a static html page with no form elements.</p>
 					</section>
 
+					<section>
+						<h5 class="heading4"><span class="number">4.3.1.9</span>Registration Class Diagram </h5>
+						<embed src="images/4-3-3-1-Registration Class Diagram.svg"></embed>
+						<p>The RegistrationView has a textbox where a User enters their email address (txtEmail) and a textbox to enter the username (txtUsername) they want. Once they have completed these fields, the select the sign up button (btnSignUp) to complete the form.</p>
+					</section>
 
 					<section>
-						<h5 class="heading4"><span class="number">4.3.1.9</span>User Login Class Diagram </h5>
+						<h5 class="heading4"><span class="number">4.3.1.10</span>Edit Profile Class Diagram </h5>
+						<embed src="images/4-x-x-x-Edit Profile Class Diagram.svg"></embed>
+						<p>The EditProfileView has textboxes for username (txtUsername), password (txtPassword), first name (txtFirstName), last name (txtLastName), email (txtEmail), height (txtHeight) which is measured in centimeters, and year of graduation (txtYearOfGraduation). A User updates their information in the textboxes as necessary. A User can upload a picture (txtUserProfilePhoto) to their profile as well. To do this, a User hits the browse button (btnBrowse) to obtain an image from their computer. Next, a User hits upload (btnUpload) and the image is added to their profile. In order to save their updated information, a User hits save (btnSave). </p>
+					</section>
+
+					<section>
+						<h5 class="heading4"><span class="number">4.3.1.11</span>User Login Class Diagram </h5>
 						<embed src="images/4-3-1-10-User Login Class Diagram.svg"></embed>
 						<p>The UserLoginView has a textbox where a User enters their username (txtUsername), and a textbox where the User enters their password (txtPassword). Upon completion of these fields, a User selects the submit button (btnSubmit) in order to complete their login request.</p>
 					</section>
 
 					<section>
-						<h5 class="heading4"><span class="number">4.3.1.10</span>User Logout Class Diagram </h5>
+						<h5 class="heading4"><span class="number">4.3.1.12</span>User Logout Class Diagram </h5>
 						<embed src="images/4-3-1-8-User Logout Diagram.svg"></embed>
 						<p>The LogoutView has a button to logout (btnLogout). Selecting this button, terminates a User's session.</p>
 					</section>
 
 
 					<section>
-						<h5 class="heading4"><span class="number">4.3.1.11</span>Delete Account Class Diagram </h5>
+						<h5 class="heading4"><span class="number">4.3.1.13</span>Delete Account Class Diagram </h5>
 						<embed src="images/4-3-1-11-Delete Account Class Diagram.svg"></embed>
 						<p>The DeleteAccountView has a textbox (txtPassword) where a User must enter their password. Once this is done, a User selects the button called delete (btnDeleteAccount). This causes the account to be deleted.</p>
 					</section>
 
-					<section>
-						<h5 class="heading4"><span class="number">4.3.1.12</span>Edit Profile Class Diagram </h5>
-						<embed src="images/4-x-x-x-Edit Profile Class Diagram.svg"></embed>
-						<p></p>
-					</section>
 
-					<section>
-						<h5 class="heading4"><span class="number">4.3.1.13</span>Registration Class Diagram </h5>
-						<embed src="images/4-3-3-1-Registration Class Diagram.svg"></embed>
-						<p></p>
-					</section>
+
+
 
 				</section>
 
@@ -414,16 +425,18 @@
 					</section>
 
 					<section>
-						<h5 class="heading4"><span class="number">4.3.2.3</span>Unban User Class Diagram </h5>
+						<h5 class="heading4"><span class="number">4.3.2.3</span>Ban User Class Diagram </h5>
+						<embed src="images/4-3-2-4-Ban User Class Diagram.svg"></embed>
+						<p>The BanUserView has a textbox (txtUser) where an Administrator enters the User they wish to ban, and a ban button (btnBan) to execute the request.</p>
+					</section>
+
+					<section>
+						<h5 class="heading4"><span class="number">4.3.2.4</span>Unban User Class Diagram </h5>
 						<embed src="images/4-3-2-3-Unban User Class Diagram.svg"></embed>
 						<p>The UnbanUserView has a textbox (txtUser) where an Administrator enters the User they wish to lift a ban from, and an unban button (btnUnban) to execute the request.</p>
 					</section>
 
-					<section>
-						<h5 class="heading4"><span class="number">4.3.2.4</span>Ban User Class Diagram </h5>
-						<embed src="images/4-3-2-4-Ban User Class Diagram.svg"></embed>
-						<p>The BanUserView has a textbox (txtUser) where an Administrator enters the User they wish to ban, and a ban button (btnBan) to execute the request.</p>
-					</section>
+
 
 					<section>
 						<h5 class="heading4"><span class="number">4.3.2.5</span>Admin Login Class Diagram </h5>
