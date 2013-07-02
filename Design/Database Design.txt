@@ -1,0 +1,45 @@
+This documents outlines the database part of the design.
+
+The database diagram is named DatabaseDiagram.txt, and is on github under the Design folder.
+
+
+--------------------------
+TRIGGERS
+--------------------------
+
+Administrator table
+
+	1) adminPassInsert
+		- upon insertion of a new row, the password is hashed by the database trigger (SHA2, which is called SHA256 in PHP)
+		- the password is stored in a hashed form, and the original password can not be aquired from this hash
+		- when doing login, the hash value of the entered password much be compared to the hash value stored in the database
+
+	2) adminPassUpdate
+		- same as insert
+		- since there is no function for updating admin profiles, this will not be used in our implimentation
+
+
+Event table
+
+	1) newEvent
+		- automatically inserts a timestamp at the time of insertion
+
+
+Game table
+
+	1) newGame
+		- automatically inserts a timestamp at the time of insertion
+
+
+User table
+	
+	1) userPassInsert
+		- upon insertion of a new row, the password is hashed by the database trigger (SHA2, which is called SHA256 in PHP)
+		- the password is stored in a hashed form, and the original password can not be aquired from this hash
+		- when doing login, the hash value of the entered password much be compared to the hash value stored in the database
+
+	2) userPassUpdate
+		- upon update of a new row, the password is hashed by the database trigger (SHA2, which is called SHA256 in PHP)
+		- IF a password is not specified (blank, null), then the password remains unchanged
+		- the password is stored in a hashed form, and the original password can not be aquired from this hash
+		- when doing login, the hash value of the entered password much be compared to the hash value stored in the database
