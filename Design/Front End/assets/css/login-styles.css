@@ -1,23 +1,21 @@
-#login-form {
-	margin-left: 0 auto;
-	width: 250px;	
-	
-	
+#page-content td {		/* <td> elements in the #page-content id get these attributes */ 
+	width: 40%;
+	vertical-align: top;
 }
-#login-form * {
+
+#limited-leaderboard h3 {
+	margin-top: 0px;
+	padding-top: 0px;
+}
+
+#login-form, #register-form { /* the elements with id #login-form and #register-form get these */
+	width: 250px;	
+}
+
+#login-form *, #register-form * { /* ALL child elements of id #login-form and #register-form */
 	margin-top: 0px;
 }
-#login-form input {
-	width: 85%;
-}
-#register-form {
-	margin-left: 0 auto;
-	width: 250px;
-	
-}
-#register-form * {
-	margin-top: 5px;
-}
-#register-form input {
+
+#login-form input, #register-form input { /* child <input> elements of login/register form */
 	width: 85%;
 }
