@@ -1,4 +1,4 @@
-# Django settings for pong_tracker project.
+# Django settings for pongtracker project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -83,7 +83,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'bhsb0+piluyp5u+ri!vpvuo9aq0iu#b+g7)yrr@9ncqgh0cu5e'
+SECRET_KEY = '$@_%5hj6tsy=hj)#t!kk8$l*#j--oo0c2gfjaz1=0_!^02xdv*'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -102,10 +102,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'pong_tracker.urls'
+ROOT_URLCONF = 'pongtracker.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'pong_tracker.wsgi.application'
+WSGI_APPLICATION = 'pongtracker.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
