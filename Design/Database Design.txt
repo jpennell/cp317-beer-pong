@@ -9,37 +9,47 @@ TRIGGERS
 
 Administrator table
 
-	1) adminPassInsert
-		- upon insertion of a new row, the password is hashed by the database trigger (SHA2, which is called SHA256 in PHP)
+	adminPassInsert
+		- upon insertion of an admin, the password is hashed by the database trigger (SHA2, which is called SHA256 in PHP)
 		- the password is stored in a hashed form, and the original password can not be aquired from this hash
 		- when doing login, the hash value of the entered password much be compared to the hash value stored in the database
 
-	2) adminPassUpdate
+	adminPassUpdate
 		- same as insert
 		- since there is no function for updating admin profiles, this will not be used in our implimentation
 
 
 Event table
 
-	1) newEvent
+	newEvent
 		- automatically inserts a timestamp at the time of insertion
 
 
 Game table
 
-	1) newGame
+	newGame
 		- automatically inserts a timestamp at the time of insertion
+
+Ranking table
+
+	newRank
+		- upon insertion of mu and sigma into the Ranking table, both values are rounded to five decimal places
+
+	updateRank
+		- upon update of mu and sigma, both values are rounded to five decimal places
 
 
 User table
 	
-	1) userPassInsert
-		- upon insertion of a new row, the password is hashed by the database trigger (SHA2, which is called SHA256 in PHP)
+	newUser
+		- upon insertion of a new user, the password is hashed by the database trigger (SHA2, which is called SHA256 in PHP)
 		- the password is stored in a hashed form, and the original password can not be aquired from this hash
 		- when doing login, the hash value of the entered password much be compared to the hash value stored in the database
+		- upon insertion of a new user, a new row in the Ranking table is also created, using the submitted username, and default mu and sigma values
+		- upon insertion of a new user, a new row in the Stats table is also created, using the submitted username
 
-	2) userPassUpdate
-		- upon update of a new row, the password is hashed by the database trigger (SHA2, which is called SHA256 in PHP)
+	userPassUpdate
+		- upon update of a user, the password is hashed by the database trigger (SHA2, which is called SHA256 in PHP)
 		- IF a password is not specified (blank, null), then the password remains unchanged
 		- the password is stored in a hashed form, and the original password can not be aquired from this hash
 		- when doing login, the hash value of the entered password much be compared to the hash value stored in the database
