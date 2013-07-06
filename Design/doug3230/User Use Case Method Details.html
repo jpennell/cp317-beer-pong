@@ -1,0 +1,163 @@
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>UserLoginController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em> UserLoginController() </em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>UserLoginController</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td></td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td>if the object fails to connect to the User table:</br>
+								***"An error occurred in connecting to the database."***</td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>May initialize a connection to the User table.</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td></td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td></td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Initializes an instance of class UserLoginController.</br>
+			After construction, the object is ready to query the User table for validating logins.</td>
+	</tr>
+</table>
+
+</br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>UserLoginController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>loginUser()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>void</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td>String username, String password</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td>if no User with the specified username exists:</br>
+								***"User " + username + " does not exist."***</br>
+								if a User with the username exists but password is incorrect:</br>
+								***"Incorrect password."***</td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>User table</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td></td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td>isUsernameTaken(), isCorrectPassword()</td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Obtains username and password data from the HTML form then checks the User table for </br>
+								 whether the User with username and password given by the passed in arguments exists.</br>
+								 Prints an error message if there is a problem</td>
+	</tr>
+</table>
+
+</br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>DeleteAccountController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>DeleteAccountController()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em> DeleteAccountController</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td></td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td>if the object fails to connect to the User table:</br>
+								***"An error occurred in connecting to the database."***</td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>May initialize a connection to the User table.</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td></td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td></td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Initializes an instance of class DeleteAccountController.</br>
+								 After construction, the object is ready to query the User table for checking </br>
+								 the user's password and marking their account as deleted.</td>
+	</tr>
+</table>
+
+</br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>DeleteAccountController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>deleteUser()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>void</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td>String username, String password</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td> if the entered password is incorrect:
+							<br>***"Incorrect password."*** </td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>User table</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td>May remove the User's entry from the User table.</td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td>isCorrectPassword()</td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Obtains the User's username from their browser and input password from the HTML form then </br>
+								 checks to see if the User has correctly entered their password. </br>
+								 If so, their account is deleted.</td>
+	</tr>
+</table>
