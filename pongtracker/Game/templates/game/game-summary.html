@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pong Tracker | Game Summary</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+    <link href='../../../../assets/bootstrap-css/bootstrap.css' rel='stylesheet' type='text/css'>
+    <link href='../../../../assets/css/global-styles.css' rel='stylesheet' type='text/css'>
+	<link href='../../../../assets/css/profile-styles.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div id="container">
+        <!------ LOGIN HEADER --------->
+        <div id="login-header">
+            <p>
+                Welcome, <span id="player-name">{{ username }} </span><span id="logout"><a href="/index/logout">Log Out</a></span>
+            </p>
+        </div>
+
+        <!------ HEADER --------->
+        <div id="header">
+            <table>
+                <tr>
+                    <td id="logo"> Pong Tracker </td>
+                    <td id="nav">
+                        <ul>
+                            <li><a href="#" class="active">Profile/Stats</a></li>
+                            <li><a href="/statistics/leaderboard/">Leaderboard</a></li>
+                            <li><a href="#">Create a Game</a></li>
+                            <li><a href="#">Rules</a></li>
+                        </ul></td>
+
+                </tr>
+            </table>
+        </div>
+        <!------ CONTENT --------->
+        <div id="page-content">
+			<table width="100%">
+				<tr>
+					<td colspan="2">
+						<h4>Team 1</h4>
+					</td>
+					<td colspan="2">
+						<h4>Team 2</h4>
+					</td>
+				</tr>
+				<tr>
+					<td width="25%">
+						Picture<br>
+						<strong>Cups sunk: </strong>
+					</td>
+					<td width="20%" style="border-right: 1px solid black">
+						Picture<br>
+						<strong>Cups sunk: </strong>
+					</td>
+					<td width="30%" style="padding-left:5%">
+						Picture<br>
+						<strong>Cups sunk: </strong>
+					</td>
+					<td width="25%">
+						Picture<br>
+						<strong>Cups sunk: </strong>
+					</td>
+				</tr>
+			</table>
+			<br/>
+			<br/>
+			<h5 align="center"> One player from the other team must confirm this game the next time they log-in.</h5>
+		</div>
+	</div>
+</body>
