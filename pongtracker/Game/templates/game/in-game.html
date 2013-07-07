@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pong Tracker | Game</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+    <link href='../../../../assets/bootstrap-css/bootstrap.css' rel='stylesheet' type='text/css'>
+    <link href='../../../../assets/css/global-styles.css' rel='stylesheet' type='text/css'>
+    <link href='../../../../assets/css/game-styles.css' rel='stylesheet' type='text/css'>
+	<link href='../../../../assets/css/profile-styles.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div id="container">
+        <!------ LOGIN HEADER --------->
+        <div id="login-header">
+            <p>
+                Welcome, <span id="player-name">{{ username }} </span><span id="logout"><a href="/index/logout">Log Out</a></span>
+            </p>
+        </div>
+
+        <!------ HEADER --------->
+        <div id="header">
+            <table>
+                <tr>
+                    <td id="logo"> Pong Tracker </td>
+                    <td id="nav">
+                        <ul>
+                            <li><a href="#" class="active">Profile/Stats</a></li>
+                            <li><a href="/statistics/leaderboard/">Leaderboard</a></li>
+                            <li><a href="#">Create a Game</a></li>
+                            <li><a href="#">Rules</a></li>
+                        </ul></td>
+
+                </tr>
+            </table>
+        </div>
+        <!------ CONTENT --------->
+        <div id="page-content">
+            <table id="game">
+                <tr id="player-info">
+                    <td>
+						<div id="player-picture"></div>
+						<br/>
+						<span id="player-name">{{ username1 }} </span>
+					</td>
+					<td>
+						<div id="player-picture"></div>
+						<br/>
+						<span id="player-name">{{ username2 }} </span>
+					</td>
+					<td>
+						<div id="player-picture"></div>
+						<br/>
+						<span id="player-name">{{ username3 }} </span>
+					</td>
+					<td>
+						<div id="player-picture"></div>
+						<br/>
+						<span id="player-name">{{ username4 }} </span>
+					</td>
+				</tr>
+				<tr>
+                    <td id="game-cups" colspan="2"><h4>Team 1</h4>
+                        <div id="game-cups">
+                            <span class="cup" id="cup1"></span>
+                            <br/>
+                            <span class="cup" id="cup2"></span>
+                            <span class="cup" id="cup3"></span>
+                            <br/>
+                            <span class="cup" id="cup4"></span>
+                            <span class="cup" id="cup5"></span>
+                            <span class="cup" id="cup6"></span>
+                        </div></td>
+					<td id="game-cups" colspan="2"><h4>Team 2</h4>
+                        <div id="game-cups">
+                            <span class="cup" id="cup1"></span>
+                            <br/>
+                            <span class="cup" id="cup2"></span>
+                            <span class="cup" id="cup3"></span>
+                            <br/>
+                            <span class="cup" id="cup4"></span>
+                            <span class="cup" id="cup5"></span>
+                            <span class="cup" id="cup6"></span>
+                        </div></td>
+                </tr>
+            </table>
+        </div>
+        <!------- FOOTER --------->
+        <div id="footer">
+            <table>
+                <tr>
+                    <td class="left"> CP317 Software Engineering </td>
+                    <td class="right"> Wilfrid Laurier University, 2013 </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
