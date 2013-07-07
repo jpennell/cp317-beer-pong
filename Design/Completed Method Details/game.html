@@ -37,7 +37,7 @@
 			Input Arguments
 		</td> 
 		<td> 
-			None 
+			None
 		</td>
 	</tr>
 	<tr>
@@ -57,7 +57,7 @@
 			External Accesses
 		</td>
 		<td> 
-			database
+			None
 		</td>
 	</tr>
 	<tr>
@@ -132,7 +132,7 @@
 	</tr>
 	<tr>
 		<td>Output Arguments</td>
-		<td> date date - this is the date the game was played.</td>
+		<td> date datePlayed - this is the date the game was played.</td>
 	</tr>
 	<tr>
 		<td>
@@ -147,7 +147,7 @@
 			External Accesses
 		</td>
 		<td> 
-			database
+			None
 		</td>
 	</tr>
 	<tr>
@@ -209,7 +209,7 @@
 			Return Type
 		</td> 
 		<td>
-			<em> None </em>
+			<em>Game game </em>
 		</td>
 	</tr>
 	<tr>
@@ -217,12 +217,13 @@
 			Input Arguments
 		</td> 
 		<td> 
-			None 
+			team team1<br/>
+			team team2
 		</td>
 	</tr>
 	<tr>
 		<td>Output Arguments</td>
-		<td>None</td>
+		<td>Game game- returns a game object</td>
 	</tr>
 	<tr>
 		<td>
@@ -296,7 +297,7 @@
 			Return Type
 		</td> 
 		<td>
-			<em> int team1 </em>
+			<em> Team team1 </em>
 		</td>
 	</tr>
 	<tr>
@@ -309,7 +310,7 @@
 	</tr>
 	<tr>
 		<td>Output Arguments</td>
-		<td> int team1 - this is the first team.</td>
+		<td> Team team1 - this is the first team.</td>
 	</tr>
 	<tr>
 		<td>
@@ -324,7 +325,7 @@
 			External Accesses
 		</td>
 		<td> 
-			database
+			None
 		</td>
 	</tr>
 	<tr>
@@ -384,7 +385,7 @@
 			Return Type
 		</td> 
 		<td>
-			<em> int team2 </em>
+			<em> Team team2 </em>
 		</td>
 	</tr>
 	<tr>
@@ -397,7 +398,7 @@
 	</tr>
 	<tr>
 		<td>Output Arguments</td>
-		<td> int team2- this is team2.</td>
+		<td> Team team2- this is team2.</td>
 	</tr>
 	<tr>
 		<td>
@@ -412,7 +413,7 @@
 			External Accesses
 		</td>
 		<td> 
-			database
+			None
 		</td>
 	</tr>
 	<tr>
@@ -456,7 +457,7 @@
 			Method Name
 		</td> 
 		<td>
-			<em> getEvent </em>
+			<em> getEvents </em>
 		</td>
 	</tr>
 	<tr>
@@ -472,7 +473,7 @@
 			Return Type
 		</td> 
 		<td>
-			<em> int event </em>
+			<em> Event[] events </em>
 		</td>
 	</tr>
 	<tr>
@@ -485,7 +486,7 @@
 	</tr>
 	<tr>
 		<td>Output Arguments</td>
-		<td> int event- the event object.</td>
+		<td> Event[] events- an array of events.</td>
 	</tr>
 	<tr>
 		<td>
@@ -500,7 +501,7 @@
 			External Accesses
 		</td>
 		<td> 
-			database
+			None
 		</td>
 	</tr>
 	<tr>
@@ -524,7 +525,7 @@
 			Description
 		</td>
 		<td> 
-			This method gets the event object.
+			This method gets an array of event objects.
 		</td>
 	</tr>
 </table>
@@ -588,7 +589,7 @@
 			External Accesses
 		</td>
 		<td> 
-			database
+			None
 		</td>
 	</tr>
 	<tr>
@@ -676,7 +677,7 @@
 			External Accesses
 		</td>
 		<td> 
-			database
+			None
 		</td>
 	</tr>
 	<tr>
@@ -720,7 +721,7 @@
 			Method Name
 		</td> 
 		<td>
-			<em> setEvent </em>
+			<em> addEvent </em>
 		</td>
 	</tr>
 	<tr>
@@ -764,7 +765,7 @@
 			External Accesses
 		</td>
 		<td> 
-			database
+			None
 		</td>
 	</tr>
 	<tr>
@@ -788,7 +789,7 @@
 			Description
 		</td>
 		<td> 
-			This method sets the event.
+			This method adds the event to the game.
 		</td>
 	</tr>
 </table>
