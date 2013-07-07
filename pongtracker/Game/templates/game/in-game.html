@@ -5,7 +5,6 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
     <link href='../../../../assets/bootstrap-css/bootstrap.css' rel='stylesheet' type='text/css'>
     <link href='../../../../assets/css/global-styles.css' rel='stylesheet' type='text/css'>
-    <link href='../../../../assets/css/game-styles.css' rel='stylesheet' type='text/css'>
 	<link href='../../../../assets/css/profile-styles.css' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -35,32 +34,40 @@
         </div>
         <!------ CONTENT --------->
         <div id="page-content">
-            <table id="game">
-                <tr id="player-info">
-                    <td>
-						<div id="player-picture"></div>
+            <table id="profile">
+                <tr id="statistics">
+                    <td align="center">
+						<div id="picture"></div>
 						<br/>
 						<span id="player-name">{{ username1 }} </span>
 					</td>
-					<td>
-						<div id="player-picture"></div>
+					<td align="center"> 
+						<div id="picture"></div>
 						<br/>
 						<span id="player-name">{{ username2 }} </span>
 					</td>
 					<td>
-						<div id="player-picture"></div>
+						&nbsp;
+					</td>
+					<td align="center">
+						<div id="picture"></div>
 						<br/>
 						<span id="player-name">{{ username3 }} </span>
 					</td>
-					<td>
-						<div id="player-picture"></div>
+					<td align="center">
+						<div id="picture"></div>
 						<br/>
 						<span id="player-name">{{ username4 }} </span>
 					</td>
 				</tr>
 				<tr>
-                    <td id="game-cups" colspan="2"><h4>Team 1</h4>
-                        <div id="game-cups">
+					<td>
+						&nbsp;
+					</td>
+				</tr>
+				<tr>
+                     <td colspan="3" align="center" id="cups-sunk-stats"><h4 align="center">Team 1</h4>
+                        <div id="cups">
                             <span class="cup" id="cup1"></span>
                             <br/>
                             <span class="cup" id="cup2"></span>
@@ -70,8 +77,8 @@
                             <span class="cup" id="cup5"></span>
                             <span class="cup" id="cup6"></span>
                         </div></td>
-					<td id="game-cups" colspan="2"><h4>Team 2</h4>
-                        <div id="game-cups">
+					 <td colspan="2" align="center" id="cups-sunk-stats"><h4 align="center">Team 2</h4>
+                        <div id="cups">
                             <span class="cup" id="cup1"></span>
                             <br/>
                             <span class="cup" id="cup2"></span>
@@ -83,6 +90,28 @@
                         </div></td>
                 </tr>
             </table>
+			<br/>
+			<br/>
+			<br/>
+			<table style="padding-top:10px; width:100%">
+				<tr>
+					<td width="33%" align="center">
+						<button name="undo" class="btn" type="submit">
+							Undo
+						</button>
+					</td>
+					<td width="33%" align="center">
+					<button name="abort" class="btn" type="submit">
+						Abort
+					</button>
+					</td>
+					<td width="33%" align="center">
+					<button name="over" class="btn" type="submit">
+						Game Over
+					</button>
+					</td>
+				</tr>
+			</table>
         </div>
         <!------- FOOTER --------->
         <div id="footer">
