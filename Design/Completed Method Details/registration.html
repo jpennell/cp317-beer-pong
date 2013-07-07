@@ -21,7 +21,7 @@
 			Method State
 		</td> 
 		<td>
-			<em>Public</em>
+			<em>private</em>
 		</td>
 	</tr>
 	<tr>
@@ -37,7 +37,7 @@
 			Input Arguments
 		</td> 
 		<td> 
-			string email 
+			String email 
 		</td>
 	</tr>
 	<tr>
@@ -49,8 +49,7 @@
 			Error Messages
 		</td> 
 		<td> 
-			if isValidEmail is false, then this fails
-			<br>***This is not a valid email, please re-enter a valid email.*** 
+			None
 		</td>
 	</tr>
 	<tr>
@@ -110,7 +109,7 @@
 			Method State
 		</td> 
 		<td>
-			<em>Public</em>
+			<em>public</em>
 		</td>
 	</tr>
 	<tr>
@@ -118,7 +117,7 @@
 			Return Type
 		</td> 
 		<td>
-			<em>String[] validUsername</em>
+			<em>Boolean isValidUsername</em>
 		</td>
 	</tr>
 	<tr>
@@ -126,21 +125,18 @@
 			Input Arguments
 		</td> 
 		<td> 
-			string username
+			String username
 		</td>
 	</tr>
 	<tr>
 		<td>Output Arguments</td>
-		<td> String[] validUsername - this outputs a list of strings that are valid usernames the user can pick from. </td>
+		<td>Boolean isValidUsername - Determines if the username inputted is a valid username (not already in use) or not. </td>
 	</tr>
 	<tr>
 		<td>
 			Error Messages
 		</td> 
-		<td> 
-			if validUsername is not empty, then this fails
-			<br>***This username is not available.  Please see the list of similar names available.*** 
-		</td>
+			None
 	</tr>
 	<tr>
 		<td>
@@ -163,7 +159,7 @@
 			Other Methods Invoked
 		</td>
 		<td> 
-			suggestUsername
+			None
 		</td>
 	</tr>
 	<tr>
@@ -171,7 +167,7 @@
 			Description
 		</td>
 		<td> 
-			This method determines if the user entered a valid username.  If not, a list of available usernames that are similar to what they entered.
+			This method determines if the user entered a valid username.
 		</td>
 	</tr>
 </table>
@@ -198,7 +194,7 @@
 			Method State
 		</td> 
 		<td>
-			<em>Private</em>
+			<em>private</em>
 		</td>
 	</tr>
 	<tr>
@@ -206,7 +202,7 @@
 			Return Type
 		</td> 
 		<td>
-			<em>String[] validUsername</em>
+			<em>String[] validUsernames</em>
 		</td>
 	</tr>
 	<tr>
@@ -214,12 +210,12 @@
 			Input Arguments
 		</td> 
 		<td> 
-			string username
+			String username
 		</td>
 	</tr>
 	<tr>
 		<td>Output Arguments</td>
-		<td> String[] validUsername - this outputs a list of strings that are valid usernames the user can pick from. </td>
+		<td> String[] validUsername - this outputs a list of 5 strings that are valid usernames the user can pick from. </td>
 	</tr>
 	<tr>
 		<td>
@@ -258,7 +254,7 @@
 			Description
 		</td>
 		<td> 
-			This method creates a list of usernames that are available and similar to the username the user inputted.
+			This method creates a list of 5 usernames that are available and similar to the username the user inputted.
 		</td>
 	</tr>
 </table>
@@ -285,7 +281,7 @@
 			Method State
 		</td> 
 		<td>
-			<em>Public</em>
+			<em>public</em>
 		</td>
 	</tr>
 	<tr>
@@ -301,8 +297,8 @@
 			Input Arguments
 		</td> 
 		<td> 
-			string username<br>
-			string email
+			String username<br>
+			String email
 		</td>
 	</tr>
 	<tr>
@@ -373,7 +369,7 @@
 			Method State
 		</td> 
 		<td>
-			<em>Private</em>
+			<em>private</em>
 		</td>
 	</tr>
 	<tr>
@@ -381,7 +377,7 @@
 			Return Type
 		</td> 
 		<td>
-			<em>String</em>
+			<em>String password</em>
 		</td>
 	</tr>
 	<tr>
@@ -394,7 +390,7 @@
 	</tr>
 	<tr>
 		<td>Output Arguments</td>
-		<td>String - the password the user will use to sign in for the first time.</td>
+		<td>String password- the password the user will use to sign in for the first time.</td>
 	</tr>
 	<tr>
 		<td>
@@ -409,7 +405,7 @@
 			External Accesses
 		</td>
 		<td> 
-			User player
+			None
 		</td>
 	</tr>
 	<tr>
@@ -417,7 +413,7 @@
 			External Changes
 		</td>
 		<td>
-			User player
+			None
 		</td>
 	</tr>
 	<tr>
@@ -460,7 +456,7 @@
 			Method State
 		</td> 
 		<td>
-			<em>Public</em>
+			<em>public</em>
 		</td>
 	</tr>
 	<tr>
