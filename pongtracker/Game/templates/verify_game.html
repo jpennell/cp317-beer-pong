@@ -4,9 +4,9 @@
 	<head>
     <title>Pong Tracker | Confirm Games</title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
-    <link href='../../../../assets/bootstrap-css/bootstrap.css' rel='stylesheet' type='text/css'>
-    <link href='../../../../assets/css/global-styles.css' rel='stylesheet' type='text/css'>
-    <link href='../../../../assets/css/home-styles.css' rel='stylesheet' type='text/css'>
+    <link href='../../../assets/bootstrap-css/bootstrap.css' rel='stylesheet' type='text/css'>
+    <link href='../../../assets/css/global-styles.css' rel='stylesheet' type='text/css'>
+    <link href='../../../assets/css/home-styles.css' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
 		<div id="container">
@@ -36,13 +36,13 @@
 			<table>
 				<tr>
 					<th width="1%"> Game ID </th>
-					<th width="7%"> Users Involved </th>
+					<th width="7%"> Player usernames </th>
 					<th width="1%"> Outcome </th>
 					<th width="1%"> Confirmation </th>
 				</tr>
 				<tr>
 					<td>GAME-124</td>
-					<td>jared149@hotmail.ca, hannah92@outlook.com, smit2829@mylaurier.ca, xith9999@mylaurier.ca</td>
+					<td>{{username1}}, {{username2}}, {{username3}}, {{username4}}</td>
 					<td>Win</td>
 					<td>
 						<form action="">
@@ -53,7 +53,7 @@
 				</tr>
 				<tr>
 					<td>GAME-156</td>
-					<td>peter149@hotmail.ca, hailey91@outlook.com, basx2572@mylaurier.ca, fran2922@mylaurier.ca</td>
+					<td>{{username1}}, {{username2}}, {{username3}}, {{username4}}</td>
 					<td>Loss</td>
 					<td>
 						<form action="">
@@ -64,7 +64,7 @@
 				</tr>
 				<tr>
 					<td>GAME-192</td>
-					<td>franklin149@hotmail.ca, emily87@outlook.com, bash6720@mylaurier.ca, mitt2221@mylaurier.ca</td>
+					<td>{{username1}}, {{username2}}, {{username3}}, {{username4}}</td>
 					<td>Loss</td>
 					<td>
 						<form action="">
@@ -75,7 +75,7 @@
 				</tr>
 				<tr>
 					<td>GAME-256</td>
-					<td>lucas1991@hotmail.ca, julie89@outlook.com, tole9280@mylaurier.ca, john9280@mylaurier.ca</td>
+					<td>{{username1}}, {{username2}}, {{username3}}, {{username4}}</td>
 					<td>Loss</td>
 					<td>
 						<form action="">
@@ -85,7 +85,11 @@
 					</td>
 				</tr>
 			</table>
-			<input type="submit" value="Submit Games">
+			<br/>
+			<br/>
+			<button name="verify" class="btn" type="submit">
+				Verify Games
+			</button>
 			</div>
 			<!------- FOOTER --------->
 			<div id="footer">
