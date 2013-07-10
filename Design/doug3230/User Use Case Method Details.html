@@ -391,8 +391,10 @@
 		<td>Output Arguments</td> <td></td>
 	</tr>
 	<tr>
-	<td>Error Messages</td> <td> if unable to process the game creation</br>
-								 ***"An error occurred in processing your game creation request"***</br> </td>
+	<td>Error Messages</td> <td> If unable to process the game creation</br>
+								 ***"An error occurred in processing your game creation request."***</br>
+								 If one of the Users does not exist:</br>
+								 ***"Not all 4 players exist."****</td>
 	</tr>
 	<tr>
 		<td>External Accesses</td> <td>CreateGameController</td>
@@ -434,16 +436,185 @@
 							<br>***"An error occurred in connecting to the database."*** </td>
 	</tr>
 	<tr>
-		<td>External Accesses</td> <td>Game table, Team table</td>
+		<td>External Accesses</td> <td>Game table, Team table, User table</td>
 	</tr>
 	<tr>
-		<td>External Changes</td> <td>may initialize a connection to the Game and Team tables</td>
+		<td>External Changes</td> <td>may initialize a connection to the Game, User and Team tables</td>
 	</tr>
 	<tr>
 		<td>Other Methods Invoked</td> <td></td>
 	</tr>
 	<tr>
 		<td>Description</td> <td>Initializes an instance of class CreateGameController.</br>
-								 After construction, the object is ready to add entries to the Game and Team tables.</td>
+								 After construction, the object is ready to add entries to the Game and Team tables </br>
+								 and check the User table for validating usernames.</td>
 	</tr>
 </table>
+
+</br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>CreateGameController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>createGame()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>None</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td>String player1, String player2, String player3, String player4</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td>If no User with one of the 4 player usernames exists:</br>
+								***"Not all 4 players exist"***</td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>Game, Team, User</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td>If successful, new entries are added to the Game and Team tables</td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td>isUsernameTaken()</td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Checks to see if all 4 players exist.</br>
+								 Creates a Game and Teams if so.</td>
+	</tr>
+</table>
+
+</br>
+
+<h2>Confirm Game</h2>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>ConfirmGameView</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>processGameConfirmation</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>None</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td></td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td>If unable to process the Game confirmation/denial
+							<br>***"An error occurred in processing your game confirmation/denial request."*** </td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>ConfirmGameController</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td></td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td>ConfirmGameController(), confirmGame(), denyGame()</td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Processes a Game confirmation/denial request.</br>
+								 If the User wants to confirm a Game, confirmGame() is called.</br>
+								 If the User wants to deny a Game, denyGame() is called.</td>
+	</tr>
+</table>
+
+</br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>ConfirmGameController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>ConfirmGameController()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>ConfirmGameController</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td></td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td> if this object fails to connect to the Game, Event, EventType or LifeStats table
+							<br>***"An error occurred in connecting to the database."*** </td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>Event table, EventType table, LifeStats table</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td>may initialize a connection to the Event, EventType and LifeStats tables</td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td></td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Initializes an instance of class ConfirmGameController.</br>
+								 After construction, the object is ready to read a Game's Events from the Events table</br>
+								 use the EventType table to understand what happened, and Game table to find out whose entries</br>
+								 in the LifeStats table needs to be updated.</td>
+	</tr>
+</table>
+
+</br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>ConfirmGameController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>confirmGame</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>None</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td>int gameID</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td> VarType Name </td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td> if this, then this fail
+							<br>***Error Message*** </td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td> i.e. a database table or other class </td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td> see above </td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td> XX </td>
+	</tr>
+	<tr>
+		<td>Description</td> <td> XX </td>
+	</tr>
+</table>
+
+</br>
+
+<h2>Confirm Game and Score Game to be finished</h2>
