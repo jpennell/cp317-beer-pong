@@ -280,7 +280,7 @@
 			Method Name
 		</td> 
 		<td>
-			<em>updateStats </em>
+			<em> getTeam1 </em>
 		</td>
 	</tr>
 	<tr>
@@ -296,7 +296,7 @@
 			Return Type
 		</td> 
 		<td>
-			<em>None</em>
+			<em> int team1 </em>
 		</td>
 	</tr>
 	<tr>
@@ -304,12 +304,12 @@
 			Input Arguments
 		</td> 
 		<td> 
-			User player
+			None 
 		</td>
 	</tr>
 	<tr>
 		<td>Output Arguments</td>
-		<td>None</td>
+		<td> int team1 - this is the first team.</td>
 	</tr>
 	<tr>
 		<td>
@@ -324,8 +324,7 @@
 			External Accesses
 		</td>
 		<td> 
-			User <br/>
-			LifeStats
+			database
 		</td>
 	</tr>
 	<tr>
@@ -333,7 +332,7 @@
 			External Changes
 		</td>
 		<td>
-			LifeStats
+			None 
 		</td>
 	</tr>
 	<tr>
@@ -341,7 +340,7 @@
 			Other Methods Invoked
 		</td>
 		<td> 
-			updateSkillLevel
+			None
 		</td>
 	</tr>
 	<tr>
@@ -349,11 +348,12 @@
 			Description
 		</td>
 		<td> 
-			This method updates a user's life statistics with information from a game recently played.
+			This method gets Team one.
 		</td>
 	</tr>
 </table>
-<br/>
+
+<br>
 <table border="1">
 	<tr>
 		<td>
@@ -368,7 +368,7 @@
 			Method Name
 		</td> 
 		<td>
-			<em>calcSkillLevel </em>
+			<em> getTeam2 </em>
 		</td>
 	</tr>
 	<tr>
@@ -376,7 +376,7 @@
 			Method State
 		</td> 
 		<td>
-			<em> private </em>
+			<em> public </em>
 		</td>
 	</tr>
 	<tr>
@@ -384,7 +384,7 @@
 			Return Type
 		</td> 
 		<td>
-			<em>float skillLevel</em>
+			<em> int team2 </em>
 		</td>
 	</tr>
 	<tr>
@@ -392,12 +392,12 @@
 			Input Arguments
 		</td> 
 		<td> 
-			Need to get from Henry.
+			None 
 		</td>
 	</tr>
 	<tr>
 		<td>Output Arguments</td>
-		<td>Need to get from Henry</td>
+		<td> int team2- this is team2.</td>
 	</tr>
 	<tr>
 		<td>
@@ -412,8 +412,7 @@
 			External Accesses
 		</td>
 		<td> 
-			User <br/>
-			LifeStats
+			database
 		</td>
 	</tr>
 	<tr>
@@ -421,7 +420,7 @@
 			External Changes
 		</td>
 		<td>
-			LifeStats
+			None 
 		</td>
 	</tr>
 	<tr>
@@ -429,7 +428,7 @@
 			Other Methods Invoked
 		</td>
 		<td> 
-			setSkillLevel
+			None
 		</td>
 	</tr>
 	<tr>
@@ -437,9 +436,363 @@
 			Description
 		</td>
 		<td> 
-			This method updates a TrueSkill with recent game information.
+			This method gets team two.
 		</td>
 	</tr>
 </table>
+
+<br>
+<table border="1">
+	<tr>
+		<td>
+			<strong>Class Name</strong>
+		</td>
+		<td>
+			<strong>Game</strong>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Method Name
+		</td> 
+		<td>
+			<em> getEvent </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Method State
+		</td> 
+		<td>
+			<em> public </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Return Type
+		</td> 
+		<td>
+			<em> int event </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Input Arguments
+		</td> 
+		<td> 
+			None 
+		</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td>
+		<td> int event- the event object.</td>
+	</tr>
+	<tr>
+		<td>
+			Error Messages
+		</td> 
+		<td> 
+			None
+		</td>
+	</tr>
+	<tr>
+		<td>
+			External Accesses
+		</td>
+		<td> 
+			database
+		</td>
+	</tr>
+	<tr>
+		<td>
+			External Changes
+		</td>
+		<td>
+			None 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Other Methods Invoked
+		</td>
+		<td> 
+			None
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Description
+		</td>
+		<td> 
+			This method gets the event object.
+		</td>
+	</tr>
+</table>
+
+<br>
+<table border="1">
+	<tr>
+		<td>
+			<strong>Class Name</strong>
+		</td>
+		<td>
+			<strong>Game</strong>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Method Name
+		</td> 
+		<td>
+			<em> setTeam1 </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Method State
+		</td> 
+		<td>
+			<em> public </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Return Type
+		</td> 
+		<td>
+			<em> None</em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Input Arguments
+		</td> 
+		<td> 
+			int team1 
+		</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td>
+		<td> None</td>
+	</tr>
+	<tr>
+		<td>
+			Error Messages
+		</td> 
+		<td> 
+			None
+		</td>
+	</tr>
+	<tr>
+		<td>
+			External Accesses
+		</td>
+		<td> 
+			database
+		</td>
+	</tr>
+	<tr>
+		<td>
+			External Changes
+		</td>
+		<td>
+			None 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Other Methods Invoked
+		</td>
+		<td> 
+			None
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Description
+		</td>
+		<td> 
+			This method sets team one.
+		</td>
+	</tr>
+</table>
+
+<br>
+<table border="1">
+	<tr>
+		<td>
+			<strong>Class Name</strong>
+		</td>
+		<td>
+			<strong>Game</strong>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Method Name
+		</td> 
+		<td>
+			<em> setTeam2 </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Method State
+		</td> 
+		<td>
+			<em> public </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Return Type
+		</td> 
+		<td>
+			<em> None </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Input Arguments
+		</td> 
+		<td> 
+			int team2
+		</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td>
+		<td> None.</td>
+	</tr>
+	<tr>
+		<td>
+			Error Messages
+		</td> 
+		<td> 
+			None
+		</td>
+	</tr>
+	<tr>
+		<td>
+			External Accesses
+		</td>
+		<td> 
+			database
+		</td>
+	</tr>
+	<tr>
+		<td>
+			External Changes
+		</td>
+		<td>
+			None 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Other Methods Invoked
+		</td>
+		<td> 
+			None
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Description
+		</td>
+		<td> 
+			This method sets team 2.
+		</td>
+	</tr>
+</table>
+
+<br>
+<table border="1">
+	<tr>
+		<td>
+			<strong>Class Name</strong>
+		</td>
+		<td>
+			<strong>Game</strong>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Method Name
+		</td> 
+		<td>
+			<em> setEvent </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Method State
+		</td> 
+		<td>
+			<em> public </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Return Type
+		</td> 
+		<td>
+			<em> None </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Input Arguments
+		</td> 
+		<td> 
+			Event event 
+		</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td>
+		<td> None</td>
+	</tr>
+	<tr>
+		<td>
+			Error Messages
+		</td> 
+		<td> 
+			None
+		</td>
+	</tr>
+	<tr>
+		<td>
+			External Accesses
+		</td>
+		<td> 
+			database
+		</td>
+	</tr>
+	<tr>
+		<td>
+			External Changes
+		</td>
+		<td>
+			None 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Other Methods Invoked
+		</td>
+		<td> 
+			None
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Description
+		</td>
+		<td> 
+			This method sets the event.
+		</td>
+	</tr>
+</table>
+
+<br>
 
 
