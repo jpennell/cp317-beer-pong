@@ -1,4 +1,5 @@
 from django.db import models
+from User.models import User
 
 # Create your models here.
 class LifeStats(models.Model):
@@ -14,12 +15,15 @@ class LifeStats(models.Model):
     cup4Sunk = models.IntegerField(default=0)
     cup5Sunk = models.IntegerField(default=0)
     cup6Sunk = models.IntegerField(default=0)
-    
+    user = models.OneToOneField (User)
+      
     def __unicode__(self):
         return self.LifeStats
     
 class Ranking(models.Model):
     mu = models.FloatField(default=25.0)
-    sigma = models.FloatField(default=8.3334)
+    sigma = models.FloatField(default=8.3333)
+    user = models.OneToOneField (User)
+    
     def __unicode__(self):
         return self.Ranking    
