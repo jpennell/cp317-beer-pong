@@ -1,11 +1,11 @@
 from django.db import models
-from User.models import User
+from django.contrib.auth.models import User
 
 class Team(models.Model):
-    username1 = models.ForgeignKey(User)
-    username2 = models.ForgeignKey(User)
+    user1 = models.ForeignKey(User,related_name="User1")
+    user2 = models.ForeignKey(User,related_name="User2")
 
 class Game(models.Model):
-    date_played = DateTimeField(auto_now=True)
-    team1 = models.OneToOne(Team)
-    team2 = models.OneToOne(Team)
+    date_played = models.DateTimeField(auto_now=True)
+    team1 = models.OneToOneField(Team,related_name="Team1")
+    team2 = models.OneToOneField(Team,related_name="Team2")

@@ -1,18 +1,14 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Institution(models.Model):
     name = models.CharField(max_length=45)
 
-class User(models.Model):
-    username = models.CharField(max_length=20)
-    passwd = models.CharField(max_length=20)
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
+class Profile(models.Model):
+    user = models.OneToOneField(User)
     email = models.EmailField(max_length=100)
     height = models.SmallIntegerField()
     graduation_year = models.DateField()
     photo = models.CharField(max_length=100)
     institution = models.ForeignKey(Institution)
-    is_banned = models.BooleanField()
-    
-    
+    is_banned = models.BooleanField(default=False)
