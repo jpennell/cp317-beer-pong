@@ -9,6 +9,16 @@
 </head>
 <body>
     <div id="container">
+        <!------ LOGIN HEADER --------->
+        <div id="login-header">
+            <form name="login" action="main.html" class="form-inline">
+                <input name="email" type="text" placeholder="email address" />
+                <input name="password" type="password" placeholder="password" />
+                <button name="login" class="btn" type="submit">
+                    Log In
+                </button>
+            </form>
+        </div>
 
         <!------ HEADER --------->
         <div id="header">
@@ -26,58 +36,161 @@
                 </tr>
             </table>
         </div>
-        <!------ BANNER --------->
-        <div id="banner">
-            <br/>
-            <h1>Welcome</h1>
-            <p style="margin-top:20px;">
-                Pong Tracker provides Users with a website for recording and viewing
-                statistics of Beer Pong games. Details of each game are entered into the website as users are
-                playing in real time.
-            </p>
-        </div>
         <!------ CONTENT --------->
         <div id="page-content">
             <table>
                 <tr>
+                    <!-- RANDOM BANNER CONTENT -->
+                    <td>
+                        <div id="register-banner">
+                            <h3>Welcome</h3>
+                            <p>
+                                Pong Tracker provides Users with a centralized website for recording and viewing
+                                statistics of Beer Pong games. These games are played by themselves and other Pong
+                                Tracker users. Details of each game are entered into the website as users are
+                                playing in real time. This analysis document details how the Pong Tracker product
+                                will work. It provides models on long-term information, user interfaces, and the
+                                associations between them.
+                            </p>
+                        </div>
+                    </td>
+
+                    <!-- LEADERBOARD -->
                     <td>
                         <div id="limited-leaderboard">
                             <h3>Leaderboard</h3>
-                            <ol>
-                                <li>Player 1</li>
-                                <li>Player 2</li>
-                                <li>Player 3</li>
-                                <li>Player 4</li>
-                                <li>Player 5</li>
-                                <li>Player 6</li>
-                                <li>Player 7</li>
-                                <li>Player 8</li>
-                                <li>Player 9</li>
-                                <li>Player 10</li>
-                            </ol>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Rank</th>
+                                        <th>Name</th>
+                                        <th>Games Won</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            1
+                                        </td>
+                                        <td>
+                                            Player 1
+                                        </td>
+                                        <td>
+                                            45
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            2
+                                        </td>
+                                        <td>
+                                            Player 2
+                                        </td>
+                                        <td>
+                                            43
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            3
+                                        </td>
+                                        <td>
+                                            Player 3
+                                        </td>
+                                        <td>
+                                            37
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            4
+                                        </td>
+                                        <td>
+                                            Player 4
+                                        </td>
+                                        <td>
+                                            30
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            5
+                                        </td>
+                                        <td>
+                                            Player 5
+                                        </td>
+                                        <td>
+                                            25
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            6
+                                        </td>
+                                        <td>
+                                            Player 6
+                                        </td>
+                                        <td>
+                                            24
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            7
+                                        </td>
+                                        <td>
+                                            Player 7
+                                        </td>
+                                        <td>
+                                            14
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            8
+                                        </td>
+                                        <td>
+                                            Player 8
+                                        </td>
+                                        <td>
+                                            4
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            9
+                                        </td>
+                                        <td>
+                                            Player 9
+                                        </td>
+                                        <td>
+                                            3
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            10
+                                        </td>
+                                        <td>
+                                            Player 10
+                                        </td>
+                                        <td>
+                                            1
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </td>
-                    <td>
-                        <div id="login-form">
-                            <h3>Log In</h3>
-                            <form action="main.html" name="login">
-                                <input name="username" type="text" placeholder="username">
-                                <br/>
-                                <input name="password" type="password" placeholder="password">
-                                <br/>
-                                <button name="submit" class="btn" type="submit" action="login">
-                                    Log In
-                                </button>
-                            </form>
-                        </div>
-                    </td>
+
+                    <!-- THE REGISTER FORM -->
                     <td>
                         <div id="register-form">
                             <h3>Register</h3>
                             <form action="main.html" name="register" >
                                 <input name="email" type="text" placeholder="email">
                                 <br/>
-                                <input name="username" type="text" placeholder="username">
+                                <input name="username" type="text" placeholder="desired username">
                                 <br/>
                                 <button name="submit" class="btn" type="submit" action="register">
                                     Submit
@@ -101,5 +214,6 @@
                 </table>
             </div>
         </div>
-</body
+    </div>
+</body>
 </html>
