@@ -8,7 +8,7 @@ class Institution(models.Model):
 class Profile(models.Model):
     
     YEAR_CHOICES = []
-    for r in range((datetime.datetime.now().year+1),(datetime.datetime.now().year+10)):
+    for r in range((datetime.datetime.now().year),(datetime.datetime.now().year+10)):
         YEAR_CHOICES.append((r,r))
     
     user = models.OneToOneField(User)
