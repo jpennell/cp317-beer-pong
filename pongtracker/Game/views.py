@@ -1,7 +1,9 @@
 # Create your views here.
 from django.contrib.auth.models import User
+from Game.models import Game, Team
+from django.shortcuts import render, redirect
 
-class ConfirmGameController():
+class CreateGameController():
     
     def createNewGameRequest(self, request):
         
