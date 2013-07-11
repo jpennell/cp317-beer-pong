@@ -20,7 +20,7 @@ def createNewGameRequest(request):
 
         game = _createNewGame(username1, username2, username3, username4)
 
-        return redirect('/games/' + str(game.id))
+        return redirect('/game/' + str(game.id))
 
     else:
 
