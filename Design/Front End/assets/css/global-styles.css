@@ -24,9 +24,39 @@ h1, h2, h3, h4, h5 {
 	color: #888;
 }
 
+#login-header {
+	background: #eee;
+	padding: 10px;
+	margin: 0;
+	display: block;
+	text-align: right;
+}
+#login-header p {
+	display: inline;
+}
+
+#login-header form > * {
+	margin: 0 0 0 5px;
+	font-size: 10px;
+}
+#login-header label {
+	font-size: 13px;
+}
+
+#login-header input[name='email'] {
+	width: 140px;
+}
+#login-header input[name='password'] {
+	width: 120px;
+}
+#login-header button {
+}
+
+
+
 /* Header styling */
 #header {
-	margin-top: 30px;
+	margin-top: 20px;
 	padding-bottom: 10px;
 	border-bottom: 1px solid #888;
 	margin-bottom: 30px;
