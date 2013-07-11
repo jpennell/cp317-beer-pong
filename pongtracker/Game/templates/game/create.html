@@ -12,7 +12,34 @@
   <title>Create Game Test</title>
  </head>
  <body>
- 
- 
+
+    <form method="post" action=".">
+
+        {% csrf_token %}
+
+        <p>
+            <label for="username1">
+                Username: <input type="text" name="username1" id="username1"></input>
+            </label>
+        </p>
+        <p>
+            <label for="username2">
+                Username: <input type="text" name="username2" id="username2"></input>
+            </label>
+        </p>
+        <p>
+            <label for="username3">
+                Username: <input type="text" name="username3" id="username3"></input>
+            </label>
+        </p>
+        <p>
+            <label for="username3">
+                Username: <input type="text" name="username4" id="username4"></input>
+            </label>
+        </p>
+
+        <button type="submit">Create Game</button>
+    </form>
+
  </body>
 </html>

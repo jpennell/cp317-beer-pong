@@ -9,10 +9,19 @@ class Game(models.Model):
     date_played = models.DateTimeField(auto_now=True)
     team1 = models.OneToOneField(Team,related_name="Game1")
     team2 = models.OneToOneField(Team,related_name="Game2")
-    
+
+    def get_team1(self):
+        return self.team1
+
+    def get_team2(self):
+        return self.team2
+
+    def get_date_played(self):
+        return self.date_played
+
 class EventType(models.Model):
     typeName = models.CharField(max_length=20)
-    
+
 
 class Event(models.Model):
     event_time = models.DateTimeField(auto_now=True)
