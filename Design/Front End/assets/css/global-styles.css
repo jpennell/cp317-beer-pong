@@ -35,6 +35,9 @@ h1, h2, h3, h4, h5 {
 	display: inline;
 }
 
+#login-header form {
+	margin: 0;
+}
 #login-header form > * {
 	margin: 0 0 0 5px;
 	font-size: 10px;
