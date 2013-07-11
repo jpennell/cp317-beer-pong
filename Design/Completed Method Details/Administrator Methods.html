@@ -1,0 +1,1172 @@
+<h2>Admin Login</h2>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>AdministratorLoginView</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>checkIfBadInput()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>None</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td>String username, String password</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td><td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td>If there is a problem in initializing AdminLoginController:
+							<br>***"An unexpected error occurred in processing your login request."***</br>
+								If Admin enters an invalid user/password combination:</br>
+								***"Invalid login information, please enter a valid username and password."***</td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>AdminLoginController</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td>If login is successful, the browser recognizes and remembers that the Admin has logged in</td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td>LoginController(), loginAdmin(),isBadUsername(),isBadPassword()</td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Processes the Admin's login request and check if those information are correct.</td>
+	</tr>
+</table>
+
+</br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>AdministratorLoginView</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>isBadPassword()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Private</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>boolean</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td>String password</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td><td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td>If there is a problem in password:
+							<br>***"An unexpected error occurred in processing your login request."***</br>
+								If Admin enters an invalid password:</br>
+								***"Invalid login information, please enter a valid password."***</td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td></td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td></td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td>checkIfBadInput()</td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Processes the Admin's login request and check if those information are correct, check for the password.</td>
+	</tr>
+</table>
+
+</br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>AdministratorLoginView</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>isBadInput()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Private</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>boolean</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td>String username</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td><td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td>If there is a problem in the username:
+							<br>***"An unexpected error occurred in processing your login request."***</br>
+								If Admin enters an invalid username:</br>
+								***"Invalid login information, please enter a valid username."***</td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td></td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td></td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td>checkIfBadInput()</td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Processes the Admin's login request and check if those information are correct, check the username</td>
+	</tr>
+</table>
+
+</br>
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>AdministratorLoginController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em> LoginController() </em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>AdministratorLoginController</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td></td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td>If the object fails to connect to the Admin table:</br>
+								***"An error occurred in connecting to the database."***</td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>May initialize a connection to the Admin table.</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td></td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td></td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Initializes an instance of class AdministratorLoginController.</br>
+			After construction, the object is ready to query the Admin table for validating logins.</td>
+	</tr>
+</table>
+
+</br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>AdministratorLoginController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>loginAdmin()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>None</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td>String username, String password</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td>If no Admin with the specified username exists:</br>
+								***"Admin " + username + " does not exist."***</br>
+								If a Admin with the username exists but password is incorrect:</br>
+								***"Incorrect password."***</td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>Admin</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td></td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td></td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Obtains username and password data from the HTML form then checks the Admin table for </br>
+								 whether the Admin with username and password given by the passed in arguments exists.</br>
+								 Prints an error message if there is a problem</td>
+	</tr>
+</table>
+
+</br>
+
+<h2>Admin Logout</h2>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>AdministratorLogoutView</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>processLogout()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>None</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td></td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td> if there is a problem in initializing AdministratorLogoutController:
+							<br>***"An unexpected error occurred processing your logout request."***</td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>AdministratorLogoutController</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td>If logout is successful, the Admin's browser no longer recognizes them as being logged in.</td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td>LogoutController(), logoutAdmin()</td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Processes the User's logout request.</td>
+	</tr>
+</table>
+
+</br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>AdministratorLogoutController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>LogoutController()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>AdministratorLogoutController</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td></td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td>If this object fails to connect to the Admin table:
+							<br>***"An error occurred in connecting to the database."*** </td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>May initialize a connection to the Admin table</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td></td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td></td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Initializes an instance of AdministratorLogoutController.</br>
+								After construction, the object is ready to do the overhead necessary for recording the User as being logged out.</td>
+	</tr>
+</table>
+
+</br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>AdministratorLogoutController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>logoutAdmin()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>None</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td>String username</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td></td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>User</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td></td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td></td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Obtains the Admin's username from their browser</br> 
+								 and performs any overhead necessary for the User to be recognized as being logged out.</td>
+	</tr>
+</table>
+
+</br>
+
+<h2>Ban User</h2>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>BanUserView</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>checkIfBanded()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>boolean</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td><td>String username </td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td><td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td>if unable to process the Ban User
+							<br>***"An unexpected error occurred in processing your Ban User request"***</br>
+								if the user already be banded: </br>
+								***"User already Banded"***</td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>BanUserController</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td></td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td>BanUserController(), banUser()</td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Processes the User's account ban request.</td>
+	</tr>
+</table>
+
+</br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>BanUserController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>BanUserController()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em> BanUserdController</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td></td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td>if the object fails to connect to the User table:</br>
+								***"An error occurred in connecting to the database."***</td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>May initialize a connection to the User table.</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td></td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td></td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Initializes an instance of class BanUserController.</br>
+								 After construction, the object is ready to query the Admin table for checking </br>
+								 the user's password and ban the user.</td>
+	</tr>
+</table>
+
+</br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>BanUserController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>banUser()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>None</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td>String username</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td>If the entered password is incorrect:
+							<br>***"Incorrect password."*** </td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>User</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td></td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td></td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Obtains the User's username from their browser and input password from the HTML form then </br>
+								 checks to see if the User has already be banded. </br>
+								 If so, user can't be banded, If not, user Banded.</td>
+	</tr>
+</table>
+
+</br>
+
+<h2>UnBan User</h2>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>UnbanUserController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>UnbanUserController()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em> UnbanUserdController</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td></td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td>if the object fails to connect to the User table:</br>
+								***"An error occurred in connecting to the database."***</td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>May initialize a connection to the User table.</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td></td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td></td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Initializes an instance of class UnbanUserController.</br>
+								 After construction, the object is ready to query the Admin table for checking </br>
+								 the admin's password and Unban The user</td>
+	</tr>
+</table>
+
+</br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>UnbanUserController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>unbanUser()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>None</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td>String username</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td>If the entered password is incorrect:
+							<br>***"Incorrect password."*** </td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>User</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td></td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td></td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Obtains the User's username from their browser and input password from the HTML form then </br>
+								 checks to see if the Admin's password is correct. </br>
+								 If so, user is unbanded.</td>
+	</tr>
+</table>
+
+</br>
+
+
+<h2>Add Institution</h2>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>AddInstitutionView</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>checkIfAdded()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>None</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td>String Institution</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td> If unable to process the Institution Add</br>
+								 ***"An error occurred in processing your Institution add request."***</br>
+								 
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td></td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td></td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td></td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Processes the Add Institution request</td>
+	</tr>
+</table>
+
+</br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>AddInstitutionView</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>AddInstitutionController()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em></em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td>String Instituion</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td> if this object fails to connect to the institution table
+							<br>***"An error occurred in connecting to the database."*** </td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td></td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td></td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td></td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Check the institution is added</td>
+	</tr>
+</table>
+
+</br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>AddInstitutionController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>AddInstitutionController()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>AddInstituionController</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td></td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td>If the Institution is no be added:</br>
+								***"Instituion is not added"***</td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td></td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td>If successful, new Institution is added</td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td></td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Checks to see if Institution is added</br>
+								 .</td>
+	</tr>
+</table>
+
+</br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>AddInstitutionController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>addInstitution()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>None</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td>String Institution</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td> If unable to process the Institution Add</br>
+								 ***"An error occurred in processing your Institution add request."***</br>
+								 
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td></td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td></td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td></td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Processes the Add Institution request</td>
+	</tr>
+</table>
+
+</br>
+
+
+<h2>Delete Institution</h2>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>DeleteInstitutionView</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>DeleteInstitutionController()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em></em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td></td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td> if this object fails to connect to the institution table
+							<br>***"An error occurred in connecting to the database."*** </td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td></td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td></td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td></td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Check the institution is deleted</td>
+	</tr>
+</table>
+
+</br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>DeleteInstitutionController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>DeleteInstitutionController()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>DeleteInstituionController</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td></td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td>If the Institution is not be deleted:</br>
+								***"Instituion is not deleted"***</td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td></td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td>If successful, Institution is deleted</td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td></td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Checks to see if Institution is deleted</br>
+								 .</td>
+	</tr>
+</table>
+
+</br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>DeleteInstitutionController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>deleteInstitution()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>None</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td>String Institution</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td> If unable to process the Institution Add</br>
+								 ***"An error occurred in processing your Institution add request."***</br>
+								 
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td></td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td></td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td></td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Processes the Delete Institution request</td>
+	</tr>
+</table>
+
+</br>
+
+<h2>Administrator</h2>
+
+<table border="1">
+	<tr>
+		<td>
+			<strong>Class Name</strong>
+		</td> 
+		<td>
+			<strong> Administrator </strong>
+		</td>
+	</tr>
+	<tr>
+		<td>Method Name</td>
+		<td>
+			<em> addInstitution </em>
+		</td>
+	</tr>
+	<tr>
+		<td>Method State</td>
+		<td>
+			<em> Public </em>
+		</td>
+	</tr>
+	<tr>
+		<td>Return Type</td>
+		<td>
+			<em> None </em>
+		</td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td>
+		<td> String Institution Name </td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td>
+		<td> None </td>
+	</tr>
+	<tr>
+		<td>Error Messages</td>
+		<td> if it has been added then,
+			<br>***Instituion has already been added***</td>
+	</tr>
+	<tr>
+		<td>External Accesses</td>
+		<td> Institution database table</td>
+	</tr>
+	<tr>
+		<td>External Changes</td>
+		<td> Institution database table</td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td>
+		<td> None </td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td> This will add an institution </td>
+	</tr>
+</table>
+<p>
+</p>
+
+<table border="1">
+	<tr>
+		<td>
+			<strong>Class Name</strong>
+		</td> 
+		<td>
+			<strong> Administrator </strong>
+		</td>
+	</tr>
+	<tr>
+		<td>Method Name</td>
+		<td>
+			<em> deleteInstitution </em>
+		</td>
+	</tr>
+	<tr>
+		<td>Method State</td>
+		<td>
+			<em> Public </em>
+		</td>
+	</tr>
+	<tr>
+		<td>Return Type</td>
+		<td>
+			<em> None </em>
+		</td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> 
+		<td> String Institution Name </td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> 
+		<td> None </td>
+	</tr>
+	<tr>
+		<td>Error Messages</td> 
+		<td> If institution doesn't exist,
+			<br>***Instituion does not exist*** </td>
+	</tr>
+	<tr>
+		<td>External Accesses</td>
+		<td> Institution database table</td>
+	</tr>
+	<tr>
+		<td>External Changes</td>
+		<td> Institution database table</td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td>
+		<td> None </td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td> This will delete an institution </td>
+	</tr>
+</table>
+<p>
+</p>
+
+<table border="1">
+	<tr>
+		<td>
+			<strong>Class Name</strong>
+		</td> 
+		<td>
+			<strong> Administrator </strong>
+		</td>
+	</tr>
+	<tr>
+		<td>Method Name</td>
+		<td>
+			<em> unbanUser </em>
+		</td>
+	</tr>
+	<tr>
+		<td>Method State</td>
+		<td>
+			<em> Public </em>
+		</td>
+	</tr>
+	<tr>
+		<td>Return Type</td> 
+		<td>
+			<em> None </em>
+		</td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> 
+		<td> String Username</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td>
+		<td> None </td>
+	</tr>
+	<tr>
+		<td>Error Messages</td>
+		<td> If the user doesn't exist then,
+			<br>***Unable to find UserName: xxxxx*** </td>
+	</tr>
+	<tr>
+		<td>External Accesses</td>
+		<td> User Database</td>
+	</tr>
+	<tr>
+		<td>External Changes</td>
+		<td> User Database </td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td>
+		<td> getUser </td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td> This method will find the user, then unban the user</td>
+	</tr>
+</table>
+<p>
+</p>
+
+<table border="1">
+	<tr>
+		<td>
+			<strong>Class Name</strong>
+		</td> 
+		<td>
+			<strong> Administrator </strong>
+		</td>
+	</tr>
+	<tr>
+		<td>Method Name</td>
+		<td>
+			<em> banUser </em>
+		</td>
+	</tr>
+	<tr>
+		<td>Method State</td>
+		<td>
+			<em> Public </em>
+		</td>
+	</tr>
+	<tr>
+		<td>Return Type</td>
+		<td>
+			<em> None </em>
+		</td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td>
+		<td> String Username</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td>
+		<td> None </td>
+	</tr>
+	<tr>
+	<td>Error Messages</td>
+	<td> If the user doesn't exist then,
+		<br>***Unable to find UserName: xxxxx*** </td>
+	</tr>
+	<tr>
+		<td>External Accesses</td>
+		<td> User Database</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td> User Database </td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td> getUser </td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td> This method will find the user, then ban the user</td>
+	</tr>
+</table>
+<p>
+</p>
+<table border="1">
+	<tr>
+		<td>
+			<strong>Class Name</strong>
+		</td> 
+		<td>
+			<strong> Administrator </strong>
+		</td>
+	</tr>
+	<tr>
+		<td>Method Name</td>
+		<td>
+			<em> adminLogin </em>
+		</td>
+	</tr>
+	<tr>
+		<td>Method State</td>
+		<td>
+			<em> Public </em>
+		</td>
+	</tr>
+	<tr>
+		<td>Return Type</td>
+		<td>
+			<em> None </em>
+		</td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td>
+		<td> String Username, String Password</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td> None </td>
+	</tr>
+	<tr>
+		<td>Error Messages</td>
+		<td> If the username or password is invalid,
+			<br>***Unable to log in, please try again*** </td>
+	</tr>
+	<tr>
+		<td>External Accesses</td>
+		<td> Admin Database</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td> None </td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td> a, encryptPassword </td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td> This method will try to log in with the input values</td>
+	</tr>
+</table>
+<p>
+</p>
+<table border="1">
+	<tr>
+		<td>
+			<strong>Class Name</strong>
+		</td>
+		<td>
+			<strong> Administrator </strong>
+		</td>
+	</tr>
+	<tr>
+		<td>Method Name</td>
+		<td>
+			<em> adminLogout </em>
+		</td>
+	</tr>
+	<tr>
+		<td>Method State</td>
+		<td>
+			<em> Public </em>
+		</td>
+	</tr>
+	<tr>
+		<td>Return Type</td>
+		<td>
+			<em> None </em>
+		</td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td>
+		<td> String Username</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td>
+		<td> None </td>
+	</tr>
+	<tr>
+		<td>Error Messages</td>
+		<td> If the username,
+			<br>***Unable to log out, please try again*** </td>
+	</tr>
+	<tr>
+		<td>External Accesses</td>
+		<td> Admin Database</td>
+	</tr>
+	<tr>
+		<td>External Changes</td>
+		<td> None </td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td>
+		<td> None</td>
+	</tr>
+	<tr>
+		<td>Description</td>
+		<td> This method will find the user, and set the state to log out</td>
+	</tr>
+</table>
