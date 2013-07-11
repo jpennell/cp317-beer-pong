@@ -9,6 +9,6 @@ class Profile(models.Model):
     email = models.EmailField(max_length=100)
     height = models.SmallIntegerField()
     graduation_year = models.DateField()
-    photo = models.CharField(max_length=100)
+    photo = models.CharField(max_length=100, null = True, blank = True)
     institution = models.ForeignKey(Institution)
     is_banned = models.BooleanField(default=False)
