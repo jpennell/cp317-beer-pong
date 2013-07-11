@@ -59,6 +59,17 @@
 	font-weight: bold;
 	font-size: 24px;
 }
+#player-info .rank-qualifier:before {
+	content: "(";
+}
+#player-info .rank-qualifier:after {
+	content: " of players)";
+}
+#player-info .rank-qualifier {
+	padding-left: 10px;
+	font-size: 13px;
+	color: #aaa;
+}
 
 #cups-sunk-stats {
 	vertical-align: top;
