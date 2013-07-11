@@ -2,6 +2,7 @@
 
 /* Purple color: #9400D3 */
 /* Golden color: #ffd700 */
+/* Solo cup red: #FF0000 */
 
 body {
 	margin: 0 auto;
@@ -14,22 +15,14 @@ h1, h2, h3, h4, h5 {
 	color: #9400D3
 }
 
-/* Log out at the top */
-#logout {
-	display: block;
-	text-align: right;
-	margin-top: 20px;
-}
-#logout a, #logout p {
-	color: #888;
-}
-
+/* Log in indicator at the top */
 #login-header {
 	background: #eee;
 	padding: 10px;
 	margin: 0;
 	display: block;
 	text-align: right;
+	height: 30px;
 }
 #login-header p {
 	display: inline;
@@ -52,10 +45,19 @@ h1, h2, h3, h4, h5 {
 #login-header input[name='password'] {
 	width: 120px;
 }
-#login-header button {
+
+#login .player-name {
+	font-weight: bold;
+	margin-right: 5px;
 }
 
-
+#logout {
+	padding: 4px;
+	margin: 6px;
+	border: 1px solid #bbb;
+	background: #ddd;
+	border-radius: 3px;
+}
 
 /* Header styling */
 #header {
