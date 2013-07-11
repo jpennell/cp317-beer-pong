@@ -500,7 +500,7 @@
 		<td><strong>Class Name</strong></td> <td><strong>ConfirmGameView</strong></td>
 	</tr>
 	<tr>
-		<td>Method Name</td> <td><em>processGameConfirmation</em></td>
+		<td>Method Name</td> <td><em>processGameConfirmation()</em></td>
 	</tr>
 	<tr>
 		<td>Method State</td> <td><em>Public</em></td>
@@ -560,10 +560,10 @@
 							<br>***"An error occurred in connecting to the database."*** </td>
 	</tr>
 	<tr>
-		<td>External Accesses</td> <td>Event table, EventType table, LifeStats table</td>
+		<td>External Accesses</td> <td>Game Table, Event table, EventType table, LifeStats table</td>
 	</tr>
 	<tr>
-		<td>External Changes</td> <td>may initialize a connection to the Event, EventType and LifeStats tables</td>
+		<td>External Changes</td> <td>may initialize a connection to the Game, Event, EventType and LifeStats tables</td>
 	</tr>
 	<tr>
 		<td>Other Methods Invoked</td> <td></td>
@@ -583,7 +583,7 @@
 		<td><strong>Class Name</strong></td> <td><strong>ConfirmGameController</strong></td>
 	</tr>
 	<tr>
-		<td>Method Name</td> <td><em>confirmGame</em></td>
+		<td>Method Name</td> <td><em>confirmGame()</em></td>
 	</tr>
 	<tr>
 		<td>Method State</td> <td><em>Public</em></td>
@@ -595,26 +595,63 @@
 		<td>Input Arguments</td> <td>int gameID</td>
 	</tr>
 	<tr>
-		<td>Output Arguments</td> <td> VarType Name </td>
+		<td>Output Arguments</td> <td></td>
 	</tr>
 	<tr>
-	<td>Error Messages</td> <td> if this, then this fail
-							<br>***Error Message*** </td>
+	<td>Error Messages</td> <td></td>
 	</tr>
 	<tr>
-		<td>External Accesses</td> <td> i.e. a database table or other class </td>
+		<td>External Accesses</td> <td>Game, Event, EventType, LifeStats</td>
 	</tr>
 	<tr>
-		<td>External Changes</td> <td> see above </td>
+		<td>External Changes</td> <td>LifeStats for each User that played the Game</br>
+									  are updated by their corresponding Events.</td>
 	</tr>
 	<tr>
-		<td>Other Methods Invoked</td> <td> XX </td>
+		<td>Other Methods Invoked</td> <td>updateStatsWithEvent()</td>
 	</tr>
 	<tr>
-		<td>Description</td> <td> XX </td>
+		<td>Description</td> <td>Using the gameID, obtains the Events that occurred during the Game.</br>
+								 Then for each Event, updates the appropriate LifeStats entry</td>
 	</tr>
 </table>
 
 </br>
 
-<h2>Confirm Game and Score Game to be finished</h2>
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>ConfirmGameController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>denyGame()</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>None</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td>int gameID</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td></td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td></td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>Game, Event, EventType, LifeStats</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td></td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td></td>
+	</tr>
+	<tr>
+		<td>Description</td> <td></td>
+	</tr>
+</table>
+
+</br>
