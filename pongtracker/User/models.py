@@ -14,7 +14,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User)
     email = models.EmailField(max_length=100)
     height = models.SmallIntegerField()
-    graduation_year = models.IntegerField(_('year'), max_length=4, choices=YEAR_CHOICES, default=datetime.datetime.now().year+1)
+    graduation_year = models.IntegerField(('year'), max_length=4, choices=YEAR_CHOICES, default=datetime.datetime.now().year+1)
     photo = models.CharField(max_length=100)
     institution = models.ForeignKey(Institution)
     is_banned = models.BooleanField(default=False)
