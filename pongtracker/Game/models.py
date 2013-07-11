@@ -10,13 +10,13 @@ class Game(models.Model):
     team1 = models.OneToOneField(Team,related_name="Game1")
     team2 = models.OneToOneField(Team,related_name="Game2")
 
-    def get_team1(self):
+    def get_team1():
         return self.team1
 
-    def get_team2(self):
+    def get_team2():
         return self.team2
 
-    def get_date_played(self):
+    def get_date_played():
         return self.date_played
 
 class EventType(models.Model):

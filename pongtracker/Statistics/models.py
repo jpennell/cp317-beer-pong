@@ -18,7 +18,7 @@ class LifeStats(models.Model):
     user = models.OneToOneField (User)
       
     def __unicode__(self):
-        return self.LifeStats
+        return self.wins
     
 class Ranking(models.Model):
     mu = models.FloatField(default=25.0)
@@ -26,4 +26,4 @@ class Ranking(models.Model):
     user = models.OneToOneField (User)
     
     def __unicode__(self):
-        return self.Ranking    
+        return self.mu    
