@@ -2,8 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Team(models.Model):
-    user1 = models.ForeignKey(User,related_name="Teams1")
-    user2 = models.ForeignKey(User,related_name="Teams2")
+    user1 = models.ForeignKey(User,related_name="Team1")
+    user2 = models.ForeignKey(User,related_name="Team2")
 
 class Game(models.Model):
     date_played = models.DateTimeField(auto_now=True)

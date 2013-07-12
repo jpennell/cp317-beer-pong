@@ -9,31 +9,54 @@
  * Window - Preferences - PHPeclipse - PHP - Code Templates
 -->
  <head>
-  <title> </title>
+  <title>New Game</title>
  </head>
- <body>
+ <body bgcolor="#FF1111">
+
+	<center>
 
     <h1>
         Game: {{ game.id }}
     </h1>
+    
+	    <table width="80%" align="center">
+	    
+	    	<tr>
+	    	
+	    		<th width="40%"><font size="10">TEAM 1</font></th>
+	    		
+	    		<th width="20%"><H3><font size="10"><i>VS</i></font></H3></th>
+	    		
+	    		<th width="40%"><font size="10">TEAM 2</font></th>
+	    	
+	    	</tr>
+	    	
+	    	<tr align="center">
+	    	
+	    		<td>{{ game.team1.user1 }}</th>
+	    		
+	    		<td></th>
+	    		
+	    		<td>{{ game.team2.user1 }}</th>
+	    	
+	    	</tr>
+	    	
+	    	<tr align="center">
+	    	
+	    		<td>{{ game.team1.user2 }}</th>
+	    		
+	    		<td></th>
+	    		
+	    		<td>{{ game.team2.user2 }}</th>
+	    	
+	    	</tr>
 
-    <p>
-        Team 1
-        <ul>
-            <li>{{ game.get_team1.user1.username }}</li>
-            <li>{{ game.get_team1.user2.username }}</li>
-        </ul>
-    </p>
-
-    <p>
-        Team 2
-        <ul>
-            <li>{{ game.get_team2.user1.username }}</li>
-            <li>{{ game.get_team2.user2.username }}</li>
-        </ul>
-    </p>
-
-    <p>Game played: {{ game.get_date_played }}</p>
+	
+	    <p>Time played: {{ game.date_played }}</p>
+	    
+	    </table>
+    
+    </center>
 
  </body>
 </html>
