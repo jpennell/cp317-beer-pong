@@ -12,6 +12,8 @@ def createNewGameRequest(request):
         username2 = request.POST.get("username2")
         username3 = request.POST.get("username3")
         username4 = request.POST.get("username4")
+        
+        print("username1")
 
         game = _createNewGame(username1, username2, username3, username4)
 
