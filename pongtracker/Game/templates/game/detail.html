@@ -20,20 +20,20 @@
     <p>
         Team 1
         <ul>
-            <li>{{ game.get_team1.user1.username }}</li>
-            <li>{{ game.get_team1.user2.username }}</li>
+            <li>{{ t1user1 }}</li>
+            <li>{{ t1user2 }}</li>
         </ul>
     </p>
 
     <p>
         Team 2
         <ul>
-            <li>{{ game.get_team2.user1.username }}</li>
-            <li>{{ game.get_team2.user2.username }}</li>
+            <li>{{ t2user1 }}</li>
+            <li>{{ t2user2 }}</li>
         </ul>
     </p>
 
-    <p>Game played: {{ game.get_date_played }}</p>
+    <p>Time played: {{ game.get_date_played }}</p>
 
  </body>
 </html>
