@@ -12,10 +12,10 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'heng7500',                      # Or path to database file if using sqlite3.
+        'NAME': 'blac2410',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-        'USER': 'heng7500',
-        'PASSWORD': 'gsx1br48',
+        'USER': 'blac2410',
+        'PASSWORD': 'bigtop3',
         'HOST': 'hopper.wlu.ca',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '3306',                      # Set to empty string for default.
     }
@@ -72,6 +72,8 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    "../../../assets"
+    
 )
 
 # List of finder classes that know how to find static files in
