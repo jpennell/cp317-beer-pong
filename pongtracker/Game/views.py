@@ -13,17 +13,11 @@ def createNewGameRequest(request):
         username3 = request.POST.get("username3")
         username4 = request.POST.get("username4")
 
-        print username1
-        print username2
-        print username3
-        print username4
-
         game = _createNewGame(username1, username2, username3, username4)
 
         return redirect('/game/' + str(game.id))
-
+    
     else:
-
         return render(request, 'game/create.html')
 
 
