@@ -21,7 +21,7 @@
 	</tr>
 	<tr>
 	<td>Error Messages</td> <td>If the object fails to connect to the User table:</br>
-								***An error occurred in connecting to the database.***</td>
+								***An error occurred in processing your login request.***</td>
 	</tr>
 	<tr>
 		<td>External Accesses</td> <td>May initialize a connection to the User table.</td>
@@ -54,16 +54,16 @@
 		<td>Return Type</td> <td><em>None</em></td>
 	</tr>
 	<tr>
-		<td>Input Arguments</td> <td>string username, string password</td>
+		<td>Input Arguments</td> <td>String username, String password</td>
 	</tr>
 	<tr>
 		<td>Output Arguments</td> <td>none</td>
 	</tr>
 	<tr>
-	<td>Error Messages</td> <td>If no User with the specified username exists:</br>
-								***User + username + does not exist.***</br>
-								If a User with the username exists but password is incorrect:</br>
-								***Incorrect password.***</td>
+	<td>Error Messages</td> <td>If the username and password combination isn't valid:</br>
+								***Invalid username/password.***</br>
+								If the combination is correct but the User is banned:</br>
+								***Cannot log you in. You have been banned!***</td>
 	</tr>
 	<tr>
 		<td>External Accesses</td> <td>User</td>
@@ -72,12 +72,16 @@
 		<td>External Changes</td> <td>none</td>
 	</tr>
 	<tr>
-		<td>Other Methods Invoked</td> <td>authenticate</td>
+		<td>Other Methods Invoked</td> <td>authenticate, login, isBanned</td>
 	</tr>
 	<tr>
-		<td>Description</td> <td>Obtains username and password data from the HTML form then checks the User table for </br>
-								 whether the User with username and password given by the passed in arguments exists.</br>
-								 Prints an error message if there is a problem</td>
+		<td>Description</td> <td>Obtains username and password data from the HTML form then validates the User's login request</br>
+								 using Django's authenticate function and performs the login with Django's login function.</br> 
+								 Banned Users are not allowed to log in.</br>
+								 </br>
+								 If the User logs in successfully, they are brought to their profile page.</br>
+								 Otherwise, they are brought back to the login page with the error message.</br>
+								 </td>
 	</tr>
 </table>
 
@@ -106,7 +110,7 @@
 	</tr>
 	<tr>
 	<td>Error Messages</td> <td>If this object fails to connect to the User table:
-							<br>***An error occurred in connecting to the database.*** </td>
+							<br>***An error occurred in processing your logout request.*** </td>
 	</tr>
 	<tr>
 		<td>External Accesses</td> <td>May initialize a connection to the User table</td>
@@ -139,7 +143,7 @@
 		<td>Return Type</td> <td><em>None</em></td>
 	</tr>
 	<tr>
-		<td>Input Arguments</td> <td>string username</td>
+		<td>Input Arguments</td> <td>String username</td>
 	</tr>
 	<tr>
 		<td>Output Arguments</td> <td>none</td>
@@ -154,11 +158,11 @@
 		<td>External Changes</td> <td>none</td>
 	</tr>
 	<tr>
-		<td>Other Methods Invoked</td> <td>none</td>
+		<td>Other Methods Invoked</td> <td>logout</td>
 	</tr>
 	<tr>
-		<td>Description</td> <td>Obtains the User's username from their browser</br> 
-								 and performs any overhead necessary for the User to be recognized as being logged out.</td>
+		<td>Description</td> <td>Logs out the User by calling Django's logout function.</br>
+								 The User is then redirected to the Pong Tracker homepage with all their session data cleared.</td>
 	</tr>
 </table>
 
@@ -187,7 +191,7 @@
 	</tr>
 	<tr>
 	<td>Error Messages</td> <td>if the object fails to connect to the User table:</br>
-								***An error occurred in connecting to the database.***</td>
+								***An error occurred in processing your account deletion request.***</td>
 	</tr>
 	<tr>
 		<td>External Accesses</td> <td>May initialize a connection to the User table.</td>
@@ -201,7 +205,7 @@
 	<tr>
 		<td>Description</td> <td>Initializes an instance of class DeleteAccountController.</br>
 								 After construction, the object is ready to query the User table for checking </br>
-								 the user's password and deleting their entry.</td>
+								 the user's password and deactivating their entry.</td>
 	</tr>
 </table>
 
@@ -221,7 +225,7 @@
 		<td>Return Type</td> <td><em>None</em></td>
 	</tr>
 	<tr>
-		<td>Input Arguments</td> <td>string username, string password</td>
+		<td>Input Arguments</td> <td>String username, String password</td>
 	</tr>
 	<tr>
 		<td>Output Arguments</td> <td>none</td>
@@ -237,12 +241,15 @@
 		<td>External Changes</td> <td>May remove the User's entry from the User table.</td>
 	</tr>
 	<tr>
-		<td>Other Methods Invoked</td> <td>authenticate</td>
+		<td>Other Methods Invoked</td> <td>authenticate, logout, setBanned</td>
 	</tr>
 	<tr>
 		<td>Description</td> <td>Obtains the User's username from their browser and input password from the HTML form then </br>
-								 checks to see if the User has correctly entered their password. </br>
-								 If so, their entry is removed from the User table.</td>
+								 checks to see if the User has correctly entered their password by calling Django's authenticate function.</br>
+								 </br>
+								 If so, the User is logged out, their account is deactivated (not actually deleted,) and they are redirected to the</br> 
+								 Pong Tracker homepage. Otherwise, they are brought back to the account deletion page and the error message is printed.</br>
+								 <strong>Note:</strong> The User's account is not actually deleted so that any references made to it (i.e. past games) can still function.</td>
 	</tr>
 </table>
 
@@ -271,7 +278,7 @@
 	</tr>
 	<tr>
 	<td>Error Messages</td> <td> if this object fails to connect to the Team or Game table
-							<br>***An error occurred in connecting to the database.*** </td>
+							<br>***An error occurred in processing your game creation request.*** </td>
 	</tr>
 	<tr>
 		<td>External Accesses</td> <td>Game table, Team table, User table</td>
@@ -296,16 +303,16 @@
 		<td><strong>Class Name</strong></td> <td><strong>CreateGameController</strong></td>
 	</tr>
 	<tr>
-		<td>Method Name</td> <td><em>createGame</em></td>
+		<td>Method Name</td> <td><em>createNewGame</em></td>
 	</tr>
 	<tr>
 		<td>Method State</td> <td><em>Public</em></td>
 	</tr>
 	<tr>
-		<td>Return Type</td> <td><em>None</em></td>
+		<td>Return Type</td> <td><em>Game</em></td>
 	</tr>
 	<tr>
-		<td>Input Arguments</td> <td>string player1, string player2, string player3, string player4</td>
+		<td>Input Arguments</td> <td>String player1, String player2, String player3, String player4</td>
 	</tr>
 	<tr>
 		<td>Output Arguments</td> <td>none</td>
@@ -354,7 +361,7 @@
 	</tr>
 	<tr>
 	<td>Error Messages</td> <td> if this object fails to connect to the Game, Event, EventType or LifeStats table
-							<br>***An error occurred in connecting to the database.*** </td>
+							<br>***An error occurred in processing your game confirmation/denial request.*** </td>
 	</tr>
 	<tr>
 		<td>External Accesses</td> <td>Game Table, Event table, EventType table, LifeStats table</td>
