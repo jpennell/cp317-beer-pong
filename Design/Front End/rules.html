@@ -1,0 +1,254 @@
+<html lang="en">
+<head>
+    <title>Pong Tracker | Leaderboard</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+    <link href='assets/bootstrap-css/bootstrap.css' rel='stylesheet' type='text/css'>
+    <link href='assets/css/global-styles.css' rel='stylesheet' type='text/css'>
+    <link href='assets/css/login-styles.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+ <div id="container">
+        <!------ LOGIN HEADER --------->
+        <div id="login-header">
+            <p>
+                Welcome, <span id="player-name">Pong Player</span><span id="logout"><a href="login.html">Log Out</a></span>
+            </p>
+        </div>
+
+        <!------ HEADER --------->
+        <div id="header">
+            <table>
+                <tr>
+                    <td id="logo">
+                        Pong Tracker
+                    </td>
+                    <td id="nav">
+                        <ul>
+                            <li><a href="#">Rules</a></li>
+                        </ul>
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+        <!------ CONTENT --------->
+        <div id="page-content">
+            <table>
+                <tr>
+					<td>
+<p>
+							Listed are the rules for a game of Beer Pong, as assumed by Pong Tracker. Rules may be modified by the teams playing.
+						</p>
+
+						<div class="subsection3">
+
+							<h4 class="subsection3-title">Gameplay</h4>
+
+								<div class="indent10">
+									<ul>
+										<li>
+											To determine the first team to shoot, players participate in <a href="#appendix"><b>eye-to-eye</b></a>. Eye-to-eye consists of a member from each team shooting simultaneously at the opposing team's cups while making full eye contact with the opposing shooter.
+											<ul>
+												<li>
+													One person from each team begins. After each failed attempt, the two team members swap places.
+												</li>
+												<li>
+													When a ball is successfully sunk, the scoring team is awarded the first shot. The cup that is sunk is not counted during eye-to-eye.
+												</li>
+												<li>
+													If both teams hit their eye-to-eye in a given turn, eye-to-eye resumes until only one team scores.
+												</li>
+											</ul>
+										</li>
+
+										<li>
+											Teams take turns attempting to throw the ping pong ball into the cups of the opposing team. The team who is currently shooting is called the <a href="#appendix"><b>shooting team</b></a>. The team who is being shot at is called the <a href="#appendix"><b>defending team</b></a>.
+										</li>
+										<li>
+											When a ball has been sunk in a cup, that cup is removed from the table by the defending team. The defending team must drink the contents of that cup in a timely fashion (see <a href="#end">Ending a Game</a>).
+										</li>
+										<li>
+											If both members of the shooting team sink any two of the defending team's cups in one turn, they shoot again.
+										</li>
+										<li>
+											After a shot, the ball spins in the rim of the defending team's cup, the defending team can attempt to blow the ball out of the cup. If the ball is ejected and remains dry, no cup is removed.
+										</li>
+										<li>
+											An <a href="#appendix"><b>air ball</b></a> is a shot that does not hit the table, nor any cup on the table.
+											<ul>
+												<li>
+													If the first shooter air balls, then the second shooter must forfeit their shot.
+												</li>
+												<li>
+													If the second shooter air balls, then play resumes as though the turn ended normally.
+												</li>
+											</ul>
+										</li>
+										<li>
+											If the ball rolls or bounces back to the shooting team on the table (never once touching the ground), a member of the shooting team can attempt a <a href="#appendix"><b>trick shot</b></a>.
+										</li>
+										<ul>
+											<li>
+												A trick shot is any shot containing either multi-directional trajectory or non-standard origination.
+												<ul>
+													<li>
+														Bouncing the ball off an adjacent wall.
+													</li>
+													<li>
+														Throwing the ball facing the opposite direction of the table.
+													</li>
+												</ul>
+											</li>
+											<li>
+												A trick shot does not follow the standard rules for shooting, such as air ball.
+											</li>
+											<li>
+												A trick shot can not be disrupted by the defending team.
+											</li>
+										</ul>
+										<li>
+											Each team is entitled to one <a href="#appendix"><b>re-rack</b></a> at any point during the game. A re-rack is a request to shuffle the orientation of the remaining cups of the opposing team.
+										</li>
+										<li>
+											A <a href="#appendix"><b>bounce shot</b></a> counts as two cups sunk. A bounce shot hits the table before entering a cup. The sunk cup and another chosen by the <a href="#appendix"><b>scoring team</b></a> are removed.
+											<ul>
+												<li>
+													The defending team can attempt to disrupt the ball after it has made contact with the table.
+												</li>
+											</ul>
+										</li>
+										<li>
+											If two non-bounce shots hit the same cup, then the sunk cup, and another selected by the scoring team are removed.
+										</li>
+										<li>
+											A <a href="#appendix"><b>party foul</b></a> is any infringement on the rules of the game. In particular:
+										</li>
+										<ul>
+											<li>
+												Any knocking over of a cup is considered a party foul. All disrupted cups are to be removed and are considered scored on by the opposing team.
+											</li>
+											<li>
+												If the ball is disrupted in any way (that is not otherwise stated in the above rules) by the defending team, a cup is removed from the defending team and is considered scored on by the shooting team.
+											</li>
+										</ul>
+									</ul>
+								</div>
+
+							<h4 class="subsection3-title">Ending a Game</h4>
+
+								<div class="indent10">
+									<ul>
+										<li>
+											A game is over when a team's cups are all removed from the table.
+										</li>
+										<li>
+											Before the game is complete, the team with no remaining cups is eligible for <a href="#appendix"><b>redemption</b></a>.
+											<ul>
+												<li>
+													If a team is sucessful, then the game resumes, with each team having three cups.
+												</li>
+												<li>
+													The objective of redemption is to sink the opposing team's remaining cups.
+												</li>
+												<li>
+													Both players on the redeeming team keep shooting until they miss.
+												</li>
+												<li>
+													If one player misses, the other continues to shoot.
+												</li>
+												<li>
+													A team is not eligible for redemption if:
+												</li>
+												<ul>
+													<ul>
+														<li>
+															Both players on the shooting team sink the defending team's remaining cup.
+														</li>
+														<li>
+															The remaining cup is sunk via a bounce shot.
+														</li>
+														<li>
+															A cup in the hand of a player is sunk (for example, before the player drinks).
+														</li>
+														<ul>
+															<li>
+																There is beverage remaining in the cup.
+															</li>
+															<li>
+																The scoring team is automatically victorious.
+															</li>
+														</ul>
+													</ul>
+												</ul>
+											</ul>
+										</li>
+									</ul>
+								</div>
+								<section id="appendix">
+				<h2 class="section-title">Appendix</h2>
+
+				<table border="0" width="100%">
+					<tr  style="background:#F5F5F5" height="30px" class="def" valign="top">
+						<td width="20%">Term</td>
+						<td width="80%">Definition</td>
+					</tr>
+
+					<tr  height="30px">
+						<td width="20%" class="def">Air ball</td>
+						<td width="80%">A shot that misses the table altogether.</td>
+					</tr>
+
+					<tr  height="30px">
+						<td width="20%" class="def">Bounce shot</td>
+						<td width="80%">A shot that hits the table before entering a cup.</td>
+					</tr>
+
+					<tr  height="30px">
+						<td width="20%" class="def">Defending team</td>
+						<td width="80%">The team who is not currently in possession of the ping pong balls. </td>
+					</tr>
+
+					<tr  height="30px">
+						<td width="20%" class="def" valign="top">Eye-to-eye</td>
+						<td width="80%">A means of deciding the first team to shoot. Consists of a member of each team simultaneously shooting while making full eye contact with the other party. Should a cup be scored, the offending party is awarded the first shot. </td>
+					</tr>
+
+					<tr  height="30px">
+						<td width="20%" class="def">Party foul</td>
+						<td width="80%">An infringement on the rules of the game, or knocking over a cup, spilling its contents. </td>
+					</tr>
+
+					<tr  height="30px">
+						<td width="20%" class="def">Re-rack</td>
+						<td width="80%">A request to shuffle the orientation of the remaining cups on the opposing side. </td>
+					</tr>
+
+					<tr  height="30px">
+						<td width="20%" class="def">Redemption</td>
+						<td width="80%"> A chance for the losing team to come back. </td>
+					</tr>
+
+					<tr  height="30px">
+						<td width="20%" class="def">Session</td>
+						<td width="80%">The period from which the user logs in, to when the user either logs out, or closes the internet browser.</td>
+					</tr>
+
+					<tr  height="30px">
+						<td width="20%" class="def">Shooting team</td>
+						<td width="80%">The team who is currently in possession of the ping pong balls. </td>
+					</tr>
+
+					<tr  height="30px">
+						<td width="20%" class="def" valign="top">Solo cup</td>
+						<td width="80%">
+							Standard cup for Beer Pong
+							<br><br>
+							<img src="assets/img/redsolocup.jpg" alt="Red Solo Cup" width="15%">
+						</td>
+					</tr>
+
+					<tr  height="30px">
+						<td width="20%" class="def">Trick shot</td>
+						<td width="80%">Any shot containing either multi-directional trajectory <i>or</i> non-standard origination. </td>
+					</tr>
+                       </td>
