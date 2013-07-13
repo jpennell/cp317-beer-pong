@@ -205,7 +205,7 @@
 	<tr>
 		<td>Description</td> <td>Initializes an instance of class DeleteAccountController.</br>
 								 After construction, the object is ready to query the User table for checking </br>
-								 the user's password and deleting their entry.</td>
+								 the user's password and deactivating their entry.</td>
 	</tr>
 </table>
 
@@ -241,15 +241,15 @@
 		<td>External Changes</td> <td>May remove the User's entry from the User table.</td>
 	</tr>
 	<tr>
-		<td>Other Methods Invoked</td> <td>authenticate, logout, delete</td>
+		<td>Other Methods Invoked</td> <td>authenticate, logout, setBanned</td>
 	</tr>
 	<tr>
 		<td>Description</td> <td>Obtains the User's username from their browser and input password from the HTML form then </br>
 								 checks to see if the User has correctly entered their password by calling Django's authenticate function.</br>
 								 </br>
-								 If so, the User is logged out, their account is deleted by calling Django's delete function, and they are</br>
-								 redirected to the Pong Tracker homepage. Otherwise, they are brought back to the account deletion page and</br>
-								 the error message is printed.</td>
+								 If so, the User is logged out, their account is deactivated (not actually deleted,) and they are redirected to the</br> 
+								 Pong Tracker homepage. Otherwise, they are brought back to the account deletion page and the error message is printed.</br>
+								 <strong>Note:</strong> The User's account is not actually deleted so that any references made to it (i.e. past games) can still function.</td>
 	</tr>
 </table>
 
