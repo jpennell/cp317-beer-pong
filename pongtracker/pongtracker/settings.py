@@ -21,9 +21,7 @@ DATABASES = {
     }
 }
 
-DEFAULT_FROM_EMAIL = 'sccipa@gmail.ca'
-EMAIL_HOST = ''
-EMAIL_HOST_PASSWORD = 'google123!'
+AUTH_PROFILE_MODULE = 'User.Profile'
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
