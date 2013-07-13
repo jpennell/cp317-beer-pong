@@ -60,10 +60,10 @@
 		<td>Output Arguments</td> <td>none</td>
 	</tr>
 	<tr>
-	<td>Error Messages</td> <td>If no User with the specified username exists:</br>
-								***User + username + does not exist.***</br>
-								If a User with the username exists but password is incorrect:</br>
-								***Incorrect password.***</td>
+	<td>Error Messages</td> <td>If the username and password combination isn't valid:</br>
+								***Invalid username/password.***</br>
+								If the combination is correct but the User is banned:</br>
+								***Cannot log you in. You have been banned!***</td>
 	</tr>
 	<tr>
 		<td>External Accesses</td> <td>User</td>
@@ -72,12 +72,16 @@
 		<td>External Changes</td> <td>none</td>
 	</tr>
 	<tr>
-		<td>Other Methods Invoked</td> <td>authenticate</td>
+		<td>Other Methods Invoked</td> <td>authenticate, login, isBanned</td>
 	</tr>
 	<tr>
-		<td>Description</td> <td>Obtains username and password data from the HTML form then checks the User table for </br>
-								 whether the User with username and password given by the passed in arguments exists.</br>
-								 Prints an error message if there is a problem</td>
+		<td>Description</td> <td>Obtains username and password data from the HTML form then validates the User's login request</br>
+								 using Django's authenticate function and performs the login with Django's login function.</br> 
+								 Banned Users are not allowed to log in.</br>
+								 </br>
+								 If the User logs in successfully, they are brought to their profile page.</br>
+								 Otherwise, they are brought back to the login page with the error message.</br>
+								 </td>
 	</tr>
 </table>
 
@@ -296,13 +300,13 @@
 		<td><strong>Class Name</strong></td> <td><strong>CreateGameController</strong></td>
 	</tr>
 	<tr>
-		<td>Method Name</td> <td><em>createGame</em></td>
+		<td>Method Name</td> <td><em>createNewGame</em></td>
 	</tr>
 	<tr>
 		<td>Method State</td> <td><em>Public</em></td>
 	</tr>
 	<tr>
-		<td>Return Type</td> <td><em>None</em></td>
+		<td>Return Type</td> <td><em>Game</em></td>
 	</tr>
 	<tr>
 		<td>Input Arguments</td> <td>String player1, String player2, String player3, String player4</td>
