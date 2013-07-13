@@ -158,11 +158,11 @@
 		<td>External Changes</td> <td>none</td>
 	</tr>
 	<tr>
-		<td>Other Methods Invoked</td> <td>none</td>
+		<td>Other Methods Invoked</td> <td>logout</td>
 	</tr>
 	<tr>
-		<td>Description</td> <td>Obtains the User's username from their browser</br> 
-								 and performs any overhead necessary for the User to be recognized as being logged out.</td>
+		<td>Description</td> <td>Logs out the User by calling Django's logout function.</br>
+								 The User is then redirected to the Pong Tracker homepage with all their session data cleared.</td>
 	</tr>
 </table>
 
@@ -241,12 +241,15 @@
 		<td>External Changes</td> <td>May remove the User's entry from the User table.</td>
 	</tr>
 	<tr>
-		<td>Other Methods Invoked</td> <td>authenticate</td>
+		<td>Other Methods Invoked</td> <td>authenticate, logout, delete</td>
 	</tr>
 	<tr>
 		<td>Description</td> <td>Obtains the User's username from their browser and input password from the HTML form then </br>
-								 checks to see if the User has correctly entered their password. </br>
-								 If so, their entry is removed from the User table.</td>
+								 checks to see if the User has correctly entered their password by calling Django's authenticate function.</br>
+								 </br>
+								 If so, the User is logged out, their account is deleted by calling Django's delete function, and they are</br>
+								 redirected to the Pong Tracker homepage. Otherwise, they are brought back to the account deletion page and</br>
+								 the error message is printed.</td>
 	</tr>
 </table>
 
