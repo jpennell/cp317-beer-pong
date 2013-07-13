@@ -201,7 +201,12 @@
                                 {{ emailState }}
                                 <input name="email" type="text" placeholder="email" value="{{ email }}">
                                 <br/>
-                                <input name="username" type="text" placeholder="desired username" value="{{ usernam }}">
+                                {{ usernameState }}
+                                {% for suggestion in suggestedUsernames %}
+                                		{{ suggestion }}
+                                		<br/>
+                                {% endfor %}
+                                <input name="username" type="text" placeholder="desired username" value="{{ username }}">
                                 <br/>
                                 <button name="submit" class="btn" type="submit"  >
                                     Submit
