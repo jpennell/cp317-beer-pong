@@ -13,7 +13,7 @@
         <div id="login-header">
              {{state}}	
             
-            <form name="login" action="/index/" class="form-inline" method="post">
+            <form name="login" action="/login" class="form-inline" method="post">
              {% csrf_token %}
                 {% if next %}
 				<input type="hidden" name="next" value="{{ next }}" />
