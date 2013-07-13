@@ -196,13 +196,19 @@
                     <td>
                         <div id="register-form">
                             <h3>Register</h3>
-                            <form action="leaderboard" name="register" >
-                            {% csrf_token %}
-                                <input name="email" type="text" placeholder="email">
+                            <form action="/editProfile/" name="register" method="post">
+                            	{% csrf_token %}
+                                {{ emailState }}
+                                <input name="email" type="text" placeholder="email" value="{{ email }}">
                                 <br/>
-                                <input name="username" type="text" placeholder="desired username">
+                                {{ usernameState }}
+                                {% for suggestion in suggestedUsernames %}
+                                		{{ suggestion }}
+                                		<br/>
+                                {% endfor %}
+                                <input name="username" type="text" placeholder="desired username" value="{{ username }}">
                                 <br/>
-                                <button name="submit" class="btn" type="submit" action="register">
+                                <button name="submit" class="btn" type="submit"  >
                                     Submit
                                 </button>
                             </form>

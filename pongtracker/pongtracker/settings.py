@@ -3,23 +3,27 @@
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-ADMINS = (
-     ('Quinton Black', 'blac2410@mylaurier.ca'),('Matt Hengeveld', 'heng7500@mylaurier.ca')
-)
+ADMINS = ( 
+     ( 'Quinton Black', 'blac2410@mylaurier.ca' ), ( 'Matt Hengeveld', 'heng7500@mylaurier.ca' )
+ )
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'blac2410',                      # Or path to database file if using sqlite3.
+        'NAME': 'blac2410', # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': 'blac2410',
         'PASSWORD': 'bigtop3',
-        'HOST': 'hopper.wlu.ca',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '3306',                      # Set to empty string for default.
+        'HOST': 'hopper.wlu.ca', # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '3306', # Set to empty string for default.
     }
 }
+
+DEFAULT_FROM_EMAIL = 'sccipa@gmail.ca'
+EMAIL_HOST = ''
+EMAIL_HOST_PASSWORD = 'google123!'
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
@@ -68,32 +72,32 @@ STATIC_ROOT = ''
 STATIC_URL = '/static/'
 
 # Additional locations of static files
-STATICFILES_DIRS = (
+STATICFILES_DIRS = ( 
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    
-)
+
+ )
 
 # List of finder classes that know how to find static files in
 # various locations.
-STATICFILES_FINDERS = (
+STATICFILES_FINDERS = ( 
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
-)
+ )
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '$@_%5hj6tsy=hj)#t!kk8$l*#j--oo0c2gfjaz1=0_!^02xdv*'
 
 # List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
+TEMPLATE_LOADERS = ( 
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
-)
+ )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE_CLASSES = ( 
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -101,14 +105,14 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
+ )
 
 ROOT_URLCONF = 'pongtracker.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'pongtracker.wsgi.application'
 
-TEMPLATE_DIRS = (
+TEMPLATE_DIRS = ( 
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -119,9 +123,9 @@ TEMPLATE_DIRS = (
     "/User/templates",
     "/Utilities/templates"
 
-)
+ )
 
-INSTALLED_APPS = (
+INSTALLED_APPS = ( 
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -138,8 +142,8 @@ INSTALLED_APPS = (
     'Statistics',
     'Utilities',
     'User',
-          
-)
+
+ )
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
