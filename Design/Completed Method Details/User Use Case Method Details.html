@@ -2,47 +2,6 @@
 
 <table border="1">
 	<tr>
-		<td><strong>Class Name</strong></td> <td><strong>UserLoginView</strong></td>
-	</tr>
-	<tr>
-		<td>Method Name</td> <td><em>processLogin</em></td>
-	</tr>
-	<tr>
-		<td>Method State</td> <td><em>Public</em></td>
-	</tr>
-	<tr>
-		<td>Return Type</td> <td><em>None</em></td>
-	</tr>
-	<tr>
-		<td>Input Arguments</td><td>none</td>
-	</tr>
-	<tr>
-		<td>Output Arguments</td><td>none</td>
-	</tr>
-	<tr>
-	<td>Error Messages</td> <td>If there is a problem in initializing UserLoginController:
-							<br>***An unexpected error occurred in processing your login request.***</br>
-								If user enters an invalid user/password combination:</br>
-								***Invalid login information, please enter a valid username and password.***</td>
-	</tr>
-	<tr>
-		<td>External Accesses</td> <td>UserLoginController</td>
-	</tr>
-	<tr>
-		<td>External Changes</td> <td>If login is successful, the browser recognizes and remembers that the User has logged in</td>
-	</tr>
-	<tr>
-		<td>Other Methods Invoked</td> <td>UserLoginController, loginUser</td>
-	</tr>
-	<tr>
-		<td>Description</td> <td>Processes the User's login request.</td>
-	</tr>
-</table>
-
-</br>
-
-<table border="1">
-	<tr>
 		<td><strong>Class Name</strong></td> <td><strong>UserLoginController</strong></td>
 	</tr>
 	<tr>
@@ -113,7 +72,7 @@
 		<td>External Changes</td> <td>none</td>
 	</tr>
 	<tr>
-		<td>Other Methods Invoked</td> <td>isUsernameTaken, isCorrectPassword</td>
+		<td>Other Methods Invoked</td> <td>authenticate</td>
 	</tr>
 	<tr>
 		<td>Description</td> <td>Obtains username and password data from the HTML form then checks the User table for </br>
@@ -125,45 +84,6 @@
 </br>
 
 <h2>User Logout</h2>
-
-<table border="1">
-	<tr>
-		<td><strong>Class Name</strong></td> <td><strong>UserLogoutView</strong></td>
-	</tr>
-	<tr>
-		<td>Method Name</td> <td><em>processLogout</em></td>
-	</tr>
-	<tr>
-		<td>Method State</td> <td><em>Public</em></td>
-	</tr>
-	<tr>
-		<td>Return Type</td> <td><em>None</em></td>
-	</tr>
-	<tr>
-		<td>Input Arguments</td> <td>none</td>
-	</tr>
-	<tr>
-		<td>Output Arguments</td> <td>none</td>
-	</tr>
-	<tr>
-	<td>Error Messages</td> <td> if there is a problem in initializing UserLogoutController:
-							<br>***An unexpected error occurred processing your logout request.***</td>
-	</tr>
-	<tr>
-		<td>External Accesses</td> <td>UserLogoutController</td>
-	</tr>
-	<tr>
-		<td>External Changes</td> <td>If logout is successful, the User's browser no longer recognizes them as being logged in.</td>
-	</tr>
-	<tr>
-		<td>Other Methods Invoked</td> <td>UserLogoutController, logoutUser</td>
-	</tr>
-	<tr>
-		<td>Description</td> <td>Processes the User's logout request.</td>
-	</tr>
-</table>
-
-</br>
 
 <table border="1">
 	<tr>
@@ -248,47 +168,6 @@
 
 <table border="1">
 	<tr>
-		<td><strong>Class Name</strong></td> <td><strong>DeleteAccountView</strong></td>
-	</tr>
-	<tr>
-		<td>Method Name</td> <td><em>processAccountDeletion</em></td>
-	</tr>
-	<tr>
-		<td>Method State</td> <td><em>Public</em></td>
-	</tr>
-	<tr>
-		<td>Return Type</td> <td><em>None</em></td>
-	</tr>
-	<tr>
-		<td>Input Arguments</td><td>none</td>
-	</tr>
-	<tr>
-		<td>Output Arguments</td><td>none</td>
-	</tr>
-	<tr>
-	<td>Error Messages</td> <td>if unable to process the deletion
-							<br>***An unexpected error occurred in processing your account deletion request***</br>
-								if the password entered doesn't match the User's actual password</br>
-								***Did not delete account, incorrect password***</td>
-	</tr>
-	<tr>
-		<td>External Accesses</td> <td>DeleteAccountController</td>
-	</tr>
-	<tr>
-		<td>External Changes</td> <td>none</td>
-	</tr>
-	<tr>
-		<td>Other Methods Invoked</td> <td>DeleteAccountController, deleteUser</td>
-	</tr>
-	<tr>
-		<td>Description</td> <td>Processes the User's account deletion request.</td>
-	</tr>
-</table>
-
-</br>
-
-<table border="1">
-	<tr>
 		<td><strong>Class Name</strong></td> <td><strong>DeleteAccountController</strong></td>
 	</tr>
 	<tr>
@@ -358,7 +237,7 @@
 		<td>External Changes</td> <td>May remove the User's entry from the User table.</td>
 	</tr>
 	<tr>
-		<td>Other Methods Invoked</td> <td>isCorrectPassword</td>
+		<td>Other Methods Invoked</td> <td>authenticate</td>
 	</tr>
 	<tr>
 		<td>Description</td> <td>Obtains the User's username from their browser and input password from the HTML form then </br>
@@ -370,47 +249,6 @@
 </br>
 
 <h2>Create Game</h2>
-
-<table border="1">
-	<tr>
-		<td><strong>Class Name</strong></td> <td><strong>CreateGameView</strong></td>
-	</tr>
-	<tr>
-		<td>Method Name</td> <td><em>processGameCreation</em></td>
-	</tr>
-	<tr>
-		<td>Method State</td> <td><em>Public</em></td>
-	</tr>
-	<tr>
-		<td>Return Type</td> <td><em>None</em></td>
-	</tr>
-	<tr>
-		<td>Input Arguments</td> <td>none</td>
-	</tr>
-	<tr>
-		<td>Output Arguments</td> <td>none</td>
-	</tr>
-	<tr>
-	<td>Error Messages</td> <td> If unable to process the game creation</br>
-								 ***An error occurred in processing your game creation request.***</br>
-								 If one of the Users does not exist:</br>
-								 ***Not all 4 players exist.****</td>
-	</tr>
-	<tr>
-		<td>External Accesses</td> <td>CreateGameController</td>
-	</tr>
-	<tr>
-		<td>External Changes</td> <td>none</td>
-	</tr>
-	<tr>
-		<td>Other Methods Invoked</td> <td>CreateGameController, createGame</td>
-	</tr>
-	<tr>
-		<td>Description</td> <td>Processes the User's game creation request</td>
-	</tr>
-</table>
-
-</br>
 
 <table border="1">
 	<tr>
@@ -494,47 +332,6 @@
 </br>
 
 <h2>Confirm Game</h2>
-
-<table border="1">
-	<tr>
-		<td><strong>Class Name</strong></td> <td><strong>ConfirmGameView</strong></td>
-	</tr>
-	<tr>
-		<td>Method Name</td> <td><em>processGameConfirmation</em></td>
-	</tr>
-	<tr>
-		<td>Method State</td> <td><em>Public</em></td>
-	</tr>
-	<tr>
-		<td>Return Type</td> <td><em>None</em></td>
-	</tr>
-	<tr>
-		<td>Input Arguments</td> <td>none</td>
-	</tr>
-	<tr>
-		<td>Output Arguments</td> <td>none</td>
-	</tr>
-	<tr>
-	<td>Error Messages</td> <td>If unable to process the Game confirmation/denial
-							<br>***An error occurred in processing your game confirmation/denial request.*** </td>
-	</tr>
-	<tr>
-		<td>External Accesses</td> <td>ConfirmGameController</td>
-	</tr>
-	<tr>
-		<td>External Changes</td> <td>none</td>
-	</tr>
-	<tr>
-		<td>Other Methods Invoked</td> <td>ConfirmGameController, confirmGame, denyGame</td>
-	</tr>
-	<tr>
-		<td>Description</td> <td>Processes a Game confirmation/denial request.</br>
-								 If the User wants to confirm a Game, confirmGame is called.</br>
-								 If the User wants to deny a Game, denyGame is called.</td>
-	</tr>
-</table>
-
-</br>
 
 <table border="1">
 	<tr>
