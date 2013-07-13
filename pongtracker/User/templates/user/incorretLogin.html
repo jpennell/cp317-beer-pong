@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+    <div id="container">
+        <!------ LOGIN HEADER --------->
+        <div id="login-header">
+             {% csrf_token %}
+            <form name="login" action="main.html" class="form-inline" method="post">
+                {% if next %}
+				<input type="hidden" name="next" value="{{ next }}" />
+				{% endif %}
+				username:
+                <input name="username" type="text" placeholder="username" value="" />
+                password:
+                <input name="password" type="password" placeholder="password" value="" />
+                
+                <button name="login" class="btn" type="submit">
+                    Log In
+                </button>
+            </form>
+        </div>
+	</div>
+</html>

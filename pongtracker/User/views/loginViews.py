@@ -5,7 +5,7 @@ from django.core.context_processors import csrf
 from django.template import RequestContext
 
 
-def loginUser(request):
+def loginUserRequest(request):
 
     state = ""
     username = password = ''
@@ -14,8 +14,8 @@ def loginUser(request):
         usernameRequest=request.POST.get('username')
         passwordRequest=request.POST.get('password')
            
-        user = authenticate(username=usernameRequest,password=passwordRequest)
-
+        loginUser(usernameRequest,passwordRequest)
+        
         if user is not None:
             #TODO - add banned check
             if user.is_active:
@@ -31,3 +31,24 @@ def loginUser(request):
             
     
     return  render_to_response('user/index.html',{'state':state, 'username': ""},context_instance=RequestContext(request))
+
+
+def loginUser(username,password):
+    state = ""
+    user = authenticate(username=username,password=password)
+    if user is not None:               
+                       
+        if user.is_active and not user.is_banned:
+            login(request,user)
+            request.session['username']=username
+            return state
+        state= "Your account is inactive or banned, please contact the site administrator" 
+    else:
+        state = "Your username and/or password were incorrect."
+            
+    return state
+
+
+    
+    
+    
