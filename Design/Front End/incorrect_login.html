@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pong Tracker | Game</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+    <link href='../../assets/bootstrap-css/bootstrap.css' rel='stylesheet' type='text/css'>
+    <link href='../../assets/css/global-styles.css' rel='stylesheet' type='text/css'>
+	<link href='../../assets/css/profile-styles.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div id="container">
+        <!------ LOGIN HEADER --------->
+        <div id="login-header">
+            <p>
+                Welcome, <span id="player-name">{{ username }} </span><span id="logout"><a href="/index/logout">Log Out</a></span>
+            </p>
+        </div>
+
+        <!------ HEADER --------->
+        <div id="header">
+            <table>
+                <tr>
+                    <td id="logo"> Pong Tracker </td>
+                    <td id="nav">
+                        <ul>
+                            <li><a href="#" class="active">Profile/Stats</a></li>
+                            <li><a href="/statistics/leaderboard/">Leaderboard</a></li>
+                            <li><a href="#">Create a Game</a></li>
+                            <li><a href="#">Rules</a></li>
+                        </ul></td>
+
+                </tr>
+            </table>
+        </div>
+        <!------ CONTENT --------->
+        <div id="page-content">
+		<p>The username and password you entered is incorrect.  Please try again.</p>
+		<!-- LOGIN FORM -->
+        <div id="register-form">
+            <h3>Log In</h3>
+            <form action="main.html" name="register">
+                <input name="email" type="text" placeholder="email">
+                <br/>
+                <input name="password" type="text" placeholder="password">
+                <br/>
+                <button name="submit" class="btn" type="submit" action="register">
+                Submit
+                </button>
+            </form>
+         </div>
+	</div>
+</body>
