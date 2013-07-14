@@ -12,6 +12,8 @@ class Profile(models.Model):
         YEAR_CHOICES.append((r,r))
     
     user = models.OneToOneField(User)
+    
+    
     email = models.EmailField(max_length=100)
     height = models.SmallIntegerField()
     photo = models.CharField(max_length=100, null = True, blank = True)
