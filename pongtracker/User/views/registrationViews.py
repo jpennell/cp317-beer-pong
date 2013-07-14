@@ -43,8 +43,8 @@ def registerNewUser( request ):
         _sendEmail( username, email, password )
         User.objects.create_user(username=username,email=email,password=password)
         
-        authenticate(username,password)
-        login(username,password)
+        user = authenticate(username=username,password=password)  
+        login(request,user)
 
         return render_to_response( 'user/editProfile.html', {'username':username, 
                                                              'email':email}, 
