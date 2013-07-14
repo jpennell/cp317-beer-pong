@@ -5,7 +5,7 @@
 			<strong>Class Name</strong>
 		</td>
 		<td>
-			<strong>RegisterionController</strong>
+			<strong>RegistrationController</strong>
 		</td>
 	</tr>
 	<tr>
@@ -21,7 +21,7 @@
 			Method State
 		</td> 
 		<td>
-			<em>Public</em>
+			<em>private</em>
 		</td>
 	</tr>
 	<tr>
@@ -29,7 +29,7 @@
 			Return Type
 		</td> 
 		<td>
-			<em> Boolean isValidEmail </em>
+			<em> Boolean </em>
 		</td>
 	</tr>
 	<tr>
@@ -37,20 +37,19 @@
 			Input Arguments
 		</td> 
 		<td> 
-			string email 
+			String email 
 		</td>
 	</tr>
 	<tr>
 		<td>Output Arguments</td>
-		<td> Boolean isValidEmail - this states whether or not the user entered a valid email. </td>
+		<td> isValidEmail - this states whether or not the user entered a valid email. </td>
 	</tr>
 	<tr>
 		<td>
 			Error Messages
 		</td> 
 		<td> 
-			if isValidEmail is false, then this fails
-			<br>***This is not a valid email, please re-enter a valid email.*** 
+			None
 		</td>
 	</tr>
 	<tr>
@@ -94,7 +93,7 @@
 			<strong>Class Name</strong>
 		</td>
 		<td>
-			<strong>RegisterionController</strong>
+			<strong>RegistrationController</strong>
 		</td>
 	</tr>
 	<tr>
@@ -102,7 +101,7 @@
 			Method Name
 		</td> 
 		<td>
-			<em>usernameValid</em>
+			<em>validateUsername</em>
 		</td>
 	</tr>
 	<tr>
@@ -110,7 +109,7 @@
 			Method State
 		</td> 
 		<td>
-			<em>Public</em>
+			<em>private</em>
 		</td>
 	</tr>
 	<tr>
@@ -118,7 +117,7 @@
 			Return Type
 		</td> 
 		<td>
-			<em>String[] validUsername</em>
+			<em>Boolean</em>
 		</td>
 	</tr>
 	<tr>
@@ -126,20 +125,19 @@
 			Input Arguments
 		</td> 
 		<td> 
-			string username
+			String username
 		</td>
 	</tr>
 	<tr>
 		<td>Output Arguments</td>
-		<td> String[] validUsername - this outputs a list of strings that are valid usernames the user can pick from. </td>
+		<td>isValidUsername - Determines if the username inputted is a valid username.  A valid username is under 30 characters, consists of letters, digits, @, +, and _ signs. </td>
 	</tr>
 	<tr>
 		<td>
 			Error Messages
 		</td> 
-		<td> 
-			if validUsername is not empty, then this fails
-			<br>***This username is not available.  Please see the list of similar names available.*** 
+		<td>
+			None
 		</td>
 	</tr>
 	<tr>
@@ -163,7 +161,7 @@
 			Other Methods Invoked
 		</td>
 		<td> 
-			suggestUsername
+			None
 		</td>
 	</tr>
 	<tr>
@@ -171,7 +169,7 @@
 			Description
 		</td>
 		<td> 
-			This method determines if the user entered a valid username.  If not, a list of available usernames that are similar to what they entered.
+			This method determines if the user entered a valid username.
 		</td>
 	</tr>
 </table>
@@ -182,7 +180,7 @@
 			<strong>Class Name</strong>
 		</td>
 		<td>
-			<strong>RegisterionController</strong>
+			<strong>RegistrationController</strong>
 		</td>
 	</tr>
 	<tr>
@@ -198,7 +196,7 @@
 			Method State
 		</td> 
 		<td>
-			<em>Private</em>
+			<em>private</em>
 		</td>
 	</tr>
 	<tr>
@@ -206,7 +204,7 @@
 			Return Type
 		</td> 
 		<td>
-			<em>String[] validUsername</em>
+			<em>String[]</em>
 		</td>
 	</tr>
 	<tr>
@@ -214,12 +212,12 @@
 			Input Arguments
 		</td> 
 		<td> 
-			string username
+			String username
 		</td>
 	</tr>
 	<tr>
 		<td>Output Arguments</td>
-		<td> String[] validUsername - this outputs a list of strings that are valid usernames the user can pick from. </td>
+		<td>suggestions - this outputs a list of 5 strings that are valid usernames the user can pick from. </td>
 	</tr>
 	<tr>
 		<td>
@@ -250,7 +248,7 @@
 			Other Methods Invoked
 		</td>
 		<td> 
-			None 
+			usernameTaken
 		</td>
 	</tr>
 	<tr>
@@ -258,7 +256,7 @@
 			Description
 		</td>
 		<td> 
-			This method creates a list of usernames that are available and similar to the username the user inputted.
+			This method creates a list of 5 usernames that are available and similar to the username the user inputted.
 		</td>
 	</tr>
 </table>
@@ -269,7 +267,7 @@
 			<strong>Class Name</strong>
 		</td>
 		<td>
-			<strong>RegisterionController</strong>
+			<strong>RegistrationController</strong>
 		</td>
 	</tr>
 	<tr>
@@ -285,7 +283,7 @@
 			Method State
 		</td> 
 		<td>
-			<em>Public</em>
+			<em>private</em>
 		</td>
 	</tr>
 	<tr>
@@ -301,8 +299,9 @@
 			Input Arguments
 		</td> 
 		<td> 
-			string username<br>
-			string email
+			String username<br>
+			String email<br>
+			String password
 		</td>
 	</tr>
 	<tr>
@@ -338,7 +337,7 @@
 			Other Methods Invoked
 		</td>
 		<td> 
-			generatePassword 
+			send-mail (this is something that Django does)
 		</td>
 	</tr>
 	<tr>
@@ -357,7 +356,7 @@
 			<strong>Class Name</strong>
 		</td>
 		<td>
-			<strong>RegisterionController</strong>
+			<strong>RegistrationController</strong>
 		</td>
 	</tr>
 	<tr>
@@ -373,7 +372,7 @@
 			Method State
 		</td> 
 		<td>
-			<em>Private</em>
+			<em>private</em>
 		</td>
 	</tr>
 	<tr>
@@ -394,7 +393,7 @@
 	</tr>
 	<tr>
 		<td>Output Arguments</td>
-		<td>String - the password the user will use to sign in for the first time.</td>
+		<td>password- the password the user will use to sign in for the first time.</td>
 	</tr>
 	<tr>
 		<td>
@@ -409,7 +408,7 @@
 			External Accesses
 		</td>
 		<td> 
-			User player
+			None
 		</td>
 	</tr>
 	<tr>
@@ -417,7 +416,7 @@
 			External Changes
 		</td>
 		<td>
-			User player
+			None
 		</td>
 	</tr>
 	<tr>
@@ -444,7 +443,7 @@
 			<strong>Class Name</strong>
 		</td>
 		<td>
-			<strong>RegisterionController</strong>
+			<strong>RegistrationController</strong>
 		</td>
 	</tr>
 	<tr>
@@ -460,7 +459,7 @@
 			Method State
 		</td> 
 		<td>
-			<em>Public</em>
+			<em>public</em>
 		</td>
 	</tr>
 	<tr>
@@ -525,3 +524,91 @@
 	</tr>
 </table>
 <br/>
+<table border="1">
+	<tr>
+		<td>
+			<strong>Class Name</strong>
+		</td>
+		<td>
+			<strong>RegistrationController</strong>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Method Name
+		</td> 
+		<td>
+			<em>usernameTaken</em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Method State
+		</td> 
+		<td>
+			<em>private</em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Return Type
+		</td> 
+		<td>
+			<em>Boolean</em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Input Arguments
+		</td> 
+		<td> 
+			String username
+		</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td>
+		<td>taken - true or false if the username is already in use by another Pong Tracker user.</td>
+	</tr>
+	<tr>
+		<td>
+			Error Messages
+		</td> 
+		<td> 
+			None
+		</td>
+	</tr>
+	<tr>
+		<td>
+			External Accesses
+		</td>
+		<td> 
+			None 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			External Changes
+		</td>
+		<td>
+			None
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Other Methods Invoked
+		</td>
+		<td> 
+			getUser
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Description
+		</td>
+		<td> 
+			This determines if the username is already being used.
+		</td>
+	</tr>
+</table>
+<br/>
+

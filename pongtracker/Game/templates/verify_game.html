@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en_US" xml:lang="en_US">
+	<head>
+    <title>Pong Tracker | Confirm Games</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+    <link href='../../../../assets/bootstrap-css/bootstrap.css' rel='stylesheet' type='text/css'>
+    <link href='../../../../assets/css/global-styles.css' rel='stylesheet' type='text/css'>
+    <link href='../../../../assets/css/home-styles.css' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<div id="container">
+			<!------ LOGIN HEADER --------->
+			<div id="login-header">
+				<p>
+					Welcome, <span id="player-name">{{username}}</span><span id="logout"><a href="login.html">Log Out</a></span>
+				</p>
+			</div>
+        <!------ HEADER --------->
+			<div id="header">
+				<table>
+					<tr>
+						<td id="logo">
+                        Pong Tracker
+						</td>
+						<td id="nav">
+							<ul>
+								<li><a href="#">Rules</a></li>
+							</ul>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<!------ CONTENT --------->
+			<div id="page-content">
+			<table>
+				<tr>
+					<th width="1%"> Game ID </th>
+					<th width="7%"> Users Involved </th>
+					<th width="1%"> Outcome </th>
+					<th width="1%"> Confirmation </th>
+				</tr>
+				<tr>
+					<td>GAME-124</td>
+					<td>jared149@hotmail.ca, hannah92@outlook.com, smit2829@mylaurier.ca, xith9999@mylaurier.ca</td>
+					<td>Win</td>
+					<td>
+						<form action="">
+						<input type="radio" name="confirm_btn" value="Confim"> Confirm<br>
+						<input type="radio" name="confirm_btn" value="Deny"> Deny
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td>GAME-156</td>
+					<td>peter149@hotmail.ca, hailey91@outlook.com, basx2572@mylaurier.ca, fran2922@mylaurier.ca</td>
+					<td>Loss</td>
+					<td>
+						<form action="">
+						<input type="radio" name="confirm_btn" value="Confim"> Confirm<br>
+						<input type="radio" name="confirm_btn" value="Deny"> Deny
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td>GAME-192</td>
+					<td>franklin149@hotmail.ca, emily87@outlook.com, bash6720@mylaurier.ca, mitt2221@mylaurier.ca</td>
+					<td>Loss</td>
+					<td>
+						<form action="">
+						<input type="radio" name="confirm_btn" value="Confim"> Confirm<br>
+						<input type="radio" name="confirm_btn" value="Deny"> Deny
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td>GAME-256</td>
+					<td>lucas1991@hotmail.ca, julie89@outlook.com, tole9280@mylaurier.ca, john9280@mylaurier.ca</td>
+					<td>Loss</td>
+					<td>
+						<form action="">
+						<input type="radio" name="confirm_btn" value="Confim"> Confirm<br>
+						<input type="radio" name="confirm_btn" value="Deny"> Deny
+						</form>
+					</td>
+				</tr>
+			</table>
+			<input type="submit" value="Submit Games">
+			</div>
+			<!------- FOOTER --------->
+			<div id="footer">
+				<table>
+					<tr>
+						<td class="left">
+							CP317 Software Engineering
+						</td>
+						<td class="right">
+							Wilfrid Laurier University, 2013
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
