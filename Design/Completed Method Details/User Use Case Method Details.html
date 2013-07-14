@@ -248,7 +248,7 @@
 								 checks to see if the User has correctly entered their password by calling Django's authenticate function.</br>
 								 </br>
 								 If so, the User is logged out, their account is deactivated (not actually deleted,) and they are redirected to the</br> 
-								 Pong Tracker homepage. Otherwise, they are brought back to the account deletion page and the error message is printed.</br>
+								 Pong Tracker homepage. Otherwise, they are brought back to the account deletion page with the error message.</br>
 								 <strong>Note:</strong> The User's account is not actually deleted so that any references made to it (i.e. past games) can still function.</td>
 	</tr>
 </table>
@@ -277,7 +277,7 @@
 		<td>Output Arguments</td> <td>none</td>
 	</tr>
 	<tr>
-	<td>Error Messages</td> <td> if this object fails to connect to the Team or Game table
+	<td>Error Messages</td> <td> if this object fails to connect to the Game, Team and User tables
 							<br>***An error occurred in processing your game creation request.*** </td>
 	</tr>
 	<tr>
@@ -287,12 +287,12 @@
 		<td>External Changes</td> <td>may initialize a connection to the Game, User and Team tables</td>
 	</tr>
 	<tr>
-		<td>Other Methods Invoked</td> 
+		<td>Other Methods Invoked</td> <td>none</td>
 	</tr>
 	<tr>
 		<td>Description</td> <td>Initializes an instance of class CreateGameController.</br>
 								 After construction, the object is ready to add entries to the Game and Team tables </br>
-								 and check the User table for validating usernames.</td>
+								 and check the User table for validating usernames and retrieving their corresponding User objects.</td>
 	</tr>
 </table>
 
@@ -303,7 +303,7 @@
 		<td><strong>Class Name</strong></td> <td><strong>CreateGameController</strong></td>
 	</tr>
 	<tr>
-		<td>Method Name</td> <td><em>createNewGame</em></td>
+		<td>Method Name</td> <td><em>createGame</em></td>
 	</tr>
 	<tr>
 		<td>Method State</td> <td><em>Public</em></td>
@@ -318,8 +318,12 @@
 		<td>Output Arguments</td> <td>none</td>
 	</tr>
 	<tr>
-	<td>Error Messages</td> <td>If no User with one of the 4 player usernames exists:</br>
-								***Not all 4 players exist***</td>
+	<td>Error Messages</td> <td>If the same username was entered multiple times:</br>
+								***All 4 players must be distinct.***</br>
+								If one of the usernames corresponds to an account that does not exist:</br>
+								***Not all 4 players exist***</br>
+								If one of the usernames corresponds to an account that has been banned:</br>
+								***One of the 4 players is banned and thus cannot participate***</td>
 	</tr>
 	<tr>
 		<td>External Accesses</td> <td>Game, Team, User</td>
@@ -328,11 +332,56 @@
 		<td>External Changes</td> <td>If successful, new entries are added to the Game and Team tables</td>
 	</tr>
 	<tr>
-		<td>Other Methods Invoked</td> <td>isUsernameTaken</td>
+		<td>Other Methods Invoked</td> <td>arrayHasDuplicates, obtainUser, initializeNewGame</td>
 	</tr>
 	<tr>
-		<td>Description</td> <td>Checks to see if all 4 players exist.</br>
-								 Creates a Game and Teams if so.</td>
+		<td>Description</td> <td>Obtains the 4 input player usernames from the HTML form.</br>
+								 They are placed in an array which is checked for duplicates by the Utility function arrayHasDuplicates.</br>
+								 An attempt to obtain the User objects that correspond to those usernames by calling the obtainUser Utility function</br>
+								 is then made.</br>
+								 If all 4 input usernames correspond to distinct valid User objects, the helper method initializeNewGame</br>
+								 is called and a new Game is created.</br>
+								 </br>
+								 Upon success, the User is brought to the new Game's score game page.</br>
+								 If an error occurred, they are brought back to the create game page with the error message.</td>
+	</tr>
+</table>
+</br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>CreateGameController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>initializeNewGame</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Private</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>Game</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td>User user1, User user2, User user3, User user4</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td>none</td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td>none</td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>Game, Team</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td>new entries are added to the Game and Team tables</td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td>none</td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Creates two Teams with user1 & user2 on one Team, and user3 & user4 on the other.</br>
+								 These two Teams are used to create a new Game which is then returned.</td>
 	</tr>
 </table>
 
