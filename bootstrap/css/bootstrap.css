@@ -626,7 +626,9 @@ a:focus {
   line-height: 0;
   content: "";
 }
-
+.file {
+    display:none;
+}
 .container:after {
   clear: both;
 }

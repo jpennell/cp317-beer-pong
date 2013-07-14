@@ -18,6 +18,9 @@
   line-height: 0;
   content: "";
 }
+.file {
+  display:none;
+}
 
 .clearfix:after {
   clear: both;
