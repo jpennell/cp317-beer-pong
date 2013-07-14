@@ -5,6 +5,12 @@
 	<link href="../bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
 	<link href="../assets/styles.css" rel="stylesheet" type="text/css">
 	<link href="../assets/analysis.css" rel="stylesheet" type="text/css">
+	<script src="jquery.js"></script>
+    <script>
+    $(function{
+      $("#includedContent").load("Completed Method Details/game.html");
+    });
+    </script>
 </head>
 <body>
 	<a id="top"></a>
@@ -88,27 +94,41 @@
 		<section id="architecture">
 			<h2 class="heading1"><span class="number">2</span>System Architecture Design</h2>
 
-			<section id="architecture">
+			<section>
 				<h3 class="heading2"><span class="number">2.1</span>Architecture Design</h3>
-					<section id="architecture">
+					<section>
 						<h4 class="heading3"><span class="number">2.1.1</span>Description</h4>
-					</section id="architecture">
+					</section>
 
-					<section id="architecture">
+					<section>
 						<h4 class="heading3"><span class="number">2.1.2</span>Diagram</h4>
 					</section>
 
 				</section>
 
-				<section id="architecture">
+				<section>
 					<h3 class="heading2"><span class="number">2.2</span>Package Design</h3>
 
-					<section id="architecture">
+					<section>
 						<h4 class="heading3"><span class="number">2.2.1</span>Description</h4>
-					</section id="architecture">
+					</section>
 
-					<section id="architecture">
+					<section>
 						<h4 class="heading3"><span class="number">2.2.2</span>Diagram</h4>
+						<embed src="Completed SVG Diagrams/Package Diagram High Level.svg"></embed>
+					</section>
+				</section>
+
+				<section>
+					<h3 class="heading2"><span class="number">2.3</span>Database Design</h3>
+
+					<section>
+						<h4 class="heading3"><span class="number">2.2.1</span>Description</h4>
+					</section>
+
+					<section>
+						<h4 class="heading3"><span class="number">2.2.2</span>Diagram</h4>
+						<embed src="Completed SVG Diagrams/DatabaseDiagram.svg"></embed>
 					</section>
 				</section>
 			</section>
@@ -129,7 +149,7 @@
 
 				<section>
 					<h4 class="heading3"><span class="number">3.1.1</span>Game</h4>
-					<p>Insert Method Detail Tables</p>
+					<div id="includedContent"></div>
 				</section>
 
 				<section>
