@@ -1,0 +1,41 @@
+def confirmOrDenyGame(int gameID, boolean isUserConfirming):
+	Game game = obtainGame(gameID):
+	if (game == None)
+		throw GameDNEException
+	elif (game.isConfirmedOrDenied()):
+		throw AlreadyConfirmedOrDeniedException()
+	elif (isUserConfirming):
+		confirmGame(game)
+	else:
+		denyGame(game)
+	return
+
+
+def confirmGame(Game game):
+	Team team1 = game.getTeam1()
+	Team team2 = game.getTeam2()
+	Event[] events = game.getEvents()
+	
+	User[] users = [team1.getUser1(), team1.getUser2(), team2.getUser1(), team2.getUser2()]
+	LifeStats stats = [users[i].getLifeStats() for i in range(len(users))]
+	
+	endGameEvent = events[-1]
+	if (endGameEvent.getEventType() != END_GAME_EVENT_TYPE):
+		throw GameNotEndedException()
+
+	for (event in events[0:len(events) - 1]):
+		i = linearSearch(event.getUser(), users)
+		processEvent(event, stats[i])
+
+	processTrueSkill(endGameEvent,team1,team2)
+	return		
+	
+
+
+def denyGame(Game game):
+
+	return
+
+def processTrueSkill(Event endEvent, Team team1, Team team2):
+
+	return
