@@ -6,6 +6,18 @@ from django.core.context_processors import csrf
 from django.template import RequestContext
 
 def editProfile(request):
+    """{{Description}}
+
+    Keyword arguments:
+    variable -- description 
+    variable -- description 
+    
+    Contributors:
+    Quinton Black
+    
+    Output:
+        
+    """
     username = "teemo"
     
     return render_to_response('user/editProfile.html',{'username': username},context_instance=RequestContext(request))

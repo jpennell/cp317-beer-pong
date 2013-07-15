@@ -7,6 +7,18 @@ from django.template import RequestContext
 
 
 def logoutUser(request):
+    """{{Description}}
+
+    Keyword arguments:
+    variable -- description 
+    variable -- description 
+    
+    Contributors:
+    Quinton Black
+    
+    Output:
+        
+    """
     state = "You have been logged out successfully"
     try:
         del request.session['username']

@@ -8,6 +8,18 @@ from django.template import RequestContext
 
 
 def viewProfile(request):
+    """{{Description}}
+
+    Keyword arguments:
+    variable -- description 
+    variable -- description 
+    
+    Contributors:
+    Quinton Black
+    
+    Output:
+        
+    """
     if 'username' in request.session:
         username = request.session['username']
         return render_to_response('user/profile.html',{'username': username},context_instance=RequestContext(request))

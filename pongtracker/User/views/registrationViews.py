@@ -8,6 +8,18 @@ from django.core.mail import send_mail
 
 
 def registerNewUser( request ):
+    """{{Description}}
+
+    Keyword arguments:
+    variable -- description 
+    variable -- description 
+    
+    Contributors:
+    Quinton Black
+    
+    Output:
+        
+    """
     username = email = ""
     emailState = ""
     usernameState = ""
@@ -54,6 +66,18 @@ def registerNewUser( request ):
 
 #Needs to be done better
 def _validateEmail( email ):
+    """{{Description}}
+
+    Keyword arguments:
+    variable -- description 
+    variable -- description 
+    
+    Contributors:
+    Quinton Black
+    
+    Output:
+        
+    """
     valid = True
     if email.count('@')!=1:
         valid = False
@@ -63,10 +87,34 @@ def _validateEmail( email ):
 
 #Needs to be done better
 def _validateUsername( username ):
+    """{{Description}}
+
+    Keyword arguments:
+    variable -- description 
+    variable -- description 
+    
+    Contributors:
+    Quinton Black
+    
+    Output:
+        
+    """
     valid = True
     return valid
 
 def _usernameTaken( username ):
+    """{{Description}}
+
+    Keyword arguments:
+    variable -- description 
+    variable -- description 
+    
+    Contributors:
+    Quinton Black
+    
+    Output:
+        
+    """
     taken = False
     try:
         user = User.objects.get( username = username )
@@ -76,18 +124,42 @@ def _usernameTaken( username ):
     return taken
 
 def _suggestUsernames( username ):
-        suggestions =[]
-        number = 0      
-        while len(suggestions)<5:
-            suggestion = username+str(number)
-            if not _usernameTaken(suggestion):
-                suggestions+=[suggestion]
-            number+=1
-                
-        return suggestions
+    """{{Description}}
+
+    Keyword arguments:
+    variable -- description 
+    variable -- description 
+    
+    Contributors:
+    Quinton Black
+    
+    Output:
+        
+    """
+    suggestions =[]
+    number = 0      
+    while len(suggestions)<5:
+        suggestion = username+str(number)
+        if not _usernameTaken(suggestion):
+            suggestions+=[suggestion]
+        number+=1
+            
+    return suggestions
 
 
 def _sendEmail( username, email,password ):
+    """{{Description}}
+
+    Keyword arguments:
+    variable -- description 
+    variable -- description 
+    
+    Contributors:
+    Quinton Black
+    
+    Output:
+        
+    """
 
 #    send_mail( 'Pong Tracker Account', "Here is your temporary password:{0}".format( password ),
 #               email, ['from@hotmail.com'], fail_silently = False )
@@ -95,6 +167,18 @@ def _sendEmail( username, email,password ):
     return
 
 def _generatePassword():
+    """{{Description}}
+
+    Keyword arguments:
+    variable -- description 
+    variable -- description 
+    
+    Contributors:
+    Quinton Black
+    
+    Output:
+        
+    """
     password = "Bubbles"
 
     return password

@@ -9,6 +9,18 @@ INCORRECT = 1
 BANNED = 2 
 
 def loginUserRequest(request):
+    """{{Description}}
+
+    Keyword arguments:
+    variable -- description 
+    variable -- description 
+    
+    Contributors:
+    Quinton Black
+    
+    Output:
+        
+    """
     username = password = ''
     
     if request.POST:
@@ -29,6 +41,18 @@ def loginUserRequest(request):
 
 
 def loginUser(username,password,request):    
+    """{{Description}}
+
+    Keyword arguments:
+    variable -- description 
+    variable -- description 
+    
+    Contributors:
+    Quinton Black
+    
+    Output:
+        
+    """
     user = authenticate(username=username,password=password)   
     if user is not None:                                   
         if user.is_active and not user.get_profile().is_banned:
