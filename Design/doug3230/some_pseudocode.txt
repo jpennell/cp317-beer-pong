@@ -1,13 +1,14 @@
 def confirmOrDenyGame(int gameID, boolean isUserConfirming):
-	Game game = obtainGame(gameID):
-	if (game == None)
+	Game game = obtainGame(gameID)
+	if (game == None):
 		throw GameDNEException
 	elif (game.isConfirmedOrDenied()):
 		throw AlreadyConfirmedOrDeniedException()
-	elif (isUserConfirming):
-		confirmGame(game)
-	else:
-		denyGame(game)
+	elif (game.getEvents() == [] or game.getEvents()[-1].getEventType() != END_GAME_TYPE):
+		throw GameNotEndedException()
+	else: 
+		if (isUserConfirming): confirmGame(game)
+		game.setConfirmedOrDenied(True)
 	return
 
 
