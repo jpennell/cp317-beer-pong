@@ -7,8 +7,18 @@
 	<link href="../assets/analysis.css" rel="stylesheet" type="text/css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script>
+    	function loadFile(filename, id){
+    		 $(id).load("http://hopper.wlu.ca/~cram8680/cp317-beer-pong/Design/Completed%20Method%20Details/" + filename);
+    	}
 	    $( document ).ready(function() {
-	    $("#includedContent").load("http://hopper.wlu.ca/~cram8680/cp317-beer-pong/Design/Completed%20Method%20Details/game.html");
+	    	loadFile("game.html", "#gametables");
+	    	loadFile("Team%20Methods.html", "#teamtables");
+	    	loadFile("LifeStats%20Method%20Details.html", "#lifestatstables");
+	    	loadFile("Rank%20Method%20Details.html", "#ranktables");
+	    	loadFile("Event%20Method%20Details.html", "#eventtables");
+	    	loadFile("EventType%20Methods.html", "#eventtypetables");
+	    	loadFile("Institution%20Methods.html", "#institutiontables");
+	    	loadFile("User%20Method%20Details.html", "#usertables");
 		});
     </script>
 </head>
@@ -144,37 +154,39 @@
 					<p>Insert Image Here</p>
 				<section>
 					<h4 class="heading3"><span class="number">3.1.1</span>Game</h4>
-					<div id="includedContent"></div>
+					<div id="gametables"></div>
 				</section>
 
 				<section>
 					<h4 class="heading3"><span class="number">3.1.2</span>Team</h4>
-					<!--#include virtual="Completed Method Details/Team Methods.html" --> 
+					<div id="teamtables"></div>
 				</section>
 
 				<section>
 					<h4 class="heading3"><span class="number">3.1.3</span>LifeStats</h4>
-					<p>Insert Method Detail Tables</p>
+					<div id="lifestatstables"></div>
+					
 				</section>
 
 				<section>
 					<h4 class="heading3"><span class="number">3.1.4</span>Rank</h4>
-					<p>Insert Method Detail Tables</p>
+					<div id="ranktables"></div>
+					
 				</section>
 
 				<section>
 					<h4 class="heading3"><span class="number">3.1.5</span>Event</h4>
-					<p>Insert Method Detail Tables</p>
+					<div id="eventtables"></div>
 				</section>
 
 				<section>
 					<h4 class="heading3"><span class="number">3.1.6</span>EventType</h4>
-					<p>Insert Method Detail Tables</p>
+					<div id="eventtypetables"></div>
 				</section>
 
 				<section>
 					<h4 class="heading3"><span class="number">3.1.7</span>Institution</h4>
-					<p>Insert Method Detail Tables</p>
+					<div id="institutiontables"></div>
 				</section>
 
 				<section>
@@ -184,7 +196,7 @@
 
 				<section>
 					<h4 class="heading3"><span class="number">3.1.9</span>User</h4>
-					<p>Insert Method Detail Tables</p>
+					<div id="usertables"></div>
 				</section>
 
 			</section>
