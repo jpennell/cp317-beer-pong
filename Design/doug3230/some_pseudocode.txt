@@ -28,15 +28,55 @@ def confirmGame(Game game):
 		i = linearSearch(event.getUser(), users)
 		processEvent(event, stats[i])
 
-	processTrueSkill(endGameEvent,team1,team2)
+	updateWinsAndLosses(endGameEvent, users[0:2], users[2:4])
+	updateTrueSkill(endGameEvent, users[0:2], users[2:4])
 	return		
 	
 
-
-def denyGame(Game game):
-
+def updateStatsWithEvent(LifeStats statsToUpdate, Event eventThatOccurred):
+	EventType type = eventThatOccurred.getEventType()
+	
+	if (type == CUP_SUNK):
+		statsToUpdate.incCupsSunk(1)
+	elif (type == BOUNCE_SHOT):
+		statsToUpdate.incBounceShots(1)
+	elif (type == TRICK_SHOT):
+		statsToUpdate.incTrickShots(1)
+	elif (type == PARTY_FOUL):
+		statsToUpdate.incPartyFouls(1)
+	elif (type == REDEMPTION):
+		statsToUpdate.incRedemptions(1)
 	return
 
-def processTrueSkill(Event endEvent, Team team1, Team team2):
+def updateWinsAndLosses(endGameEvent, team1Users, team2Users):
+	winners, losers = winnersAndLosers(endGameEvent, team1Users, team2Users)
+	
+	for winner in winners: 
+		winner.incWins(1)
+	for loser in losers: 
+		loser.incLosses(1)	
+	return	
 
+def updateTrueSkill(endEvent, team1Users, team2Users):
+	winners, losers = winnersAndLosers(endGameEvent, team1Users, team2Users)
+	
+	winnerRatings = [winner.getRating() for winner in winners]
+	loserRatings = [loser.getRating() for loser in losers]
+	
+	newWinnerRatings, newLoserRatings = rate(winnerRatings, loserRatings, ranks = [1,0])
+	for i in range(len(winnerRatings)):
+		winnerRatings(i).setMu(newWinnerRatings(i).getMu())
+		winnerRatings(i).setSigma(newWinnerRatings(i).getSigma())
+	for i in range(len(loserRatings)):
+		loserRatings(i).setMu(newLoserRatings(i).getMu())
+		loserRatings(i).setSigma(newLoserRatings(i).getSigma())
 	return
+
+def winnersAndLosers(endGameEvent, team1Users, team2Users):
+	if (endGameEvent == TEAM1_WON):
+		winners = team1Users
+		losers = team2Users
+	else:
+		winners = team2Users
+		losers = team1Users
+	return (winners, losers)
