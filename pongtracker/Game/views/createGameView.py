@@ -5,7 +5,17 @@ from django.shortcuts import render, redirect
 from Utilities.views import *
 
 def createNewGameRequest(request):
+    """{{Description}}
 
+    Keyword arguments:
+    variable -- description 
+    variable -- description 
+    
+    Contributors:
+    
+    Output:
+        
+    """
     if request.method == 'POST':
         
         errFlag = 0
@@ -49,6 +59,17 @@ def createNewGameRequest(request):
 
 
 def _createNewGame(user1, user2, user3, user4):
+    """{{Description}}
+
+    Keyword arguments:
+    variable -- description 
+    variable -- description 
+    
+    Contributors:
+    
+    Output:
+        
+    """
 
     team1 = Team.objects.create(user1=user1,user2=user2)
     team2 = Team.objects.create(user1=user3,user2=user4)
@@ -57,7 +78,17 @@ def _createNewGame(user1, user2, user3, user4):
     return game
 
 def getGame(request,game_id):
+    """{{Description}}
 
+    Keyword arguments:
+    variable -- description 
+    variable -- description 
+    
+    Contributors:
+    
+    Output:
+        
+    """
     game = Game.objects.get(pk=game_id)
     
     print(game.team1.user1)
@@ -66,6 +97,17 @@ def getGame(request,game_id):
 
 #finds user in the database; returns None is not found
 def _findUser(username):
+    """{{Description}}
+
+    Keyword arguments:
+    variable -- description 
+    variable -- description 
+    
+    Contributors:
+    
+    Output:
+        
+    """
     user = None
     try:
         user = User.objects.get(username=username)
