@@ -62,11 +62,13 @@
 	</tr>
 	<tr>
 	<td>Error Messages</td> <td>If the same username was entered multiple times:</br>
-								***All 4 players must be distinct.***</br>
+								***All 4 players must be distinct***</br>
 								If one of the usernames corresponds to an account that does not exist:</br>
 								***Not all 4 players exist***</br>
 								If one of the usernames corresponds to an account that has been banned:</br>
-								***One of the 4 players is banned and thus cannot participate***</td>
+								***One of the 4 players is banned and thus cannot participate***</br>
+								If one of the usernames corresponds to an account that is not active:</br>
+								***One of the 4 players has had their account deactivated and cannot participate***</td>
 	</tr>
 	<tr>
 		<td>External Accesses</td> <td>Game, Team, User</td>
@@ -75,11 +77,10 @@
 		<td>External Changes</td> <td>If successful, new entries are added to the Game and Team tables</td>
 	</tr>
 	<tr>
-		<td>Other Methods Invoked</td> <td>arrayHasDuplicates, obtainUser, initializeNewGame</td>
+		<td>Other Methods Invoked</td> <td>isActive, isBanned, initializeNewGame</td>
 	</tr>
 	<tr>
-		<td>Description</td> <td>If all 4 input usernames correspond to distinct valid User objects, the helper method initializeNewGame</br>
-								 is called and a new Game is created.</br>
+		<td>Description</td> <td>If all 4 input usernames correspond to distinct valid User objects, a new Game is created.</br>
 	</tr>
 </table>
 </br>
