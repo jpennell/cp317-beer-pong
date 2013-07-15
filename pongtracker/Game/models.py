@@ -1,9 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User
+from User.models import PongUser
 
 class Team(models.Model):
-    user1 = models.ForeignKey(User,related_name="Team1")
-    user2 = models.ForeignKey(User,related_name="Team2")
+    user1 = models.ForeignKey(PongUser,related_name="Team1")
+    user2 = models.ForeignKey(PongUser,related_name="Team2")
 
 class Game(models.Model):
     date_played = models.DateTimeField(auto_now=True)
@@ -33,4 +33,4 @@ class Event(models.Model):
     cup6 = models.BooleanField(default=False)
     event_type = models.ForeignKey(EventType)
     game = models.ForeignKey(Game,related_name = "Events")
-    user = models.ForeignKey(User, related_name = "Events")
+    user = models.ForeignKey(PongUser, related_name = "Events")
