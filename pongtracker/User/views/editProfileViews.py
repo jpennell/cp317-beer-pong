@@ -9,4 +9,3 @@ def editProfile(request):
     username = "teemo"
     
     return render_to_response('user/editProfile.html',{'username': username},context_instance=RequestContext(request))
-    
