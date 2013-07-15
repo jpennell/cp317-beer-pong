@@ -15,7 +15,7 @@
       <tr>
         <td>Method Name</td>
         <td>
-          <em>event</em>
+          <em>Event</em>
         </td>
       </tr>
       <tr>
@@ -27,15 +27,14 @@
       <tr>
         <td>Return Type</td>
         <td>
-          <em>Event instance</em>
+          <em>Event</em>
         </td>
       </tr>
       <tr>
         <td>Input Arguments</td>
-        <td>User player - Player responsible for action
-			<br>EventType action - The event performed on the cup
-			<br>int cup - The cups which has been sunk
-			<br>dateTime time - The time at which this event took place</td>
+        <td>User player
+        <br />EventType action
+        <br />int cup</td>
       </tr>
       <tr>
         <td>Output Arguments</td>
@@ -62,10 +61,8 @@
         <td>Constructs a new Event object</td>
       </tr>
     </table>
-	
-	<br>
-	
-	<table border="1">
+    <br />
+    <table border="1">
       <tr>
         <td>
           <strong>Class Name</strong>
@@ -89,7 +86,7 @@
       <tr>
         <td>Return Type</td>
         <td>
-          <em>User player</em>
+          <em>User</em>
         </td>
       </tr>
       <tr>
@@ -121,10 +118,8 @@
         <td>Returns the user responsible for a specific event</td>
       </tr>
     </table>
-	
-	<br>
-	
-	<table border="1">
+    <br />
+    <table border="1">
       <tr>
         <td>
           <strong>Class Name</strong>
@@ -148,7 +143,7 @@
       <tr>
         <td>Return Type</td>
         <td>
-          <em>EventType action</em>
+          <em>EventType</em>
         </td>
       </tr>
       <tr>
@@ -157,7 +152,7 @@
       </tr>
       <tr>
         <td>Output Arguments</td>
-        <td>action - the details of a specific event action</td>
+        <td>eventType - the details of a specific event action</td>
       </tr>
       <tr>
         <td>Error Messages</td>
@@ -180,10 +175,8 @@
         <td>Returns an Events detailed EventType object</td>
       </tr>
     </table>
-	
-	<br>
-	
-	<table border="1">
+    <br />
+    <table border="1">
       <tr>
         <td>
           <strong>Class Name</strong>
@@ -195,7 +188,7 @@
       <tr>
         <td>Method Name</td>
         <td>
-          <em>getCup</em>
+          <em>getCup1</em>
         </td>
       </tr>
       <tr>
@@ -207,7 +200,7 @@
       <tr>
         <td>Return Type</td>
         <td>
-          <em>int cup</em>
+          <em>boolean</em>
         </td>
       </tr>
       <tr>
@@ -216,7 +209,7 @@
       </tr>
       <tr>
         <td>Output Arguments</td>
-        <td>cup - the cup involved in a specific event action</td>
+        <td>hitCup1 - true or false value displaying if cup1 has been sunk</td>
       </tr>
       <tr>
         <td>Error Messages</td>
@@ -236,13 +229,11 @@
       </tr>
       <tr>
         <td>Description</td>
-        <td>Returns the cup sunk in the current event object</td>
+        <td>Returns whether or not cup1 has been sunk</td>
       </tr>
     </table>
-	
-	<br>
-	
-	<table border="1">
+    <br />
+    <table border="1">
       <tr>
         <td>
           <strong>Class Name</strong>
@@ -254,7 +245,7 @@
       <tr>
         <td>Method Name</td>
         <td>
-          <em>setCup</em>
+          <em>setCup1</em>
         </td>
       </tr>
       <tr>
@@ -271,7 +262,7 @@
       </tr>
       <tr>
         <td>Input Arguments</td>
-        <td>int cup</td>
+        <td>boolean cupHit</td>
       </tr>
       <tr>
         <td>Output Arguments</td>
@@ -295,7 +286,577 @@
       </tr>
       <tr>
         <td>Description</td>
-        <td>sets the cup which an event has been performed on</td>
+        <td>sets cup1 to be true or false depending on whether it was hit or not</td>
+      </tr>
+    </table>
+    <br />
+    <table border="1">
+      <tr>
+        <td>
+          <strong>Class Name</strong>
+        </td>
+        <td>
+          <strong>Event</strong>
+        </td>
+      </tr>
+      <tr>
+        <td>Method Name</td>
+        <td>
+          <em>getCup2</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Method State</td>
+        <td>
+          <em>Public</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Return Type</td>
+        <td>
+          <em>boolean</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Input Arguments</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Output Arguments</td>
+        <td>hitCup2 - true or false value displaying if cup2 has been sunk</td>
+      </tr>
+      <tr>
+        <td>Error Messages</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>External Accesses</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>External Changes</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Other Methods Invoked</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td>Returns whether or not cup2 has been sunk</td>
+      </tr>
+    </table>
+    <br />
+    <table border="1">
+      <tr>
+        <td>
+          <strong>Class Name</strong>
+        </td>
+        <td>
+          <strong>Event</strong>
+        </td>
+      </tr>
+      <tr>
+        <td>Method Name</td>
+        <td>
+          <em>setCup2</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Method State</td>
+        <td>
+          <em>Public</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Return Type</td>
+        <td>
+          <em>None</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Input Arguments</td>
+        <td>boolean cupHit</td>
+      </tr>
+      <tr>
+        <td>Output Arguments</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Error Messages</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>External Accesses</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>External Changes</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Other Methods Invoked</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td>sets cup2 to be true or false depending on whether it was hit or not</td>
+      </tr>
+    </table>
+    <br />
+    <table border="1">
+      <tr>
+        <td>
+          <strong>Class Name</strong>
+        </td>
+        <td>
+          <strong>Event</strong>
+        </td>
+      </tr>
+      <tr>
+        <td>Method Name</td>
+        <td>
+          <em>getCup3</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Method State</td>
+        <td>
+          <em>Public</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Return Type</td>
+        <td>
+          <em>boolean</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Input Arguments</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Output Arguments</td>
+        <td>hitCup3 - true or false value displaying if cup3 has been sunk</td>
+      </tr>
+      <tr>
+        <td>Error Messages</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>External Accesses</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>External Changes</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Other Methods Invoked</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td>Returns whether or not cup3 has been sunk</td>
+      </tr>
+    </table>
+    <br />
+    <table border="1">
+      <tr>
+        <td>
+          <strong>Class Name</strong>
+        </td>
+        <td>
+          <strong>Event</strong>
+        </td>
+      </tr>
+      <tr>
+        <td>Method Name</td>
+        <td>
+          <em>setCup3</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Method State</td>
+        <td>
+          <em>Public</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Return Type</td>
+        <td>
+          <em>None</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Input Arguments</td>
+        <td>boolean cupHit</td>
+      </tr>
+      <tr>
+        <td>Output Arguments</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Error Messages</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>External Accesses</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>External Changes</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Other Methods Invoked</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td>sets cup3 to be true or false depending on whether it was hit or not</td>
+      </tr>
+    </table>
+    <br />
+    <table border="1">
+      <tr>
+        <td>
+          <strong>Class Name</strong>
+        </td>
+        <td>
+          <strong>Event</strong>
+        </td>
+      </tr>
+      <tr>
+        <td>Method Name</td>
+        <td>
+          <em>getCup4</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Method State</td>
+        <td>
+          <em>Public</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Return Type</td>
+        <td>
+          <em>boolean</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Input Arguments</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Output Arguments</td>
+        <td>hitCup4 - true or false value displaying if cup4 has been sunk</td>
+      </tr>
+      <tr>
+        <td>Error Messages</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>External Accesses</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>External Changes</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Other Methods Invoked</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td>Returns whether or not cup4 has been sunk</td>
+      </tr>
+    </table>
+    <br />
+    <table border="1">
+      <tr>
+        <td>
+          <strong>Class Name</strong>
+        </td>
+        <td>
+          <strong>Event</strong>
+        </td>
+      </tr>
+      <tr>
+        <td>Method Name</td>
+        <td>
+          <em>setCup4</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Method State</td>
+        <td>
+          <em>Public</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Return Type</td>
+        <td>
+          <em>None</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Input Arguments</td>
+        <td>boolean cupHit</td>
+      </tr>
+      <tr>
+        <td>Output Arguments</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Error Messages</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>External Accesses</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>External Changes</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Other Methods Invoked</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td>sets cup4 to be true or false depending on whether it was hit or not</td>
+      </tr>
+    </table>
+    <br />
+    <table border="1">
+      <tr>
+        <td>
+          <strong>Class Name</strong>
+        </td>
+        <td>
+          <strong>Event</strong>
+        </td>
+      </tr>
+      <tr>
+        <td>Method Name</td>
+        <td>
+          <em>getCup5</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Method State</td>
+        <td>
+          <em>Public</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Return Type</td>
+        <td>
+          <em>boolean</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Input Arguments</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Output Arguments</td>
+        <td>hitCup5 - true or false value displaying if cup5 has been sunk</td>
+      </tr>
+      <tr>
+        <td>Error Messages</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>External Accesses</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>External Changes</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Other Methods Invoked</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td>Returns whether or not cup5 has been sunk</td>
+      </tr>
+    </table>
+    <br />
+    <table border="1">
+      <tr>
+        <td>
+          <strong>Class Name</strong>
+        </td>
+        <td>
+          <strong>Event</strong>
+        </td>
+      </tr>
+      <tr>
+        <td>Method Name</td>
+        <td>
+          <em>setCup5</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Method State</td>
+        <td>
+          <em>Public</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Return Type</td>
+        <td>
+          <em>None</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Input Arguments</td>
+        <td>boolean cupHit</td>
+      </tr>
+      <tr>
+        <td>Output Arguments</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Error Messages</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>External Accesses</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>External Changes</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Other Methods Invoked</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td>sets cup5 to be true or false depending on whether it was hit or not</td>
+      </tr>
+    </table>
+    <br />
+    <table border="1">
+      <tr>
+        <td>
+          <strong>Class Name</strong>
+        </td>
+        <td>
+          <strong>Event</strong>
+        </td>
+      </tr>
+      <tr>
+        <td>Method Name</td>
+        <td>
+          <em>getCup6</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Method State</td>
+        <td>
+          <em>Public</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Return Type</td>
+        <td>
+          <em>boolean</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Input Arguments</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Output Arguments</td>
+        <td>hitCup6 - true or false value displaying if cup6 has been sunk</td>
+      </tr>
+      <tr>
+        <td>Error Messages</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>External Accesses</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>External Changes</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Other Methods Invoked</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td>Returns whether or not cup6 has been sunk</td>
+      </tr>
+    </table>
+    <br />
+    <table border="1">
+      <tr>
+        <td>
+          <strong>Class Name</strong>
+        </td>
+        <td>
+          <strong>Event</strong>
+        </td>
+      </tr>
+      <tr>
+        <td>Method Name</td>
+        <td>
+          <em>setCup6</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Method State</td>
+        <td>
+          <em>Public</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Return Type</td>
+        <td>
+          <em>None</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Input Arguments</td>
+        <td>boolean cupHit</td>
+      </tr>
+      <tr>
+        <td>Output Arguments</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Error Messages</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>External Accesses</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>External Changes</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Other Methods Invoked</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td>sets cup6 to be true or false depending on whether it was hit or not</td>
       </tr>
     </table>
   </body>
