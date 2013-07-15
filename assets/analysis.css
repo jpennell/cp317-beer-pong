@@ -5,8 +5,8 @@ body {
 #content {
 	margin: 0px auto;
 	padding: 20px;
-	max-width: 800px;
-	min-width: 300px;
+	margin-left: 5%;
+	margin-right: 5%;
 }
 
 /* headings */
