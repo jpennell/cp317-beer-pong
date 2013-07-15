@@ -31,7 +31,7 @@
 			Return Type
 		</td> 
 		<td>
-			<em> int institutionRank </em>
+			<em> int </em>
 		</td>
 	</tr>
 	<tr>
@@ -39,7 +39,7 @@
 			Input Arguments
 		</td> 
 		<td> 
-			User userName 
+			User username 
 		</td>
 	</tr>
 	<tr>
@@ -47,7 +47,7 @@
 			Output Arguments
 		</td> 
 		<td> 
-			None 
+			 institutionRank
 		</td>
 	</tr>
 	<tr>
@@ -55,7 +55,8 @@
 			Error Messages
 		</td> 
 		<td> 
-			If unable to retrieve a rank, output message "Unable to find a ranking for userName, institutionName" 
+			If unable to retrieve a rank:
+			<br>***Unable to find a ranking for {username}, {institutionName}*** 
 		</td>
 	</tr>
 	<tr>
@@ -79,7 +80,7 @@
 			Other Methods Invoked
 		</td> 
 		<td> 
-			getTrueSkill <br> getInstitution 
+			getRanking <br> getInstitution 
 		</td>
 	</tr>
 	<tr>
@@ -123,7 +124,7 @@
 			Return Type
 		</td> 
 		<td>
-			<em> int overallRank </em>
+			<em> int </em>
 		</td>
 	</tr>
 		<tr>
@@ -131,7 +132,7 @@
 			Input Arguments
 		</td> 
 		<td> 
-			User userName
+			User username
 		</td>
 	</tr>
 	<tr>
@@ -139,7 +140,7 @@
 			Output Arguments
 		</td> 
 		<td> 
-		None 
+		 overallRank  
 		</td>
 	</tr>
 	<tr>
@@ -147,7 +148,8 @@
 		Error Messages
 		</td> 
 		<td> 
-			If unable to find overall rank, output message "Unable to find a ranking for userName" 
+			If unable to find overall rank:
+			<br>***Unable to find a ranking for {username}*** 
 		</td>
 	</tr>
 	<tr>
@@ -171,7 +173,7 @@
 			Other Methods Invoked
 		</td> 
 		<td> 
-			getTruskill 
+			getRanking
 		</td>
 	</tr>
 	<tr>
@@ -215,7 +217,7 @@
 			Return Type
 		</td> 
 		<td>
-			<em> User[] leadUsers </em>
+			<em> User[] </em>
 		</td>
 	</tr>
 	<tr>
@@ -231,7 +233,7 @@
 			Output Arguments
 		</td> 
 		<td> 
-			None 
+			leadUsers
 		</td>
 	</tr>
 	<tr>
@@ -239,9 +241,10 @@
 			Error Messages
 		</td> 
 		<td> 
-			If unable to find institution, output message "Unable to find institution" 
-			<br>  
-			If unable to find number of users, output message "Unable to find that number of users" 
+			If unable to find institution:
+			<br>***Unable to find {institution}*** 
+			<br>If unable to find number of users
+			<br>***Unable to find that number of users***
 		</td>
 	</tr>
 	<tr>
