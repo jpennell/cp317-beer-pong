@@ -1,10 +1,41 @@
-Henry: Your 6 Use Cases (SQA when applicable)
+Henry: Your 6 Use Cases, User Entity
+	View Rules
+	View Statistics
+	Search User
+	View Leaderboard
+	End Game
+	Edit Profile
+
 Richard: Your 6 Use Cases
+	Confirm Game
+	Score Game
+	Login
+	Logout
+	Create Game
+	Delete Account
+
+
 Chris: Your 6 Use Cases
-.
-Carlie: Your 2 Uses Cases + Game Methods (3ish)
-Reese: Institution, Event Type, & Team Methods (6ish)
-Robin: Administrator Methods (8ish)
-Colin: Life Stats (Approximated to "A Lot") + SQA when applicable
-.
-Matt, Erin, and George left to focus on completing Analysis document. George has agreed to help with SQA. Matt & Erin will focus on assigned parts in earlier document when their resources become available. Quinton will focus on this with them as well when not doing SQA
+	Admin Login
+	Admin Logout
+	Ban User
+	Unban User
+	Add Institution 
+	Delete Institution
+
+
+Carlie: Your 2 Uses Cases + Game Methods
+	Register View
+	Limited Leaderboard View
+
+Reese: Institution, Event Type, & Team Methods
+Robin: Administrator Methods
+Colin: LifeStats, Rank, EventType Methods
+
+Matt, Quinton, Erin: Archetecture and Package Diagrams
+
+Colin, George, Quinton: SQA
+
+Erin:  Document Formatting
+
+Colin:  Project Manager
