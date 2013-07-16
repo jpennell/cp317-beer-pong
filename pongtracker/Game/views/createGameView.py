@@ -66,7 +66,11 @@ def createNewGameRequest(request):
         # get users from database
         users = [_findUser(usernames[0]), _findUser(usernames[1]), _findUser(usernames[2]), _findUser(usernames[3])]
         
+        print(users)
+        
         errFlag, index = _chkUsersExist(users, regUser)
+        
+        print(index)
         
         # one or more users entered don't exist    
         if (errFlag):  
@@ -243,7 +247,7 @@ def _regUsers(regUser, usernames, emails):
         
     """
     
-    for x in range(len(usernames)):
+    for x in usernames:
         if regUser[x] is not None:
             user = _findUser(usernames[x])
             print(usernames + "/" + user + "/" + regUser)
