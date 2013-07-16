@@ -4,6 +4,9 @@ import datetime
 
 class Institution(models.Model):
     name = models.CharField(max_length=45)
+
+    def __unicode__(self):
+        return self.name
     
 class PongUser(AbstractUser):
     
