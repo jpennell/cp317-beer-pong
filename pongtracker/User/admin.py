@@ -1,10 +1,8 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 
 from User.models import PongUser
-from User.models import Institution
 
 class PongUserChangeForm(UserChangeForm):
     class Meta(UserChangeForm.Meta):
@@ -13,6 +11,14 @@ class PongUserChangeForm(UserChangeForm):
 class PongUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = PongUser
+        
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        try:
+             PongUser._default_manager.get(username=username)
+        except PongUser.DoesNotExist:
+            return username
+        raise forms.ValidationError(self.error_messages['duplicate_username'])
 
 class PongUserAdmin(UserAdmin):
     form = PongUserChangeForm
@@ -22,3 +28,4 @@ class PongUserAdmin(UserAdmin):
     )
 
 admin.site.register(PongUser, PongUserAdmin)
+
