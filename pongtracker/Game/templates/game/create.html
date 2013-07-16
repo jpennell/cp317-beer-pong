@@ -36,7 +36,7 @@
 		<!------ GENERAL HEADER --------->
 		<div id="login-header">
 			<p>
-				Welcome, <span id="player-name">{{username}}</span><span id="logout"><a href="login.html">Log Out</a></span>
+				Welcome, <span id="player-name">{{ username }} </span><span id="logout"><a href="login.html">Log Out</a></span>
 			</p>
 		</div>
 		<!------ HEADER --------->
@@ -67,9 +67,10 @@
 					<tr>
 						<td width="45%">
 							<label for="username1">
-							<strong>Player 1 Username: </Strong>
+							<strong>Player 1: </Strong>
 							<br/>
-							{{username}}
+							{{ username }}
+							<br/>
 							</label>
 							This user will be tracking the Beer Pong game.
 						</td>
@@ -78,9 +79,9 @@
 						</td>
 						<td width="20%">
 							<label for="username3" valign="center">
-							<strong>Player 3 Username: </strong><input type="text" name="username3" id="username3"></input>
+							<strong>Player 3: </strong><input type="text" name="username3" id="username3" placeholder="Username"></input>
 							</label>
-							<input id="register" name="chkRegister3" onclick="toggle_more();" type="checkbox"/> Register to play
+							<input id="register" name="chkRegister3" onclick="toggle_more();" type="checkbox"></input> Register to play
 						</td>
 					</tr>
 				</table>
@@ -95,17 +96,7 @@
 								&nbsp;
 							</td>
 							<td width="20%" align="right">
-								<!-- THE REGISTER FORM -->
-								<div id="register-form">
-								<form action="main.html" name="register" >
-									<input name="email" type="text" placeholder="email">
-									<br/>
-									<input name="username" type="text" placeholder="desired username">
-									<br/>
-									<button name="submit" class="btn" type="submit" action="register">
-										Register
-									</button>
-								</form>
+								<input name="email3" type="text" placeholder="email">
 							</td>
 						</tr>
 					</table>
@@ -127,20 +118,20 @@
 					<tr>
 						<td width="45%%">
 							<label for="username2" valign="center">
-							<strong>Player 2 Username: </strong>
+							<strong>Player 2: </strong>
 							<br/>
-							<input type="text" name="username2" id="username2"></input>
+							<input type="text" name="username2" id="username2" placeholder="Username"></input>
 							</label>
-							<input id="register2" name="chkRegister2" onclick="toggle_more2();" type="checkbox"/> Register to play
+							<input id="register2" name="chkRegister2" onclick="toggle_more2();" type="checkbox"></input> Register to play
 						</td>
 						<td width="10%">
 							&nbsp;
 						</td>
 						<td width="20%">
 							<label for="username4" valign="center">
-							<strong>Player 4 Username: </strong><input type="text" name="username4" id="username4"></input>
+							<strong>Player 4: </strong><input type="text" name="username4" id="username4" placeholder="Username"></input>
 							</label>
-							<input id="register4" name="chkRegister4" onclick="toggle_more3();" type="checkbox"/> Register to play
+							<input id="register4" name="chkRegister4" onclick="toggle_more3();" type="checkbox"></input> Register to play
 						</td>
 					</tr>
 				</table>
@@ -150,17 +141,7 @@
 						<tr>
 							</td>
 							<td width="35%" align="right">
-								<!-- THE REGISTER FORM -->
-								<div id="register-form">
-								<form action="main.html" name="register" >
-									<input name="email" type="text" placeholder="email">
-									<br/>
-									<input name="username" type="text" placeholder="desired username">
-									<br/>
-									<button name="submit" class="btn" type="submit" action="register">
-										Register
-									</button>
-								</form>
+								<input name="email2" type="text" placeholder="email">
 							</td>
 							<td width="10%">
 								&nbsp;
@@ -181,17 +162,7 @@
 								&nbsp;
 							</td>
 							<td width="20%" align="right">
-								<!-- THE REGISTER FORM -->
-								<div id="register-form">
-								<form action="main.html" name="register" >
-									<input name="email" type="text" placeholder="email">
-									<br/>
-									<input name="username" type="text" placeholder="desired username">
-									<br/>
-									<button name="submit" class="btn" type="submit" action="register">
-										Register
-									</button>
-								</form>
+								<input name="email4" type="text" placeholder="email">
 							</td>
 						</tr>
 					</table>
