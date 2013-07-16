@@ -189,7 +189,7 @@
 		<td>Return Type</td> <td><em>None</em></td>
 	</tr>
 	<tr>
-		<td>Input Arguments</td> <td>Event endGameEvent, User[] team1Users, User[] team2Users</td>
+		<td>Input Arguments</td> <td>Event endGameEvent, Team team1, Team team2</td>
 	</tr>
 	<tr>
 		<td>Output Arguments</td> <td>none</td>
@@ -198,7 +198,7 @@
 	<td>Error Messages</td> <td>none</td>
 	</tr>
 	<tr>
-		<td>External Accesses</td> <td>LifeStats</td>
+		<td>External Accesses</td> <td>LifeStats, Team, User</td>
 	</tr>
 	<tr>
 		<td>External Changes</td> <td>Wins for the winning Users and losses for the losing Users are updated.</td>
@@ -229,7 +229,7 @@
 		<td>Return Type</td> <td><em>None</em></td>
 	</tr>
 	<tr>
-		<td>Input Arguments</td> <td>Event endGameEvent, User[] team1Users, User[] team2Users</td>
+		<td>Input Arguments</td> <td>Event endGameEvent, Team team1, Team team2</td>
 	</tr>
 	<tr>
 		<td>Output Arguments</td> <td>none</td>
@@ -238,7 +238,7 @@
 	<td>Error Messages</td> <td>none</td>
 	</tr>
 	<tr>
-		<td>External Accesses</td> <td>Rating</td>
+		<td>External Accesses</td> <td>Rating, Team, User</td>
 	</tr>
 	<tr>
 		<td>External Changes</td> <td>TrueSkill Ratings are updated with their new Mu and Sigma values.</td>
@@ -269,10 +269,10 @@
 		<td>Method State</td> <td><em>Private</em></td>
 	</tr>
 	<tr>
-		<td>Return Type</td> <td><em>User[][]</em></td>
+		<td>Return Type</td> <td><em>Team[]</em></td>
 	</tr>
 	<tr>
-		<td>Input Arguments</td> <td>Event endGameEvent, User[] team1Users, User[] team2Users</td>
+		<td>Input Arguments</td> <td>Event endGameEvent, Team team1, Team team2</td>
 	</tr>
 	<tr>
 		<td>Output Arguments</td> <td>victoryArray</td>
@@ -290,8 +290,8 @@
 		<td>Other Methods Invoked</td> <td> getEventType </td>
 	</tr>
 	<tr>
-		<td>Description</td> <td>If Team1 won, returns [team1Users,team2Users]</br>
-								 otherwise returns [team2Users, team1Users].</br>
+		<td>Description</td> <td>If team1 won, returns [team1,team2]</br>
+								 otherwise returns [team2, team1].</br>
 								 *This is assuming there are two EventTypes, Team1Win and Team2Win implemented</td>
 	</tr>
 </table>
