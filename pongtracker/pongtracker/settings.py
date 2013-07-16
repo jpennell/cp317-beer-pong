@@ -67,7 +67,7 @@ STATIC_ROOT = ''
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
-STATIC_URL = '/static/'
+STATIC_URL = 'http://hopper.wlu.ca/~pong/assets/'
 
 # Additional locations of static files
 STATICFILES_DIRS = ( 
@@ -114,14 +114,14 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    "/pongtracker/templates",
     "/Administrator/templates",
     "/Database/templates",
     "/Game/templates",
     "/Statistics/templates",
     "/User/templates",
-    "/Utilities/templates"
-
- )
+    "/Utilities/templates",
+     )
 
 INSTALLED_APPS = ( 
     'django.contrib.auth',
@@ -134,6 +134,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'pongtracker',
     'Administrator',
     'Database',
     'Game',
