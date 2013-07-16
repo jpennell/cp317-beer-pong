@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <title>Pong Tracker{% block pagetitle %}{% endblock %}</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+    <link href='{% static "css/bootstrap.css" %}' rel='stylesheet' type='text/css'>
+    <link href='{% static "css/global-styles.css" %}' rel='stylesheet' type='text/css'>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div id="container">
+        <!------ LOGIN HEADER --------->
+        <div id="login-header">
+            <!--- IF LOGGED IN...
+
+            <form name="logout" action="" class="form-inline" method="post">
+                <label>Welcome, <span id="player-name">{{username}}</span></label>
+            	<button name="logout" class="btn" type="submit">
+            		Log Out
+            	</button>
+            </form>
+            ELSE .... --->
+            <form name="login" action="" class="form-inline" method="post">
+                {% csrf_token %}
+                {% if next %}
+                <input type="hidden" name="next" value="{{ next }}" />
+                {% endif %}
+                <label>New user? <a href="login.html">Register here</a></label>
+                <input name="username" type="text" placeholder="username" value="" />
+                <input name="password" type="password" placeholder="password" value="" />
+                <button name="login" class="btn" type="submit">
+                    Log In
+                </button>
+            </form>
+        </div>
+
+        <!------ HEADER --------->
+        <div id="header">
+            <table>
+                <tr>
+                    <td id="logo"> Pong Tracker </td>
+                    <td id="nav">
+                        <ul>
+                            {% block navigation %}
+                            <ul>
+                                <li><a href="#">Profile/Stats</a></li>
+                                <li><a href="#">Leaderboard</a></li>
+                                <li><a href="#">Create a Game</a></li>
+                                <li><a href="#">Rules</a></li>
+                            </ul>
+                            {% endblock %}
+                        </ul></td>
+                </tr>
+            </table>
+        </div>
+        <!------ CONTENT --------->
+        {% block pagecontent %}
+        {% endblock %}
+        <!------- FOOTER --------->
+        <div id="footer">
+            <table>
+                <tr>
+                    <td class="left"> CP317 Software Engineering </td>
+                    <td class="right"> Wilfrid Laurier University, 2013 </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+
