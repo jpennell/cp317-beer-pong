@@ -1,13 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from User.models import Institution
 from django.core.context_processors import csrf
 from django.template import RequestContext
 
-
-
-def viewProfile(request):
+def editProfile(request):
     """{{Description}}
 
     Keyword arguments:
@@ -20,6 +18,17 @@ def viewProfile(request):
     Output:
         
     """
-        
-    return render(request,'user/profile.html')
     
+    
+    return render(request,'user/editProfile.html',{'username': username})
+
+def _updatePassword(password):
+    
+    return
+
+def _updateUser(username,password,firstName,lastName,email,height,yearOfGradution,userProfilePhoto,isBanned):
+    
+    
+    
+    return
+
