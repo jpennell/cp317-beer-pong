@@ -6,8 +6,6 @@ from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 from User.models import PongUser
 from User.models import Institution
 
-admin.site.register(Institution)
-
 class PongUserChangeForm(UserChangeForm):
     class Meta(UserChangeForm.Meta):
         model = PongUser
