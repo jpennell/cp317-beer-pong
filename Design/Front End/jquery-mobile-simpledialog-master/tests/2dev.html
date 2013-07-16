@@ -1,0 +1,72 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>jQueryMobile - SimpleDialog2 Dev</title>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+	<link type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.css" rel="stylesheet" /> 
+	<link type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jquery.mobile.datebox.css" rel="stylesheet" /> 
+	<link type="text/css" href="http://dev.jtsage.com/jQM-DateBox/css/demos.css" rel="stylesheet" /> 
+	
+	<!-- NOTE: Script load order is significant! -->
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.js"></script>
+	<script type="text/javascript" src="http://dev.jtsage.com/jquery.mousewheel.min.js"></script>
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.js"></script>
+	<script type="text/javascript" src="http://dev.jtsage.com/jQM-SimpleDialog/demos2/extras.js"></script>
+	
+</head>
+<body>
+	<script type="text/javascript"> 
+				x = function () { console.log(this); }
+									
+				$(document).delegate('#simplebool', 'click', function() {
+					$('<div>').simpledialog2({
+						mode : 'button',
+						//themeDialog: 'd',
+						headerText: 'What Happened?',
+						headerClose: true,
+						//buttonPassword: true,
+						
+						'buttons' : {
+							'Cup Sunk': {
+								'click': x 
+							},
+							'Bounce Shot': {
+								'click': x 
+							},
+							'Trick Shot': {
+								'click': x 
+							},
+							'Party Foul': {
+								'click': x 
+							}
+						},
+							
+						//dialogEnable: true,
+						//dialogForce: true,
+						forceInput: false,
+						showModal: true,
+						clickEvent: 'vclick',
+						//fullScreen: true,
+						//fullScreenForce: true,
+						blankContent : 
+							"<ul data-role='listview'><li>Some</li><li>List</li><li>Items</li></ul><a rel='close' data-role='button' href='#'>Close</a>",
+						//callbackOpenArgs: ['some', 'shit'],
+						//callbackClose: function () { console.log(this); console.log(arguments); },
+						
+						})
+						
+					});
+				
+			</script>
+			<a href="#" id="simplebool" data-role="button">Open Dialog</a>
+			
+			
+		</div> 
+		
+	</div>
+</div>
+</html>
