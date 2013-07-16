@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from User.models import Institution
@@ -20,8 +20,6 @@ def viewProfile(request):
     Output:
         
     """
-    if 'username' in request.session:
-        username = request.session['username']
-        return render_to_response('user/profile.html',{'username': username},context_instance=RequestContext(request))
-    else:
-        return  render_to_response('user/index.html',context_instance=RequestContext(request))
+    
+    return render(request,'user/profile.html')
+    

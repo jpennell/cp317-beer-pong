@@ -21,7 +21,8 @@
             </button>
             </form>
             ELSE .... --->
-            <form name="login" action="" class="form-inline" method="post">
+            {{ state }}
+            <form name="login" action="/login/" class="form-inline" method="post">
                 {% csrf_token %}
                 {% if next %}
                 <input type="hidden" name="next" value="{{ next }}" />
