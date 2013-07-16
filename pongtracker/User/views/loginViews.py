@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.core.context_processors import csrf
@@ -26,18 +26,19 @@ def loginUserRequest(request):
     if request.POST:
         username=request.POST.get('username')
         password=request.POST.get('password')
-           
-        userState = loginUser(username,password,request)
         
+        userState = loginUser(username,password,request)
+        print (userState," ",username)
         if userState==SUCCESS:
-            return  render_to_response('user/profile.html',{'username': username},context_instance=RequestContext(request))
+            return  redirect('/profile/',{'username': username})
         elif userState == INCORRECT:
             state = "Incorrect Email/Password Combination"
-            return render_to_response('user/login.html',{'state':state, 'username': username},context_instance=RequestContext(request))
+            return render(request,'user/index.html',{'state':state, 'username': username})
         else:
-            return  render_to_response('user/banned.html',{'username':username},context_instance=RequestContext(request))
+            state = "You are currently banned or inactive, please bring a case of beer to the admin to have your account unbanned "
+            return  render(request,'user/banned.html',{'username':username,'state':state})
     
-    return  render_to_response('user/index.html',context_instance=RequestContext(request))
+    return  render(request,'user/index.html')
 
 
 def loginUser(username,password,request):    
