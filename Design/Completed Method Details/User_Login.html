@@ -1,0 +1,88 @@
+<h2>User Login</h2>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>UserLoginController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em> UserLoginController </em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>UserLoginController</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td>none</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td>userLoginController</td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td>If the object fails to connect to the User table:</br>
+								***An error occurred in processing your login request.***</td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>May initialize a connection to the User table.</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td>none</td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td>none</td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Initializes an instance of class UserLoginController.</br>
+			After construction, the object is ready to query the User table for validating logins.</td>
+	</tr>
+</table>
+
+</br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>UserLoginController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>loginUser</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>None</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td>String username, String password</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td>none</td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td>If the username and password combination isn't valid:</br>
+								***Invalid username/password.***</br>
+								If the combination is correct but the User is banned:</br>
+								***Cannot log you in. You have been banned!***</td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>User</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td>none</td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td>authenticate, login, isBanned</td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Obtains username and password data from the HTML form then validates the User's login request</br>
+								 using Django's authenticate function and performs the login with Django's login function.</br> 
+								 Banned Users are not allowed to log in.</br>
+								 </br>
+								 If the User logs in successfully, they are brought to their profile page.</br>
+								 Otherwise, they are brought back to the login page with the error message.</br>
+								 </td>
+	</tr>
+</table>
+
+</br>
