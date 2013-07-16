@@ -15,10 +15,10 @@
             <!--- IF LOGGED IN...
 
             <form name="logout" action="" class="form-inline" method="post">
-                <label>Welcome, <span id="player-name">{{username}}</span></label>
-            	<button name="logout" class="btn" type="submit">
-            		Log Out
-            	</button>
+            <label>Welcome, <span id="player-name">{{username}}</span></label>
+            <button name="logout" class="btn" type="submit">
+            Log Out
+            </button>
             </form>
             ELSE .... --->
             {{ state }}
@@ -40,18 +40,19 @@
         <div id="header">
             <table>
                 <tr>
-                    <td id="logo"> Pong Tracker </td>
+                    <td id="logo">
+                        Pong Tracker
+                    </td>
                     <td id="nav">
                         <ul>
                             {% block navigation %}
-                            <ul>
-                                <li><a href="#">Profile/Stats</a></li>
-                                <li><a href="#">Leaderboard</a></li>
-                                <li><a href="#">Create a Game</a></li>
-                                <li><a href="#">Rules</a></li>
-                            </ul>
+                            <li><a href="#">Profile/Stats</a></li>
+                            <li><a href="/statistics/leaderboard/">Leaderboard</a></li>
+                            <li><a href="#">Create a Game</a></li>
+                            <li><a href="#">Rules</a></li>
                             {% endblock %}
-                        </ul></td>
+                        </ul>
+                    </td>
                 </tr>
             </table>
         </div>
@@ -62,8 +63,12 @@
         <div id="footer">
             <table>
                 <tr>
-                    <td class="left"> CP317 Software Engineering </td>
-                    <td class="right"> Wilfrid Laurier University, 2013 </td>
+                    <td class="left">
+                        CP317 Software Engineering
+                    </td>
+                    <td class="right">
+                        Wilfrid Laurier University, 2013
+                    </td>
                 </tr>
             </table>
         </div>

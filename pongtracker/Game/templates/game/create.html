@@ -1,191 +1,172 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en_US" xml:lang="en_US">
-	<script type="text/javascript">
-		function toggle_more()
-		{ 
-			if (document.getElementById('register').checked==false) {document.getElementById('moreinfo').style.display="none";}  
-			else {document.getElementById('moreinfo').style.display="inline-block";} 
-		} 
-		function toggle_more2()
-		{ 
-			if (document.getElementById('register2').checked==false) {document.getElementById('moreinfo2').style.display="none";}  
-			else {document.getElementById('moreinfo2').style.display="inline-block";} 
-		} 
-		function toggle_more3()
-		{ 
-			if (document.getElementById('register4').checked==false) {document.getElementById('moreinfo3').style.display="none";}  
-			else {document.getElementById('moreinfo3').style.display="inline-block";} 
-		} 
+{% extends "base.html" %}
+{% load staticfiles %}
 
-	</script>
-	<!--
-	* Created on 2013-07-10
-	*
-	* To change the template for this generated file go to
-	* Window - Preferences - PHPeclipse - PHP - Code Templates
-	-->
-	<head>
-    <title>Pong Tracker | Create Game</title>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
-    <link href='../../../../assets/bootstrap-css/bootstrap.css' rel='stylesheet' type='text/css'>
-    <link href='../../../../assets/css/global-styles.css' rel='stylesheet' type='text/css'>
-    <link href='../../../../assets/css/home-styles.css' rel='stylesheet' type='text/css'>
-	</head>
-	<body>
-		<!------ GENERAL HEADER --------->
-		Error: {{ errMess }}
-		<br/>
-		<div id="login-header">
-			<p>
-				Welcome, <span id="player-name">{{ username }} </span><span id="logout"><a href="login.html">Log Out</a></span>
-			</p>
-		</div>
-		<!------ HEADER --------->
-		<div id="header">
-			<table>
-				<tr>
-					<td> Create a Beer Pong Game </td>
-				</tr>
-			</table>
-		</div>
-		<!------ CONTENT --------->
-        <div id="page-content">
-			<p style = "padding-bottom:20px"> Please enter a valid username in each field or register any users that are not already on Pong Tracker.</p>
-			<form method="post" action=".">
-				{% csrf_token %}
-				<table width="75%">
-					<tr>
-						<td width="45%">
-							<h3>Team 1</h3>
-						</td>
-						<td width="10%">
-							&nbsp;
-						</td>
-						<td width="20%">
-							<h3>Team 2</h3>
-						</td>
-					</tr>
-					<tr>
-						<td width="45%">
-							<label for="username1">
-							<strong>Player 1: </Strong>
-							<br/>
-							{{ username }}
-							<br/>
-							</label>
-							This user will be tracking the Beer Pong game.
-						</td>
-						<td width = "10%">
-							&nbsp;
-						</td>
-						<td width="20%">
-							<label for="username3" valign="center">
-							<strong>Player 3: </strong><input type="text" name="username3" id="username3" placeholder="Username"></input>
-							</label>
-							<input id="register" name="chkRegister3" onclick="toggle_more();" type="checkbox"></input> Register to play
-						</td>
-					</tr>
-				</table>
-				<!---- Register user3 so they can play ---->
-				<div id="moreinfo" style="display: none;">
-					<table width="75%">
-						<tr>
-							<td width="35%">
-								&nbsp;
-							</td>
-							<td width="20%">
-								&nbsp;
-							</td>
-							<td width="20%" align="right">
-								<input name="email3" type="text" placeholder="email">
-							</td>
-						</tr>
-					</table>
-				</div>
-				<table width="75%">
-					<tr>
-						<td width="20%">
-							&nbsp;
-						</td>
-						<td width="10%">
-							<h4>VS.</h4>
-						</td>
-						<td width="10%">
-							&nbsp;
-						</td>
-					</tr>
-				</table>
-				<table width="75%">
-					<tr>
-						<td width="45%%">
-							<label for="username2" valign="center">
-							<strong>Player 2: </strong>
-							<br/>
-							<input type="text" name="username2" id="username2" placeholder="Username"></input>
-							</label>
-							<input id="register2" name="chkRegister2" onclick="toggle_more2();" type="checkbox"></input> Register to play
-						</td>
-						<td width="10%">
-							&nbsp;
-						</td>
-						<td width="20%">
-							<label for="username4" valign="center">
-							<strong>Player 4: </strong><input type="text" name="username4" id="username4" placeholder="Username"></input>
-							</label>
-							<input id="register4" name="chkRegister4" onclick="toggle_more3();" type="checkbox"></input> Register to play
-						</td>
-					</tr>
-				</table>
-				<!---- Register user2 so they can play ---->
-				<div id="moreinfo2" style="display: none;">
-					<table width="75%">
-						<tr>
-							</td>
-							<td width="35%" align="right">
-								<input name="email2" type="text" placeholder="email">
-							</td>
-							<td width="10%">
-								&nbsp;
-							</td>
-							<td width="20%">
-								&nbsp;
-						</tr>
-					</table>
-				</div>
-				<!---- Register user4 so they can play ---->
-				<div id="moreinfo3" style="display: none;">
-					<table width="75%">
-						<tr>
-							<td width="35%">
-								&nbsp;
-							</td>
-							<td width="20%">
-								&nbsp;
-							</td>
-							<td width="20%" align="right">
-								<input name="email4" type="text" placeholder="email">
-							</td>
-						</tr>
-					</table>
-				</div>
-				<br/>
-				<br/>
-				<button name="createGame" class="btn" type="submit">Create Game</button>
-							
-		</div>
-		<!------- FOOTER --------->
-        <div id="footer">
-            <table>
+{% block head %}
+<script type="text/javascript">
+	function toggle_more() {
+		if (document.getElementById('register').checked == false) {
+			document.getElementById('moreinfo').style.display = "none";
+		} else {
+			document.getElementById('moreinfo').style.display = "inline-block";
+		}
+	}
+
+	function toggle_more2() {
+		if (document.getElementById('register2').checked == false) {
+			document.getElementById('moreinfo2').style.display = "none";
+		} else {
+			document.getElementById('moreinfo2').style.display = "inline-block";
+		}
+	}
+
+	function toggle_more3() {
+		if (document.getElementById('register4').checked == false) {
+			document.getElementById('moreinfo3').style.display = "none";
+		} else {
+			document.getElementById('moreinfo3').style.display = "inline-block";
+		}
+	}
+</script>
+
+{% endblock %
+
+{% block pagetitle %} | Create Game{% endblock %}
+
+{% block pagecontent %}
+
+<h4>Error: {{ errMess }}</h4>
+
+<div id="page-content">
+    <p style = "padding-bottom:20px">
+        Please enter a valid username in each field or register any users that are not already on Pong Tracker.
+    </p>
+    <form method="post" action=".">
+        {% csrf_token %}
+        <table width="75%">
+            <tr>
+                <td width="45%">
+                    <h3>Team 1</h3>
+                </td>
+                <td width="10%">
+                    &nbsp;
+                </td>
+                <td width="20%">
+                    <h3>Team 2</h3>
+                </td>
+            </tr>
+            <tr>
+                <td width="45%">
+                    <label for="username1"> <strong>Player 1: </Strong>
+                        <br/>
+                        {{ username }}
+                        <br/>
+                    </label>
+                    This user will be tracking the Beer Pong game.
+                </td>
+                <td width = "10%">
+                    &nbsp;
+                </td>
+                <td width="20%">
+                    <label for="username3" valign="center"> <strong>Player 3: </strong>
+                        <input type="text" name="username3" id="username3" placeholder="Username">
+                        </input> </label>
+                    <input id="register" name="chkRegister3" onclick="toggle_more();" type="checkbox">
+                    </input>
+                    Register to play
+                </td>
+            </tr>
+        </table>
+        <!---- Register user3 so they can play ---->
+        <div id="moreinfo" style="display: none;">
+            <table width="75%">
                 <tr>
-                    <td class="left">
-                        CP317 Software Engineering
+                    <td width="35%">
+                        &nbsp;
                     </td>
-                    <td class="right">
-                        Wilfrid Laurier University, 2013
+                    <td width="20%">
+                        &nbsp;
+                    </td>
+                    <td width="20%" align="right">
+                        <input name="email3" type="text" placeholder="email">
                     </td>
                 </tr>
             </table>
         </div>
-	</body>
-</html>
+        <table width="75%">
+            <tr>
+                <td width="20%">
+                    &nbsp;
+                </td>
+                <td width="10%">
+                    <h4>VS.</h4>
+                </td>
+                <td width="10%">
+                    &nbsp;
+                </td>
+            </tr>
+        </table>
+        <table width="75%">
+            <tr>
+                <td width="45%%">
+                    <label for="username2" valign="center"> <strong>Player 2: </strong>
+                        <br/>
+                        <input type="text" name="username2" id="username2" placeholder="Username">
+                        </input> </label>
+                    <input id="register2" name="chkRegister2" onclick="toggle_more2();" type="checkbox">
+                    </input>
+                    Register to play
+                </td>
+                <td width="10%">
+                    &nbsp;
+                </td>
+                <td width="20%">
+                    <label for="username4" valign="center"> <strong>Player 4: </strong>
+                        <input type="text" name="username4" id="username4" placeholder="Username">
+                        </input> </label>
+                    <input id="register4" name="chkRegister4" onclick="toggle_more3();" type="checkbox">
+                    </input>
+                    Register to play
+                </td>
+            </tr>
+        </table>
+        <!---- Register user2 so they can play ---->
+        <div id="moreinfo2" style="display: none;">
+            <table width="75%">
+                <tr>
+                    </td>
+                    <td width="35%" align="right">
+                        <input name="email2" type="text" placeholder="email">
+                    </td>
+                    <td width="10%">
+                        &nbsp;
+                    </td>
+                    <td width="20%">
+                        &nbsp;
+                </tr>
+            </table>
+        </div>
+        <!---- Register user4 so they can play ---->
+        <div id="moreinfo3" style="display: none;">
+            <table width="75%">
+                <tr>
+                    <td width="35%">
+                        &nbsp;
+                    </td>
+                    <td width="20%">
+                        &nbsp;
+                    </td>
+                    <td width="20%" align="right">
+                        <input name="email4" type="text" placeholder="email">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br/>
+        <br/>
+        <button name="createGame" class="btn" type="submit">
+            Create Game
+        </button>
+    </form>
+</div>
+
+{% endblock %}
