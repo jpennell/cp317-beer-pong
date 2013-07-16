@@ -1,21 +1,26 @@
-
-
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
-from User.models import Profile
+from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 
-# Define an inline admin descriptor for UserProfile model
-# which acts a bit like a singleton
-class ProfileInline(admin.StackedInline):
-    model = Profile
-    can_delete = False
-    verbose_name_plural = 'profile'
+from User.models import PongUser
+from User.models import Institution
 
-# Define a new User admin
-class UserAdmin(UserAdmin):
-    inlines = (ProfileInline, )
+admin.site.register(Institution)
 
-# Re-register UserAdmin
-admin.site.unregister(User)
-admin.site.register(User, UserAdmin)
+class PongUserChangeForm(UserChangeForm):
+    class Meta(UserChangeForm.Meta):
+        model = PongUser
+
+class PongUserCreationForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = PongUser
+
+class PongUserAdmin(UserAdmin):
+    form = PongUserChangeForm
+    add_form = PongUserCreationForm
+    fieldsets = UserAdmin.fieldsets + (
+        (None, {'fields': ('is_banned',)}),
+    )
+
+admin.site.register(PongUser, PongUserAdmin)
