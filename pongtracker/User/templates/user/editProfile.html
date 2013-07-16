@@ -1,142 +1,117 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
-<head>
-    <title>Pong Tracker | Edit Profile</title>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
-    <link href='../../../../assets/bootstrap-css/bootstrap.css' rel='stylesheet' type='text/css'>
-    <link href='../../../../assets/css/global-styles.css' rel='stylesheet' type='text/css'>
-    <link href='../../../../assets/css/profile-styles.css' rel='stylesheet' type='text/css'>
-</head>
-<body>
-    <div id="container">
-        <!------ LOGIN HEADER --------->
-        <div id="login-header">
-        {% csrf_token %}
-           <p>
-                Welcome, <span id="player-name">{{ username }} </span><span id="logout"><a href="/index/logout">Log Out</a></span>
-            </p>
-        </div>
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block pagetitle %} | Edit Profile{% endblock %}
 
-        <!------ HEADER --------->
-        <div id="header">
-			<table>
-				<tr>
-					<td id="logo"> Pong Tracker </td>
-					<td id="nav">
-						<ul>
-							<li><a href="#" class="active">Profile/Stats</a></li>
-							<li><a href="/statistics/leaderboard/">Leaderboard</a></li>
-							<li><a href="#">Create a Game</a></li>								<li><a href="#">Rules</a></li>
-						</ul>
-					</td>
-				</tr>
-			</table>
-		</div>
-		<!------ CONTENT --------->
-		<div id="page-content">
-		<p>You may edit the fields below, do not forget to save after making changes.</p>
-		<br/>
-		<br/>
-			<table width="35%">
-				<tr>
-					<td>
-						First Name:
-					</td>
-					<td>
-						<input name="first" type="text" placeholder="first" value="{{first}}" />
-					</td>
-				</tr>
-				<tr>
-					<td>
-						Last Name:
-					</td>
-					<td>
-						<input name="last" type="text" placeholder="last" value="{{last}}" />
-					</td>
-				</tr>
-				<tr>
-					<td>
-						Email:
-					</td>
-					<td>
-						<input name="email" type="text" placeholder="email" value="{{email}}" />
-					</td>
-				</tr>
-				<tr>
-					<td>
-						Username:
-					</td>
-					<td>
-						<input name="username" type="text" placeholder="username" value="{{username}}" />
-					</td>
-				</tr>
-				<tr>
-					<td>
-						Password:
-					</td>
-					<td>
-						<input name="password" type="password" placeholder="password" value="{{password}}" />
-					</td>
-				</tr>
-				<tr>
-					<td>	
-						Height:
-					</td>
-					<td>
-						<input name="height" type="text" placeholder="height" value="{{height}}" />
-					</td>
-				</tr>
-				<tr>
-					<td>
-						Institution: 
-					</td>
-					<td>
-						<select id="institution" name="institution">Institution:
-							<option selected="selected" value=""></option>
-							<option value="Laurier">Wilfrid Laurier University</option>
-							<option value="other">other</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						Year of Graduation:
-					</td>
-					<td>
-						<input name="grad" type="text" placeholder="grad" value="{{grad}}" />
-					</td>
-				</tr>
-				<tr>
-					<td>
-						Photo:
-					</td>
-					<td>
-						<span class="file-wrapper">
-						<input type="file" name="profile-pic" id="profile-pic" />
-						<span class="button">Choose a Profile Picture</span>
-					</span>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<input name="grad" type="checkbox" placeholder="grad" value="{{grad}}" /> &nbsp; I would like to deactivate my account.
-					</td>
-				<tr>
-					<td>
-						&nbsp;
-					</td>
-				</tr>
-				<tr>
-					<td>
-						&nbsp;
-					</td>
-					<td width="33%" align="right">
-					<button name="save" class="btn" type="submit">
-						Save
-					</button>
-					</td>
-				</tr>
-			</table>
-		</div>
-	</div>
-</body>	
+{% block head %}
+<link href='{% static 'css/profile-styles.css' %}' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block pagecontent %}
+<div id="page-content">
+    <p>
+        You may edit the fields below, do not forget to save after making changes.
+    </p>
+    <br/>
+    <br/>
+    <table width="35%">
+        <tr>
+            <td>
+                First Name:
+            </td>
+            <td>
+                <input name="first" type="text" placeholder="first" value="{{first}}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Last Name:
+            </td>
+            <td>
+                <input name="last" type="text" placeholder="last" value="{{last}}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Email:
+            </td>
+            <td>
+                <input name="email" type="text" placeholder="email" value="{{email}}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Username:
+            </td>
+            <td>
+                <input name="username" type="text" placeholder="username" value="{{username}}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Password:
+            </td>
+            <td>
+                <input name="password" type="password" placeholder="password" value="{{password}}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Height:
+            </td>
+            <td>
+                <input name="height" type="text" placeholder="height" value="{{height}}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Institution:
+            </td>
+            <td>
+                <select id="institution" name="institution">
+                    Institution: <option selected="selected" value=""></option>
+                    <option value="Laurier">Wilfrid Laurier University</option>
+                    <option value="other">other</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Year of Graduation:
+            </td>
+            <td>
+                <input name="grad" type="text" placeholder="grad" value="{{grad}}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Photo:
+            </td>
+            <td>
+                <span class="file-wrapper">
+                    <input type="file" name="profile-pic" id="profile-pic" />
+                    <span class="button">Choose a Profile Picture</span> </span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input name="grad" type="checkbox" placeholder="grad" value="{{grad}}" />
+                &nbsp; I would like to deactivate my account.
+            </td>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+            <td width="33%" align="right">
+                <button name="save" class="btn" type="submit">
+                    Save
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock %}
