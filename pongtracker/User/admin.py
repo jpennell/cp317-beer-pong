@@ -5,5 +5,5 @@ from User.models import PongUser
 
 
 # Re-register UserAdmin
-admin.site.unregister(User)
+#admin.site.unregister(User)
 admin.site.register(PongUser, UserAdmin)
