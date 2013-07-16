@@ -9,6 +9,7 @@ class Game(models.Model):
     date_played = models.DateTimeField(auto_now=True)
     team1 = models.OneToOneField(Team,related_name="Game1")
     team2 = models.OneToOneField(Team,related_name="Game2")
+    is_confirmed = models.BooleanField(default = False)
 
     def get_team1():
         return self.team1
