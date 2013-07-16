@@ -1,0 +1,268 @@
+<table border="1">
+	<tr>
+		<td>
+			<strong>Controller Name</strong>
+		</td>
+		<td>
+			<strong> ScoreGameController </strong>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Method Name
+		</td> 
+		<td>
+			<em> ScoreGameController </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Method State
+		</td> 
+		<td>
+			<em> public </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Return Type
+		</td> 
+		<td>
+			<em> None </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Input Arguments
+		</td> 
+		<td> 
+			None 
+		</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td>
+		<td> None </td>
+	</tr>
+	<tr>
+		<td>
+			Error Messages
+		</td> 
+		<td> 
+			None
+		</td>
+	</tr>
+	<tr>
+		<td>
+			External Accesses
+		</td>
+		<td> 
+			None
+		</td>
+	</tr>
+	<tr>
+		<td>
+			External Changes
+		</td>
+		<td>
+			None
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Other Methods Invoked
+		</td>
+		<td> 
+			None
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Description
+		</td>
+		<td> 
+			This method instantiates a ScoreGameController
+		</td>
+	</tr>
+</table>
+<br><br>
+<table border="1">
+	<tr>
+		<td>
+			<strong>Controller Name</strong>
+		</td>
+		<td>
+			<strong> ScoreGameController </strong>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Method Name
+		</td> 
+		<td>
+			<em> processEvent </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Method State
+		</td> 
+		<td>
+			<em> private </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Return Type
+		</td> 
+		<td>
+			<em> Event </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Input Arguments
+		</td> 
+		<td> 
+			int gameID </br>
+			EventType action </br>
+			String username </br>
+			int cupSunk1 </br>
+			int cupSunk2 (optional) </br>
+		</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td>
+		<td> gameEvent </td>
+	</tr>
+	<tr>
+		<td>
+			Error Messages
+		</td> 
+		<td> 
+			If the first cup claiming to be sunk has already been sunk: </br>
+			***Cup {cupsunk1} has already been sunk*** </br>
+			If the second cup claiming to be sunk has already been sunk: </br>
+			***Cup {cupsunk2} has already been sunk***
+		</td>
+	</tr>
+	<tr>
+		<td>
+			External Accesses
+		</td>
+		<td> 
+			Event, EventType, Game
+		</td>
+	</tr>
+	<tr>
+		<td>
+			External Changes
+		</td>
+		<td>
+			None
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Other Methods Invoked
+		</td>
+		<td> 
+			getMostRecentCupFormation
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Description
+		</td>
+		<td> 
+			This method creates a new Event containing all of the input from the ScoreGameView
+		</td>
+	</tr>
+</table>
+<br><br>
+<table border="1">
+	<tr>
+		<td>
+			<strong>Controller Name</strong>
+		</td>
+		<td>
+			<strong> ScoreGameController </strong>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Method Name
+		</td> 
+		<td>
+			<em> getMostRecentCupFormation </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Method State
+		</td> 
+		<td>
+			<em> private </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Return Type
+		</td> 
+		<td>
+			<em> boolean[] </em>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Input Arguments
+		</td> 
+		<td> 
+			int gameID
+		</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td>
+		<td>cupFormation</td>
+	</tr>
+	<tr>
+		<td>
+			Error Messages
+		</td> 
+		<td> 
+			If the game can not be found: </br>
+			***Game {gameID} does not exist*** </br>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			External Accesses
+		</td>
+		<td> 
+			Event, Game
+		</td>
+	</tr>
+	<tr>
+		<td>
+			External Changes
+		</td>
+		<td>
+			None
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Other Methods Invoked
+		</td>
+		<td> 
+			None
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Description
+		</td>
+		<td> 
+			This method returns an array of all of the cups remaining on one side of a current game.
+		</td>
+	</tr>
+</table>
