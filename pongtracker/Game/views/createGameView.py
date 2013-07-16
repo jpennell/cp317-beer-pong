@@ -17,14 +17,14 @@ def createNewGameRequest(request):
         
     """
     
+    # get session user
     if 'username' in request.session:
         username = request.session['username']
-        print (username)
-        return render(request, 'game/create.html',{'username':username})
     
+    # on POST
     if request.method == 'POST':
         
-        errFlag = 0
+        errFlag = False
         
         #--------------------------------------------------------------------------
         # get POSTed data
@@ -33,13 +33,31 @@ def createNewGameRequest(request):
         regUser = [request.POST.get("chkRegister2"), request.POST.get("chkRegister3"), request.POST.get("chkRegister4")]
         emails = [request.POST.get("email2"), request.POST.get("email3"), request.POST.get("email4")]
         
+        print("usernames", usernames)
+        
+        # check for blank usernames
+        errFlag = _chkBlank(usernames)
+        
+        # there was a blank username
+        if (errFlag):
+            print("Blank username")
+            errMess = "Please fill in all usernames."
+            return render(request, 'game/create.html',
+                          {'errMess':errMess,
+                           'username':usernames[0],
+                           'username2':usernames[1],
+                           'username3':usernames[2],
+                           'username4':usernames[3]})
+        
         # check for duplicate usernames
         errFlag = _chkDup(usernames)
         
         # duplicate users entered        
-        if (errFlag == 1):     
+        if (errFlag):    
+            print("Duplicates")
+            errMess = "Duplicate usernames are not allowed."
             return render(request, 'game/create.html',
-                          {'errFlag':errFlag,
+                          {'errMess':errMess,
                            'username':usernames[0],
                            'username2':usernames[1],
                            'username3':usernames[2],
@@ -48,11 +66,22 @@ def createNewGameRequest(request):
         # get users from database
         users = [_findUser(usernames[0]), _findUser(usernames[1]), _findUser(usernames[2]), _findUser(usernames[3])]
         
-        errFlag, index = _chkUsersExist(users)
+        errFlag, index = _chkUsersExist(users, regUser)
         
         # one or more users entered don't exist    
-        if (errFlag == 1):     
-            return render(request, 'game/create.html',{'errFlag':errFlag})
+        if (errFlag):  
+            print("User does not exist")  
+            nullUserMess = ''
+            for i in index:
+                nullUserMess += usernames[i]
+            print(nullUserMess)
+            errMess = "The following are not registered users on Pong Tracker: " + nullUserMess
+            return render(request, 'game/create.html',
+                          {'errMess':errMess,
+                           'username':usernames[0],
+                           'username2':usernames[1],
+                           'username3':usernames[2],
+                           'username4':usernames[3]})
         
         # register users not already registered
         _regUsers(regUser, usernames, emails)       
@@ -60,12 +89,15 @@ def createNewGameRequest(request):
         #--------------------------------------------------------------------------
         # no errors; create game
         #--------------------------------------------------------------------------      
-        if (errFlag == 0):
+        if not(errFlag):
             game = _createNewGame(users[0], users[1], users[2], users[3])
             
             return redirect('/game/' + str(game.id))
         else:
             return render(request, 'game/create.html')
+        
+    else:
+        return render(request, 'game/create.html',{'username':username})
 
 
 def _createNewGame(user1, user2, user3, user4):
@@ -125,7 +157,29 @@ def _findUser(username):
         user = None
     finally:
         return user
+    
 
+def _chkBlank(usernames):
+    """checks for blank usernames
+
+    Keyword arguments:
+    usernames -- list of strings; usernames entered on form
+    
+    Contributors: Matt Hengeveld
+    
+    Output:     False if no duplicates
+                True if duplicates
+        
+    """
+    
+    errFlag = False;
+    
+    for x in range(len(usernames)):
+        if usernames[x] == '':
+             errFlag = True
+             
+    return errFlag
+    
 
 def _chkDup(usernames):
     """checks for duplicate usernames
@@ -135,16 +189,16 @@ def _chkDup(usernames):
     
     Contributors: Matt Hengeveld
     
-    Output:     0 if no duplicates
-                1 if duplicates
+    Output:     False if no duplicates
+                True if duplicates
         
     """
     
-    errFlag = 0;
+    errFlag = False;
     
-    for x in range(3):
+    for x in range(len(usernames) - 1):
         if (usernames.count(usernames[x]) > 1):
-            errFlag = 1
+            errFlag = True
                 
     return errFlag
 
@@ -158,19 +212,19 @@ def _chkUsersExist(users, regUser):
     
     Contributors: Matt Hengeveld
     
-    Output:     0 if a user does not exist
-                1 if all users exist
+    Output:     False if a user does not exist
+                True if all users exist
                 index contains index of user(s) that does not exist
         
     """
     
-    errFlag = 0;
-    index = None;
+    errFlag = False
+    index = []
    
-    for x in range(3):
+    for x in range(len(users) - 1):
         if regUser[x] is None:
             if users[x+1] is None:
-                errFlag = 1
+                errFlag = True
                 index.append(x+1)
     
     return errFlag, index
@@ -189,7 +243,7 @@ def _regUsers(regUser, usernames, emails):
         
     """
     
-    for x in range(usernames):
+    for x in range(len(usernames)):
         if regUser[x] is not None:
             user = _findUser(usernames[x])
             print(usernames + "/" + user + "/" + regUser)
