@@ -72,3 +72,4 @@ class PongUser(AbstractUser):
     institution = models.ForeignKey(Institution,null = True, blank = True)
     is_banned = models.BooleanField(default=False)
     has_logged_in = models.BooleanField(default = False)
+    
