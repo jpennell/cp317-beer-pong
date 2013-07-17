@@ -6,20 +6,19 @@ from django.core.context_processors import csrf
 from django.template import RequestContext
 
 
-
-def viewProfile(request,username):
+def viewProfile( request, username = None ):
     """{{Description}}
 
     Keyword arguments:
-    variable -- description 
-    variable -- description 
-    
+    variable -- description
+    variable -- description
+
     Contributors:
     Quinton Black
-    
+
     Output:
-        
+
     """
-        
-    return render(request,'user/profile.html')
-    
+    if username == None:
+        username = request.session['username']
+    return render( request, 'user/profile.html' )
