@@ -18,7 +18,7 @@
 		<td>Output Arguments</td> <td>controller</td>
 	</tr>
 	<tr>
-	<td>Error Messages</td> <td>If the object fails to connect to the User table:</br>
+	<td>Error Messages</td> <td>If this object fails to connect to the User table:</br>
 								***An error occurred in processing your login request.***</td>
 	</tr>
 	<tr>
@@ -60,8 +60,10 @@
 	<tr>
 	<td>Error Messages</td> <td>If the username and password combination isn't valid:</br>
 								***Invalid username/password.***</br>
-								If the combination is correct but the User is banned:</br>
-								***Cannot log you in. You have been banned!***</td>
+								If the combination is valid but the User is banned:</br>
+								***Cannot log you in. You have been banned!***</br>
+								If the combination is valid but the User's account has been deactivated:</br>
+								***Cannot log you in. Your account was deactivated.***</td>
 	</tr>
 	<tr>
 		<td>External Accesses</td> <td>User</td>
@@ -70,13 +72,13 @@
 		<td>External Changes</td> <td>none</td>
 	</tr>
 	<tr>
-		<td>Other Methods Invoked</td> <td>authenticate, login, isBanned</td>
+		<td>Other Methods Invoked</td> <td>authenticate, login, isBanned, isActive</td>
 	</tr>
 	<tr>
 		<td>Description</td> <td>Validates the User's login request using Django's authenticate function and performs</br> 
 								 the login with Django's login function.</br>
 								 </br>
-								 Banned Users are not allowed to log in.</br>
+								 Banned and deactivated Users are not allowed to log in.</br>
 								 </td>
 	</tr>
 </table>

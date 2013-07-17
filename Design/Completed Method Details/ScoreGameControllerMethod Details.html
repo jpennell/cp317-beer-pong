@@ -293,7 +293,7 @@
 		<td>Output Arguments</td> <td>none</td>
 	</tr>
 	<tr>
-		<td>Error Messages</td> <td>if Game does not exist:
+		<td>Error Messages</td> <td>if Game does not exist:</br>
 									***Game does not exist***</td>
 	</tr>
 	<tr>
@@ -332,8 +332,10 @@
 		<td>Output Arguments</td> <td>none</td>
 	</tr>
 	<tr>
-	<td>Error Messages</td> <td> if the Game does not exist
-							<br>***Game does not exist*** </td>
+	<td>Error Messages</td> <td> if the Game does not exist:</br>
+							***Game does not exist***</br>
+							if the Game has already ended:</br>
+							***Game already over***</td>
 	</tr>
 	<tr>
 		<td>External Accesses</td> <td>Event, Game, EventType</td>
@@ -342,10 +344,10 @@
 		<td>External Changes</td> <td>creates an end game Event, sets Game's confirmedOrDenied flag to True</td>
 	</tr>
 	<tr>
-		<td>Other Methods Invoked</td> <td>obtainGame, setConfirmedOrDenied</td>
+		<td>Other Methods Invoked</td> <td>obtainGame, setConfirmedOrDenied, isGameEnded</td>
 	</tr>
 	<tr>
-		<td>Description</td> <td>if the Game exists, creates an end game Event to indicate that the Game is over, </br>
+		<td>Description</td> <td>if the Game exists and has not ended, creates an end game Event to indicate that the Game is over,</br>
 								 and sets the confirmedOrDenied flag to True to indicate that LifeStats are not to be updated.</td>
 	</tr>
 </table>
