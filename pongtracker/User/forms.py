@@ -1,5 +1,6 @@
 from django import forms
-from django.contrib.auth.models import User
+import datetime
+from User.models import Institution
 
 class EditProfileForm(forms.Form):
     year_choices = []
