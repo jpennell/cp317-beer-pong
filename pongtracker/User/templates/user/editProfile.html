@@ -10,7 +10,8 @@
 <div id="page-content">
 <body>
    <h1>{{ title }}</h1>
-   <form method='post' action='.'>
+   <form method='post' action='/profile/edit'>
+    {% csrf_token %}
        <!-- display the form fields -->
        {{ form.as_p }}
 
