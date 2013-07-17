@@ -6,5 +6,4 @@
 
 .pydevproject
 *.pyc
-local_settings.py
-settings.py
+pongtracker/local_settings.py
