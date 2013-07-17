@@ -5,31 +5,6 @@
 {% block head %}
 <link href='{% static 'css/profile-styles.css' %}' rel='stylesheet' type='text/css'>
 <link href='{% static 'css/editprofile-styles.css' %}' rel='stylesheet' type='text/css'>
-
-<style>
-	#edit-profile-form {
-		min-width: 100%;
-	}
-	#edit-profile-form tr {
-		border-top: 1px dotted #777777;
-	}
-	#edit-profile-form input, #edit-profile-form select {
-		margin: 10px 0px;
-	}
-	#edit-profile-form span {
-		font-weight: bold;
-	}
-	#edit-profile-form td:first-child {
-        width: 300px;
-    }
-    #edit-profile-form td:nth-child(2) {
-        width: 300px;
-    }
-    #edit-profile-form td:nth-child(3) {
-        color: red;
-    }
-
-</style>
 {% endblock %}
 
 {% block pagecontent %}
@@ -49,7 +24,9 @@
                     {{ field }}
                 </td>
                 <td>
-                    {{ field.errors }}
+                    {% if field.errors %}
+                    <div class="error">{{ field.errors }}</div>
+                    {% endif %}
                 </td>
             </tr>
             {% endfor %}
