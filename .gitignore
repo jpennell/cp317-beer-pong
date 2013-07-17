@@ -1,9 +1,9 @@
 .project
 .DS_Store
 *.prefs
-
 *.swp
-
 .pydevproject
 *.pyc
 pongtracker/local_settings.py
+
+pongtracker/pongtracker/local_settings.py

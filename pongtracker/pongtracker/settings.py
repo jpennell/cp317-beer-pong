@@ -95,6 +95,11 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
  )
 
+TEMPLATE_CONTEXT_PROCESSORS = ( 
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.request',
+ )
+
 MIDDLEWARE_CLASSES = ( 
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -121,7 +126,7 @@ TEMPLATE_DIRS = (
     "/Statistics/templates",
     "/User/templates",
     "/Utilities/templates",
-     )
+ )
 
 INSTALLED_APPS = ( 
     'django.contrib.auth',
@@ -141,7 +146,6 @@ INSTALLED_APPS = (
     'Statistics',
     'Utilities',
     'User',
-
  )
 
 # A sample logging configuration. The only tangible logging
