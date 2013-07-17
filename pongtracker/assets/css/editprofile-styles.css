@@ -1,0 +1,23 @@
+#edit-profile-form {
+	min-width: 100%;
+}
+#edit-profile-form tr {
+}
+#edit-profile-form input, #edit-profile-form select {
+	margin: 10px 0px;
+}
+#edit-profile-form .error li {
+	color: red;
+}
+#edit-profile-form td:first-child {
+	width: 300px;
+	font-weight: bold;
+}
+#edit-profile-form td:nth-child(2) {
+	width: 260px;
+}
+#edit-profile-form ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
