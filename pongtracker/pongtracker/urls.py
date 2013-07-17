@@ -17,7 +17,7 @@ urlpatterns = patterns('',
      url(r'^admin/', include(admin.site.urls)),
      url(r'^game/',include('Game.urls')),
      url(r'^',include('User.urls')),
-     url(r'^rules/', TemplateView.as_view(template_name="rules.html")),
+     url(r'^rules/', TemplateView.as_view(template_name="pongtracker/rules.html")),
      url(r'^',include('Statistics.urls')),
      url(r'^$', TemplateView.as_view(template_name="user/index.html")),
 )
