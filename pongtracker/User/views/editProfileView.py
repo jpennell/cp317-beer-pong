@@ -59,10 +59,35 @@ def _updatePassword(password):
     
     return
 
-def _updateUser(username,firstName,lastName,email,height,yearOfGradution,userProfilePhoto,isBanned):
-    user = get_user_model()
-    print(user)
+def _updateUser(username,firstName,lastName,email,height,yearOfGradution,userProfilePhoto,deactivate):
+    """Updates a user with the values provided
+
+    Keyword arguments:
+        username -- The current user's username
+        firstName --The first name to be set
+        lastName --  The last name to be set
+        email --  The emial to be set 
+        height -- The height to be set 
+        yearOfGradution --  The year of graduation to be set
+        userProfilePhoto --  The desired profile photo to be set
+        deactivate --  Whether to deactivate the user or not
+        
+    Contributors:
+    Quinton Black
     
+    Output:
+        None
+        
+    """
+    user = get_user_model().objects.get(username=username)
+    user.setHeight(height)
+    user.setGraduationYear(yearOfGradution)
+    user.setPhoto(userProfilePhoto)
+    user.setFirstName(firstName)
+    user.setLastName(lastName)
+    user.setEmail(email)
+    user.setIsactive(deactivate)
+    user.save()
     return
 
 
