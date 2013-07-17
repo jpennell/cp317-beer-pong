@@ -40,15 +40,18 @@
     <p style = "padding-bottom:20px">
         Please enter a valid username in each field or register any users that are not already on Pong Tracker.
     </p>
-    <form method="post" action=".">
+    <form method="POST" action=".">
+    
         {% csrf_token %}
+        
+        Error: {{ errMess }}
         
         <table width="80%" align="center">
             <tr>
                 <td width="40%">
                     <h3>Team 1</h3>
                 </td>
-                <td width="20%">
+                <td width="10%">
                     &nbsp;
                 </td>
                 <td width="40%">
@@ -58,18 +61,18 @@
             <tr>
                 <td width="40%" valign="top">
                     <label for="username1"> <strong>Player 1: </Strong></label>
-                    <b>{{ username }}</b> will be tracking the game.
+                    <span style="font-size:16px;"><strong>{{ username }}</strong></span>  will be tracking the game.
                 </td>
-                <td width = "20%">
+                <td width = "10%">
                     &nbsp;
                 </td>
                 <td width="40%"  valign="top">
                     <label for="username3"> <strong>Player 3: </strong><br/>
-                    <input type="text" name="username3" id="username3" placeholder="Username"></input></label>  
+                    {{ form.username3 }}</input></label> 
                     <input id="register3" name="chkRegister3" onclick="toggle_more3();" type="checkbox"></input>
                     Register to play
                     <div id="moreinfo3" style="display: none;">
-                  		<input name="email3" type="text" placeholder="Email">
+                  		{{ form.email3 }}
                   	</div>
                 </td>
             </tr>
@@ -78,7 +81,7 @@
                 <td width="40%">
                     &nbsp;
                 </td>
-                <td width="10%">
+                <td width="20%">
                     <h3>VS.</h3>
                 </td>
                 <td width="40%">
@@ -89,24 +92,24 @@
             <tr>
                 <td width="40%" valign="top">
                     <label for="username2"> <strong>Player 2: </strong><br/>
-                    <input type="text" name="username2" id="username2" placeholder="Username"></input></label>
+                    {{ form.username2 }}</input></label>
                     <input id="register2" name="chkRegister2" onclick="toggle_more2();" type="checkbox"></input>
                     Register to play
                     <div id="moreinfo2" style="display: none;">
-                   		<input name="email2" type="text" placeholder="Email">
+                   		{{ form.email2 }}
                    		<br>
                     </div>
                 </td>
-                <td width="20%">
+                <td width="10%">
                     &nbsp;
                 </td>
                 <td width="40%"  valign="top">
                     <label for="username4"> <strong>Player 4: </strong><br/>
-                    <input type="text" name="username4" id="username4" placeholder="Username"></input></label>
+                    {{ form.username4 }}</input></label>
                     <input id="register4" name="chkRegister4" onclick="toggle_more4();" type="checkbox"></input>
                     Register to play
                     <div id="moreinfo4" style="display: none;">
-                    	<input name="email4" type="text" placeholder="Email">
+                    	{{ form.email4 }}
                     	<br>
                     </div>
                 </td>

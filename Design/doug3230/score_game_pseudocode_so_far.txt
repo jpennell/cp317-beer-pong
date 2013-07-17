@@ -1,0 +1,45 @@
+def readGameStatusForTeam(int gameID):
+	Game game = obtainGame(gameID)
+	if (game == None):
+		throw GameDNEException()
+	
+	Team teams = [game.getTeam1(), game.getTeam2()]
+	team1Cups = blablabla
+	team2Cups = blablabla
+	
+	#display Game UI based on what cups have been hit
+	return
+
+def processEvent(int gameID, EventType action, String username, int teamNumber, int cupSunk1, int cupSunk2=None):
+	Game game = obtainGame(gameID)
+	if (game == None):
+		throw GameDNEException()
+
+	User user = obtainUser(username)
+	if (user == None):
+		throw UserDNEException()
+	
+	Team team = game.getTeam(teamNumber)
+	if (user != team.getUser1() and user != team.getUser2()):
+		throw UserNotInGameException()
+
+	boolean[] cupsHit  = getMostRecentCupFormation(gameID, teamNumber)
+	if (cupsHit[cupSunk1 - 1]):
+		throw Cup1AlreadySunkException()
+	elif (cupSunk2 != None and cupsHit[cupSunk2 - 1]):
+		throw Cup2AlreadySunkException()
+	elif (cupSunk2 == None and action == BOUNCE_SHOT):
+		throw BadBounceShotException()
+	elif (cupSunk2 != None and action != BOUNCE_SHOT):
+		throw CantSink2CupsException()
+
+	Event gameEvent = initializeNewEvent(gameID, action, username, teamNumber, cupSunk1, cupSunk2)			
+	#record the new GameEvent, reload the game page
+	return
+		
+
+def initializeNewEvent(int gameID, EventType action, User user, int teamNumber, boolean[] cupsAlreadyHit int cupSunk1, int cupSunk2 = None):
+	
+	gameEvent = new Event()
+	
+	return gameEvent

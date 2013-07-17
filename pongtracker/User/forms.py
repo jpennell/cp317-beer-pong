@@ -4,6 +4,7 @@ from User.models import Institution
 
 class EditProfileForm( forms.Form ):
     year_choices = []
+
     for r in range( ( datetime.datetime.now().year ), ( datetime.datetime.now().year + 11 ) ):
         year_choices.append( ( r, r ) )
 
