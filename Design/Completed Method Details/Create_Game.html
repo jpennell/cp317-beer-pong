@@ -20,22 +20,22 @@
 		<td>Output Arguments</td> <td>none</td>
 	</tr>
 	<tr>
-	<td>Error Messages</td> <td> if this object fails to connect to the Game, Team and User tables
+	<td>Error Messages</td> <td>If this object fails to connect to the Game, Team and User tables
 							<br>***An error occurred in processing your game creation request.*** </td>
 	</tr>
 	<tr>
 		<td>External Accesses</td> <td>Game table, Team table, User table</td>
 	</tr>
 	<tr>
-		<td>External Changes</td> <td>may initialize a connection to the Game, User and Team tables</td>
+		<td>External Changes</td> <td>May initialize a connection to the Game, User and Team tables.</td>
 	</tr>
 	<tr>
 		<td>Other Methods Invoked</td> <td>none</td>
 	</tr>
 	<tr>
 		<td>Description</td> <td>Initializes an instance of class CreateGameController.</br>
-								 After construction, the object is ready to add entries to the Game and Team tables </br>
-								 and check the User table for validating usernames and retrieving their corresponding User objects.</td>
+								 After construction, the object is ready to add entries to the Game and Team tables</br>
+								 and check the User table for validating usernames.</td>
 	</tr>
 </table>
 
@@ -78,15 +78,8 @@
 		<td>Other Methods Invoked</td> <td>arrayHasDuplicates, obtainUser, initializeNewGame</td>
 	</tr>
 	<tr>
-		<td>Description</td> <td>Obtains the 4 input player usernames from the HTML form.</br>
-								 They are placed in an array which is checked for duplicates by the Utility function arrayHasDuplicates.</br>
-								 An attempt to obtain the User objects that correspond to those usernames by calling the obtainUser Utility function</br>
-								 is then made.</br>
-								 If all 4 input usernames correspond to distinct valid User objects, the helper method initializeNewGame</br>
+		<td>Description</td> <td>If all 4 input usernames correspond to distinct valid User objects, the helper method initializeNewGame</br>
 								 is called and a new Game is created.</br>
-								 </br>
-								 Upon success, the User is brought to the new Game's score game page.</br>
-								 If an error occurred, they are brought back to the create game page with the error message.</td>
 	</tr>
 </table>
 </br>
@@ -108,7 +101,7 @@
 		<td>Input Arguments</td> <td>User user1, User user2, User user3, User user4</td>
 	</tr>
 	<tr>
-		<td>Output Arguments</td> <td>none</td>
+		<td>Output Arguments</td> <td>newGame</td>
 	</tr>
 	<tr>
 	<td>Error Messages</td> <td>none</td>
@@ -123,8 +116,7 @@
 		<td>Other Methods Invoked</td> <td>none</td>
 	</tr>
 	<tr>
-		<td>Description</td> <td>Creates two Teams with user1 & user2 on one Team, and user3 & user4 on the other.</br>
-								 These two Teams are used to create a new Game which is then returned.</td>
+		<td>Description</td> <td>Creates a game with user1 & user2 on one Team and user3 & user4 on the other.</td>
 	</tr>
 </table>
 

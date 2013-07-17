@@ -61,7 +61,7 @@ def registerNewUser( request ):
                                                              'email':email}, 
                                   context_instance = RequestContext( request ) )
 
-    return  render_to_response( 'user/index.html', context_instance = RequestContext( request ) )
+    return  render(request, 'user/index.html' )
 
 #Needs to be done better
 def _validateEmail( email ):
