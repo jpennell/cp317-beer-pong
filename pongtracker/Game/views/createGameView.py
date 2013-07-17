@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from Game.models import Game, Team
 from django.shortcuts import render, redirect
 from Utilities.views import *
+from Game.forms import CreateGameForm
 
 def createNewGameRequest(request):
     """validates input; creates a new game based on valid input
@@ -16,6 +17,7 @@ def createNewGameRequest(request):
     Output:
         
     """
+    form = CreateGameForm()
     
     # get session user
     if 'username' in request.session:
@@ -101,7 +103,7 @@ def createNewGameRequest(request):
             return render(request, 'game/create.html')
         
     else:
-        return render(request, 'game/create.html',{'username':username})
+        return render(request, 'game/create.html',{'username':username, 'form': form})
 
 
 def _createNewGame(user1, user2, user3, user4):
