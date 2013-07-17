@@ -12,15 +12,17 @@
     <div id="container">
         <!------ LOGIN HEADER --------->
         <div id="login-header">
-            <!--- IF LOGGED IN...
+            {% if 'username' in request.session %}
 
             <form name="logout" action="" class="form-inline" method="post">
-            <label>Welcome, <span id="player-name">{{username}}</span></label>
-            <button name="logout" class="btn" type="submit">
-            Log Out
-            </button>
+                <label>Welcome, <span id="player-name">{{ request.session.username }}</span></label>
+                <button name="logout" class="btn" type="submit">
+                    Log Out
+                </button>
             </form>
-            ELSE .... --->
+
+            {% else %}
+
             {{ state }}
             <form name="login" action="/login/" class="form-inline" method="post">
                 {% csrf_token %}
@@ -34,6 +36,8 @@
                     Log In
                 </button>
             </form>
+
+            {% endif %}
         </div>
 
         <!------ HEADER --------->
@@ -46,7 +50,7 @@
                     <td id="nav">
                         <ul>
                             {% block navigation %}
-                            <li><a href="#">Profile/Stats</a></li>
+                            <li><a href="/profile">Profile</a></li>
                             <li><a href="/statistics/leaderboard/">Leaderboard</a></li>
                             <li><a href="#">Create a Game</a></li>
                             <li><a href="#">Rules</a></li>
