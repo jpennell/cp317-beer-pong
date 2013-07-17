@@ -71,3 +71,4 @@ class PongUser(AbstractUser):
     graduation_year = models.IntegerField(('year'), max_length=4, choices=YEAR_CHOICES, default=datetime.datetime.now().year+1)
     institution = models.ForeignKey(Institution,null = True, blank = True)
     is_banned = models.BooleanField(default=False)
+    has_logged_in = models.BooleanField(default = False)
