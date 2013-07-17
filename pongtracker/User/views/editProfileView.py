@@ -1,34 +1,40 @@
-from django.shortcuts import render_to_response, render
-from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib.auth.models import User
-from User.models import Institution
-from django.core.context_processors import csrf
-from django.template import RequestContext
+from django.shortcuts import redirect, render
+from User.forms import EditProfileForm
+from django.template import Context
 
-def editProfile( request ):
+
+def editProfile(request):
     """{{Description}}
 
     Keyword arguments:
-    variable -- description
-    variable -- description
-
+    variable -- description 
+    variable -- description 
+    
     Contributors:
     Quinton Black
-
+    
     Output:
-
+        
     """
+    form = EditProfileForm()
+    context = Context({'title': 'Edit Profile', 'form': form})
+    
+    return render(request,'user/editProfile.html',context)
 
 
-    return render( request, 'user/editProfile.html', {'username': username} )
 
-def _updatePassword( password ):
 
+def _updatePassword(password):
+    
     return
 
-def _updateUser( username, password, firstName, lastName, email, height, yearOfGradution, userProfilePhoto, isBanned ):
-
-
-
+def _updateUser(username,password,firstName,lastName,email,height,yearOfGradution,userProfilePhoto,isBanned):
+    
+    
+    
     return
+
+
 

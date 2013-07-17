@@ -1,16 +1,19 @@
 from django import forms
-from django.contrib.auth.models import User
+import datetime
+from User.models import Institution
 
 class EditProfileForm(forms.Form):
     year_choices = []
-    for r in range((datetime.datetime.now().year),(datetime.datetime.now().year+10)):
+    for r in range((datetime.datetime.now().year),(datetime.datetime.now().year+11)):
         year_choices.append((r,r))
         
-    firstname = forms.CharField(max_length=250)
-    lastname = forms.CharField(max_length=250)
-    email = forms.EmailField(max_length=250)
-    height = forms.SmallIntegerField(null = True, blank = True)
-    photo = forms.CharField(max_length=100, null = True, blank = True)
-    graduation_year = forms.IntegerField(('year'), max_length=4, choices=year_choices, default=datetime.datetime.now().year+1)
-    institution = forms.ModelChoiceField(Institution.object.all())
-    
+    year_tuple = (year_choices)
+        
+    firstname = forms.CharField(label="First Name",max_length=250)
+    lastname = forms.CharField(label="Last Name",max_length=250)
+    email = forms.EmailField(label="Email",max_length=250)
+    height = forms.IntegerField(label="Height")
+    institution = forms.ModelChoiceField(Institution.objects.all(),empty_label="No institutions")
+    graduation_year = forms.ChoiceField(choices=year_tuple)
+    photo = forms.ImageField(label="Profile Photo")
+    deactivate = forms.BooleanField(label="I would like to deactivate my account.")

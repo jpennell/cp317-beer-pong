@@ -14,7 +14,8 @@
         <div id="login-header">
             {% if 'username' in request.session %}
 
-            <form name="logout" action="" class="form-inline" method="post">
+            <form name="logout" action="/logout" class="form-inline" method="post">
+                {% csrf_token %}
                 <label>Welcome, <span id="player-name">{{ request.session.username }}</span></label>
                 <button name="logout" class="btn" type="submit">
                     Log Out
@@ -23,7 +24,6 @@
 
             {% else %}
 
-            {{ state }}
             <form name="login" action="/login/" class="form-inline" method="post">
                 {% csrf_token %}
                 {% if next %}
@@ -39,6 +39,12 @@
 
             {% endif %}
         </div>
+
+        {% if state %}
+        <div class="alert">
+            {{ state }}
+        </div>
+        {% endif %}
 
         <!------ HEADER --------->
         <div id="header">
@@ -77,6 +83,8 @@
             </table>
         </div>
     </div>
+    <script src='{% static "js/bootstrap.js" %}' type="text/javascript"></script>
+    <script src='{% static "js/bootstrap-responsive.js" %}' type="text/javascript"></script>
 </body>
 </html>
 
