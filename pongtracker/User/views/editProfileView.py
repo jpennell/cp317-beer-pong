@@ -20,10 +20,9 @@ def editProfile(request):
     Output:
         
     """
-    
-  
+
     if not request.user.is_authenticated():
-         return redirect('/index/')
+         return redirect('/login/')
     
     if request.method == 'POST':
         
