@@ -37,7 +37,7 @@
 <body>
 	<a id="top"></a>
 	<div id="content">
-		<h1 class="title">Pong Tracker Design Document</h1>
+		<h1 class="title">Pong Tracker DesignDocument</h1>
 
 			<h4>Authors</h4>
 			<ul id="authors">
@@ -60,6 +60,7 @@
 				<li><a href="#intro">Introduction</a></li>
 				<li><a href="#architecture">System Architecture Design</a></li>
 				<li><a href="#methods">Detailed Method Descriptions</a></li>
+				<li><a href="#django">Django Tool</a></li>
 				<li><a href="#interface">User Interface Design</a></li>
 				<li><a href="#references">References</a></li>
 				<li><a href="#rev-history">Revision History</a></li>
@@ -71,16 +72,34 @@
 				<p></p>
 
 			<section>
-				<h3 class="heading2"><span class="number">1.1</span>Design Overview</h3>
-				<p></p>
+				<h3 class="heading2"><span class="number">1.1</span>Document Overview</h3>
+				<p>This is the Design document for Pong Tracker, an online website which 
+				allows users to track their Pong playing skills and compare them to others.
+				This is part of the project documentation for CP317 during the Spring 2013 class.
+				<br>
+				<br>
+				The first part is an overview of the governing guidelines for this project. The second 
+				part is about the logical design involving the architecture of Pong Tracker
+				and how various elements interact. The contents of each package is made 
+				explicit as is the database which the project will use. The third part 
+				covers the technical design being the methods which are to be created. The
+				fourth part will cover Django, the predominent tool which will be used in 
+				implementation. The fifth part will act as an introduction to some front end 
+				prototyping concluding with the final parts being references and SQA Version History.</p>
+			</section>
+			
+			<section>
+				<h3 class="heading2"><span class="number">1.2</span>Target Audience</h3>
+				<p>This document is for the technical team as it contains detailed information regarding
+				the implementation procedures.</p>
 			</section>
 
 			<section>
-				<h3 class="heading2"><span class="number">1.2</span>Guidelines</h3>
+				<h3 class="heading2"><span class="number">1.3</span>Guidelines</h3>
 				<p></p>
 
 				<section>
-					<h4 class="heading3"><span class="number">1.2.1</span>Technical Guidelines</h4>
+					<h4 class="heading3"><span class="number">1.3.1</span>Technical Guidelines</h4>
 					<p>
 						Pong Tracker is hosted on a Sun Microsystem Linux Server with a MySQL database. The Linux server must be able to render HTML 5, CSS 3, Python 2.7, and JavaScript. The server is also required to integrate with the Django web framework and Github. Django and python were selected as the development team has python experience. Django is a strong web framework with many tools built in such as sessions, and database APIs. The only concern is the implemention is using python 2.7 when the current version is 3.3.2. 2.7 has been selected because Django support for 3.3.2 is currently only an experimental version.
 					</p>
@@ -105,8 +124,11 @@
 				</section>
 
 				<section>
-					<h4 class="heading3"><span class="number">1.2.2</span>Ethical & Legal Guidelines</h4>
-					<p></p>
+					<h4 class="heading3"><span class="number">1.3.2</span>Ethical & Legal Guidelines</h4>
+					<ul>
+						<li>The application will make use of libraries created by third-party developers; however, to respect intellectual property rights, the application will be developed using libraries under open source licenses.</li>
+						<li>All coding must be accompanied by comments.</li>
+					</ul>
 				</section>
 			</section>
 		</section>
@@ -304,18 +326,40 @@
 			<span class="to-top"><a href="#top">Back to Top</a></span>
 		</section>
 
-		<section id="interface">
-			<h2 class="heading1"><span class="number">4</span>Interfaces</h2>
-			<p></p>
-
+		<section id="django">
+			<h2 class="heading1"><span class="number">4</span>Django Tool</h2>
 			<section>
-				<h3 class="heading2"><span class="number">4.1</span>For Front End to Setup</h3>
+				<h3 class="heading2"><span class="number">4.1</span>Tool Description & Functionality</h3>
+			</section>
+			<section>
+				<h3 class="heading2"><span class="number">4.2</span>How Django Will Be Used</h3>
+			</section>
+			<section>
+				<h3 class="heading2"><span class="number">4.3</span>Benefits to Django</h3>
+			</section>
+			
+		</section>
+
+		<section id="interface">
+			<h2 class="heading1"><span class="number">5</span>Interfaces</h2>
+			
+			<section>
+				<h3 class="heading2"><span class="number">5.1</span>Edit Profile</h3>
+			</section>
+			<section>
+				<h3 class="heading2"><span class="number">5.2</span>Forgot Password</h3>
+			</section>
+			<section>
+				<h3 class="heading2"><span class="number">5.3</span>In-Game</h3>
+			</section>
+			<section>
+				<h3 class="heading2"><span class="number">5.4</span>Leaderboard</h3>
 			</section>
 
 		</section>
 
 		<section id="references">
-			<h2 class="heading1"><span class="number">5</span>References</h2>
+			<h2 class="heading1"><span class="number">6</span>References</h2>
 
 			<p>
 				This design document takes ideas from the following design project documentation:
@@ -339,7 +383,7 @@
 
 
 		<section id="rev-history">
-			<h2 class="heading1"><span class="number">6</span>Revision History</h2>
+			<h2 class="heading1"><span class="number">7</span>Revision History</h2>
 
 			<p>
 				Revision history for the Design Document can be found on the

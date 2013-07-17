@@ -23,6 +23,7 @@ h1, h2, h3, h4, h5 {
 	display: block;
 	text-align: right;
 	height: 30px;
+	margin-bottom: 10px;
 }
 #login-header p {
 	display: inline;
@@ -61,7 +62,7 @@ h1, h2, h3, h4, h5 {
 
 /* Header styling */
 #header {
-	margin-top: 40px;
+	margin-top: 30px;
 	padding-bottom: 10px;
 	border-bottom: 1px solid #888;
 	margin-bottom: 30px;

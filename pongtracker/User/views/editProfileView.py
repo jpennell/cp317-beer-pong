@@ -1,9 +1,9 @@
-from django.shortcuts import render_to_response
-from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib.auth.models import User
-from User.models import Institution
-from django.core.context_processors import csrf
-from django.template import RequestContext
+from django.shortcuts import redirect, render
+from User.forms import EditProfileForm
+from django.template import Context
+
 
 def editProfile(request):
     """{{Description}}
@@ -18,9 +18,13 @@ def editProfile(request):
     Output:
         
     """
+    form = EditProfileForm()
+    context = Context({'title': 'Edit Profile', 'form': form})
     
-    
-    return render(request,'user/editProfile.html',{'username': username})
+    return render(request,'user/editProfile.html',context)
+
+
+
 
 def _updatePassword(password):
     
@@ -31,4 +35,6 @@ def _updateUser(username,password,firstName,lastName,email,height,yearOfGradutio
     
     
     return
+
+
 

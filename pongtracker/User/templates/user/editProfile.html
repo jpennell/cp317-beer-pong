@@ -8,6 +8,16 @@
 
 {% block pagecontent %}
 <div id="page-content">
+<body>
+   <h1>{{ title }}</h1>
+   <form method='post' action='.'>
+       <!-- display the form fields -->
+       {{ form.as_p }}
+
+       <!-- submit button -->
+       <input type='submit'>
+   </form>
+</body>
     <p>
         You may edit the fields below, do not forget to save after making changes.
     </p>
