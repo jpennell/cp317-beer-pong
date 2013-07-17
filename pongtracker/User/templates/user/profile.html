@@ -12,7 +12,22 @@
     <table id="profile">
         <tr id="personal-info">
             <td>
-                <h2 class="player-name">{{ request.session.username }}</h2>
+                <table>
+                    <tr>
+                        <td>
+                            <h2 class="player-name"> {% if username %}
+                            {{ username }}
+                            {% else %}
+                            {{ request.session.username }}
+                            {% endif %} </h2>
+                        </td>
+                        <td>
+                            {% if request.session.username %}
+                            <a href="edit">Edit profile</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </table>
             </td>
             <td colspan="2">
                 <table id="personal-stats">
