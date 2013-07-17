@@ -19,6 +19,9 @@ def viewProfile( request, username = None ):
     Output:
 
     """
+    print(username)
+    
+    
     if username == None:
         username = request.session['username']
     return render( request, 'user/profile.html' )

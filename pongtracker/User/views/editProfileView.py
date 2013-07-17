@@ -6,6 +6,7 @@ from django.template import Context
 from django.contrib.auth import get_user_model
 
 
+
 def editProfile(request):
     """
     {{Description}}
@@ -78,7 +79,9 @@ def _updateUser(username,firstName,lastName,email,height,yearOfGradution,userPro
         None
         
     """
+    
     user = get_user_model().objects.get(username=username)
+      
     user.setHeight(height)
     user.setGraduationYear(yearOfGradution)
     user.setPhoto(userProfilePhoto)
