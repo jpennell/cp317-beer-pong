@@ -9,10 +9,10 @@ class EditProfileForm(forms.Form):
         
     year_tuple = (year_choices)
         
-    firstname = forms.CharField(max_length=250)
-    lastname = forms.CharField(max_length=250)
-    email = forms.EmailField(max_length=250)
-    height = forms.IntegerField(max)
+    firstname = forms.CharField(label="First Name",max_length=250)
+    lastname = forms.CharField(label="Last Name",max_length=250)
+    email = forms.EmailField(label="Email",max_length=250)
+    height = forms.IntegerField(label="Height")
     institution = forms.ModelChoiceField(Institution.objects.all(),empty_label="No institutions")
     graduation_year = forms.ChoiceField(choices=year_tuple)
     photo = forms.ImageField(label="Profile Photo")
