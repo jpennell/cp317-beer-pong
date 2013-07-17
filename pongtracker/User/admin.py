@@ -24,7 +24,7 @@ class PongUserAdmin(UserAdmin):
     form = PongUserChangeForm
     add_form = PongUserCreationForm
     fieldsets = UserAdmin.fieldsets + (
-        (None, {'fields': ('is_banned','institution')}),
+        (None, {'fields': ('_is_banned','_institution')}),
     )
 
 admin.site.register(PongUser, PongUserAdmin)

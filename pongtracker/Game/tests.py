@@ -1,7 +1,7 @@
 from django.db import models
 
 from django.test import TestCase
-from mock import MagicMock, call
+from mock import MagicMock#, call
 
 from Game.views.createGameView import _createNewGame
 from Game.models import PongUser, Team, Game

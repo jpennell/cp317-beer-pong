@@ -56,7 +56,7 @@ def loginUser( username, password, request ):
     """
     user = authenticate( username = username, password = password )
     if user is not None:
-        if user.is_active and not user.is_banned:
+        if user.getIsActive() and not user.getIsBanned():
             login( request, user )
             request.session['username'] = username
             return SUCCESS
