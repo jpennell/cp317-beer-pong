@@ -80,11 +80,13 @@
 			Description
 		</td>
 		<td> 
-			This method instantiates a ScoreGameController
+			This method instantiates a ScoreGameController.
 		</td>
 	</tr>
 </table>
+
 <br>
+
 <table border="1">
 	<tr>
 		<td>
@@ -178,7 +180,9 @@
 		</td>
 	</tr>
 </table>
+
 <br>
+
 <table border="1">
 	<tr>
 		<td>
@@ -264,5 +268,84 @@
 		<td> 
 			This method returns an array of all of the cups remaining on one side of a current game.
 		</td>
+	</tr>
+</table>
+
+<br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>ScoreGameController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>goToEndGame</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>None</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td>int gameID</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td>none</td>
+	</tr>
+	<tr>
+		<td>Error Messages</td> <td>if Game does not exist:
+									***Game does not exist***</td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>Game</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td>none</td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td>obtainGame</td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>If the Game with gameID exists, redirects to its end game page</td>
+	</tr>
+</table>
+
+<br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>ScoreGameController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>abortGame</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>public</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>none</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td>int gameID</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td>none</td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td> if the Game does not exist
+							<br>***Game does not exist*** </td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>Event, Game, EventType</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td>creates an end game Event, sets Game's confirmedOrDenied flag to True</td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td>obtainGame, setConfirmedOrDenied</td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>if the Game exists, creates an end game Event to indicate that the Game is over, </br>
+								 and sets the confirmedOrDenied flag to True to indicate that LifeStats are not to be updated.</td>
 	</tr>
 </table>

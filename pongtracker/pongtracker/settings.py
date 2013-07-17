@@ -1,5 +1,5 @@
 # Django settings for pongtracker project.
-
+import sys
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -8,18 +8,34 @@ ADMINS = (
  )
 
 MANAGERS = ADMINS
+print(sys.argv)
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'blac2410',  # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
-        'USER': 'blac2410',
-        'PASSWORD': 'bigtop3',
-        'HOST': 'hopper.wlu.ca',  # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '3306',  # Set to empty string for default.
+if 'test' in sys.argv:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': 'testblac2410',  # Or path to database file if using sqlite3.
+            # The following settings are not used with sqlite3:
+            'USER': 'blac2410',
+            'PASSWORD': 'bigtop3',
+            'HOST': 'hopper.wlu.ca',  # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+            'PORT': '3306',  # Set to empty string for default.
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': 'blac2410',  # Or path to database file if using sqlite3.
+            # The following settings are not used with sqlite3:
+            'USER': 'blac2410',
+            'PASSWORD': 'bigtop3',
+            'HOST': 'hopper.wlu.ca',  # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+            'PORT': '3306',  # Set to empty string for default.
+        }
+    }
+
+
 
 AUTH_USER_MODEL = 'User.PongUser'
 
@@ -95,6 +111,11 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
  )
 
+TEMPLATE_CONTEXT_PROCESSORS = ( 
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.request',
+ )
+
 MIDDLEWARE_CLASSES = ( 
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -121,7 +142,7 @@ TEMPLATE_DIRS = (
     "/Statistics/templates",
     "/User/templates",
     "/Utilities/templates",
-     )
+ )
 
 INSTALLED_APPS = ( 
     'django.contrib.auth',
@@ -141,7 +162,6 @@ INSTALLED_APPS = (
     'Statistics',
     'Utilities',
     'User',
-
  )
 
 # A sample logging configuration. The only tangible logging

@@ -16,17 +16,17 @@
 		<td>Input Arguments</td> <td>none</td>
 	</tr>
 	<tr>
-		<td>Output Arguments</td> <td>none</td>
+		<td>Output Arguments</td> <td>controller</td>
 	</tr>
 	<tr>
-	<td>Error Messages</td> <td> if this object fails to connect to the Game, Event, EventType or LifeStats table
+	<td>Error Messages</td> <td>If this object fails to connect to the Game, Team, Event, EventType or LifeStats table
 							<br>***An error occurred in processing your game confirmation/denial request.*** </td>
 	</tr>
 	<tr>
-		<td>External Accesses</td> <td>Game Table, Team table, Event table, EventType table, LifeStats table, Team table, User table, Ranking table</td>
+		<td>External Accesses</td> <td>Game table, Team table, Event table, EventType table, LifeStats table, User table, Ranking table</td>
 	</tr>
 	<tr>
-		<td>External Changes</td> <td>may initialize a connection to the Game, Event, EventType, Team, User, LifeStats and Ranking tables</td>
+		<td>External Changes</td> <td>May initialize a connection to the Game, Team, Event, EventType, User, LifeStats and Ranking tables</td>
 	</tr>
 	<tr>
 		<td>Other Methods Invoked</td> <td>none</td>
@@ -72,18 +72,18 @@
 		<td>External Accesses</td> <td>Game, Event, EventType</td>
 	</tr>
 	<tr>
-		<td>External Changes</td> <td>none</td>
+		<td>External Changes</td> <td>If successful, the Game's isConfirmedOrDenied flag is set to True.</td>
 	</tr>
 	<tr>
 		<td>Other Methods Invoked</td> <td>obtainGame, isConfirmedOrDenied, isEnded, confirmGame, setConfirmedOrDenied</td>
 	</tr>
 	<tr>
 		<td>Description</td> <td>Using the gameID, obtains the Game with the obtainGame Utility function.</br>
-								 Checks that the Game exists, hasn't already been confirmed/denied and has ended</br>
+								 A valid Game is one that exists, hasn't already been confirmed/denied and has ended</br>
 								 </br>
-								 If the Game is not valid the User is returned to the confirm/deny game page with an error message.</br>
-								 Otherwise, if the User is confirming the Game, confirmGame is called to update the players' Lifestats.</br>
-								 Successfully confirming/denying a Game results in its isConfirmedOrDenied flag being set to being True.</td>
+								 If the Game is valid and the User is confirming the Game, confirmGame is called to update the players' LifeStats and Ranking values.</br>
+								 If a valid Game is being denied, no changes are made to anyone's LifeStats but the Game is still kept on record.</br>
+								 Successfully confirming/denying a Game results in its isConfirmedOrDenied flag being set to True.</td>
 	</tr>
 </table>
 
@@ -119,16 +119,11 @@
 	</tr>
 	<tr>
 		<td>Other Methods Invoked</td> <td>getEvents, getTeam1, getTeam2, getUser1, getUser2, getLifeStats, getUser, linearSearch</br>
-										   updateStatsWithEvent, updateWinsAndLosses, updateRanking</td>
+										   updateStatsWithEvent, winnersAndLosers, updateWinsAndLosses, updateRankings</td>
 	</tr>
 	<tr>
-		<td>Description</td> <td>Obtains the Game's Events, Teams, and Users as well as the Users' corresponding LifeStats objects.</br>
-								 </br>
-								 For each Event (other than the end game Event), obtains the corresponding User and (using the technique of parallel arrays)</br>
-								 performs a linear search to get the LifeStats object that is to be updated, and finally passes the Event and LifeStats</br>
-								 to updateStatsWithEvent.</br>
-								 </br>
-								 Lastly, using the end game Event, updates the Users' wins & losses and TrueSkill values.</td>
+		<td>Description</td> <td>For each Event (other than the end game Event), finds its corresponding User and updates their LifeStats.</br>
+								 Then, using the end game Event, updates the Users' wins & losses and TrueSkill values.</td>
 	</tr>
 </table>
 
@@ -167,8 +162,7 @@
 	</tr>
 	<tr>
 		<td>Description</td> <td>Obtains eventThatOccurred's EventType and updates statsToUpdate based on that.</br>
-								 </br>
-								 <b>Note:</b>This method is meant for processing bounce shots, trick shots, party fouls, cups sunk, redemptions and nothing else!</td>
+								 This method is meant for processing bounce shots, trick shots, party fouls, cups sunk, redemptions and nothing else.</td>
 	</tr>
 </table>
 
@@ -188,7 +182,7 @@
 		<td>Return Type</td> <td><em>None</em></td>
 	</tr>
 	<tr>
-		<td>Input Arguments</td> <td>Event endGameEvent, Team team1, Team team2</td>
+		<td>Input Arguments</td> <td>Event endGameEvent, Team winningTeam, Team losingTeam</td>
 	</tr>
 	<tr>
 		<td>Output Arguments</td> <td>none</td>
@@ -203,12 +197,11 @@
 		<td>External Changes</td> <td>Wins for the winning Users and losses for the losing Users are updated.</td>
 	</tr>
 	<tr>
-		<td>Other Methods Invoked</td> <td>winnersAndLosers, incWins, incLosses</td>
+		<td>Other Methods Invoked</td> <td> incWins, incLosses</td>
 	</tr>
 	<tr>
-		<td>Description</td> <td>The helper function winnersAndLosers is called to figure out which Team won</br>
-								 and which Team lost. The winning Users have the wins attribute in their LifeStats</br>
-								 incremented by 1. The losing Users have the losses attribute in the LifeStats incremented by 1</td>
+		<td>Description</td> <td>The winning Users have the wins attribute in their LifeStats incremented by 1.</br>
+								 The losing Users have the losses attribute in the LifeStats incremented by 1.</td>
 	</tr>
 </table>
 
@@ -219,7 +212,7 @@
 		<td><strong>Class Name</strong></td> <td><strong>ConfirmGameController</strong></td>
 	</tr>
 	<tr>
-		<td>Method Name</td> <td><em>updateRanking</em></td>
+		<td>Method Name</td> <td><em>updateRankings</em></td>
 	</tr>
 	<tr>
 		<td>Method State</td> <td><em>Private</em></td>
@@ -228,30 +221,28 @@
 		<td>Return Type</td> <td><em>None</em></td>
 	</tr>
 	<tr>
-		<td>Input Arguments</td> <td>Event endGameEvent, Team team1, Team team2</td>
+		<td>Input Arguments</td> <td>Event endGameEvent, Team winningTeam, Team losingTeam</td>
 	</tr>
 	<tr>
 		<td>Output Arguments</td> <td>none</td>
 	</tr>
 	<tr>
-	<td>Error Messages</td> <td>none</td>
+		<td>Error Messages</td> <td>none</td>
 	</tr>
 	<tr>
 		<td>External Accesses</td> <td>Rating, Team, User</td>
 	</tr>
 	<tr>
-		<td>External Changes</td> <td>TrueSkill Ratings are updated with their new Mu and Sigma values.</td>
+		<td>External Changes</td> <td>TrueSkill rankings are updated with their new Mu and Sigma values.</td>
 	</tr>
 	<tr>
-		<td>Other Methods Invoked</td> <td>winnersAndLosers, getRating, rate, getMu, setMu, getSigma, setSigma</td>
+		<td>Other Methods Invoked</td> <td>getUser1, getUser2, getRanking, rate, getMu, setMu, getSigma, setSigma</td>
 	</tr>
 	<tr>
-		<td>Description</td> <td>The helper function winnersAndLosers is called to figure out which Team won</br>
-								 and which Team lost. The TrueSkill Ratings of each User are obtained, and new Rating</br>
-								 objects with the new Mu and Sigma values are obtained by calling the rate function from the</br>
-								 TrueSkill library.</br>
+		<td>Description</td> <td>The TrueSkill Rankings of each User are obtained, and new Ranking objects with the new Mu and Sigma values</br>
+								 are obtained by calling the rate function from the TrueSkill library.</br>
 								 </br>
-								 The Mu and Sigma values of the Users' Rating objects become those of the new Rating objects.</td>
+								 The Mu and Sigma values of the Users' Ranking objects become those of the new Ranking objects.</td>
 	</tr>
 </table>
 
@@ -289,8 +280,7 @@
 		<td>Other Methods Invoked</td> <td> getEventType </td>
 	</tr>
 	<tr>
-		<td>Description</td> <td>If team1 won, returns [team1,team2]</br>
-								 otherwise returns [team2, team1].</br>
+		<td>Description</td> <td>If team1 won, returns [team1,team2] otherwise returns [team2, team1].</br>
 								 *This is assuming there are two EventTypes, Team1Win and Team2Win implemented</td>
 	</tr>
 </table>

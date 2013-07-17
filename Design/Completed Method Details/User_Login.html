@@ -15,7 +15,7 @@
 		<td>Input Arguments</td> <td>none</td>
 	</tr>
 	<tr>
-		<td>Output Arguments</td> <td>userLoginController</td>
+		<td>Output Arguments</td> <td>controller</td>
 	</tr>
 	<tr>
 	<td>Error Messages</td> <td>If the object fails to connect to the User table:</br>
@@ -73,12 +73,10 @@
 		<td>Other Methods Invoked</td> <td>authenticate, login, isBanned</td>
 	</tr>
 	<tr>
-		<td>Description</td> <td>Obtains username and password data from the HTML form then validates the User's login request</br>
-								 using Django's authenticate function and performs the login with Django's login function.</br> 
-								 Banned Users are not allowed to log in.</br>
+		<td>Description</td> <td>Validates the User's login request using Django's authenticate function and performs</br> 
+								 the login with Django's login function.</br>
 								 </br>
-								 If the User logs in successfully, they are brought to their profile page.</br>
-								 Otherwise, they are brought back to the login page with the error message.</br>
+								 Banned Users are not allowed to log in.</br>
 								 </td>
 	</tr>
 </table>
