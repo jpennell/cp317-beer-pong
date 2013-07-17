@@ -28,9 +28,9 @@ def loginUserRequest(request):
         password=request.POST.get('password')
         
         userState = loginUser(username,password,request)
-        print (userState," ",username)
+
         if userState==SUCCESS:
-            return  redirect('/profile/',{'username': username})
+            return  redirect('/profile/'+str(username)+'/',{'username': username})
         elif userState == INCORRECT:
             state = "Incorrect Email/Password Combination"
             return render(request,'user/index.html',{'state':state, 'username': username})

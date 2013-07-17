@@ -7,7 +7,7 @@ from django.template import RequestContext
 
 
 
-def viewProfile(request):
+def viewProfile(request,username):
     """{{Description}}
 
     Keyword arguments:
@@ -20,6 +20,6 @@ def viewProfile(request):
     Output:
         
     """
-    
+        
     return render(request,'user/profile.html')
     

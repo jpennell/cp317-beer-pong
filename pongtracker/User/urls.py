@@ -7,8 +7,7 @@ urlpatterns = patterns('',
     
     (r'login', 'User.views.loginUserRequest'),
     (r'logout', 'User.views.logoutUser'),
-    (r'profile/', 'User.views.viewProfile'),
-    (r'profile/(?P<user_id>\d+)/$', 'User.views.viewProfile'),
-    (r'editProfile','User.views.registerNewUser'),
+    (r'profile/(?P<username>\w+)/$', 'User.views.viewProfile'),
+    (r'profile/edit','User.views.editProfile'),
     (r'register','User.views.registerNewUser'),
 )

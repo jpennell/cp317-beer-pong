@@ -18,6 +18,17 @@ def editProfile(request):
     Output:
         
     """
-    username = "teemo"
     
-    return render_to_response('user/editProfile.html',{'username': username},context_instance=RequestContext(request))
+    
+    return render(request,'user/editProfile.html',{'username': username})
+
+def _updatePassword(password):
+    
+    return
+
+def _updateUser(username,password,firstName,lastName,email,height,yearOfGradution,userProfilePhoto,isBanned):
+    
+    
+    
+    return
+
