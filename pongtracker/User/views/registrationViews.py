@@ -1,12 +1,13 @@
 from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate , login
-from django.contrib.auth.models import User
 from django.core.context_processors import csrf
 from django.template import RequestContext
 from django.core.mail import send_mail
+#from User.forms import RegistrationForm
+from User.models import PongUser
 
 
-def registerNewUser( request ):
+def registerNewUser(request):
     """{{Description}}
 
     Keyword arguments:
@@ -22,49 +23,43 @@ def registerNewUser( request ):
     username = email = ""
     emailState = ""
     usernameState = ""
-
     if request.POST:
-        username = request.POST.get( 'username' )
-        email = request.POST.get( 'email' )
+        
+#        form = RegistrationForm(request.POST)
+#        if form.is_valid():
+#            
+#            username = form.cleaned_data['username']
+#            email = form.cleaned_data['email']
+            
+        username = request.POST.get('username')
+        email = request.POST.get('email')
 
         if not _validateUsername(username):
             usernameState = 'User name does not fit the format 30 characters or fewer. Letters, digits and @/./+/-/_ only.'
-            return  render_to_response( 'user/index.html', {'usernameState':usernameState, 
-                                                            'email':email, 
-                                                            'username':username},
-                                       context_instance = RequestContext( request ) )
+            return  redirect('/index/', usernameState=usernameState, username=username, email=email)
     
         if _usernameTaken(username):
-            usernameSuggestions = _suggestUsernames( username )
+            usernameSuggestions = _suggestUsernames(username)
             usernameState = 'That user name is taken, here are some suggestions:'
-            return render_to_response( 'user/index.html', {'usernameState':usernameState,
-                                                           'suggestedUsernames':usernameSuggestions, 
-                                                           'email':email, 
-                                                           'username':username},
-                                      context_instance = RequestContext( request ) )
+            return redirect('/index/', usernameState=usernameState, suggestedUsername=usernameSuggestions, email=email, username=username)
         
-        if not _validateEmail( email ):
+        if not _validateEmail(email):
             emailState = "Please provide a valid email address"
-            return  render_to_response( 'user/index.html', {'emailState':emailState, 
-                                                            'email':email, 
-                                                            'username':username},
-                                       context_instance = RequestContext( request ) )
+            return  redirect('/index/', emailState=emailState, email=email, username=username)
             
         password = _generatePassword()
-        _sendEmail( username, email, password )
-        User.objects.create_user(username=username,email=email,password=password)
+        _sendEmail(username, email, password)
+        PongUser.objects.create(username=username, email=email, password=password)
         
-        authenticate(username,password)
-        login(username,password)
+        authenticate(username, password)
+        login(username, password)
 
-        return render_to_response( 'user/editProfile.html', {'username':username, 
-                                                             'email':email}, 
-                                  context_instance = RequestContext( request ) )
+        return redirect('/profile/edit', username=username)
 
-    return  render(request, 'user/index.html' )
+    return  redirect('/index/', emailState=emailState, email=email, username=username)
 
 #Needs to be done better
-def _validateEmail( email ):
+def _validateEmail(email):
     """{{Description}}
 
     Keyword arguments:
@@ -78,14 +73,14 @@ def _validateEmail( email ):
         
     """
     valid = True
-    if email.count('@')!=1:
+    if email.count('@') != 1:
         valid = False
-    if not email.count('.')>=1:
+    if not email.count('.') >= 1:
         valid = False
     return valid
 
 #Needs to be done better
-def _validateUsername( username ):
+def _validateUsername(username):
     """{{Description}}
 
     Keyword arguments:
@@ -101,7 +96,7 @@ def _validateUsername( username ):
     valid = True
     return valid
 
-def _usernameTaken( username ):
+def _usernameTaken(username):
     """{{Description}}
 
     Keyword arguments:
@@ -116,13 +111,13 @@ def _usernameTaken( username ):
     """
     taken = False
     try:
-        user = User.objects.get( username = username )
+        user = User.objects.get(username=username)
         taken = True
     except:
         pass
     return taken
 
-def _suggestUsernames( username ):
+def _suggestUsernames(username):
     """{{Description}}
 
     Keyword arguments:
@@ -135,18 +130,18 @@ def _suggestUsernames( username ):
     Output:
         
     """
-    suggestions =[]
+    suggestions = []
     number = 0      
-    while len(suggestions)<5:
-        suggestion = username+str(number)
+    while len(suggestions) < 5:
+        suggestion = username + str(number)
         if not _usernameTaken(suggestion):
-            suggestions+=[suggestion]
-        number+=1
+            suggestions += [suggestion]
+        number += 1
             
     return suggestions
 
 
-def _sendEmail( username, email,password ):
+def _sendEmail(username, email, password):
     """{{Description}}
 
     Keyword arguments:

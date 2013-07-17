@@ -22,6 +22,7 @@ def createNewGameRequest(request):
     # get session user
     if 'username' in request.session:
         username = request.session['username']
+        return render(request, 'game/create.html',{'username':username, 'form': form})
     
     # on POST
     if request.method == 'POST':
@@ -125,7 +126,7 @@ def createNewGameRequest(request):
             return render(request, 'game/create.html',{'username':username, 'form': form})
         
     else:
-        return render(request, 'game/create.html',{'username':username, 'form': form})
+        return render(request, 'game/create.html',{'form': form})
 
 
 def _createNewGame(user1, user2, user3, user4):

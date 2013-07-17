@@ -97,7 +97,7 @@
 			<td>
 				<div id="register-form">
 					<h3>Register</h3>
-					<form action="/editProfile/" name="register" method="post">
+					<form action="/register" name="register" method="post">
 						{% csrf_token %} 
 						{{ emailState }} 
 						<input name="email" type="text" placeholder="email" value="{{ email }}"> <br />
