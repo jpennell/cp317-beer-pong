@@ -36,7 +36,8 @@ class EditProfileForm( forms.Form ):
 
     institution = forms.ModelChoiceField( 
         Institution.objects.all(),
-        empty_label = "No institutions"
+        empty_label = "No institutions",
+        required = False
     )
 
     graduation_year = forms.ChoiceField( 
@@ -44,6 +45,9 @@ class EditProfileForm( forms.Form ):
         label = "Graduation Year"
     )
 
-    photo = forms.ImageField( label = "Profile Photo" )
+    photo = forms.ImageField( label = "Profile Photo", required = False )
 
-    deactivate = forms.BooleanField( label = "I would like to deactivate my account." )
+    deactivate = forms.BooleanField( 
+        label = "I would like to deactivate my account.",
+        required = False
+    )
