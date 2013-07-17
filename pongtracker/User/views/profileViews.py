@@ -7,7 +7,7 @@ from django.template import RequestContext
 
 
 
-def viewProfile(request):
+def viewProfile(request,username):
     """{{Description}}
 
     Keyword arguments:

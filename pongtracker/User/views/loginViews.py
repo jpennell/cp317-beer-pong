@@ -30,7 +30,7 @@ def loginUserRequest(request):
         userState = loginUser(username,password,request)
 
         if userState==SUCCESS:
-            return  redirect('/profile/'+str(username),{'username': username})
+            return  redirect('/profile/'+str(username)+'/',{'username': username})
         elif userState == INCORRECT:
             state = "Incorrect Email/Password Combination"
             return render(request,'user/index.html',{'state':state, 'username': username})
