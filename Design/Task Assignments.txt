@@ -39,3 +39,48 @@ Colin, George, Quinton: SQA
 Erin:  Document Formatting
 
 Colin:  Project Manager
+
+
+
+
+______________________________________________________________
+
+Work to be Done for Design
+.
+.
+UML Diagrams
+.
+Henry & Richard
+You need to update the UML Use Case diagrams so your controllers include methods as do the entities they interact with.  Refer to the Class Diagram Magic Draw file in Design for formatting and updating the entities.  
+Make sure these files are in the Completed SVG Diagram folder and any changes you make to them are those files.
+.
+Carlie
+Update your Registration UML so the entity has its methods as well.
+.
+Reese & Robin
+Make sure any method changes made to the entities are reflected in the Entity Class Diagram
+.
+.
+Utilities Package Diagram
+.
+Quinton & Erin
+You two need to communicate with each other as to what is and is not going in the utility package so Erin can create and insert the diagram into the Design Document
+.
+.
+Django Write-Up
+.
+Quinton
+Since to my knowledge you know the most about Django and how/what we will be using, I would like you to fill in the 3 sections I made in the Design Document.  As Brown mentioned, it is pretty high level so it shouldn't have to be too long.  If the sections need to be added or changed for better explanation feel free to do so.
+.
+.
+Front End Prototypes
+.
+Carlie
+I spoke with Robin and he gave me a list of some of the prototypes in progress.  I made a section for the ones I thought were in a good enough state to show off as a work in progress prototype. Please insert screen prints (or links if they will stay valid) in the respective sections after you have made any quick fixes if any are under way to the aesthetics.
+.
+.
+Deadline (For all of the above)
+Friday July 19th at midnight.
+SQA will be meeting on Saturday to go through the Entire Document so this is a hard deadline
+.
+I will be showing the document to Brown for some high level comments on Tuesday even if it is in a garbage state.
