@@ -31,6 +31,7 @@ def createNewGameRequest(request):
         
         if form.is_valid():
             
+            # clean all data
             username2 = form.cleaned_data['username2']
             username3 = form.cleaned_data['username2']
             username4 = form.cleaned_data['username2']
@@ -38,8 +39,7 @@ def createNewGameRequest(request):
             email2 = form.cleaned_data['email2']
             email3 = form.cleaned_data['email3']
             email4 = form.cleaned_data['email4']
-            
-            print(username2)
+        
         
             errFlag = False
             
