@@ -1,6 +1,7 @@
 from django import forms
 
 class CreateGameForm(forms.Form):
+    
     username2 = forms.CharField(
         widget=forms.TextInput(attrs={'placeholder': 'Username'}),
         label="Player 2",
@@ -30,3 +31,5 @@ class CreateGameForm(forms.Form):
         widget=forms.TextInput(attrs={'placeholder': 'Email'}),
         label="Email",
         max_length=40)
+    
+    error = None

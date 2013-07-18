@@ -6,5 +6,3 @@ from editProfileView import *
 from searchUserView import *
 from deactivateView import *
 from indexView import *
-
-
