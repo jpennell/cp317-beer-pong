@@ -40,11 +40,19 @@
     <p style = "padding-bottom:20px">
         Please enter a valid username in each field or register any users that are not already on Pong Tracker.
     </p>
-    <form method="POST" action=".">
+    <form method="POST" action="/game/create/">
     
         {% csrf_token %}
         
-        Error: {{ errMess }}
+        {% if createGameForm.error == None %}
+        <table width="100%" align="center">
+        	<tr>
+        		<td align="center" bgcolor="#FF3333">
+        			<span style="color:white; font-size:16px; font-weight:bold;">{{ createGameForm.error }}</span>
+        		</td>
+        	</tr>
+        </table>
+        {% endif %}
         
         <table width="80%" align="center">
             <tr>
@@ -61,7 +69,8 @@
             <tr>
                 <td width="40%" valign="top">
                     <label for="username1"> <strong>Player 1: </Strong></label>
-                    <span style="font-size:16px;"><strong>{{ username }}</strong></span>  will be tracking the game.
+                    <span style="font-size:16px;"><strong>{{ request.session.username }}</strong></span>
+                    <br/>will be tracking the game.
                 </td>
                 <td width = "10%">
                     &nbsp;
@@ -119,7 +128,7 @@
         
         <br/>
         <br/>
-        <div align="center">
+        <div align="left">
 	        <button name="createGame" class="btn" type="submit">
 	            Create Game
 	        </button>

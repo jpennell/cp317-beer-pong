@@ -6,5 +6,5 @@ from editProfileView import *
 from searchUserView import *
 from deactivateView import *
 from indexView import *
-from bannedView import *
 
+from bannedView import *

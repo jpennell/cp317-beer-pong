@@ -2,7 +2,7 @@
 from django.contrib.auth.models import User
 from Game.models import Game, Team
 from django.shortcuts import render, redirect
-from Utilities.views import *
+from Utilities.utilities import *
 from Game.forms import CreateGameForm
 from django.template import Context
 
@@ -18,16 +18,13 @@ def createNewGameRequest(request):
     Output:
         
     """
-    form = CreateGameForm()
     
-    # get session user
-    if 'username' in request.session:
-        username = request.session['username']
-        context = Context({'username':username, 'form': form})
-        return render(request, 'game/create.html', context)
+    form = CreateGameForm()
     
     # on POST
     if request.method == 'POST':
+        
+        username = request.session['username']
         
         form = CreateGameForm(request.POST)
         
@@ -35,24 +32,19 @@ def createNewGameRequest(request):
             
             # clean all data
             username2 = form.cleaned_data['username2']
-            username3 = form.cleaned_data['username2']
-            username4 = form.cleaned_data['username2']
+            username3 = form.cleaned_data['username3']
+            username4 = form.cleaned_data['username4']
             
             email2 = form.cleaned_data['email2']
             email3 = form.cleaned_data['email3']
-            email4 = form.cleaned_data['email4']
-        
+            email4 = form.cleaned_data['email4']       
         
             errFlag = False
-            
             
             #--------------------------------------------------------------------------
             # get POSTed data
             #--------------------------------------------------------------------------
-           # usernames = [username, request.POST.get("username2"), request.POST.get("username3"), request.POST.get("username4")]
-            regUser = [request.POST.get("chkRegister2"), request.POST.get("chkRegister3"), request.POST.get("chkRegister4")]
-            #emails = [request.POST.get("email2"), request.POST.get("email3"), request.POST.get("email4")]
-            
+            regUser = [request.POST.get("chkRegister2"), request.POST.get("chkRegister3"), request.POST.get("chkRegister4")]      
             usernames = [username, username2, username3, username4]
             emails = [email2, email3, email4]
             
@@ -64,9 +56,8 @@ def createNewGameRequest(request):
             # there was a blank username
             if (errFlag):
                 print("Blank username")
-                errMess = "Please fill in all usernames."
-                context = Context({'errMess': errMess,
-                                   'form': form,
+                form.error = "Please fill in all usernames."
+                context = Context({'form': form,
                                    'username':usernames[0],
                                    'username2':usernames[1],
                                    'username3':usernames[2],
@@ -79,9 +70,9 @@ def createNewGameRequest(request):
             # duplicate users entered        
             if (errFlag):    
                 print("Duplicates")
-                errMess = "Duplicate usernames are not allowed."
+                form.error = "Duplicate usernames are not allowed."
                 return render(request, 'game/create.html',
-                              {'errMess':errMess,
+                              {'form': form,
                                'username':usernames[0],
                                'username2':usernames[1],
                                'username3':usernames[2],
@@ -103,9 +94,9 @@ def createNewGameRequest(request):
                 for i in index:
                     nullUserMess += usernames[i]
                 print(nullUserMess)
-                errMess = "The following are not registered users on Pong Tracker: " + nullUserMess
+                form.error = "The following are not registered users on Pong Tracker: " + nullUserMess
                 return render(request, 'game/create.html',
-                              {'errMess':errMess,
+                              {'form': form,
                                'username':usernames[0],
                                'username2':usernames[1],
                                'username3':usernames[2],
@@ -117,16 +108,14 @@ def createNewGameRequest(request):
             #--------------------------------------------------------------------------
             # no errors; create game
             #--------------------------------------------------------------------------      
-            if not(errFlag):
-                game = _createNewGame(users[0], users[1], users[2], users[3])
-                
-                return redirect('/game/' + str(game.id))
-            else:
-                return render(request, 'game/create.html')
+            game = _createNewGame(users[0], users[1], users[2], users[3])
+            
+            return redirect('/game/' + str(game.id))
         
         else:
-            form = CreatGameForm()
-            return render(request, 'game/create.html',{'username':username, 'form': form})
+            form = CreateGameForm()
+            print(form.errors)
+            return render(request, 'game/create.html',{'form': form})
         
     else:
         return render(request, 'game/create.html',{'form': form})
@@ -170,6 +159,16 @@ def getGame(request,game_id):
 
     return render(request, 'game/detail.html',{'game':game})
 
+
+def _error(context):
+    errMess = "Please fill in all usernames."
+    context = Context({'errMess': errMess,
+                       'form': form,
+                       'username':usernames[0],
+                       'username2':usernames[1],
+                       'username3':usernames[2],
+                       'username4':usernames[3]})
+    return render(request, 'game/create.html', context)
 
 def _findUser(username):
     """finds user in the database
@@ -280,7 +279,7 @@ def _regUsers(regUser, usernames, emails):
             user = _findUser(usernames[x])
             print(usernames + "/" + user + "/" + regUser)
             if user is None:
-                rndPassword = Utilities.createRndPass(8)
+                rndPassword = createRndPass(8)
                 User.objects.create_user(username=usernames[x],emails=email[x],password=rndPassword)
                 print(rndPassword)
     
