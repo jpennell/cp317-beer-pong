@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from Game.models import Game, Team
 from django.shortcuts import render, redirect
 from Utilities.utilities import *
-from Game.forms import CreateGameForm
+from Game.forms.createGameForm import CreateGameForm
 from django.template import Context
 
 def createNewGameRequest(request):
