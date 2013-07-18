@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate , login
+#from django.contrib.auth import authenticate , login
 from django.core.context_processors import csrf
 from django.core.mail import send_mail
 #from User.forms import RegistrationForm
@@ -54,7 +54,9 @@ def registerNewUser(request):
         _sendEmail(username, email, password)
         PongUser.objects.create_user(username=username, email=email, password=password)
         
-        return redirect_with_params('/login',username=username)
+        user_status = loginUser(username, password, request)       
+        
+        return redirect_with_params('/login',user_status=user_status,username=username)
     
     #otherwise you're register through the url and need to be redirected to the index
     return  redirect('/index/')

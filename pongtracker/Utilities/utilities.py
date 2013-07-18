@@ -2,6 +2,20 @@ import urllib
 from django.http import HttpResponseRedirect
 import string
 import random
+from django.contrib.auth import authenticate, login
+
+SUCCESS = 'success'
+INCORRECT = 'incorrect'
+BANNED = 'banned'
+    
+"""----------------------------------------------
+# Creates an HttpResponseRedirect based on url input 
+# and keyword arg parameters
+#
+#    returns: HttpResponseRedirect
+#----------------------------------------------"""
+
+
 
 def redirect_with_params(url,**kwargs):
     params = urllib.urlencode(kwargs)
@@ -26,3 +40,30 @@ def createRndPass(length):
         rndPass += random.choice(passChars)
     
     return rndPass
+
+
+def loginUser(username, password, request):
+    
+    """{{Description}}
+
+    Keyword arguments:
+    variable -- description
+    variable -- description
+
+    Contributors:
+    Quinton Black
+    Erin Cramer
+
+    Output:
+
+    """
+    
+    user = authenticate( username = username, password = password )
+    if user is not None:
+        if user.getIsActive() and not user.getIsBanned():
+            login( request, user )
+            request.session['username'] = username
+            return SUCCESS
+        return BANNED
+    else:
+        return INCORRECT 

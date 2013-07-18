@@ -1,4 +1,4 @@
-import TrueSkill
+#import TrueSkill
 
 def confirmGameRequest(request):
     """{{Description}}
@@ -49,25 +49,25 @@ def __confirmGame(game):
         
     """
 	#get Teams and Users
-	team1 = game.getTeam1()
-	team2 = game.getTeam2()
-	users = [team1.getUser1(),team1.getUser2(),team2.getUser1(),team2.getUser2()]
+    team1 = game.getTeam1()
+    team2 = game.getTeam2()
+    users = [team1.getUser1(),team1.getUser2(),team2.getUser1(),team2.getUser2()]
     
 	#get Events
-	events = game.getEvents()
-	cupEvents, endGameEvent = events[0:len(events) - 1],events[len(events) - 1]
+    events = game.getEvents()
+    cupEvents, endGameEvent = events[0:len(events) - 1],events[len(events) - 1]
 	
 	#process Events that involve cups being sunk
-	for cupEvent in cupEvents:
+    for cupEvent in cupEvents:
 		responsibleUser = cupEvent.getUser()
 		index = __linearSearch(responsibleUser,users)
 		stats = users[i].getLifeStats()
 		__updateStatsWithEvent(stats,cupEvent)
 		
 	#process the end of the Game
-	winningTeam, losingTeam = __obtainWinnersAndLosers(endGameEvent, team1, team2)
-	__updateWinsAndLosses(winningTeam,losingTeam)
-	__updateRankings(winningTeam,losingTeam)
+    winningTeam, losingTeam = __obtainWinnersAndLosers(endGameEvent, team1, team2)
+    __updateWinsAndLosses(winningTeam,losingTeam)
+    __updateRankings(winningTeam,losingTeam)
     return
     
 def __updateStatsWithEvent(stats,event):
@@ -82,18 +82,18 @@ def __updateStatsWithEvent(stats,event):
     Output:
         
     """
-	type = event.getEventType()
-	if (type == "BOUNCE SHOT"):
+    type = event.getEventType()
+    if (type == "BOUNCE SHOT"):
 		stats.incBounceShots(1)
-	elif (type == "TRICK SHOT"):
+    elif (type == "TRICK SHOT"):
 		stats.incTrickShots(1)
-	elif (type == "PARTY FOUL"):
+    elif (type == "PARTY FOUL"):
 		stats.incPartyFouls(1)
-	elif (type == "CUP SUNK"):
+    elif (type == "CUP SUNK"):
 		stats.incCupSunk(1)
-	elif (type == "REDEMPTION"):
+    elif (type == "REDEMPTION"):
 		stats.incRedemptions(1)
-	return
+    return
 
 
 def __updateWinsAndLosses(winningTeam,losingTeam):
@@ -109,13 +109,13 @@ def __updateWinsAndLosses(winningTeam,losingTeam):
         
     """
 	#obtain the Users
-	winningUsers = [winningTeam.getUser1(), winningTeam.getUser2()]
-	losingUsers = [losingTeam.getUser1(), losingTeam.getUser2()]
+    winningUsers = [winningTeam.getUser1(), winningTeam.getUser2()]
+    losingUsers = [losingTeam.getUser1(), losingTeam.getUser2()]
 	
 	#update their wins/losses
-	for winner in winningUsers:
+    for winner in winningUsers:
 		winner.getLifeStats().incWins(1)
-	for loser in losingUsers:
+    for loser in losingUsers:
 		loser.getLifeStats().incLosses(1)
     return
 
@@ -132,19 +132,19 @@ def __updateRankings(winningTeam,losingTeam):
         
     """
 	#obtain the generic Ranking objects
-	winningRankings = __obtainRankings(winningTeam)
-	losingRankings = __obtainRankings(losingTeam)
+    winningRankings = __obtainRankings(winningTeam)
+    losingRankings = __obtainRankings(losingTeam)
 	
 	#obtain the corresponding TrueSkill Rating objects
-	oldWinningRatings = __obtainRatings(winningRankings)
-	oldLosingRatings = __obtainRatings(losingRankings)
+    oldWinningRatings = __obtainRatings(winningRankings)
+    oldLosingRatings = __obtainRatings(losingRankings)
 	
 	#have TrueSkill rate the Game
-	newWinningRatings, newLosingRatings = TrueSkill.rate([oldWinningRatings,oldLosingRatings], ranks = [0,1])
+    newWinningRatings, newLosingRatings = TrueSkill.rate([oldWinningRatings,oldLosingRatings], ranks = [0,1])
 	
 	#update Ranking objects with their new Mu and Sigma values
-	__writeRatingsToRankings(newWinningRatings,winningRankings)
-	__writeRatingsToRankings(newLosingRatings,losingRankings)
+    __writeRatingsToRankings(newWinningRatings,winningRankings)
+    __writeRatingsToRankings(newLosingRatings,losingRankings)
     return
     
 def __obtainWinnersAndLosers(endGameEvent,team1,team2):
@@ -161,11 +161,11 @@ def __obtainWinnersAndLosers(endGameEvent,team1,team2):
     Output: victoryArray -- [winningTeam,losingTeam]
         
     """
-	howItEnded = endGameEvent.getEventType()
+    howItEnded = endGameEvent.getEventType()
 	
-	if (howItEnded == "TEAM1 WON"):
+    if (howItEnded == "TEAM1 WON"):
 		victoryArray = [team1,team2]
-	else:
+    else:
 		victoryArray = [team2, team1]
     return victoryArray
 	

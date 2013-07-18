@@ -6,7 +6,7 @@
    
              {{ state }}
              
-            <form name="/login" action="/login" class="form-inline" method="post">
+            <form name="login" action="/login/" class="form-inline" method="post">
                 {% csrf_token %}
              	username:
                 <input name="username" type="text" placeholder="username" value="{{ username }}" />
