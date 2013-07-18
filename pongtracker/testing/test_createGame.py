@@ -1,11 +1,12 @@
 from django.db import models
-
+import unittest
 from django.test import TestCase
-from mock import MagicMock#, call
-
+from mock import MagicMock, call
 from Game.views.createGameView import _createNewGame
 from Game.models import PongUser, Team, Game
 
+from django.test.utils import setup_test_environment
+setup_test_environment()
 class SimpleTest(TestCase):
 
     def setUp(self):
@@ -40,3 +41,9 @@ class SimpleTest(TestCase):
 
     def returnTeams(self, *args, **kwargs):
         return self.mockTeams.pop(0)
+    
+if __name__ == "__main__":
+    
+    #import sys;sys.argv = ['', 'Test.testName']
+    unittest.main()
+

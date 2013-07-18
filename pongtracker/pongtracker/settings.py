@@ -1,5 +1,5 @@
 # Django settings for pongtracker project.
-import sys
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -8,34 +8,32 @@ ADMINS = (
  )
 
 MANAGERS = ADMINS
-print(sys.argv)
-
-if 'test' in sys.argv:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'testblac2410',  # Or path to database file if using sqlite3.
-            # The following settings are not used with sqlite3:
-            'USER': 'blac2410',
-            'PASSWORD': 'bigtop3',
-            'HOST': 'hopper.wlu.ca',  # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-            'PORT': '3306',  # Set to empty string for default.
-        }
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'blac2410',  # Or path to database file if using sqlite3.
-            # The following settings are not used with sqlite3:
-            'USER': 'blac2410',
-            'PASSWORD': 'bigtop3',
-            'HOST': 'hopper.wlu.ca',  # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-            'PORT': '3306',  # Set to empty string for default.
-        }
-    }
 
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'blac2410',  # Or path to database file if using sqlite3.
+        # The following settings are not used with sqlite3:
+        'USER': 'blac2410',
+        'PASSWORD': 'bigtop3',
+        'HOST': 'hopper.wlu.ca',  # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '3306',  # Set to empty string for default.
+    },
+}
+
+import os.path
+ 
+# This is correct for the Django 1.4-style project layout; for the old-style
+# project layout with ``settings.py`` and ``manage.py`` in the same directory,
+# you'd want to only call ``os.path.dirname`` once.
+BASE_PATH = os.path.dirname(os.path.dirname(__file__))
+ 
+# This would be if you put all your tests within a top-level "tests" package.
+TEST_DISCOVERY_ROOT = os.path.join(BASE_PATH, "testing")
+ 
+# This assumes you place the above ``DiscoveryRunner`` in ``tests/runner.py``.
+TEST_RUNNER = "tests.testrunner.NoDbTestRunner"
 
 AUTH_USER_MODEL = 'User.PongUser'
 
@@ -162,6 +160,7 @@ INSTALLED_APPS = (
     'Statistics',
     'Utilities',
     'User',
+    'testing',
  )
 
 # A sample logging configuration. The only tangible logging
