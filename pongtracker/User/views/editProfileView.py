@@ -4,6 +4,7 @@ from django.shortcuts import redirect, render
 from User.forms import EditProfileForm
 from django.template import Context
 from django.contrib.auth import get_user_model
+from Utilities.utilities import *
 
 
 
@@ -24,7 +25,8 @@ def editProfile(request):
     """
 
     if not request.user.is_authenticated():
-         return redirect('/login/')
+        state = "You are not logged in. Log in meow."
+        return redirect_with_params('/login/', state=state)
      
     username = request.session['username']
     if request.method == 'POST':
