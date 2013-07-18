@@ -29,11 +29,11 @@ def createNewGameRequest(request):
         form = CreateGameForm(request.POST)
         
         if form.is_valid():
-            print("valid")
+            
             # clean all data
             username2 = form.cleaned_data['username2']
-            username3 = form.cleaned_data['username2']
-            username4 = form.cleaned_data['username2']
+            username3 = form.cleaned_data['username3']
+            username4 = form.cleaned_data['username4']
             
             email2 = form.cleaned_data['email2']
             email3 = form.cleaned_data['email3']
@@ -114,7 +114,7 @@ def createNewGameRequest(request):
         
         else:
             form = CreateGameForm()
-            form.error = "invalid data"
+            print(form.errors)
             return render(request, 'game/create.html',{'form': form})
         
     else:

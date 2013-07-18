@@ -10,4 +10,5 @@ urlpatterns = patterns( '',
     ( r'profile/(?P<username>\w+)/$', 'User.views.viewProfile' ),
     ( r'profile/', 'User.views.viewProfile' ),
     ( r'register', 'User.views.registerNewUser' ),
+    ( r'banned', 'User.views.registerNewUser' ),
  )

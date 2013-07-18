@@ -33,8 +33,8 @@
 	</tr>
 	<tr>
 		<td>Description</td> <td>Initializes an instance of class ConfirmGameController.</br>
-								 After construction, the object is ready to obtain a Game from its ID, read its Events from the Events table</br>
-								 use the EventType table to understand what happened, and Game table to find out the Teams of Users whose entries</br>
+								 After construction, the object is ready to obtain a Game from its I.D., read its Events from the Events table,</br>
+								 use the EventType table to understand what happened, and the Game table to find out the Teams of Users whose entries</br>
 								 in the LifeStats and Ranking tables need to be updated.</td>
 	</tr>
 </table>
@@ -72,18 +72,14 @@
 		<td>External Accesses</td> <td>Game, Event, EventType</td>
 	</tr>
 	<tr>
-		<td>External Changes</td> <td>If successful, the Game's isConfirmedOrDenied flag is set to True.</td>
+		<td>External Changes</td> <td>If successful, the Game's isConfirmedOrDenied flag is set to True (unless the Game is deleted.)</td>
 	</tr>
 	<tr>
-		<td>Other Methods Invoked</td> <td>obtainGame, isConfirmedOrDenied, isEnded, confirmGame, setConfirmedOrDenied</td>
+		<td>Other Methods Invoked</td> <td>isConfirmedOrDenied, confirmGame, denyGame, setConfirmedOrDenied</td>
 	</tr>
 	<tr>
-		<td>Description</td> <td>Using the gameID, obtains the Game with the obtainGame Utility function.</br>
-								 A valid Game is one that exists, hasn't already been confirmed/denied and has ended</br>
-								 </br>
-								 If the Game is valid and the User is confirming the Game, confirmGame is called to update the players' LifeStats and Ranking values.</br>
-								 If a valid Game is being denied, no changes are made to anyone's LifeStats but the Game is still kept on record.</br>
-								 Successfully confirming/denying a Game results in its isConfirmedOrDenied flag being set to True.</td>
+		<td>Description</td> <td>Confirms/denies the Game if it is valid.</br>
+								 A valid Game is one that exists, hasn't already been confirmed/denied and has ended.</br></td>
 	</tr>
 </table>
 
@@ -118,12 +114,50 @@
 		<td>External Changes</td> <td>None</td>
 	</tr>
 	<tr>
-		<td>Other Methods Invoked</td> <td>getEvents, getTeam1, getTeam2, getUser1, getUser2, getLifeStats, getUser, linearSearch</br>
-										   updateStatsWithEvent, winnersAndLosers, updateWinsAndLosses, updateRankings</td>
+		<td>Other Methods Invoked</td> <td>getEvents, getTeam1, getTeam2, getUser1, getUser2, getLifeStats, getUser</br>
+										   updateStatsWithEvent, updateWinsAndLosses, updateRankings</td>
 	</tr>
 	<tr>
-		<td>Description</td> <td>For each Event (other than the end game Event), finds its corresponding User and updates their LifeStats.</br>
+		<td>Description</td> <td>For each Event in the Game (other than the end game Event), finds its corresponding User and updates their LifeStats.</br>
 								 Then, using the end game Event, updates the Users' wins & losses and TrueSkill values.</td>
+	</tr>
+</table>
+
+</br>
+
+<table border="1">
+	<tr>
+		<td><strong>Class Name</strong></td> <td><strong>ConfirmGameController</strong></td>
+	</tr>
+	<tr>
+		<td>Method Name</td> <td><em>denyGame</em></td>
+	</tr>
+	<tr>
+		<td>Method State</td> <td><em>Private</em></td>
+	</tr>
+	<tr>
+		<td>Return Type</td> <td><em>None</em></td>
+	</tr>
+	<tr>
+		<td>Input Arguments</td> <td>Game game</td>
+	</tr>
+	<tr>
+		<td>Output Arguments</td> <td>None</td>
+	</tr>
+	<tr>
+	<td>Error Messages</td> <td>None</td>
+	</tr>
+	<tr>
+		<td>External Accesses</td> <td>Game, Event</td>
+	</tr>
+	<tr>
+		<td>External Changes</td> <td>May delete Events from the Event table, Teams from the Teams table and the Game from the Game table</td>
+	</tr>
+	<tr>
+		<td>Other Methods Invoked</td> <td>getEvents</td>
+	</tr>
+	<tr>
+		<td>Description</td> <td>Performs any overhead necessary for denying a Game.</td>
 	</tr>
 </table>
 
@@ -158,7 +192,7 @@
 		<td>External Changes</td> <td>The LifeStats object is updated to reflect that the Event occurred.</td>
 	</tr>
 	<tr>
-		<td>Other Methods Invoked</td> <td>getEventType, incBounceShots, incTrickShots, incPartyFouls, incCupsSunk, incRedemptions</td>
+		<td>Other Methods Invoked</td> <td>getEventType, getEventTypeName, incBounceShots, incTrickShots, incPartyFouls, incCupsSunk, incRedemptions</td>
 	</tr>
 	<tr>
 		<td>Description</td> <td>Obtains eventThatOccurred's EventType and updates statsToUpdate based on that.</br>
@@ -200,8 +234,8 @@
 		<td>Other Methods Invoked</td> <td> incWins, incLosses</td>
 	</tr>
 	<tr>
-		<td>Description</td> <td>The winning Users have the wins attribute in their LifeStats incremented by 1.</br>
-								 The losing Users have the losses attribute in the LifeStats incremented by 1.</td>
+		<td>Description</td> <td>The winning Users have the wins in their LifeStats incremented by 1.</br>
+								 The losing Users have the losses in the LifeStats incremented by 1.</td>
 	</tr>
 </table>
 
@@ -241,45 +275,6 @@
 	<tr>
 		<td>Description</td> <td>The TrueSkill Rankings of each User are obtained, and new Ranking objects with the new Mu and Sigma values</br>
 								 are obtained by calling the rate function from the TrueSkill library.</br>
-								 </br>
 								 The Mu and Sigma values of the Users' Ranking objects become those of the new Ranking objects.</td>
-	</tr>
-</table>
-
-</br>
-
-<table border="1">
-	<tr>
-		<td><strong>Class Name</strong></td> <td><strong>ConfirmGameController</strong></td>
-	</tr>
-	<tr>
-		<td>Method Name</td> <td><em>winnersAndLosers</em></td>
-	</tr>
-	<tr>
-		<td>Method State</td> <td><em>Private</em></td>
-	</tr>
-	<tr>
-		<td>Return Type</td> <td><em>Team[]</em></td>
-	</tr>
-	<tr>
-		<td>Input Arguments</td> <td>Event endGameEvent, Team team1, Team team2</td>
-	</tr>
-	<tr>
-		<td>Output Arguments</td> <td>victoryArray</td>
-	</tr>
-	<tr>
-		<td>Error Messages</td> <td>None</td>
-	</tr>
-	<tr>
-		<td>External Accesses</td> <td>Event, EventType</td>
-	</tr>
-	<tr>
-		<td>External Changes</td> <td>None</td>
-	</tr>
-	<tr>
-		<td>Other Methods Invoked</td> <td> getEventType </td>
-	</tr>
-	<tr>
-		<td>Description</td> <td>If team1 won, returns [team1,team2] otherwise returns [team2, team1].</br></td>
 	</tr>
 </table>
