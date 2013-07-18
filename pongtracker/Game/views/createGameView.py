@@ -4,6 +4,7 @@ from Game.models import Game, Team
 from django.shortcuts import render, redirect
 from Utilities.views import *
 from Game.forms import CreateGameForm
+from django.template import Context
 
 def createNewGameRequest(request):
     """validates input; creates a new game based on valid input
@@ -22,7 +23,8 @@ def createNewGameRequest(request):
     # get session user
     if 'username' in request.session:
         username = request.session['username']
-        return render(request, 'game/create.html',{'username':username, 'form': form})
+        context = Context({'username':username, 'form': form})
+        return render(request, 'game/create.html', context)
     
     # on POST
     if request.method == 'POST':
@@ -63,12 +65,13 @@ def createNewGameRequest(request):
             if (errFlag):
                 print("Blank username")
                 errMess = "Please fill in all usernames."
-                return render(request, 'game/create.html',
-                              {'errMess':errMess,
-                               'username':usernames[0],
-                               'username2':usernames[1],
-                               'username3':usernames[2],
-                               'username4':usernames[3]})
+                context = Context({'errMess': errMess,
+                                   'form': form,
+                                   'username':usernames[0],
+                                   'username2':usernames[1],
+                                   'username3':usernames[2],
+                                   'username4':usernames[3]})
+                return render(request, 'game/create.html', context)
             
             # check for duplicate usernames
             errFlag = _chkDup(usernames)
@@ -181,7 +184,7 @@ def _findUser(username):
     """
     user = None
     try:
-        user = User.objects.get(username=username)
+        user = get_user_model().objects.get(username=username)
     except User.DoesNotExist:
         user = None
     finally:
