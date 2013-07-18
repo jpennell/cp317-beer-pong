@@ -40,6 +40,9 @@ class PongUser(AbstractUser):
     
     def getEmail(self):
         return self._email
+    
+    def getHasLoggedIn(self):
+        return self._has_logged_in
 
 
     def setHeight(self, value):
@@ -72,6 +75,9 @@ class PongUser(AbstractUser):
     
     def setEmail(self, value):
         self._email = value
+        
+    def setHasLoggedIn(self, value):
+        self._has_logged_in = value
     
     
     YEAR_CHOICES = []

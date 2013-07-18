@@ -17,6 +17,7 @@ def registerNewUser(request):
     
     Contributors:
     Quinton Black
+    Erin Cramer
     
     Output:
         
@@ -53,18 +54,7 @@ def registerNewUser(request):
         _sendEmail(username, email, password)
         PongUser.objects.create_user(username=username, email=email, password=password)
         
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            # the password verified for the user
-            if user.is_active:
-                login(request, user)
-            else:
-                print("The password is valid, but the account has been disabled!")
-        else:
-            # the authentication system was unable to verify the username and password
-            print("The username and password were incorrect.")
-
-        return redirect('/profile/edit', username=username)
+        return redirect_with_params('/login',username=username)
     
     #otherwise you're register through the url and need to be redirected to the index
     return  redirect('/index/')

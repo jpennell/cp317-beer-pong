@@ -19,6 +19,7 @@ def viewHomepage(request):
     usernameState = request.GET.get('usernameState','')
     emailState = request.GET.get('emailState','')
     suggestedUsernames = request.GET.get('suggestedUsernames','')
+    state =request.GET.get('state','')
     
     if suggestedUsernames:
         suggestedNames = suggestedUsernames.split(",")
@@ -26,6 +27,8 @@ def viewHomepage(request):
     elif usernameState:
         return render(request, 'user/index.html', {'username':username, 'email':email, 'usernameState':usernameState})
     elif emailState:
-        return render(request, 'user/index.html', {'username':username, 'email':email, 'emailState':emailState})       
+        return render(request, 'user/index.html', {'username':username, 'email':email, 'emailState':emailState})
+    elif state:
+        return render(request, 'user/index.html', {'state':state})
     else:   
         return render(request, 'user/index.html')

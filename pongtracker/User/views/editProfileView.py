@@ -17,6 +17,7 @@ def editProfile(request):
     
     Contributors:
     Quinton Black
+    Erin Cramer
     
     Output:
         
@@ -24,10 +25,10 @@ def editProfile(request):
 
     if not request.user.is_authenticated():
          return redirect('/login/')
-    
+     
+    username = request.session['username']
     if request.method == 'POST':
         
-        username = request.session['username']
         form = EditProfileForm(request.POST)
         if form.is_valid():
             
@@ -43,12 +44,14 @@ def editProfile(request):
 
             # Always redirect after a POST
             return redirect('profile/edit/')
+        
         print("Form is not valid")
+        
     else:
         # This the the first page load, display a blank form
-    
+        
         form = EditProfileForm()
-    context = Context({'title': 'Edit Profile', 'form': form})
+    context = Context({'title': 'Edit Profile', 'form': form, 'username':username})
 
     return render(request,'user/editProfile.html',context)
 
