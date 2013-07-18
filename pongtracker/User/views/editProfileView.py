@@ -42,7 +42,7 @@ def editProfile(request):
             _updateUser(username,firstname,lastname,email,height,yearOfGradution,userProfilePhoto,deactivate)
 
             # Always redirect after a POST
-            return redirect('profile/edit/',)
+            return redirect('profile/edit/')
         print("Form is not valid")
     else:
         # This the the first page load, display a blank form
