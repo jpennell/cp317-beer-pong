@@ -59,6 +59,7 @@ def registerNewUser(request):
         return redirect_with_params('/login',user_status=user_status,username=username)
     
     #otherwise you're register through the url and need to be redirected to the index
+    #form = RegistrationForm()
     return  redirect('/index/')
 
 #Needs to be done better
