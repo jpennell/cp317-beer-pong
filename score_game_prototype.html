@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Pong Tracker | Profile</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+    <link href='http://hopper.wlu.ca/~pong/assets/css/bootstrap.css' rel='stylesheet' type='text/css'>
+    <link href='http://hopper.wlu.ca/~pong/assets/css/global-styles.css' rel='stylesheet' type='text/css'>
+
+    <link href='http://hopper.wlu.ca/~pong/assets/css/profile-styles.css' rel='stylesheet' type='text/css'>
+    
+    <style>
+        
+    	#score-game {
+    		text-align: center;
+    		width: 100%;
+    	}
+    	.cups {
+    		text-align: center;
+    	}
+    	
+    </style>
+
+</head>
+<body>
+    <div id="container">
+        <!------ LOGIN HEADER --------->
+        <div id="login-header">
+
+            <form name="logout" action="/logout" class="form-inline" method="post">
+                <input type='hidden' name='csrfmiddlewaretoken' value='DMLECy4oQiZgfUroDX8VN393pHldSHO9' />
+                <label>Welcome, <span id="player-name">glifchits</span></label>
+                <button name="logout" class="btn" type="submit">
+                    Log Out
+                </button>
+            </form>
+
+        </div>
+
+        <!------ HEADER --------->
+        <div id="header">
+            <table>
+                <tr>
+                    <td id="logo">
+                        Pong Tracker
+                    </td>
+                    <td id="nav">
+                        <ul>
+
+                            <li><a href="/profile">Profile</a></li>
+                            <li><a href="/statistics/leaderboard/">Leaderboard</a></li>
+                            <li><a href="/game/create/">Create a Game</a></li>
+                            <li><a href="/rules/">Rules</a></li>
+
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!------ CONTENT --------->
+
+        <div id="page-content">
+
+            <table id="score-game">
+                <tr>
+                    <td id="team1">
+                    	
+                    	<table>
+                    		<tr>
+                    			<td>
+                    				 <div class="picture"></div>
+                    			</td>
+                    			<td>
+                    				 <div class="picture"></div>
+                    			</td>
+                    		</tr>
+                    	</table>
+                    	
+                        <div class="cups">
+                            <span class="cup cup1">142</span>
+                            <br/>
+                            <span class="cup cup2">241</span>
+                            <span class="cup cup3">88</span>
+                            <br/>
+                            <span class="cup cup4">421</span>
+                            <span class="cup cup5">532</span>
+                            <span class="cup cup6">24</span>
+                        </div>
+
+                    </td>
+
+                    <td id="team2">
+                        <div class="cups">
+                            <span class="cup cup1">142</span>
+                            <br/>
+                            <span class="cup cup2">241</span>
+                            <span class="cup cup3">88</span>
+                            <br/>
+                            <span class="cup cup4">421</span>
+                            <span class="cup cup5">532</span>
+                            <span class="cup cup6">24</span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <!------- FOOTER --------->
+        <div id="footer">
+            <table>
+                <tr>
+                    <td class="left">
+                        CP317 Software Engineering
+                    </td>
+                    <td class="right">
+                        Wilfrid Laurier University, 2013
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script src='http://hopper.wlu.ca/~pong/assets/js/bootstrap.js' type="text/javascript"></script>
+    <script src='http://hopper.wlu.ca/~pong/assets/js/bootstrap-responsive.js' type="text/javascript"></script>
+</body>
+</html>
+

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pong Tracker | Game</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+    <link href='assets/bootstrap-css/bootstrap.css' rel='stylesheet' type='text/css'>
+    <link href='assets/css/global-styles.css' rel='stylesheet' type='text/css'>
+    <link href='assets/css/profile-styles.css' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+    <link type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.css" rel="stylesheet" />
+    <link type="text/css" href="http://dev.jtsage.com/jQM-DateBox/css/demos.css" rel="stylesheet" />
+
+    <!-- NOTE: Script load order is significant! -->
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+    <link type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.css" rel="stylesheet" />
+    <link type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jquery.mobile.datebox.css" rel="stylesheet" />
+    <link type="text/css" href="http://dev.jtsage.com/jQM-DateBox/css/demos.css" rel="stylesheet" />
+
+    <!-- NOTE: Script load order is significant! -->
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.js"></script>
+    <script type="text/javascript" src="http://dev.jtsage.com/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.js"></script>
+    <script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.js"></script>
+    <script type="text/javascript" src="http://dev.jtsage.com/jQM-SimpleDialog/demos2/extras.js"></script>
+
+    <style>
+		body {
+			min-width: 300px;
+		}
+		.picture {
+			border: 1px solid #bbb;
+			background-image: url("assets/img/profile.jpg");
+			background-size: cover;
+			background-position-x: -30px;
+			width: 100px;
+			height: 100px;
+		}
+		.cups {
+			text-align: center;
+		}
+		.cups * {
+			border: 4px solid #888;
+		}
+		.cups .active {
+			border: 4px solid #FF0000;
+		}
+    </style>
+
+    <script type="text/javascript">
+		x = function() {
+			console.log(this);
+		}
+		var bounceShot = function(team, cup) {
+			$(this).simpledialog2({
+				mode : 'button',
+				headerText : 'Who?',
+				headerClose : true,
+				'buttons' : {
+					'Player 1' : {
+						'click' : function() {
+							selectBounceCup(team, cup, 1)
+						}
+					},
+					'Player 2' : {
+						'click' : function() {
+							selectBounceCup(team, cup, 2)
+						}
+					}
+				},
+				forceInput : false,
+				showModal : true,
+				clickEvent : 'vclick'
+			})
+		}
+		var selectBounceCup = function(team, cup, player) {
+            $(this).simpledialog({
+            	showModal: true
+            })
+		}
+		var cupSunk = function(team, cup) {
+			console.log('cup', cup, 'on team', team, 'was sunk')
+			// construct css selector eg: .team1.cup1
+			var sel = '.' + team + '.' + cup
+			// remove "active" class for this cup
+			$(sel).removeClass('active')
+		}
+
+		$(document).delegate('.cup.active', 'click', function() {
+			var classes = this.className.split(' ')
+			var team = classes[1]
+			var cup = classes[2]
+			console.log('team', team, 'cup', cup)
+			$(this).simpledialog2({
+				mode : 'button',
+				headerText : 'What Happened?',
+				headerClose : true,
+				'buttons' : {
+					'Cup Sunk' : {
+						'click' : function() {
+							cupSunk(team, cup)
+						}
+					},
+					'Party Foul' : {
+						'click' : function() {
+							partyFoul(team, cup)
+						}
+					},
+					'Bounce Shot' : {
+						'click' : function() {
+							bounceShot(team, cup)
+						}
+					},
+					'Trick Shot' : {
+						'click' : function() {
+							trickShot(team, cup)
+						}
+					}
+				},
+				forceInput : false,
+				showModal : true,
+				clickEvent : 'vclick'
+			})
+		});
+
+    </script>
+</head>
+<body>
+    <div id="container">
+
+        <!------ CONTENT --------->
+        <div id="page-content">
+            <table id="profile">
+                <tr id="statistics">
+                    <td align="center">
+                        <div class="picture"></div>
+                        <br/>
+                        <span class="player-name">username1 </span>
+                    </td>
+                    <td align="center">
+                        <div class="picture"></div>
+                        <br/>
+                        <span class="player-name">username2 </span>
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td align="center">
+                        <div class="picture"></div>
+                        <br/>
+                        <span class="player-name">username3 </span>
+                    </td>
+                    <td align="center">
+                        <div class="picture"></div>
+                        <br/>
+                        <span class="player-name">username4 </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" align="center cups-sunk-stats">
+                        <h4 align="center">Team 1</h4>
+                        <div class="cups">
+                            <span class="cup team1 cup1 active"></span>
+                            <br/>
+                            <span  class="cup team1 cup2 active"></span>
+                            <span  class="cup team1 cup3 active"></span>
+                            <br/>
+                            <span  class="cup team1 cup4 active"></span>
+                            <span  class="cup team1 cup5 active"></span>
+                            <span  class="cup team1 cup6 active"></span>
+                        </div>
+
+                        <button class="btn" name="undo">
+                            Undo
+                        </button>
+                    </td>
+                    <td colspan="2" align="center cups-sunk-stats">
+                        <h4 align="center">Team 2</h4>
+                        <div class="cups">
+                            <span class="cup team2 cup1"></span>
+                            <br/>
+                            <span class="cup team2 cup2 active"></span>
+                            <span class="cup team2 cup3 active"></span>
+                            <br/>
+                            <span class="cup team2 cup4"></span>
+                            <span class="cup team2 cup5 active"></span>
+                            <span class="cup team2 cup6 active"></span>
+                        </div>
+                        <button class="btn" name="undo">
+                            Undo
+                        </button>
+                    </td>
+                </tr>
+            </table>
+
+            <button class="btn" name="undo">
+                Abort
+            </button>
+
+            <button class="btn" name="undo">
+                End Game
+            </button>
+        </div>
+
+    </div>
+</body>
+</html>

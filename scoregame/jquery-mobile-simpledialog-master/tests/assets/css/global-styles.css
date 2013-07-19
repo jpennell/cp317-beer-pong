@@ -1,19 +1,5 @@
 /* General styling */
 
-/*
- * primary: 
- * 	330072
- * 	F2A900
- * 	EE2737
- * 
- * secondary:
- * 	A05EB5
- *  E87722
- * 	00A3E0
- * 	8F993E
- * 
- */
-
 /* Purple color: #9400D3 */
 /* Golden color: #ffd700 */
 /* Solo cup red: #FF0000 */
@@ -37,7 +23,6 @@ h1, h2, h3, h4, h5 {
 	display: block;
 	text-align: right;
 	height: 30px;
-	margin-bottom: 10px;
 }
 #login-header p {
 	display: inline;
@@ -76,7 +61,7 @@ h1, h2, h3, h4, h5 {
 
 /* Header styling */
 #header {
-	margin-top: 30px;
+	margin-top: 40px;
 	padding-bottom: 10px;
 	border-bottom: 1px solid #888;
 	margin-bottom: 30px;

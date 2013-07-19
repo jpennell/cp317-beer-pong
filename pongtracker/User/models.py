@@ -19,14 +19,11 @@ class PongUser(AbstractUser):
     def getPhoto(self):
         return self._photo
 
-
     def getGraduationYear(self):
         return self._graduation_year
 
-
     def getInstitution(self):
         return self._institution
-
 
     def getIsBanned(self):
         return self._is_banned
@@ -50,18 +47,14 @@ class PongUser(AbstractUser):
     def setHeight(self, value):
         self._height = value
 
-
     def setPhoto(self, value):
         self._photo = value
-
 
     def setGraduationYear (self, value):
         self._graduation_year = value
 
-
     def setInstitution(self, value):
         self._institution = value
-
 
     def setIsBanned(self, value):
         self._is_banned = value
@@ -92,4 +85,3 @@ class PongUser(AbstractUser):
     _institution = models.ForeignKey(Institution,null = True, blank = True)
     _is_banned = models.BooleanField(default=False)
     _has_logged_in = models.BooleanField(default = False)
-    
