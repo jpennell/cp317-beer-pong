@@ -77,8 +77,8 @@ def createNewGameRequest(request):
             
         else:
             
-            form = CreateGameForm()
-            print("Invalid")
+            form.errorIndex = [1]
+            form.error = "Please fill in all fields"
             return render(request, 'game/create.html', {'form': form})
          
 #            #--------------------------------------------------------------------------
@@ -141,9 +141,9 @@ def createNewGameRequest(request):
 #            form = CreateGameForm()
 #            print("Invalid")
 #            return render(request, 'game/create.html', {'form': form})
-#        
-#    else:
-#        return render(request, 'game/create.html',{'form': form})
+        
+    else:
+        return render(request, 'game/create.html',{'form': form})
 
 
 def _createNewGame(user1, user2, user3, user4):
@@ -273,7 +273,7 @@ def _chkUsersExist(users, regUser):
         if regUser[x] is None:
             if users[x] is None:
                 errFlag = True
-                index.append(x+1)
+                index.append(x+2)
     
     return errFlag, index
 
