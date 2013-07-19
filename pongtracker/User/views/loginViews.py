@@ -20,7 +20,7 @@ def loginUserRequest( request ):
     Output:
 
     """
-    #a login request has been made therefore must authenticate
+   #a login request has been made therefore must authenticate
     if request.POST:
         
         username = request.POST.get( 'username' )
@@ -41,7 +41,7 @@ def loginUserRequest( request ):
         return render(request, 'user/login.html', {'state':state, 'username':username})
     
     #as long as username is not empty strings, we will attempt a login
-    elif username:
+    elif username !='':
         user = PongUser.objects.get(username=username)
         #if it was successful and it isn't their first login attempt, got to the login page
         if userState == SUCCESS and user.getHasLoggedIn():

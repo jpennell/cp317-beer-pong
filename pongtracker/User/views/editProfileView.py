@@ -93,7 +93,7 @@ def _updateUser(username,firstName,lastName,email,height,yearOfGradution,userPro
     user.setFirstName(firstName)
     user.setLastName(lastName)
     user.setEmail(email)
-    user.setIsactive(deactivate)
+    user.setIsActive(deactivate)
     user.save()
     return
 

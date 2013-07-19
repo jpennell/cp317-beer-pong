@@ -14,6 +14,8 @@ def viewHomepage(request):
     Output:
         
     """ 
+    print("Viewing Homepage")
+    
     username = request.GET.get('username','')
     email = request.GET.get('email','')   
     usernameState = request.GET.get('usernameState','')
