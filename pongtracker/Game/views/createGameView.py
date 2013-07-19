@@ -40,110 +40,48 @@ def createNewGameRequest(request):
             email3 = form.cleaned_data['email3']
             email4 = form.cleaned_data['email4']
             
+            # put all data in lists
             regUser = [request.POST.get("chkRegister2"), request.POST.get("chkRegister3"), request.POST.get("chkRegister4")]      
             usernames = [username, username2, username3, username4]
             emails = [email2, email3, email4]
 
-            errFlag = False
+            # initialize error list
+            errList = ['','','','']
             
             # check for duplicate usernames
-            errFlag, index = _chkDup(usernames)
-            
-            # duplicate users entered        
-            if (errFlag):
-                form.error = "Duplicate user"
-                form.errorIndex = index
-                return render(request, 'game/create.html', {'form': form})
-            
+            errList = _chkDup(usernames, errList)
+
             # get users from database
             users = [_findUser(usernames[0]), _findUser(usernames[1]), _findUser(usernames[2]), _findUser(usernames[3])]     
             
-            print("users: ", users)
+            # check if all users exist
+            errList = _chkUsersExist(users[1:4], regUser, errList)
             
-            errFlag, index = _chkUsersExist(users[1:4], regUser)
+            errList = _chkEmails(regUser, emails, errList)
             
-            # one or more users entered don't exist    
-            if (errFlag):
-                form.error = "User not registered"
-                form.errorIndex = index
-                return render(request, 'game/create.html', {'form': form})
+            # check if registering users have entered a taken username
+            errList = _chkRegUsers(users[1:4], regUser, errList)
             
-            #--------------------------------------------------------------------------
-            # no errors; create game
-            #--------------------------------------------------------------------------      
+            # display errors in form
+            if (errList.count('') < 4):
+                form.err2 = errList[1]
+                form.err3 = errList[2]
+                form.err4 = errList[3]
+                return render(request, 'game/create.html', {'form': form})  
+            
+            # no errors; create game     
             game = _createNewGame(users[0], users[1], users[2], users[3])
             
             return redirect('/game/' + str(game.id))
             
         else:
-            
-            form.errorIndex = [1]
-            form.error = "Please fill in all fields"
-            return render(request, 'game/create.html', {'form': form})
-         
-#            #--------------------------------------------------------------------------
-#            # get POSTed data
-#            #--------------------------------------------------------------------------
-#            regUser = [request.POST.get("chkRegister2"), request.POST.get("chkRegister3"), request.POST.get("chkRegister4")]      
-#            usernames = [username, username2, username3, username4]
-#            emails = [email2, email3, email4]
-#            
-#            print("usernames: ",username,username2,username3,username4)
-#            
-#            # check for blank usernames
-#            errFlag = _chkBlank(usernames)
-#            
-#            # there was a blank username
-#            if (errFlag):
-#                print("Blank username")
-#                form.error = "Please fill in all usernames."
-#                return render(request, 'game/create.html', {'form': form})
-#            
-#            # check for duplicate usernames
-#            errFlag = _chkDup(usernames)
-#            
-#            # duplicate users entered        
-#            if (errFlag):    
-#                print("Duplicates")
-#                form.error = "Duplicate usernames are not allowed."
-#                return render(request, 'game/create.html', {'form': form})
-#                
-#            # get users from database
-#            users = [_findUser(usernames[0]), _findUser(usernames[1]), _findUser(usernames[2]), _findUser(usernames[3])]
-#            
-#            print(users)
-#            
-#            errFlag, index = _chkUsersExist(users, regUser)
-#            
-#            print(index)
-#            
-#            # one or more users entered don't exist    
-#            if (errFlag):  
-#                print("User does not exist")  
-#                nullUserMess = ''
-#                for i in index:
-#                    nullUserMess += usernames[i]
-#                print(nullUserMess)
-#                form.error = "The following are not registered users on Pong Tracker: " + nullUserMess
-#                return render(request, 'game/create.html', {'form': form})
-#            
-#            # register users not already registered
-#            _regUsers(regUser, usernames, emails)       
-#            
-#            #--------------------------------------------------------------------------
-#            # no errors; create game
-#            #--------------------------------------------------------------------------      
-#            game = _createNewGame(users[0], users[1], users[2], users[3])
-#            
-#            return redirect('/game/' + str(game.id))
-#        
-#        else:
-#            form = CreateGameForm()
-#            print("Invalid")
-#            return render(request, 'game/create.html', {'form': form})
+            # form is invalid
+            _invalidErrors(form)
+            return render(request, 'game/create.html', {'form': form})      
         
     else:
         return render(request, 'game/create.html',{'form': form})
+
 
 
 def _createNewGame(user1, user2, user3, user4):
@@ -165,7 +103,6 @@ def _createNewGame(user1, user2, user3, user4):
     game = Game.objects.create(team1=team1, team2=team2)
     return game
 
-
 def getGame(request,game_id):
     """{{Description}}
 
@@ -184,6 +121,26 @@ def getGame(request,game_id):
 
     return render(request, 'game/detail.html',{'game':game})
 
+def _invalidErrors(form):
+    formErrors = []
+    
+    for error in form.errors:
+        formErrors.append(error)
+    
+    if ('email2' in formErrors):
+        form.err2 = "Invalid email"
+    if ('email3' in formErrors):
+        form.err3 = "Invalid email"
+    if ('email4' in formErrors):
+        form.err4 = "Invalid email"
+    if ('username2' in formErrors):
+        form.err2 = "This field is required"
+    if ('username3' in formErrors):
+        form.err3 = "This field is required"
+    if ('username4' in formErrors):
+        form.err4 = "This field is required"
+    
+    return
 
 def _findUser(username):
     """finds user in the database
@@ -202,8 +159,7 @@ def _findUser(username):
     except User.DoesNotExist:
         user = None
     finally:
-        return user
-    
+        return user   
 
 def _chkBlank(usernames):
     """checks for blank usernames
@@ -224,10 +180,9 @@ def _chkBlank(usernames):
         if usernames[x] == '':
              errFlag = True
              
-    return errFlag
-    
+    return errFlag    
 
-def _chkDup(usernames):
+def _chkDup(usernames, errList):
     """checks for duplicate usernames
 
     Keyword arguments:
@@ -240,18 +195,13 @@ def _chkDup(usernames):
         
     """
     
-    errFlag = False;
-    index = []
-    
     for x in range(len(usernames)):
         if (usernames.count(usernames[x]) > 1):
-            errFlag = True
-            index.append(x+1)
+            errList[x] = "Duplicate user"
                 
-    return errFlag, index
+    return errList
 
-
-def _chkUsersExist(users, regUser):
+def _chkUsersExist(users, regUser, errList):
     """checks database to see if users exist; does not check users that have 'register to play' checked
 
     Keyword arguments:
@@ -265,17 +215,33 @@ def _chkUsersExist(users, regUser):
                 index contains index of user(s) that does not exist
         
     """
-    
-    errFlag = False
-    index = []
 
     for x in range(len(users)):
         if regUser[x] is None:
             if users[x] is None:
-                errFlag = True
-                index.append(x+2)
+                errList[x+1] = "User not registered"
     
-    return errFlag, index
+    return errList
+
+def _chkRegUsers(users, regUser, errList):
+    
+    for x in range(len(users)):
+        if regUser[x] is not None:
+            if users[x] is not None:
+                errList[x+1] = "Username taken"
+    
+    return errList
+
+def _chkEmails(regUser, emails, errList):
+    
+    print(emails)
+    
+    for x in range(len(regUser)):
+        if regUser[x] is not None:
+            if emails[x] is u'':
+                errList[x+1] = "Email required"
+    
+    return errList
 
 def _regUsers(regUser, usernames, emails):
     """registers users who aren't already registered; assigns 8 character random password; emails username and password

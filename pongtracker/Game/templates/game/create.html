@@ -44,16 +44,6 @@
     
         {% csrf_token %}
         
-        {% if 1 in form.errorIndex %}
-        <table width="100%" align="center">
-        	<tr>
-        		<td align="center" bgcolor="#FF3333">
-        			<span style="color:white; font-size:16px; font-weight:bold;">{{ form.error }}</span>
-        		</td>
-        	</tr>
-        </table>
-        {% endif %}
-        
         <table width="80%" align="center">
             <tr>
                 <td width="40%">
@@ -80,11 +70,11 @@
                     <label for="username3"> <strong>Player 3: </strong><br/>
                     {{ form.username3 }}</label> 
                     
-                    {% if 3 in form.errorIndex %}
+                    {% if form.err3 != '' %}
 			        <table width="72%">
 			        	<tr>
 			        		<td align="center" bgcolor="#FF3333">
-			        			<span style="color:white; font-size:12px; font-weight:bold;">{{ form.error }}</span>
+			        			<span style="color:white; font-size:12px; font-weight:bold;">{{ form.err3 }}</span>
 			        		</td>
 			        	</tr>
 			        </table>
@@ -115,11 +105,11 @@
                     <label for="username2"> <strong>Player 2: </strong><br/>
                     {{ form.username2 }}</label>
                     
-                    {% if 2 in form.errorIndex %}
+                    {% if form.err2 != '' %}
 			        <table width="72%">
 			        	<tr>
 			        		<td align="center" bgcolor="#FF3333">
-			        			<span style="color:white; font-size:12px; font-weight:bold;">{{ form.error }}</span>
+			        			<span style="color:white; font-size:12px; font-weight:bold;">{{ form.err2 }}</span>
 			        		</td>
 			        	</tr>
 			        </table>
@@ -139,11 +129,11 @@
                     <label for="username4"> <strong>Player 4: </strong><br/>
                     {{ form.username4 }}</label>
                     
-                    {% if 4 in form.errorIndex %}
+                    {% if form.err4 != '' %}
 			        <table width="72%">
 			        	<tr>
 			        		<td align="center" bgcolor="#FF3333">
-			        			<span style="color:white; font-size:12px; font-weight:bold;">{{ form.error }}</span>
+			        			<span style="color:white; font-size:12px; font-weight:bold;">{{ form.err4 }}</span>
 			        		</td>
 			        	</tr>
 			        </table>
