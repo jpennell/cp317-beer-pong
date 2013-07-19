@@ -37,9 +37,6 @@
 
 <div id="page-content">
 	<h1>Create Game</h1>
-    <p style = "padding-bottom:20px">
-        Please enter a valid username in each field or register any users that are not already on Pong Tracker.
-    </p>
     <form method="POST" action="/game/create/">
     
         {% csrf_token %}
@@ -67,8 +64,8 @@
                     &nbsp;
                 </td>
                 <td width="40%"  valign="top">
-                    <label for="username3"> <strong>Player 3: </strong><br/>
-                    {{ form.username3 }}</label> 
+                    <label for="username3"> <strong>Player 3: </strong></label>
+                    {{ form.username3 }}
                     
                     {% if form.err3 != '' %}
 			        <table width="72%">
@@ -79,7 +76,8 @@
 			        	</tr>
 			        </table>
 			        {% endif %}
-                    
+			        
+                    <br/>
                     <input id="register3" name="chkRegister3" onclick="toggle_more3();" type="checkbox"></input>
                     Register to play
                     <div id="moreinfo3" style="display: none;">
@@ -102,8 +100,8 @@
 
             <tr>
                 <td width="40%" valign="top">
-                    <label for="username2"> <strong>Player 2: </strong><br/>
-                    {{ form.username2 }}</label>
+                    <label for="username2"> <strong>Player 2: </strong></label>
+                    {{ form.username2 }}
                     
                     {% if form.err2 != '' %}
 			        <table width="72%">
@@ -115,6 +113,7 @@
 			        </table>
 			        {% endif %}
                     
+                    <br/>
                     <input id="register2" name="chkRegister2" onclick="toggle_more2();" type="checkbox"></input>
                     Register to play
                     <div id="moreinfo2" style="display: none;">
@@ -126,8 +125,8 @@
                     &nbsp;
                 </td>
                 <td width="40%"  valign="top">
-                    <label for="username4"> <strong>Player 4: </strong><br/>
-                    {{ form.username4 }}</label>
+                    <label for="username4"> <strong>Player 4: </strong></label>
+                    {{ form.username4 }}
                     
                     {% if form.err4 != '' %}
 			        <table width="72%">
@@ -139,6 +138,7 @@
 			        </table>
 			        {% endif %}
                     
+                    <br/>
                     <input id="register4" name="chkRegister4" onclick="toggle_more4();" type="checkbox"></input>
                     Register to play
                     <div id="moreinfo4" style="display: none;">
@@ -150,7 +150,6 @@
             
         </table>
         
-        <br/>
         <br/>
         <div align="left">
 	        <button name="createGame" class="btn" type="submit">

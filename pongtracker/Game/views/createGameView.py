@@ -239,7 +239,7 @@ def _chkEmails(regUser, emails, errList):
     for x in range(len(regUser)):
         if regUser[x] is not None:
             if emails[x] is u'':
-                errList[x+1] = "Email required"
+                errList[x+1] = "Email required for registration"
     
     return errList
 
