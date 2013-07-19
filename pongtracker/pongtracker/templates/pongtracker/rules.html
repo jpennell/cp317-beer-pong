@@ -3,9 +3,25 @@
     <title>Pong Tracker | Leaderboard</title>
    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
     <link href='../../../../assets/bootstrap-css/bootstrap.css' rel='stylesheet' type='text/css'>
-    <link href='../../../../assets/css/global-styles.css' rel='stylesheet' type='text/css'>
+    <link href="../../../../assets/css/popup.css" rel="stylesheet" type="text/css" media="all" />
+	<link href='../../../../assets/css/global-styles.css' rel='stylesheet' type='text/css'>
     <link href='../../../../assets/css/home-styles.css' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="../../../../assets/js/popup.js"></script>
 </head>
+<script language="VBScript">
+    Function alert(msg,title)
+    MsgBox msg, ,title
+    End Function
+</script>
+<script>
+function myFunction(value)
+{
+alert(value,"Welcome");
+}
+</script>
+
+
+
 <body>
  <div id="container">
         <!------ LOGIN HEADER --------->
@@ -32,11 +48,10 @@
             </table>
         </div>
 		<div class="contents">
-				<h3>Table of Contents</h2>
+				<h2>Table of Contents</h2>
 					<a href="#app-rules">Pong Tracker Rules</a><br>
 					<a href="#beerpong-rules">Gameplay Rules</a><br>
 					<a href="#endgame-rules">Ending a Game Rules</a><br>
-					<a href="#appendix">Appendix</a><br>
 					
 			</div>
         <!------ CONTENT --------->
@@ -45,8 +60,11 @@
                 <tr>
 					<td>
 						<section id= "app-rules">
-						<h4 class="subsection3-title">Pong Tracker Rules</h4>
-						<h5> Any non-compliance of the Pong Tracker Rules can result in a user ban. </h5>
+
+    </div>
+						<b>Pong Tracker Rules</b>
+						<p></p>
+						<b> Any non-compliance of the Pong Tracker Rules can result in a user ban. </b>
 						<div class="indent10">
 						<ul>
 							<li> No fictitious accounts. A fictitious account does not represent a human being. </li>
@@ -60,12 +78,12 @@
 						</p>
 						<section id= "beerpong-rules">
 						<div class="subsection3">
-							<h4 class="subsection3-title">Gameplay Rules</h4>
+							<b>Gameplay Rules</b>
 
 								<div class="indent10">
 									<ul>
 										<li>
-											To determine the first team to shoot, players participate in <a href="#appendix"><b>eye-to-eye</b></a>. Eye-to-eye consists of a member from each team shooting simultaneously at the opposing team's cups while making full eye contact with the opposing shooter.
+											To determine the first team to shoot, players participate in <a href="#" onclick="myFunction('A means of deciding the first team to shoot. Consists of a member of each team simultaneously shooting while making full  contact with the other party. Should a cup be scored, the offending party is awarded the first shot.');return false;">eye to eye</a> Eye-to-eye consists of a member from each team shooting simultaneously at the opposing team's cups while making full eye contact with the opposing shooter.
 											<ul>
 												<li>
 													One person from each team begins. After each failed attempt, the two team members swap places.
@@ -80,7 +98,8 @@
 										</li>
 
 										<li>
-											Teams take turns attempting to throw the ping pong ball into the cups of the opposing team. The team who is currently shooting is called the <a href="#appendix"><b>shooting team</b></a>. The team who is being shot at is called the <a href="#appendix"><b>defending team</b></a>.
+											Teams take turns attempting to throw the ping pong ball into the cups of the opposing team. The team who is currently shooting is called the <a href="#" onclick="myFunction('The team who is currently in possession of the ping pong balls.');return false;">shooting team.</a>
+. The team who is being shot at is called the <a href="#" onclick="myFunction('The team who is currently in possession of the ping pong balls.');return false;">defending team</a>.
 										</li>
 										<li>
 											When a ball has been sunk in a cup, that cup is removed from the table by the defending team. The defending team must drink the contents of that cup in a timely fashion (see <a href="#endgame-rules">Ending a Game</a>).
@@ -92,7 +111,7 @@
 											After a shot, the ball spins in the rim of the defending team's cup, the defending team can attempt to blow the ball out of the cup. If the ball is ejected and remains dry, no cup is removed.
 										</li>
 										<li>
-											An <a href="#appendix"><b>air ball</b></a> is a shot that does not hit the table, nor any cup on the table.
+											An <a href="#" onclick="myFunction('A shot that misses the table altogether.');return false;">air ball</a> is a shot that does not hit the table, nor any cup on the table.
 											<ul>
 												<li>
 													If the first shooter air balls, then the second shooter must forfeit their shot.
@@ -103,7 +122,7 @@
 											</ul>
 										</li>
 										<li>
-											If the ball rolls or bounces back to the shooting team on the table (never once touching the ground), a member of the shooting team can attempt a <a href="#appendix"><b>trick shot</b></a>.
+											If the ball rolls or bounces back to the shooting team on the table (never once touching the ground), a member of the shooting team can attempt a <a href="#" onclick="myFunction('Any shot containing either multi-directional trajectory or non-standard origination.');return false;">trick shot</a>.
 										</li>
 										<ul>
 											<li>
@@ -125,10 +144,10 @@
 											</li>
 										</ul>
 										<li>
-											Each team is entitled to one <a href="#appendix"><b>re-rack</b></a> at any point during the game. A re-rack is a request to shuffle the orientation of the remaining cups of the opposing team.
+											Each team is entitled to one <a href="#" onclick="myFunction('A request to shuffle the orientation of the remaining cups on the opposing side.');return false;">re-rack</a> at any point during the game. A re-rack is a request to shuffle the orientation of the remaining cups of the opposing team.
 										</li>
 										<li>
-											A <a href="#appendix"><b>bounce shot</b></a> counts as two cups sunk. A bounce shot hits the table before entering a cup. The sunk cup and another chosen by the <a href="#appendix"><b>scoring team</b></a> are removed.
+											A <a href="#" onclick="myFunction('A shot that hits the table before entering a cup.');return false;">bounce shot</a> counts as two cups sunk. A bounce shot hits the table before entering a cup. The sunk cup and another chosen by the scoring team are removed.
 											<ul>
 												<li>
 													The defending team can attempt to disrupt the ball after it has made contact with the table.
@@ -139,7 +158,7 @@
 											If two non-bounce shots hit the same cup, then the sunk cup, and another selected by the scoring team are removed.
 										</li>
 										<li>
-											A <a href="#appendix"><b>party foul</b></a> is any infringement on the rules of the game. In particular:
+											A <a href="#" onclick="myFunction('An infringement on the rules of the game, or knocking over a cup, spilling its contents.');return false;">party foul</a> is any infringement on the rules of the game. In particular:
 										</li>
 										<ul>
 											<li>
@@ -153,14 +172,14 @@
 								</div>
 						</section>
 						<section id = "endgame-rules">
-							<h4 class="subsection3-title">Ending a Game Rules</h4>
+							<b>Ending a Game Rules</b>
 								<div class="indent10">
 									<ul>
 										<li>
 											A game is over when a team's cups are all removed from the table.
 										</li>
 										<li>
-											Before the game is complete, the team with no remaining cups is eligible for <a href="#appendix"><b>redemption</b></a>.
+											Before the game is complete, the team with no remaining cups is eligible for <a href="#" onclick="myFunction('A chance for the losing team to come back.');return false;">redemption</a>.
 											<ul>
 												<li>
 													If a team is sucessful, then the game resumes, with each team having three cups.
@@ -203,73 +222,7 @@
 									</ul>
 								</div>
 							</section>
-					<section id = "appendix">
-							<h4 class="subsection3-title">Appendix</h4>
-								<div class="indent10">
-							<table border="0" width="100%">
-					<tr  style="background:#F5F5F5" height="30px" class="def" valign="top">
-						<td width="20%">Term</td>
-						<td width="80%">Definition</td>
-					</tr> 
-					<tr  height="30px">
-						<td width="20%" class="def">Air ball</td>
-						<td width="80%">A shot that misses the table altogether.</td>
-					</tr>
-					<tr  height="30px">
-						<td width="20%" class="def">Bounce shot</td>
-						<td width="80%">A shot that hits the table before entering a cup.</td>
-					</tr>
-
-					<tr  height="30px">
-						<td width="20%" class="def">Defending team</td>
-						<td width="80%">The team who is not currently in possession of the ping pong balls. </td>
-					</tr>
-
-					<tr  height="30px">
-						<td width="20%" class="def" valign="top">Eye-to-eye</td>
-						<td width="80%">A means of deciding the first team to shoot. Consists of a member of each team simultaneously shooting while making full eye contact with the other party. Should a cup be scored, the offending party is awarded the first shot. </td>
-					</tr>
-
-					<tr  height="30px">
-						<td width="20%" class="def">Party foul</td>
-						<td width="80%">An infringement on the rules of the game, or knocking over a cup, spilling its contents. </td>
-					</tr>
-
-					<tr  height="30px">
-						<td width="20%" class="def">Re-rack</td>
-						<td width="80%">A request to shuffle the orientation of the remaining cups on the opposing side. </td>
-					</tr>
-
-					<tr  height="30px">
-						<td width="20%" class="def">Redemption</td>
-						<td width="80%"> A chance for the losing team to come back. </td>
-					</tr>
-
-					<tr  height="30px">
-						<td width="20%" class="def">Session</td>
-						<td width="80%">The period from which the user logs in, to when the user either logs out, or closes the internet browser.</td>
-					</tr>
-
-					<tr  height="30px">
-						<td width="20%" class="def">Shooting team</td>
-						<td width="80%">The team who is currently in possession of the ping pong balls. </td>
-					</tr>
-
-					<tr  height="30px">
-						<td width="20%" class="def" valign="top">Solo cup</td>
-						<td width="80%">
-							Standard cup for Beer Pong
-							<br><br>
-							<img src="../../../../assets/img/redsolocup.jpg" alt="Red Solo Cup" width="15%">
-						</td>
-					</tr>
-					<tr  height="30px">
-						<td width="20%" class="def">Trick shot</td>
-						<td width="80%">Any shot containing either multi-directional trajectory <i>or</i> non-standard origination. </td>
-					</tr>
-					</table>
-							</div>
-					</section>
+				
 					   <!------- FOOTER --------->
         <div id="footer">
             <table>
