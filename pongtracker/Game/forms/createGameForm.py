@@ -34,3 +34,6 @@ class CreateGameForm(forms.Form):
         label="Email",
         max_length=40,
         required = False)
+    
+    error = None
+    errorIndex = None
