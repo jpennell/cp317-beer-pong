@@ -21,9 +21,15 @@ class LifeStats(models.Model):
         return self.wins
     
 class Ranking(models.Model):
+
     mu = models.FloatField(default=25.0)
     sigma = models.FloatField(default=8.3333)
     user = models.OneToOneField (PongUser)
     
+    def _get_rank(self):
+       "Returns the rank"
+       return self.mu - (3*self.sigma)
+    rank = property(_get_rank)
+    
     def __unicode__(self):
-        return self.mu    
+        return self.rank    

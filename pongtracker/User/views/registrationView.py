@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 #from django.contrib.auth import authenticate , login
 from django.core.context_processors import csrf
-from django.core.mail import send_mail
+from django.core.mail import send_mail, BadHeaderError
 #from User.forms import RegistrationForm
 from User.models import PongUser
 import random
 from Utilities.utilities import *
+from loginViews import *
+import re
 
 
 def registerNewUser(request):
@@ -37,7 +39,7 @@ def registerNewUser(request):
         email = request.POST.get('email')
 
         if not _validateUsername(username):
-            usernameState = 'User name does not fit the format 30 characters or fewer. Letters, digits and @/./+/-/_ only.'
+            usernameState = 'User name does not fit the format 30 characters or fewer. Letters, digits, _ and . only'
             return  redirect_with_params('/index/', usernameState=usernameState, username=username, email=email)
     
         if _usernameTaken(username):
@@ -86,7 +88,9 @@ def _validateEmail(email):
 #Needs to be done better
 def _validateUsername(username):
     """{{Description}}
-
+    
+    Letters, digits and @/./+/-/_ only
+    
     Keyword arguments:
     variable -- description 
     variable -- description 
@@ -98,6 +102,10 @@ def _validateUsername(username):
         
     """
     valid = True
+    #check to make sure username forllows character rules
+    match = re.search('[^A-Za-z0-9_.]',username)
+    if match or len(username) > 30:
+        valid = False
     return valid
 
 def _usernameTaken(username):
@@ -142,6 +150,7 @@ def _suggestUsernames(username):
     if not username.isalpha():
         #parse username to get back number in username
         number = _parse_username(username)
+        #separate text from numbers in user name
         names = username.split(number)
         number = int(number)
     else:
@@ -173,10 +182,22 @@ def _sendEmail(username, email, password):
     Output:
         
     """
-
-#    send_mail( 'Pong Tracker Account', "Here is your temporary password:{0}".format( password ),
-#               email, ['from@hotmail.com'], fail_silently = False )
-
+    message = """
+    
+    Hey {},
+    
+    Here is your temporary password:{}
+    
+    Time to login and start playing.
+    
+    Cheers,
+    The Pong Tracker Team""".format(username, password)
+    
+    try:
+        send_mail('Pong Tracker Account', message, 'thepongtracker@gmail.com', [email], fail_silently = False )
+    except BadHeaderError:
+        pass
+    
     return
 
 def _generatePassword():
@@ -192,7 +213,7 @@ def _generatePassword():
     Output:
         
     """
-    password = "Bubbles"
+    password = createRndPass(8)
 
     return password
 

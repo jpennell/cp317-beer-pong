@@ -6,6 +6,10 @@ from django.template import RequestContext
 from User.models import PongUser
 from Utilities.utilities import *
 
+SUCCESS = 'success'
+INCORRECT = 'incorrect'
+BANNED = 'banned'
+
 def loginUserRequest( request ):
     """{{Description}}
 
@@ -60,3 +64,29 @@ def loginUserRequest( request ):
             return  redirect_with_params('/banned/', username=username)
 
     return  redirect('/index/')
+
+def loginUser(username, password, request):
+    
+    """{{Description}}
+
+    Keyword arguments:
+    variable -- description
+    variable -- description
+
+    Contributors:
+    Quinton Black
+    Erin Cramer
+
+    Output:
+
+    """
+    
+    user = authenticate( username = username, password = password )
+    if user is not None:
+        if user.getIsActive() and not user.getIsBanned():
+            login( request, user )
+            request.session['username'] = username
+            return SUCCESS
+        return BANNED
+    else:
+        return INCORRECT 
