@@ -1,12 +1,32 @@
-Pong Tracker is hosted on a Sun Microsystem Linux Server with a MySQL database. The Linux server must be able to render HTML 5, CSS 3, Python 2.7, and JavaScript. The server is also required to integrate with the Django web framework and Github. Django and python were selected as the development team has python experience. Django is a strong web framework with many tools built in such as sessions, and database apis. The only concern we have at present is that we are implemented in python 2.7 when the current version is 3.3.2. We selected 2.7 because Django support for 3.3.2 is currently only in an an experimental version.
+Pong Tracker is hosted on a Sun Microsystem Linux Server with a MySQL database. The Linux server must be able to render HTML 5, CSS 3, Python 2.7, and JavaScript. The server is also required to integrate with the Django web framework and Github. 
+
+ The only concern we have at present is that we are implemented in python 2.7 when the current version is 3.3.2. We selected 2.7 because Django support for 3.3.2 is currently only in an an experimental version.
 
 Coding Guidelines and Conventions:
 - Must meet HTML 5 and CSS 3
 - Must be coded in python 2.7 excluding JavaScript
 - Must be object oriented
 - Variables shall be named with Camel Case
+- python documentations shall be done in PEP 8
 
 Testing:
 - All functions shall be unit tested and committed with their tests.
 - Acceptance testing must also be preformed
 
+
+
+- what is it
+Django is a strong web framework or stack with many tools built in such as sessions, and database apis. Djano focuses on taking alot of the work away from the developer allowing for easier rapid development.   
+
+- why we chose it
+Django and python were selected as the development team has python experience. It also eliminates a lot of the work involved in setting up the administration, user  
+login, and database.  
+
+- basic concept of how it works
+One word sums up how Django works Magic. In more specific terms Django works by processing a given url against the registered urls and calling the respective view. That view will the use the required models potentially updateing the database and return a HTTPs response. That response is usualy a template (HTML page) which then be displayed for the user. The majority of these templates will have buttons that trigger posts to urls that will then start the process all over again.
+
+- how to use it
+In order to use Django, import the libraries and run django-admin.py startproject mysite to create your first project. With a project you can then create apps which are essentially packages. These packages contain the models, views, forms, templates, urls, and tests for that package. Once started a developer can start to hook up the models, templates, and views in a model view controller fashion.
+
+- how do we use it (particular libraries- ie session: what is a session for)
+We are currently using the django libraries for administration, authentication, sessions, and static files. Since we do not have permissions to create databases we have had to rewrite the testing suite in order to perform unit testing.
