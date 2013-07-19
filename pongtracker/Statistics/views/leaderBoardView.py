@@ -79,18 +79,29 @@ def _getOverallRank(username):
     
     return overallRank    
     
-def _getLeaders(numberOfUsers,i):
+def _getInstitutionLeader(numberOfUsers,intitutionName):
     """
-    This method retireves a user's overall ranking
-
+    This method retrieves a list of length numberOfUsers of the top ranking users at institution specified
     Keyword arguments:
-    username -- the username of the user to find (string)
-    
+    numberOfUsers -- The number of users to return (int)
+    intitutionName -- the name of the institution (String)
+     
     Contributors:
     Quinton Black
     
     Output:
-    rank -- the rank of the user overall (int)
+    leadUsers -- the top users for the institution User[]
     """
+    leadUsers=[]
+    
+    
+    
+    
+    return leadUsers
+    
+    
+    
+    
+    
     
     
