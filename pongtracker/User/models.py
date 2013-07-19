@@ -13,7 +13,9 @@ class PongUser(AbstractUser):
     def getHeight(self):
         return self._height
 
-
+    def getID(self):
+        return self.id
+    
     def getPhoto(self):
         return self._photo
 
