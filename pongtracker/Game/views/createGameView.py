@@ -20,11 +20,12 @@ def createNewGameRequest(request):
     """
     
     form = CreateGameForm()
-    
-    if 'username' in request.session:
+
+    try:
         username = request.session['username']
-    else:
-        render(request, 'user/login.html')
+        print('username: ', username)
+    except KeyError:
+        redirect('user/login.html')
     
     # on POST
     if request.method == 'POST':
