@@ -257,3 +257,46 @@ def _parse_username(username):
     username_number = username[first:last]
 
     return username_number
+
+"""removes ending numbers from a String
+
+    Keyword arguments:
+    username -- the String to remove numbers from
+                (in this context, a username)
+    
+    Contributors:
+    Richard Douglas
+    
+    Output: username without its trailing numbers
+            ex: 'richard123' -> 'richard'
+                'ric_12hard12' -> 'ric_12hard'
+                '' -> ''
+    """
+def _stripOffEndingNumberFrom(username):
+    end = len(username)
+    while (end > 0 and username[end - 1].isdigit()):
+        end -= 1
+    strippedUsername = username[:end]
+    return strippedUsername
+
+"""retrieves and returns the ending numbers from a String
+    (in String form)
+
+    Keyword arguments:
+    username -- the String to retrieve numbers from
+                (in this context, a username)
+    
+    Contributors:
+    Richard Douglas
+    
+    Output: the trailing numbers of the username (in String form)
+            ex: 'richard123' -> '123'
+                'ric_12hard12' -> '12'
+                '' -> ''
+    """
+def _retrieveEndingNumberFrom(username):
+    startOfNumber = len(username)
+    while (startOfNumber > 0 and username[startOfNumber - 1].isdigit()):
+        startOfNumber -= 1
+    usernameNumber = username[startOfNumber:]
+    return usernameNumber
