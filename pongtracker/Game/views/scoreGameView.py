@@ -11,4 +11,4 @@ def scoreGame(request, game_id):
     
     game = Game.objects.get(pk=game_id)
     
-    return render(request, 'game/summary.html')
+    return render(request, 'game/in-game.html')
