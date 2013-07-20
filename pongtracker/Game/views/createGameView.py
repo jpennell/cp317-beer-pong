@@ -21,7 +21,10 @@ def createNewGameRequest(request):
     
     form = CreateGameForm()
     
-    username = request.session['username']
+    if 'username' in request.session:
+        username = request.session['username']
+    else:
+        render(request, 'user/login.html')
     
     # on POST
     if request.method == 'POST':
