@@ -9,11 +9,6 @@ def viewGameSummaryRequest(request, game_id):
     
     username = request.session['username']
     
-    # on POST
-    if request.method == 'POST':
-        
-        print("here!")
+    game = Game.objects.get(pk=game_id)
     
-    else:
-        
-        return render(request, 'game/summary.html')
+    return render(request, 'game/summary.html')
