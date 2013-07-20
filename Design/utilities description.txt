@@ -1,0 +1,1 @@
+The utilities package includes helper functions that are not specific to a particular package (User, Game, Statistics) in our application but are accessed by some or all of them. Currently, the functions that belong in this package are unknown. Functions are added to the utilities package when the need arises.
