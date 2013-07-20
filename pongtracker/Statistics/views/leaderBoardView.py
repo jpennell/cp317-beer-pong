@@ -64,7 +64,7 @@ def _getOverallRank(username):
    
     for row in rankingTable:
         #please insert actual true skill calculation
-        skill = row.mu + row.sigma
+        skill = row.mu - 3*row.sigma #<- here it is | Richard 
         skillList += {'userID':row.user_id,'skill':skill}
      
     
