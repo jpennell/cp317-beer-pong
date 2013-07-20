@@ -35,5 +35,6 @@ class CreateGameForm(forms.Form):
         max_length=40,
         required = False)
     
-    error = None
-    errorIndex = None
+    err2 = ''
+    err3 = ''
+    err4 = ''
