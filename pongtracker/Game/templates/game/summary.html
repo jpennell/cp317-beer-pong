@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block pagetitle %} | Create Game{% endblock %}
+
+{% block pagecontent %}
+
+<table width="100%" align="center">
+	<tr height="75px">
+		<td width="50%" align="center" valign="top" style="border-right: 1px solid black">
+			<h4>Team 1</h4>
+		</td>
+		<td width="50%"  align="center" valign="top">
+			<h4>Team 2</h4>
+		</td>
+	</tr>
+</table>
+
+<table width="100%"  align="center">
+	<tr>
+		<td width="25%" align="center">
+			Picture
+		</td>
+		<td width="25%" align="center" style="border-right: 1px solid black">
+			Picture
+		</td>
+		<td width="25%" align="center">
+			Picture
+		</td>
+		<td width="25%" align="center">
+			Picture
+		</td>
+	</tr>
+	<tr>
+		<td width="25%" align="center">
+			<strong>{{ request.session.username }}</strong>
+			<br/>
+			Cups sunk:
+		</td>
+		<td width="25%" align="center" style="border-right: 1px solid black">
+			<strong>{{ username2 }}</strong>
+			<br/>
+			Cups sunk:
+		</td>
+		<td width="25%" align="center">
+			<strong>{{ username3 }}</strong>
+			<br/>
+			Cups sunk:
+		</td>
+		<td width="25%" align="center">
+			<strong>{{ username4 }}</strong>
+			<br/>
+			Cups sunk:
+		</td>
+	</tr>
+</table>
+<br/>
+<br/>
+<h5 align="center">One player from team 2 must confirm game on next log-in</h5>
+
+{% endblock %}

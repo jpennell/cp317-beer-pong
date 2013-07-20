@@ -1,4 +1,3 @@
-# Create your views here.
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from Game.models import Game, Team
@@ -22,7 +21,10 @@ def createNewGameRequest(request):
     
     form = CreateGameForm()
     
-    username = request.session['username']
+    if 'username' in request.session:
+        username = request.session['username']
+    else:
+        render(request, 'user/login.html')
     
     # on POST
     if request.method == 'POST':
@@ -101,6 +103,9 @@ def _createNewGame(user1, user2, user3, user4):
     team2 = Team.objects.create(user1=user3,user2=user4)
 
     game = Game.objects.create(team1=team1, team2=team2)
+    
+    print("Game ", game.id)
+    
     return game
 
 def getGame(request,game_id):
