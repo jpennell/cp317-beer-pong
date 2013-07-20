@@ -1,18 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Pong Tracker | Game Summary</title>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
-    <link href='../../../../assets/bootstrap-css/bootstrap.css' rel='stylesheet' type='text/css'>
-    <link href='../../../../assets/css/global-styles.css' rel='stylesheet' type='text/css'>
-	<link href='../../../../assets/css/profile-styles.css' rel='stylesheet' type='text/css'>
-</head>
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+
+<script type="text/javascript">
+	function toggle_more2() {
+		if (document.getElementById('register2').checked == false) {
+			document.getElementById('moreinfo2').style.display = "none";
+		} else {
+			document.getElementById('moreinfo2').style.display = "inline-block";
+		}
+	}
+
+	function toggle_more3() {
+		if (document.getElementById('register3').checked == false) {
+			document.getElementById('moreinfo3').style.display = "none";
+		} else {
+			document.getElementById('moreinfo3').style.display = "inline-block";
+		}
+	}
+
+	function toggle_more4() {
+		if (document.getElementById('register4').checked == false) {
+			document.getElementById('moreinfo4').style.display = "none";
+		} else {
+			document.getElementById('moreinfo4').style.display = "inline-block";
+		}
+	}
+</script>
+
+{% endblock %}
+
 <body>
     <div id="container">
         <!------ LOGIN HEADER --------->
         <div id="login-header">
             <p>
-                Welcome, <span id="player-name">{{ username }} </span><span id="logout"><a href="/index/logout">Log Out</a></span>
+                Welcome, <span id="player-name">{{ request.session.username }} </span><span id="logout"><a href="/index/logout">Log Out</a></span>
             </p>
         </div>
 

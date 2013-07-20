@@ -1,4 +1,3 @@
-# Create your views here.
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from Game.models import Game, Team
