@@ -2,6 +2,8 @@ from django import forms
 
 class CreateGameForm(forms.Form):
     
+    username = ''
+    
     username2 = forms.CharField(
         widget=forms.TextInput(attrs={'placeholder': 'Username'}),
         label="Player 2",

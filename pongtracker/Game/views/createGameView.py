@@ -20,12 +20,13 @@ def createNewGameRequest(request):
     """
     
     form = CreateGameForm()
-
+    username = ''
+    
     try:
         username = request.session['username']
-        print('username: ', username)
+        form.username = username
     except KeyError:
-        redirect('user/login.html')
+        pass
     
     # on POST
     if request.method == 'POST':
@@ -66,7 +67,7 @@ def createNewGameRequest(request):
             errList = _chkRegUsers(users[1:4], regUser, errList)
             
             # display errors in form
-            if (errList.count('') < 4):
+            if (errList.count('') < 4) or username == '':
                 form.err2 = errList[1]
                 form.err3 = errList[2]
                 form.err4 = errList[3]

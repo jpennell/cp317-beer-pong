@@ -55,11 +55,18 @@
             </tr>
             
             <tr>
+            	{% if form.username != '' %}
                 <td width="40%" valign="top">
                     <label for="username1"> <strong>Player 1: </Strong></label>
-                    <span style="font-size:16px;"><strong>{{ request.session.username }}</strong></span>
+                    <span style="font-size:16px;"><strong>{{ form.username }}</strong></span>
                     <br/>will be tracking the game.
                 </td>
+                {% else %}
+                <td width="40%" valign="top">
+                    <label for="username1"> <strong>Player 1: </Strong></label>
+                    <span style="color:red; font-size:16px; font-weight:bold;">You must be logged in!</span>
+                </td>
+                {% endif %}
                 <td width = "10%">
                     &nbsp;
                 </td>
