@@ -100,6 +100,9 @@ def _createNewGame(user1, user2, user3, user4):
     team2 = Team.objects.create(user1=user3,user2=user4)
 
     game = Game.objects.create(team1=team1, team2=team2)
+    
+    print("Game ", game.id)
+    
     return game
 
 def getGame(request,game_id):
