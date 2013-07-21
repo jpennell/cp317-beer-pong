@@ -20,10 +20,10 @@
 							<br>***An error occurred in processing your game confirmation/denial request.*** </td>
 	</tr>
 	<tr>
-		<td>External Accesses</td> <td>None</td>
+		<td>Database Accesses</td> <td>None</td>
 	</tr>
 	<tr>
-		<td>External Changes</td> <td>May initialize a connection to the Game, Team, Event, EventType, User, LifeStats and Ranking tables</td>
+		<td>Database Changes</td> <td>May initialize a connection to the Game, Team, Event, EventType, User, LifeStats and Ranking tables</td>
 	</tr>
 	<tr>
 		<td>Other Methods Invoked</td> <td>None</td>
@@ -63,10 +63,10 @@
 								***Game has not ended***</td>
 	</tr>
 	<tr>
-		<td>External Accesses</td> <td>Game, Event, EventType</td>
+		<td>Database Accesses</td> <td>Game, Event, EventType</td>
 	</tr>
 	<tr>
-		<td>External Changes</td> <td>If successful, the Game's isConfirmedOrDenied flag is set to True (unless the Game is deleted.)</td>
+		<td>Database Changes</td> <td>If successful, the Game's isConfirmedOrDenied flag is set to True (unless the Game is deleted.)</td>
 	</tr>
 	<tr>
 		<td>Other Methods Invoked</td> <td>isConfirmedOrDenied, confirmGame, denyGame, setConfirmedOrDenied</td>
@@ -99,10 +99,10 @@
 	<td>Error Messages</td> <td>None</td>
 	</tr>
 	<tr>
-		<td>External Accesses</td> <td>Game, Team, User, Event, LifeStats</td>
+		<td>Database Accesses</td> <td>Game, Team, User, Event, LifeStats</td>
 	</tr>
 	<tr>
-		<td>External Changes</td> <td>None</td>
+		<td>Database Changes</td> <td>None</td>
 	</tr>
 	<tr>
 		<td>Other Methods Invoked</td> <td>getEvents, getTeam1, getTeam2, getUser1, getUser2, getLifeStats, getUser</br>
@@ -136,10 +136,10 @@
 	<td>Error Messages</td> <td>None</td>
 	</tr>
 	<tr>
-		<td>External Accesses</td> <td>Game, Event</td>
+		<td>Database Accesses</td> <td>Game, Event</td>
 	</tr>
 	<tr>
-		<td>External Changes</td> <td>May delete Events from the Event table, Teams from the Teams table and the Game from the Game table</td>
+		<td>Database Changes</td> <td>May delete Events from the Event table, Teams from the Teams table and the Game from the Game table</td>
 	</tr>
 	<tr>
 		<td>Other Methods Invoked</td> <td>getEvents</td>
@@ -171,10 +171,10 @@
 	<td>Error Messages</td> <td>None</td>
 	</tr>
 	<tr>
-		<td>External Accesses</td> <td>LifeStats, Event, EventType</td>
+		<td>Database Accesses</td> <td>LifeStats, Event, EventType</td>
 	</tr>
 	<tr>
-		<td>External Changes</td> <td>The LifeStats object is updated to reflect that the Event occurred.</td>
+		<td>Database Changes</td> <td>The LifeStats object is updated to reflect that the Event occurred.</td>
 	</tr>
 	<tr>
 		<td>Other Methods Invoked</td> <td>getEventType, getEventTypeName, incBounceShots, incTrickShots, incPartyFouls, incCupsSunk, incRedemptions</td>
@@ -207,10 +207,10 @@
 	<td>Error Messages</td> <td>None</td>
 	</tr>
 	<tr>
-		<td>External Accesses</td> <td>LifeStats, Team, User</td>
+		<td>Database Accesses</td> <td>LifeStats, Team, User</td>
 	</tr>
 	<tr>
-		<td>External Changes</td> <td>Wins for the winning Users and losses for the losing Users are updated.</td>
+		<td>Database Changes</td> <td>Wins for the winning Users and losses for the losing Users are updated.</td>
 	</tr>
 	<tr>
 		<td>Other Methods Invoked</td> <td> incWins, incLosses</td>
@@ -243,10 +243,10 @@
 		<td>Error Messages</td> <td>None</td>
 	</tr>
 	<tr>
-		<td>External Accesses</td> <td>Rating, Team, User</td>
+		<td>Database Accesses</td> <td>Rating, Team, User</td>
 	</tr>
 	<tr>
-		<td>External Changes</td> <td>TrueSkill rankings are updated with their new Mu and Sigma values.</td>
+		<td>Database Changes</td> <td>TrueSkill rankings are updated with their new Mu and Sigma values.</td>
 	</tr>
 	<tr>
 		<td>Other Methods Invoked</td> <td>getUser1, getUser2, getRanking, rate, getMu, setMu, getSigma, setSigma</td>
