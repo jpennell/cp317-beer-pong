@@ -4,6 +4,21 @@
 {% block head %}
 
 <script type="text/javascript">
+	window.onload = loadChecks()
+					{ loadChecks(); };
+	
+	function loadChecks() {
+		if (document.getElementById('register2').checked == true) {
+			document.getElementById('moreinfo2').style.display = "inline-block";
+		}
+		if (document.getElementById('register3').checked == true) {
+			document.getElementById('moreinfo3').style.display = "inline-block";
+		}
+		if (document.getElementById('register4').checked == true) {
+			document.getElementById('moreinfo4').style.display = "inline-block";
+		}
+	}
+
 	function toggle_more2() {
 		if (document.getElementById('register2').checked == false) {
 			document.getElementById('moreinfo2').style.display = "none";
@@ -78,7 +93,7 @@
 			        <table width="72%">
 			        	<tr>
 			        		<td align="center" bgcolor="#FF3333">
-			        			<span style="color:white; font-size:12px; font-weight:bold;">{{ form.err3 }}</span>
+			        			<span style="color:white; font-size:12px; font-weight:bold;">{{ form.err3|linebreaksbr }}</span>
 			        		</td>
 			        	</tr>
 			        </table>
@@ -114,7 +129,7 @@
 			        <table width="72%">
 			        	<tr>
 			        		<td align="center" bgcolor="#FF3333">
-			        			<span style="color:white; font-size:12px; font-weight:bold;">{{ form.err2 }}</span>
+			        			<span style="color:white; font-size:12px; font-weight:bold;">{{ form.err2|linebreaksbr }}</span>
 			        		</td>
 			        	</tr>
 			        </table>
@@ -139,7 +154,7 @@
 			        <table width="72%">
 			        	<tr>
 			        		<td align="center" bgcolor="#FF3333">
-			        			<span style="color:white; font-size:12px; font-weight:bold;">{{ form.err4 }}</span>
+			        			<span style="color:white; font-size:12px; font-weight:bold;">{{ form.err4|linebreaksbr }}</span>
 			        		</td>
 			        	</tr>
 			        </table>

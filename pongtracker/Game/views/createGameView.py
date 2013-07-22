@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from Utilities.utilities import *
 from Game.forms.createGameForm import CreateGameForm
 from django.template import Context
+from User.views.registrationView import *
 
 def createNewGameRequest(request):
     """validates input; creates a new game based on valid input
@@ -20,18 +21,14 @@ def createNewGameRequest(request):
     """
     
     form = CreateGameForm()
-    username = ''
-    
-    try:
-        username = request.session['username']
-        form.username = username
-    except KeyError:
-        pass
-    
+    username = request.session['username']
+    form.username = username
+        
     # on POST
     if request.method == 'POST':
-        
+
         form = CreateGameForm(request.POST)
+        form.username = username
         
         if form.is_valid():
             
@@ -54,6 +51,9 @@ def createNewGameRequest(request):
             
             # check for duplicate usernames
             errList = _chkDup(usernames, errList)
+            
+            # check usernames for ^A-Za-z0-9_.
+            errList = _chkUsernames(usernames, errList)
 
             # get users from database
             users = [_findUser(usernames[0]), _findUser(usernames[1]), _findUser(usernames[2]), _findUser(usernames[3])]     
@@ -61,6 +61,7 @@ def createNewGameRequest(request):
             # check if all users exist
             errList = _chkUsersExist(users[1:4], regUser, errList)
             
+            # check if emails are blank
             errList = _chkEmails(regUser, emails, errList)
             
             # check if registering users have entered a taken username
@@ -71,7 +72,10 @@ def createNewGameRequest(request):
                 form.err2 = errList[1]
                 form.err3 = errList[2]
                 form.err4 = errList[3]
-                return render(request, 'game/create.html', {'form': form})  
+                return render(request, 'game/create.html', {'form': form}) 
+            
+            # register users
+            users = _regUsers(users, usernames, emails, regUser) 
             
             # no errors; create game     
             game = _createNewGame(users[0], users[1], users[2], users[3])
@@ -106,8 +110,6 @@ def _createNewGame(user1, user2, user3, user4):
 
     game = Game.objects.create(team1=team1, team2=team2)
     
-    print("Game ", game.id)
-    
     return game
 
 def getGame(request,game_id):
@@ -124,8 +126,6 @@ def getGame(request,game_id):
     """
     game = Game.objects.get(pk=game_id)
     
-    print(game.team1.user1)
-
     return render(request, 'game/detail.html',{'game':game})
 
 def _invalidErrors(form):
@@ -235,13 +235,14 @@ def _chkRegUsers(users, regUser, errList):
     for x in range(len(users)):
         if regUser[x] is not None:
             if users[x] is not None:
-                errList[x+1] = "Username taken"
-    
+                errList[x+1] = "Username taken\nSuggestions:\n"
+                suggestions = suggestUsernames(users[x].username, 4)
+                for n in range(len(suggestions)):
+                    errList[x+1] += (suggestions[n] + "\n")
+             
     return errList
 
 def _chkEmails(regUser, emails, errList):
-    
-    print(emails)
     
     for x in range(len(regUser)):
         if regUser[x] is not None:
@@ -250,7 +251,16 @@ def _chkEmails(regUser, emails, errList):
     
     return errList
 
-def _regUsers(regUser, usernames, emails):
+def _chkUsernames(usernames, errList):
+    
+    for x in range(len(usernames)):
+        match = re.search('[^A-Za-z0-9_.]',usernames[x])
+        if match:
+            errList[x] = "Username must contain only the characters A-Z a-z 0-9 _ ."
+            
+    return errList
+
+def _regUsers(users, usernames, emails, regUser):
     """registers users who aren't already registered; assigns 8 character random password; emails username and password
 
     Keyword arguments:
@@ -264,13 +274,9 @@ def _regUsers(regUser, usernames, emails):
         
     """
     
-    for x in usernames:
+    for x in range(len(users)-1):
         if regUser[x] is not None:
-            user = _findUser(usernames[x])
-            print(usernames + "/" + user + "/" + regUser)
-            if user is None:
-                rndPassword = createRndPass(8)
-                User.objects.create_user(username=usernames[x],emails=email[x],password=rndPassword)
-                print(rndPassword)
+            regGameUser(usernames[x+1], emails[x])
+            users[x+1] = _findUser(usernames[x+1])
     
-    return
+    return users

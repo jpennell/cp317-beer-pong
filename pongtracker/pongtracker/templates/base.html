@@ -56,9 +56,11 @@
                     <td id="nav">
                         <ul>
                             {% block navigation %}
+                            {% if 'username' in request.session %}
                             <li><a href="/profile">Profile</a></li>
-                            <li><a href="/statistics/leaderboard/">Leaderboard</a></li>
+                            <li><a href="/leaderboard/">Leaderboard</a></li>
                             <li><a href="/game/create/">Create a Game</a></li>
+                            {% endif %}
                             <li><a href="/rules/">Rules</a></li>
                             {% endblock %}
                         </ul>

@@ -6,6 +6,7 @@ from django.core.mail import send_mail, BadHeaderError
 from User.models import PongUser
 from Utilities.utilities import *
 from loginViews import *
+from Statistics.models import Ranking
 import re
 
 
@@ -39,7 +40,7 @@ def registerNewUser(request):
             return  redirect_with_params('/index/', usernameState=usernameState, username=username, email=email)
     
         if _usernameTaken(username):
-            usernameSuggestions = _suggestUsernames(username)
+            usernameSuggestions = ",".join(_suggestUsernames(username, 5))
             usernameState = 'That user name is taken, here are some suggestions:'
             return redirect_with_params('/index/', usernameState=usernameState, suggestedUsernames=usernameSuggestions, email=email, username=username)
         
@@ -47,10 +48,8 @@ def registerNewUser(request):
             emailState = "Please provide a valid email address"
             print("Got to validate email function")
             return  redirect_with_params('/index/',emailState=emailState, username=username, email=email)
-            
-        password = _generatePassword()
-        _sendEmail(username, email, password)
-        PongUser.objects.create_user(username=username, email=email, password=password)
+        
+        password = regGameUser(username, email)
         
         user_status = loginUser(username, password, request)       
         
@@ -127,7 +126,7 @@ def _usernameTaken(username):
         pass
     return taken
 
-def _suggestUsernames(username):
+def suggestUsernames(username, numSug):
     """
     finds and returns other usernames similar to the one the user wanted
     
@@ -155,16 +154,16 @@ def _suggestUsernames(username):
         names.append(username)
         number = 0
     number = number + 1
-    while len(suggestions) < 5:
+    while len(suggestions) < numSug:
         if len(names) == 1:
             suggestion = names[0] + str(number) 
         else:
             suggestion = names[0] + str(number) + names[1]
         if not _usernameTaken(suggestion):
-            suggestions += [suggestion]  
+            suggestions.append(suggestion)
         number += 1 
         
-    return ",".join(suggestions)
+    return suggestions
 
 
 def _sendEmail(username, email, password):
@@ -231,6 +230,7 @@ def _parse_username(username):
     """
 
     i = 0
+    last = len(username)
     while i < len(username):
 
         if username[i].isdigit():
@@ -376,3 +376,13 @@ def _retrieveEndingNumberStringFrom(username):
         startOfNumber -= 1
     usernameNumber = username[startOfNumber:]
     return usernameNumber
+
+def regGameUser(username, email):
+    
+    password = _generatePassword()
+    _sendEmail(username, email, password)
+    PongUser.objects.create_user(username=username, email=email, password=password)
+    
+    Ranking.objects.create(user=PongUser.objects.get(username=username))
+    
+    return password

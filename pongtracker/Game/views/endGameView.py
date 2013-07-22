@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from Game.models import Game, Team, Event
+from Statistics.models import Ranking
 from django.shortcuts import render, redirect
 from Utilities.utilities import *
 from django.template import Context
@@ -27,6 +28,7 @@ def viewGameSummaryRequest(request, game_id):
         
         for x in range(len(users)):
             form.usernames[x] = users[x].username
+            form.ranks[x] = _getRank(users[x])
             stats.append(_getStats(users[x], events, game_id))     
             
         form.stats = stats
@@ -60,3 +62,8 @@ def _getStats(user, events, game_id):
                 redemptions += 1
     
     return [sunk,tricks,bounces,fouls,redemptions]
+
+def _getRank(user):
+    userRank = Ranking.objects.get(user=user)
+    
+    return userRank.rank
