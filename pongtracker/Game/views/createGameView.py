@@ -51,6 +51,9 @@ def createNewGameRequest(request):
             
             # check for duplicate usernames
             errList = _chkDup(usernames, errList)
+            
+            # check usernames for ^A-Za-z0-9_.
+            errList = _chkUsernames(usernames, errList)
 
             # get users from database
             users = [_findUser(usernames[0]), _findUser(usernames[1]), _findUser(usernames[2]), _findUser(usernames[3])]     
@@ -232,7 +235,7 @@ def _chkRegUsers(users, regUser, errList):
     for x in range(len(users)):
         if regUser[x] is not None:
             if users[x] is not None:
-                errList[x+1] = "Username taken.\nSuggestions:\n"
+                errList[x+1] = "Username taken\nSuggestions:\n"
                 suggestions = suggestUsernames(users[x].username, 4)
                 for n in range(len(suggestions)):
                     errList[x+1] += (suggestions[n] + "\n")
@@ -246,6 +249,15 @@ def _chkEmails(regUser, emails, errList):
             if emails[x] is u'':
                 errList[x+1] = "Email required for registration"
     
+    return errList
+
+def _chkUsernames(usernames, errList):
+    
+    for x in range(len(usernames)):
+        match = re.search('[^A-Za-z0-9_.]',usernames[x])
+        if match:
+            errList[x] = "Username must contain only the characters A-Z a-z 0-9 _ ."
+            
     return errList
 
 def _regUsers(users, usernames, emails, regUser):
