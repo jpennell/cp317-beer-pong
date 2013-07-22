@@ -2,21 +2,21 @@
 <html lang="en">
 <head>
     <title>Pong Tracker | Game</title>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700'
+    rel='stylesheet' type='text/css'>
     <link href='assets/bootstrap-css/bootstrap.css' rel='stylesheet' type='text/css'>
     <link href='assets/css/global-styles.css' rel='stylesheet' type='text/css'>
     <link href='assets/css/profile-styles.css' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
-    <link type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.css" rel="stylesheet" />
-    <link type="text/css" href="http://dev.jtsage.com/jQM-DateBox/css/demos.css" rel="stylesheet" />
-
-    <!-- NOTE: Script load order is significant! -->
-
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
-    <link type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.css" rel="stylesheet" />
-    <link type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jquery.mobile.datebox.css" rel="stylesheet" />
-    <link type="text/css" href="http://dev.jtsage.com/jQM-DateBox/css/demos.css" rel="stylesheet" />
+    <link type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.css"
+    rel="stylesheet" />
+    <link type="text/css"
+    href="http://dev.jtsage.com/jQM-DateBox/css/demos.css"
+    rel="stylesheet" />
+    <link type="text/css"
+    href="http://dev.jtsage.com/cdn/datebox/latest/jquery.mobile.datebox.css"
+    rel="stylesheet" />
 
     <!-- NOTE: Script load order is significant! -->
 
@@ -41,92 +41,24 @@
 		}
 		.cups {
 			text-align: center;
+			letter-spacing: 2px;
 		}
 		.cups * {
-			border: 4px solid #888;
+			border: 4px solid #FF0000;
+			background-image: -ms-linear-gradient(top left, #EDEDED 0%, #FFA3A3 100%);
+			background-image: -moz-linear-gradient(top left, #EDEDED 0%, #FFA3A3 100%);
+			background-image: -o-linear-gradient(top left, #EDEDED 0%, #FFA3A3 100%);
+			background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, #EDEDED), color-stop(1, #FFA3A3));
+			background-image: -webkit-linear-gradient(top left, #EDEDED 0%, #FFA3A3 100%);
+			background-image: linear-gradient(to bottom right, #EDEDED 0%, #FFA3A3 100%);
 		}
 		.cups .active {
-			border: 4px solid #FF0000;
+			background-image: url("assets/img/1280-cassava-beer-africa.jpg");
+			background-size: cover;
 		}
     </style>
 
-    <script type="text/javascript">
-		x = function() {
-			console.log(this);
-		}
-		var bounceShot = function(team, cup) {
-			$(this).simpledialog2({
-				mode : 'button',
-				headerText : 'Who?',
-				headerClose : true,
-				'buttons' : {
-					'Player 1' : {
-						'click' : function() {
-							selectBounceCup(team, cup, 1)
-						}
-					},
-					'Player 2' : {
-						'click' : function() {
-							selectBounceCup(team, cup, 2)
-						}
-					}
-				},
-				forceInput : false,
-				showModal : true,
-				clickEvent : 'vclick'
-			})
-		}
-		var selectBounceCup = function(team, cup, player) {
-            $(this).simpledialog({
-            	showModal: true
-            })
-		}
-		var cupSunk = function(team, cup) {
-			console.log('cup', cup, 'on team', team, 'was sunk')
-			// construct css selector eg: .team1.cup1
-			var sel = '.' + team + '.' + cup
-			// remove "active" class for this cup
-			$(sel).removeClass('active')
-		}
-
-		$(document).delegate('.cup.active', 'click', function() {
-			var classes = this.className.split(' ')
-			var team = classes[1]
-			var cup = classes[2]
-			console.log('team', team, 'cup', cup)
-			$(this).simpledialog2({
-				mode : 'button',
-				headerText : 'What Happened?',
-				headerClose : true,
-				'buttons' : {
-					'Cup Sunk' : {
-						'click' : function() {
-							cupSunk(team, cup)
-						}
-					},
-					'Party Foul' : {
-						'click' : function() {
-							partyFoul(team, cup)
-						}
-					},
-					'Bounce Shot' : {
-						'click' : function() {
-							bounceShot(team, cup)
-						}
-					},
-					'Trick Shot' : {
-						'click' : function() {
-							trickShot(team, cup)
-						}
-					}
-				},
-				forceInput : false,
-				showModal : true,
-				clickEvent : 'vclick'
-			})
-		});
-
-    </script>
+    <script type="text/javascript" src="score.js"></script>
 </head>
 <body>
     <div id="container">
