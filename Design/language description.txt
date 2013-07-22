@@ -13,14 +13,11 @@ Testing:
 - All functions shall be unit tested and committed with their tests.
 - Acceptance testing must also be preformed
 
-
-
 - what is it
 Django is a strong web framework or stack with many tools built in such as sessions, and database apis. Djano focuses on taking alot of the work away from the developer allowing for easier rapid development.   
 
 - why we chose it
-Django and python were selected as the development team has python experience. It also eliminates a lot of the work involved in setting up the administration, user  
-login, and database.  
+Django and python were selected as the development team has python experience. It also eliminates a lot of the work involved in setting up the administration, user login, and database.  
 
 - basic concept of how it works
 One word sums up how Django works Magic. In more specific terms Django works by processing a given url against the registered urls and calling the respective view. That view will the use the required models potentially updateing the database and return a HTTPs response. That response is usualy a template (HTML page) which then be displayed for the user. The majority of these templates will have buttons that trigger posts to urls that will then start the process all over again.
