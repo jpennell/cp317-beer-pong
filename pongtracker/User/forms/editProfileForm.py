@@ -2,7 +2,7 @@ from django import forms
 import datetime
 from User.models import Institution
 
-class EditProfileForm( forms.Form ):
+class EditProfileForm( forms.ModelForm ):
     year_choices = []
 
     for r in range( ( datetime.datetime.now().year ), ( datetime.datetime.now().year + 11 ) ):
@@ -10,44 +10,49 @@ class EditProfileForm( forms.Form ):
 
     year_tuple = ( year_choices )
 
-    firstname = forms.CharField( 
+    first_name = forms.CharField( 
         max_length = 250,
         label = "First name",
-        widget = forms.TextInput( attrs = {'placeholder': 'first name'} )
-    )
+        widget = forms.TextInput( attrs = {'placeholder': 'first name'} ),
+        required = True,
+            )
 
-    lastname = forms.CharField( 
+    last_name = forms.CharField( 
         max_length = 250,
         label = "Last name",
-        widget = forms.TextInput( attrs = {'placeholder': 'last name'} )
+        widget = forms.TextInput( attrs = {'placeholder': 'last name'} ),
+        required = True,
     )
 
     email = forms.EmailField( 
         max_length = 250,
         label = "Email address",
-        widget = forms.TextInput( attrs = {'placeholder': 'email'} )
+        widget = forms.TextInput( attrs = {'placeholder': 'email'} ),
+        required = True,
     )
 
-    height = forms.IntegerField( 
+    _height = forms.IntegerField( 
         max,
         label = "Height",
-        widget = forms.TextInput( attrs = {'placeholder': 'height'} )
+        widget = forms.TextInput( attrs = {'placeholder': 'height'} ),
+        required = True,
     )
 
-    institution = forms.ModelChoiceField( 
-        Institution.objects.all(),
-        empty_label = "No institutions",
-        required = False
+    _institution = forms.ModelChoiceField( 
+        queryset=Institution.objects.all(),
+        required = True,
+        label = "Institution"
     )
 
-    graduation_year = forms.ChoiceField( 
-        choices = year_tuple,
-        label = "Graduation Year"
+    _graduationYear = forms.ChoiceField( 
+        choices= year_choices,
+        label = "Graduation Year",
+        required = True,
     )
 
-    photo = forms.ImageField( label = "Profile Photo", required = False )
+    _photo = forms.ImageField( label = "Profile Photo", required = False )
 
-    deactivate = forms.BooleanField( 
+    _deactivate = forms.BooleanField( 
         label = "I would like to deactivate my account.",
-        required = False
+        required = False,
     )
