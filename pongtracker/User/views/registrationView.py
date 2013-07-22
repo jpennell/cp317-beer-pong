@@ -4,24 +4,20 @@ from django.core.context_processors import csrf
 from django.core.mail import send_mail, BadHeaderError
 #from User.forms import RegistrationForm
 from User.models import PongUser
-import random
 from Utilities.utilities import *
 from loginViews import *
 import re
 
 
 def registerNewUser(request):
-    """{{Description}}
-
-    Keyword arguments:
-    variable -- description 
-    variable -- description 
+    """
+    
+    attempts to register a new user
     
     Contributors:
     Quinton Black
     Erin Cramer
     
-    Output:
         
     """
     username = email = ""
@@ -66,17 +62,17 @@ def registerNewUser(request):
 
 #Needs to be done better
 def _validateEmail(email):
-    """{{Description}}
+    """
+    checks to see if an email is valid
 
     Keyword arguments:
-    variable -- description 
-    variable -- description 
+    email -- user's propsective email (str)
     
     Contributors:
     Quinton Black
     
     Output:
-        
+    valid -- True if the email fits the criteria, false otherwise (boolean) 
     """
     valid = True
     if email.count('@') != 1:
@@ -87,19 +83,20 @@ def _validateEmail(email):
 
 #Needs to be done better
 def _validateUsername(username):
-    """{{Description}}
+    """
+    
+    validates a user's prospective username
     
     Letters, digits and @/./+/-/_ only
     
     Keyword arguments:
-    variable -- description 
-    variable -- description 
+    username -- user's username (str) 
     
     Contributors:
-    Quinton Black
+    Erin Cramer
     
     Output:
-        
+    valid - True if the username meets the criteria, false otherwise (boolean) 
     """
     valid = True
     #check to make sure username forllows character rules
@@ -109,11 +106,11 @@ def _validateUsername(username):
     return valid
 
 def _usernameTaken(username):
-    """{{Description}}
-
+    """
+    checks to see if a prospective username is taken
+    
     Keyword arguments:
-    variable -- description 
-    variable -- description 
+    username -- user's username (str) 
     
     Contributors:
     Quinton Black
@@ -131,10 +128,11 @@ def _usernameTaken(username):
     return taken
 
 def _suggestUsernames(username):
-    """{{Description}}
-
+    """
+    finds and returns other usernames similar to the one the user wanted
+    
     Keyword arguments:
-    variable -- description 
+    username -- user's wanted username (str) 
     variable -- description 
     
     Contributors:
@@ -142,7 +140,7 @@ def _suggestUsernames(username):
     Erin Cramer
     
     Output: 
-    suggestions -- comma separated string (str)
+    suggestions -- comma separated string of potential username (str)
         
     """
     suggestions = []
@@ -170,14 +168,16 @@ def _suggestUsernames(username):
 
 
 def _sendEmail(username, email, password):
-    """{{Description}}
+    """
+    sends a new user their temporary password
 
     Keyword arguments:
-    variable -- description 
-    variable -- description 
+    username -- user's username (str)
+    password -- user's temp password (str)
+    email -- user's email (str)
     
     Contributors:
-    Quinton Black
+    Erin Cramer
     
     Output:
         
@@ -201,17 +201,14 @@ def _sendEmail(username, email, password):
     return
 
 def _generatePassword():
-    """{{Description}}
-
-    Keyword arguments:
-    variable -- description 
-    variable -- description 
+    """
+    generates a temp password for a user
     
     Contributors:
     Quinton Black
     
     Output:
-        
+    password - user's new password (str)   
     """
     password = createRndPass(8)
 
@@ -219,28 +216,29 @@ def _generatePassword():
 
 def _parse_username(username):
     
-    """{{Description}}
+    """
+    this function takes a username and returns the last set of numbers in the user name
+    for example: cram8680 would return 8680, 123test would return 123, friends123cram8680 would return 8680
 
     Keyword arguments:
-    variable -- description 
-    variable -- description 
+    username -- user's username (str) 
     
     Contributors:
-    Quinton Black
+    Erin Cramer
     
     Output:
-        
+    username_number - set of numbers from username (int)
     """
 
     i = 0
     while i < len(username):
 
-        if not username[i].isalpha():
+        if username[i].isdigit():
             
             first = i
             for j in range(i+1, len(username)):
                 
-                if username[j].isalpha():
+                if not username[j].isdigit():
                     
                     last = j
                     i = j
@@ -258,6 +256,84 @@ def _parse_username(username):
 
     return username_number
 
+"""checks whether a String is a valid Email address
+
+    Keyword arguments:
+    email -- the String to check
+    
+    Contributors:
+    Richard Douglas
+    
+    Output: True if it's a valid Email address,
+            False otherwise
+    
+    Source: http://www.djangofoo.com/tag/email_re
+    """
+def _isEmailAddressValid(email):
+    #move the import if function is acceptable
+    from django.core.validators import email_re
+    return email_re.match(email)
+
+"""obtains the highest trailing number associated with
+   a username
+
+    Keyword arguments:
+    username -- the username you want the highest trailing number of
+    
+    Contributors:
+    Richard Douglas
+    
+    Output: the number
+        ex: suppose the User wants the username "killer"
+            and there are already Users with username
+            "killer", "killer3", "killer42", "killer23"
+            and "killercereal9001". 
+            
+            the highest trailing number of "killer" is 42
+            
+            (if "killer" were the only existing username or if
+             the username isn't taken, the highest trailing number 
+             would be 0)
+    """
+def _obtainMaxNumber(username):
+    strippedUsername = _stripOffEndingNumberFrom(username)
+    existingUsernames = PongUser.objects.filter(username__startswith=strippedUsername)
+    #sort first by username length, then by alphabetical order
+    existingUsernames = sorted(existingUsernames,key = lambda user: (len(user.username),user.username))
+    
+    indexOfHighest = len(existingUsernames) - 1
+    highestNumber = 0
+    
+    while (highestNumber == 0 and indexOfHighest >= 0):
+        currentUsername = existingUsernames[indexOfHighest]
+        if (_stripOffEndingNumberFrom(currentUsername) == strippedUsername):
+            highestNumber = _retrieveEndingNumberFrom(currentUsername)
+        indexOfHighest -= 1
+    return highestNumber
+
+"""retrieves and returns the ending numbers from a String
+    (in int form)
+
+    Keyword arguments:
+    username -- the String to retrieve numbers from
+                (in this context, a username)
+    
+    Contributors:
+    Richard Douglas
+    
+    Output: the trailing numbers of the username (in int form)
+            ex: 'richard123' -> 123
+                'ric_11hard12' -> 12
+                '' -> 0
+    """
+def _retrieveEndingNumberFrom(username):
+    numberString = _retrieveEndingNumberStringFrom(username)
+    if (numberString == ""):
+        number = 0
+    else:
+        number = int(numberString)
+    return number
+
 """removes ending numbers from a String
 
     Keyword arguments:
@@ -269,7 +345,7 @@ def _parse_username(username):
     
     Output: username without its trailing numbers
             ex: 'richard123' -> 'richard'
-                'ric_12hard12' -> 'ric_12hard'
+                'ric_11hard12' -> 'ric_11hard'
                 '' -> ''
     """
 def _stripOffEndingNumberFrom(username):
@@ -291,10 +367,10 @@ def _stripOffEndingNumberFrom(username):
     
     Output: the trailing numbers of the username (in String form)
             ex: 'richard123' -> '123'
-                'ric_12hard12' -> '12'
+                'ric_11hard12' -> '12'
                 '' -> ''
     """
-def _retrieveEndingNumberFrom(username):
+def _retrieveEndingNumberStringFrom(username):
     startOfNumber = len(username)
     while (startOfNumber > 0 and username[startOfNumber - 1].isdigit()):
         startOfNumber -= 1

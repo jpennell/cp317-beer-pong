@@ -11,17 +11,12 @@ INCORRECT = 'incorrect'
 BANNED = 'banned'
 
 def loginUserRequest( request ):
-    """{{Description}}
-
-    Keyword arguments:
-    variable -- description
-    variable -- description
+    """
 
     Contributors:
     Quinton Black
     Erin Cramer
 
-    Output:
 
     """
    #a login request has been made therefore must authenticate
@@ -70,15 +65,16 @@ def loginUser(username, password, request):
     """{{Description}}
 
     Keyword arguments:
-    variable -- description
-    variable -- description
+    username -- user's username
+    password -- user's password
+    request -- current page request
 
     Contributors:
     Quinton Black
     Erin Cramer
 
     Output:
-
+    SUCCESS if login was successful, BANNED if the user has been banned, and INCORRECT if the credentials are wrong
     """
     
     user = authenticate( username = username, password = password )

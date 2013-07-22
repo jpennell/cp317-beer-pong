@@ -1,44 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Pong Tracker | Game</title>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
-    <link href='../../../../assets/bootstrap-css/bootstrap.css' rel='stylesheet' type='text/css'>
-    <link href='../../../../assets/css/global-styles.css' rel='stylesheet' type='text/css'>
-	<link href='../../../../assets/css/profile-styles.css' rel='stylesheet' type='text/css'>
-</head>
-<body>
-    <div id="container">
-        <!------ LOGIN HEADER --------->
-        <div id="login-header">
-            <p>
+{% extends "base.html" %} {% load staticfiles %} {% block pagetitle %} |
+Game{% endblock %} {% block head %}
+<link href="{% static 'css/profile-styles.css' %}" rel='stylesheet'
+	type='text/css'>
+{% endblock %}
                 Welcome, <span id="player-name">{{ request.session.username }} </span><span id="logout"><a href="/index/logout">Log Out</a></span>
-            </p>
-        </div>
-
-        <!------ HEADER --------->
-        <div id="header">
-            <table>
-                <tr>
-                    <td id="logo"> Pong Tracker </td>
-                    <td id="nav">
-                        <ul>
-                            <li><a href="#" class="active">Profile/Stats</a></li>
-                            <li><a href="/statistics/leaderboard/">Leaderboard</a></li>
-                            <li><a href="#">Create a Game</a></li>
-                            <li><a href="#">Rules</a></li>
-                        </ul></td>
-
-                </tr>
-            </table>
-        </div>
-        <!------ CONTENT --------->
-        <div id="page-content">
-            <table id="profile">
-                <tr id="statistics">
-                    <td align="center">
-						<div id="picture"></div>
-						<br/>
+<!------ CONTENT --------->
+{% block pagecontent %}
+<div id="page-content">
+	<table id="profile">
+		<tr id="statistics">
+			<td align="center">
+				<div id="picture"></div> <br /> <span id="player-name">{{
+					username1 }} </span>
 						<span id="player-name">{{ request.session.username }} </span>
 					</td>
 					<td align="center"> 
@@ -123,5 +96,4 @@
             </table>
         </div>
     </div>
-</body>
-</html>
+{% endblock %}
