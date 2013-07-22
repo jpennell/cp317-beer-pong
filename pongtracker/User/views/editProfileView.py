@@ -23,7 +23,7 @@ def editProfile(request):
     Output:
         
     """
-
+    state=""
     if not request.user.is_authenticated():
         state = "You are not logged in. Log in meow."
         return redirect_with_params('/login/', state=state)
@@ -46,16 +46,20 @@ def editProfile(request):
             _updateUser(username,firstname,lastname,email,height,yearOfGradution,userProfilePhoto,deactivate,institution)
 
             # Always redirect after a POST
-            return redirect('profile/edit/')
-        
-        print("Form is not valid")
+            request.session['updated']="Profile information has been updated"
+            return redirect('edit/')
         
     else:
-        # This the the first page load, display a blank form
+        # This the the first page load, display a form with the user filled
         
         user = PongUser.objects.get(username=username)
         form = EditProfileForm(instance=user)
-    context = Context({'title': 'Edit Profile', 'form': form, 'username':username})
+
+        if 'updated' in request.session:
+            state = request.session.pop('updated')
+
+    context = Context({'title': 'Edit Profile', 'form': form, 'username':username,'updated':state})
+    request.session
 
     return render(request,'user/editProfile.html',context)
 
@@ -86,7 +90,6 @@ def _updateUser(username,firstName,lastName,email,height,yearOfGradution,userPro
         None
         
     """
-    print(institution)
     user = PongUser.objects.get(username=username)
       
     user.setHeight(height)
