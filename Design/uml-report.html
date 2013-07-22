@@ -11,15 +11,31 @@
     		 $(id).load("http://hopper.wlu.ca/~hage9560/cp317-beer-pong/Design/Completed%20SVG%20Diagrams/" + filename);
     	}
 	    $( document ).ready(function() {
-
-
+	    	loadFile("Game.svg", "#gametables");
+	    	loadFile("Team.svg", "#teamtables");
+	    	loadFile("EventType.svg", "#eventtypetables");
+	    	loadFile("Institution.svg", "#institutiontables");
+	    	loadFile("Create%20Game.svg", "#creategame");
+	    	loadFile("Confirm%20Game.svg", "#confirmgame");
+	    	loadFile("End%20Game.svg", "#endgame");
+	    	loadFile("Stats.svg", "#statscont");
+	    	loadFile("Leader%20Board.svg", "#leaderboard");
+	    	loadFile("Search%20User.svg", "#searchuser");
+	    	loadFile("Registration%20Diagram.svg", "#registration");
+	    	loadFile("Edit%20Profile.svg", "#editprofile");
+	    	loadFile("User%20Login.svg", "#login");
+	    	loadFile("User%20Logout.svg", "#logout");
+	    	loadFile("Deactivate%20Account.svg", "#delete");
+	    	loadFile("Score%20Game.svg","#scoregame");	
+	    	loadfile("EntityDiagram.svg", "#entity");
+	    	
 		});
     </script>
 </head>
 <body>
 	<a id="top"></a>
 	<div id="content">
-		<h1 class="title">Pong Tracker Design Document</h1>
+		<h1 class="title">Pong Tracker UML Report</h1>
 
 			<h3>Authors</h3>
 			<ul id="authors">
@@ -46,7 +62,7 @@
 
 		<section id="entity">
 			<h2 class="heading1"><span class="number">1</span>Entity UML Diagrams</h2>
-				<p>Link to file in Folder</p>
+			<div id="entity"></div>
 		</section>
 		
 		<span class="to-top"><a href="#top">Back to Top</a></span>
