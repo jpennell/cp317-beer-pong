@@ -47,10 +47,8 @@ def registerNewUser(request):
             emailState = "Please provide a valid email address"
             print("Got to validate email function")
             return  redirect_with_params('/index/',emailState=emailState, username=username, email=email)
-            
-        password = _generatePassword()
-        _sendEmail(username, email, password)
-        PongUser.objects.create_user(username=username, email=email, password=password)
+        
+        password = regGameUser(username, email)
         
         user_status = loginUser(username, password, request)       
         
@@ -376,3 +374,11 @@ def _retrieveEndingNumberStringFrom(username):
         startOfNumber -= 1
     usernameNumber = username[startOfNumber:]
     return usernameNumber
+
+def regGameUser(username, email):
+    
+    password = _generatePassword()
+    _sendEmail(username, email, password)
+    PongUser.objects.create_user(username=username, email=email, password=password)
+    
+    return password
