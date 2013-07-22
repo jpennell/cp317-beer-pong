@@ -28,8 +28,14 @@ class Ranking(models.Model):
     
     def _get_rank(self):
        "Returns the rank"
-       return self.mu - (3*self.sigma)
+       return round(self.mu - (3*self.sigma),5)
+   
     rank = property(_get_rank)
     
     def __unicode__(self):
-        return self.rank    
+        return self.rank
+    
+#class RankView(models.Model):
+#    
+#    class Meta:
+#        managed=False

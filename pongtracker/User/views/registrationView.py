@@ -6,6 +6,7 @@ from django.core.mail import send_mail, BadHeaderError
 from User.models import PongUser
 from Utilities.utilities import *
 from loginViews import *
+from Statistics.models import Ranking
 import re
 
 
@@ -381,5 +382,7 @@ def regGameUser(username, email):
     password = _generatePassword()
     _sendEmail(username, email, password)
     PongUser.objects.create_user(username=username, email=email, password=password)
+    
+    Ranking.objects.create(user=PongUser.objects.get(username=username))
     
     return password
