@@ -36,7 +36,7 @@ class Ranking(models.Model):
         return self.rank
     
 class RankView(models.Model):
-    user = 
+    user = ""
     rank = property()
     
     class Meta:
