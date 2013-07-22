@@ -45,8 +45,6 @@ def createNewGameRequest(request):
             regUser = [request.POST.get("chkRegister2"), request.POST.get("chkRegister3"), request.POST.get("chkRegister4")]      
             usernames = [username, username2, username3, username4]
             emails = [email2, email3, email4]
-            
-            print("regUser: ",regUser)
 
             # initialize error list
             errList = ['','','','']
@@ -66,8 +64,6 @@ def createNewGameRequest(request):
             # check if registering users have entered a taken username
             errList = _chkRegUsers(users[1:4], regUser, errList)
             
-            print(errList)
-            
             # display errors in form
             if (errList.count('') < 4) or username == '':
                 form.err2 = errList[1]
@@ -84,7 +80,6 @@ def createNewGameRequest(request):
             return redirect('/game/' + str(game.id))
             
         else:
-            print("not valid!")
             # form is invalid
             _invalidErrors(form)
             return render(request, 'game/create.html', {'form': form})      
@@ -130,8 +125,6 @@ def getGame(request,game_id):
     """
     game = Game.objects.get(pk=game_id)
     
-    print(game.team1.user1)
-
     return render(request, 'game/detail.html',{'game':game})
 
 def _invalidErrors(form):
@@ -241,8 +234,12 @@ def _chkRegUsers(users, regUser, errList):
     for x in range(len(users)):
         if regUser[x] is not None:
             if users[x] is not None:
-                errList[x+1] = "Username taken"
+                errList[x+1] = "Username taken.\nSuggestions:\n"
+                suggestions = suggestUsernames(users[x].username, 4)
+                for n in range(len(suggestions)):
+                    errList[x+1] += (suggestions[n] + "\n")
     
+    print(errList)            
     return errList
 
 def _chkEmails(regUser, emails, errList):

@@ -39,7 +39,7 @@ def registerNewUser(request):
             return  redirect_with_params('/index/', usernameState=usernameState, username=username, email=email)
     
         if _usernameTaken(username):
-            usernameSuggestions = _suggestUsernames(username)
+            usernameSuggestions = ",".join(_suggestUsernames(username, 5))
             usernameState = 'That user name is taken, here are some suggestions:'
             return redirect_with_params('/index/', usernameState=usernameState, suggestedUsernames=usernameSuggestions, email=email, username=username)
         
@@ -125,7 +125,7 @@ def _usernameTaken(username):
         pass
     return taken
 
-def _suggestUsernames(username):
+def suggestUsernames(username, numSug):
     """
     finds and returns other usernames similar to the one the user wanted
     
@@ -153,16 +153,16 @@ def _suggestUsernames(username):
         names.append(username)
         number = 0
     number = number + 1
-    while len(suggestions) < 5:
+    while len(suggestions) < numSug:
         if len(names) == 1:
             suggestion = names[0] + str(number) 
         else:
             suggestion = names[0] + str(number) + names[1]
         if not _usernameTaken(suggestion):
-            suggestions += [suggestion]  
+            suggestions.append(suggestion)
         number += 1 
         
-    return ",".join(suggestions)
+    return suggestions
 
 
 def _sendEmail(username, email, password):
