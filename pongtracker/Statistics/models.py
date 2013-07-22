@@ -35,7 +35,10 @@ class Ranking(models.Model):
     def __unicode__(self):
         return self.rank
     
-#class RankView(models.Model):
-#    
-#    class Meta:
-#        managed=False
+class RankView(models.Model):
+    user = 
+    rank = property()
+    
+    class Meta:
+        managed=False
+        db_table='statistics_rankView'
