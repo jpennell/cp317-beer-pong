@@ -107,8 +107,6 @@ def _createNewGame(user1, user2, user3, user4):
 
     game = Game.objects.create(team1=team1, team2=team2)
     
-    print("Game ", game.id)
-    
     return game
 
 def getGame(request,game_id):
@@ -238,8 +236,7 @@ def _chkRegUsers(users, regUser, errList):
                 suggestions = suggestUsernames(users[x].username, 4)
                 for n in range(len(suggestions)):
                     errList[x+1] += (suggestions[n] + "\n")
-    
-    print(errList)            
+             
     return errList
 
 def _chkEmails(regUser, emails, errList):

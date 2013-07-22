@@ -229,6 +229,7 @@ def _parse_username(username):
     """
 
     i = 0
+    last = len(username)
     while i < len(username):
 
         if username[i].isdigit():
