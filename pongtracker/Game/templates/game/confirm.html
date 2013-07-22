@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en_US" xml:lang="en_US">
+	<head>
+    <title>Pong Tracker | Confirm Games</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+    <link href='../../../assets/bootstrap-css/bootstrap.css' rel='stylesheet' type='text/css'>
+    <link href='../../../assets/css/global-styles.css' rel='stylesheet' type='text/css'>
+    <link href='../../../assets/css/home-styles.css' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<div id="container">
+			<!------ LOGIN HEADER --------->
+			<div id="login-header">
+				<p>
+					Welcome, <span id="player-name">{{username}}</span><span id="logout"><a href="login.html">Log Out</a></span>
+				</p>
+			</div>
+        <!------ HEADER --------->
+			<div id="header">
+				<table>
+					<tr>
+						<td id="logo">
+                        Pong Tracker
+						</td>
+						<td id="nav">
+							<ul>
+								<li><a href="#">Rules</a></li>
+							</ul>
+						</td>
+					</tr>
+	
+				</table>
+				<p>
+				Please note if there are fraudulent activity found on your account, the account will be banned. 
+				</p>
+			</div>
+			<!------ CONTENT --------->
+			<div id="page-content">
+			<table>
+				<tr>
+					<th width="2%"> Date </th>
+					<th width="6%"> Team 1 </th>
+					<th width="6%"> Team 2 </th>
+					<th width="1%"> Outcome </th>
+					<th width="1%"> <div align="left">Confirmation <div align="center"></th>
+				</tr>
+				<tr>
+					<td> <div align="center">July 10, 2013 </div></td>
+					<td>
+					<div align="center">
+						<table border="1">
+						<center>
+						<tr> 
+						<th>{{username1}}</th>
+						<th>{{username2}}</th>
+						</tr>
+						<td> 1234 </td>
+						<td> 1234 </td>
+						</center>
+						</table> 
+					</div>
+					</td>
+					<td>
+				<div align="center">
+						<table border="1">
+						<center>
+						<tr> 
+						<th>{{username3}}</th>
+						<th>{{username4}}</th>
+						</tr>
+						<td> 1234 </td>
+						<td> 1234 </td>
+						</center>
+						</table> 
+					</div>
+					</td>
+					<td><div align="center">Win</div></td>
+					<td>
+						<form action="">
+						<input type="radio" name="confirm_btn" value="Confim"> Confirm<br>
+						<input type="radio" name="confirm_btn" value="Deny"> Deny
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td> <div align="center">July 12, 2013 </div></td>
+					<td>
+					<div align="center">
+						<table border="1">
+						<center>
+						<tr> 
+						<th>{{username1}}</th>
+						<th>{{username2}}</th>
+						</tr>
+						<td> 1234 </td>
+						<td> 1234 </td>
+						</center>
+						</table> 
+					</div>
+					</td>
+					<td>
+					<div align="center">
+						<table border="1">
+						<center>
+						<tr> 
+						<th>{{username3}}</th>
+						<th>{{username4}}</th>
+						</tr>
+						<td> 1234 </td>
+						<td> 1234 </td>
+						</center>
+						</table> 
+					</div>
+					</td>
+					<td><div align="center">Win</div></td>
+					<td>
+						<form action="">
+						<input type="radio" name="confirm_btn" value="Confim"> Confirm<br>
+						<input type="radio" name="confirm_btn" value="Deny"> Deny
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td> <div align="center">July 14, 2013 </div></td>
+					<td>
+					<div align="center">
+						<table border="1">
+						<center>
+						<tr> 
+						<th>{{username1}}</th>
+						<th>{{username2}}</th>
+						</tr>
+						<td> 1234 </td>
+						<td> 1234 </td>
+						</center>
+						</table> 
+					</div>
+					</td>
+					<td>
+					<div align="center">
+						<table border="1">
+						<center>
+						<tr> 
+						<th>{{username3}}</th>
+						<th>{{username4}}</th>
+						</tr>
+						<td> 1234 </td>
+						<td> 1234 </td>
+						</center>
+						</table> 
+					</div>
+					</td>
+					<td><div align="center">Win</div></td>
+					<td>
+						<form action="">
+						<input type="radio" name="confirm_btn" value="Confim"> Confirm<br>
+						<input type="radio" name="confirm_btn" value="Deny"> Deny
+						</form>
+					</td>
+				</tr>
+			</table>
+			<br/>
+			<br/>
+			<button name="verify" class="btn" type="submit">
+				Verify Games
+			</button>
+			</div>
+			<!------- FOOTER --------->
+			<div id="footer">
+				<table>
+					<tr>
+						<td class="left">
+							CP317 Software Engineering
+						</td>
+						<td class="right">
+							Wilfrid Laurier University, 2013
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
