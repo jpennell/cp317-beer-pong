@@ -12,15 +12,6 @@
 
 {% block pagecontent %}
 <div id="page-content">
-	<form method = "POST" action = "/game/1/confirm">
-		{{ form.username2 }}
-		{{ form.confirm1 }}
-		<button name="createGame" class="btn" type="submit">
-			Verify Game
-		</button>
-	</form>
-	
-<!--
 	<table>
 		<tr>
 			<th width="2%">Date</th>
@@ -108,7 +99,6 @@
 			</td>
 			<td><div align="center">Win</div></td>
 			<td>
-				{{ form.confirm1 }}
 				<form action="">
 					<input type="radio" name="confirm_btn" value="Confim">
 					Confirm<br> <input type="radio" name="confirm_btn"
@@ -161,5 +151,4 @@
 	<br /> <br />
 	<button name="verify" class="btn" type="submit">Verify Games</button>
 </div>
--->
 {% endblock %}
