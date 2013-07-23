@@ -2,7 +2,7 @@ from django import forms
 import datetime
 from User.models import Institution
 
-class EditProfileForm( forms.Form ):
+class EditProfileForm( forms.ModelForm ):
     year_choices = []
 
     for r in range( ( datetime.datetime.now().year ), ( datetime.datetime.now().year + 11 ) ):
