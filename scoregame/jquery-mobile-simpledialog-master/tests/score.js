@@ -48,7 +48,7 @@ var bounceShot = function(team, cup) {
         console.log(team, 'player', player, 'had the bounce shot into', cup)
         
         var selteam = team == 'team1' ? 'team2' : 'team1'
-        $("#"+selteam+" .cups").clone().appendTo('#select-bounce-cup')
+        $("#"+selteam+" .cups").clone().attr('id','bounce-cup').appendTo('#select-bounce-cup')
         $('#select-bounce-cup .cup').each(function(){
           $(this).addClass('bcup')
         })
@@ -57,7 +57,7 @@ var bounceShot = function(team, cup) {
         
         $('#bounce-cup').delegate('.bcup.active', 'click', function() {
             var cup = this.className.split(' ')[2]
-            console.log('bounce shot off of', cup, 'and fuck yeah')
+            console.log('bounce shot off of', cup, 'and heck yeah')
         })
     }
     $(this).simpledialog2({
