@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login
 from User.models import PongUser
 from User.models import Institution
-from Statistics.models import LifeStats, Ranking
+from Statistics.models import LifeStats, Ranking, RankView
 
 
 def leaderboardPage(request):
@@ -99,9 +99,33 @@ def _getInstitutionLeader(numberOfUsers,intitutionName):
     
     return leadUsers
     
+def getUserRank(user):
+    """
+    This method retrieves the overall rank of a user
+    Keyword arguments:
+    user -- user to get rank of
+     
+    Contributors:
+    Matthew Hengeveld
     
+    Output:
+    rank -- rank of user (int)
+    """
+    rank = None
+    count = 1
+    querySize = 1000
+    user_id = user.id
     
+    while rank == None:
+        min = (count-1)*querySize
+        max = (count*querySize)-1
+        userRanks = RankView.objects.all()[min:max]
+        if (len(userRanks) < max):
+            size = len(userRanks)
+        else:
+            size = querySize
+        for x in range(size):
+            if (userRanks[x].id == user_id):
+                rank = x+((count-1)*querySize)
     
-    
-    
-    
+    return rank + 1

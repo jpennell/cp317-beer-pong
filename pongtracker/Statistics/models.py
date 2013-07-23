@@ -36,8 +36,8 @@ class Ranking(models.Model):
         return self.rank
     
 class RankView(models.Model):
-    user = ""
-    rank = property()
+    id = models.IntegerField(primary_key=True)
+    skill_number = models.FloatField()
     
     class Meta:
         managed=False
