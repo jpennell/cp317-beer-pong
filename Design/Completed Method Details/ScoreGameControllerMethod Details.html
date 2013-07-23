@@ -1,382 +1,216 @@
 <table border="1">
-	<tr>
-		<td>
-			<strong>Controller Name</strong>
-		</td>
-		<td>
-			<strong> ScoreGameController </strong>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Method Name
-		</td> 
-		<td>
-			<em> ScoreGameController </em>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Method State
-		</td> 
-		<td>
-			<em> public </em>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Return
-		</td> 
-		<td>
-			<em> ScoreGameController controller</em>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Input Arguments
-		</td> 
-		<td> 
-			None 
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Error Messages
-		</td> 
-		<td> 
-			If this object fails to connect to the Game, Team, User, Event or EventType tables: </br>
-			***An error occurred in processing your game scoring request***
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Database Accesses
-		</td>
-		<td> 
-			May initialize a connection to the Game, Team, User, Event and EventType tables
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Database Changes
-		</td>
-		<td>
-			None
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Other Methods Invoked
-		</td>
-		<td> 
-			None
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Description
-		</td>
-		<td> 
-			This method instantiates a ScoreGameController.</br>
-			After construction, the object is ready to read entries from the Game, Team,</br>
-			User, Event and EventType tables as well as add or delete entries to/from the Event table.
-		</td>
-	</tr>
+    <tr>
+        <td><strong>Controller Name</strong></td>
+        <td><strong> ScoreGameController </strong></td>
+    </tr>
+    <tr>
+        <td> Method Name </td>
+        <td><em> ScoreGameController </em></td>
+    </tr>
+    <tr>
+        <td> Method State </td>
+        <td><em> public </em></td>
+    </tr>
+    <tr>
+        <td> Return </td>
+        <td><em> ScoreGameController controller</em></td>
+    </tr>
+    <tr>
+        <td> Input Arguments </td>
+        <td> None </td>
+    </tr>
+    <tr>
+        <td> Error Messages </td>
+        <td> If this object fails to connect to the Game, Team, User, Event or EventType tables: </br>
+            ***An error occurred in processing your game scoring request*** </td>
+    </tr>
+    <tr>
+        <td> Database Accesses </td>
+        <td> May initialize a connection to the Game, Team, User, Event and EventType tables </td>
+    </tr>
+    <tr>
+        <td> Database Changes </td>
+        <td> None </td>
+    </tr>
+    <tr>
+        <td> Other Methods Invoked </td>
+        <td> None </td>
+    </tr>
+    <tr>
+        <td> Description </td>
+        <td> This method instantiates a ScoreGameController.</br>
+            After construction, the object is ready to read entries from the Game, Team,</br>
+            User, Event and EventType tables as well as add or delete entries to/from the Event table. </td>
+    </tr>
 </table>
 
 <br>
 
 <table border="1">
-	<tr>
-		<td>
-			<strong>Controller Name</strong>
-		</td>
-		<td>
-			<strong> ScoreGameController </strong>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Method Name
-		</td> 
-		<td>
-			<em> processEvent </em>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Method State
-		</td> 
-		<td>
-			<em> public </em>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Return
-		</td> 
-		<td>
-			<em>None</em>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Input Arguments
-		</td> 
-		<td> 
-			int gameID </br>
-			EventType action </br>
-			String username </br>
-			int cupSunk1 </br>
-			int cupSunk2 (optional) </br>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Error Messages
-		</td> 
-		<td>
-			If the Game does not exist:</br>
-			***Game does not exist***</br>
-			If the first cup claiming to be sunk has already been sunk: </br>
-			***Cup {cupsunk1} has already been sunk*** </br>
-			If the second cup claiming to be sunk has already been sunk: </br>
-			***Cup {cupsunk2} has already been sunk***</br>
-			If two cup numbers are passed when the Event isn't a bounce shot: </br>
-			***Only bounce shots involve 2 cups***</br>
-			If only one cup number is passed when the Event is a bounce shot: </br>
-			***Bounce shots involve 2 cups***</br>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Database Accesses
-		</td>
-		<td> 
-			Event, EventType, Game
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Database Changes
-		</td>
-		<td>
-			None
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Other Methods Invoked
-		</td>
-		<td> 
-			getTeamCupFormation, addEvent
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Description
-		</td>
-		<td> 
-			If successful, this method creates a new Event that the Game adds to itself.</br>
-			Bounce shots involve two cups whereas all other shots involve one.
-		</td>
-	</tr>
+    <tr>
+        <td><strong>Controller Name</strong></td>
+        <td><strong> ScoreGameController </strong></td>
+    </tr>
+    <tr>
+        <td> Method Name </td>
+        <td><em> processEvent </em></td>
+    </tr>
+    <tr>
+        <td> Method State </td>
+        <td><em> public </em></td>
+    </tr>
+    <tr>
+        <td> Return </td>
+        <td><em>None</em></td>
+    </tr>
+    <tr>
+        <td> Input Arguments </td>
+        <td> int gameID </br>
+            EventType action </br>
+            String username </br>
+            int cupSunk1 </br>
+            int cupSunk2 (optional) </br> </td>
+    </tr>
+    <tr>
+        <td> Error Messages </td>
+        <td> If the Game does not exist:</br>
+            ***Game does not exist***</br>
+            If the first cup claiming to be sunk has already been sunk: </br>
+            ***Cup {cupsunk1} has already been sunk*** </br>
+            If the second cup claiming to be sunk has already been sunk: </br>
+            ***Cup {cupsunk2} has already been sunk***</br>
+            If two cup numbers are passed when the Event isn't a bounce shot: </br>
+            ***Only bounce shots involve 2 cups***</br>
+            If only one cup number is passed when the Event is a bounce shot: </br>
+            ***Bounce shots involve 2 cups***</br> </td>
+    </tr>
+    <tr>
+        <td> Database Accesses </td>
+        <td> Event, EventType, Game </td>
+    </tr>
+    <tr>
+        <td> Database Changes </td>
+        <td> None </td>
+    </tr>
+    <tr>
+        <td> Other Methods Invoked </td>
+        <td> Game.addEvent </td>
+    </tr>
+    <tr>
+        <td> Description </td>
+        <td> If successful, this method creates a new Event that the Game adds to itself.</br>
+            Bounce shots involve two cups whereas all other shots involve one. </td>
+    </tr>
 </table>
 
 <br>
 
 <table border="1">
-	<tr>
-		<td>
-			<strong>Controller Name</strong>
-		</td>
-		<td>
-			<strong> ScoreGameController </strong>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Method Name
-		</td> 
-		<td>
-			<em> getTeamCupFormation </em>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Method State
-		</td> 
-		<td>
-			<em>private </em>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Return
-		</td> 
-		<td>
-			<em> boolean[] cupFormation</em>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Input Arguments
-		</td> 
-		<td> 
-			Game game, int teamNumber
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Error Messages
-		</td> 
-		<td> 
-			None
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Database Accesses
-		</td>
-		<td> 
-			Event, Game, Team, User
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Database Changes
-		</td>
-		<td>
-			None
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Other Methods Invoked
-		</td>
-		<td> 
-			getEvents, getTeam1, (or getTeam2,) getUser1, getUser2
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Description
-		</td>
-		<td> 
-			This method returns an array of all of the cups remaining on one side of a current game.
-		</td>
-	</tr>
+    <tr>
+        <td><strong>Controller Name</strong></td><td><strong>ScoreGameController</strong></td>
+    </tr>
+    <tr>
+        <td>Method Name</td><td><em>goToEndGame</em></td>
+    </tr>
+    <tr>
+        <td>Method State</td><td><em>public</em></td>
+    </tr>
+    <tr>
+        <td>Return</td><td><em>None</em></td>
+    </tr>
+    <tr>
+        <td>Input Arguments</td><td>int gameID</td>
+    </tr>
+    <tr>
+        <td>Error Messages</td><td>If Game does not exist:</br>
+            ***Game does not exist***</td>
+    </tr>
+    <tr>
+        <td>Database Accesses</td><td>Game</td>
+    </tr>
+    <tr>
+        <td>Database Changes</td><td>None</td>
+    </tr>
+    <tr>
+        <td>Other Methods Invoked</td><td>obtainGame</td>
+    </tr>
+    <tr>
+        <td>Description</td><td>Takes the User to the Game's end game page</td>
+    </tr>
 </table>
 
 <br>
 
 <table border="1">
-	<tr>
-		<td><strong>Controller Name</strong></td> <td><strong>ScoreGameController</strong></td>
-	</tr>
-	<tr>
-		<td>Method Name</td> <td><em>goToEndGame</em></td>
-	</tr>
-	<tr>
-		<td>Method State</td> <td><em>public</em></td>
-	</tr>
-	<tr>
-		<td>Return</td> <td><em>None</em></td>
-	</tr>
-	<tr>
-		<td>Input Arguments</td> <td>int gameID</td>
-	</tr>
-	<tr>
-		<td>Error Messages</td> <td>If Game does not exist:</br>
-									***Game does not exist***</td>
-	</tr>
-	<tr>
-		<td>Database Accesses</td> <td>Game</td>
-	</tr>
-	<tr>
-		<td>Database Changes</td> <td>None</td>
-	</tr>
-	<tr>
-		<td>Other Methods Invoked</td> <td>obtainGame</td>
-	</tr>
-	<tr>
-		<td>Description</td> <td>Takes the User to the Game's end game page</td>
-	</tr>
+    <tr>
+        <td><strong>Controller Name</strong></td><td><strong>ScoreGameController</strong></td>
+    </tr>
+    <tr>
+        <td>Method Name</td><td><em>abortGame</em></td>
+    </tr>
+    <tr>
+        <td>Method State</td><td><em>public</em></td>
+    </tr>
+    <tr>
+        <td>Return</td><td><em>None</em></td>
+    </tr>
+    <tr>
+        <td>Input Arguments</td><td>int gameID</td>
+    </tr>
+    <tr>
+        <td>Error Messages</td><td> If the Game does not exist:</br>
+            ***Game does not exist***</br>
+    </tr>
+    <tr>
+        <td>Database Accesses</td><td>Event, Game, EventType</td>
+    </tr>
+    <tr>
+        <td>Database Changes</td><td>Deletes entries from the Game, Team and Event tables</td>
+    </tr>
+    <tr>
+        <td>Other Methods Invoked</td><td>obtainGame, Game.getTeam1, Game.getTeam2, Game.getEvents</td>
+    </tr>
+    <tr>
+        <td>Description</td><td>Removes all records of the Game ever occurring.</td>
+    </tr>
 </table>
 
 <br>
 
 <table border="1">
-	<tr>
-		<td><strong>Controller Name</strong></td> <td><strong>ScoreGameController</strong></td>
-	</tr>
-	<tr>
-		<td>Method Name</td> <td><em>abortGame</em></td>
-	</tr>
-	<tr>
-		<td>Method State</td> <td><em>public</em></td>
-	</tr>
-	<tr>
-		<td>Return</td> <td><em>None</em></td>
-	</tr>
-	<tr>
-		<td>Input Arguments</td> <td>int gameID</td>
-	</tr>
-	<tr>
-	<td>Error Messages</td> <td> If the Game does not exist:</br>
-							***Game does not exist***</br>
-	</tr>
-	<tr>
-		<td>Database Accesses</td> <td>Event, Game, EventType</td>
-	</tr>
-	<tr>
-		<td>Database Changes</td> <td>Deletes entries from the Game, Team and Event tables</td>
-	</tr>
-	<tr>
-		<td>Other Methods Invoked</td> <td>obtainGame, getTeam1, getTeam2, getEvents</td>
-	</tr>
-	<tr>
-		<td>Description</td> <td>Removes all records of the Game ever occurring.</td>
-	</tr>
-</table>
-
-<br>
-
-<table border="1">
-	<tr>
-		<td><strong>Controller Name</strong></td> <td><strong>ScoreGameController</strong></td>
-	</tr>
-	<tr>
-		<td>Method Name</td> <td><em>undoEvent</em></td>
-	</tr>
-	<tr>
-		<td>Method State</td> <td><em>public</em></td>
-	</tr>
-	<tr>
-		<td>Return</td> <td><em>None</em></td>
-	</tr>
-	<tr>
-		<td>Input Arguments</td> <td>int gameID, int teamNumber</td>
-	</tr>
-	<tr>
-	<td>Error Messages</td> <td>If Game does not exist:</br>
-								***Game does not exist***</br>
-								If Game has ended:</br>
-								***Cannot undo events for a finished game***</br>
-								If no Events have occurred for the Team:</br>
-								***No event to undo***
-							</td>
-	</tr>
-	<tr>
-		<td>Database Accesses</td> <td>Game, Team, User, Event</td>
-	</tr>
-	<tr>
-		<td>Database Changes</td> <td>Deletes the most recent Event that occurred for the Team.</td>
-	</tr>
-	<tr>
-		<td>Other Methods Invoked</td> <td>obtainGame, getTeam1 (or getTeam2,) getUser1, getUser2, getEvents, getTeamCupFormation</td>
-	</tr>
-	<tr>
-		<td>Description</td> <td>If successful, undoes the most recent Event associated with either of the Team's Users.</td>
-	</tr>
+    <tr>
+        <td><strong>Controller Name</strong></td><td><strong>ScoreGameController</strong></td>
+    </tr>
+    <tr>
+        <td>Method Name</td><td><em>undoEvent</em></td>
+    </tr>
+    <tr>
+        <td>Method State</td><td><em>public</em></td>
+    </tr>
+    <tr>
+        <td>Return</td><td><em>None</em></td>
+    </tr>
+    <tr>
+        <td>Input Arguments</td><td>int gameID, int teamNumber</td>
+    </tr>
+    <tr>
+        <td>Error Messages</td><td>If Game does not exist:</br>
+            ***Game does not exist***</br>
+            If Game has ended:</br>
+            ***Cannot undo events for a finished game***</br>
+            If no Events have occurred for the Team:</br>
+            ***No event to undo*** </td>
+    </tr>
+    <tr>
+        <td>Database Accesses</td><td>Game, Team, User, Event</td>
+    </tr>
+    <tr>
+        <td>Database Changes</td><td>Deletes the most recent Event that occurred for the Team.</td>
+    </tr>
+    <tr>
+        <td>Other Methods Invoked</td><td>obtainGame, Game.getTeam1 (or Game.getTeam2,) Team.getUser1, Team.getUser2, Game.getEvents</td>
+    </tr>
+    <tr>
+        <td>Description</td><td>If successful, undoes the most recent Event associated with either of the Team's Users.</td>
+    </tr>
 </table>
