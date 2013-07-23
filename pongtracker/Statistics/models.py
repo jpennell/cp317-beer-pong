@@ -41,4 +41,4 @@ class RankView(models.Model):
     
     class Meta:
         managed=False
-        db_table='statistics_rankView'
+        db_table='Statistics_rankView'
