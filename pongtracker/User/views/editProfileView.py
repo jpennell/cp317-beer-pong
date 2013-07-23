@@ -3,8 +3,9 @@ from User.models import PongUser
 from django.shortcuts import redirect, render
 from User.forms import EditProfileForm
 from django.template import Context
-from django.contrib.auth import get_user_model
 from Utilities.utilities import *
+from django.contrib.auth import *
+
 
 
 
@@ -23,7 +24,7 @@ def editProfile(request):
     Output:
         
     """
-    state=""
+    updated=""
     if not request.user.is_authenticated():
         state = "You are not logged in. Log in meow."
         return redirect_with_params('/login/', state=state)
@@ -44,7 +45,15 @@ def editProfile(request):
             userProfilePhoto = form.cleaned_data['_photo']
             deactivate =   form.cleaned_data['_deactivate']
             _updateUser(username,firstname,lastname,email,height,yearOfGradution,userProfilePhoto,deactivate,institution)
-
+            newPassword = form.cleaned_data['confirmPassword']
+            oldPassword = form.cleaned_data['oldPassword']
+            
+           
+            user = authenticate(username=username,password=oldPassword)
+            if user is not None:
+                print("setting new password",newPassword)
+                user.set_password(newPassword)
+                user.save()
             # Always redirect after a POST
             request.session['updated']="Profile information has been updated"
             return redirect('edit/')
@@ -56,19 +65,11 @@ def editProfile(request):
         form = EditProfileForm(instance=user)
 
         if 'updated' in request.session:
-            state = request.session.pop('updated')
+            updated = request.session.pop('updated')
 
-    context = Context({'title': 'Edit Profile', 'form': form, 'username':username,'updated':state})
-    request.session
+    context = Context({'title': 'Edit Profile', 'form': form, 'username':username,'updated':updated})
 
     return render(request,'user/editProfile.html',context)
-
-
-
-
-def _updatePassword(password):
-    
-    return
 
 def _updateUser(username,firstName,lastName,email,height,yearOfGradution,userProfilePhoto,deactivate,institution):
     """Updates a user with the values provided

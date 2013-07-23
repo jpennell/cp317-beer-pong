@@ -1,6 +1,8 @@
+from django.contrib.auth import *
 from django import forms
 import datetime
-from User.models import Institution
+from User.models import Institution, PongUser
+
 
 class EditProfileForm( forms.ModelForm ):
     year_choices = []
@@ -9,6 +11,10 @@ class EditProfileForm( forms.ModelForm ):
         year_choices.append( ( r, r ) )
 
     year_tuple = ( year_choices )
+    
+    username = forms.CharField( 
+        widget=forms.TextInput(attrs={'class':'disabled', 'readonly':'readonly'})
+            )
 
     first_name = forms.CharField( 
         max_length = 250,
@@ -56,3 +62,44 @@ class EditProfileForm( forms.ModelForm ):
         label = "I would like to deactivate my account.",
         required = False,
     )
+    
+    oldPassword = forms.CharField( 
+        max_length = 250,
+        label = "Old Password",
+        widget = forms.PasswordInput,
+        required = False,
+            )
+
+    newPassword = forms.CharField( 
+        max_length = 250,
+        label = "New Password",
+        widget = forms.PasswordInput,
+        required = False,
+            )
+    confirmPassword = forms.CharField( 
+        max_length = 250,
+        label = "Confirm Password",
+        widget = forms.PasswordInput,
+        required = False,
+            )
+    
+
+    def clean(self):
+        cleaned_data = super(EditProfileForm, self).clean()
+        newPassword = cleaned_data.get('newPassword')
+        confirmPassword = cleaned_data.get('confirmPassword')
+        oldPassword = cleaned_data.get('oldPassword') 
+        username = cleaned_data.get('username')
+                
+        if newPassword and confirmPassword and newPassword!=confirmPassword:
+            msg = u"Passwords don't match"
+            self._errors['confirmPassword'] = self.error_class([msg])
+            
+        if confirmPassword and newPassword and not oldPassword:
+             msg = u"Please provide your old password"
+             self._errors['oldPassword'] = self.error_class([msg])    
+        
+        if authenticate(username=username,password=oldPassword) is None:
+             msg = u"Incorrect Password"   
+             self._errors['oldPassword'] = self.error_class([msg]) 
+        return cleaned_data
