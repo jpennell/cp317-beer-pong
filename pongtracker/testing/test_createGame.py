@@ -38,6 +38,18 @@ class SimpleTest(TestCase):
         self.assertTrue(Team.objects.create.call_args_list == expected)
 
         Game.objects.create.assert_called_with(team1=self.mockTeam1, team2=self.mockTeam2)
+        
+    def testchkBlank(self):
+         
+         blankNames = ['','','','']
+         nonBlankNames = ['test','test','test','test']
+         
+         resultBlank = _chkBlank(blankNames)
+         resultNonBlank = _chkBlank(nonBlankNames)
+         
+         self.assertFalse(resultBlank)
+         self.assertTrue(resultNonBlank)
+
 
     def returnTeams(self, *args, **kwargs):
         return self.mockTeams.pop(0)
