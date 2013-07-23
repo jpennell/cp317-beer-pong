@@ -17,9 +17,11 @@
     {% endif %}
     <form method='post' action='/profile/edit'>
         {% csrf_token %}
-
+		
+		{{ updated }}
         <table id='edit-profile-form'>
             <!-- display the form fields -->
+            
             {% for field in form %}
             <tr>
                 <td>
