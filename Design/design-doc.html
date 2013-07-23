@@ -73,25 +73,29 @@
 
 			<section>
 				<h3 class="heading2"><span class="number">1.1</span>Document Overview</h3>
-				<p>This is the Design document for Pong Tracker, an online website which
-				allows users to track their Pong playing skills and compare them to others.
-				This is part of the project documentation for CP317 during the Spring 2013 class.
-				<br>
-				<br>
-				The first part is an overview of the governing guidelines for this project. The second
-				part is about the logical design involving the architecture of Pong Tracker
-				and how various elements interact. The contents of each package is made
-				explicit as is the database which the project will use. The third part
-				covers the technical design being the methods which are to be created. The
-				fourth part will cover Django, the predominent tool which will be used in
-				implementation. The fifth part will act as an introduction to some front end
-				prototyping concluding with the final parts being references and SQA Version History.</p>
+				<p>
+					This is the Design document for Pong Tracker, an online website which
+					allows users to track their Beer Pong playing skills and compare them to others.
+					This is part of the project documentation for CP317 during the Spring 2013 semester.
+				</p>
+				<p>
+					The first part is an overview of the governing guidelines for this project. The second
+					part is about the logical design involving the architecture of Pong Tracker
+					and how various elements interact. The contents of each package is described
+					as is the database which the project will use. The third part
+					covers the design of methods to be implemented. The
+					fourth part will cover Django, our selecected web framework for
+					implementation. The fifth part will act as an introduction to front end
+					prototyping concluding with the final parts being references and SQA Version History.
+				</p>
 			</section>
 
 			<section>
 				<h3 class="heading2"><span class="number">1.2</span>Target Audience</h3>
-				<p>This document is for the technical team as it contains detailed information regarding
-				the implementation procedures.</p>
+				<p>
+					This document is for the implementation and front end teams as it contains detailed 
+					information regarding the implementation procedures.
+				</p>
 			</section>
 
 			<section>
@@ -101,16 +105,60 @@
 				<section>
 					<h4 class="heading3"><span class="number">1.3.1</span>Technical Guidelines</h4>
 					<p>
-						Pong Tracker is hosted on a Sun Microsystem Linux Server with a MySQL database. The Linux server must be able to render HTML 5 and CSS 3. Intepretation of Python 2.7 and JavaScript are requried as well. The server is also required to integrate with the Django web framework and Github. Django and python were selected as the development team has python experience. Django is a strong web framework with many tools built in such as sessions, and database APIs. The only concern is the implemention is using python 2.7 when the current version is 3.3.2. 2.7 has been selected because Django support for 3.3.2 is currently only an experimental version.
+						Pong Tracker is hosted on a Sun Microsystem Linux Server with a MySQL database.
+						The Linux server must be able to serve HTML 5 and CSS 3. Intepretation of Python 2.7 is required.
+						The server is also required to integrate with the Django web framework and Git. 
+						Django is a strong web framework with many tools built in such as sessions, and database APIs; Django will be discussed in detail later. 
+						The only concern is the implemention is using Python 2.7 when the current version is 3.3.2. 2.7 has been selected 
+						because Django support for 3.3.2 is currently only an experimental version.
 					</p>
 
 					<p>
 						Coding Guidelines and Conventions:
 						<ul>
-							<li>Must meet HTML 5 and CSS 3</li>
-							<li>Must be coded in python 2.7 excluding JavaScript</li>
+							<li>Must meet HTML 5 and CSS 3 standards</li>
+							<li>Server side code must be done using Python 2.7</li>
+							<li>Client Side code must be done using jQuery, JavaScript, and Ajax</li>
 							<li>Must be object-oriented</li>
-							<li>Variables must be named using Camel Case</li>
+							<li>
+								Code shall follow 
+								<a href="http://www.python.org/dev/peps/pep-0008/"> PEP-8 standards </a>
+								as outlined bellow.
+								<ul>
+									<li> 1 Tab for indents</li>
+									<li> Maximum Line length of 72 characters</li>
+									<li> Blank lines shall seperate logical paragraphs</li>
+									<li> All models shall have a uni code method</li>
+									<li> Imports exlcluding froms shall be on seperate lines</li>
+									<li> Do not use extraneous white space, however one space 
+									on both sides of mathematical symbols is required</li>
+									<li> Compound statements are discouraged</li>
+									<li> Commenting should kept up to date and accurate</li>
+									<li> There shall be no commented out code in the final</li>
+									<li> Use inlind comments sparingly</li>
+									<li> constants shall be upercase with underscore</li>
+									<li> '_'represents private</li>
+									<li> Capital letters on classes</li>
+								</ul>
+								<li>
+									Exceptions to PEP-8:
+								</li>
+								<ul>
+									<li> camel case method and variable names with a lower case first letter</li>
+									<li> Packages shall be capitalized</li>
+								</ul>
+								<li>Note: There are built in django variables in methods that will follow PEP-8  </li>
+							</li>
+							<br>
+							<li>PEP 8 shall also be used for documentation</li>
+								"""Description<br>
+									Keyword arguments:<br>
+										paramater -- desctiption (type)<br>
+									Contributors:<br>
+										Contributor names<br>
+									Output:<br>
+										return value (type)<br>	
+									"""
 						</ul>
 					</p>
 					<p>
@@ -163,9 +211,11 @@
 					</section>
 					<section>
 						<h4 class="heading3"><span class="number">2.2.5</span>Django Package</h4>
-						<p>Due to the closed architecture of this project, Django's low level design is unknown.  Functionalities it does however
-						complete include all methods within the Administrator entity and control objects related to it previously mentioned in the Requirements
-						or Analysis Document referenced at the end of this Design document.
+						<p>
+							Due to the closed architecture of Django, Django's low level design is unknown.  Functionalities it does however
+							complete include all methods within the Administrator entity and control objects related to it previously mentioned in the Requirements
+							or Analysis Document referenced at the end of this Design document.
+						</p>
 					</section>
 				</section>
 
@@ -300,27 +350,27 @@
 
 				<section>
 					<h4 class="heading3"><span class="number">3.2.13</span>AdministratorLoginController</h4>
-					<p>Handled through built-in Django Functionality
+					<p>Handled through built-in Django Libraries
 				</section>
 				<section>
 					<h4 class="heading3"><span class="number">3.2.14</span>AdministratorLogoutController</h4>
-					<p>Handled through built-in Django Functionality
+					<p>Handled through built-in Django Libraries
 				</section>
 				<section>
 					<h4 class="heading3"><span class="number">3.2.15</span>BanUserController</h4>
-					<p>Handled through built-in Django Functionality
+					<p>Handled through built-in Django Libraries
 				</section>
 				<section>
 					<h4 class="heading3"><span class="number">3.2.16</span>UnbanUserController</h4>
-					<p>Handled through built-in Django Functionality
+					<p>Handled through built-in Django Libraries
 				</section>
 				<section>
 					<h4 class="heading3"><span class="number">3.2.17</span>AddInstitutionController</h4>
-					<p>Handled through built-in Django Functionality
+					<p>Handled through built-in Django Libraries
 				</section>
 				<section>
 					<h4 class="heading3"><span class="number">3.2.18</span>DeleteInstitutionController</h4>
-					<p>Handled through built-in Django Functionality
+					<p>Handled through built-in Django Libraries
 				</section>
 			</section>
 
@@ -354,9 +404,6 @@
 				<h3 class="heading2"><span class="number">4.2</span>How Django Will Be Used</h3>
 					<p>
 						In order to use Django, the libraries are first imported for a developer to run
-						<br>
-						<em>django-admin.py startproject mysite</em>
-						<br>
 						to create the  project. With a project a developer can create apps; the equivalent of packages.
 						These packages contain the models, views, forms, templates, URLs, and tests for their respective package.
 						Once the project is started a developer can start to hook up the models, templates, and views in
@@ -370,7 +417,7 @@
 			<section>
 				<h3 class="heading2"><span class="number">4.3</span>Benefits to Django</h3>
 					<p>
-						Django and python were selected as the development team has python experience. 
+						Django and Python were selected as the development team has Python experience. 
 						Django also eliminates a lot of the work involved in setting up the administration, user login, and database.  
 					</p>
 			</section>
