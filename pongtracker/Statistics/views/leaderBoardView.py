@@ -12,11 +12,35 @@ def leaderboardPage(request):
     topTen = PongUser.objects.order_by('ranking')[0:10]
     username = request.session['username']  
     institutionRank =_getInstitutionRank(username)
-    overallRank = _getOverallRank(username)
+    #overallRank = _getOverallRank(username)
     print('Institution Rank:{0}'.format(institutionRank))
-    print('Overall Rank:{0}'.format(overallRank))
+    #print('Overall Rank:{0}'.format(overallRank))
     
     return render(request,'statistics/leaderboard.html',{'username':request.session['username']})
+
+def _getTopRanked(limit):
+    """
+    This method finds and retrieve's the top ranked users
+
+    Keyword arguments:
+    limit -- limit of how many top ranked users to get
+    
+    Contributors:
+    Matthew Hengeveld
+    
+    Output:
+    topRanked -- list of top ranked (in order)
+    """
+    topUsers = RankView.objects.all()[0:limit-1]
+    
+    topRanked = []
+    
+    for x in range(len(topusers)):
+        user_id = topUsers[x].id
+        user = PongUser.objects.get(id=user_id)
+        topRanked.append(user)
+    
+    return topRanked
 
 def _getInstitutionRank(username):
     """
@@ -79,7 +103,7 @@ def _getOverallRank(username):
     
     return overallRank    
     
-def _getInstitutionLeader(numberOfUsers,intitutionName):
+def getInstitutionLeaders(numberOfLeaders, institutionName):
     """
     This method retrieves a list of length numberOfUsers of the top ranking users at institution specified
     Keyword arguments:
@@ -87,17 +111,33 @@ def _getInstitutionLeader(numberOfUsers,intitutionName):
     intitutionName -- the name of the institution (String)
      
     Contributors:
-    Quinton Black
+    Matthew Hengeveld
     
     Output:
-    leadUsers -- the top users for the institution User[]
+    2-demensional list of leaders -- [[leader1(PongUser), rank(int)], [leader2, rank]...]]
     """
-    leadUsers=[]
-    
-    
-    
-    
-    return leadUsers
+
+    leaders = []
+    count = 1
+    querySize = 2000
+    while len(leaders) < numberOfLeaders:
+        min = (count-1)*querySize
+        max = (count*querySize)-1
+        userRanks = RankView.objects.all()[min:max]
+        if (len(userRanks) < max):
+            size = len(userRanks)
+        else:
+            size = querySize
+        for x in range(size):
+            user_id = userRanks[x].id
+            user = PongUser.objects.get(id=user_id)
+            userInstitution = user.getInstitution()
+            if (userInstitution == institutionName):
+                rank = x+((count-1)*querySize)
+                leaders.append([user, rank+1])
+        count += 1
+
+    return leaders
     
 def getUserRank(user):
     """
@@ -127,5 +167,6 @@ def getUserRank(user):
         for x in range(size):
             if (userRanks[x].id == user_id):
                 rank = x+((count-1)*querySize)
+        count += 1
     
     return rank + 1
