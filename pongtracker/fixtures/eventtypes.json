@@ -1,0 +1,59 @@
+[
+  {
+    "model": "Game.EventType",
+    "pk": 1,
+    "fields": {
+      "typeName": "sunk"
+    }
+  },
+  {
+    "model": "Game.EventType",
+    "pk": 2,
+    "fields": {
+      "typeName": "trick"
+    }
+  },
+  {
+    "model": "Game.EventType",
+    "pk": 3,
+    "fields": {
+      "typeName": "bounce"
+    }
+  },
+    {
+    "model": "Game.EventType",
+    "pk": 4,
+    "fields": {
+      "typeName": "foul"
+    }
+  },
+    {
+    "model": "Game.EventType",
+    "pk": 5,
+    "fields": {
+      "typeName": "redemption"
+    }
+  },
+    {
+    "model": "Game.EventType",
+    "pk": 6,
+    "fields": {
+      "typeName": "death"
+    }
+  },
+    {
+    "model": "Game.EventType",
+    "pk": 7,
+    "fields": {
+      "typeName": "forfeit"
+    }
+  },
+    {
+    "model": "Game.EventType",
+    "pk": 8,
+    "fields": {
+      "typeName": "win"
+    }
+  }  
+]
+
