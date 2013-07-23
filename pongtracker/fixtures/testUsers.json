@@ -1,0 +1,146 @@
+[
+  {
+    "model": "User.PongUser",
+    "pk": 2,
+    "fields": {
+      "username": "test1",
+      "password": "Bubbles",
+      "first_name": "Tim",
+      "last_name": "My",
+      "email": "timmy@happiness.com",
+      "is_staff": "0",
+      "is_active": "1",
+      "_height": "184",
+      "_graduationYear": "2016",
+      "_institution": "1"
+      }
+  },
+  {
+    "model": "User.PongUser",
+    "pk": 3,
+    "fields": {
+      "username": "test2",
+      "password": "Bubbles",
+      "first_name": "Tim",
+      "last_name": "My",
+      "email": "timmy@happiness.com",
+      "is_staff": "0",
+      "is_active": "1",
+      "_height": "184",
+      "_graduationYear": "2016",
+      "_institution": "2"
+    }
+  },
+    {
+    "model": "User.PongUser",
+    "pk": 4,
+    "fields": {
+      "username": "test3",
+      "password": "Bubbles",
+      "first_name": "Tim",
+      "last_name": "My",
+      "email": "timmy@happiness.com",
+      "is_staff": "0",
+      "is_active": "1",
+      "_height": "184",
+      "_graduationYear": "2016",
+      "_institution": "1"
+    }
+  },
+    {
+    "model": "User.PongUser",
+    "pk": 5,
+    "fields": {
+      "username": "test4",
+      "password": "Bubbles",
+      "first_name": "Tim",
+      "last_name": "My",
+      "email": "timmy@happiness.com",
+      "is_staff": "0",
+      "is_active": "1",
+      "_height": "184",
+      "_graduationYear": "2016",
+      "_institution": "2"
+    }
+  },
+    {
+    "model": "User.PongUser",
+    "pk": 6,
+    "fields": {
+      "username": "test5",
+      "password": "Bubbles",
+      "first_name": "Tim",
+      "last_name": "My",
+      "email": "timmy@happiness.com",
+      "is_staff": "0",
+      "is_active": "1",
+      "_height": "184",
+      "_graduationYear": "2016",
+      "_institution": "1"
+    }
+  },
+    {
+    "model": "User.PongUser",
+    "pk": 7,
+    "fields": {
+      "username": "test6",
+      "password": "Bubbles",
+      "first_name": "Tim",
+      "last_name": "My",
+      "email": "timmy@happiness.com",
+      "is_staff": "0",
+      "is_active": "1",
+      "_height": "184",
+      "_graduationYear": "2016",
+      "_institution": "2"
+    }
+  },
+    {
+    "model": "User.PongUser",
+    "pk": 8,
+    "fields": {
+      "username": "test7",
+      "password": "Bubbles",
+      "first_name": "Tim",
+      "last_name": "My",
+      "email": "timmy@happiness.com",
+      "is_staff": "0",
+      "is_active": "1",
+      "_height": "184",
+      "_graduationYear": "2016",
+      "_institution": "1"
+      }
+  },  
+      {
+    "model": "User.PongUser",
+    "pk": 7,
+    "fields": {
+      "username": "test8",
+      "password": "Bubbles",
+      "first_name": "Tim",
+      "last_name": "My",
+      "email": "timmy@happiness.com",
+      "is_staff": "0",
+      "is_active": "1",
+      "_height": "184",
+      "_graduationYear": "2016",
+      "_institution": "2"
+    }
+  },
+      {
+    "model": "User.PongUser",
+    "pk": 7,
+    "fields": {
+      "username": "test9",
+      "password": "Bubbles",
+      "first_name": "Tim",
+      "last_name": "My",
+      "email": "timmy@happiness.com",
+      "is_staff": "0",
+      "is_active": "1",
+      "_height": "184",
+      "_graduationYear": "2016",
+      "_institution": "1"
+    }
+  }
+]

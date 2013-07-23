@@ -1,0 +1,16 @@
+[
+  {
+    "model": "User.Institution",
+    "pk": 1,
+    "fields": {
+      "_name": "Wilfrid Laurier University"
+    }
+  },
+  {
+    "model": "User.Institution",
+    "pk": 2,
+    "fields": {
+      "_name": "Waterloo University"
+    }
+  }
+]
