@@ -21,7 +21,13 @@ def createNewGameRequest(request):
     """
     
     form = CreateGameForm()
-    username = request.session['username']
+    username = ''
+    
+    try:
+        username = request.session['username']
+    except:
+        pass
+    
     form.username = username
         
     # on POST
