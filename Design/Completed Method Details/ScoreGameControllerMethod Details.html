@@ -68,8 +68,8 @@
         <td> int gameID </br>
             EventType action </br>
             String username </br>
-            int cupSunk1 </br>
-            int cupSunk2 (optional) </br> </td>
+            int cupAffected </br>
+            int bonusCup (optional) </br> </td>
     </tr>
     <tr>
         <td> Error Messages </td>
@@ -136,42 +136,6 @@
     </tr>
     <tr>
         <td>Description</td><td>Takes the User to the Game's end game page</td>
-    </tr>
-</table>
-
-<br>
-
-<table border="1">
-    <tr>
-        <td><strong>Controller Name</strong></td><td><strong>ScoreGameController</strong></td>
-    </tr>
-    <tr>
-        <td>Method Name</td><td><em>abortGame</em></td>
-    </tr>
-    <tr>
-        <td>Method State</td><td><em>public</em></td>
-    </tr>
-    <tr>
-        <td>Return</td><td><em>None</em></td>
-    </tr>
-    <tr>
-        <td>Input Arguments</td><td>int gameID</td>
-    </tr>
-    <tr>
-        <td>Error Messages</td><td> If the Game does not exist:</br>
-            ***Game does not exist***</br>
-    </tr>
-    <tr>
-        <td>Database Accesses</td><td>Event, Game, EventType</td>
-    </tr>
-    <tr>
-        <td>Database Changes</td><td>Deletes entries from the Game, Team and Event tables</td>
-    </tr>
-    <tr>
-        <td>Other Methods Invoked</td><td>obtainGame, Game.getTeam1, Game.getTeam2, Game.getEvents</td>
-    </tr>
-    <tr>
-        <td>Description</td><td>Removes all records of the Game ever occurring.</td>
     </tr>
 </table>
 
