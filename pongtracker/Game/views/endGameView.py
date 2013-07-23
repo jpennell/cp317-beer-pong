@@ -26,11 +26,6 @@ def viewGameSummaryRequest(request, game_id):
         
     if currUser in users:
         
-        #test
-        leaders = getInstitutionLeaders(3, currUser.getInstitution())
-        for x in range(len(leaders)):
-            print(leaders[x][0], leaders[x][1])
-        
         form.authErr = False
         
         stats = []

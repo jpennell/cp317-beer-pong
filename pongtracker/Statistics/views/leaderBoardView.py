@@ -9,11 +9,14 @@ def leaderboardPage(request):
     if not request.user.is_authenticated():
          return redirect('/login/')
     
-    topTen = PongUser.objects.order_by('ranking')[0:10]
     username = request.session['username']  
+    
     institutionRank =_getInstitutionRank(username)
-    #overallRank = _getOverallRank(username)
-    print('Institution Rank:{0}'.format(institutionRank))
+    
+    user = PongUser.objects.get(username=username)
+    overallRank = getUserRank(user)
+    
+    print('Institution Rank:{0}'.format(institutionRank)) #DOES NOT WORK!
     #print('Overall Rank:{0}'.format(overallRank))
     
     return render(request,'statistics/leaderboard.html',{'username':request.session['username']})
@@ -31,11 +34,11 @@ def _getTopRanked(limit):
     Output:
     topRanked -- list of top ranked (in order)
     """
-    topUsers = RankView.objects.all()[0:limit-1]
+    topUsers = RankView.objects.all()[0:limit]
     
     topRanked = []
     
-    for x in range(len(topusers)):
+    for x in range(len(topUsers)):
         user_id = topUsers[x].id
         user = PongUser.objects.get(id=user_id)
         topRanked.append(user)
