@@ -3,7 +3,10 @@ from django.contrib.auth.models import AbstractUser
 import datetime
 
 class Institution(models.Model):
-    name = models.CharField(max_length=45)
+    def getName(self):
+        return self._name
+    
+    _name = models.CharField(max_length=45)
 
     def __unicode__(self):
         return self._name
@@ -20,28 +23,28 @@ class PongUser(AbstractUser):
         return self._photo
 
     def getGraduationYear(self):
-        return self._graduation_year
+        return self._graduationYear
 
     def getInstitution(self):
         return self._institution
 
     def getIsBanned(self):
-        return self._is_banned
+        return self._isBanned
     
     def getIsActive(self):
         return self.is_active
     
     def getFirstName(self):
-        return self._first_name
+        return self.first_name
     
     def getLastName(self):
-        return self._last_name
+        return self.last_name
     
     def getEmail(self):
         return self._email
     
     def getHasLoggedIn(self):
-        return self._has_logged_in
+        return self._hasLoggedIn
 
 
     def setHeight(self, value):
@@ -51,28 +54,28 @@ class PongUser(AbstractUser):
         self._photo = value
 
     def setGraduationYear (self, value):
-        self._graduation_year = value
+        self._graduationYear = value
 
     def setInstitution(self, value):
         self._institution = value
 
     def setIsBanned(self, value):
-        self._is_banned = value
+        self._isBanned = value
         
     def setIsActive(self, value):
         self._is_active = value
     
     def setFirstName(self, value):
-        self._first_name = value
+        self.first_name = value
     
     def setLastName(self, value):
-        self._last_name = value
+        self.last_name = value
     
     def setEmail(self, value):
-        self._email = value
+        self.email = value
         
     def setHasLoggedIn(self, value):
-        self._has_logged_in = value
+        self._hasLoggedIn = value
     
     
     YEAR_CHOICES = []
@@ -81,7 +84,7 @@ class PongUser(AbstractUser):
         
     _height = models.SmallIntegerField(null = True, blank = True)
     _photo = models.CharField(max_length=100, null = True, blank = True)
-    _graduation_year = models.IntegerField(('year'), max_length=4, choices=YEAR_CHOICES, default=datetime.datetime.now().year+1)
+    _graduationYear = models.IntegerField(('year'), max_length=4, choices=YEAR_CHOICES, default=datetime.datetime.now().year+1)
     _institution = models.ForeignKey(Institution,null = True, blank = True)
-    _is_banned = models.BooleanField(default=False)
-    _has_logged_in = models.BooleanField(default = False)
+    _isBanned = models.BooleanField(default=False)
+    _hasLoggedIn = models.BooleanField(default = False)

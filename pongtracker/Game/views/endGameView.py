@@ -1,20 +1,25 @@
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from Game.models import Game, Team, Event
-from Statistics.models import Ranking
+from Statistics.models import RankView, Ranking
 from django.shortcuts import render, redirect
 from Utilities.utilities import *
 from django.template import Context
 from Game.forms.endGameForm import EndGameForm
+from Statistics.views.leaderBoardView import *
 
 def viewGameSummaryRequest(request, game_id):
     
     form = EndGameForm
+    currUsername = ''
+    currUser = None
     
-    currUsername = request.session['username']
-    
-    currUser = get_user_model().objects.get(username=currUsername)
-    
+    try:
+        currUsername = request.session['username']
+        currUser = get_user_model().objects.get(username=currUsername)
+    except:
+        pass
+
     game = Game.objects.get(pk=game_id)
     
     users = [game.team1.user1, game.team1.user2, game.team2.user1, game.team2.user2]
@@ -28,7 +33,7 @@ def viewGameSummaryRequest(request, game_id):
         
         for x in range(len(users)):
             form.usernames[x] = users[x].username
-            form.ranks[x] = _getRank(users[x])
+            form.ranks[x] = getUserRank(users[x])
             stats.append(_getStats(users[x], events, game_id))     
             
         form.stats = stats

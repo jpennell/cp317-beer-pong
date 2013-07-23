@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm
+from django import forms
 
 from User.models import PongUser
 
@@ -24,7 +25,7 @@ class PongUserAdmin(UserAdmin):
     form = PongUserChangeForm
     add_form = PongUserCreationForm
     fieldsets = UserAdmin.fieldsets + (
-        (None, {'fields': ('_is_banned','_institution')}),
+        (None, {'fields': ('_isBanned','_institution')}),
     )
 
 admin.site.register(PongUser, PongUserAdmin)

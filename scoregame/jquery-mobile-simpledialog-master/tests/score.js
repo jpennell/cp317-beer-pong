@@ -1,7 +1,6 @@
 var deactivateCup = function(team, cup) {
 	// construct css selector eg: .team1.cup1
 	var sel = '.' + team + '.' + cup
-	// remove "active" class for this cup
 	$(sel).removeClass('active')
 }
 var cupSunk = function(team, cup) {
@@ -10,23 +9,23 @@ var cupSunk = function(team, cup) {
 }
 var partyFoul = function(team, cup) {
 	console.log('team', team, 'cup', cup, 'was a party foul')
-	var whoPartyFoul = function(player) {
+	var blamePartyFoul = function(player) {
 		console.log('Player', player, 'got a party foul')
 		deactivateCup(team, cup)
 	}
-	$(this).simpledialog2({
+	$('<div>').simpledialog2({
 		mode : 'button',
 		headerText : 'Who?',
 		headerClose : true,
 		'buttons' : {
 			'Player 1' : {
 				'click' : function() {
-					whoPartyFoul(1)
+					blamePartyFoul(1)
 				}
 			},
 			'Player 2' : {
 				'click' : function() {
-					whoPartyFoul(2)
+					blamePartyFoul(2)
 				}
 			}
 		},
@@ -42,11 +41,19 @@ var trickShot = function(team, cup) {
 var bounceShot = function(team, cup) {
 	console.log('team', team, 'cup', cup, 'was a bounce shot')
 	var selectBounceCup = function(team, cup, player) {
-		$(this).simpledialog2({
-			mode : 'blank',
-			headerText : 'Into which?',
-			headerClose : true,
-			blankContent : "<div class='cups' id='bounce'>" + "<style>#bounce{display: block; width: 200px; height: 200px;}</style>" + "<h1>Hello</h1>" + "</div>"
+		console.log('... by player', player)
+
+		var otherTeam = team == 'team1' ? 'team2' : 'team1'
+		$("#" + otherTeam + " .cups").clone().attr('id', 'bounce-cup').appendTo('#select-bounce-cup')
+		$('#select-bounce-cup .cup').each(function() {
+			$(this).addClass('bcup')
+		})
+		
+		$('#select-bounce-cup').simpledialog2();
+
+		$('#bounce-cup').delegate('.bcup.active', 'click', function() {
+			var cup = this.className.split(' ')[2]
+			console.log('... into', cup, 'aww yeah. now how do I close this menu?')
 		})
 	}
 	$(this).simpledialog2({
@@ -71,7 +78,7 @@ var bounceShot = function(team, cup) {
 	})
 }
 
-$(document).delegate('.cup.active', 'click', function() {
+$(document).delegate('.cup.active:not(".bcup")', 'click', function() {
 	var classes = this.className.split(' ')
 	var team = classes[1]
 	var cup = classes[2]
@@ -106,5 +113,5 @@ $(document).delegate('.cup.active', 'click', function() {
 		showModal : true,
 		clickEvent : 'vclick'
 	})
-});
+})
 

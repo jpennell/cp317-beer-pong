@@ -10,11 +10,18 @@
 {% block pagecontent %}
 <div id="page-content">
     <h1>{{ title }}</h1>
+    {% if 'updated' in request.session %}
+    <div class="alert">
+        {{ request.session.updated }}
+    </div>
+    {% endif %}
     <form method='post' action='/profile/edit'>
         {% csrf_token %}
-
+		
+		{{ updated }}
         <table id='edit-profile-form'>
             <!-- display the form fields -->
+            
             {% for field in form %}
             <tr>
                 <td>
@@ -25,7 +32,9 @@
                 </td>
                 <td>
                     {% if field.errors %}
-                    <div class="error">{{ field.errors }}</div>
+                    <div class="error">
+                        {{ field.errors }}
+                    </div>
                     {% endif %}
                 </td>
             </tr>
