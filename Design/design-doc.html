@@ -93,7 +93,7 @@
 			<section>
 				<h3 class="heading2"><span class="number">1.2</span>Target Audience</h3>
 				<p>
-					This document is for the implementation and front end teams as it contains detailed 
+					This document is for the implementation and front end teams as it contains detailed
 					information regarding the implementation procedures.
 				</p>
 			</section>
@@ -107,9 +107,9 @@
 					<p>
 						Pong Tracker is hosted on a Sun Microsystem Linux Server with a MySQL database.
 						The Linux server must be able to serve HTML 5 and CSS 3. Intepretation of Python 2.7 is required.
-						The server is also required to integrate with the Django web framework and Git. 
-						Django is a strong web framework with many tools built in such as sessions, and database APIs; Django will be discussed in detail later. 
-						The only concern is the implemention is using Python 2.7 when the current version is 3.3.2. 2.7 has been selected 
+						The server is also required to integrate with the Django web framework and Git.
+						Django is a strong web framework with many tools built in such as sessions, and database APIs; Django will be discussed in detail later.
+						The only concern is the implemention is using Python 2.7 when the current version is 3.3.2. 2.7 has been selected
 						because Django support for 3.3.2 is currently only an experimental version.
 					</p>
 
@@ -121,7 +121,7 @@
 							<li>Client Side code must be done using jQuery, JavaScript, and Ajax</li>
 							<li>Must be object-oriented</li>
 							<li>
-								Code shall follow 
+								Code shall follow
 								<a href="http://www.python.org/dev/peps/pep-0008/"> PEP-8 standards </a>
 								as outlined bellow.
 								<ul>
@@ -130,7 +130,7 @@
 									<li> Blank lines shall seperate logical paragraphs</li>
 									<li> All models shall have a uni code method</li>
 									<li> Imports exlcluding froms shall be on seperate lines</li>
-									<li> Do not use extraneous white space, however one space 
+									<li> Do not use extraneous white space, however one space
 									on both sides of mathematical symbols is required</li>
 									<li> Compound statements are discouraged</li>
 									<li> Commenting should kept up to date and accurate</li>
@@ -157,7 +157,7 @@
 									Contributors:<br>
 										Contributor names<br>
 									Output:<br>
-										return value (type)<br>	
+										return value (type)<br>
 									"""
 						</ul>
 					</p>
@@ -207,7 +207,7 @@
 					</section>
 					<section>
 						<h4 class="heading3"><span class="number">2.2.4</span>Utilities Package</h4>
-						<p>The utilities package includes helper functions that are not specific to a particular package (User, Game, Statistics) in our application but are accessed by some or all of them. Currently, the functions that belong in this package are unknown. Functions are added to the utilities package when the need arises.</p>
+						<p>The utilities package includes helper functions that are not specific to a particular package (User, Game, Statistics) in our application but are accessed by all packages. Currently, the functions that belong in this package are unknown. Functions are added to the utilities package when the need arises.</p>
 					</section>
 					<section>
 						<h4 class="heading3"><span class="number">2.2.5</span>Django Package</h4>
@@ -224,7 +224,31 @@
 
 				<section>
 					<h3 class="heading2"><span class="number">2.3</span>Database Design</h3>
-					<embed src="Completed SVG Diagrams/DatabaseDiagram.svg"></embed>
+					<p>The following diagram shows the Pong Tracker database design. The following are a list of Django generated tables: </p>
+
+					<ul>
+						<li>auth_group</li>
+						<li>auth_group_permissions</li>
+						<li>django_session</li>
+						<li>django_content_type</li>
+						<li>auth_permission</li>
+						<li>django_admin_log</li>
+						<li>User_ponguser_user_permissions</li>
+						<li>User_ponguser*</li>
+					</ul>
+
+					<p>*The User_ponguser table is an extension of the User model defined by Django.</p>
+
+					<p>Any attributes defined by us begin with an underscore and are written in camel case. An example of this is _isBanned in the User_ponguser table. The only exceptions are foreign keys. Django automatically appends "_id" to the end of the attribute name. An example of this is _user_id in the Game_event table. In the model definitions in the Django project, the "_id" does not appear. </p>
+
+					<p>Any Django generated attributes are written in lower case with underscores between works. An example of this is first_name in the User_ponguser table.</p>
+
+					<figure>
+						<a href="Completed SVG Diagrams/DatabaseDiagram.svg">
+							<img src="Completed SVG Diagrams/DatabaseDiagram.svg" alt="Database Diagram" width="75%" style="border:2px solid lightgray">
+						</a>
+					</figure>
+
 				</section>
 			</section>
 		<span class="to-top"><a href="#top">Back to Top</a></span>
@@ -387,16 +411,16 @@
 			<section>
 				<h3 class="heading2"><span class="number">4.1</span>Framework Description & Functionality</h3>
 					<p>
-						Django is a strong web framework with many tools built in such as session handling, caching, 
-						authentication, and database APIs. Django focuses on taking a lot of the work away from the 
-						developer allowing for easier, more rapid development. 
+						Django is a strong web framework with many tools built in such as session handling, caching,
+						authentication, and database APIs. Django focuses on taking a lot of the work away from the
+						developer allowing for easier, more rapid development.
 					</p>
 					<p>
-						One word sums up how Django works, Magic. In more specific terms Django works by processing 
+						One word sums up how Django works, Magic. In more specific terms Django works by processing
 						a given URL against the registered URLs and calling the respective view. That view will then
-						use the required models potentially updating the database returning a HTTPs response. 
-						This response is usually a template (HTML page) which can then be displayed for the user. 
-						The majority of these templates will have buttons that trigger posts to URLs that will 
+						use the required models potentially updating the database returning a HTTPs response.
+						This response is usually a template (HTML page) which can then be displayed for the user.
+						The majority of these templates will have buttons that trigger posts to URLs that will
 						start the process all over again.
 					</p>
 			</section>
@@ -408,9 +432,9 @@
 						These packages contain the models, views, forms, templates, URLs, and tests for their respective package.
 						Once the project is started a developer can start to hook up the models, templates, and views in
 						a model view controller fashion.
-					</p>	
-					<p>		
-						We are currently using the Django libraries for administration, authentication, sessions, and static files. 
+					</p>
+					<p>
+						We are currently using the Django libraries for administration, authentication, sessions, and static files.
 						The student group on hopper does not have permissions to create databases as such the testing was rewritten in order to perform unit testing.
 					</p>
 					<p>
@@ -419,40 +443,40 @@
 							<a href="https://docs.djangoproject.com/en/1.5/topics/auth/"><h4 class="heading3">auth</h4></a>
 								Django's built in authentication framework. This system handles the varios parts associated
 								with a user: accounts, permissions, groups, and cookie-based user session. It provides password
-								hashing, and basic user forms. It does not however provide password strength checking, throttling 
+								hashing, and basic user forms. It does not however provide password strength checking, throttling
 								or login attempts. When the database is synced the required tables are generated taking another step
 								away from the developer. This package is dependent upon the contenttypes app and session, and authentication
 								middleware.
 							<a href="https://docs.djangoproject.com/en/1.5/topics/http/sessions/"><h4 class="heading3">sessions</h4></a>
-								Django's session framework allows a developer to store and retrieve values in the session. Each user 
+								Django's session framework allows a developer to store and retrieve values in the session. Each user
 								has one session which is stored on the server side, abtrasting the sending and recieving of cookies. Sessions are
-								dependent upon the SessionMiddleware midlware that is included with django. While django does over cookie 
-								session support we have have selected the default of database-bakced sesssion. 
-								
+								dependent upon the SessionMiddleware midlware that is included with django. While django does over cookie
+								session support we have have selected the default of database-bakced sesssion.
+
 							<a href="https://docs.djangoproject.com/en/1.5/ref/contrib/messages/"><h4 class="heading3">messages</h4></a>
-								Django allows developers to send one time messages to a user by using cookie or session based messaging. 
+								Django allows developers to send one time messages to a user by using cookie or session based messaging.
 								The frame work allows for the temporary storage of messages in one request and the retrieval of it in another.
 								The message can be retrieved by templates in the html to display to the user.
 								Each message has a tag declaring its priority level. Messaging is dependent upon SessionMiddleware,
 								MessageMiddleware, and django.contrib.messages.context_processors.messages as a template context
-								processor. 
+								processor.
 							<a href="https://docs.djangoproject.com/en/1.5/ref/contrib/staticfiles/"><h4 class="heading3">staticfiles</h4></a>
-								Staticfiles uses finders to gather the static files associated with the project into a single location. 
-								Staticfiles is used by defining the listing the location of static files in the STATICFILES_DIRS variable of 
+								Staticfiles uses finders to gather the static files associated with the project into a single location.
+								Staticfiles is used by defining the listing the location of static files in the STATICFILES_DIRS variable of
 								settings.py. We are using this framework to incorporate our css files into the project.
-							
+
 							<a href="https://docs.djangoproject.com/en/1.5/ref/contrib/admin/"><h4 class="heading3">admin</h4></a>
-								
-														
-							
+
+
+
 							<li><b>contenttypes</b></li>
 							<a href="https://docs.djangoproject.com/en/1.5/ref/contrib/humanize/"><h4 class="heading3">humanize</h4></a>
 								At the time of writing no decision has been made to implement the humaize framework it is however
-								worth highlighting. The humanize framework essentially makes values on a template more appeling to a user. 
+								worth highlighting. The humanize framework essentially makes values on a template more appeling to a user.
 								It does this by adding commas to large numbers, converting integers to words, or converting date objects to
 								a phrase with respect to the current time ie. 29 seconds ago.
 						</ul>
-						
+
 						Django also provides middleware to aid in soliving many web development issues:
 						<ul>
 							<li>django.middleware.common.CommonMiddleware</li>
@@ -461,7 +485,7 @@
 							<li>django.contrib.auth.middleware.AuthenticationMiddleware</li>
 							<li>django.contrib.messages.middleware.MessageMiddleware</li>
 						</ul>
-						
+
 						The Django libary itself consits of many aditional packages and features for developers to use:
 						<ul>
 							<li>from django import forms</li>
@@ -473,7 +497,7 @@
 							<li>from django.conf.urls import patterns, url</li>
 							<li>fixtures
 						</ul>
-						
+
 						To find the required files Django employs several finders and loaders:
 						<ul>
 							<li>django.contrib.staticfiles.finders.FileSystemFinder</li>
@@ -486,8 +510,8 @@
 			<section>
 				<h3 class="heading2"><span class="number">4.3</span>Benefits to Django</h3>
 					<p>
-						Django and Python were selected as the development team has Python experience. 
-						Django also eliminates a lot of the work involved in setting up the administration, user login, and database.  
+						Django and Python were selected as the development team has Python experience.
+						Django also eliminates a lot of the work involved in setting up the administration, user login, and database.
 					</p>
 			</section>
 
@@ -535,13 +559,13 @@
 				<a href="https://docs.djangoproject.com/en/1.5/topics/http/sessions/"><span class='code'>https://docs.djangoproject.com/en/1.5/topics/http/sessions/</span></a>
 				<a href="https://docs.djangoproject.com/en/1.5/ref/contrib/messages/"><span class='code'>https://docs.djangoproject.com/en/1.5/ref/contrib/messages/</span></a>
 
-				
+
 				<a href="https://docs.djangoproject.com/en/1.5/ref/contrib/humanize/"><span class='code'>https://docs.djangoproject.com/en/1.5/ref/contrib/humanize/</span></a>
 
 			</p>
-			
-			
-			
+
+
+
 			<span class="to-top"><a href="#top">Back to Top</a></span>
 		</section>
 
