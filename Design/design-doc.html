@@ -442,6 +442,7 @@
 					<p>
 						We are currently using the Django libraries for administration, authentication, sessions, and static files.
 						The student group on hopper does not have permissions to create databases as such the testing was rewritten in order to perform unit testing.
+
 					</p>
 
 					<p>
@@ -458,9 +459,8 @@
 
 								Django's session framework allows a developer to store and retrieve values in the session. Each user
 								has one session which is stored on the server side, abstracting the sending and receiving of cookies. Sessions are
-								dependent upon the SessionMiddleware middleware that is included with Django. While Django does over cookie
+								dependent upon the SessionMiddleware middleware that is included with Django. While Django does offer cookie
 								session support we have selected the default of database-backed session.
-
 
 							<a href="https://docs.djangoproject.com/en/1.5/ref/contrib/messages/"><h4 class="heading3">messages</h4></a>
 								Django allows developers to send one time messages to a user by using cookie or session based messaging.
@@ -470,6 +470,7 @@
 								MessageMiddleware, and django.contrib.messages.context_processors.messages as a template context
 								processor.
 							<a href="https://docs.djangoproject.com/en/1.5/ref/contrib/staticfiles/"><h4 class="heading3">staticfiles</h4></a>
+
 								Staticfiles uses finders to gather the static files associated with the project into a single location.
 								Staticfiles is used by defining the listing the location of static files in the STATICFILES_DIRS variable of
 								settings.py. We are using this framework to incorporate our CSS files into the project.
@@ -499,6 +500,7 @@
 								a phrase with respect to the current time i.e. 29 seconds ago.
 						</ul>
 
+
 						Django also provides middleware to aid in solving many web development issues.
 						The selected middleware not related directly to the django.contrib package is described below:
 
@@ -510,7 +512,9 @@
 								The Csrf protection middleware provides protection from cross site request forgeries.
 								All POST forms that target internal urls are given a csrf_token ensuring that protection is provided.
 						</ul>
+
 						The Django library itself consists of many additional packages, libraries, APIs and features for developers to use:
+
 						<ul>
 							<a href="https://docs.djangoproject.com/en/1.5/topics/forms/"><h4 class="heading3">django.forms</h4></a>
 								The form API provides a easy way to set up a quick html form. The form API generates
@@ -551,6 +555,7 @@
 								By using patterns() developers are able to create a list of url() objects to register with the site. The url objects
 								are also able to obtain data from the session and redirect to views.
 						</ul>
+
 
 						To find the required files Django employs several finders and loaders:
 						<ul>
