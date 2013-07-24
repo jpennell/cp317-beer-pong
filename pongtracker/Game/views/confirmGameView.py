@@ -1,56 +1,47 @@
 #import TrueSkill
-#from Game.models import Game
-#from django.shortcuts import render, redirect
-#from Utilities.utilities import *
-#
-#def confirmGameRequest(request):
-#    """{{Description}}
-#
-#    Keyword arguments:
-#    variable -- description 
-#    variable -- description 
-#    
-#    Contributors:
-#    
-#    Output:
-#        
-#    """
-#    #obtain the gameID (or Game) from the request
-#    gameID = request.POST.get("gameID")
-#    #obtain whether the User is confirming/denying from the request
-#    isUserConfirming = request.POST.get("isConfirming")
-#    
-#    return confirmOrDenyGame(request,gameID,isUserConfirming)
-#
-#def confirmOrDenyGame(request,gameID,isUserConfirming):
-#    """{{Description}}
-#
-#    Keyword arguments:
-#    variable -- description 
-#    variable -- description 
-#    
-#    Contributors:
-#    
-#    Output:
-#        
-#    """
-#    game = _obtainGame()
-#    if (game == None):
-#        return render(request,'game/confirm.html',{'state':"Game does not exist"})
-#    elif (game.isConfirmedOrDenied()):
-#        return render(request,'game/confirm.html',{'state':"Game is already confirmed/denied"})
-#    elif (not _isGameEnded(game)):
-#        return render(request,'game/confirm.html',{'state':"Game has not ended yet"})
-#    else:
-#        if (isUserConfirming):
-#            _confirmGame(game)
-#            gameState = "Game successfully confirmed"
-#        else:
-#            _denyGame(game)
-#            gameState = "Game successfully denied"
-#        game.setConfirmedOrDenied(True)
-#        return redirect_with_params('/index/',state = gameState)
-#
+from Game.models import Game
+from Game.forms.confirmGameForm import ConfirmGameForm
+from django.shortcuts import render, redirect
+from Utilities.utilities import *
+
+def confirmOrDenyGame(request,game_id):
+    game = _obtainGame(game_id)
+    
+    state = ""
+    if game is None:
+        state = "game " + game_id + " does not exist"
+    elif request.method != "POST":
+        state = "how did you get here?"
+    else:
+        form = ConfirmGameForm(data=request.POST)
+        if not form.is_valid():
+            state = "no choice selected"
+        else:
+            choice = form.cleaned_data['confirm']
+            print choice
+            if choice == 'confirm':
+                state = "confirming game " + game_id
+            else:
+                state = "denying game " + game_id
+    
+    return redirect_with_params('/index/',state = state)
+    
+    if (game == None):
+        return render(request,'game/confirm.html',{'state':"Game does not exist"})
+    elif (game.isConfirmedOrDenied()):
+        return render(request,'game/confirm.html',{'state':"Game is already confirmed/denied"})
+    elif (not _isGameEnded(game)):
+        return render(request,'game/confirm.html',{'state':"Game has not ended yet"})
+    else:
+        if (isUserConfirming):
+            _confirmGame(game)
+            gameState = "Game successfully confirmed"
+        else:
+            _denyGame(game)
+            gameState = "Game successfully denied"
+        game.setConfirmedOrDenied(True)
+        return redirect_with_params('/index/',state = gameState)
+
 #def _confirmGame(game):
 #    """{{Description}}
 #    
@@ -187,12 +178,12 @@
 #
 #def _obtainWinnersAndLosers(endGameEvent,team1,team2):
 #    """helper function that takes a Game's Teams and ending Event
-#	and returns [winningTeam,losingTeam]
+#    and returns [winningTeam,losingTeam]
 #
 #    Keyword arguments:
 #    endGameEvent -- the Event that ended the Game and knows who won 
 #    team1 -- the Game's Team1
-#	team2 -- the Game's Team2
+#    team2 -- the Game's Team2
 #    
 #    Contributors: Richard Douglas
 #    
