@@ -1,4 +1,5 @@
 from django import forms
+from User.models import *
 
 class LeaderboardForm(forms.Form):
     
