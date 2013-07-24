@@ -1,3 +1,12 @@
+/*
+ * score.js
+ * 
+ * George Lifchits
+ * July 2013
+ * 
+ * JavaScript code which implements the Score Game aspect of the Pong Tracker project
+ */
+
 var deactivateCup = function(team, cup) {
 	// construct css selector eg: .team1.cup1
 	var sel = '.' + team + '.' + cup
@@ -49,7 +58,7 @@ var bounceShot = function(team, cup) {
 		$("#" + team + " .cups").clone().attr('id', 'bounce-cup').appendTo('#select-bounce-cup')
 		// for each cup in the special div...
 		$('#select-bounce-cup .cup').each(function() {
-			// 
+			// ... add class .bcup to this cup, then add rel=close so that click closes the dialog
 			$(this).addClass('bcup').attr('rel', 'close')
 		})
 		// create a simpledialog window out of the special div
