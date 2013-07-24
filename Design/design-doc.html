@@ -401,7 +401,7 @@
 					</p>
 			</section>
 			<section>
-				<h3 class="heading2"><span class="number">4.2</span>How Django Will Be Used</h3>
+				<h3 class="heading2"><span class="number">4.2</span>How Django is Used</h3>
 					<p>
 						In order to use Django, the libraries are first imported for a developer to run
 						to create the  project. With a project a developer can create apps; the equivalent of packages.
@@ -412,6 +412,75 @@
 					<p>		
 						We are currently using the Django libraries for administration, authentication, sessions, and static files. 
 						The student group on hopper does not have permissions to create databases as such the testing was rewritten in order to perform unit testing.
+					</p>
+					<p>
+						In the django.contrib package are many tools available to developers we have selected several:
+						<ul>
+							<a href="https://docs.djangoproject.com/en/1.5/topics/auth/"><h4 class="heading3">auth</h4></a>
+								Django's built in authentication framework. This system handles the varios parts associated
+								with a user: accounts, permissions, groups, and cookie-based user session. It provides password
+								hashing, and basic user forms. It does not however provide password strength checking, throttling 
+								or login attempts. When the database is synced the required tables are generated taking another step
+								away from the developer. This package is dependent upon the contenttypes app and session, and authentication
+								middleware.
+							<a href="https://docs.djangoproject.com/en/1.5/topics/http/sessions/"><h4 class="heading3">sessions</h4></a>
+								Django's session framework allows a developer to store and retrieve values in the session. Each user 
+								has one session which is stored on the server side, abtrasting the sending and recieving of cookies. Sessions are
+								dependent upon the SessionMiddleware midlware that is included with django. While django does over cookie 
+								session support we have have selected the default of database-bakced sesssion. 
+								
+							<a href="https://docs.djangoproject.com/en/1.5/ref/contrib/messages/"><h4 class="heading3">messages</h4></a>
+								Django allows developers to send one time messages to a user by using cookie or session based messaging. 
+								The frame work allows for the temporary storage of messages in one request and the retrieval of it in another.
+								The message can be retrieved by templates in the html to display to the user.
+								Each message has a tag declaring its priority level. Messaging is dependent upon SessionMiddleware,
+								MessageMiddleware, and django.contrib.messages.context_processors.messages as a template context
+								processor. 
+							<a href="https://docs.djangoproject.com/en/1.5/ref/contrib/staticfiles/"><h4 class="heading3">staticfiles</h4></a>
+								Staticfiles uses finders to gather the static files associated with the project into a single location. 
+								Staticfiles is used by defining the listing the location of static files in the STATICFILES_DIRS variable of 
+								settings.py. We are using this framework to incorporate our css files into the project.
+							
+							<a href="https://docs.djangoproject.com/en/1.5/ref/contrib/admin/"><h4 class="heading3">admin</h4></a>
+								
+														
+							
+							<li><b>contenttypes</b></li>
+							<a href="https://docs.djangoproject.com/en/1.5/ref/contrib/humanize/"><h4 class="heading3">humanize</h4></a>
+								At the time of writing no decision has been made to implement the humaize framework it is however
+								worth highlighting. The humanize framework essentially makes values on a template more appeling to a user. 
+								It does this by adding commas to large numbers, converting integers to words, or converting date objects to
+								a phrase with respect to the current time ie. 29 seconds ago.
+						</ul>
+						
+						Django also provides middleware to aid in soliving many web development issues:
+						<ul>
+							<li>django.middleware.common.CommonMiddleware</li>
+							<li>django.contrib.sessions.middleware.SessionMiddleware</li>
+							<li>django.middleware.csrf.CsrfViewMiddleware</li>
+							<li>django.contrib.auth.middleware.AuthenticationMiddleware</li>
+							<li>django.contrib.messages.middleware.MessageMiddleware</li>
+						</ul>
+						
+						The Django libary itself consits of many aditional packages and features for developers to use:
+						<ul>
+							<li>from django import forms</li>
+							<li>database stuff</li>
+							<li>testing</li>
+							<li>from django.db import models</li>
+							<li>from django.shortcuts import render, redirect,get_object_or_404</li>
+							<li>from django.template import Context</li>
+							<li>from django.conf.urls import patterns, url</li>
+							<li>fixtures
+						</ul>
+						
+						To find the required files Django employs several finders and loaders:
+						<ul>
+							<li>django.contrib.staticfiles.finders.FileSystemFinder</li>
+							<li>django.contrib.staticfiles.finders.AppDirectoriesFinder</li>
+							<li>django.template.loaders.filesystem.Loader</li>
+							<li>django.template.loaders.app_directories.Loader</li>
+						</ul>
 					</p>
 			</section>
 			<section>
@@ -459,6 +528,20 @@
 				<br/>
 				<a href="http://hopper.wlu.ca/~heng7500/Analysis.html"><span class='code'>http://hopper.wlu.ca/~heng7500/Analysis.html</span></a>
 			</p>
+			<p>
+				Django Documentation References:
+				<br/>
+				<a href="https://docs.djangoproject.com/en/1.5/topics/auth/"><span class='code'>https://docs.djangoproject.com/en/1.5/topics/auth/</span></a>
+				<a href="https://docs.djangoproject.com/en/1.5/topics/http/sessions/"><span class='code'>https://docs.djangoproject.com/en/1.5/topics/http/sessions/</span></a>
+				<a href="https://docs.djangoproject.com/en/1.5/ref/contrib/messages/"><span class='code'>https://docs.djangoproject.com/en/1.5/ref/contrib/messages/</span></a>
+
+				
+				<a href="https://docs.djangoproject.com/en/1.5/ref/contrib/humanize/"><span class='code'>https://docs.djangoproject.com/en/1.5/ref/contrib/humanize/</span></a>
+
+			</p>
+			
+			
+			
 			<span class="to-top"><a href="#top">Back to Top</a></span>
 		</section>
 
