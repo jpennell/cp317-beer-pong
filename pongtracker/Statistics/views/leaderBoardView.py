@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login
 from User.models import PongUser
 from User.models import Institution
-from Statistics.forms.leaderboardForm import *
+from Statistics.forms.leaderboardForm import LeaderboardForm
 from Statistics.models import LifeStats, Ranking, RankView
 
 
