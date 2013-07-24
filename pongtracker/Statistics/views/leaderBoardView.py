@@ -2,10 +2,13 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login
 from User.models import PongUser
 from User.models import Institution
+from Statistics.forms.leaderboardForm import *
 from Statistics.models import LifeStats, Ranking, RankView
 
 
 def leaderboardPage(request):
+    form = LeaderboardForm()
+    
     if not request.user.is_authenticated():
          return redirect('/login/')
     
@@ -19,7 +22,7 @@ def leaderboardPage(request):
     print('Institution Rank:{0}'.format(institutionRank)) #DOES NOT WORK!
     #print('Overall Rank:{0}'.format(overallRank))
     
-    return render(request,'statistics/leaderboard.html',{'username':request.session['username']})
+    return render(request,'statistics/leaderboard.html',{'form':form})
 
 def _getTopRanked(limit):
     """
