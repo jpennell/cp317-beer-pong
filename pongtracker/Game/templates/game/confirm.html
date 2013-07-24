@@ -21,10 +21,11 @@
 			<th width="1%">
 				<div align="left">
 					Confirmation
-					<div align="center">
+				<div align="center">
 			</th>
 		</tr>
-		{% for c_form in confirm_game_forms %}
+		
+{% for c_form in confirm_game_forms %}
 		<tr>
 			<td>
 				<div align="center">{{c_form.date_played}}</div>
@@ -58,159 +59,17 @@
 				</div>
 			</td>
 			<td><div align="center">Win</div></td>
+			<td>
 			<form method = "POST" action = "/game/{{ c_form.game_id }}/confirm/">
-					<td>
+					
 						{% csrf_token %}
 						{{ c_form.confirm }}
 						<button name="createGame" class="btn" type="submit">
 							Verify
 						</button>
-					</td>
 			</form>
+			</td>
 		</tr>
-		{% endfor %}
+{% endfor %}
 </table>
-
-<!--
-<div id="page-content">
-	<table>
-		<tr>
-			<th width="2%">Date</th>
-			<th width="6%">Team 1</th>
-			<th width="6%">Team 2</th>
-			<th width="1%">Outcome</th>
-			<th width="1%">
-				<div align="left">
-					Confirmation
-					<div align="center">
-			</th>
-		</tr>
-		<tr>
-			<td>
-				<div align="center">July 10, 2013</div>
-			</td>
-			<td>
-				<div align="center">
-					<table border="1">
-						<center>
-							<tr>
-								<th>{{username1}}</th>
-								<th>{{username2}}</th>
-							</tr>
-							<td>1234</td>
-							<td>1234</td>
-						</center>
-					</table>
-				</div>
-			</td>
-			<td>
-				<div align="center">
-					<table border="1">
-						<center>
-							<tr>
-								<th>{{username3}}</th>
-								<th>{{username4}}</th>
-							</tr>
-							<td>1234</td>
-							<td>1234</td>
-						</center>
-					</table>
-				</div>
-			</td>
-			<td><div align="center">Win</div></td>
-			<td>
-				<form action="">
-					<input type="radio" name="confirm_btn" value="Confim">
-					Confirm<br> <input type="radio" name="confirm_btn"
-						value="Deny"> Deny
-				</form>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<div align="center">July 12, 2013</div>
-			</td>
-			<td>
-				<div align="center">
-					<table border="1">
-						<center>
-							<tr>
-								<th>{{username1}}</th>
-								<th>{{username2}}</th>
-							</tr>
-							<td>1234</td>
-							<td>1234</td>
-						</center>
-					</table>
-				</div>
-			</td>
-			<td>
-				<div align="center">
-					<table border="1">
-						<center>
-							<tr>
-								<th>{{username3}}</th>
-								<th>{{username4}}</th>
-							</tr>
-							<td>1234</td>
-							<td>1234</td>
-						</center>
-					</table>
-				</div>
-			</td>
-			<td><div align="center">Win</div></td>
-			<td>
-				<form action="">
-					<input type="radio" name="confirm_btn" value="Confim">
-					Confirm<br> <input type="radio" name="confirm_btn"
-						value="Deny"> Deny
-				</form>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<div align="center">July 14, 2013</div>
-			</td>
-			<td>
-				<div align="center">
-					<table border="1">
-						<center>
-							<tr>
-								<th>{{username1}}</th>
-								<th>{{username2}}</th>
-							</tr>
-							<td>1234</td>
-							<td>1234</td>
-						</center>
-					</table>
-				</div>
-			</td>
-			<td>
-				<div align="center">
-					<table border="1">
-						<center>
-							<tr>
-								<th>{{username3}}</th>
-								<th>{{username4}}</th>
-							</tr>
-							<td>1234</td>
-							<td>1234</td>
-						</center>
-					</table>
-				</div>
-			</td>
-			<td><div align="center">Win</div></td>
-			<td>
-				<form action="">
-					<input type="radio" name="confirm_btn" value="Confim">
-					Confirm<br> <input type="radio" name="confirm_btn"
-						value="Deny"> Deny
-				</form>
-			</td>
-		</tr>
-	</table>
-	<br /> <br />
-	<button name="verify" class="btn" type="submit">Verify Games</button>
-</div>
--->
 {% endblock %}
