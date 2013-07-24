@@ -43,11 +43,11 @@ def loginUserRequest( request ):
     elif username !='':
         user = PongUser.objects.get(username=username)
         #if it was successful and it isn't their first login attempt, got to the login page
-        if userState == SUCCESS and user.getHasLoggedIn():
+        if userState == SUCCESS and user.getHasUpdatedProfile():
             return redirect('/profile/')
         
         #it was successful and the user has never logged in before, set the login status to true, and force them to edit their profile
-        elif userState == SUCCESS and not user.getHasLoggedIn():
+        elif userState == SUCCESS and not user.getHasUpdatedProfile():
             return redirect( '/profile/edit' )
         
         elif userState == INCORRECT:

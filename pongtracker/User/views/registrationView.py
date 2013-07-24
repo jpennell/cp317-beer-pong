@@ -126,7 +126,7 @@ def _usernameTaken(username):
         pass
     return taken
 
-def suggestUsernames(username, numSug):
+def _suggestUsernames(username, numSug):
     """
     finds and returns other usernames similar to the one the user wanted
     
@@ -383,6 +383,6 @@ def regGameUser(username, email):
     _sendEmail(username, email, password)
     PongUser.objects.create_user(username=username, email=email, password=password)
     
-    Ranking.objects.create(user=PongUser.objects.get(username=username))
+    Ranking.objects.create(_user_id=PongUser.objects.get(username=username).getUserID())
     
     return password

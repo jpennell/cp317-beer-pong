@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from User.models import PongUser
 
-def viewProfile( request, username ):
+def viewProfile( request, username=None ):
     """{{Description}}
 
     Keyword arguments:
@@ -19,6 +20,10 @@ def viewProfile( request, username ):
             username = request.session['username']
         except KeyError:
             redirect('/login/')
-            
-    user = PongUser.objects.get(username=username)       
+          
+    user = PongUser.objects.get(username=username)
+    
+
+    
+           
     return render( request, 'user/profile.html', {'user':user} )

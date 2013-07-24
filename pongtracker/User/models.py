@@ -1,6 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Permission
 import datetime
+from django.contrib.contenttypes.models import ContentType
 
 class Institution(models.Model):
     def getName(self):
@@ -43,8 +44,8 @@ class PongUser(AbstractUser):
     def getEmail(self):
         return self._email
     
-    def getHasLoggedIn(self):
-        return self._hasLoggedIn
+    def getHasUpdatedProfile(self):
+        return self._hasUpdatedProfile
 
 
     def setHeight(self, value):
@@ -74,8 +75,8 @@ class PongUser(AbstractUser):
     def setEmail(self, value):
         self.email = value
         
-    def setHasLoggedIn(self, value):
-        self._hasLoggedIn = value
+    def setHasUpdatedProfile(self, value):
+        self._hasUpdatedProfile = value
     
     
     YEAR_CHOICES = []
@@ -87,4 +88,7 @@ class PongUser(AbstractUser):
     _graduationYear = models.IntegerField(('year'), max_length=4, choices=YEAR_CHOICES, default=datetime.datetime.now().year+1)
     _institution = models.ForeignKey(Institution,null = True, blank = True)
     _isBanned = models.BooleanField(default=False)
-    _hasLoggedIn = models.BooleanField(default = False)
+    _hasUpdatedProfile = models.BooleanField(default = False)
+    
+    
+    

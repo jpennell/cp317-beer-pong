@@ -3,13 +3,20 @@ from django.contrib.auth import authenticate, login
 from User.models import *
 from Statistics.forms.leaderboardForm import LeaderboardForm
 from Statistics.models import LifeStats, Ranking, RankView
+from django.contrib import messages
+
 
 
 def leaderboardPage(request):
     form = LeaderboardForm()
     
     if not request.user.is_authenticated():
-         return redirect('/login/')
+        messages.add_message(request,message.INFO,'Please Login')
+        return redirect('/login/')
+     
+    if not request.user.getHasUpdatedProfile():
+        messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
+        return redirect('/profile/edit')
     
     username = request.session['username']  
     

@@ -6,7 +6,7 @@ from django.template import Context
 from Utilities.utilities import *
 from django.contrib.auth import *
 
-
+from django.contrib import messages
 
 
 def editProfile(request):
@@ -51,11 +51,10 @@ def editProfile(request):
            
             user = authenticate(username=username,password=oldPassword)
             if user is not None:
-                print("setting new password",newPassword)
                 user.set_password(newPassword)
                 user.save()
             # Always redirect after a POST
-            request.session['updated']="Profile information has been updated"
+            messages.add_message(request,messages.INFO,"Profile information has been updated")
             return redirect('edit/')
         
     else:
@@ -64,10 +63,7 @@ def editProfile(request):
         user = PongUser.objects.get(username=username)
         form = EditProfileForm(instance=user)
 
-        if 'updated' in request.session:
-            updated = request.session.pop('updated')
-
-    context = Context({'title': 'Edit Profile', 'form': form, 'username':username,'updated':updated})
+    context = Context({'title': 'Edit Profile', 'form': form, 'username':username})
 
     return render(request,'user/editProfile.html',context)
 
@@ -91,8 +87,8 @@ def _updateUser(username,firstName,lastName,email,height,yearOfGradution,userPro
         None
         
     """
-    user = PongUser.objects.get(username=username)
       
+    user = PongUser.objects.get(username=username)
     user.setHeight(height)
     user.setGraduationYear(yearOfGradution)
     user.setPhoto(userProfilePhoto)
@@ -101,6 +97,7 @@ def _updateUser(username,firstName,lastName,email,height,yearOfGradution,userPro
     user.setEmail(email)
     user.setIsActive(deactivate)
     user.setInstitution(institution)
+    user.setHasUpdatedProfile(True)
     user.save()
     return
 
