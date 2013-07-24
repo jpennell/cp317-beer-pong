@@ -15,7 +15,6 @@ def verifyGameRequest(request):
     Output: renders the webpage based on what Games the PongUser has to confirm.
         
     """
-    
     username = request.session['username']
     
     gamesToConfirm = _obtainGamesToConfirm(username)
@@ -41,7 +40,6 @@ def _obtainGamesToConfirm(username):
             This list is ordered by date with more recent Games going at the front.
         
     """
-    
     allGames = Game.objects.all().order_by('-_datePlayed')
     
     gamesToConfirm = []
@@ -67,7 +65,6 @@ def _gameIsToBeConfirmedBy(game,username):
             who created the Game.
         
     """
-    
     if game.getIsConfirmed():
         needsConfirmation = False
     else:
@@ -93,7 +90,6 @@ def _writeGameToForm(game,form):
     Output: None
         
     """
-    
     #obtain the usernames
     teams = [game.getTeam1(),game.getTeam2()]
     team1 = [teams[0].getUser1(),teams[0].getUser2()]
