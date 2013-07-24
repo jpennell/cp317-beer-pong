@@ -22,12 +22,14 @@
         <script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.js"></script>
         <script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.js"></script>
         <script type="text/javascript" src="http://dev.jtsage.com/jQM-SimpleDialog/demos2/extras.js"></script>
-        
-        <script type="text/javascript" src="https://raw.github.com/Rich-Harris/Ractive/master/release/0.3.3/Ractive.js"></script>
 
         <style>
         	.ui-header {
         		position: relative;
+        	}
+        	.ui-title {
+        		margin-left: 0px !important;
+        		margin-right: 0px !important;
         	}
         </style>
 
@@ -174,7 +176,7 @@
         <!-- DIALOG CONTENT -->
 
         <div style='display: none;' id="select-bounce-cup"
-        data-options='{"mode":"blank","blankContent":true,"blankContentAdopt":true,"headerText":"Which cup?","headerClose":false}'>
+        data-options='{"mode":"blank","blankContent":true,"blankContentAdopt":true,"headerText":"Which cup?","headerClose":true}'>
 
 <!--
             <div class='cups' id='bounce-cup'>
