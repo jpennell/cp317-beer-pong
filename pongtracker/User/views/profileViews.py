@@ -1,12 +1,6 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
-from User.models import Institution
-from django.core.context_processors import csrf
-from django.template import RequestContext
 
-
-def viewProfile( request, username = None ):
+def viewProfile( request, username ):
     """{{Description}}
 
     Keyword arguments:
@@ -18,10 +12,13 @@ def viewProfile( request, username = None ):
 
     Output:
 
-    """
-    print(username)
-    
+    """   
     
     if username == None:
-        username = request.session['username']
-    return render( request, 'user/profile.html' )
+        try:
+            username = request.session['username']
+        except KeyError:
+            redirect('/login/')
+            
+    user = PongUser.objects.get(username=username)       
+    return render( request, 'user/profile.html', {'user':user} )
