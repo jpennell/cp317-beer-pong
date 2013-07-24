@@ -182,8 +182,8 @@ def _chkBlank(usernames):
     
     Contributors: Matt Hengeveld
     
-    Output:     False if no duplicates
-                True if duplicates
+    Output:     False if no blanks
+                True if blanks
         
     """
     

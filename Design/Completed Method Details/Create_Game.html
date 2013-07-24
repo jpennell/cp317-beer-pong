@@ -2,7 +2,7 @@
 
 <table border="1">
 	<tr>
-		<td><strong>Controller Name</strong></td> <td><strong>CreateGameController</strong></td>
+		<td><strong>Controller Name</strong></td><td><strong>CreateGameController</strong></td>
 	</tr>
 	<tr>
 		<td>Method Name</td> <td><em>CreateGameController</em></td>
@@ -11,7 +11,7 @@
 		<td>Method State</td> <td><em>public</em></td>
 	</tr>
 	<tr>
-		<td>Return</td> <td><em>CreateGameController controller</em></td>
+		<td>Return</td> <td><em>CreateGameController createGameController</em></td>
 	</tr>
 	<tr>
 		<td>Input Arguments</td> <td>None</td>
@@ -21,10 +21,10 @@
 							<br>***An error occurred in processing your game creation request.*** </td>
 	</tr>
 	<tr>
-		<td>External Accesses</td> <td>May initialize a connection to the Game, User and Team tables.</td>
+		<td>Database Accesses</td> <td>May initialize a connection to the Game, User and Team tables.</td>
 	</tr>
 	<tr>
-		<td>External Changes</td> <td>None</td>
+		<td>Database Changes</td> <td>None</td>
 	</tr>
 	<tr>
 		<td>Other Methods Invoked</td> <td>None</td>
@@ -65,13 +65,13 @@
 								***One of the 4 players has had their account deactivated and cannot participate***</td>
 	</tr>
 	<tr>
-		<td>External Accesses</td> <td>Game, Team, User</td>
+		<td>Database Accesses</td> <td>Game, Team, User</td>
 	</tr>
 	<tr>
-		<td>External Changes</td> <td>If successful, new entries are added to the Game and Team tables</td>
+		<td>Database Changes</td> <td>If successful, new entries are added to the Game and Team tables</td>
 	</tr>
 	<tr>
-		<td>Other Methods Invoked</td> <td>isActive, isBanned, initializeNewGame</td>
+		<td>Other Methods Invoked</td> <td>User.isActive, User.isBanned, initializeNewGame</td>
 	</tr>
 	<tr>
 		<td>Description</td> <td>If all 4 input usernames correspond to distinct valid User objects, a new Game is created.</br>
@@ -99,10 +99,10 @@
 	<td>Error Messages</td> <td>None</td>
 	</tr>
 	<tr>
-		<td>External Accesses</td> <td>Game, Team</td>
+		<td>Database Accesses</td> <td>Game, Team</td>
 	</tr>
 	<tr>
-		<td>External Changes</td> <td>new entries are added to the Game and Team tables</td>
+		<td>Database Changes</td> <td>new entries are added to the Game and Team tables</td>
 	</tr>
 	<tr>
 		<td>Other Methods Invoked</td> <td>None</td>

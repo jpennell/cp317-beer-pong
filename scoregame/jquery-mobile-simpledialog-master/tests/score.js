@@ -13,7 +13,7 @@ var partyFoul = function(team, cup) {
 		console.log('Player', player, 'got a party foul')
 		deactivateCup(team, cup)
 	}
-	$('<div>').simpledialog2({
+	$(this).simpledialog2({
 		mode : 'button',
 		headerText : 'Who?',
 		headerClose : true,
@@ -40,22 +40,29 @@ var trickShot = function(team, cup) {
 }
 var bounceShot = function(team, cup) {
 	console.log('team', team, 'cup', cup, 'was a bounce shot')
+	deactivateCup(team, cup)
+
 	var selectBounceCup = function(team, cup, player) {
 		console.log('... by player', player)
 
-		var otherTeam = team == 'team1' ? 'team2' : 'team1'
-		$("#" + otherTeam + " .cups").clone().attr('id', 'bounce-cup').appendTo('#select-bounce-cup')
+		// clone the div.cups element for the appropriate team into this special div
+		$("#" + team + " .cups").clone().attr('id', 'bounce-cup').appendTo('#select-bounce-cup')
+		// for each cup in the special div...
 		$('#select-bounce-cup .cup').each(function() {
-			$(this).addClass('bcup')
+			// 
+			$(this).addClass('bcup').attr('rel', 'close')
 		})
-		
+		// create a simpledialog window out of the special div
 		$('#select-bounce-cup').simpledialog2();
 
+		// attach the click event to .bcup elements (inside the above simpledialog window)
 		$('#bounce-cup').delegate('.bcup.active', 'click', function() {
-			var cup = this.className.split(' ')[2]
-			console.log('... into', cup, 'aww yeah. now how do I close this menu?')
+			var bounceCup = this.className.split(' ')[2]
+			console.log('... with bonus', bounceCup)
+			deactivateCup(team, bounceCup)
 		})
 	}
+
 	$(this).simpledialog2({
 		mode : 'button',
 		headerText : 'Who?',

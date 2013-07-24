@@ -2,36 +2,63 @@ from django.db import models
 from User.models import PongUser
 
 class Team(models.Model):
-    user1 = models.ForeignKey(PongUser,related_name="Team1")
-    user2 = models.ForeignKey(PongUser,related_name="Team2")
+    _user1 = models.ForeignKey(PongUser,related_name="Team1")
+    _user2 = models.ForeignKey(PongUser,related_name="Team2")
+    
+    def getUser1(self):
+        return self._user1
+    
+    def getUser2(self):
+        return self._user2
+    
+    def setUser1(self):
+        self._user1 = value
+    
+    def setUser2(self,value):
+        self._user2 = value
 
 class Game(models.Model):
-    date_played = models.DateTimeField(auto_now=True)
-    team1 = models.OneToOneField(Team,related_name="Game1")
-    team2 = models.OneToOneField(Team,related_name="Game2")
-    is_confirmed = models.BooleanField(default = False)
+    _datePlayed = models.DateTimeField(auto_now=True)
+    _team1 = models.OneToOneField(Team,related_name="Game1")
+    _team2 = models.OneToOneField(Team,related_name="Game2")
+    _isConfirmed = models.BooleanField(default = False)
 
-    def get_team1():
-        return self.team1
+    def getTeam1(self):
+        return self._team1
 
-    def get_team2():
-        return self.team2
+    def getTeam2(self):
+        return self._team2
 
-    def get_date_played():
-        return self.date_played
+    def getDatePlayed(self):
+        return self._datePlayed
+    
+    def getIsConfirmed(self):
+        return self._isConfirmed
+    
+    def setIsConfirmed(self, value):
+        self._isConfirmed = value
+        
+    def setTeam1(self, value):
+        self._team1 = value
+        
+    def setTeam2(self, value):
+        self._team2 = value
+        
 
 class EventType(models.Model):
-    typeName = models.CharField(max_length=20)
+    _typeName = models.CharField(max_length=20)
 
+    def __unicode(self):
+        return self._typeName
 
 class Event(models.Model):
-    event_time = models.DateTimeField(auto_now=True)
-    cup1 = models.BooleanField(default=False)
-    cup2 = models.BooleanField(default=False)
-    cup3 = models.BooleanField(default=False)
-    cup4 = models.BooleanField(default=False)
-    cup5 = models.BooleanField(default=False)
-    cup6 = models.BooleanField(default=False)
-    event_type = models.ForeignKey(EventType)
-    game = models.ForeignKey(Game,related_name = "Events")
-    user = models.ForeignKey(PongUser, related_name = "Events")
+    _eventTime = models.DateTimeField(auto_now=True)
+    _cup1 = models.BooleanField(default=False)
+    _cup2 = models.BooleanField(default=False)
+    _cup3 = models.BooleanField(default=False)
+    _cup4 = models.BooleanField(default=False)
+    _cup5 = models.BooleanField(default=False)
+    _cup6 = models.BooleanField(default=False)
+    _eventType = models.ForeignKey(EventType)
+    _game = models.ForeignKey(Game,related_name = "Events")
+    _user = models.ForeignKey(PongUser, related_name = "Events")

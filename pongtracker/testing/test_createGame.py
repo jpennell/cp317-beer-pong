@@ -25,7 +25,7 @@ class SimpleTest(TestCase):
     def tearDown(self):
         pass
 
-    def testCreateGame(self):
+    def test_CreateGame(self):
 
         Team.objects.create = MagicMock(side_effect=self.returnTeams)
         Game.objects.create = MagicMock(return_value=self.mockGame)
@@ -38,6 +38,27 @@ class SimpleTest(TestCase):
         self.assertTrue(Team.objects.create.call_args_list == expected)
 
         Game.objects.create.assert_called_with(team1=self.mockTeam1, team2=self.mockTeam2)
+        
+    def test_chkBlank(self):
+         """ Check to see if blank names return True """
+         blankNames = ['','','','']
+         resultBlank = _chkBlank(blankNames)
+         self.assertTrue(resultBlank)
+         """ Check to see if non-blank names return False """
+         nonBlankNames = ['test','test','test','test']
+         resultNonBlank = _chkBlank(nonBlankNames)
+         self.assertFalse(resultNonBlank)
+    
+    def test_chkDup(self):
+         """ Check to see if duplicate names return True """
+         dupNames = ['test','test','test1','test2']
+         resultDup = _chkDup(dupNames)
+         self.assertTrue(resultDup)
+         """ Check to see if duplicate names return False """
+         nonDupNames = ['test1','test2','test3','test4']
+         resultNonDup = _chkDup(nonDupNames)
+         self.assertFalse(resultNonDup)
+
 
     def returnTeams(self, *args, **kwargs):
         return self.mockTeams.pop(0)
