@@ -10,20 +10,17 @@ def viewProfile( request, username=None ):
 
     Contributors:
     Quinton Black
+    Erin Cramer
 
     Output:
 
     """   
-    
     if username == None:
         try:
             username = request.session['username']
         except KeyError:
-            redirect('/login/')
+            return redirect('/login/')
           
     user = PongUser.objects.get(username=username)
-
-
-    
            
     return render( request, 'user/profile.html', {'user':user} )

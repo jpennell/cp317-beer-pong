@@ -47,6 +47,9 @@ class PongUser(AbstractUser):
     
     def getHasUpdatedProfile(self):
         return self._hasUpdatedProfile
+    
+    def getLifeStats(self):
+        return self.lifestats
 
 
     def setHeight(self, value):

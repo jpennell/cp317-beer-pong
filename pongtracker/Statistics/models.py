@@ -111,14 +111,6 @@ class Ranking(models.Model):
     def getSigma(self):
         return self._sigma
     
-    def _getRank(self):
-       "Returns the rank"
-       return round(self.mu - (3*self.sigma),5)
-   
-    _rank = property(_getRank)
-    
-    def __unicode__(self):
-        return self._rank
     
 class RankView(models.Model):
     id = models.IntegerField(primary_key=True)
