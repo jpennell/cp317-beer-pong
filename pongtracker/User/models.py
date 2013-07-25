@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser, Permission
 import datetime
 from django.contrib.contenttypes.models import ContentType
 
+
 class Institution(models.Model):
     def getName(self):
         return self._name
@@ -13,7 +14,7 @@ class Institution(models.Model):
         return self._name
     
 class PongUser(AbstractUser):
-    
+        
     def getHeight(self):
         return self._height
 

@@ -1,6 +1,7 @@
 from django.db import models
 from User.models import PongUser
 
+
 # Create your models here.
 class LifeStats(models.Model):
     _wins = models.IntegerField(default=0)

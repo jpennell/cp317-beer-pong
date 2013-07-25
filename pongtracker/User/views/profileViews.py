@@ -22,7 +22,7 @@ def viewProfile( request, username=None ):
             redirect('/login/')
           
     user = PongUser.objects.get(username=username)
-    
+
 
     
            

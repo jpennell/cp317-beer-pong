@@ -42,13 +42,13 @@
                             Institution
                         </td>
                         <td>
-                            Wilfrid Laurier University
+                            {{ user.getInstitution }}
                         </td>
                         <td>
                             Year of Graduation
                         </td>
                         <td>
-                            2015
+                            {{ user.getGraduationYear }}
                         </td>
                     </tr>
                 </table>
@@ -75,7 +75,7 @@
                             Games Won
                         </td>
                         <td>
-                            50
+                            {{ user.lifestats.getWins }}
                         </td>
                     </tr>
                     <tr>
@@ -83,7 +83,7 @@
                             Games Lost
                         </td>
                         <td>
-                            6
+                            {{ user.lifestats.getLoses }}
                         </td>
                     </tr>
                     <tr>
@@ -91,7 +91,7 @@
                             Bounce Shots
                         </td>
                         <td>
-                            203
+                            {{ user.lifestats.getBounceShots }}
                         </td>
                     </tr>
                     <tr>
@@ -99,7 +99,7 @@
                             Trick Shots
                         </td>
                         <td>
-                            25
+                            {{ user.lifestats.getTrickShots }}
                         </td>
                     </tr>
                     <tr>
@@ -107,7 +107,8 @@
                             Party Fouls
                         </td>
                         <td>
-                            3
+                        	
+                            {{ user.lifestats.getPartyFouls }}
                         </td>
                     </tr>
                     <tr>
@@ -115,7 +116,7 @@
                             Redemptions
                         </td>
                         <td>
-                            103
+                            {{ user.lifestats.getRedemptions }}
                         </td>
                     </tr>
                 </table>
@@ -124,14 +125,14 @@
             <td id="cups-sunk-stats">
                 <h4>Cups Sunk</h4>
                 <div id="cups">
-                    <span class="cup" id="cup1">142</span>
+                    <span class="cup" id="cup1">{{ user.lifestats.getCup1Sunk }}</span>
                     <br/>
-                    <span class="cup" id="cup2">241</span>
-                    <span class="cup" id="cup3">88</span>
+                    <span class="cup" id="cup2">{{ user.lifestats.getCup2Sunk }}</span>
+                    <span class="cup" id="cup3">{{ user.lifestats.getCup3Sunk }}</span>
                     <br/>
-                    <span class="cup" id="cup4">421</span>
-                    <span class="cup" id="cup5">532</span>
-                    <span class="cup" id="cup6">24</span>
+                    <span class="cup" id="cup4">{{ user.lifestats.getCup4Sunk }}</span>
+                    <span class="cup" id="cup5">{{ user.lifestats.getCup5Sunk }}</span>
+                    <span class="cup" id="cup6">{{ user.lifestats.getCup6Sunk }}</span>
                 </div>
             </td>
         </tr>
