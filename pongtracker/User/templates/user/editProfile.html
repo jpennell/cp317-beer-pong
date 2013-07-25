@@ -10,17 +10,6 @@
 {% block pagecontent %}
 <div id="page-content">
     <h1>{{ title }}</h1>
-
-
-    {% if messages %}
-	<ul class="alert">
-    	{% for message in messages %}
-    		{{ message }}<br>
-    	{% endfor %}
-	</ul>
-	{% endif %}
-    
-    
     
     <form method='post' action='/profile/edit'>
         {% csrf_token %}
