@@ -80,13 +80,13 @@
 				</p>
 				<p>
 					The first part is an overview of the governing guidelines for this project. The second
-					part is about the logical design involving the architecture of Pong Tracker
+					part is about the logical design involving the architecture of Beer Pong Tracker
 					and how various elements interact. The contents of each package is described
-					as is the database which the project will use. The third part
-					covers the design of methods to be implemented. The
-					fourth part will cover Django, our selected web framework for
-					implementation. The fifth part will act as an introduction to front end
-					prototyping concluding with the final parts being references and SQA Version History.
+					as is the database which the project will use. The third part covers the design of methods to be implemented. 
+					There is a link to a UML representation of the methods outlined. The fourth part will cover Django, our selected 
+					web framework for implementation and the benefits it provides us. 
+					The fifth part will act as an introduction to front end prototyping concluding with 
+					the final parts being references and SQA Version History.
 				</p>
 			</section>
 
@@ -108,7 +108,7 @@
 						Beer Pong Tracker is hosted on a Sun Microsystem Linux Server with a MySQL database.
 						The Linux server must be able to serve HTML 5 and CSS 3. Interpretation of Python 2.7 is required.
 						The server is also required to integrate with the Django 1.5 web framework and Git.
-						Django is a strong web framework with many tools built in such as sessions, and database APIs; Django will be discussed in detail later.
+						Django is a strong web framework with many tools built in such as sessions and database APIs.
 						The only concern is the implementation is using Python 2.7 when the current version is 3.3.2. 2.7 has been selected
 						because Django support for 3.3.2 is currently only an experimental version.
 					</p>
@@ -123,7 +123,7 @@
 							<li>
 								Code shall follow
 								<a href="http://www.python.org/dev/peps/pep-0008/"> PEP-8 standards </a>
-								as outlined bellow.
+								as outlined below.
 								<ul>
 									<li> 1 Tab for indents</li>
 									<li> Maximum Line length of 72 characters</li>
@@ -136,7 +136,7 @@
 									<li> Commenting should kept up to date and accurate</li>
 									<li> There shall be no commented out code in the final</li>
 									<li> Use in-line comments sparingly</li>
-									<li> constants shall be uppercase with underscore</li>
+									<li> constants shall be uppercase with underscores</li>
 									<li> '_'represents private</li>
 									<li> Capital letters on classes</li>
 								</ul>
@@ -175,7 +175,8 @@
 				<section>
 					<h4 class="heading3"><span class="number">1.3.2</span>Ethical & Legal Guidelines</h4>
 					<ul>
-						<li>The application will make use of libraries created by third-party developers; however, to respect intellectual property rights, the application will be developed using libraries under open source licenses.</li>
+						<li>The application will make use of libraries created by third-party developers; however, to respect intellectual 
+						property rights, the application will be developed using libraries under open source licenses.</li>
 						<li>All coding must be accompanied by comments.</li>
 					</ul>
 				</section>
@@ -213,8 +214,8 @@
 					<section>
 						<h4 class="heading3"><span class="number">2.2.5</span>Django Package</h4>
 						<p>
-							Due to the closed architecture of Django, Django's low level design is unknown.  Functionalities it does however
-							complete include all methods within the Administrator entity and control objects related to it previously mentioned in the Requirements
+							Due to the closed architecture of Django, Django's low level design is unknown. Functionalities it
+							completes includes all methods within the Administrator entity and controller objects related to it previously mentioned in the Requirements
 							or Analysis Document referenced at the end of this Design document.
 						</p>
 					</section>
@@ -417,8 +418,8 @@
 						developer allowing for easier, more rapid development.
 					</p>
 					<p>
-						One word sums up how Django works, Magic. In more specific terms Django works by processing
-						a given URL against registered URLs and calling view associated with the URL. The view then
+						One word to sum up how Django works is Magic. In more specific terms, Django works by processing
+						a given URL against registered URLs and calling a view associated with the URL. The view then
 						uses the required models, potentially updating the database, and returns a HttpResponse object.
 						This response is either a redirect or render of a template (HTML page) which can then be displayed
 						to the user. The majority of these templates incorporate buttons that trigger posts to URLs which
@@ -429,9 +430,9 @@
 				<h3 class="heading2"><span class="number">4.2</span>How Django is Used</h3>
 					<p>
 						In order to use Django, the libraries are first imported for a developer to run
-						to create the  project. With a project a developer can create apps; the equivalent of packages.
+						to create the  project. With a project, a developer can create apps; the equivalent of packages.
 						These packages contain the models, views, forms, templates, URLs, and tests for their respective package.
-						Once the project is started a developer can start to hook up the models, templates, and views in
+						Once the project is started, a developer can start to hook up the models, templates, and views in
 						a model view controller fashion.
 					</p>
 					<p>
@@ -441,7 +442,7 @@
 					</p>
 
 					<p>
-						In the django.contrib package are many tools available to developers we have selected several:
+						In the django.contrib package are many tools available to developers. We have selected several:
 						<ul>
 							<a href="https://docs.djangoproject.com/en/1.5/topics/auth/"><h4 class="heading3">auth</h4></a>
 								<p>
@@ -464,22 +465,23 @@
 							<a href="https://docs.djangoproject.com/en/1.5/ref/contrib/messages/"><h4 class="heading3">messages</h4></a>
 								<p>
 								Django allows developers to send one time messages to a user by using cookie or session based messaging.
-								The frame work allows for the temporary storage of messages in one request and the retrieval of it in another.
+								The framework allows for the temporary storage of messages in one request and the retrieval of it in another.
 								The message can be retrieved by templates in the html to display to the user.
 								Each message has a tag declaring its priority level. Messaging is dependent upon SessionMiddleware,
 								MessageMiddleware, and django.contrib.messages.context_processors.messages as a template context
 								processor.
 								</p>
+								
 							<a href="https://docs.djangoproject.com/en/1.5/ref/contrib/staticfiles/"><h4 class="heading3">staticfiles</h4></a>
 								<p>
 								Staticfiles uses finders to gather the static files associated with the project into a single location.
-								Staticfiles is used by defining the listing the location of static files in the STATICFILES_DIRS variable of
+								Staticfiles is used by defining the listing location of static files in the STATICFILES_DIRS variable of
 								settings.py. We are using this framework to incorporate our CSS files into the project.
 								</p>
 
 							<a href="https://docs.djangoproject.com/en/1.5/ref/contrib/admin/"><h4 class="heading3">admin</h4></a>
 								<p>
-								The Django admin site is a tool that automatically generates a admin interface based upon several
+								The Django admin site is a tool that automatically generates an admin interface based upon several
 								assumptions that Django makes. The admin file of each app can also be to specify which models are
 								editable by administrators and the forms that the admin page implements.
 								Our project has overridden part of the user admin page to better reflect the
@@ -495,22 +497,22 @@
 							<a href="https://docs.djangoproject.com/en/1.5/ref/contrib/contenttypes/"><h4 class="heading3">contenttypes</h4></a>
 								<p>
 								The contenttypes application keeps track of all the models in the project, providing an interface for developers to use.
-								Contenttypes facilitates the creation of models and can provides methods to access the values on them, however we have
+								Contenttypes facilitates the creation of models and can provide methods to access the values on them, however we have
 								moved away from that to go with a more getter and setter approach.
 								<p>
 
 							<a href="https://docs.djangoproject.com/en/1.5/ref/contrib/humanize/"><h4 class="heading3">humanize</h4></a>
 								<p>
-								At the time of writing no decision has been made to implement the humanize framework it is however
+								At the time of writing, no decision has been made to implement the humanize framework. It is however,
 								worth highlighting. The humanize framework essentially makes values on a template more appealing to a user.
 								It does this by adding commas to large numbers, converting integers to words, or converting date objects to
-								a phrase with respect to the current time i.e. 29 seconds ago.
+								a phrase with respect to the current time (i.e. 29 seconds ago).
 								<p>
 						</ul>
 
 
 						Django also provides middleware to aid in solving many web development issues.
-						The selected middleware not related directly to the django.contrib package is described below:
+						The selected middleware not related directly to the django.contrib package are described below:
 
 						<ul>
 							<a href="https://docs.djangoproject.com/en/1.5/ref/middleware/"><h4 class="heading3">django.middleware.common.CommonMiddleware</h4></a>
@@ -518,6 +520,7 @@
 								The CommonMiddleware included provides functions such as appending slashes to urls, adding 'www', and
 								emailing site managers if issues arise.
 								</p>
+								
 							<a href="https://docs.djangoproject.com/en/1.5/ref/contrib/csrf/"><h4 class="heading3">django.middleware.csrf.CsrfViewMiddleware</h4></a>
 								<p>
 								The Csrf protection middleware provides protection from cross site request forgeries.
@@ -525,34 +528,34 @@
 								</p>
 						</ul>
 
-						The Django library itself consists of many additional packages, libraries, APIs and features for developers to use:
+						<p>The Django library itself consists of many additional packages, libraries, APIs and features for developers to use:</p>
 
 						<ul>
 							<a href="https://docs.djangoproject.com/en/1.5/topics/forms/"><h4 class="heading3">django.forms</h4></a>
 								<p>
-								The form API provides a easy way to set up a quick html form. The form API generates
+								The form API provides an easy way to set up a quick html form. The form API generates
 								html based upon the form class provided to the url and processed in the template.
 								By using forms developers inherit  basic form validation and are given the ability to write their
 								own either for specific fields or entire forms. Forms can also implement widgets to represent html tags
 								such as passwords. By using a forms.ModelForm a form can be made to represent a model directly. If the variables
 								of the field are named exactly like the attributes of the model then they will be auto populated by the
 								database values. Django provides several basic forms that can be extended or over written for more
-								specific implementation.'
+								specific implementation.
 								</p>
 
-							<h4 class="heading3">Django Database handling</h4>								
+							<h4 class="heading3">Django Database Handling</h4>								
 								<p>
-								Django provides a wide range of functionality for many kinds of databases; we have selected mySQL. When the admin app is turned on running
+								Django provides a wide range of functionality for many kinds of databases; we have selected mySQL. When the admin app is turned on, running
 								syncdb will create all the required tables and relations for administration. By using developer defined
 								models Django is able to generate all the SQL and create the tables with relations for each model.
 								Accessing values in the database then no longer requires mySQL statements but can be done using
 								methods on model instances such as orderby() or filter(). The database can also be preloaded with test data
-								by using fixtures and then loaded into the db.
+								by using fixtures which can be loaded into the database.
 								</p>
 
 							<a href="https://docs.djangoproject.com/en/1.5/topics/testing/"><h4 class="heading3">Testing with Django</h4></a>
 								<p>
-								Django provides testing automation however it has several issues. Issues that we have encountered consist of:
+								Django provides testing automation though it has several issues. Issues that we have encountered consist of:
 								</p>
 								<ul>
 									<li>Requires the creation of a test_database, which is not available to the student group on hopper.</li>
@@ -561,12 +564,12 @@
 								<p>
 								In order to combat these issues Django provides the ability to create custom test runners which can
 								run with the creation of a new schema. Django provides integration with the python unittest library and a custom
-								test runner can be written to use unittest2
+								test runner can be written to use unittest2.
 								</p>
 							<a href="https://docs.djangoproject.com/en/1.5/topics/http/shortcuts/"><h4 class="heading3">django.shortcuts </h4></a>
 								<p>
 								The Django shortcut package is a collection of helper functions that cover multiple levels of the MVC
-								design pattern. This package deals with functions such as render, and redirect which handle the decision
+								design pattern. This package deals with functions such as render and redirect which handle the decision
 								of which template to display. These functions provide the option of passing context and requests to templates
 								for them to process. It also gives 404 page functionality.
 								</p>
@@ -574,14 +577,14 @@
 							<a href="https://docs.djangoproject.com/en/1.5/ref/urls/"><h4 class="heading3">django.conf.urls </h4></a>
 								<p>
 								Django.conf.urls contains several utility functions. These functions are used to handle urls.
-								Using the include() function urls can be spread across multiple apps allowing for better coupling and cohesion.
-								By using patterns() developers are able to create a list of url() objects to register with the site. The url objects
+								Using the include() function, URLs can be spread across multiple apps allowing for better coupling and cohesion.
+								By using patterns(), developers are able to create a list of url() objects to register with the site. The URL objects
 								are also able to obtain data from the session and redirect to views.
 								</p>
 						</ul>
 
 
-						To find the required files Django employs several finders and loaders:
+						<p>To find the required files, Django utilizes several finders and loaders:</p>
 						<ul>
 							<li>django.contrib.staticfiles.finders.FileSystemFinder</li>
 							<li>django.contrib.staticfiles.finders.AppDirectoriesFinder</li>
@@ -595,8 +598,8 @@
 			<section>
 				<h3 class="heading2"><span class="number">4.3</span>Benefits to Django</h3>
 					<p>
-						There a several benefits to using Django over other avaialbe web frameworks. The reason Django was selected
-						was because it is a industry known framework and the development team has Python experience, which has proven
+						There a several benefits to using Django over other avaialable web frameworks. The reason Django was selected
+						was because it is an industry known framework and the development team has Python experience, which has proven
 						to be a great asset. A nice thing that we have discovered with Django is that it eliminates
 						a lot of the work involved in setting up the administration, user login, and database. Other languages which we
 						considered were Ruby, C#, PHP, and Java. Ruby, C#, and PHP were discarded due to lack of developer experience and
