@@ -9830,7 +9830,14 @@
                     </td>
                     <td class='med'>Medium</td>
                     <td></td>
-                    <td></td>
+                    <td>The Game constructor can only take Teams as arguments,
+						whereas the CreateGameController is dealing with Users
+						so in order to create the Game, it must also create the Teams.
+						(a small bit of extra overhead.)
+						</br></br>
+						(Remove upon reading)<br>
+						See _createNewGame in Game/views/createGameView
+						</td>
                     <td></td>
                     <td>Richard</td>
                 </tr>
@@ -9844,7 +9851,7 @@
                     </td>
                     <td class='med'>Medium</td>
                     <td></td>
-                    <td></td>
+                    <td>What's wrong with them?</td>
                     <td></td>
                     <td>Richard</td>
                 </tr>
@@ -9858,7 +9865,7 @@
                     </td>
                     <td class='med'>Medium</td>
                     <td></td>
-                    <td></td>
+                    <td>Removed (but not by myself.)</td>
                     <td></td>
                     <td>Richard</td>
                 </tr>
@@ -9872,7 +9879,10 @@
                     </td>
                     <td class='med'>Medium</td>
                     <td></td>
-                    <td></td>
+                    <td>abortGame has been removed from ScoreGameController (but not by myself.)
+						</br></br>
+						However, EndGameController has no method for handling abortions.
+						(Unless that is, there exists a "GAME_ABORTED" EventType.)</td>
                     <td></td>
                     <td>Richard</td>
                 </tr>
