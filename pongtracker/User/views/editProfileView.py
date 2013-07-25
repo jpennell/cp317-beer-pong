@@ -54,7 +54,7 @@ def editProfile(request):
                 user.set_password(newPassword)
                 user.save()
             # Always redirect after a POST
-            messages.add_message(request,messages.INFO,"Profile information has been updated")
+            messages.add_message(request,messages.SUCCESS,"Profile information has been updated")
             return redirect('edit/')
         
     else:

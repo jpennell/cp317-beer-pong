@@ -40,10 +40,12 @@
             {% endif %}
         </div>
 
-        {% if state %}
+        {% if messages %}
         <div class="alert">
-            {{ state }}
-        </div>
+	        {% for message in messages %}
+	    		{{ message }}<br>
+	    	{% endfor %}
+	    </div>
         {% endif %}
 
         <!------ HEADER --------->
