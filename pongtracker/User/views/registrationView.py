@@ -6,7 +6,7 @@ from django.core.mail import send_mail, BadHeaderError
 from User.models import PongUser
 from Utilities.utilities import *
 from loginViews import *
-from Statistics.models import Ranking
+from Statistics.models import Ranking, LifeStats
 import re
 
 
@@ -378,11 +378,26 @@ def _retrieveEndingNumberStringFrom(username):
     return usernameNumber
 
 def regGameUser(username, email):
+    """Registers a user and creates all the necessary models
+
+    Keyword arguments:
+    username -- user's username (String)
+    email -- user's email (String)
+    
+    
+    Contributors:
+    Quinton Black
+    Matt Hengeveld
+    
+    Output:
+    password - the users new temporary password (String)
+    """
     
     password = _generatePassword()
     _sendEmail(username, email, password)
     user = PongUser.objects.create_user(username=username, email=email, password=password)
-    ranking = Ranking(_user_id=user.getID())
-    ranking.save()
+    Ranking.objects.create(_user_id=user.getID())
+    LifeStats.objects.create(_user_id=user.getID())
+    
     
     return password
