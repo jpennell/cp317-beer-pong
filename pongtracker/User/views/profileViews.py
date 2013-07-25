@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from User.models import PongUser
+from django.contrib import messages
 
 def viewProfile( request, username=None ):
     """{{Description}}
@@ -15,6 +16,15 @@ def viewProfile( request, username=None ):
     Output:
 
     """   
+    
+    if not request.user.is_authenticated():
+        messages.add_message(request,message.INFO,'Please Login')
+        return redirect('/login/')
+     
+    if not request.user.getHasUpdatedProfile():
+        messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
+        return redirect('/profile/edit')
+    
     if username == None:
         try:
             username = request.session['username']

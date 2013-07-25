@@ -6,6 +6,7 @@ from Utilities.utilities import *
 from Game.forms.createGameForm import CreateGameForm
 from django.template import Context
 from User.views.registrationView import *
+from django.contrib import messages
 
 def createNewGameRequest(request):
     """validates input; creates a new game based on valid input
