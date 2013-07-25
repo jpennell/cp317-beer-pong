@@ -381,8 +381,8 @@ def regGameUser(username, email):
     
     password = _generatePassword()
     _sendEmail(username, email, password)
-    PongUser.objects.create_user(username=username, email=email, password=password)
-    
-    Ranking.objects.create(_user_id=PongUser.objects.get(username=username).getUserID())
+    user = PongUser.objects.create_user(username=username, email=email, password=password)
+    ranking = Ranking(_user_id=user.getID())
+    ranking.save()
     
     return password
