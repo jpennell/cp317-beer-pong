@@ -4,7 +4,7 @@ from User.models import *
 from Statistics.forms.leaderboardForm import LeaderboardForm
 from Statistics.models import LifeStats, Ranking, RankView
 from django.contrib import messages
-
+from Utilities.utilities import *
 
 
 def leaderboardPage(request):

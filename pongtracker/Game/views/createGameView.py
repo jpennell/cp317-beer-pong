@@ -19,7 +19,6 @@ def createNewGameRequest(request):
     Output:
             
     """
-    
     if not request.user.is_authenticated():
         messages.add_message(request,message.INFO,'Please Login')
         return redirect('/login/')
