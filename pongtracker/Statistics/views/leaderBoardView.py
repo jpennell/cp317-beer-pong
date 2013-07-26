@@ -18,17 +18,18 @@ def leaderboardPage(request):
         messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
         return redirect('/profile/edit')
     
-    username = request.session['username']  
+    username = request.session['username']
     
-    institutionRank =_getInstitutionRank(username)
-    
-    user = PongUser.objects.get(username=username)
-    overallRank = getUserRank(user)
-    
-    print('Institution Rank:{0}'.format(institutionRank)) #DOES NOT WORK!
-    #print('Overall Rank:{0}'.format(overallRank))
-    
-    return render(request,'statistics/leaderboard.html',{'form':form})
+    if request.method == 'POST':
+        
+        form = CreateGameForm(request.POST)
+        
+        
+        return render(request, 'statistics/leaderboard.html', {'form':form})
+        
+    else:
+
+        return render(request, 'statistics/leaderboard.html', {'form':form})
 
 def _getTopRanked(limit):
     """
