@@ -1,8 +1,10 @@
 import urllib
 from django.http import HttpResponseRedirect
+from django.shortcuts import render,redirect
 import string
 import random
 from django.contrib.auth import authenticate, login
+from django.contrib import messages
     
 """----------------------------------------------
 # Creates an HttpResponseRedirect based on url input 
@@ -34,3 +36,4 @@ def createRndPass(length):
         rndPass += random.choice(passChars)
     
     return rndPass
+

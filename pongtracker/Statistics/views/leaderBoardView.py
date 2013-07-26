@@ -3,25 +3,64 @@ from django.contrib.auth import authenticate, login
 from User.models import *
 from Statistics.forms.leaderboardForm import LeaderboardForm
 from Statistics.models import LifeStats, Ranking, RankView
+from django.contrib import messages
+from Utilities.utilities import *
 
 
 def leaderboardPage(request):
     form = LeaderboardForm()
     
     if not request.user.is_authenticated():
-         return redirect('/login/')
+        messages.add_message(request,message.INFO,'Please Login')
+        return redirect('/login/')
+     
+    if not request.user.getHasUpdatedProfile():
+        messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
+        return redirect('/profile/edit')
     
-    username = request.session['username']  
+    username = request.session['username']
     
-    institutionRank =_getInstitutionRank(username)
+    topRanked = _getTopRanked(10)
+        
+    _displayTopRanked(topRanked,form)
     
-    user = PongUser.objects.get(username=username)
-    overallRank = getUserRank(user)
+    if request.method == 'POST':
+        
+        form = CreateGameForm(request.POST)
+        
+        #chosenInst = form.cleaned_data['institution']
+                       
+        return render(request, 'statistics/leaderboard.html', {'form':form})
+        
+    else:
+
+        return render(request, 'statistics/leaderboard.html', {'form':form})
+
+def _displayTopRanked(topRanked, form):
+    """
+    This method puts the top ten leaders into the leaderboard form
+
+    Keyword arguments:
+    topRanked -- list of the top ranked players, in order of rank
+    form -- leaderboard form
     
-    print('Institution Rank:{0}'.format(institutionRank)) #DOES NOT WORK!
-    #print('Overall Rank:{0}'.format(overallRank))
+    Contributors:
+    Matthew Hengeveld
+
+    """
+    for x in range(len(topRanked)):
+        user = topRanked[x]
+        name = user.username
+        inst = user.getInstitution()
+#        stats = user.getLifeStats()
+#        won = stats.getWins()
+#        lost = stats.getLoses()
+        won = 20
+        lost = 8
+        sunk = 46
+        form.leaders[x] = [x+1,name,inst,won,lost,sunk]
     
-    return render(request,'statistics/leaderboard.html',{'form':form})
+    return
 
 def _getTopRanked(limit):
     """

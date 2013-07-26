@@ -1,5 +1,5 @@
 # Django settings for pongtracker project.
-
+import os.path
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -22,7 +22,9 @@ DATABASES = {
     },
 }
 
-import os.path
+
+LOGIN_URL = '/index'
+
  
 # This is correct for the Django 1.4-style project layout; for the old-style
 # project layout with ``settings.py`` and ``manage.py`` in the same directory,

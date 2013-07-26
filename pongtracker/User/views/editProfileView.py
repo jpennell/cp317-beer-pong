@@ -6,7 +6,7 @@ from django.template import Context
 from Utilities.utilities import *
 from django.contrib.auth import *
 
-
+from django.contrib import messages
 
 
 def editProfile(request):
@@ -35,7 +35,20 @@ def editProfile(request):
         user = PongUser.objects.get(username=username)
         form = EditProfileForm(request.POST,instance=user)
         if form.is_valid():
+           
+            #Handle password change if password is correct 
+            passwordChanged = False
+            newPassword = form.cleaned_data['confirmPassword']
+            oldPassword = form.cleaned_data['oldPassword']
+            changingUser = authenticate(username=username,password=oldPassword)           
+            if changingUser is not None:
+                user.set_password(newPassword)
+                user.save()
+                msg="Your Password has been changed"
+                messages.add_message(request,messages.SUCCESS,msg)
+                passwordChanged =True   
             
+            #Handle rest of form change 
             firstname = form.cleaned_data['first_name']
             lastname = form.cleaned_data['last_name']
             email = form.cleaned_data['email']
@@ -43,19 +56,19 @@ def editProfile(request):
             institution = form.cleaned_data['_institution']
             yearOfGradution = form.cleaned_data['_graduationYear']
             userProfilePhoto = form.cleaned_data['_photo']
-            deactivate =   form.cleaned_data['_deactivate']
+            deactivate = form.cleaned_data['_deactivate']
             _updateUser(username,firstname,lastname,email,height,yearOfGradution,userProfilePhoto,deactivate,institution)
-            newPassword = form.cleaned_data['confirmPassword']
-            oldPassword = form.cleaned_data['oldPassword']
             
-           
-            user = authenticate(username=username,password=oldPassword)
-            if user is not None:
-                print("setting new password",newPassword)
-                user.set_password(newPassword)
-                user.save()
-            # Always redirect after a POST
-            request.session['updated']="Profile information has been updated"
+            if not user.getHasUpdatedProfile() and passwordChanged is False:
+                msg="Please change your temporary password"
+                messages.add_message(request,messages.INFO,msg)
+                
+                return redirect('edit/')
+            #Declare that user has updated profile and password
+            user.setHasUpdatedProfile(True)
+            user.save()
+            
+            messages.add_message(request,messages.SUCCESS,"Profile information has been updated")
             return redirect('edit/')
         
     else:
@@ -64,10 +77,7 @@ def editProfile(request):
         user = PongUser.objects.get(username=username)
         form = EditProfileForm(instance=user)
 
-        if 'updated' in request.session:
-            updated = request.session.pop('updated')
-
-    context = Context({'title': 'Edit Profile', 'form': form, 'username':username,'updated':updated})
+    context = Context({'title': 'Edit Profile', 'form': form, 'username':username})
 
     return render(request,'user/editProfile.html',context)
 
@@ -91,8 +101,8 @@ def _updateUser(username,firstName,lastName,email,height,yearOfGradution,userPro
         None
         
     """
+
     user = PongUser.objects.get(username=username)
-      
     user.setHeight(height)
     user.setGraduationYear(yearOfGradution)
     user.setPhoto(userProfilePhoto)

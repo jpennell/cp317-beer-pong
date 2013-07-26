@@ -23,7 +23,7 @@
         <td>Database Accesses</td><td>None</td>
     </tr>
     <tr>
-        <td>Database Changes</td><td>May initialize a connection to the Game, Team, Event, EventType, User, LifeStats and Ranking tables</td>
+        <td>Database Changes</td><td>None</td>
     </tr>
     <tr>
         <td>Other Methods Invoked</td><td>None</td>
@@ -105,7 +105,7 @@
         <td>Database Changes</td><td>None</td>
     </tr>
     <tr>
-        <td>Other Methods Invoked</td><td>Game.getEvents, Game.getTeam1, Game.getTeam2, Team.getUser1, Team.getUser2, getLifeStats, getUser</br>
+        <td>Other Methods Invoked</td><td>Game.getEvents, Game.getTeam1, Game.getTeam2, Team.getUser1, Team.getUser2, User.getLifeStats, Event.getUser,</br>
             this.updateStatsWithEvent, this.updateWinsAndLosses, this.updateRankings</td>
     </tr>
     <tr>
@@ -249,7 +249,7 @@
         <td>Database Changes</td><td>TrueSkill rankings are updated with their new Mu and Sigma values.</td>
     </tr>
     <tr>
-        <td>Other Methods Invoked</td><td>rate, Team.getUser1, Team.getUser2, Rank.getRanking, Rank.getMu, Rank.setMu, Rank.getSigma, Rank.setSigma</td>
+        <td>Other Methods Invoked</td><td>TrueSkill.rate, Team.getUser1, Team.getUser2, Rank.getRanking, Rank.getMu, Rank.setMu, Rank.getSigma, Rank.setSigma</td>
     </tr>
     <tr>
         <td>Description</td><td>The TrueSkill Rankings of each User are obtained, and new Ranking objects with the new Mu and Sigma values</br>

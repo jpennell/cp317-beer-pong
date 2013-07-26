@@ -6,6 +6,7 @@ from Utilities.utilities import *
 from Game.forms.createGameForm import CreateGameForm
 from django.template import Context
 from User.views.registrationView import *
+from django.contrib import messages
 
 def createNewGameRequest(request):
     """validates input; creates a new game based on valid input
@@ -17,8 +18,15 @@ def createNewGameRequest(request):
     Contributors: Matt Hengeveld
     
     Output:
-        
+            
     """
+    if not request.user.is_authenticated():
+        messages.add_message(request,message.INFO,'Please Login')
+        return redirect('/login/')
+     
+    if not request.user.getHasUpdatedProfile():
+        messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
+        return redirect('/profile/edit')
     
     form = CreateGameForm()
     username = ''

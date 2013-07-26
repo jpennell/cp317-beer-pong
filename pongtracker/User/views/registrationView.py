@@ -6,8 +6,9 @@ from django.core.mail import send_mail, BadHeaderError
 from User.models import PongUser
 from Utilities.utilities import *
 from loginViews import *
-from Statistics.models import Ranking
+from Statistics.models import Ranking, LifeStats
 import re
+from django.contrib import messages
 
 
 def registerNewUser(request):
@@ -52,6 +53,7 @@ def registerNewUser(request):
         password = regGameUser(username, email)
         
         user_status = loginUser(username, password, request)       
+        
         
         return redirect_with_params('/login',user_status=user_status,username=username)
     
@@ -126,7 +128,7 @@ def _usernameTaken(username):
         pass
     return taken
 
-def suggestUsernames(username, numSug):
+def _suggestUsernames(username, numSug):
     """
     finds and returns other usernames similar to the one the user wanted
     
@@ -258,11 +260,25 @@ def _parse_username(username):
 
 
 def regGameUser(username, email):
+    """Registers a user and creates all the necessary models
+
+    Keyword arguments:
+    username -- user's username (String)
+    email -- user's email (String)
+    
+    
+    Contributors:
+    Quinton Black
+    Matt Hengeveld
+    
+    Output:
+    password - the users new temporary password (String)
+    """
     
     password = _generatePassword()
     _sendEmail(username, email, password)
-    PongUser.objects.create_user(username=username, email=email, password=password)
-    
-    Ranking.objects.create(user=PongUser.objects.get(username=username))
+    user = PongUser.objects.create_user(username=username, email=email, password=password)
+    Ranking.objects.create(_user=user)
+    LifeStats.objects.create(_user=user)
     
     return password

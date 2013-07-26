@@ -5,6 +5,7 @@ from django.core.context_processors import csrf
 from django.template import RequestContext
 from User.models import PongUser
 from Utilities.utilities import *
+from django.contrib import messages
 
 SUCCESS = 'success'
 INCORRECT = 'incorrect'
@@ -21,41 +22,33 @@ def loginUserRequest( request ):
     """
    #a login request has been made therefore must authenticate
     if request.POST:
-        
         username = request.POST.get( 'username' )
         password = request.POST.get( 'password' )
-        state=''
         userState = loginUser( username, password, request )
     #potentially a redirect, or someone hit the url directly
     #if it can't get the username or password from the redirect parameter, then it was hit by the url, and they should be empty strings
     #if it was hit by a redirect (registration page)
     else:
-        
-        state = request.GET.get('state','')
         userState = request.GET.get('user_status','')
         username =  request.GET.get('username','')      
         
-    if state:
-
-        return render(request, 'user/login.html', {'state':state, 'username':username})
-    
+       
     #as long as username is not empty strings, we will attempt a login
-    elif username !='':
+    if username !='':
+        if userState == INCORRECT:
+            return redirect_with_params('/index/', username=username)
+        
         user = PongUser.objects.get(username=username)
         #if it was successful and it isn't their first login attempt, got to the login page
-        if userState == SUCCESS and user.getHasLoggedIn():
+        if userState == SUCCESS and user.getHasUpdatedProfile():
             return redirect('/profile/')
         
         #it was successful and the user has never logged in before, set the login status to true, and force them to edit their profile
-        elif userState == SUCCESS and not user.getHasLoggedIn():
+        elif userState == SUCCESS and not user.getHasUpdatedProfile():
+            messages.add_message(request,messages.INFO,"Happy Hangover, welcome to Pong Tracker, since this is your first time logging in please change your temporary password, and update your profile.")
             return redirect( '/profile/edit' )
         
-        elif userState == INCORRECT:
-            state = "Incorrect Email/Password Combination"
-            return redirect_with_params('/login/', username=username, state=state)
-        
         else:
-            state = "You are currently banned or inactive, please bring a case of beer to the admin to have your account unbanned."
             return  redirect_with_params('/banned/', username=username)
 
     return  redirect('/index/')
@@ -83,6 +76,8 @@ def loginUser(username, password, request):
             login( request, user )
             request.session['username'] = username
             return SUCCESS
+        messages.add_message(request,messages.WARNING,"You are currently banned or inactive, please bring a case of beer to the admin to have your account unbanned.")
         return BANNED
     else:
+        messages.add_message(request,messages.WARNING,"Incorrect Email/Password Combination, sober up a bit then try again")
         return INCORRECT 

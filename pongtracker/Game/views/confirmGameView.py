@@ -18,7 +18,16 @@ def confirmOrDenyGame(request,game_id):
             state of the confirmation/denial request.
         
     """
+    if not request.user.is_authenticated():
+        messages.add_message(request,message.INFO,'Please Login')
+        return redirect('/login/')
+     
+    if not request.user.getHasUpdatedProfile():
+        messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
+        return redirect('/profile/edit')
+    
     game = _obtainGame(game_id)
+    
     
     state = ""
     if game is None:

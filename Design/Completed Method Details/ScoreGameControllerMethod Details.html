@@ -26,7 +26,7 @@
     </tr>
     <tr>
         <td> Database Accesses </td>
-        <td> May initialize a connection to the Game, Team, User, Event and EventType tables </td>
+        <td>None</td>
     </tr>
     <tr>
         <td> Database Changes </td>
@@ -39,7 +39,7 @@
     <tr>
         <td> Description </td>
         <td> This method instantiates a ScoreGameController.</br>
-            After construction, the object is ready to read entries from the Game, Team,</br>
+            After construction, the object is ready to read entries from the Game, Team,
             User, Event and EventType tables as well as add or delete entries to/from the Event table. </td>
     </tr>
 </table>
@@ -132,7 +132,7 @@
         <td>Database Changes</td><td>None</td>
     </tr>
     <tr>
-        <td>Other Methods Invoked</td><td>obtainGame</td>
+        <td>Other Methods Invoked</td><td>None</td>
     </tr>
     <tr>
         <td>Description</td><td>Takes the User to the Game's end game page</td>
@@ -152,7 +152,7 @@
         <td>Method State</td><td><em>public</em></td>
     </tr>
     <tr>
-        <td>Return</td><td><em>None</em></td>
+        <td>Return</td><td><em>Event undoneEvent</em></td>
     </tr>
     <tr>
         <td>Input Arguments</td><td>int gameID, int teamNumber</td>
@@ -172,7 +172,7 @@
         <td>Database Changes</td><td>Deletes the most recent Event that occurred for the Team.</td>
     </tr>
     <tr>
-        <td>Other Methods Invoked</td><td>obtainGame, Game.getTeam1 (or Game.getTeam2,) Team.getUser1, Team.getUser2, Game.getEvents</td>
+        <td>Other Methods Invoked</td><td>Game.getTeam1 (or Game.getTeam2,) Team.getUser1, Team.getUser2, Game.getEvents</td>
     </tr>
     <tr>
         <td>Description</td><td>If successful, undoes the most recent Event associated with either of the Team's Users.</td>

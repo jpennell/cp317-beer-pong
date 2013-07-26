@@ -10,6 +10,14 @@ from Statistics.views.leaderBoardView import *
 
 def viewGameSummaryRequest(request, game_id):
     
+    if not request.user.is_authenticated():
+        messages.add_message(request,message.INFO,'Please Login')
+        return redirect('/login/')
+     
+    if not request.user.getHasUpdatedProfile():
+        messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
+        return redirect('/profile/edit')
+    
     form = EndGameForm
     currUsername = ''
     currUser = None

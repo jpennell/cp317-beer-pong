@@ -1,7 +1,7 @@
 from django import forms
 
 class CreateGameForm(forms.Form):
-    
+        
     username = ''
     
     username2 = forms.CharField(
