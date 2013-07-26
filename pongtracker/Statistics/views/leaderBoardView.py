@@ -10,6 +10,8 @@ from Utilities.utilities import *
 def leaderboardPage(request):
     form = LeaderboardForm()
     
+    print(form._choices)
+    
     if not request.user.is_authenticated():
         messages.add_message(request,message.INFO,'Please Login')
         return redirect('/login/')
@@ -24,6 +26,9 @@ def leaderboardPage(request):
         
         form = CreateGameForm(request.POST)
         
+        chosenInst = form.cleaned_data['institution']
+        
+        print(chosenInst)
         
         return render(request, 'statistics/leaderboard.html', {'form':form})
         
