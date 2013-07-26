@@ -11,3 +11,5 @@ class LeaderboardForm(forms.Form):
         required = True,
         label = "View"
     )
+    
+    leaders = [None,None,None,None,None,None,None,None,None,None]
