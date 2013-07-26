@@ -44,17 +44,14 @@ def editProfile(request):
             #Handle password change if password is correct 
             newPassword = form.cleaned_data['confirmPassword']
             oldPassword = form.cleaned_data['oldPassword']
-            authenticatedUser = authenticate(username=username,password=oldPassword)
-            if authenticatedUser is not None:
-                authenticatedUser.set_password(newPassword)
-                authenticatedUser.save()
+            changingUser = authenticate(username=username,password=oldPassword)           
+            if changingUser is not None:
+                user.set_password(newPassword)
+                user.save()
+                msg="Your Password has been changed"
+                messages.add_message(request,messages.SUCCESS,msg)
                 passwordChanged =True   
             
-            if not user.getHasUpdatedProfile() and passwordChanged is False:
-                msg="Please change your temporary password"
-                messages.add_message(request,messages.INFO,msg)
-                return redirect('edit/')
-                
             #Handle rest of form change 
             firstname = form.cleaned_data['first_name']
             lastname = form.cleaned_data['last_name']
@@ -63,9 +60,18 @@ def editProfile(request):
             institution = form.cleaned_data['_institution']
             yearOfGradution = form.cleaned_data['_graduationYear']
             userProfilePhoto = form.cleaned_data['_photo']
-            deactivate =   form.cleaned_data['_deactivate']
+            deactivate = form.cleaned_data['_deactivate']
             _updateUser(username,firstname,lastname,email,height,yearOfGradution,userProfilePhoto,deactivate,institution)
-            # Always redirect after a POST
+            
+            if not user.getHasUpdatedProfile() and passwordChanged is False:
+                msg="Please change your temporary password"
+                messages.add_message(request,messages.INFO,msg)
+                
+                return redirect('edit/')
+            #Declare that user has updated profile and password
+            user.setHasUpdatedProfile(True)
+            user.save()
+            
             messages.add_message(request,messages.SUCCESS,"Profile information has been updated")
             return redirect('edit/')
         
@@ -109,7 +115,6 @@ def _updateUser(username,firstName,lastName,email,height,yearOfGradution,userPro
     user.setEmail(email)
     user.setIsActive(deactivate)
     user.setInstitution(institution)
-    user.setHasUpdatedProfile(True)
     user.save()
     return
 
