@@ -9,17 +9,17 @@
         <td>Method State</td><td><em>public</em></td>
     </tr>
     <tr>
-        <td>Return</td><td><em>UserLoginController controller</em></td>
+        <td>Return</td><td><em>UserLoginController userLoginController</em></td>
     </tr>
     <tr>
         <td>Input Arguments</td><td>None</td>
     </tr>
     <tr>
-        <td>Error Messages</td><td>If this object fails to connect to the User table:</br>
+        <td>Error Messages</td><td>If this object fails to connect to User_ponguser:</br>
             ***An error occurred in processing your login request.***</td>
     </tr>
     <tr>
-        <td>Database Accesses</td><td>May initialize a connection to the User table.</td>
+        <td>Database Accesses</td><td>May initialize a connection to User_ponguser.</td>
     </tr>
     <tr>
         <td>Database Changes</td><td>None</td>
@@ -60,13 +60,13 @@
             ***Cannot log you in. Your account was deactivated.***</td>
     </tr>
     <tr>
-        <td>Database Accesses</td><td>User</td>
+        <td>Database Accesses</td><td>User_ponguser</td>
     </tr>
     <tr>
         <td>Database Changes</td><td>None</td>
     </tr>
     <tr>
-        <td>Other Methods Invoked</td><td>authenticate, login, User.isBanned, User.isActive</td>
+        <td>Other Methods Invoked</td><td>Django.authenticate, Django.login, User.isBanned, User.isActive</td>
     </tr>
     <tr>
         <td>Description</td><td>Validates the User's login request using Django's authenticate function and performs</br>
