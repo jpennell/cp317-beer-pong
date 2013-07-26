@@ -101,6 +101,6 @@ class EditProfileForm( forms.ModelForm ):
         
         if oldPassword!='':
             if authenticate(username=username,password=oldPassword) is None:
-                 msg = u"Incorrect Password"   
+                 msg = u"Incorrect Password, note copy and paste does not work."   
                  self._errors['oldPassword'] = self.error_class([msg]) 
         return cleaned_data

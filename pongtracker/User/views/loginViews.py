@@ -45,6 +45,7 @@ def loginUserRequest( request ):
         
         #it was successful and the user has never logged in before, set the login status to true, and force them to edit their profile
         elif userState == SUCCESS and not user.getHasUpdatedProfile():
+            messages.add_message(request,messages.INFO,"Happy Hangover, welcome to Pong Tracker, since this is your first time logging in please change your temporary password, and update your profile.")
             return redirect( '/profile/edit' )
         
         else:

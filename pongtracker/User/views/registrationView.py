@@ -8,6 +8,7 @@ from Utilities.utilities import *
 from loginViews import *
 from Statistics.models import Ranking, LifeStats
 import re
+from django.contrib import messages
 
 
 def registerNewUser(request):
@@ -52,6 +53,7 @@ def registerNewUser(request):
         password = regGameUser(username, email)
         
         user_status = loginUser(username, password, request)       
+        
         
         return redirect_with_params('/login',user_status=user_status,username=username)
     
