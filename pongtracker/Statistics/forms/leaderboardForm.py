@@ -4,7 +4,7 @@ from User.models import *
 class LeaderboardForm(forms.Form):
     
     choices = ["Overall"]
-    queryset = Institution.objects.all()
+    queryset = Institution.objects.order_by('_name')
     for x in queryset:
         choices.append(x.getName)
     

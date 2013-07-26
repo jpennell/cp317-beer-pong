@@ -68,15 +68,29 @@ def _displayBoard(topRanked, form):
         rank = getUserRank(user)
         name = user.username
         inst = user.getInstitution()
+        
         userStats = user.getLifeStats()
         won = userStats.getWins()
         lost = userStats.getLoses()
         sunk = _getTotalSunk(userStats)
+        
         form.leaders[x] = [rank,name,inst,won,lost,sunk]
     
     return
 
-def _getTotalSunk(s):
+def getTotalSunk(s):
+    """
+    This method calculates the total number of cups sunk by a player
+
+    Keyword arguments:
+    s -- lifeStats object of a user
+    
+    Contributors:
+    Matthew Hengeveld
+    
+    Output:
+    total -- total number of cups sunk
+    """
     total = 0
     
     cupsTally = [s.getCup1Sunk(),s.getCup2Sunk(),s.getCup3Sunk(),s.getCup4Sunk(),s.getCup5Sunk(),s.getCup6Sunk()]

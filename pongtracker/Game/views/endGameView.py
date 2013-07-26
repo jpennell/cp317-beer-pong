@@ -75,8 +75,3 @@ def _getStats(user, events, game_id):
                 redemptions += 1
     
     return [sunk,tricks,bounces,fouls,redemptions]
-
-def _getRank(user):
-    userRank = Ranking.objects.get(user=user)
-    
-    return userRank.rank
