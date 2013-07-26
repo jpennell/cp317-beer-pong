@@ -10,8 +10,6 @@ from Utilities.utilities import *
 def leaderboardPage(request):
     form = LeaderboardForm()
     
-    print(form._choices)
-    
     if not request.user.is_authenticated():
         messages.add_message(request,message.INFO,'Please Login')
         return redirect('/login/')
@@ -22,19 +20,47 @@ def leaderboardPage(request):
     
     username = request.session['username']
     
+    topRanked = _getTopRanked(10)
+        
+    _displayTopRanked(topRanked,form)
+    
     if request.method == 'POST':
         
         form = CreateGameForm(request.POST)
         
-        chosenInst = form.cleaned_data['institution']
-        
-        print(chosenInst)
-        
+        #chosenInst = form.cleaned_data['institution']
+                       
         return render(request, 'statistics/leaderboard.html', {'form':form})
         
     else:
 
         return render(request, 'statistics/leaderboard.html', {'form':form})
+
+def _displayTopRanked(topRanked, form):
+    """
+    This method puts the top ten leaders into the leaderboard form
+
+    Keyword arguments:
+    topRanked -- list of the top ranked players, in order of rank
+    form -- leaderboard form
+    
+    Contributors:
+    Matthew Hengeveld
+
+    """
+    for x in range(len(topRanked)):
+        user = topRanked[x]
+        name = user.username
+        inst = user.getInstitution()
+#        stats = user.getLifeStats()
+#        won = stats.getWins()
+#        lost = stats.getLoses()
+        won = 20
+        lost = 8
+        sunk = 46
+        form.leaders[x] = [x+1,name,inst,won,lost,sunk]
+    
+    return
 
 def _getTopRanked(limit):
     """
