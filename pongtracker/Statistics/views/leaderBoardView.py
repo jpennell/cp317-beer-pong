@@ -11,7 +11,7 @@ def leaderboardPage(request):
     form = LeaderboardForm()
     
     if not request.user.is_authenticated():
-        messages.add_message(request,message.INFO,'Please Login')
+        messages.add_message(request,messages.INFO,'Please Login')
         return redirect('/login/')
      
     if not request.user.getHasUpdatedProfile():
@@ -30,21 +30,14 @@ def leaderboardPage(request):
         
         filterChoice = request.POST['filterSelect']
         
-        print("filter: ", filterChoice)
-        
         _blankBoard(form)
         
         if filterChoice == form.choices[0]:
             topRanked = _getTopRanked(10)
             _displayBoard(topRanked,form)
-            print("Overall")
         else:
             instLeaders = getInstitutionLeaders(10, filterChoice)
-            print(instLeaders)
             _displayBoard(instLeaders, form)
-            print("inst:", filterChoice)
-        
-        #chosenInst = form.cleaned_data['institution']
                        
         return render(request, 'statistics/leaderboard.html', {'form':form})
         
@@ -75,15 +68,23 @@ def _displayBoard(topRanked, form):
         rank = getUserRank(user)
         name = user.username
         inst = user.getInstitution()
-#        stats = user.getLifeStats()
-#        won = stats.getWins()
-#        lost = stats.getLoses()
-        won = 20
-        lost = 8
-        sunk = 46
+        userStats = user.getLifeStats()
+        won = userStats.getWins()
+        lost = userStats.getLoses()
+        sunk = _getTotalSunk(userStats)
         form.leaders[x] = [rank,name,inst,won,lost,sunk]
     
     return
+
+def _getTotalSunk(s):
+    total = 0
+    
+    cupsTally = [s.getCup1Sunk(),s.getCup2Sunk(),s.getCup3Sunk(),s.getCup4Sunk(),s.getCup5Sunk(),s.getCup6Sunk()]
+    
+    for x in cupsTally:
+        total += x
+    
+    return total
 
 def _getTopRanked(limit):
     """
@@ -201,7 +202,6 @@ def getInstitutionLeaders(numberOfLeaders, institutionName):
             user_id = userRanks[x].id
             user = PongUser.objects.get(id=user_id)
             userInstitution = user.getInstitution().getName()
-            print(userInstitution)
             if (userInstitution == institutionName):
                 leaders.append(user)
         count += 1
