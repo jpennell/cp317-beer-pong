@@ -36,6 +36,26 @@ def editProfile(request):
         form = EditProfileForm(request.POST,instance=user)
         if form.is_valid():
             
+            
+            passwordChanged = False
+            
+            
+            
+            #Handle password change if password is correct 
+            newPassword = form.cleaned_data['confirmPassword']
+            oldPassword = form.cleaned_data['oldPassword']
+            authenticatedUser = authenticate(username=username,password=oldPassword)
+            if authenticatedUser is not None:
+                authenticatedUser.set_password(newPassword)
+                authenticatedUser.save()
+                passwordChanged =True   
+            
+            if not user.getHasUpdatedProfile() and passwordChanged is False:
+                msg="Please change your temporary password"
+                messages.add_message(request,messages.INFO,msg)
+                return redirect('edit/')
+                
+            #Handle rest of form change 
             firstname = form.cleaned_data['first_name']
             lastname = form.cleaned_data['last_name']
             email = form.cleaned_data['email']
@@ -45,14 +65,6 @@ def editProfile(request):
             userProfilePhoto = form.cleaned_data['_photo']
             deactivate =   form.cleaned_data['_deactivate']
             _updateUser(username,firstname,lastname,email,height,yearOfGradution,userProfilePhoto,deactivate,institution)
-            newPassword = form.cleaned_data['confirmPassword']
-            oldPassword = form.cleaned_data['oldPassword']
-            
-           
-            user = authenticate(username=username,password=oldPassword)
-            if user is not None:
-                user.set_password(newPassword)
-                user.save()
             # Always redirect after a POST
             messages.add_message(request,messages.SUCCESS,"Profile information has been updated")
             return redirect('edit/')
@@ -87,7 +99,7 @@ def _updateUser(username,firstName,lastName,email,height,yearOfGradution,userPro
         None
         
     """
-      
+
     user = PongUser.objects.get(username=username)
     user.setHeight(height)
     user.setGraduationYear(yearOfGradution)
