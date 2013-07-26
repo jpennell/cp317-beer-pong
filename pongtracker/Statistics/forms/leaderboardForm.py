@@ -3,10 +3,10 @@ from User.models import *
 
 class LeaderboardForm(forms.Form):
     
-    _choices = ["Overall"]
+    choices = ["Overall"]
     queryset = Institution.objects.all()
     for x in queryset:
-        _choices.append(x)
+        choices.append(x.getName)
     
 #     institution = forms.ModelChoiceField( 
 #         choices = _choices,

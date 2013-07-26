@@ -22,11 +22,27 @@ def leaderboardPage(request):
     
     topRanked = _getTopRanked(10)
         
-    _displayTopRanked(topRanked,form)
+    _displayBoard(topRanked,form)
     
     if request.method == 'POST':
         
-        form = CreateGameForm(request.POST)
+        form = LeaderboardForm(request.POST)
+        
+        filterChoice = request.POST['filterSelect']
+        
+        print("filter: ", filterChoice)
+        
+        _blankBoard(form)
+        
+        if filterChoice == form.choices[0]:
+            topRanked = _getTopRanked(10)
+            _displayBoard(topRanked,form)
+            print("Overall")
+        else:
+            instLeaders = getInstitutionLeaders(10, filterChoice)
+            print(instLeaders)
+            _displayBoard(instLeaders, form)
+            print("inst:", filterChoice)
         
         #chosenInst = form.cleaned_data['institution']
                        
@@ -35,8 +51,14 @@ def leaderboardPage(request):
     else:
 
         return render(request, 'statistics/leaderboard.html', {'form':form})
+    
+def _blankBoard(form):
+    for x in range(len(form.leaders)):
+        form.leaders[x] = ''
+        
+    return
 
-def _displayTopRanked(topRanked, form):
+def _displayBoard(topRanked, form):
     """
     This method puts the top ten leaders into the leaderboard form
 
@@ -50,6 +72,7 @@ def _displayTopRanked(topRanked, form):
     """
     for x in range(len(topRanked)):
         user = topRanked[x]
+        rank = getUserRank(user)
         name = user.username
         inst = user.getInstitution()
 #        stats = user.getLifeStats()
@@ -58,7 +81,7 @@ def _displayTopRanked(topRanked, form):
         won = 20
         lost = 8
         sunk = 46
-        form.leaders[x] = [x+1,name,inst,won,lost,sunk]
+        form.leaders[x] = [rank,name,inst,won,lost,sunk]
     
     return
 
@@ -109,7 +132,7 @@ def _getInstitutionRank(username):
     while rank<number_players and player.username!=username:
         player = insitutionUsers[rank]
         rank+=1
-        
+     
     return rank+1
 
 def _getOverallRank(username):
@@ -158,7 +181,7 @@ def getInstitutionLeaders(numberOfLeaders, institutionName):
     Matthew Hengeveld
     
     Output:
-    2-demensional list of leaders -- [[leader1(PongUser), rank(int)], [leader2, rank]...]]
+    list of leaders -- [leader1(PongUser),leader2...]
     """
 
     leaders = []
@@ -168,19 +191,21 @@ def getInstitutionLeaders(numberOfLeaders, institutionName):
         min = (count-1)*querySize
         max = (count*querySize)-1
         userRanks = RankView.objects.all()[min:max]
-        if (len(userRanks) < max):
+        if (len(userRanks) < 1):
+            break;
+        elif (len(userRanks) < max):
             size = len(userRanks)
         else:
             size = querySize
         for x in range(size):
             user_id = userRanks[x].id
             user = PongUser.objects.get(id=user_id)
-            userInstitution = user.getInstitution()
+            userInstitution = user.getInstitution().getName()
+            print(userInstitution)
             if (userInstitution == institutionName):
-                rank = x+((count-1)*querySize)
-                leaders.append([user, rank+1])
+                leaders.append(user)
         count += 1
-
+    
     return leaders
     
 def getUserRank(user):

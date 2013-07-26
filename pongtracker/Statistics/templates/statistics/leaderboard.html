@@ -7,23 +7,47 @@
 	<link href="{% static 'css/login-styles.css' %}" rel="stylesheet" type="text/css">
 {% endblock %}
 
+<script>
+
+function select() {
+	
+	var choice = document.getElementByID("filterSelect");
+	window.location = "leaderboard.html?inst=choice"
+	
+}
+
+</script>
+
 {% block pagecontent %}
 
 <div id="page-content">
 
-	<form method='post' action='/profile/edit'>
+	<form method='post' action='/leaderboard/'>
 	
 		{% csrf_token %}
 	
 		<table>
 			<tr>
-				<td width="70%">
+				<td width="80%">
 					<h3>Leaderboard</h3>
 				</td>
-				<td width="30%" align="left" valign="middle">
-					<strong>Filter:</strong>
-					{{ form.institution }}
+				
+				<td width="15%" align="left" valign="middle">
+					<select id="filterSelect"  name="filterSelect">
+					  {% for choice in form.choices %}
+					  
+					  	<option value="{{ choice }}">{{ choice }}</option>
+					  
+					  {% endfor %}
+					</select>
 				</td>
+				
+				<td width="5%" align="center" valign="middle">
+					<button name="filter" class="btn" type="submit">
+		                Filter
+		            </button>
+				</td>
+				
 			</tr>
 		</table>
 		
