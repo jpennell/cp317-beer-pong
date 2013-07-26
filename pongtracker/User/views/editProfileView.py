@@ -35,13 +35,9 @@ def editProfile(request):
         user = PongUser.objects.get(username=username)
         form = EditProfileForm(request.POST,instance=user)
         if form.is_valid():
-            
-            
-            passwordChanged = False
-            
-            
-            
+           
             #Handle password change if password is correct 
+            passwordChanged = False
             newPassword = form.cleaned_data['confirmPassword']
             oldPassword = form.cleaned_data['oldPassword']
             changingUser = authenticate(username=username,password=oldPassword)           
