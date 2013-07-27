@@ -15,7 +15,7 @@
         <td>Input Arguments</td><td>None</td>
     </tr>
     <tr>
-        <td>Error Messages</td><td>If this object fails to connect to Game_game, Game_event, Game_eventtype, Game_team, Statistics_lifestats or Statistics_ranking
+        <td>Error Messages</td><td>If this object fails to connect to Game_game, Game_event, Game_eventtype, Game_team, Statistics_lifestats or Statistics_ranking:
             <br>
             ***An error occurred in processing your game confirmation/denial request.*** </td>
     </tr>
@@ -213,7 +213,7 @@
         <td>Database Changes</td><td>Wins for the winning Users and losses for the losing Users are updated.</td>
     </tr>
     <tr>
-        <td>Other Methods Invoked</td><td> LifeStats.incWins, LifeStats.incLosses</td>
+        <td>Other Methods Invoked</td><td> LifeStats.incWins, LifeStats.incLosses, Team.getUser1, Team.getUser2, User.getLifeStats</td>
     </tr>
     <tr>
         <td>Description</td><td>The winning Users have the wins in their LifeStats incremented by 1.</br>
@@ -246,10 +246,11 @@
         <td>Database Accesses</td><td>Statistics_ranking, Game_team, User_ponguser</td>
     </tr>
     <tr>
-        <td>Database Changes</td><td>Ranking entries are updated with their new Mu and Sigma values.</td>
+        <td>Database Changes</td><td>Rank entries are updated with their new Mu and Sigma values.</td>
     </tr>
     <tr>
-        <td>Other Methods Invoked</td><td>TrueSkill.rate, Team.getUser1, Team.getUser2, Rank.getRanking, Rank.getMu, Rank.setMu, Rank.getSigma, Rank.setSigma</td>
+        <td>Other Methods Invoked</td><td>TrueSkill.rate, Team.getUser1, Team.getUser2, User.getRank, </br> 
+			Rank.getMu, Rank.setMu, Rank.getSigma, Rank.setSigma</td>
     </tr>
     <tr>
         <td>Description</td><td>The TrueSkill Rankings of each User are obtained, and new Ranking objects with the new Mu and Sigma values</br>
