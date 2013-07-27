@@ -11,4 +11,5 @@ urlpatterns = patterns( '',
     ( r'profile/', 'User.views.viewProfile' ),
     ( r'register', 'User.views.registerNewUser' ),
     ( r'banned', 'User.views.registerNewUser' ),
+    ( r'deactiveAccount', 'User.views.deactivateAccount' ),
  )

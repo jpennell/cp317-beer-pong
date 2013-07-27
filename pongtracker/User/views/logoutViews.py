@@ -20,7 +20,7 @@ def logoutUser(request):
     Output:
         
     """
-    state = "You have been logged out successfully"
+    state = "You have been logged out successfully"    
     try:
         del request.session['username']
         logout(request)

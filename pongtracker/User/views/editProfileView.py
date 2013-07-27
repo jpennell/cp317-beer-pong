@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect,get_object_or_404
 from User.models import PongUser
-from django.shortcuts import redirect, render
 from User.forms import EditProfileForm
 from django.template import Context
 from Utilities.utilities import *
