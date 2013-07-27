@@ -68,7 +68,7 @@ class PongUser(AbstractUser):
         self._isBanned = value
         
     def setIsActive(self, value):
-        self._is_active = value
+        self.is_active = value
     
     def setFirstName(self, value):
         self.first_name = value

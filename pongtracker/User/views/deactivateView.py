@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect,get_object_or_404
 from User.models import PongUser
-from User.forms import deactivateAccountForm
+from User.forms import DeactivateAccountForm
 from django.template import Context
 from django.contrib.auth import *
 
@@ -9,6 +9,7 @@ from django.contrib import messages
 
 def deactivateAccount(request):
     
+    print("Deactivating account")
         
     if not request.user.is_authenticated():
         messages.add_message(request,message.INFO,'Please Login')
@@ -18,20 +19,23 @@ def deactivateAccount(request):
         messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
         return redirect('/profile/edit') 
     
-    if request.POST():
+    username = request.session['username']        
+    user = PongUser.objects.get(username=username)
+
+    if request.method=='POST':
         
-        form = deactivateAccountForm(request.POST)
+        form = DeactivateAccountForm(request.POST,instance=user)
         if form.is_valid():
-            username = form.cleanded_data['username']
-            password = form.cleanded_data['password']
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
             _deactivateUser(username,password)
             messages.add_message(request,messages.SUCCESS,"Your account has been successfully deactivated. Hope your liver forgives you.")
             
-            return redirect(request,'/logout')
-        
-    username = request.session['username']        
-    user = PongUser.objects.get(username=username)
-    form = deactivateAccountForm(instance=user)
+                       
+            return redirect('/logout')
+    
+    else:
+        form = DeactivateAccountForm(instance=user)
 
     context = ({'title':'Deactivate Account','form':form})
     return render(request,'user/deactivateAccount.html',context)
@@ -50,9 +54,10 @@ def _deactivateUser(username,password):
     
     Output:
         None
-        
     """
-    user = authenticate(username=username,password=password)
+    print("Deactivating user with username: {0} and password {1}".format(username,password))
+    
+    user = authenticate (username=username,password=password)
     if user is not None:
         user.setIsActive(False)
         user.save()

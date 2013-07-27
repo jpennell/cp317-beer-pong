@@ -67,6 +67,10 @@ def editProfile(request):
             user.setHasUpdatedProfile(True)
             user.save()
             
+            if deactivate:
+                return redirect('/deactivate')
+            
+            
             messages.add_message(request,messages.SUCCESS,"Profile information has been updated")
             return redirect('edit/')
         
