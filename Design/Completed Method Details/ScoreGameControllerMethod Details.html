@@ -13,7 +13,7 @@
     </tr>
     <tr>
         <td> Return </td>
-        <td><em> ScoreGameController controller</em></td>
+        <td><em> ScoreGameController scoreGameController</em></td>
     </tr>
     <tr>
         <td> Input Arguments </td>
@@ -21,12 +21,12 @@
     </tr>
     <tr>
         <td> Error Messages </td>
-        <td> If this object fails to connect to the Game, Team, User, Event or EventType tables: </br>
+        <td> If this object fails to connect to Game_game, Game_team, User_ponguser, Game_event or Game_eventtype: </br>
             ***An error occurred in processing your game scoring request*** </td>
     </tr>
     <tr>
         <td> Database Accesses </td>
-        <td>None</td>
+        <td>May initialize a connection to Game_game, Game_team, User_ponguser, Game_event and Game_eventtype</td>
     </tr>
     <tr>
         <td> Database Changes </td>
@@ -86,11 +86,11 @@
     </tr>
     <tr>
         <td> Database Accesses </td>
-        <td> Event, EventType, Game </td>
+        <td> Game_event, Game_eventtype, Game_game </td>
     </tr>
     <tr>
         <td> Database Changes </td>
-        <td> None </td>
+        <td> A new entry may be added to Game_event </td>
     </tr>
     <tr>
         <td> Other Methods Invoked </td>
@@ -126,7 +126,7 @@
             ***Game does not exist***</td>
     </tr>
     <tr>
-        <td>Database Accesses</td><td>Game</td>
+        <td>Database Accesses</td><td>Game_game</td>
     </tr>
     <tr>
         <td>Database Changes</td><td>None</td>
@@ -166,7 +166,7 @@
             ***No event to undo*** </td>
     </tr>
     <tr>
-        <td>Database Accesses</td><td>Game, Team, User, Event</td>
+        <td>Database Accesses</td><td>Game_game, Game_team, User_ponguser, Game_event</td>
     </tr>
     <tr>
         <td>Database Changes</td><td>Deletes the most recent Event that occurred for the Team.</td>
