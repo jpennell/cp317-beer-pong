@@ -9,17 +9,17 @@
 		<td>Method State</td> <td><em>public</em></td>
 	</tr>
 	<tr>
-		<td>Return</td> <td><em>DeactivateAccountController controller</em></td>
+		<td>Return</td> <td><em>DeactivateAccountController deactivateAccountController</em></td>
 	</tr>
 	<tr>
 		<td>Input Arguments</td> <td>None</td>
 	</tr>
 	<tr>
-	<td>Error Messages</td> <td>If this object fails to connect to the User table:</br>
+	<td>Error Messages</td> <td>If this object fails to connect to the User_ponguser:</br>
 								***An error occurred in processing your account deactivation request.***</td>
 	</tr>
 	<tr>
-		<td>Database Accesses</td> <td>May initialize a connection to the User table.</td>
+		<td>Database Accesses</td> <td>May initialize a connection to the User_ponguser.</td>
 	</tr>
 	<tr>
 		<td>Database Changes</td> <td>None</td>
@@ -57,13 +57,13 @@
 							<br>***Incorrect password.*** </td>
 	</tr>
 	<tr>
-		<td>Database Accesses</td> <td>User</td>
+		<td>Database Accesses</td> <td>User_ponguser</td>
 	</tr>
 	<tr>
 		<td>Database Changes</td> <td>If successful, sets the User's isActive attribute to False</td>
 	</tr>
 	<tr>
-		<td>Other Methods Invoked</td> <td>authenticate, logout, setActive</td>
+		<td>Other Methods Invoked</td> <td>Django.authenticate, Django.logout, User.deactivate</td>
 	</tr>
 	<tr>
 		<td>Description</td> <td>Checks to see if the User has correctly entered their password by calling Django's authenticate function.</br>
