@@ -11,7 +11,7 @@ def leaderboardPage(request):
     form = LeaderboardForm()
     
     if not request.user.is_authenticated():
-        messages.add_message(request,message.INFO,'Please Login')
+        messages.add_message(request,messages.INFO,'Please Login')
         return redirect('/login/')
      
     if not request.user.getHasUpdatedProfile():
@@ -22,21 +22,36 @@ def leaderboardPage(request):
     
     topRanked = _getTopRanked(10)
         
-    _displayTopRanked(topRanked,form)
+    _displayBoard(topRanked,form)
     
     if request.method == 'POST':
         
-        form = CreateGameForm(request.POST)
+        form = LeaderboardForm(request.POST)
         
-        #chosenInst = form.cleaned_data['institution']
+        filterChoice = request.POST['filterSelect']
+        
+        _blankBoard(form)
+        
+        if filterChoice == form.choices[0]:
+            topRanked = _getTopRanked(10)
+            _displayBoard(topRanked,form)
+        else:
+            instLeaders = getInstitutionLeaders(10, filterChoice)
+            _displayBoard(instLeaders, form)
                        
         return render(request, 'statistics/leaderboard.html', {'form':form})
         
     else:
 
         return render(request, 'statistics/leaderboard.html', {'form':form})
+    
+def _blankBoard(form):
+    for x in range(len(form.leaders)):
+        form.leaders[x] = ''
+        
+    return
 
-def _displayTopRanked(topRanked, form):
+def _displayBoard(topRanked, form):
     """
     This method puts the top ten leaders into the leaderboard form
 
@@ -50,17 +65,40 @@ def _displayTopRanked(topRanked, form):
     """
     for x in range(len(topRanked)):
         user = topRanked[x]
+        rank = getUserRank(user)
         name = user.username
         inst = user.getInstitution()
-#        stats = user.getLifeStats()
-#        won = stats.getWins()
-#        lost = stats.getLoses()
-        won = 20
-        lost = 8
-        sunk = 46
-        form.leaders[x] = [x+1,name,inst,won,lost,sunk]
+        
+        userStats = user.getLifeStats()
+        won = userStats.getWins()
+        lost = userStats.getLoses()
+        sunk = _getTotalSunk(userStats)
+        
+        form.leaders[x] = [rank,name,inst,won,lost,sunk]
     
     return
+
+def getTotalSunk(s):
+    """
+    This method calculates the total number of cups sunk by a player
+
+    Keyword arguments:
+    s -- lifeStats object of a user
+    
+    Contributors:
+    Matthew Hengeveld
+    
+    Output:
+    total -- total number of cups sunk
+    """
+    total = 0
+    
+    cupsTally = [s.getCup1Sunk(),s.getCup2Sunk(),s.getCup3Sunk(),s.getCup4Sunk(),s.getCup5Sunk(),s.getCup6Sunk()]
+    
+    for x in cupsTally:
+        total += x
+    
+    return total
 
 def _getTopRanked(limit):
     """
@@ -109,7 +147,7 @@ def _getInstitutionRank(username):
     while rank<number_players and player.username!=username:
         player = insitutionUsers[rank]
         rank+=1
-        
+     
     return rank+1
 
 def _getOverallRank(username):
@@ -158,7 +196,7 @@ def getInstitutionLeaders(numberOfLeaders, institutionName):
     Matthew Hengeveld
     
     Output:
-    2-demensional list of leaders -- [[leader1(PongUser), rank(int)], [leader2, rank]...]]
+    list of leaders -- [leader1(PongUser),leader2...]
     """
 
     leaders = []
@@ -168,19 +206,20 @@ def getInstitutionLeaders(numberOfLeaders, institutionName):
         min = (count-1)*querySize
         max = (count*querySize)-1
         userRanks = RankView.objects.all()[min:max]
-        if (len(userRanks) < max):
+        if (len(userRanks) < 1):
+            break;
+        elif (len(userRanks) < max):
             size = len(userRanks)
         else:
             size = querySize
         for x in range(size):
             user_id = userRanks[x].id
             user = PongUser.objects.get(id=user_id)
-            userInstitution = user.getInstitution()
+            userInstitution = user.getInstitution().getName()
             if (userInstitution == institutionName):
-                rank = x+((count-1)*querySize)
-                leaders.append([user, rank+1])
+                leaders.append(user)
         count += 1
-
+    
     return leaders
     
 def getUserRank(user):

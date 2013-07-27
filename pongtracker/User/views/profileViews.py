@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from User.models import PongUser
 from django.contrib import messages
+from Statistics.views.leaderBoardView import *
 
 def viewProfile( request, username=None ):
     """{{Description}}
@@ -12,6 +13,7 @@ def viewProfile( request, username=None ):
     Contributors:
     Quinton Black
     Erin Cramer
+    Matthew Hengeveld
 
     Output:
 
@@ -32,5 +34,9 @@ def viewProfile( request, username=None ):
             return redirect('/login/')
           
     user = PongUser.objects.get(username=username)
+    
+    rank = getUserRank(user)
+    
+    totalSunk = getTotalSunk(user.getLifeStats())
            
-    return render( request, 'user/profile.html', {'user':user} )
+    return render( request, 'user/profile.html', {'user':user, 'rank':rank, 'totalSunk':totalSunk} )
