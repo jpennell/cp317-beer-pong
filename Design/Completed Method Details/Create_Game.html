@@ -1,5 +1,3 @@
-
-
 <table border="1">
 	<tr>
 		<td><strong>Controller Name</strong></td><td><strong>CreateGameController</strong></td>
@@ -17,11 +15,11 @@
 		<td>Input Arguments</td> <td>None</td>
 	</tr>
 	<tr>
-	<td>Error Messages</td> <td>If this object fails to connect to the Game, Team and User tables
+	<td>Error Messages</td> <td>If this object fails to connect to Game_game, Game_team or User_ponguser
 							<br>***An error occurred in processing your game creation request.*** </td>
 	</tr>
 	<tr>
-		<td>Database Accesses</td> <td>None</td>
+		<td>Database Accesses</td> <td>May initialize connections to Game_game, Game_team and User_ponguser</td>
 	</tr>
 	<tr>
 		<td>Database Changes</td> <td>None</td>
@@ -49,7 +47,7 @@
 		<td>Method State</td> <td><em>public</em></td>
 	</tr>
 	<tr>
-		<td>Return</td> <td><em>Game</em></td>
+		<td>Return</td> <td><em>None</em></td>
 	</tr>
 	<tr>
 		<td>Input Arguments</td> <td>String player1, String player2, String player3, String player4</td>
@@ -65,7 +63,7 @@
 								***One of the 4 players has had their account deactivated and cannot participate***</td>
 	</tr>
 	<tr>
-		<td>Database Accesses</td> <td>Game, Team, User</td>
+		<td>Database Accesses</td> <td>Game_game, Game_team, User_ponguser</td>
 	</tr>
 	<tr>
 		<td>Database Changes</td> <td>If successful, new entries are added to the Game and Team tables</td>
@@ -99,10 +97,10 @@
 	<td>Error Messages</td> <td>None</td>
 	</tr>
 	<tr>
-		<td>Database Accesses</td> <td>Game, Team</td>
+		<td>Database Accesses</td> <td>Game_game, Game_team</td>
 	</tr>
 	<tr>
-		<td>Database Changes</td> <td>new entries are added to the Game and Team tables</td>
+		<td>Database Changes</td> <td>new entries are added to the Game_game and Game_team</td>
 	</tr>
 	<tr>
 		<td>Other Methods Invoked</td> <td>None</td>
