@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from User.forms import RegistrationForm
+from django.template import Context
 
 def viewHomepage(request):
     """
@@ -10,11 +12,14 @@ def viewHomepage(request):
     
     Contributors:
     Erin Cramer
+    Quinton Black
     
     Output:
         
     """ 
 
+    
+    
     
     username = request.GET.get('username','')
     email = request.GET.get('email','')   
@@ -23,14 +28,21 @@ def viewHomepage(request):
     suggestedUsernames = request.GET.get('suggestedUsernames','')
     state =request.GET.get('state','')
     
-    if suggestedUsernames:
-        suggestedNames = suggestedUsernames.split(",")
-        return render(request, 'user/index.html', {'username':username, 'email':email, 'usernameState':usernameState, 'suggestedUsernames':suggestedNames})
-    elif usernameState:
-        return render(request, 'user/index.html', {'username':username, 'email':email, 'usernameState':usernameState})
-    elif emailState:
-        return render(request, 'user/index.html', {'username':username, 'email':email, 'emailState':emailState})
-    elif state:
-        return render(request, 'user/index.html', {'state':state})
-    else:   
-        return render(request, 'user/index.html')
+    
+    if  'registration' in request.GET:
+        if request.GET['registration']=='invalid':
+            print("invalid")
+            registrationForm = RegistrationForm(request.POST)
+            context = Context({'regTitle': 'Register', 'registrationForm': registrationForm, 'username':username, 'email':email})  
+            return render(request, 'user/index.html',context)
+
+    registrationForm = RegistrationForm()
+    
+    
+    
+    
+    context = Context({'regTitle': 'Register', 'registrationForm': registrationForm, 'username':username, 'email':email})  
+    return render(request, 'user/index.html',context)
+    
+    
+ 

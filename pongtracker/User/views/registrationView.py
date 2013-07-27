@@ -2,13 +2,14 @@ from django.shortcuts import render, redirect
 #from django.contrib.auth import authenticate , login
 from django.core.context_processors import csrf
 from django.core.mail import send_mail, BadHeaderError
-#from User.forms import RegistrationForm
+from User.forms import RegistrationForm
 from User.models import PongUser
 from Utilities.utilities import *
 from loginViews import *
 from Statistics.models import Ranking, LifeStats
 import re
 from django.contrib import messages
+from django.template import Context
 
 
 def registerNewUser(request):
@@ -25,86 +26,33 @@ def registerNewUser(request):
     username = email = ""
     emailState = ""
     usernameState = ""
-    if request.POST:
-        
-#        form = RegistrationForm(request.POST)
-#        if form.is_valid():
-#            
-#            username = form.cleaned_data['username']
-#            email = form.cleaned_data['email']
+    if request.POST:        
+        form = RegistrationForm(request.POST)       
+
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            email = form.cleaned_data['email']
             
-        username = request.POST.get('username')
-        email = request.POST.get('email')
+            if _usernameTaken(username):
+                suggestedUsernames = _suggestUsernames(username,5)
+                context = Context({'regTitle': 'Register', 'registrationForm': form,'suggestedUsernames':suggestedUsernames})
+                return render(request, 'user/index.html',context)   
 
-        if not _validateUsername(username):
-            usernameState = 'User name does not fit the format 30 characters or fewer. Letters, digits, _ and . only'
-            return  redirect_with_params('/index/', usernameState=usernameState, username=username, email=email)
-    
-        if _usernameTaken(username):
-            usernameSuggestions = ",".join(_suggestUsernames(username, 5))
-            usernameState = 'That user name is taken, here are some suggestions:'
-            return redirect_with_params('/index/', usernameState=usernameState, suggestedUsernames=usernameSuggestions, email=email, username=username)
-        
-        if not _validateEmail(email):
-            emailState = "Please provide a valid email address"
-            print("Got to validate email function")
-            return  redirect_with_params('/index/',emailState=emailState, username=username, email=email)
-        
-        password = regGameUser(username, email)
-        
-        user_status = loginUser(username, password, request)       
+            password = regGameUser(username, email)      
+            user_status = loginUser(username, password, request)       
+                       
+            return redirect_with_params('/login',user_status=user_status,username=username)
+        context = Context({'regTitle': 'Register','registrationForm':form})
+        return render(request, 'user/index.html',context)   
+
         
         
-        return redirect_with_params('/login',user_status=user_status,username=username)
-    
     #otherwise you're register through the url and need to be redirected to the index
-    #form = RegistrationForm()
-    return  redirect('/index/')
+    form = RegistrationForm()
+    context = Context({'regTitle': 'Register','registrationForm':form})
+    return  redirect('/index/',context)
 
-#Needs to be done better
-def _validateEmail(email):
-    """
-    checks to see if an email is valid
 
-    Keyword arguments:
-    email -- user's propsective email (str)
-    
-    Contributors:
-    Quinton Black
-    
-    Output:
-    valid -- True if the email fits the criteria, false otherwise (boolean) 
-    """
-    valid = True
-    if email.count('@') != 1:
-        valid = False
-    if email.count('.') < 1:
-        valid = False
-    return valid
-
-#Needs to be done better
-def _validateUsername(username):
-    """
-    
-    validates a user's prospective username
-    
-    Letters, digits and @/./+/-/_ only
-    
-    Keyword arguments:
-    username -- user's username (str) 
-    
-    Contributors:
-    Erin Cramer
-    
-    Output:
-    valid - True if the username meets the criteria, false otherwise (boolean) 
-    """
-    valid = True
-    #check to make sure username forllows character rules
-    match = re.search('[^A-Za-z0-9_.]',username)
-    if match or len(username) > 30:
-        valid = False
-    return valid
 
 def _usernameTaken(username):
     """

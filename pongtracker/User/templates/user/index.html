@@ -94,18 +94,34 @@
 
 			<!-- THE REGISTER FORM -->
 			<td>
+			
+						
 				<div id="register-form">
-					<h3>Register</h3>
+					<h3>{{ regTitle }}</h3>
 					<form action="/register" name="register" method="post">
 						{% csrf_token %} 
-						{{ emailState }} 
-						<input name="email" type="text" placeholder="email" value="{{ email }}"> <br />
-						{{ usernameState }} 
-						{% for suggestion in suggestedUsernames %} 
-							{{suggestion }} <br /> 
-						{% endfor %} 
-						<input name="username" type="text" placeholder="desired username" value="{{ username }}">
-						<br />
+				            <br>
+				            {% for field in registrationForm %}
+				                    
+			                    {% if field.errors %}
+			                    <div class="error">
+			                        {{ field.errors }}
+			                    </div>			                    
+			                    {% endif %}
+			                   	
+			                   	{{ field }}
+				               
+				            {% endfor %}
+				            
+				            {% if suggestedUsernames %}
+				            	Suggested usernames:<br>
+				            	{% for suggestion in suggestedUsernames %}
+				            		{{ suggestion }}<br>
+				            	{% endfor %}
+				            	
+				            {% endif %}
+				            
+						
 						<button name="submit" class="btn" type="submit">Submit</button>
 					</form>
 				</div>

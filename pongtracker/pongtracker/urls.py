@@ -22,7 +22,7 @@ urlpatterns = patterns('',
 	url(r'^',include('User.urls')),
 	url(r'^rules/', TemplateView.as_view(template_name="pongtracker/rules.html")),
 	url(r'^',include('Statistics.urls')),
-	url(r'^$', TemplateView.as_view(template_name="user/index.html")),
+	url(r'^$','User.views.viewHomepage'),
 )
 
 if settings.DEBUG:
