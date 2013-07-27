@@ -15,12 +15,12 @@
         <td>Input Arguments</td><td>None</td>
     </tr>
     <tr>
-        <td>Error Messages</td><td>If this object fails to connect to the Game, Team, Event, EventType or LifeStats table
+        <td>Error Messages</td><td>If this object fails to connect to Game_game, Game_event, Game_eventtype, Game_team, Statistics_lifestats or Statistics_ranking
             <br>
             ***An error occurred in processing your game confirmation/denial request.*** </td>
     </tr>
     <tr>
-        <td>Database Accesses</td><td>None</td>
+        <td>Database Accesses</td><td>May initialize connections to Game_game, Game_event, Game_eventtype, Game_team, Statistics_lifestats and Statistics_ranking</td>
     </tr>
     <tr>
         <td>Database Changes</td><td>None</td>
@@ -63,13 +63,13 @@
             ***Game has not ended***</td>
     </tr>
     <tr>
-        <td>Database Accesses</td><td>Game, Event, EventType</td>
+        <td>Database Accesses</td><td>Game_game, Game_event, Game_eventtype</td>
     </tr>
     <tr>
         <td>Database Changes</td><td>If successful, the Game's isConfirmedOrDenied flag is set to True (unless the Game is deleted.)</td>
     </tr>
     <tr>
-        <td>Other Methods Invoked</td><td>isConfirmedOrDenied, confirmGame, denyGame, setConfirmedOrDenied</td>
+        <td>Other Methods Invoked</td><td>Game.isConfirmedOrDenied, confirmGame, denyGame, Game.setConfirmedOrDenied</td>
     </tr>
     <tr>
         <td>Description</td><td>Confirms/denies the Game if it is valid.</br>
@@ -99,14 +99,14 @@
         <td>Error Messages</td><td>None</td>
     </tr>
     <tr>
-        <td>Database Accesses</td><td>Game, Team, User, Event, LifeStats</td>
+        <td>Database Accesses</td><td>Game_game, Game_team, User_ponguser, Game_event, Statistics_lifestats</td>
     </tr>
     <tr>
         <td>Database Changes</td><td>None</td>
     </tr>
     <tr>
         <td>Other Methods Invoked</td><td>Game.getEvents, Game.getTeam1, Game.getTeam2, Team.getUser1, Team.getUser2, User.getLifeStats, Event.getUser,</br>
-            this.updateStatsWithEvent, this.updateWinsAndLosses, this.updateRankings</td>
+            updateStatsWithEvent, updateWinsAndLosses, updateRankings</td>
     </tr>
     <tr>
         <td>Description</td><td>For each Event in the Game (other than the end game Event), finds its corresponding User and updates their LifeStats.</br>
@@ -136,13 +136,13 @@
         <td>Error Messages</td><td>None</td>
     </tr>
     <tr>
-        <td>Database Accesses</td><td>Game, Event</td>
+        <td>Database Accesses</td><td>Game_game, Game_team, Game_event</td>
     </tr>
     <tr>
-        <td>Database Changes</td><td>May delete Events from the Event table, Teams from the Teams table and the Game from the Game table</td>
+        <td>Database Changes</td><td>May delete the Game's Events from Game_event, Teams from Game_team and the Game itself from Game_game</td>
     </tr>
     <tr>
-        <td>Other Methods Invoked</td><td>Game.getEvents</td>
+        <td>Other Methods Invoked</td><td>Game.getEvents, Game.getTeam1, Game.getTeam2</td>
     </tr>
     <tr>
         <td>Description</td><td>Performs any overhead necessary for denying a Game.</td>
@@ -171,10 +171,10 @@
         <td>Error Messages</td><td>None</td>
     </tr>
     <tr>
-        <td>Database Accesses</td><td>LifeStats, Event, EventType</td>
+        <td>Database Accesses</td><td>Statistics_lifestats, Game_event, Game_eventtype</td>
     </tr>
     <tr>
-        <td>Database Changes</td><td>The LifeStats object is updated to reflect that the Event occurred.</td>
+        <td>Database Changes</td><td>The Lifestats entry is updated to reflect that the Event occurred.</td>
     </tr>
     <tr>
         <td>Other Methods Invoked</td><td>Event.getEventType, EventType.getTypeName, LifeStats.incBounceShots, LifeStats.incTrickShots, LifeStats.incPartyFouls, LifeStats.incCupsSunk, LifeStats.incRedemptions</td>
@@ -207,7 +207,7 @@
         <td>Error Messages</td><td>None</td>
     </tr>
     <tr>
-        <td>Database Accesses</td><td>LifeStats, Team, User</td>
+        <td>Database Accesses</td><td>Statistics_lifestats, Game_team, User_ponguser</td>
     </tr>
     <tr>
         <td>Database Changes</td><td>Wins for the winning Users and losses for the losing Users are updated.</td>
@@ -243,10 +243,10 @@
         <td>Error Messages</td><td>None</td>
     </tr>
     <tr>
-        <td>Database Accesses</td><td>Rank, Team, User</td>
+        <td>Database Accesses</td><td>Statistics_ranking, Game_team, User_ponguser</td>
     </tr>
     <tr>
-        <td>Database Changes</td><td>TrueSkill rankings are updated with their new Mu and Sigma values.</td>
+        <td>Database Changes</td><td>Ranking entries are updated with their new Mu and Sigma values.</td>
     </tr>
     <tr>
         <td>Other Methods Invoked</td><td>TrueSkill.rate, Team.getUser1, Team.getUser2, Rank.getRanking, Rank.getMu, Rank.setMu, Rank.getSigma, Rank.setSigma</td>
