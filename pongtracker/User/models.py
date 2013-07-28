@@ -15,6 +15,9 @@ class Institution(models.Model):
     
 class PongUser(AbstractUser):
         
+    def getUsername(self):
+        return self.username    
+        
     def getHeight(self):
         return self._height
 

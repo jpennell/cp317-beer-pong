@@ -116,52 +116,7 @@ def _suggestUsernames(username, numSug):
     return suggestions
 
 
-def _sendEmail(username, email, password):
-    """
-    sends a new user their temporary password
 
-    Keyword arguments:
-    username -- user's username (str)
-    password -- user's temp password (str)
-    email -- user's email (str)
-    
-    Contributors:
-    Erin Cramer
-    
-    Output:
-        
-    """
-    message = """
-    
-    Hey {},
-    
-    Here is your temporary password:{}
-    
-    Time to login and start playing.
-    
-    Cheers,
-    The Pong Tracker Team""".format(username, password)
-    
-    try:
-        send_mail('Pong Tracker Account', message, 'thepongtracker@gmail.com', [email], fail_silently = False )
-    except BadHeaderError:
-        pass
-    
-    return
-
-def _generatePassword():
-    """
-    generates a temp password for a user
-    
-    Contributors:
-    Quinton Black
-    
-    Output:
-    password - user's new password (str)   
-    """
-    password = createRndPass(8)
-
-    return password
 
 def _parse_username(username):
     
@@ -223,8 +178,19 @@ def regGameUser(username, email):
     password - the users new temporary password (String)
     """
     
-    password = _generatePassword()
-    _sendEmail(username, email, password)
+    password = generatePassword()
+    message = """
+    
+    Hey {},
+    
+    Here is your temporary password:{}
+    
+    Time to login and start playing.
+    
+    Cheers,
+    The Pong Tracker Team""".format(username, password)
+    
+    sendEmail(username, email, password,message)
     user = PongUser.objects.create_user(username=username, email=email, password=password)
     Ranking.objects.create(_user=user)
     LifeStats.objects.create(_user=user)

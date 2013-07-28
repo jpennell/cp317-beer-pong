@@ -23,7 +23,7 @@ def editProfile(request):
     Output:
         
     """
-    updated=""
+
     if not request.user.is_authenticated():
         state = "You are not logged in. Log in meow."
         return redirect_with_params('/login/', state=state)

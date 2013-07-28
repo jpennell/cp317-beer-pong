@@ -12,4 +12,5 @@ urlpatterns = patterns( '',
     ( r'register', 'User.views.registerNewUser' ),
     ( r'banned', 'User.views.registerNewUser' ),
     ( r'deactivate', 'User.views.deactivateAccount' ),
+    ( r'forgotpassword', 'User.views.forgotPasswordRequest' ),
  )
