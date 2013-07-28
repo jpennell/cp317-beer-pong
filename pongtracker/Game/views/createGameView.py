@@ -94,7 +94,7 @@ def createNewGameRequest(request):
             # no errors; create game     
             game = _createNewGame(users[0], users[1], users[2], users[3])
             
-            return redirect('/game/' + str(game.id))
+            return redirect('/game/' + str(game.id)+'/play')
             
         else:
             # form is invalid
@@ -119,10 +119,10 @@ def _createNewGame(user1, user2, user3, user4):
         
     """
 
-    team1 = Team.objects.create(user1=user1,user2=user2)
-    team2 = Team.objects.create(user1=user3,user2=user4)
+    team1 = Team.objects.create(_user1=user1,_user2=user2)
+    team2 = Team.objects.create(_user1=user3,_user2=user4)
 
-    game = Game.objects.create(team1=team1, team2=team2)
+    game = Game.objects.create(_team1=team1, _team2=team2)
     
     return game
 
