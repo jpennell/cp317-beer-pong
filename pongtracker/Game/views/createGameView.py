@@ -142,26 +142,6 @@ def getGame(request,game_id):
     
     return render(request, 'game/detail.html',{'game':game})
 
-def _invalidErrors(form):
-    formErrors = []
-    
-    for error in form.errors:
-        formErrors.append(error)
-    
-    if ('email2' in formErrors):
-        form.err2 = "Invalid email"
-    if ('email3' in formErrors):
-        form.err3 = "Invalid email"
-    if ('email4' in formErrors):
-        form.err4 = "Invalid email"
-    if ('username2' in formErrors):
-        form.err2 = "This field is required"
-    if ('username3' in formErrors):
-        form.err3 = "This field is required"
-    if ('username4' in formErrors):
-        form.err4 = "This field is required"
-    
-    return
 
 def _findUser(username):
     """finds user in the database
@@ -182,67 +162,6 @@ def _findUser(username):
     finally:
         return user   
 
-def _chkBlank(usernames):
-    """checks for blank usernames
-
-    Keyword arguments:
-    usernames -- list of strings; usernames entered on form
-    
-    Contributors: Matt Hengeveld
-    
-    Output:     False if no blanks
-                True if blanks
-        
-    """
-    
-    errFlag = False;
-    
-    for x in range(len(usernames)):
-        if usernames[x] == '':
-             errFlag = True
-             
-    return errFlag    
-
-def _chkDup(usernames, errList):
-    """checks for duplicate usernames
-
-    Keyword arguments:
-    usernames -- list of strings; usernames entered on form
-    
-    Contributors: Matt Hengeveld
-    
-    Output:     False if no duplicates
-                True if duplicates
-        
-    """
-    
-    for x in range(len(usernames)):
-        if (usernames.count(usernames[x]) > 1):
-            errList[x] = "Duplicate user"
-                
-    return errList
-
-def _chkUsersExist(users, regUser, errList):
-    """checks database to see if users exist; does not check users that have 'register to play' checked
-
-    Keyword arguments:
-    users -- list of users
-    regUser -- list of checkbox states (indicating 'register to play')
-    
-    Contributors: Matt Hengeveld
-    
-    Output:     False if a user does not exist
-                True if all users exist
-                index contains index of user(s) that does not exist
-        
-    """
-
-    for x in range(len(users)):
-        if regUser[x] is None:
-            if users[x] is None:
-                errList[x+1] = "User not registered"
-    
-    return errList
 
 def _chkRegUsers(users, regUser, errList):
     
@@ -256,23 +175,7 @@ def _chkRegUsers(users, regUser, errList):
              
     return errList
 
-def _chkEmails(regUser, emails, errList):
-    
-    for x in range(len(regUser)):
-        if regUser[x] is not None:
-            if emails[x] is u'':
-                errList[x+1] = "Email required for registration"
-    
-    return errList
 
-def _chkUsernames(usernames, errList):
-    
-    for x in range(len(usernames)):
-        match = re.search('[^A-Za-z0-9_.]',usernames[x])
-        if match:
-            errList[x] = "Username must contain only the characters A-Z a-z 0-9 _ ."
-            
-    return errList
 
 def _regUsers(users, usernames, emails, regUser):
     """registers users who aren't already registered; assigns 8 character random password; emails username and password
