@@ -8,8 +8,16 @@ from django.contrib import messages
 
 
 def deactivateAccount(request):
+    """Processes a request whenever a  brower is sent to deactivate the account
+    Keyword arguments:
+        request -- The request sent to the url
+        
+    Contributors:
+    Quinton Black
     
-    print("Deactivating account")
+    Output:
+        HTTPRESPONSE -- either a redirect or a render
+    """
         
     if not request.user.is_authenticated():
         messages.add_message(request,message.INFO,'Please Login')

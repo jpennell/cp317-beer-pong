@@ -6,37 +6,43 @@ import random
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.core.mail import send_mail, BadHeaderError
+from types import *
 
     
-"""----------------------------------------------
-# Creates an HttpResponseRedirect based on url input 
-# and keyword arg parameters
-#
-#    returns: HttpResponseRedirect
-#----------------------------------------------"""
 
 def redirect_with_params(url,**kwargs):
-    params = urllib.urlencode(kwargs)
-    return HttpResponseRedirect(url + "?%s" % params)
-
-
-def sendEmail(username, email, password,message):
-    """
-    sends a new user their temporary password
+    """   Creates an HttpResponseRedirect based on url input 
 
     Keyword arguments:
-    username -- user's username (str)
-    password -- user's temp password (str)
-    email -- user's email (str)
+    url -- url to post to (String)
+    **kwarfs -- any additional parameters
     
     Contributors:
     Erin Cramer
     
     Output:
+        HttpResponseRedirect
+    """
+    params = urllib.urlencode(kwargs)
+    return HttpResponseRedirect(url + "?%s" % params)
+
+
+def sendEmail(username, email, password,message):
+    """Sends a new user their temporary password
+
+    Keyword arguments:
+    username -- user's username (String)
+    password -- user's temp password (String)
+    email -- user's email (String)
+    message -- the message to send (String)
+    
+    Contributors:
+    Erin Cramer
+    Quinton Black
+    
+    Output:
         
     """
-    
-    
     try:
         send_mail('Pong Tracker Account', message, 'thepongtracker@gmail.com', [email], fail_silently = False )
     except BadHeaderError:
@@ -45,13 +51,20 @@ def sendEmail(username, email, password,message):
     return
 
 
-#----------------------------------------------
-# Creates a random password of length len
-# len: int length of password
-#
-# returns: string
-#----------------------------------------------
 def createRndPass(length):
+    """   Creates a random password of a given length
+
+    Keyword arguments:
+    length -- length of password to provide
+    
+    Contributors:
+    Erin Cramer
+    
+    Output:
+        rndPass - a random password
+    """
+    assert type(length) is IntType, "length must be an integer" 
+    
     passChars = list(string.ascii_letters + string.digits) #list of lowercase, uppercase and digits
     passChars.remove('l') #remove characters that look similar to others
     passChars.remove('O')

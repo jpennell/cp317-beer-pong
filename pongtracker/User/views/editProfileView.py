@@ -9,19 +9,17 @@ from django.contrib import messages
 
 
 def editProfile(request):
-    """
-    {{Description}}
+    """Proccess a request to the profile/edit
 
     Keyword arguments:
-    variable -- description 
-    variable -- description 
-    
+    request -- the request sent to the funciton 
+       
     Contributors:
     Quinton Black
     Erin Cramer
     
     Output:
-        
+        HTTPResponse -- The page to redirect or render
     """
 
     if not request.user.is_authenticated():
