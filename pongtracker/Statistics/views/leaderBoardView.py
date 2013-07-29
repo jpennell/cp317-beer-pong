@@ -20,9 +20,9 @@ def leaderboardPage(request):
     
     username = request.session['username']
     
-    topRanked = _getTopRanked(10)
+    topRanked = getTopRanked(10)
         
-    _displayBoard(topRanked,form)
+    displayBoard(topRanked,form)
     
     if request.method == 'POST':
         
@@ -33,11 +33,11 @@ def leaderboardPage(request):
         _blankBoard(form)
         
         if filterChoice == form.choices[0]:
-            topRanked = _getTopRanked(10)
-            _displayBoard(topRanked,form)
+            topRanked = getTopRanked(10)
+            displayBoard(topRanked,form)
         else:
             instLeaders = getInstitutionLeaders(10, filterChoice)
-            _displayBoard(instLeaders, form)
+            displayBoard(instLeaders, form)
                        
         return render(request, 'statistics/leaderboard.html', {'form':form})
         
@@ -51,7 +51,7 @@ def _blankBoard(form):
         
     return
 
-def _displayBoard(topRanked, form):
+def displayBoard(topRanked, form):
     """
     This method puts the top ten leaders into the leaderboard form
 
@@ -100,7 +100,7 @@ def getTotalSunk(s):
     
     return total
 
-def _getTopRanked(limit):
+def getTopRanked(limit):
     """
     This method finds and retrieve's the top ranked users
 

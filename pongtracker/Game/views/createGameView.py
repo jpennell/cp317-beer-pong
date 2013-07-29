@@ -28,22 +28,13 @@ def createNewGameRequest(request):
         messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
         return redirect('/profile/edit')
     
-    username = ''
-
-    try:
-        username = request.session['username']
-    except:
-        pass
-    
-
+    username = request.session['username']
     
     form = CreateGameForm(initial={'username1':username})
     # on POST
     if request.method == 'POST':
-        print("Checking form with post")
         form = CreateGameForm(request.POST)
 
-        
         if form.is_valid():
             
             # clean all data
@@ -82,19 +73,14 @@ def createNewGameRequest(request):
                 # no errors; create game     
                 game = _createNewGame(users[0], users[1], users[2], users[3])
                 
-                return redirect('/game/' + str(game.id)+'/play')
+                return redirect('/game/' + str(game.id) +'/play')
             
         else:
 
             return render(request, 'game/create.html', {'form': form})      
-        
-        
-    
 
     context = Context({'title': 'Create Game', 'form': form, 'username':username})
-        
-        
-        
+           
     return render(request, 'game/create.html',context)
 
 def _getUsernameTakenSuggestions(usernames,regUser):

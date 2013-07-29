@@ -13,15 +13,18 @@ def scoreGame(request, game_id):
         messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
         return redirect('/profile/edit')
     
+    username = request.session['username']
+    
+    game = Game.objects.get(pk=game_id)
+    users = [game.getTeam1().getUser1(), game.getTeam1().getUser2(), game.getTeam2().getUser1(), game.getTeam2().getUser2()]
+    
     #get the info we need
     if request.method == 'POST':
-    
-        username = request.session['username']
+
         eventTypeName = request.POST['eventType']
         
         eventType = EventType.objects.get(_typeName=eventTypeName)
         user = PongUser.objects.get(username=username)
-        game = Game.objects.get(pk=game_id)
         
         if eventTypeName == 'Undo':
             
@@ -30,8 +33,10 @@ def scoreGame(request, game_id):
         else:
             #create event
             event = Event.objects.create(_game=game, _eventType=eventType, _user=user, _cup1=True, _cup2=False, _cup3=False, _cup4=False, _cup =False, _cup6=False)
-        
-    return render(request,'game/play.html')
+    
+    url = '/game/' + str(game.id) + '/play'
+    print(url)
+    return render(request, url, {'users': users})
     #not sure what to render/redirect to if it even needs to happen
     
     

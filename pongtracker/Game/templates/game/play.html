@@ -15,12 +15,12 @@ Welcome, <span id="player-name">{{ request.session.username }} </span><span id="
 		<tr id="statistics">
 			<td align="center">
 				<div id="picture"></div> <br />
-						<span id="player-name"> <h4>{{ request.session.username }}</h4> </span>
+						<span id="player-name"> <h4>{{ users.0.getUsername() }}</h4> </span>
 					</td>
 					<td align="center"> 
 						<div id="picture"></div>
 						<br/>
-						<span id="player-name"> <h4>{{ username2 }}</h4> </span>
+						<span id="player-name"> <h4>{{ users.1.getUsername() }}</h4> </span>
 					</td>
 					<td>
 						&nbsp;
@@ -28,12 +28,12 @@ Welcome, <span id="player-name">{{ request.session.username }} </span><span id="
 					<td align="center">
 						<div id="picture"></div>
 						<br/>
-						<span id="player-name"> <h4>{{ username3 }}</h4> </span>
+						<span id="player-name"> <h4>{{ users.2.getUsername() }}</h4> </span>
 					</td>
 					<td align="center">
 						<div id="picture"></div>
 						<br/>
-						<span id="player-name"> <h4>{{ username4 }}</h4> </span>
+						<span id="player-name"> <h4>{{ users.3.getUsername() }}</h4> </span>
 					</td>
 				</tr>
 				<tr>
