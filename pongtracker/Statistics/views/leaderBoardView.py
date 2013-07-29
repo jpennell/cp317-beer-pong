@@ -207,7 +207,7 @@ def getInstitutionLeaders(numberOfLeaders, institutionName):
         max = (count*querySize)-1
         userRanks = RankView.objects.all()[min:max]
         if (len(userRanks) < 1):
-            break;
+            break
         elif (len(userRanks) < max):
             size = len(userRanks)
         else:
@@ -215,7 +215,11 @@ def getInstitutionLeaders(numberOfLeaders, institutionName):
         for x in range(size):
             user_id = userRanks[x].id
             user = PongUser.objects.get(id=user_id)
-            userInstitution = user.getInstitution().getName()
+            try:
+                userInstitution = user.getInstitution().getName()
+            except:
+                userInstitution = None
+                
             if (userInstitution == institutionName):
                 leaders.append(user)
         count += 1
