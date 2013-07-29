@@ -131,7 +131,7 @@ var rotateCups = function() {
 		$(t1).css('-webkit-transform','')
 		
 	if ($(t2).css('-webkit-transform') == 'none')
-		$(t2).css('-webkit-transform','rotate(270deg)')
+		$(t2).css('-webkit-transform','rotate(-90deg)')
 	else
 		$(t2).css('-webkit-transform','')
 }
