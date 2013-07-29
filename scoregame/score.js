@@ -121,6 +121,26 @@ var bounceShot = function(team, cup) {
 		clickEvent : 'vclick'
 	})
 }
+
+var rotateCups = function() {
+	var t1 = '#team1 .cups'
+	var t2 = '#team2 .cups'
+	if ($(t1).css('-webkit-transform') == 'none')
+		$(t1).css('-webkit-transform','rotate(90deg)')
+	else
+		$(t1).css('-webkit-transform','')
+		
+	if ($(t2).css('-webkit-transform') == 'none')
+		$(t2).css('-webkit-transform','rotate(270deg)')
+	else
+		$(t2).css('-webkit-transform','')
+}
+
+/*
+ * Action event delegates
+ * 
+ */
+
 // delegate for the main cup interface
 $(document).delegate('.cup.active:not(".bcup")', 'click', function() {
 	var classes = this.className.split(' ')
@@ -165,6 +185,11 @@ $(document).delegate('.bcup.active', 'click', function() {
 	var cup = classes[2]
 	console.debug('... and the bonus cup is', cup)
 	deactivateCup(team, cup)
+})
+// delegate for the rotate button
+$(document).delegate('[name="rotate"]', 'click', function() {
+	console.debug('clicked rotate')
+	rotateCups()
 })
 // delegate for the undo button
 $(document).delegate('[name="undo"]', 'click', function() {
