@@ -1,9 +1,9 @@
 /*
  * score.js
- * 
+ *
  * George Lifchits
  * July 2013
- * 
+ *
  * JavaScript code which implements the Score Game aspect of the Pong Tracker project
  */
 
@@ -53,22 +53,28 @@ var bounceShot = function(team, cup) {
 
 	var selectBounceCup = function(team, cup, player) {
 		console.log('... by player', player)
-
-		// clone the div.cups element for the appropriate team into this special div
-		$("#" + team + " .cups").clone().attr('id', 'bounce-cup').appendTo('#select-bounce-cup')
-		// for each cup in the special div...
-		$('#select-bounce-cup .cup').each(function() {
-			// ... add class .bcup to this cup, then add rel=close so that click closes the dialog
+		// close all dialogs for good measure
+		$.mobile.sdCurrentDialog.close()
+		// here we are getting the HTML of the appropriate set of cups
+		thatHtml = $('#' + team + ' .cups').html()
+		// outHtml will contain thatHtml after appropriate modifications
+		outHtml = ''
+		i = 1
+		$(thatHtml).filter('span').each(function() {
+			// add class bcup, add attribute rel=close to close the dialog window on click
 			$(this).addClass('bcup').attr('rel', 'close')
+			// append this element to outHtml
+			outHtml += $(this).prop('outerHTML')
+			if (i == 1 || i == 3)
+				outHtml += "<br/>"
+			i += 1
 		})
-		// create a simpledialog window out of the special div
-		$('#select-bounce-cup').simpledialog2();
 
-		// attach the click event to .bcup elements (inside the above simpledialog window)
-		$('#bounce-cup').delegate('.bcup.active', 'click', function() {
-			var bounceCup = this.className.split(' ')[2]
-			console.log('... with bonus', bounceCup)
-			deactivateCup(team, bounceCup)
+		$('<div>').simpledialog2({
+			mode : 'blank',
+			headerText : 'Which cup?',
+			headerClose : false,
+			blankContent : '<div class="cups">' + outHtml + '</div>'
 		})
 	}
 
@@ -93,7 +99,7 @@ var bounceShot = function(team, cup) {
 		clickEvent : 'vclick'
 	})
 }
-
+// starting point of the program
 $(document).delegate('.cup.active:not(".bcup")', 'click', function() {
 	var classes = this.className.split(' ')
 	var team = classes[1]
@@ -129,5 +135,13 @@ $(document).delegate('.cup.active:not(".bcup")', 'click', function() {
 		showModal : true,
 		clickEvent : 'vclick'
 	})
+})
+
+$(document).delegate('.bcup.active', 'click', function() {
+	var classes = this.className.split(' ')
+	var team = classes[1]
+	var cup = classes[2]
+	console.log('... and the bonus cup is', cup)
+	deactivateCup(team, cup)
 })
 
