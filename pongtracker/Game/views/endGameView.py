@@ -1,5 +1,4 @@
-from django.contrib.auth.models import User
-from django.contrib.auth import get_user_model
+from User.models import *
 from Game.models import Game, Team, Event
 from Statistics.models import RankView, Ranking
 from django.shortcuts import render, redirect
@@ -19,28 +18,23 @@ def viewGameSummaryRequest(request, game_id):
         return redirect('/profile/edit')
     
     form = EndGameForm
-    currUsername = ''
-    currUser = None
-    
-    try:
-        currUsername = request.session['username']
-        currUser = get_user_model().objects.get(username=currUsername)
-    except:
-        pass
 
+    currUsername = request.session['username']
+    currUser = PongUser.objects.get(username=currUsername)
+    
     game = Game.objects.get(pk=game_id)
     
-    users = [game.team1.user1, game.team1.user2, game.team2.user1, game.team2.user2]
-        
+    users = [game.getTeam1().getUser1(), game.getTeam1().getUser2(), game.getTeam2().getUser1(), game.getTeam2().getUser2()]
+    
     if currUser in users:
         
         form.authErr = False
         
         stats = []
-        events = Event.objects.filter(game_id=game_id, event_time__lte=game.date_played)
+        events = Event.objects.filter(_game=game_id, _eventTime__gte=game.getDatePlayed())
         
         for x in range(len(users)):
-            form.usernames[x] = users[x].username
+            form.usernames[x] = users[x].getUsername()
             form.ranks[x] = getUserRank(users[x])
             stats.append(_getStats(users[x], events, game_id))     
             
@@ -62,16 +56,17 @@ def _getStats(user, events, game_id):
     redemptions = 0
     
     for x in range(len(events)):
-        if (events[x].user == user):
-            if events[x].event_type.typeName == 'sunk':
+        if (events[x].getUser() == user):
+            event = events[x].getEventType().getName()
+            if event == 'sunk':
                 sunk += 1
-            elif events[x].event_type.typeName == 'trick':
+            elif event == 'trick':
                 tricks += 1
-            elif events[x].event_type.typeName == 'bounce':
+            elif event == 'bounce':
                 bounces += 1
-            elif events[x].event_type.typeName == 'foul':
+            elif event == 'foul':
                 fouls += 1
-            elif events[x].event_type.typeName == 'redemption':
+            elif event == 'redemption':
                 redemptions += 1
     
     return [sunk,tricks,bounces,fouls,redemptions]

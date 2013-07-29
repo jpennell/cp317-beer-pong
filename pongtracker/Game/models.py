@@ -47,6 +47,9 @@ class Game(models.Model):
 
 class EventType(models.Model):
     _typeName = models.CharField(max_length=20)
+    
+    def getName(self):
+        return self._typeName
 
     def __unicode(self):
         return self._typeName
@@ -62,3 +65,33 @@ class Event(models.Model):
     _eventType = models.ForeignKey(EventType)
     _game = models.ForeignKey(Game,related_name = "Events")
     _user = models.ForeignKey(PongUser, related_name = "Events")
+    
+    def getEventTime(self):
+        return self._eventTime
+    
+    def getCup1(self):
+        return self._cup1
+    
+    def getCup2(self):
+        return self._cup2
+    
+    def getCup3(self):
+        return self._cup3
+    
+    def getCup4(self):
+        return self._cup4
+    
+    def getCup5(self):
+        return self._cup5
+    
+    def getCup6(self):
+        return self._cup6
+    
+    def getEventType(self):
+        return self._eventType
+    
+    def getGame(self):
+        return self._game
+    
+    def getUser(self):
+        return self._user
