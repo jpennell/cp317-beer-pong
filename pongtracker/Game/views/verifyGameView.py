@@ -16,17 +16,24 @@ def verifyGameRequest(request):
         
     """
     username = request.session['username']
-    
-    gamesToConfirm = _obtainGamesToConfirm(username)
+
+    gamesToConfirm, gamesOthersConfirm = _obtainGamesToBeConfirmed(username)
     confirmGameForms = []
+    otherGameForms = []
+
     for game in gamesToConfirm:
         form = ConfirmGameForm()
-        _writeGameToForm(game,form)
+        _writeGameToForm(game, form)
         confirmGameForms.append(form)
-    
-    return render(request, 'game/confirm.html', { 'confirm_game_forms': confirmGameForms})
 
-def _obtainGamesToConfirm(username):
+    for game in gamesOthersConfirm:
+        form = ConfirmGameForm()
+        _writeGameToForm(game, form)
+        otherGameForms.append(form)
+    
+    return render(request, 'game/confirm.html', { 'confirm_game_forms': confirmGameForms, 'other_games': otherGameForms})
+
+def _obtainGamesToBeConfirmed(username):
     """
     Finds and returns the Games which the PongUser has played
     that need confirming/denying.
@@ -36,45 +43,37 @@ def _obtainGamesToConfirm(username):
     
     Contributors: Richard Douglas
     
-    Output: a Python list of the Games that the PongUser is allowed to confirm/deny.
-            This list is ordered by date with more recent Games going at the front.
+    Output: gamesToConfirm -- a Python list of Games that the User can confirm/deny
+            gamesOthersConfirm -- a Python list of Games that the opposing Team can confirm/deny
         
     """
     allGames = Game.objects.all().order_by('-_datePlayed')
     
     gamesToConfirm = []
+    gamesOthersConfirm = []
+    
     for game in allGames:
-        if _gameIsToBeConfirmedBy(game,username):
+        if _userOnTeam(game.getTeam2(), username):
             gamesToConfirm.append(game)
-    return gamesToConfirm
+        elif _userOnTeam(game.getTeam1(), username):
+            gamesOthersConfirm.append(game)
+    return gamesToConfirm, gamesOthersConfirm
 
-def _gameIsToBeConfirmedBy(game,username):
+def _userOnTeam(team, username):
     """
-    Determines whether the Game is meant to be confirmed/denied by the PongUser.
-
+    Determines whether the PongUser is on this particular Team.
+    
     Keyword arguments:
-    game --  the Game we are checking
-    username -- the username of the PongUser 
+    team -- the Team we are checking
+    username -- the username of the PongUser
     
     Contributors: Richard Douglas
     
-    Output: True if the PongUser is allowed to confirm/deny this Game, False otherwise.
-            
-            The PongUser is only allowed to confirm/deny Games that have ended, haven't already
-            been confirmed/denied and in which they participated on the Team opposing the PongUser
-            who created the Game.
-        
+    Output: True if the PongUser is on the Team, False otherwise.
     """
-    if game.getIsConfirmed():
-        needsConfirmation = False
-    else:
-        #only players on Team2 can confirm/deny the Game
-        teamWhoConfirms = game.getTeam2()
-        usersOnTeam = [teamWhoConfirms.getUser1(), teamWhoConfirms.getUser2()]
-        usernamesOfUsers = [user.username for user in usersOnTeam]
-        needsConfirmation = username in usernamesOfUsers
-    return needsConfirmation
-
+    teamUsers = [team.getUser1(), team.getUser2()]
+    teamUsernames = [teamUser.getUsername() for teamUser in teamUsers]
+    return username in teamUsernames
 
 def _writeGameToForm(game,form):
     """
@@ -88,14 +87,13 @@ def _writeGameToForm(game,form):
     Contributors: Richard Douglas
     
     Output: None
-        
     """
     #obtain the usernames
     teams = [game.getTeam1(),game.getTeam2()]
     team1 = [teams[0].getUser1(),teams[0].getUser2()]
     team2 = [teams[1].getUser1(),teams[1].getUser2()]
-    usernames = [team1[0].username, team1[1].username,
-                 team2[0].username, team2[1].username]
+    usernames = [team1[0].getUsername(), team1[1].getUsername(),
+                 team2[0].getUsername(), team2[1].getUsername()]
     
     #store the usernames in the form
     form.player1 = usernames[0]

@@ -12,6 +12,9 @@
 
 {% block pagecontent %}
 
+<h4>Games You Verify</h4>
+
+{% if confirm_game_forms %}
 <table>
 		<tr>
 			<th width="2%">Date</th>
@@ -72,4 +75,66 @@
 		</tr>
 {% endfor %}
 </table>
+
+{% else %}
+You have no games to verify.
+{% endif %}
+
+
+<h4>Games To Be Verified By The Opposing Team</h4>
+{% if other_games %}
+<table>
+	<tr>
+		<th width="2%">Date</th>
+		<th width="6%">Team 1</th>
+		<th width="6%">Team 2</th>
+		<th width="1%">Outcome</th>
+		<th width="1%">
+			<div align="left">
+				Confirmation
+			<div align="center">
+		</th>
+	</tr>
+	{% for o_game in other_games %}
+	<tr>
+		<td>
+			<div align="center">{{o_game.date_played}}</div>
+		</td>
+		<td>
+			<div align="center">
+				<table border="1">
+					<center>
+						<tr>
+							<th>{{o_game.player1}}</th>
+							<th>{{o_game.player2}}</th>
+						</tr>
+						<td>1</td>
+						<td>2</td>
+					</center>
+				</table>
+			</div>
+		</td>
+		<td>
+			<div align="center">
+				<table border="1">
+					<center>
+						<tr>
+							<th>{{o_game.player3}}</th>
+							<th>{{o_game.player4}}</th>
+						</tr>
+						<td>3</td>
+						<td>4</td>
+					</center>
+				</table>
+			</div>
+		</td>
+		<td><div align="center">Win</div></td>
+		<td></td>
+	</tr>
+	{% endfor %}
+</table>
+{% else %}
+Your opponents have no games that need verifying.
+{% endif %}
+
 {% endblock %}
