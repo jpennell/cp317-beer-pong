@@ -56,6 +56,9 @@ class PongUser(AbstractUser):
     
     def getHasAcceptedTerms(self):
         return self._hasAcceptedTerms    
+    
+    def getConfirmRequired(self):
+        return self._ConfirmRequired
 
 
     def setHeight(self, value):
@@ -91,6 +94,8 @@ class PongUser(AbstractUser):
     def setHasAcceptedTerms(self, value):
         self._hasAcceptedTerms = value    
     
+    def setConfirmRequired(self, value):
+        self._ConfirmRequired = value    
     
     YEAR_CHOICES = []
     for r in range((datetime.datetime.now().year),(datetime.datetime.now().year+10)):
@@ -103,5 +108,5 @@ class PongUser(AbstractUser):
     _isBanned = models.BooleanField(default=False)
     _hasUpdatedProfile = models.BooleanField(default = False)
     _hasAcceptedTerms =  models.BooleanField(default = False)
-    
+    _ConfirmRequired =  models.BooleanField(default = False)
     
