@@ -14,6 +14,7 @@ def viewHomepage(request):
     Contributors:
     Erin Cramer
     Quinton Black
+    Matthew Hengeveld
     
     Output:
         
