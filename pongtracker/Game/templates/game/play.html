@@ -1,23 +1,26 @@
-{% extends "base.html" %} {% load staticfiles %} {% block pagetitle %} |
-Game{% endblock %} {% block head %}
+{% extends "base.html" %} 
+{% load staticfiles %} 
+{% block pagetitle %} |Game{% endblock %} 
+{% block head %}
 <link href="{% static 'css/profile-styles.css' %}" rel='stylesheet'
 	type='text/css'>
 {% endblock %}
-                Welcome, <span id="player-name">{{ request.session.username }} </span><span id="logout"><a href="/index/logout">Log Out</a></span>
+
+Welcome, <span id="player-name">{{ request.session.username }} </span><span id="logout"><a href="/index/logout">Log Out</a></span>
+                
 <!------ CONTENT --------->
 {% block pagecontent %}
 <div id="page-content">
 	<table id="profile">
 		<tr id="statistics">
 			<td align="center">
-				<div id="picture"></div> <br /> <span id="player-name">{{
-					username1 }} </span>
-						<span id="player-name">{{ request.session.username }} </span>
+				<div id="picture"></div> <br />
+						<span id="player-name"> <h4>{{ request.session.username }}</h4> </span>
 					</td>
 					<td align="center"> 
 						<div id="picture"></div>
 						<br/>
-						<span id="player-name">{{ username2 }} </span>
+						<span id="player-name"> <h4>{{ username2 }}</h4> </span>
 					</td>
 					<td>
 						&nbsp;
@@ -25,12 +28,12 @@ Game{% endblock %} {% block head %}
 					<td align="center">
 						<div id="picture"></div>
 						<br/>
-						<span id="player-name">{{ username3 }} </span>
+						<span id="player-name"> <h4>{{ username3 }}</h4> </span>
 					</td>
 					<td align="center">
 						<div id="picture"></div>
 						<br/>
-						<span id="player-name">{{ username4 }} </span>
+						<span id="player-name"> <h4>{{ username4 }}</h4> </span>
 					</td>
 				</tr>
 				<tr>
@@ -39,7 +42,8 @@ Game{% endblock %} {% block head %}
 					</td>
 				</tr>
 				<tr>
-                     <td colspan="3" align="center" id="cups-sunk-stats"><h4 align="center">Team 1</h4>
+                     <td colspan="3" align="center" id="cups-sunk-stats">
+                     	<h4 align="center">Team 1</h4>
                         <div id="cups">
                             <span class="cup" id="cup1"></span>
                             <br/>
@@ -50,7 +54,8 @@ Game{% endblock %} {% block head %}
                             <span class="cup" id="cup5"></span>
                             <span class="cup" id="cup6"></span>
                         </div></td>
-					 <td colspan="2" align="center" id="cups-sunk-stats"><h4 align="center">Team 2</h4>
+					 <td colspan="2" align="center" id="cups-sunk-stats">
+					 	<h4 align="center">Team 2</h4>
                         <div id="cups">
                             <span class="cup" id="cup1"></span>
                             <br/>
@@ -85,15 +90,6 @@ Game{% endblock %} {% block head %}
 					</td>
 				</tr>
 			</table>
-        </div>
-        <!------- FOOTER --------->
-        <div id="footer">
-            <table>
-                <tr>
-                    <td class="left"> CP317 Software Engineering </td>
-                    <td class="right"> Wilfrid Laurier University, 2013 </td>
-                </tr>
-            </table>
         </div>
     </div>
 {% endblock %}
