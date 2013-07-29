@@ -68,9 +68,12 @@ def createNewGameRequest(request):
             #CHECK TO SEE IF ANY USERNAMES ARE TAKEN AND SUGGESTIONS ARE NEEDED
             suggestionList=_getUsernameTakenSuggestions(usernames, regUser)
             if suggestionList.count([''])<4:
-                form.suggestedUsernames2 = suggestionList[1]
-                form.suggestedUsernames3 = suggestionList[2]
-                form.suggestedUsernames4 = suggestionList[3]
+                if suggestionList[1]!=['']:
+                    form.suggestedUsernames2 = suggestionList[1]
+                if suggestionList[2]!=['']:              
+                    form.suggestedUsernames3 = suggestionList[2]
+                if suggestionList[3]!=['']:                
+                    form.suggestedUsernames4 = suggestionList[3]
                                 
             else:
                 # register users

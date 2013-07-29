@@ -127,10 +127,7 @@ def _checkUserExists(usernameList,toRegisterUserList,self):
             if user is None:
                 msg = "Username not registered, please click register if you would like to claim that username"
                 self._errors['username{0}'.format(index+2)] = self.error_class([msg])
-#        if username is not None and  toRegisterUserList[index] == True:
-#                msg = "That already username in use"
-#                self._errors['username{0}'.format(index+2)] = self.error_class([msg])
-        
+
         index+=1
     return
         
