@@ -34,7 +34,7 @@ def registerNewUser(request):
             email = form.cleaned_data['email']
             
             if _usernameTaken(username):
-                suggestedUsernames = _suggestUsernames(username,5)
+                suggestedUsernames = suggestUsernames(username,5)
                 context = Context({'regTitle': 'Register', 'registrationForm': form,'suggestedUsernames':suggestedUsernames})
                 return render(request, 'user/index.html',context)   
 
@@ -76,7 +76,7 @@ def _usernameTaken(username):
         pass
     return taken
 
-def _suggestUsernames(username, numSug):
+def suggestUsernames(username, numSug):
     """
     finds and returns other usernames similar to the one the user wanted
     

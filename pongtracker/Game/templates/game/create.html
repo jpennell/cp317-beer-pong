@@ -52,7 +52,7 @@
 
 <div id="page-content">
 	<h1>Create Game</h1>
-    <form method="POST" action="/game/create/">
+    <form method='POST' action="/game/create/">
     
         {% csrf_token %}
         
@@ -70,17 +70,17 @@
             </tr>
             
             <tr>
-            	{% if form.username != '' %}
-                <td width="40%" valign="top">
-                    <label for="username1"> <strong>Player 1: </Strong></label>
-                    <span style="font-size:16px;"><strong>{{ form.username }}</strong></span>
-                    <br/>will be tracking the game.
-                </td>
+            	{% if form.username1 %}
+	                <td width="40%" valign="top">
+	                    <label for="username1"> <strong>Player 1: </Strong></label>
+	                    <span style="font-size:16px;"><strong>{{ form.username1 }}</strong></span>
+	                    <br/>will be tracking the game.
+	                </td>
                 {% else %}
-                <td width="40%" valign="top">
-                    <label for="username1"> <strong>Player 1: </Strong></label>
-                    <span style="color:red; font-size:16px; font-weight:bold;">You must be logged in!</span>
-                </td>
+	                <td width="40%" valign="top">
+	                    <label for="username1"> <strong>Player 1: </Strong></label>
+	                    <span style="color:red; font-size:16px; font-weight:bold;">You must be logged in!</span>
+	                </td>
                 {% endif %}
                 <td width = "10%">
                     &nbsp;
@@ -98,6 +98,14 @@
 			        	</tr>
 			        </table>
 			        {% endif %}
+			        
+			        {% if suggestedUsernames3 %}
+			        	Suggested usernames:<br>
+				        {% for suggestion in suggestedUsernames3 %}
+				        		{{ suggestion }}<br>
+				        {% endfor %}
+				            	
+				     {% endif %}
 			        
                     <br/>
                     {{ form.chkRegister3 }}
@@ -145,6 +153,13 @@
 			        </table>
 			        {% endif %}
                     
+       			    {% if suggestedUsernames2 %}
+			        	Suggested usernames:<br>
+				        {% for suggestion in suggestedUsernames2 %}
+				        		{{ suggestion }}<br>
+				        {% endfor %}
+				            	
+				     {% endif %}
                     <br/>
                     {{ form.chkRegister2 }}
                     
@@ -181,6 +196,14 @@
 			        </table>
 			        {% endif %}
                     
+                    {% if suggestedUsernames4 %}
+			        	Suggested usernames:<br>
+				        {% for suggestion in suggestedUsernames4 %}
+				        		{{ suggestion }}<br>
+				        {% endfor %}
+				            	
+				     {% endif %}
+                    
                     <br/>
                     {{ form.chkRegister4 }}
                     Register to play
@@ -188,6 +211,7 @@
                     	{{ form.email4 }}
                     	<br>
                     </div>
+                   
                                         	
                     	{% if form.email4.errors %}
 				        <table width="72%">

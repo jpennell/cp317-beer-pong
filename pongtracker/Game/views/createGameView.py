@@ -29,19 +29,20 @@ def createNewGameRequest(request):
         return redirect('/profile/edit')
     
     username = ''
+
     try:
         username = request.session['username']
     except:
         pass
     
-    form = CreateGameForm(initial={'username':username})
+
     
-        
+    form = CreateGameForm(initial={'username1':username})
     # on POST
     if request.method == 'POST':
-
+        print("Checking form with post")
         form = CreateGameForm(request.POST)
-        form.username = username
+
         
         if form.is_valid():
             
@@ -54,50 +55,34 @@ def createNewGameRequest(request):
             email3 = form.cleaned_data['email3']
             email4 = form.cleaned_data['email4']
             
+            chkRegister2 = form.cleaned_data['chkRegister2']
+            chkRegister3 = form.cleaned_data['chkRegister3']
+            chkRegister4 = form.cleaned_data['chkRegister4']
+    
             # put all data in lists
-            regUser = [request.POST.get("chkRegister2"), request.POST.get("chkRegister3"), request.POST.get("chkRegister4")]      
+            regUser = [False,chkRegister2, chkRegister3, chkRegister4]      
             usernames = [username, username2, username3, username4]
-            emails = [email2, email3, email4]
+            emails = ['',email2, email3, email4]
 
-            # initialize error list
-            errList = ['','','','']
             
-            # check for duplicate usernames
-            errList = _chkDup(usernames, errList)
-            
-            # check usernames for ^A-Za-z0-9_.
-            errList = _chkUsernames(usernames, errList)
-
-            # get users from database
-            users = [_findUser(usernames[0]), _findUser(usernames[1]), _findUser(usernames[2]), _findUser(usernames[3])]     
-            
-            # check if all users exist
-            errList = _chkUsersExist(users[1:4], regUser, errList)
-            
-            # check if emails are blank
-            errList = _chkEmails(regUser, emails, errList)
-            
-            # check if registering users have entered a taken username
-            errList = _chkRegUsers(users[1:4], regUser, errList)
-            
-            # display errors in form
-            if (errList.count('') < 4) or username == '':
-                form.err2 = errList[1]
-                form.err3 = errList[2]
-                form.err4 = errList[3]
-                return render(request, 'game/create.html', {'form': form}) 
-            
-            # register users
-            users = _regUsers(users, usernames, emails, regUser) 
-            
-            # no errors; create game     
-            game = _createNewGame(users[0], users[1], users[2], users[3])
-            
-            return redirect('/game/' + str(game.id)+'/play')
+            #CHECK TO SEE IF ANY USERNAMES ARE TAKEN AND SUGGESTIONS ARE NEEDED
+            suggestionList=_getUsernameTakenSuggestions(usernames, regUser)
+            if suggestionList !=[]:
+                form.suggestedUsernames2 = suggestionList[1]
+                form.suggestedUsernames3 = suggestionList[2]
+                form.suggestedUsernames4 = suggestionList[3]
+                
+            else:
+                # register users
+                users = _regUsers( usernames, emails, regUser) 
+                
+                # no errors; create game     
+                game = _createNewGame(users[0], users[1], users[2], users[3])
+                
+                return redirect('/game/' + str(game.id)+'/play')
             
         else:
-            # form is invalid
-#            _invalidErrors(form)
+
             return render(request, 'game/create.html', {'form': form})      
         
         
@@ -109,6 +94,21 @@ def createNewGameRequest(request):
         
     return render(request, 'game/create.html',context)
 
+def _getUsernameTakenSuggestions(usernames,regUser):
+    
+    suggestionArray=[]
+    x = 0
+    for username in usernames:
+        if regUser[x] is True:
+            user = _findUser(username)
+            print(user)
+            if user is not None:
+                suggestionForUser =suggestUsernames(username, 5)
+                print(suggestionForUser)
+                suggestionsArray.append(suggestionForUser)
+    print(suggestionArray)
+    return suggestionArray
+                
 
 
 def _createNewGame(user1, user2, user3, user4):
@@ -161,14 +161,14 @@ def _findUser(username):
     """
     user = None
     try:
-        user = get_user_model().objects.get(username=username)
+        user = PongUser.objects.get(username=username)
     except User.DoesNotExist:
         user = None
     finally:
         return user   
 
 
-def _chkRegUsers(users, regUser, errList):
+def _chkRegUsers(users, regUser):
     
     for x in range(len(users)):
         if regUser[x] is not None:
@@ -182,7 +182,7 @@ def _chkRegUsers(users, regUser, errList):
 
 
 
-def _regUsers(users, usernames, emails, regUser):
+def _regUsers( usernames, emails, regUser):
     """registers users who aren't already registered; assigns 8 character random password; emails username and password
 
     Keyword arguments:
@@ -194,11 +194,11 @@ def _regUsers(users, usernames, emails, regUser):
     
     Output:     nothing
         
-    """
-    
-    for x in range(len(users)-1):
-        if regUser[x] is not None:
-            regGameUser(usernames[x+1], emails[x])
-            users[x+1] = _findUser(usernames[x+1])
+    """   
+    users=[]
+    for x in range(len(usernames)):
+        if regUser[x] is not False:
+            regGameUser(usernames[x], emails[x])
+        users.append( _findUser(usernames[x]))
     
     return users

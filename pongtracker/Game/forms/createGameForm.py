@@ -4,8 +4,8 @@ import re
 
 class CreateGameForm(forms.Form):
         
-    username = forms.CharField(
-        widget=forms.TextInput(attrs={'placeholder': 'username','class':'disabled', 'readonly':'readonly'}),
+    username1 = forms.CharField(
+        widget=forms.TextInput(attrs={'class':'disabled', 'readonly':'readonly'}),
         label="Player 1",
         max_length=30)
     
@@ -60,11 +60,16 @@ class CreateGameForm(forms.Form):
         required = False,
         widget = forms.CheckboxInput(attrs={'onclick':"toggle_more4();"}), 
     )
-
+    
+    suggestedUsernames2 =''
+    suggestedUsernames3 =''
+    suggestedUsernames4 =''
     
     def clean(self):
+    
+        
         cleaned_data = super(CreateGameForm, self).clean()
-        username1 = cleaned_data.get('username')
+        username1 = cleaned_data.get('username1')
         username2 = cleaned_data.get('username2')
         username3 = cleaned_data.get('username3')
         username4 = cleaned_data.get('username4')
@@ -78,10 +83,9 @@ class CreateGameForm(forms.Form):
         
         usernameList = [username1,username2,username3,username4]
         toRegisterUserList = [False,chkRegister2,chkRegister3,chkRegister4]
-        
 
         #Check that no usernames are repeated
-        _checkDuplicateUsernames(usernameList[1:],self)
+        _checkDuplicateUsernames(usernameList,self)
         #Check that non to be registered users exist
                 
         _checkUserExists(usernameList[1:],toRegisterUserList[1:],self)
@@ -121,14 +125,16 @@ def _checkUserExists(usernameList,toRegisterUserList,self):
         if username is not None and toRegisterUserList[index] == False:
             user = _findUser(username)
             if user is None:
-                print('username{0}'.format(index+2))
                 msg = "Username not registered, please click register if you would like to claim that username"
                 self._errors['username{0}'.format(index+2)] = self.error_class([msg])
+#        if username is not None and  toRegisterUserList[index] == True:
+#                msg = "That already username in use"
+#                self._errors['username{0}'.format(index+2)] = self.error_class([msg])
+        
         index+=1
     return
         
 def _checkUsernames(usernames,self):
-    print(usernames)
     for x in range(len(usernames)):
         if usernames[x] is not None:
             match = re.search('[^A-Za-z0-9_.]',usernames[x])
@@ -158,7 +164,7 @@ def _checkDuplicateUsernames(usernames,self):
         if usernames[x] is not None:
             if (usernames.count(usernames[x]) > 1):
                 msg = 'Duplicate user'
-                self._errors['username{0}'.format(x+2)] = self.error_class([msg])     
+                self._errors['username{0}'.format(x+1)] = self.error_class([msg])     
     return    
 
 def _findUser(username):
