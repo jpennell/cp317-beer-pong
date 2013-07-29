@@ -7,10 +7,28 @@
  * JavaScript code which implements the Score Game aspect of the Pong Tracker project
  */
 
+lastMove = {
+	team : '',
+	cup : ''
+}
+
+var undoMove = function() {
+	if (lastMove.team == '' || lastMove.cup == '') {
+		console.log('nothing to undo!')
+		return ''
+	}
+	// construct css selector eg: .team1.cup1
+	var sel = '.' + lastMove.team + '.' + lastMove.cup
+	$(sel).addClass('active')
+	lastMove.team = ''
+	lastMove.cup = ''
+}
 var deactivateCup = function(team, cup) {
 	// construct css selector eg: .team1.cup1
 	var sel = '.' + team + '.' + cup
 	$(sel).removeClass('active')
+	lastMove.team = team
+	lastMove.cup = cup
 }
 var cupSunk = function(team, cup) {
 	console.log('cup', cup, 'on team', team, 'was sunk')
@@ -99,7 +117,7 @@ var bounceShot = function(team, cup) {
 		clickEvent : 'vclick'
 	})
 }
-// starting point of the program
+// delegate for the main cup interface
 $(document).delegate('.cup.active:not(".bcup")', 'click', function() {
 	var classes = this.className.split(' ')
 	var team = classes[1]
@@ -136,12 +154,25 @@ $(document).delegate('.cup.active:not(".bcup")', 'click', function() {
 		clickEvent : 'vclick'
 	})
 })
-
+// delegate for the bounce shot bonus cup dialog
 $(document).delegate('.bcup.active', 'click', function() {
 	var classes = this.className.split(' ')
 	var team = classes[1]
 	var cup = classes[2]
 	console.log('... and the bonus cup is', cup)
 	deactivateCup(team, cup)
+})
+// delegate for the undo button
+$(document).delegate('[name="undo"]', 'click', function() {
+	console.log('clicked undo')
+	undoMove()
+})
+// delegate for the abort button
+$(document).delegate('[name="abort"]', 'click', function() {
+	console.log('clicked abort')
+})
+// delegate for the end game button
+$(document).delegate('[name="end"]', 'click', function() {
+	console.log('clicked end game')
 })
 
