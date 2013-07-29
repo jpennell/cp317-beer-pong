@@ -21,40 +21,40 @@ class EditProfileForm( forms.ModelForm ):
 
     first_name = forms.CharField( 
         max_length = 250,
-        label = "First name",
+        label = "First name *",
         widget = forms.TextInput( attrs = {'placeholder': 'first name'} ),
         required = True,
             )
 
     last_name = forms.CharField( 
         max_length = 250,
-        label = "Last name",
+        label = "Last name *",
         widget = forms.TextInput( attrs = {'placeholder': 'last name'} ),
         required = True,
     )
 
     email = forms.EmailField( 
         max_length = 250,
-        label = "Email address",
+        label = "Email address *",
         widget = forms.TextInput( attrs = {'placeholder': 'email'} ),
         required = True,
     )
 
     _height = forms.IntegerField( 
-        label = "Height",
-        widget = forms.TextInput( attrs = {'placeholder': 'height'} ),
+        label = "Height *",
+        widget = forms.TextInput( attrs = {'placeholder': 'height in cm'} ),
         required = True,
     )
 
     _institution = forms.ModelChoiceField( 
         queryset=Institution.objects.all(),
         required = True,
-        label = "Institution"
+        label = "Institution *"
     )
 
     _graduationYear = forms.ChoiceField( 
         choices= year_choices,
-        label = "Graduation Year",
+        label = "Graduation Year *",
         required = True,
     )
 
@@ -135,7 +135,7 @@ class EditProfileForm( forms.ModelForm ):
             self._errors['_hasAcceptedTerms'] = self.error_class([msg]) 
         
         if height < MIN_HEIGHT:
-            msg = u"You must be at least {0} to play this game.".format(MIN_HEIGHT)   
+            msg = u"You must be at least {0}cm to play this game.".format(MIN_HEIGHT)   
             self._errors['_height'] = self.error_class([msg]) 
             
         elif height > MAX_HEIGHT:

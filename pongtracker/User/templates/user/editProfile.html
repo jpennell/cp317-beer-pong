@@ -12,6 +12,8 @@
 {% block pagecontent %}
 <div id="page-content">
     <h1>{{ title }}</h1>
+    <h4>Fields marked with a * are required</h4>
+    
     
     <form method='post' action='/profile/edit'>
         {% csrf_token %}

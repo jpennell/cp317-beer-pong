@@ -39,7 +39,9 @@ def registerNewUser(request):
                 return render(request, 'user/index.html',context)   
 
             password = regGameUser(username, email)      
-            user_status = loginUser(username, password, request)       
+            user_status = loginUser(username, password, request)
+            msg = 'A temporary password has been sent to the provided email account.'     
+            messages.add_message(request,messages.SUCCESS,msg)  
                        
             return redirect_with_params('/login',user_status=user_status,username=username)
         context = Context({'regTitle': 'Register','registrationForm':form})

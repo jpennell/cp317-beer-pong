@@ -70,11 +70,12 @@ def editProfile(request):
             
             
             messages.add_message(request,messages.SUCCESS,"Profile information has been updated")
-            return redirect('edit/')
+            return redirect('profile/')
         else:
             if user.getHasUpdatedProfile() is False:
                 form.fields['_hasAcceptedTerms'].label = 'I have read and agreed to the terms and conditions'
                 form.fields['_hasAcceptedTerms'].widget.attrs['style'] =''
+                form.fields['oldPassword'].label = 'Temporary Password *'                
             
     else:
         # This the the first page load, display a form with the user filled
@@ -86,7 +87,9 @@ def editProfile(request):
         if user.getHasUpdatedProfile() is False:
             form.fields['_hasAcceptedTerms'].label = 'I have read and agreed to the terms and conditions'
             form.fields['_hasAcceptedTerms'].widget.attrs['style'] =''
+            form.fields['oldPassword'].label = 'Temporary Password *'
 
+            
     context = Context({'title': 'Edit Profile', 'form': form, 'username':username})
 
     return render(request,'user/editProfile.html',context)
