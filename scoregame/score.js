@@ -115,26 +115,10 @@ var bounceShot = function(team, cup) {
 			blankContent : '<div class="cups">' + outHtml + '</div>'
 		})
 	}
-	$(this).simpledialog2({
-		mode : 'button',
-		headerText : 'Who?',
-		headerClose : true,
-		'buttons' : {
-			'Player 1' : {
-				'click' : function() {
-					selectBounceCup(team, cup, 1)
-				}
-			},
-			'Player 2' : {
-				'click' : function() {
-					selectBounceCup(team, cup, 2)
-				}
-			}
-		},
-		forceInput : false,
-		showModal : true,
-		clickEvent : 'vclick'
-	})
+	var selectBounceCupWrap = function(player) {
+		selectBounceCup(team, cup, player)
+	}
+	blamePlayer(selectBounceCupWrap)
 }
 var rotateCups = function() {
 	var t1 = '#team1 .cups'
