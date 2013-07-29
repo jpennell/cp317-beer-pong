@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block pagetitle %} | Deactivate Account{% endblock %}
+
+{% block head %}
+<link href='{% static 'css/profile-styles.css' %}' rel='stylesheet' type='text/css'>
+<link href='{% static 'css/editprofile-styles.css' %}' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block pagecontent %}
+<div id="page-content">
+    <h1>{{ title }}</h1>
+    
+    Liver getting tired eh? Oh well if your are sure you want to deactivate your
+    account please provide your password and it will be deactivated.
+    
+    <form method='post' action='/deactivate'>
+        {% csrf_token %}
+
+        <table id='edit-profile-form'>
+            <!-- display the form fields -->
+            
+            {% for field in form %}
+            <tr>
+                <td>
+                    <span>{{ field.label }}</span>
+                </td>
+                <td>
+                    {{ field }}
+                </td>
+                <td>
+                    {% if field.errors %}
+                    <div class="error">
+                        {{ field.errors }}
+                    </div>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <div class="field">
+            <button name="deactivateAccount" class="btn" type="submit">
+                Submit
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}
