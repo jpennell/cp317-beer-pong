@@ -7,37 +7,40 @@
  * JavaScript code which implements the Score Game aspect of the Pong Tracker project
  */
 
-lastMove = {
+lastMoves = new Array()
+
+move = {
 	team : '',
 	cup : ''
 }
 
 var undoMove = function() {
-	if (lastMove.team == '' || lastMove.cup == '') {
-		console.log('nothing to undo!')
-		return ''
+	lastMove = lastMoves.pop()
+	if (lastMove == undefined) {
+		console.error('nothing to undo!')
+		return undefined
 	}
 	// construct css selector eg: .team1.cup1
 	var sel = '.' + lastMove.team + '.' + lastMove.cup
 	$(sel).addClass('active')
-	lastMove.team = ''
-	lastMove.cup = ''
 }
 var deactivateCup = function(team, cup) {
 	// construct css selector eg: .team1.cup1
 	var sel = '.' + team + '.' + cup
 	$(sel).removeClass('active')
-	lastMove.team = team
-	lastMove.cup = cup
+	lastMoves.push({
+		team : team,
+		cup : cup
+	})
 }
 var cupSunk = function(team, cup) {
-	console.log('cup', cup, 'on team', team, 'was sunk')
+	console.debug('cup', cup, 'on team', team, 'was sunk')
 	deactivateCup(team, cup)
 }
 var partyFoul = function(team, cup) {
-	console.log('team', team, 'cup', cup, 'was a party foul')
+	console.debug('team', team, 'cup', cup, 'was a party foul')
 	var blamePartyFoul = function(player) {
-		console.log('Player', player, 'got a party foul')
+		console.debug('Player', player, 'got a party foul')
 		deactivateCup(team, cup)
 	}
 	$(this).simpledialog2({
@@ -62,15 +65,15 @@ var partyFoul = function(team, cup) {
 	})
 }
 var trickShot = function(team, cup) {
-	console.log('team', team, 'cup', cup, 'was a trick shot')
+	console.debug('team', team, 'cup', cup, 'was a trick shot')
 	deactivateCup(team, cup)
 }
 var bounceShot = function(team, cup) {
-	console.log('team', team, 'cup', cup, 'was a bounce shot')
+	console.debug('team', team, 'cup', cup, 'was a bounce shot')
 	deactivateCup(team, cup)
 
 	var selectBounceCup = function(team, cup, player) {
-		console.log('... by player', player)
+		console.debug('... by player', player)
 		// close all dialogs for good measure
 		//$.mobile.sdCurrentDialog.close()
 		// here we are getting the HTML of the appropriate set of cups
@@ -91,6 +94,7 @@ var bounceShot = function(team, cup) {
 		$('<div>').simpledialog2({
 			mode : 'blank',
 			headerText : 'Which cup?',
+			safeNuke : false,
 			headerClose : false,
 			blankContent : '<div class="cups">' + outHtml + '</div>'
 		})
@@ -122,7 +126,7 @@ $(document).delegate('.cup.active:not(".bcup")', 'click', function() {
 	var classes = this.className.split(' ')
 	var team = classes[1]
 	var cup = classes[2]
-	console.log('team', team, 'cup', cup, 'was clicked')
+	console.debug('team', team, 'cup', cup, 'was clicked')
 	$(this).simpledialog2({
 		mode : 'button',
 		headerText : 'What Happened?',
@@ -159,20 +163,20 @@ $(document).delegate('.bcup.active', 'click', function() {
 	var classes = this.className.split(' ')
 	var team = classes[1]
 	var cup = classes[2]
-	console.log('... and the bonus cup is', cup)
+	console.debug('... and the bonus cup is', cup)
 	deactivateCup(team, cup)
 })
 // delegate for the undo button
 $(document).delegate('[name="undo"]', 'click', function() {
-	console.log('clicked undo')
+	console.debug('clicked undo')
 	undoMove()
 })
 // delegate for the abort button
 $(document).delegate('[name="abort"]', 'click', function() {
-	console.log('clicked abort')
+	console.debug('clicked abort')
 })
 // delegate for the end game button
 $(document).delegate('[name="end"]', 'click', function() {
-	console.log('clicked end game')
+	console.debug('clicked end game')
 })
 
