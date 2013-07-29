@@ -67,14 +67,14 @@ def createNewGameRequest(request):
             
             #CHECK TO SEE IF ANY USERNAMES ARE TAKEN AND SUGGESTIONS ARE NEEDED
             suggestionList=_getUsernameTakenSuggestions(usernames, regUser)
-            if suggestionList !=[]:
+            if suggestionList.count([''])<4:
                 form.suggestedUsernames2 = suggestionList[1]
                 form.suggestedUsernames3 = suggestionList[2]
                 form.suggestedUsernames4 = suggestionList[3]
-                
+                                
             else:
                 # register users
-                users = _regUsers( usernames, emails, regUser) 
+#                users = _regUsers( usernames, emails, regUser) 
                 
                 # no errors; create game     
                 game = _createNewGame(users[0], users[1], users[2], users[3])
@@ -105,8 +105,11 @@ def _getUsernameTakenSuggestions(usernames,regUser):
             if user is not None:
                 suggestionForUser =suggestUsernames(username, 5)
                 print(suggestionForUser)
-                suggestionsArray.append(suggestionForUser)
-    print(suggestionArray)
+                suggestionArray.append(suggestionForUser)
+        else:
+            suggestionArray.append([''])
+        x+=1
+    
     return suggestionArray
                 
 
