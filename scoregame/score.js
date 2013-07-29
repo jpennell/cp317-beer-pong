@@ -54,7 +54,7 @@ var bounceShot = function(team, cup) {
 	var selectBounceCup = function(team, cup, player) {
 		console.log('... by player', player)
 		// close all dialogs for good measure
-		$.mobile.sdCurrentDialog.close()
+		//$.mobile.sdCurrentDialog.close()
 		// here we are getting the HTML of the appropriate set of cups
 		thatHtml = $('#' + team + ' .cups').html()
 		// outHtml will contain thatHtml after appropriate modifications
