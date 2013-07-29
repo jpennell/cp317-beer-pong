@@ -9,7 +9,7 @@
 
 {% block pagecontent %}
 <div id="page-content">
-    <table id="profile" border="1">
+    <table id="profile">
         <tr>
             <td>
             <h2 class="player-name"> 
@@ -34,7 +34,7 @@
             	
             		{% csrf_token %}
             	
-	            	<table width="40%" border="1" align="right">
+	            	<table width="40%" align="right">
 	                    <tr>
 	                        <td align="right" valign="middle">
 	                            {{ form.search }}
