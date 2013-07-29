@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from User.forms import RegistrationForm
 from django.template import Context
+from Statistics.forms.leaderboardForm import LeaderboardForm
 
 def viewHomepage(request):
     """
@@ -17,9 +18,10 @@ def viewHomepage(request):
     Output:
         
     """ 
+    leaderForm = LeaderboardForm()
     registrationForm = RegistrationForm()
 
-    context = Context({'regTitle': 'Register', 'registrationForm': registrationForm})  
+    context = Context({'regTitle': 'Register', 'registrationForm': registrationForm, 'leaderForm': leaderForm})  
     return render(request, 'user/index.html',context)
     
     
