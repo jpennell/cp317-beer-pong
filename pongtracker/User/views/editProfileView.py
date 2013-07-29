@@ -6,6 +6,7 @@ from Utilities.utilities import *
 from django.contrib.auth import *
 
 from django.contrib import messages
+from pickle import FALSE
 
 
 def editProfile(request):
@@ -23,14 +24,16 @@ def editProfile(request):
     """
 
     if not request.user.is_authenticated():
-        state = "You are not logged in. Log in meow."
-        return redirect_with_params('/login/', state=state)
+        messages.add_message(request,message.INFO,'Please Login')
+        return redirect('/login/')
      
     username = request.session['username']
     if request.method == 'POST':
         
         user = PongUser.objects.get(username=username)
         form = EditProfileForm(request.POST,instance=user)
+      
+        
         if form.is_valid():
            
             #Handle password change if password is correct 
@@ -54,13 +57,10 @@ def editProfile(request):
             yearOfGradution = form.cleaned_data['_graduationYear']
             userProfilePhoto = form.cleaned_data['_photo']
             deactivate = form.cleaned_data['_deactivate']
-            _updateUser(username,firstname,lastname,email,height,yearOfGradution,userProfilePhoto,deactivate,institution)
+            termsAndConditions = form.cleaned_data['_hasAcceptedTerms']
             
-            if not user.getHasUpdatedProfile() and passwordChanged is False:
-                msg="Please change your temporary password"
-                messages.add_message(request,messages.INFO,msg)
-                
-                return redirect('edit/')
+            _updateUser(username,firstname,lastname,email,height,yearOfGradution,userProfilePhoto,deactivate,institution)
+           
             #Declare that user has updated profile and password
             user.setHasUpdatedProfile(True)
             user.save()
@@ -71,12 +71,21 @@ def editProfile(request):
             
             messages.add_message(request,messages.SUCCESS,"Profile information has been updated")
             return redirect('edit/')
-        
+        else:
+            if user.getHasUpdatedProfile() is False:
+                form.fields['_hasAcceptedTerms'].label = 'I have read and agreed to the terms and conditions'
+                form.fields['_hasAcceptedTerms'].widget.attrs['style'] =''
+            
     else:
         # This the the first page load, display a form with the user filled
         
         user = PongUser.objects.get(username=username)
+
+        
         form = EditProfileForm(instance=user)
+        if user.getHasUpdatedProfile() is False:
+            form.fields['_hasAcceptedTerms'].label = 'I have read and agreed to the terms and conditions'
+            form.fields['_hasAcceptedTerms'].widget.attrs['style'] =''
 
     context = Context({'title': 'Edit Profile', 'form': form, 'username':username})
 

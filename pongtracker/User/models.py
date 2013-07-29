@@ -53,6 +53,9 @@ class PongUser(AbstractUser):
     
     def getLifeStats(self):
         return self.lifestats
+    
+    def getHasAcceptedTerms(self):
+        return self._hasAcceptedTerms    
 
 
     def setHeight(self, value):
@@ -84,6 +87,9 @@ class PongUser(AbstractUser):
         
     def setHasUpdatedProfile(self, value):
         self._hasUpdatedProfile = value
+        
+    def setHasAcceptedTerms(self, value):
+        self._hasAcceptedTerms = value    
     
     
     YEAR_CHOICES = []
@@ -96,6 +102,6 @@ class PongUser(AbstractUser):
     _institution = models.ForeignKey(Institution,null = True, blank = True)
     _isBanned = models.BooleanField(default=False)
     _hasUpdatedProfile = models.BooleanField(default = False)
-    
+    _hasAcceptedTerms =  models.BooleanField(default = False)
     
     

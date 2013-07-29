@@ -66,8 +66,7 @@ class CreateGameForm(forms.Form):
     suggestedUsernames4 =''
     
     def clean(self):
-    
-        
+
         cleaned_data = super(CreateGameForm, self).clean()
         username1 = cleaned_data.get('username1')
         username2 = cleaned_data.get('username2')
