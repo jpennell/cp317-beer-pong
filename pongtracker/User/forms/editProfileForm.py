@@ -135,7 +135,7 @@ class EditProfileForm( forms.ModelForm ):
             self._errors['_hasAcceptedTerms'] = self.error_class([msg]) 
         
         if height < MIN_HEIGHT:
-            msg = u"Please provide your height with the stool you play on."   
+            msg = u"You must be at least {0} to play this game.".format(MIN_HEIGHT)   
             self._errors['_height'] = self.error_class([msg]) 
             
         elif height > MAX_HEIGHT:
