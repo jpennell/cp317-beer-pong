@@ -72,7 +72,7 @@ def _displayBoard(topRanked, form):
         userStats = user.getLifeStats()
         won = userStats.getWins()
         lost = userStats.getLoses()
-        sunk = _getTotalSunk(userStats)
+        sunk = getTotalSunk(userStats)
         
         form.leaders[x] = [rank,name,inst,won,lost,sunk]
     
