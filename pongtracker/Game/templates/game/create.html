@@ -99,9 +99,9 @@
 			        </table>
 			        {% endif %}
 			        
-			        {% if suggestedUsernames3 %}
+			        {% if form.suggestedUsernames3 %}
 			        	Suggested usernames:<br>
-				        {% for suggestion in suggestedUsernames3 %}
+				        {% for suggestion in form.suggestedUsernames3 %}
 				        		{{ suggestion }}<br>
 				        {% endfor %}
 				            	
@@ -153,9 +153,9 @@
 			        </table>
 			        {% endif %}
                     
-       			    {% if suggestedUsernames2 %}
+       			    {% if form.suggestedUsernames2 %}
 			        	Suggested usernames:<br>
-				        {% for suggestion in suggestedUsernames2 %}
+				        {% for suggestion in form.suggestedUsernames2 %}
 				        		{{ suggestion }}<br>
 				        {% endfor %}
 				            	
@@ -196,9 +196,9 @@
 			        </table>
 			        {% endif %}
                     
-                    {% if suggestedUsernames4 %}
+                    {% if form.suggestedUsernames4 %}
 			        	Suggested usernames:<br>
-				        {% for suggestion in suggestedUsernames4 %}
+				        {% for suggestion in form.suggestedUsernames4 %}
 				        		{{ suggestion }}<br>
 				        {% endfor %}
 				            	
