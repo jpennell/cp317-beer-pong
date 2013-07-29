@@ -11,7 +11,8 @@ lastMoves = new Array()
 
 move = {
 	team : '',
-	cup : ''
+	cup : '',
+	bounce : undefined
 }
 
 var undoMove = function() {
@@ -23,6 +24,10 @@ var undoMove = function() {
 	// construct css selector eg: .team1.cup1
 	var sel = '.' + lastMove.team + '.' + lastMove.cup
 	$(sel).addClass('active')
+	if (lastMove.bounce != undefined) {
+		var sel = '.' + lastMove.bounce.team + '.' + lastMove.bounce.cup
+		$(sel).addClass('active')
+	}
 }
 var deactivateCup = function(team, cup) {
 	// construct css selector eg: .team1.cup1
@@ -33,29 +38,20 @@ var deactivateCup = function(team, cup) {
 		cup : cup
 	})
 }
-var cupSunk = function(team, cup) {
-	console.debug('cup', cup, 'on team', team, 'was sunk')
-	deactivateCup(team, cup)
-}
-var partyFoul = function(team, cup) {
-	console.debug('team', team, 'cup', cup, 'was a party foul')
-	var blamePartyFoul = function(player) {
-		console.debug('Player', player, 'got a party foul')
-		deactivateCup(team, cup)
-	}
+var blamePlayer = function(blameFunction) {
 	$(this).simpledialog2({
 		mode : 'button',
-		headerText : 'Who?',
+		headerText : 'Who sunk that?',
 		headerClose : true,
 		'buttons' : {
 			'Player 1' : {
 				'click' : function() {
-					blamePartyFoul(1)
+					blameFunction(1)
 				}
 			},
 			'Player 2' : {
 				'click' : function() {
-					blamePartyFoul(2)
+					blameFunction(2)
 				}
 			}
 		},
@@ -64,9 +60,29 @@ var partyFoul = function(team, cup) {
 		clickEvent : 'vclick'
 	})
 }
+var cupSunk = function(team, cup) {
+	console.debug('cup', cup, 'on team', team, 'was sunk')
+	var blameCupSunk = function(player) {
+		console.debug('Player', player, 'sunk the cup')
+		deactivateCup(team, cup)
+	}
+	blamePlayer(blameCupSunk)
+}
+var partyFoul = function(team, cup) {
+	console.debug('team', team, 'cup', cup, 'was a party foul')
+	var blamePartyFoul = function(player) {
+		console.debug('Player', player, 'got a party foul')
+		deactivateCup(team, cup)
+	}
+	blamePlayer(blamePartyFoul)
+}
 var trickShot = function(team, cup) {
 	console.debug('team', team, 'cup', cup, 'was a trick shot')
-	deactivateCup(team, cup)
+	var blameTrickShot = function(player) {
+		console.debug('Player', player, 'got a trick shot')
+		deactivateCup(team, cup)
+	}
+	blamePlayer(blameTrickShot)
 }
 var bounceShot = function(team, cup) {
 	console.debug('team', team, 'cup', cup, 'was a bounce shot')
@@ -93,13 +109,12 @@ var bounceShot = function(team, cup) {
 
 		$('<div>').simpledialog2({
 			mode : 'blank',
-			headerText : 'Which cup?',
+			headerText : 'Second cup removed?',
 			safeNuke : false,
 			headerClose : false,
 			blankContent : '<div class="cups">' + outHtml + '</div>'
 		})
 	}
-
 	$(this).simpledialog2({
 		mode : 'button',
 		headerText : 'Who?',
@@ -121,26 +136,23 @@ var bounceShot = function(team, cup) {
 		clickEvent : 'vclick'
 	})
 }
-
 var rotateCups = function() {
 	var t1 = '#team1 .cups'
 	var t2 = '#team2 .cups'
 	if ($(t1).css('-webkit-transform') == 'none')
-		$(t1).css('-webkit-transform','rotate(90deg)')
+		$(t1).css('-webkit-transform', 'rotate(90deg)')
 	else
-		$(t1).css('-webkit-transform','')
-		
+		$(t1).css('-webkit-transform', '')
+
 	if ($(t2).css('-webkit-transform') == 'none')
-		$(t2).css('-webkit-transform','rotate(-90deg)')
+		$(t2).css('-webkit-transform', 'rotate(-90deg)')
 	else
-		$(t2).css('-webkit-transform','')
+		$(t2).css('-webkit-transform', '')
 }
-
 /*
- * Action event delegates
- * 
- */
-
+* Action event delegates
+*
+*/
 // delegate for the main cup interface
 $(document).delegate('.cup.active:not(".bcup")', 'click', function() {
 	var classes = this.className.split(' ')
@@ -149,7 +161,7 @@ $(document).delegate('.cup.active:not(".bcup")', 'click', function() {
 	console.debug('team', team, 'cup', cup, 'was clicked')
 	$(this).simpledialog2({
 		mode : 'button',
-		headerText : 'What Happened?',
+		headerText : 'What happened?',
 		headerClose : true,
 		'buttons' : {
 			'Cup Sunk' : {
