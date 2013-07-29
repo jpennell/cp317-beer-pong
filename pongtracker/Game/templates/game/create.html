@@ -8,19 +8,19 @@
 					{ loadChecks(); };
 	
 	function loadChecks() {
-		if (document.getElementById('register2').checked == true) {
+		if (document.getElementById('id_chkRegister2').checked == true) {
 			document.getElementById('moreinfo2').style.display = "inline-block";
 		}
-		if (document.getElementById('register3').checked == true) {
+		if (document.getElementById('id_chkRegister3').checked == true) {
 			document.getElementById('moreinfo3').style.display = "inline-block";
 		}
-		if (document.getElementById('register4').checked == true) {
+		if (document.getElementById('id_chkRegister4').checked == true) {
 			document.getElementById('moreinfo4').style.display = "inline-block";
 		}
 	}
 
 	function toggle_more2() {
-		if (document.getElementById('register2').checked == false) {
+		if (document.getElementById('id_chkRegister2').checked == false) {
 			document.getElementById('moreinfo2').style.display = "none";
 		} else {
 			document.getElementById('moreinfo2').style.display = "inline-block";
@@ -28,7 +28,7 @@
 	}
 
 	function toggle_more3() {
-		if (document.getElementById('register3').checked == false) {
+		if (document.getElementById('id_chkRegister3').checked == false) {
 			document.getElementById('moreinfo3').style.display = "none";
 		} else {
 			document.getElementById('moreinfo3').style.display = "inline-block";
@@ -36,7 +36,7 @@
 	}
 
 	function toggle_more4() {
-		if (document.getElementById('register4').checked == false) {
+		if (document.getElementById('id_chkRegister4').checked == false) {
 			document.getElementById('moreinfo4').style.display = "none";
 		} else {
 			document.getElementById('moreinfo4').style.display = "inline-block";
@@ -89,22 +89,32 @@
                     <label for="username3"> <strong>Player 3: </strong></label>
                     {{ form.username3 }}
                     
-                    {% if form.err3 != '' %}
+                    {% if form.username3.errors %}
 			        <table width="72%">
 			        	<tr>
 			        		<td align="center" bgcolor="#FF3333">
-			        			<span style="color:white; font-size:12px; font-weight:bold;">{{ form.err3|linebreaksbr }}</span>
+			        			<span style="color:white; font-size:12px; font-weight:bold;">{{ form.username3.errors|linebreaksbr }}</span>
 			        		</td>
 			        	</tr>
 			        </table>
 			        {% endif %}
 			        
                     <br/>
-                    <input id="register3" name="chkRegister3" onclick="toggle_more3();" type="checkbox"></input>
+                    {{ form.chkRegister3 }}
                     Register to play
                     <div id="moreinfo3" style="display: none;">
                   		{{ form.email3 }}
-                  	</div>
+                  		
+	                  	{% if form.email3.errors %}
+				        <table width="72%">
+				        	<tr>
+				        		<td align="center" bgcolor="#FF3333">
+				        			<span style="color:white; font-size:12px; font-weight:bold;">{{ form.email3.errors|linebreaksbr }}</span>
+				        		</td>
+				        	</tr>
+				        </table>
+				        {% endif %}
+     	</div>
                 </td>
             </tr>
 
@@ -125,21 +135,32 @@
                     <label for="username2"> <strong>Player 2: </strong></label>
                     {{ form.username2 }}
                     
-                    {% if form.err2 != '' %}
+                    {% if form.username2.errors %}
 			        <table width="72%">
 			        	<tr>
 			        		<td align="center" bgcolor="#FF3333">
-			        			<span style="color:white; font-size:12px; font-weight:bold;">{{ form.err2|linebreaksbr }}</span>
+			        			<span style="color:white; font-size:12px; font-weight:bold;">{{ form.username2.errors|linebreaksbr }}</span>
 			        		</td>
 			        	</tr>
 			        </table>
 			        {% endif %}
                     
                     <br/>
-                    <input id="register2" name="chkRegister2" onclick="toggle_more2();" type="checkbox"></input>
+                    {{ form.chkRegister2 }}
+                    
+                    
                     Register to play
                     <div id="moreinfo2" style="display: none;">
                    		{{ form.email2 }}
+                   		{% if form.email2.errors %}
+				        <table width="72%">
+				        	<tr>
+				        		<td align="center" bgcolor="#FF3333">
+				        			<span style="color:white; font-size:12px; font-weight:bold;">{{ form.email2.errors|linebreaksbr }}</span>
+				        		</td>
+				        	</tr>
+				        </table>
+				        {% endif %}
                    		<br>
                     </div>
                 </td>
@@ -150,23 +171,33 @@
                     <label for="username4"> <strong>Player 4: </strong></label>
                     {{ form.username4 }}
                     
-                    {% if form.err4 != '' %}
+                    {% if form.username4.errors %}
 			        <table width="72%">
 			        	<tr>
 			        		<td align="center" bgcolor="#FF3333">
-			        			<span style="color:white; font-size:12px; font-weight:bold;">{{ form.err4|linebreaksbr }}</span>
+			        			<span style="color:white; font-size:12px; font-weight:bold;">{{ form.username4.errors|linebreaksbr }}</span>
 			        		</td>
 			        	</tr>
 			        </table>
 			        {% endif %}
                     
                     <br/>
-                    <input id="register4" name="chkRegister4" onclick="toggle_more4();" type="checkbox"></input>
+                    {{ form.chkRegister4 }}
                     Register to play
                     <div id="moreinfo4" style="display: none;">
                     	{{ form.email4 }}
                     	<br>
                     </div>
+                                        	
+                    	{% if form.email4.errors %}
+				        <table width="72%">
+				        	<tr>
+				        		<td align="center" bgcolor="#FF3333">
+				        			<span style="color:white; font-size:12px; font-weight:bold;">{{ form.email4.errors|linebreaksbr }}</span>
+				        		</td>
+				        	</tr>
+				        </table>
+				        {% endif %}
                 </td>
             </tr>
             

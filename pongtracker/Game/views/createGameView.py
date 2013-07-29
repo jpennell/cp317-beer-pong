@@ -28,15 +28,14 @@ def createNewGameRequest(request):
         messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
         return redirect('/profile/edit')
     
-    form = CreateGameForm()
     username = ''
-    
     try:
         username = request.session['username']
     except:
         pass
     
-    form.username = username
+    form = CreateGameForm(initial={'username':username})
+    
         
     # on POST
     if request.method == 'POST':
@@ -98,11 +97,17 @@ def createNewGameRequest(request):
             
         else:
             # form is invalid
-            _invalidErrors(form)
+#            _invalidErrors(form)
             return render(request, 'game/create.html', {'form': form})      
         
-    else:
-        return render(request, 'game/create.html',{'form': form})
+        
+    
+
+    context = Context({'title': 'Create Game', 'form': form, 'username':username})
+        
+        
+        
+    return render(request, 'game/create.html',context)
 
 
 
