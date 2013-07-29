@@ -2,6 +2,7 @@ from Game.models import Game
 from Game.forms.confirmGameForm import ConfirmGameForm
 from django.shortcuts import render, redirect
 from Utilities.utilities import *
+from django.contrib import messages
 
 def confirmOrDenyGame(request,game_id):
     """
@@ -19,7 +20,7 @@ def confirmOrDenyGame(request,game_id):
         
     """
     if not request.user.is_authenticated():
-        messages.add_message(request,message.INFO,'Please Login')
+        messages.add_message(request,messages.INFO,'Please Login')
         return redirect('/login/')
      
     if not request.user.getHasUpdatedProfile():
@@ -28,25 +29,26 @@ def confirmOrDenyGame(request,game_id):
     
     game = _obtainGame(game_id)
     
-    
-    state = ""
+    location = '/index/'
     if game is None:
-        state = "game " + game_id + " does not exist"
+        message = "Game " + game_id + " does not exist"
     elif request.method != "POST":
-        state = "how did you get here?"
+        message = "Access denied"
     else:
         form = ConfirmGameForm(data=request.POST)
+        location = 'game/verify/'
         if not form.is_valid():
-            state = "no choice selected"
+            message = "No choice selected"
         else:
             choice = form.cleaned_data['confirm']
             print choice
             if choice == 'confirm':
-                state = "confirming game " + game_id
+                message = "Confirming game " + game_id
             else:
-                state = "denying game " + game_id
+                message = "Denying game " + game_id
     
-    return redirect_with_params('/index/',state = state)
+    messages.add_message(request,messages.INFO,message)
+    return redirect(location)
 
 def _obtainGame(game_id):
     """

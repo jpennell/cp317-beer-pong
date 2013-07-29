@@ -20,9 +20,9 @@ def leaderboardPage(request):
     
     username = request.session['username']
     
-    topRanked = _getTopRanked(10)
+    topRanked = getTopRanked(10)
         
-    _displayBoard(topRanked,form)
+    displayBoard(topRanked,form)
     
     if request.method == 'POST':
         
@@ -33,11 +33,11 @@ def leaderboardPage(request):
         _blankBoard(form)
         
         if filterChoice == form.choices[0]:
-            topRanked = _getTopRanked(10)
-            _displayBoard(topRanked,form)
+            topRanked = getTopRanked(10)
+            displayBoard(topRanked,form)
         else:
             instLeaders = getInstitutionLeaders(10, filterChoice)
-            _displayBoard(instLeaders, form)
+            displayBoard(instLeaders, form)
                        
         return render(request, 'statistics/leaderboard.html', {'form':form})
         
@@ -51,7 +51,7 @@ def _blankBoard(form):
         
     return
 
-def _displayBoard(topRanked, form):
+def displayBoard(topRanked, form):
     """
     This method puts the top ten leaders into the leaderboard form
 
@@ -100,7 +100,7 @@ def getTotalSunk(s):
     
     return total
 
-def _getTopRanked(limit):
+def getTopRanked(limit):
     """
     This method finds and retrieve's the top ranked users
 
@@ -207,7 +207,7 @@ def getInstitutionLeaders(numberOfLeaders, institutionName):
         max = (count*querySize)-1
         userRanks = RankView.objects.all()[min:max]
         if (len(userRanks) < 1):
-            break;
+            break
         elif (len(userRanks) < max):
             size = len(userRanks)
         else:
@@ -215,7 +215,11 @@ def getInstitutionLeaders(numberOfLeaders, institutionName):
         for x in range(size):
             user_id = userRanks[x].id
             user = PongUser.objects.get(id=user_id)
-            userInstitution = user.getInstitution().getName()
+            try:
+                userInstitution = user.getInstitution().getName()
+            except:
+                userInstitution = None
+                
             if (userInstitution == institutionName):
                 leaders.append(user)
         count += 1

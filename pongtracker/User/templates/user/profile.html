@@ -15,11 +15,9 @@
                 <table>
                     <tr>
                         <td>
-                            <h2 class="player-name"> {% if username %}
-                            {{ username }}
-                            {% else %}
-                            {{ request.session.username }}
-                            {% endif %} </h2>
+                            <h2 class="player-name"> 
+                            {{ user.getFirstName }} {{ user.getLastName }}
+							</h2>
                         </td>
                         <td>
                             {% if request.session.username %}

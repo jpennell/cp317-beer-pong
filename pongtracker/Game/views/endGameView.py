@@ -17,7 +17,7 @@ def viewGameSummaryRequest(request, game_id):
         messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
         return redirect('/profile/edit')
     
-    form = EndGameForm
+    form = EndGameForm()
 
     currUsername = request.session['username']
     currUser = PongUser.objects.get(username=currUsername)
@@ -44,7 +44,7 @@ def viewGameSummaryRequest(request, game_id):
         
         form.authErr = True
         
-    return render(request, 'game/summary.html', {'form':form})
+    return
 
 
 def _getStats(user, events, game_id):
