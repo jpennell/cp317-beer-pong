@@ -70,7 +70,7 @@ def editProfile(request):
             
             
             messages.add_message(request,messages.SUCCESS,"Profile information has been updated")
-            return redirect('profile/')
+            return redirect('/user/profile/')
         else:
             if user.getHasUpdatedProfile() is False:
                 form.fields['_hasAcceptedTerms'].label = 'I have read and agreed to the terms and conditions'
