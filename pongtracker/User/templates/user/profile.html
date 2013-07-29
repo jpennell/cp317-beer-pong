@@ -9,32 +9,69 @@
 
 {% block pagecontent %}
 <div id="page-content">
-    <table id="profile">
-        <tr id="personal-info">
+    <table id="profile" border="1">
+        <tr>
             <td>
-                <table>
+            <h2 class="player-name"> 
+            	{{ user.getFirstName }} {{ user.getLastName }}
+			</h2>
+			
+                <table width="250px">
                     <tr>
-                        <td>
-                            <h2 class="player-name"> 
-                            {{ user.getFirstName }} {{ user.getLastName }}
-							</h2>
+                        <td align="left">
+                            <h5>{{ user.getUsername }}</h5>
                         </td>
-                        <td>
-                            {% if request.session.username %}
-                            <a href="edit">Edit profile</a>
-                            {% endif %}
+
+                        <td align="right">
+                        	<a href="edit">Edit profile</a>
                         </td>
                     </tr>
                 </table>
+                
             </td>
-            <td colspan="2">
+            <td colspan="2"  valign="bottom">
+            	<form method='POST' action="/user/profile/">
+            	
+            		{% csrf_token %}
+            	
+	            	<table width="40%" border="1" align="right">
+	                    <tr>
+	                        <td align="right" valign="middle">
+	                            {{ form.search }}
+	                        </td>
+	                        <td width="12%" align="right" valign="top">
+	                            <button name="searchName" class="btn" type="submit">
+						            Search
+						        </button>
+	                        </td>
+	                    </tr>
+	                    
+	                    <tr>
+	                        <td align="right">
+	                            {% if form.search.errors %}
+	                            	{{ form.search.errors }}
+	                            {% endif %}
+	                        </td>
+	                        <td width="12%" height="22px">
+	                        </td>
+	                    </tr>
+	                    
+	                    <tr>
+	                        <td align="right">
+	                        </td>
+	                        <td width="12%" height="22px">
+	                        </td>
+	                    </tr>
+	                </table>
+	            </form>
+            
                 <table id="personal-stats">
                     <tr>
                         <td>
                             Height
                         </td>
                         <td>
-                            {{ user.getHeight }}
+                            {{ user.getHeight }}cm
                         </td>
                         <td>
                             Institution
@@ -129,7 +166,8 @@
             </td>
 
             <td id="cups-sunk-stats">
-                <h4>Cups Sunk</h4>
+                <center><h4>Cups Sunk</h4></center>
+                <center>
                 <div id="cups">
                     <span class="cup" id="cup1">{{ user.getLifeStats.getCup1Sunk }}</span>
                     <br/>
@@ -140,6 +178,7 @@
                     <span class="cup" id="cup5">{{ user.getLifeStats.getCup5Sunk }}</span>
                     <span class="cup" id="cup6">{{ user.getLifeStats.getCup6Sunk }}</span>
                 </div>
+                </center>
             </td>
         </tr>
     </table>

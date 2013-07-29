@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from User.models import PongUser
 from django.contrib import messages
 from Statistics.views.leaderBoardView import *
+from User.forms.profileForm import ProfileForm
 
 def viewProfile( request, username=None ):
     """{{Description}}
@@ -27,16 +28,30 @@ def viewProfile( request, username=None ):
         messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
         return redirect('/profile/edit')
     
-    if username == None:
-        try:
-            username = request.session['username']
-        except KeyError:
-            return redirect('/login/')
-          
-    user = PongUser.objects.get(username=username)
+    form = ProfileForm()
     
+    if request.method == 'POST':
+        form = ProfileForm(request.POST)
+        
+        if form.is_valid():
+        
+            username = form.cleaned_data['search']
+        
+            user = PongUser.objects.get(username=username)
+            
+            rank = getUserRank(user)
+            
+            totalSunk = getTotalSunk(user.getLifeStats())
+                   
+            return render( request, 'user/profile.html', {'user':user, 'rank':rank, 'totalSunk':totalSunk, 'form':form} )
+        
+    if username is None:
+        username = request.session['username']
+ 
+    user = PongUser.objects.get(username=username)
+
     rank = getUserRank(user)
     
     totalSunk = getTotalSunk(user.getLifeStats())
            
-    return render( request, 'user/profile.html', {'user':user, 'rank':rank, 'totalSunk':totalSunk} )
+    return render( request, 'user/profile.html', {'user':user, 'rank':rank, 'totalSunk':totalSunk, 'form':form} )

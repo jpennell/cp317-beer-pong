@@ -150,7 +150,12 @@ def _checkUsernames(usernames,self):
 def _checkUserBanned(usernames,self):
     for x in range(len(usernames)):
         user = _findUser(usernames[x])
-        if user.getIsBanned():
+        banned = False
+        try:
+            banned = user.getIsBanned()
+        except:
+            pass
+        if banned:
             msg = "User is banned"
             self._errors['username{0}'.format(x+2)] = self.error_class([msg])
             
@@ -159,7 +164,12 @@ def _checkUserBanned(usernames,self):
 def _checkUserInactive(usernames,self):
     for x in range(len(usernames)):
         user = _findUser(usernames[x])
-        if not user.getIsActive():
+        active = True
+        try:
+            active = user.getIsActive()
+        except:
+            pass
+        if not active:
             msg = "User is inactive"
             self._errors['username{0}'.format(x+2)] = self.error_class([msg])
             
