@@ -21,7 +21,7 @@ def createNewGameRequest(request):
             
     """
     if not request.user.is_authenticated():
-        messages.add_message(request,message.INFO,'Please Login')
+        messages.add_message(request,messages.INFO,'Please Login')
         return redirect('/login/')
      
     if not request.user.getHasUpdatedProfile():
@@ -53,7 +53,7 @@ def createNewGameRequest(request):
             # put all data in lists
             regUser = [False,chkRegister2, chkRegister3, chkRegister4]      
             usernames = [username, username2, username3, username4]
-            emails = ['',email2, email3, email4]
+            emails = ['', email2, email3, email4]
 
             
             #CHECK TO SEE IF ANY USERNAMES ARE TAKEN AND SUGGESTIONS ARE NEEDED

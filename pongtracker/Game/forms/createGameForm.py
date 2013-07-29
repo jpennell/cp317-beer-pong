@@ -86,9 +86,15 @@ class CreateGameForm(forms.Form):
 
         #Check that no usernames are repeated
         _checkDuplicateUsernames(usernameList,self)
-        #Check that non to be registered users exist
-                
+        
+        #Check that non to be registered users exist  
         _checkUserExists(usernameList[1:],toRegisterUserList[1:],self)
+        
+        #Check that non to be registered users are not banned
+        _checkUserBanned(usernameList[1:],self)
+        
+        #Check that non to be registered users are not inactive
+        _checkUserInactive(usernameList[1:],self)
         
         #Check that usernames fit out format
         _checkUsernames(usernameList[1:],self)
@@ -141,7 +147,23 @@ def _checkUsernames(usernames,self):
             
     return 
 
+def _checkUserBanned(usernames,self):
+    for x in range(len(usernames)):
+        user = _findUser(usernames[x])
+        if user.getIsBanned():
+            msg = "User is banned"
+            self._errors['username{0}'.format(x+2)] = self.error_class([msg])
+            
+    return
 
+def _checkUserInactive(usernames,self):
+    for x in range(len(usernames)):
+        user = _findUser(usernames[x])
+        if not user.getIsActive():
+            msg = "User is inactive"
+            self._errors['username{0}'.format(x+2)] = self.error_class([msg])
+            
+    return
 
 def _checkDuplicateUsernames(usernames,self):
     """checks for duplicate usernames
