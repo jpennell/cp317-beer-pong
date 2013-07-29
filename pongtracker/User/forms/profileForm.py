@@ -13,15 +13,16 @@ class ProfileForm(forms.Form):
     def clean_search(self):
         username = self.cleaned_data['search']
         
-        #Check that non to be registered users exist  
-        if not _checkUserExists(username,self):
+        #Check that non to be registered users are not inactive
+        if not _checkUserInactive(username,self):
+            msg = "User inactive"
+            self._errors['search'] = self.error_class([msg])
+        
+        #Check that non to be registered users exist
+        exists = _checkUserExists(username,self)
+        if not exists:
             msg = "No such user"
             self._errors['search'] = self.error_class([msg])
-
-            #Check that non to be registered users are not inactive
-            if not _checkUserInactive(username,self):
-                msg = "User inactive"
-                self._errors['search'] = self.error_class([msg])
         
         return username
 
