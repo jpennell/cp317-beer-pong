@@ -40,7 +40,10 @@ class Game(models.Model):
 
     def getTeam1(self):
         return self._team1
-
+    
+    def getID(self):
+        return self.id
+    
     def getTeam2(self):
         return self._team2
     

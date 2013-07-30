@@ -4,3 +4,4 @@ from denyGameView import *
 from endGameView import *
 from scoreGameView import *
 from verifyGameView import *
+from infoGameView import *

@@ -9,4 +9,6 @@ urlpatterns = patterns('',
                        url(r'(?P<game_id>\d+)/confirm/$', 'Game.views.confirmGame'),
                        url(r'(?P<game_id>\d+)/deny/$', 'Game.views.denyGame'),
                        url(r'(?P<game_id>\d+)/summary/$','Game.views.viewGameSummaryRequest'),
+                       url(r'(?P<game_id>\d+)/info/$','Game.views.infoGameRequest'),
+
 )

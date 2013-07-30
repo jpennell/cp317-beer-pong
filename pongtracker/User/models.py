@@ -100,7 +100,7 @@ class PongUser(AbstractUser):
         
     YEAR_CHOICES = []
 
-    for r in range((datetime.datetime.now().year),(datetime.datetime.now().year+10)):
+    for r in range((datetime.datetime.now().year),(datetime.datetime.now().year+6)):
         YEAR_CHOICES.append((r,r))
         
     _height = models.SmallIntegerField(null = True, blank = True,help_text="cm")
