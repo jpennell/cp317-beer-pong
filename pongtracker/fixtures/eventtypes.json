@@ -3,7 +3,7 @@
     "model": "Game.EventType",
     "pk": 1,
     "fields": {
-      "_typeName": "sunk"
+      "_typeName": "regular"
     }
   },
   {
@@ -24,7 +24,7 @@
     "model": "Game.EventType",
     "pk": 4,
     "fields": {
-      "_typeName": "foul"
+      "_typeName": "party_foul"
     }
   },
     {

@@ -26,16 +26,24 @@
                 <table class='players'>
                     <tr>
                         <td align='center'>
-                            <div class="picture"></div>
+		                    {% if game.getTeam1.getUser1.getPhoto %}
+			            		<img class="picture" src="{{ game.getTeam1.getUser1.getPhoto.url }}"/>
+			            	{% else %}
+			            		<div id="default_picture" class="picture"></div>
+			            	{% endif %}
                             <br/>
-                            <span class="player-name">{{ users.0.username }}</span>
+                            <span class="player-name">{{ game.getTeam1.getUser1 }}</span>
                         </td>
                         <td align="center">
-                            <div class="picture"></div>
+                         	{% if game.getTeam1.getUser2.getPhoto %}
+			            		<img class="picture" src="{{ game.getTeam1.getUser2.getPhoto.url }}"/>
+			            	{% else %}
+			            		<div id="default_picture" class="picture"></div>
+			            	{% endif %}
                             <br/>
-                            <span class="player-name">{{ users.1.username }} </span>
+                            <span class="player-name">{{ game.getTeam1.getUser2 }} </span>
                         </td>
-                    </tr>
+                    </tr> 
                 </table>
                 <div class="cups">
                     <span class="cup team1 cup1 active"></span>
@@ -54,15 +62,23 @@
                 <table class='players'>
                     <tr align='center'>
                         <td>
-                            <div class="picture"></div>
+		                    {% if game.getTeam2.getUser1.getPhoto %}
+			            		<img class="picture" src="{{ game.getTeam2.getUser1.getPhoto.url }}"/>
+			            	{% else %}
+			            		<div id="default_picture" class="picture"></div>
+			            	{% endif %}
                             <br/>
-                            <span class="player-name">{{ users.2.username }} </span>
+                            <span class="player-name">{{ game.getTeam2.getUser1 }} </span>
                         </td>
 
                         <td>
-                            <div class="picture"></div>
+                            {% if game.getTeam2.getUser2.getPhoto %}
+			            		<img class="picture" src="{{ game.getTeam2.getUser2.getPhoto.url }}"/>
+			            	{% else %}
+			            		<div id="default_picture" class="picture"></div>
+			            	{% endif %}
                             <br/>
-                            <span class="player-name">{{ users.3.username }} </span>
+                            <span class="player-name">{{ game.getTeam2.getUser2 }} </span>
                         </td>
                     </tr>
                 </table>
