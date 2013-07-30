@@ -31,7 +31,7 @@ def editProfile(request):
     if request.method == 'POST':
         
         user = PongUser.objects.get(username=username)
-        form = EditProfileForm(request.POST,instance=user)
+        form = EditProfileForm(request.POST,request.FILES, instance=user)
       
         
         if form.is_valid():
@@ -70,7 +70,7 @@ def editProfile(request):
             
             
             messages.add_message(request,messages.SUCCESS,"Profile information has been updated")
-            return redirect('profile/')
+            return redirect('/user/profile/')
         else:
             if user.getHasUpdatedProfile() is False:
                 form.fields['_hasAcceptedTerms'].label = 'I have read and agreed to the terms and conditions'

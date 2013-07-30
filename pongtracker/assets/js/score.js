@@ -7,6 +7,8 @@
  * JavaScript code which implements the Score Game aspect of the Pong Tracker project
  */
 
+alert(user1 + ', ' + user2 + ', ' + user3 + ', ' + user4)
+
 lastMoves = new Array()
 
 var canUndo = function() {
@@ -53,14 +55,14 @@ var blamePlayer = function(blameFunction) {
 		mode : 'button',
 		headerText : 'Who sunk that?',
 		headerClose : true,
-		'buttons' : {
-			'Player 1' : {
-				'click' : function() {
+		buttons : {
+			user1 : {
+				click : function() {
 					blameFunction(1)
 				}
 			},
-			'Player 2' : {
-				'click' : function() {
+			btn2 : {
+				click : function() {
 					blameFunction(2)
 				}
 			}
