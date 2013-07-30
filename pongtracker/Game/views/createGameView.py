@@ -12,29 +12,35 @@ def createNewGameRequest(request):
     """validates input; creates a new game based on valid input
 
     Keyword arguments:
-    variable -- description 
-    variable -- description 
+    request
     
     Contributors: Matt Hengeveld
     
     Output:
             
     """
+    
+    #check if user is logged in
     if not request.user.is_authenticated():
         messages.add_message(request,messages.INFO,'Please Login')
         return redirect('/login/')
      
+    #check if user has updated their profile
     if not request.user.getHasUpdatedProfile():
         messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
         return redirect('/profile/edit')
     
+    #get session username
     username = request.session['username']
     
+    #get form; set username to session username initially
     form = CreateGameForm(initial={'username1':username})
     # on POST
     if request.method == 'POST':
+        #get form POST data
         form = CreateGameForm(request.POST)
 
+        #if form is valid
         if form.is_valid():
             
             # clean all data
@@ -71,8 +77,9 @@ def createNewGameRequest(request):
                 users = _regUsers( usernames, emails, regUser) 
                 
                 # no errors; create game     
-                game = _createNewGame(users[0], users[1], users[2], users[3])
+                game = _createNewGame(users)
                 
+                #redirect to play game
                 return redirect('/game/' + str(game.id) +'/play')
             
         else:
@@ -84,7 +91,19 @@ def createNewGameRequest(request):
     return render(request, 'game/create.html',context)
 
 def _getUsernameTakenSuggestions(usernames,regUser):
+    """ get suggestions for usernames
+
+    Keyword arguments:
+    usernames -- list of usernames
+    regUser -- list of true/false determining if user needs to be registered  
     
+    Contributors: 
+    Matt Hengeveld
+    
+    Output:
+    suggestionsList -- list of suggestions
+        
+    """
     suggestionList=[]
     x = 0
     for username in usernames:
@@ -103,52 +122,37 @@ def _getUsernameTakenSuggestions(usernames,regUser):
                 
 
 
-def _createNewGame(user1, user2, user3, user4):
-    """{{Description}}
+def _createNewGame(users):
+    """ creates new game in database, including two teams
 
     Keyword arguments:
-    variable -- description 
-    variable -- description 
+    users -- list of PongUser objects
     
-    Contributors:
+    Contributors: 
+    Matt Hengeveld
     
     Output:
+    game -- game object
         
     """
-
-    team1 = Team.objects.create(_user1=user1,_user2=user2)
-    team2 = Team.objects.create(_user1=user3,_user2=user4)
+    team1 = Team.objects.create(_user1=user[0],_user2=user[1])
+    team2 = Team.objects.create(_user1=user[2],_user2=user[3])
 
     game = Game.objects.create(_team1=team1, _team2=team2)
     
     return game
 
-def getGame(request,game_id):
-    """{{Description}}
-
-    Keyword arguments:
-    variable -- description 
-    variable -- description 
-    
-    Contributors:
-    
-    Output:
-        
-    """
-    game = Game.objects.get(pk=game_id)
-    
-    return render(request, 'game/detail.html',{'game':game})
-
 
 def _findUser(username):
-    """finds user in the database
+    """ finds user in the database
 
     Keyword arguments:
     username -- string; username entered on form
     
     Contributors: Matt Hengeveld
     
-    Output:    user object; returns None is not found
+    Output:    
+    user -- user object; returns None is not found
         
     """
     user = None
@@ -160,31 +164,18 @@ def _findUser(username):
         return user   
 
 
-def _chkRegUsers(users, regUser):
-    
-    for x in range(len(users)):
-        if regUser[x] is not None:
-            if users[x] is not None:
-                errList[x+1] = "Username taken\nSuggestions:\n"
-                suggestions = suggestUsernames(users[x].username, 4)
-                for n in range(len(suggestions)):
-                    errList[x+1] += (suggestions[n] + "\n")
-             
-    return errList
-
-
-
 def _regUsers( usernames, emails, regUser):
-    """registers users who aren't already registered; assigns 8 character random password; emails username and password
+    """ registers users who aren't already registered
 
     Keyword arguments:
-    regUser -- list of checkbox states (indicating 'register to play')
+    regUser -- list of true/false determining if user needs to be registered  
     usernames -- list of usernames
     emails -- list of emails to register with
     
     Contributors: Matt Hengeveld
     
-    Output:     nothing
+    Output:
+    users -- PongUser objects
         
     """   
     users=[]

@@ -11,11 +11,26 @@ class Team(models.Model):
     def getUser2(self):
         return self._user2
     
+    def getUser(self, user_number):
+        
+        if user_number == 1:
+            
+            return self._user1
+        
+        elif user_number == 2:
+            
+            return self._user2
+        
+        else:
+            
+            return None
+    
     def setUser1(self):
         self._user1 = value
     
     def setUser2(self,value):
         self._user2 = value
+        
 
 class Game(models.Model):
     _datePlayed = models.DateTimeField(auto_now=True)
@@ -28,12 +43,29 @@ class Game(models.Model):
 
     def getTeam2(self):
         return self._team2
+    
+    def getTeam(self, team_number):
+        
+        if team_number == 1:
+            
+            return self._team1
+        
+        elif team_number == 2:
+            
+            return self._team2
+        
+        else:
+            
+            return None
 
     def getDatePlayed(self):
         return self._datePlayed
     
     def getIsConfirmed(self):
         return self._isConfirmed
+    
+    def getEvents(self):
+        return self.Events.all().order_by('_eventTime')
     
     def setIsConfirmed(self, value):
         self._isConfirmed = value
@@ -51,7 +83,7 @@ class EventType(models.Model):
     def getName(self):
         return self._typeName
 
-    def __unicode(self):
+    def __unicode__(self):
         return self._typeName
 
 class Event(models.Model):

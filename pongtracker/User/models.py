@@ -4,6 +4,7 @@ import datetime
 from django.contrib.contenttypes.models import ContentType
 
 
+
 class Institution(models.Model):
     def getName(self):
         return self._name
@@ -96,8 +97,9 @@ class PongUser(AbstractUser):
     
     def setConfirmRequired(self, value):
         self._confirmRequired = value    
-    
+        
     YEAR_CHOICES = []
+
     for r in range((datetime.datetime.now().year),(datetime.datetime.now().year+10)):
         YEAR_CHOICES.append((r,r))
         

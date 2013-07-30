@@ -4,9 +4,12 @@
 {% block head %}
 
 <script type="text/javascript">
+	// when the window loads
 	window.onload = loadChecks()
 					{ loadChecks(); };
 	
+	// if the checkboxes were previously checked, and the page was reloaded, 
+	// execute appropriate toggle_more functions
 	function loadChecks() {
 		if (document.getElementById('id_chkRegister2').checked == true) {
 			document.getElementById('moreinfo2').style.display = "inline-block";
@@ -19,6 +22,7 @@
 		}
 	}
 
+	// toggles viability of email field
 	function toggle_more2() {
 		if (document.getElementById('id_chkRegister2').checked == false) {
 			document.getElementById('moreinfo2').style.display = "none";
@@ -26,7 +30,8 @@
 			document.getElementById('moreinfo2').style.display = "inline-block";
 		}
 	}
-
+	
+	// toggles viability of email field
 	function toggle_more3() {
 		if (document.getElementById('id_chkRegister3').checked == false) {
 			document.getElementById('moreinfo3').style.display = "none";
@@ -34,7 +39,8 @@
 			document.getElementById('moreinfo3').style.display = "inline-block";
 		}
 	}
-
+	
+	// toggles viability of email field
 	function toggle_more4() {
 		if (document.getElementById('id_chkRegister4').checked == false) {
 			document.getElementById('moreinfo4').style.display = "none";
