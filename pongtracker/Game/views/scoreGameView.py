@@ -31,6 +31,7 @@ def scoreGame( request, game_id ):
 
     # get the info we need
     if request.method == 'POST':
+        print("I am getting a post")
         
         eventTypeName = request.POST['eventType']
         
@@ -62,7 +63,9 @@ def scoreGame( request, game_id ):
             event = Event.objects.create( _game = game, _eventType = eventType, _user = user,
                                           _cup1 = cups[0], _cup2 = cups[1], _cup3 = cups[2],
                                           _cup4 = cups[3], _cup5 = cups[4], _cup6 = cups[5] )
-
+            
+            
+            
     return render( request, 'game/play.html', {'game': game} )
     # not sure what to render/redirect to if it even needs to happen
 
