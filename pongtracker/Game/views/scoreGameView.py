@@ -13,9 +13,12 @@ def scoreGame(request, game_id):
         messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
         return redirect('/profile/edit')
     
-    username = request.session['username']
+    #need to get username from the post since it isn't necessarily going to be the user logged in the event is logged against
+    username = request.POST['username']
     
     game = Game.objects.get(pk=game_id)
+    
+    #why is this here? only need one user for an event
     users = [game.getTeam1().getUser1(), game.getTeam1().getUser2(), game.getTeam2().getUser1(), game.getTeam2().getUser2()]
     
     #get the info we need
