@@ -36,7 +36,7 @@ def scoreGame(request, game_id):
             #create event
             event = Event.objects.create(_game=game, _eventType=eventType, _user=user, _cup1=True, _cup2=False, _cup3=False, _cup4=False, _cup =False, _cup6=False)
     
-    return render(request, 'game/play.html', {'users': users})      
+    return render(request, 'game/play.html', {'game': game})      
     #not sure what to render/redirect to if it even needs to happen
     
     
