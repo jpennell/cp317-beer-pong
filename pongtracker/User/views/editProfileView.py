@@ -31,7 +31,7 @@ def editProfile(request):
     if request.method == 'POST':
         
         user = PongUser.objects.get(username=username)
-        form = EditProfileForm(request.POST,instance=user)
+        form = EditProfileForm(request.POST,request.FILES, instance=user)
       
         
         if form.is_valid():
