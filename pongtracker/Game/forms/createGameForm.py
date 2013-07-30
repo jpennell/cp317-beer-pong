@@ -4,6 +4,7 @@ import re
 
 class CreateGameForm(forms.Form):
         
+    #username fields
     username1 = forms.CharField(
         widget=forms.TextInput(attrs={'class':'disabled', 'readonly':'readonly'}),
         label="Player 1",
@@ -25,6 +26,7 @@ class CreateGameForm(forms.Form):
         label="Player 4",
         max_length=30)
     
+    #email fields
     email2 = forms.EmailField(
         widget=forms.TextInput(attrs={'placeholder': 'email'}),
         label="Email",
@@ -43,6 +45,7 @@ class CreateGameForm(forms.Form):
         max_length=40,
         required = False)
     
+    #register checkboxes
     chkRegister2 = forms.BooleanField( 
         label = "Register to play",
         required = False,
@@ -61,12 +64,32 @@ class CreateGameForm(forms.Form):
         widget = forms.CheckboxInput(attrs={'onclick':"toggle_more4();"}), 
     )
     
+    #suggested usernames
     suggestedUsernames2 =''
     suggestedUsernames3 =''
     suggestedUsernames4 =''
     
+    
     def clean(self):
-
+        """ validates all data from the form; sets error messages for appropriate field
+            checks that - there are no duplicate usernames
+                        - each user exists (if not registering)
+                        - there are no banned users
+                        - there are no inactive users
+                        - a username is not taken (when registering)
+                        - a valid email is entered (when registering)
+    
+        Keyword arguments:
+        self      
+        
+        Contributors: 
+        Matt Hengeveld
+        Quinton Black
+        
+        Output:
+        clean_data -- valid form data
+                    
+        """
         cleaned_data = super(CreateGameForm, self).clean()
         username1 = cleaned_data.get('username1')
         username2 = cleaned_data.get('username2')
@@ -113,14 +136,15 @@ class CreateGameForm(forms.Form):
         return cleaned_data
 
 def _checkUserExists(usernameList,toRegisterUserList,self):
-    """checks database to see if users exist; does not check users that have 'register to play' checked
+    """ checks database to see if users exist; does not check users that are registering;
+        sets error messages for appropriate field
 
     Keyword arguments:
-    users -- list of users
-    
+    usernameList -- list of users
+    toRegisterUserList -- list of true/false determining if user needs to be registered  
     
     Contributors: 
-        Matt Hengeveld
+    Matt Hengeveld
     
     Output: None
         
@@ -137,6 +161,18 @@ def _checkUserExists(usernameList,toRegisterUserList,self):
     return
         
 def _checkUsernames(usernames,self):
+    """ checks username for invalid characters when registering;
+        sets error messages for appropriate field
+
+    Keyword arguments:
+    usernames -- list of usernames
+    
+    Contributors: 
+    Matt Hengeveld
+    
+    Output: None
+        
+    """
     for x in range(len(usernames)):
         if usernames[x] is not None:
             match = re.search('[^A-Za-z0-9_.]',usernames[x])
@@ -147,6 +183,18 @@ def _checkUsernames(usernames,self):
     return 
 
 def _checkUserBanned(usernames,self):
+    """ checks if users are banned;
+        sets error messages for appropriate field
+
+    Keyword arguments:
+    usernames -- list of usernames
+    
+    Contributors: 
+    Matt Hengeveld
+    
+    Output: None
+        
+    """
     for x in range(len(usernames)):
         user = _findUser(usernames[x])
         banned = False
@@ -161,6 +209,18 @@ def _checkUserBanned(usernames,self):
     return
 
 def _checkUserInactive(usernames,self):
+    """ checks if users are inactive;
+        sets error messages for appropriate field
+
+    Keyword arguments:
+    usernames -- list of usernames
+    
+    Contributors: 
+    Matt Hengeveld
+    
+    Output: None
+        
+    """
     for x in range(len(usernames)):
         user = _findUser(usernames[x])
         active = True
@@ -175,17 +235,16 @@ def _checkUserInactive(usernames,self):
     return
 
 def _checkDuplicateUsernames(usernames,self):
-    """checks for duplicate usernames
+    """ checks for duplicate usernames
 
     Keyword arguments:
-    usernames -- list of strings; usernames entered on form
+    usernames -- list of usernames
     
     Contributors: 
-        Matt Hengeveld
-        Quinton Black
+    Matt Hengeveld
+    Quinton Black
     
-    Output:     False if no duplicates
-                True if duplicates
+    Output: None
         
     """
     for x in range(len(usernames)):
@@ -196,14 +255,15 @@ def _checkDuplicateUsernames(usernames,self):
     return    
 
 def _findUser(username):
-    """finds user in the database
+    """ finds user in the database
 
     Keyword arguments:
     username -- string; username entered on form
     
     Contributors: Matt Hengeveld
     
-    Output:    user object; returns None is not found
+    Output:    
+    user -- user object; returns None is not found
         
     """
     user = None
