@@ -1,6 +1,7 @@
 from Game.models import Game
 from Game.forms.confirmGameForm import ConfirmGameForm
 from django.shortcuts import render, redirect
+from django.contrib import messages
 
 def verifyGameRequest(request):
     """
@@ -15,23 +16,29 @@ def verifyGameRequest(request):
     Output: renders the webpage based on what Games the PongUser has to confirm.
         
     """
+    if not request.user.is_authenticated():
+        messages.add_message(request,messages.INFO,'Please Login')
+        return redirect('/login/')
+     
+    if not request.user.getHasUpdatedProfile():
+        messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
+        return redirect('/profile/edit')
+    
     username = request.session['username']
 
     gamesToConfirm, gamesOthersConfirm = _obtainGamesToBeConfirmed(username)
     confirmGameForms = []
     otherGameForms = []
-
-    for game in gamesToConfirm:
-        form = ConfirmGameForm()
-        _writeGameToForm(game, form)
-        confirmGameForms.append(form)
-
-    for game in gamesOthersConfirm:
-        form = ConfirmGameForm()
-        _writeGameToForm(game, form)
-        otherGameForms.append(form)
     
-    return render(request, 'game/confirm.html', { 'confirm_game_forms': confirmGameForms, 'other_games': otherGameForms})
+    for game in gamesToConfirm:
+        newData = ConfirmGameForm(game)
+        confirmGameForms.append(newData)
+    
+    for game in gamesOthersConfirm:
+        newData = ConfirmGameForm(game)
+        otherGameForms.append(newData)
+    
+    return render(request, 'game/confirm.html', { 'confirm_games': confirmGameForms, 'opponent_confirm_games': otherGameForms})
 
 def _obtainGamesToBeConfirmed(username):
     """
@@ -43,8 +50,8 @@ def _obtainGamesToBeConfirmed(username):
     
     Contributors: Richard Douglas
     
-    Output: gamesToConfirm -- a Python list of Games that the User can confirm/deny
-            gamesOthersConfirm -- a Python list of Games that the opposing Team can confirm/deny
+    Output: gamesToConfirm -- a Python list of Games that the User is to confirm/deny
+            gamesOthersConfirm -- a Python list of Games that the opposing Team is to confirm/deny
         
     """
     allGames = Game.objects.all().order_by('-_datePlayed')
@@ -53,13 +60,15 @@ def _obtainGamesToBeConfirmed(username):
     gamesOthersConfirm = []
     
     for game in allGames:
-        if _userOnTeam(game.getTeam2(), username):
+        if game.getIsConfirmed():
+            continue
+        elif _isUserOnTeam(game.getTeam2(), username):
             gamesToConfirm.append(game)
-        elif _userOnTeam(game.getTeam1(), username):
+        elif _isUserOnTeam(game.getTeam1(), username):
             gamesOthersConfirm.append(game)
     return gamesToConfirm, gamesOthersConfirm
 
-def _userOnTeam(team, username):
+def _isUserOnTeam(team, username):
     """
     Determines whether the PongUser is on this particular Team.
     
@@ -75,34 +84,5 @@ def _userOnTeam(team, username):
     teamUsernames = [teamUser.getUsername() for teamUser in teamUsers]
     return username in teamUsernames
 
-def _writeGameToForm(game,form):
-    """
-    Passes Game data to the ConfirmGameForm so that it can display it
-    in the HTML page.
-
-    Keyword arguments:
-    game -- the Game to get data from
-    form -- the ConfirmGameForm to write the data to
-    
-    Contributors: Richard Douglas
-    
-    Output: None
-    """
-    #obtain the usernames
-    teams = [game.getTeam1(),game.getTeam2()]
-    team1 = [teams[0].getUser1(),teams[0].getUser2()]
-    team2 = [teams[1].getUser1(),teams[1].getUser2()]
-    usernames = [team1[0].getUsername(), team1[1].getUsername(),
-                 team2[0].getUsername(), team2[1].getUsername()]
-    
-    #store the usernames in the form
-    form.player1 = usernames[0]
-    form.player2 = usernames[1]
-    form.player3 = usernames[2]
-    form.player4 = usernames[3]
-    
-    #also write the date to the form
-    form.date_played = game.getDatePlayed()
-    #lastly write the game_id so that the form knows which page to go to
-    form.game_id = game.pk
-    return
+def isUserAllowedToVerifyGame(game,username):
+    return _isUserOnTeam(game.getTeam2(),username) 

@@ -14,7 +14,7 @@
 
 <h4>Games You Verify</h4>
 
-{% if confirm_game_forms %}
+{% if confirm_games %}
 <table>
 		<tr>
 			<th width="2%">Date</th>
@@ -28,18 +28,18 @@
 			</th>
 		</tr>
 		
-{% for c_form in confirm_game_forms %}
+{% for c_game in confirm_games %}
 		<tr>
 			<td>
-				<div align="center">{{c_form.date_played}}</div>
+				<div align="center">{{c_game.date_played}}</div>
 			</td>
 			<td>
 				<div align="center">
 					<table border="1">
 						<center>
 							<tr>
-								<th>{{c_form.player1}}</th>
-								<th>{{c_form.player2}}</th>
+								<th>{{c_game.player1}}</th>
+								<th>{{c_game.player2}}</th>
 							</tr>
 							<td>1</td>
 							<td>2</td>
@@ -52,8 +52,8 @@
 					<table border="1">
 						<center>
 							<tr>
-								<th>{{c_form.player3}}</th>
-								<th>{{c_form.player4}}</th>
+								<th>{{c_game.player3}}</th>
+								<th>{{c_game.player4}}</th>
 							</tr>
 							<td>3</td>
 							<td>4</td>
@@ -63,12 +63,17 @@
 			</td>
 			<td><div align="center">Win</div></td>
 			<td>
-			<form method = "POST" action = "/game/{{ c_form.game_id }}/confirm/">
+			<form method = "POST" action = "/game/{{ c_game.game_id }}/confirm/">
 					
 						{% csrf_token %}
-						{{ c_form.confirm }}
-						<button name="createGame" class="btn" type="submit">
-							Verify
+						<button class="btn" type="submit">
+							Confirm
+						</button>
+			</form>
+			<form method = "POST" action = "/game/{{ c_game.game_id }}/deny/">
+						{% csrf_token %}
+						<button class="btn" type="submit">
+							Deny
 						</button>
 			</form>
 			</td>
@@ -82,20 +87,15 @@ You have no games to verify.
 
 
 <h4>Games To Be Verified By The Opposing Team</h4>
-{% if other_games %}
+{% if opponent_confirm_games %}
 <table>
 	<tr>
 		<th width="2%">Date</th>
 		<th width="6%">Team 1</th>
 		<th width="6%">Team 2</th>
 		<th width="1%">Outcome</th>
-		<th width="1%">
-			<div align="left">
-				Confirmation
-			<div align="center">
-		</th>
 	</tr>
-	{% for o_game in other_games %}
+	{% for o_game in opponent_confirm_games %}
 	<tr>
 		<td>
 			<div align="center">{{o_game.date_played}}</div>
@@ -129,7 +129,6 @@ You have no games to verify.
 			</div>
 		</td>
 		<td><div align="center">Win</div></td>
-		<td></td>
 	</tr>
 	{% endfor %}
 </table>

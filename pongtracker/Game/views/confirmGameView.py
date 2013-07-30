@@ -1,10 +1,9 @@
 from Game.models import Game
-from Game.forms.confirmGameForm import ConfirmGameForm
-from django.shortcuts import render, redirect
-from Utilities.utilities import *
+from django.shortcuts import redirect
 from django.contrib import messages
+from verifyGameView import isUserAllowedToVerifyGame
 
-def confirmOrDenyGame(request,game_id):
+def confirmGame(request,game_id):
     """
     Processes a Game's confirmation/denial request
 
@@ -27,28 +26,20 @@ def confirmOrDenyGame(request,game_id):
         messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
         return redirect('/profile/edit')
     
+    username = request.session['username']
     game = _obtainGame(game_id)
     
-    location = '/index/'
-    if game is None:
-        message = "Game " + game_id + " does not exist"
-    elif request.method != "POST":
-        message = "Access denied"
+    if game is None or not isUserAllowedToVerifyGame(game,username):
+        message = "This is not a game that you are allowed to confirm"
+    elif not _isGameEnded(game):
+        message = "Game cannot be denied as it has not properly ended"
+    elif game.getIsConfirmed():
+        message = "Game already confirmed/denied"
     else:
-        form = ConfirmGameForm(data=request.POST)
-        location = 'game/verify/'
-        if not form.is_valid():
-            message = "No choice selected"
-        else:
-            choice = form.cleaned_data['confirm']
-            print choice
-            if choice == 'confirm':
-                message = "Confirming game " + game_id
-            else:
-                message = "Denying game " + game_id
+        message = "Game " + game_id + " confirmed"
     
     messages.add_message(request,messages.INFO,message)
-    return redirect(location)
+    return redirect('/game/verify')
 
 def _obtainGame(game_id):
     """
@@ -68,3 +59,6 @@ def _obtainGame(game_id):
     except Game.DoesNotExist:
         game = None
     return game
+
+def _isGameEnded(game):
+    return True
