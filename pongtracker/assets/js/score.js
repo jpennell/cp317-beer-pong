@@ -6,6 +6,33 @@
  *
  * JavaScript code which implements the Score Game aspect of the Pong Tracker project
  */
+
+/*
+ * Django provided these methods
+ */
+function csrfSafeMethod(method) {
+	// these HTTP methods do not require CSRF protection
+	return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+function sameOrigin(url) {
+	// test that a given url is a same-origin URL
+	// url could be relative or scheme relative or absolute
+	var host = document.location.host;
+	// host + port
+	var protocol = document.location.protocol;
+	var sr_origin = '//' + host;
+	var origin = protocol + sr_origin;
+	// Allow absolute or scheme relative URLs to same origin
+	return (url == origin || url.slice(0, origin.length + 1) == origin + '/') || (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+	// or any other URL that isn't scheme relative or absolute i.e relative.
+	!(/^(\/\/|http:|https:).*/.test(url));
+}
+
+/*
+ * my stuff from here
+ */
+
 lastMoves = new Array()
 
 var canUndo = function() {
@@ -39,10 +66,10 @@ var deactivateCup = function(team, cup) {
 }
 /*
  * Recording events and POST request
- * 
- * 
+ *
+ *
  */
-var postEvent = function(team, player, cup1, cup2) {
+var postEvent = function(type, team, player, cup1, cup2) {
 	/*
 	 * posts an event to this page
 	 */
@@ -60,6 +87,7 @@ var postEvent = function(team, player, cup1, cup2) {
 	$.ajax({
 		type : 'POST',
 		data : {
+			eventType: type,
 			team : team,
 			player : player,
 			cup : cup1,
@@ -67,12 +95,12 @@ var postEvent = function(team, player, cup1, cup2) {
 		}
 	})
 }
-var recordEvent = function(team, player, cup) {
+var recordEvent = function(type, team, player, cup) {
 	lastMoves.push({
 		team : team,
 		cup : cup
 	})
-	postEvent(team, player, cup, false)
+	postEvent(type, team, player, cup, false)
 }
 var recordBounce = function(team, player, cup1, cup2) {
 	lastMoves.push({
@@ -80,18 +108,18 @@ var recordBounce = function(team, player, cup1, cup2) {
 		cup : cup1,
 		cup2 : cup2
 	})
-	postEvent(team, player, cup1, cup2)
+	postEvent('bounce', team, player, cup1, cup2)
 }
 /*
  * Dialogs and such
- * 
+ *
  */
 var blamePlayer = function(blameFunction) {
-	/* 
+	/*
 	 * brings up a dialog box for selecting the user who performed the last move
 	 *  params:
 	 * 	 blameFunction: the function to invoke which continues the process
-	 * 		blameFunction must take exactly one parameter, player 
+	 * 		blameFunction must take exactly one parameter, player
 	 */
 	$(this).simpledialog2({
 		mode : 'button',
@@ -115,26 +143,26 @@ var blamePlayer = function(blameFunction) {
 	})
 }
 var cupSunk = function(team, cup) {
-	/* 
-	 * what happens when a cup is sunk 
+	/*
+	 * what happens when a cup is sunk
 	 */
 	console.debug('cup', cup, 'on team', team, 'was sunk')
 	var blameCupSunk = function(player) {
 		console.debug('Player', player, 'sunk the cup')
 		deactivateCup(team, cup)
-		recordEvent(team, cup, 'regular')
+		recordEvent('regular', team, cup)
 	}
 	blamePlayer(blameCupSunk)
 }
 var partyFoul = function(team, cup) {
-	/* 
-	 * what happens when a party foul occurs 
+	/*
+	 * what happens when a party foul occurs
 	 */
 	console.debug('team', team, 'cup', cup, 'was a party foul')
 	var blamePartyFoul = function(player) {
 		console.debug('Player', player, 'got a party foul')
 		deactivateCup(team, cup)
-		recordEvent(team, player, cup, 'party_foul')
+		recordEvent('party_foul', team, player, cup)
 	}
 	blamePlayer(blamePartyFoul)
 }
@@ -146,7 +174,7 @@ var trickShot = function(team, cup) {
 	var blameTrickShot = function(player) {
 		console.debug('Player', player, 'got a trick shot')
 		deactivateCup(team, cup)
-		recordEvent(team, player, cup, 'trick')
+		recordEvent('trick', team, player, cup)
 	}
 	blamePlayer(blameTrickShot)
 }
