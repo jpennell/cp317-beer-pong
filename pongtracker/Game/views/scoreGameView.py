@@ -18,7 +18,6 @@ def scoreGame(request, game_id):
     
     game = Game.objects.get(pk=game_id)
     
-    #why is this here? only need one user for an event
     users = [game.getTeam1().getUser1(), game.getTeam1().getUser2(), game.getTeam2().getUser1(), game.getTeam2().getUser2()]
     
     #get the info we need
