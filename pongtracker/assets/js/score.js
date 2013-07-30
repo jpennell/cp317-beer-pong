@@ -9,13 +9,16 @@
 lastMoves = new Array()
 
 var canUndo = function() {
+	/* checks whether there are moves to undo */
 	return lastMoves.length > 0
 }
 var updateUndoButton = function() {
+	/* updates the disabled status of the undo button */
 	var undoBox = '[name="undo"]'
 	canUndo() ? $(undoBox).removeAttr('disabled') : $(undoBox).attr('disabled', 'true')
 }
 var undoMove = function() {
+	/* undoes the most recent event */
 	if (!canUndo()) {
 		console.error('nothing to undo!')
 		return undefined
@@ -30,35 +33,77 @@ var undoMove = function() {
 	}
 }
 var deactivateCup = function(team, cup) {
-	// construct css selector eg: .team1.cup1
-	var sel = '.' + team + '.' + cup
-	$(sel).removeClass('active')
+	/* makes a cup deactive (by removing CSS class 'active) */
+	var selector = '.' + team + '.' + cup
+	$(selector).removeClass('active')
 }
-var recordEvent = function(team, cup) {
+/*
+ * Recording events and POST request
+ * 
+ * 
+ */
+var postEvent = function(team, player, cup1, cup2) {
+	/*
+	 * posts an event to this page
+	 */
+	var csrftoken = $.cookie('csrftoken')
+	$.ajaxSetup({
+		beforeSend : function(xhr, settings) {
+			if (!csrfSafeMethod(settings.type) && sameOrigin(settings.url)) {
+				// Send the token to same-origin, relative URLs only.
+				// Send the token only if the method warrants CSRF protection
+				// Using the CSRFToken value acquired earlier
+				xhr.setRequestHeader("X-CSRFToken", csrftoken);
+			}
+		}
+	})
+	$.ajax({
+		type : 'POST',
+		data : {
+			team : team,
+			player : player,
+			cup : cup1,
+			cup2 : cup2
+		}
+	})
+}
+var recordEvent = function(team, player, cup) {
 	lastMoves.push({
 		team : team,
 		cup : cup
 	})
+	postEvent(team, player, cup, false)
 }
-var recordBounce = function(team, cup1, cup2) {
+var recordBounce = function(team, player, cup1, cup2) {
 	lastMoves.push({
 		team : team,
 		cup : cup1,
 		cup2 : cup2
 	})
+	postEvent(team, player, cup1, cup2)
 }
+/*
+ * Dialogs and such
+ * 
+ */
 var blamePlayer = function(blameFunction) {
+	/* 
+	 * brings up a dialog box for selecting the user who performed the last move
+	 *  params:
+	 * 	 blameFunction: the function to invoke which continues the process
+	 * 		blameFunction must take exactly one parameter, player 
+	 */
 	$(this).simpledialog2({
 		mode : 'button',
 		headerText : 'Who sunk that?',
 		headerClose : true,
 		buttons : {
-			user1 : {
+			'Player 1' : {
 				click : function() {
 					blameFunction(1)
 				}
 			},
-			btn2 : {
+			'Player 2' : {
 				click : function() {
 					blameFunction(2)
 				}
@@ -70,6 +115,9 @@ var blamePlayer = function(blameFunction) {
 	})
 }
 var cupSunk = function(team, cup) {
+	/* 
+	 * what happens when a cup is sunk 
+	 */
 	console.debug('cup', cup, 'on team', team, 'was sunk')
 	var blameCupSunk = function(player) {
 		console.debug('Player', player, 'sunk the cup')
@@ -79,24 +127,33 @@ var cupSunk = function(team, cup) {
 	blamePlayer(blameCupSunk)
 }
 var partyFoul = function(team, cup) {
+	/* 
+	 * what happens when a party foul occurs 
+	 */
 	console.debug('team', team, 'cup', cup, 'was a party foul')
 	var blamePartyFoul = function(player) {
 		console.debug('Player', player, 'got a party foul')
 		deactivateCup(team, cup)
-		recordEvent(team, cup, 'party_foul')
+		recordEvent(team, player, cup, 'party_foul')
 	}
 	blamePlayer(blamePartyFoul)
 }
 var trickShot = function(team, cup) {
+	/*
+	 * what happens when a trick shot occurs
+	 */
 	console.debug('team', team, 'cup', cup, 'was a trick shot')
 	var blameTrickShot = function(player) {
 		console.debug('Player', player, 'got a trick shot')
 		deactivateCup(team, cup)
-		recordEvent(team, cup, 'trick')
+		recordEvent(team, player, cup, 'trick')
 	}
 	blamePlayer(blameTrickShot)
 }
 var bounceShot = function(team, cup) {
+	/*
+	 * what happens when a bounce shot occurs
+	 */
 	console.debug('team', team, 'cup', cup, 'was a bounce shot')
 	deactivateCup(team, cup)
 
@@ -133,7 +190,7 @@ var bounceShot = function(team, cup) {
 			var cup2 = classes[2]
 			console.debug('... and the bonus cup is', cup2)
 			deactivateCup(team, cup2)
-			recordBounce(team,cup,cup2)
+			recordBounce(team, player, cup, cup2)
 		})
 	}
 	var selectBounceCupWrap = function(player) {
