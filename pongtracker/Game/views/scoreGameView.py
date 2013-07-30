@@ -35,6 +35,9 @@ def scoreGame( request, game_id ):
              game.getTeam2().getUser1(),
              game.getTeam2().getUser2()]
 
+    teams = [ [users[0], users[1]],
+              [users[2], users[3]] ]
+
     # get the info we need
     if request.method == 'POST':
         eventTypeName = request.POST['eventType']
@@ -44,9 +47,16 @@ def scoreGame( request, game_id ):
             event = _undoEvent()
         else:
             # create event
-            cups = []
-            for i in range( 1, 7 ):
-                cups.append( request.POST["cup" + i] )
+            cup = request.POST['cup']
+            try:
+                cup2 = request.POST['cup2']
+            except KeyError:
+                cup2 = None
+            team = request.POST['team']
+            player = request.POST['player']
+
+            print team, player, cup, cup2
+
             event = Event.objects.create( _game = game, _eventType = eventType, _user = user,
                                           _cup1 = cups[1], _cup2 = cups[2], _cup3 = cups[3],
                                           _cup4 = cups[4], _cup5 = cups[5], _cup6 = cups[6] )
