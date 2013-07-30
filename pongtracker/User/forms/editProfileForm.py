@@ -10,10 +10,9 @@ MAX_HEIGHT = 300
 class EditProfileForm( forms.ModelForm ):
     year_choices = []
 
-    for r in range( ( datetime.datetime.now().year ), ( datetime.datetime.now().year + 11 ) ):
+    for r in range( ( datetime.datetime.now().year ), ( datetime.datetime.now().year + 10 ) ):
         year_choices.append( ( r, r ) )
 
-    year_tuple = ( year_choices )
     
     username = forms.CharField( 
         widget=forms.TextInput(attrs={'class':'disabled', 'readonly':'readonly'})
