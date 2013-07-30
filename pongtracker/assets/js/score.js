@@ -6,9 +6,6 @@
  *
  * JavaScript code which implements the Score Game aspect of the Pong Tracker project
  */
-
-alert(user1 + ', ' + user2 + ', ' + user3 + ', ' + user4)
-
 lastMoves = new Array()
 
 var canUndo = function() {
@@ -153,7 +150,7 @@ var rotateCups = function() {
 	$(t2).css(transform, $(t2).css(transform) == 'none' ? 'rotate(-90deg)' : '')
 }
 /*
-* Action event delegates
+* Global action event delegates
 *
 */
 // delegate for the main cup interface
