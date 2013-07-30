@@ -9,23 +9,24 @@
 
 lastMoves = new Array()
 
-move = {
-	team : '',
-	cup : '',
-	bounce : undefined
+var canUndo = function() {
+	return lastMoves.length > 0
 }
-
+var updateUndoButton = function() {
+	var undoBox = '[name="undo"]'
+	canUndo() ? $(undoBox).removeAttr('disabled') : $(undoBox).attr('disabled', 'true')
+}
 var undoMove = function() {
-	lastMove = lastMoves.pop()
-	if (lastMove == undefined) {
+	if (!canUndo()) {
 		console.error('nothing to undo!')
 		return undefined
 	}
+	lastMove = lastMoves.pop()
 	// construct css selector eg: .team1.cup1
 	var sel = '.' + lastMove.team + '.' + lastMove.cup
 	$(sel).addClass('active')
-	if (lastMove.bounce != undefined) {
-		var sel = '.' + lastMove.bounce.team + '.' + lastMove.bounce.cup
+	if ( typeof lastMove.cup2 !== 'undefined') {
+		var sel = '.' + lastMove.team + '.' + lastMove.cup2
 		$(sel).addClass('active')
 	}
 }
@@ -33,9 +34,18 @@ var deactivateCup = function(team, cup) {
 	// construct css selector eg: .team1.cup1
 	var sel = '.' + team + '.' + cup
 	$(sel).removeClass('active')
+}
+var recordEvent = function(team, cup) {
 	lastMoves.push({
 		team : team,
 		cup : cup
+	})
+}
+var recordBounce = function(team, cup1, cup2) {
+	lastMoves.push({
+		team : team,
+		cup : cup1,
+		cup2 : cup2
 	})
 }
 var blamePlayer = function(blameFunction) {
@@ -65,6 +75,7 @@ var cupSunk = function(team, cup) {
 	var blameCupSunk = function(player) {
 		console.debug('Player', player, 'sunk the cup')
 		deactivateCup(team, cup)
+		recordEvent(team, cup, 'regular')
 	}
 	blamePlayer(blameCupSunk)
 }
@@ -73,6 +84,7 @@ var partyFoul = function(team, cup) {
 	var blamePartyFoul = function(player) {
 		console.debug('Player', player, 'got a party foul')
 		deactivateCup(team, cup)
+		recordEvent(team, cup, 'party_foul')
 	}
 	blamePlayer(blamePartyFoul)
 }
@@ -81,6 +93,7 @@ var trickShot = function(team, cup) {
 	var blameTrickShot = function(player) {
 		console.debug('Player', player, 'got a trick shot')
 		deactivateCup(team, cup)
+		recordEvent(team, cup, 'trick')
 	}
 	blamePlayer(blameTrickShot)
 }
@@ -114,6 +127,15 @@ var bounceShot = function(team, cup) {
 			headerClose : false,
 			blankContent : '<div class="cups">' + outHtml + '</div>'
 		})
+		// delegate for the bounce shot bonus cup dialog
+		$(document).delegate('.bcup.active', 'click', function() {
+			var classes = this.className.split(' ')
+			var team = classes[1]
+			var cup2 = classes[2]
+			console.debug('... and the bonus cup is', cup2)
+			deactivateCup(team, cup2)
+			recordBounce(team,cup,cup2)
+		})
 	}
 	var selectBounceCupWrap = function(player) {
 		selectBounceCup(team, cup, player)
@@ -123,15 +145,10 @@ var bounceShot = function(team, cup) {
 var rotateCups = function() {
 	var t1 = '#team1 .cups'
 	var t2 = '#team2 .cups'
-	if ($(t1).css('-webkit-transform') == 'none')
-		$(t1).css('-webkit-transform', 'rotate(90deg)')
-	else
-		$(t1).css('-webkit-transform', '')
-
-	if ($(t2).css('-webkit-transform') == 'none')
-		$(t2).css('-webkit-transform', 'rotate(-90deg)')
-	else
-		$(t2).css('-webkit-transform', '')
+	//var transforms = ['transform', '-webkit-transform', '-moz-transform']
+	var transform = '-webkit-transform'
+	$(t1).css(transform, $(t1).css(transform) == 'none' ? 'rotate( 90deg)' : '')
+	$(t2).css(transform, $(t2).css(transform) == 'none' ? 'rotate(-90deg)' : '')
 }
 /*
 * Action event delegates
@@ -173,14 +190,6 @@ $(document).delegate('.cup.active:not(".bcup")', 'click', function() {
 		showModal : true,
 		clickEvent : 'vclick'
 	})
-})
-// delegate for the bounce shot bonus cup dialog
-$(document).delegate('.bcup.active', 'click', function() {
-	var classes = this.className.split(' ')
-	var team = classes[1]
-	var cup = classes[2]
-	console.debug('... and the bonus cup is', cup)
-	deactivateCup(team, cup)
 })
 // delegate for the rotate button
 $(document).delegate('[name="rotate"]', 'click', function() {
