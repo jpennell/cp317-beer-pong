@@ -48,18 +48,24 @@ def scoreGame( request, game_id ):
         else:
             # create event
             cup = request.POST['cup']
-            try:
-                cup2 = request.POST['cup2']
-            except KeyError:
-                cup2 = None
+            cup2 = request.POST.get( 'cup2' )
             team = request.POST['team']
             player = request.POST['player']
 
-            print team, player, cup, cup2
+            # initialize cups to a list of 6 False
+            cups = [False] * 6
+            # cup = "cupX", cup[-1] = "X"
+            # make cup X true
+            cups[int( cup[-1] )] = True
+            if cup2:
+                cups[int( cup2[-1] )] = True
+
+            team = int( team[-1] )
+            player = int( player )
 
             event = Event.objects.create( _game = game, _eventType = eventType, _user = user,
-                                          _cup1 = cups[1], _cup2 = cups[2], _cup3 = cups[3],
-                                          _cup4 = cups[4], _cup5 = cups[5], _cup6 = cups[6] )
+                                          _cup1 = cups[0], _cup2 = cups[1], _cup3 = cups[2],
+                                          _cup4 = cups[3], _cup5 = cups[4], _cup6 = cups[5] )
 
     return render( request, 'game/play.html', {'users': users} )
     # not sure what to render/redirect to if it even needs to happen
