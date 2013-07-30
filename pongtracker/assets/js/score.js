@@ -28,6 +28,17 @@ function sameOrigin(url) {
 	// or any other URL that isn't scheme relative or absolute i.e relative.
 	!(/^(\/\/|http:|https:).*/.test(url));
 }
+var csrftoken = $.cookie('csrftoken')
+$.ajaxSetup({
+	beforeSend : function(xhr, settings) {
+		if (!csrfSafeMethod(settings.type) && sameOrigin(settings.url)) {
+			// Send the token to same-origin, relative URLs only.
+			// Send the token only if the method warrants CSRF protection
+			// Using the CSRFToken value acquired earlier
+			xhr.setRequestHeader("X-CSRFToken", csrftoken);
+		}
+	}
+})
 
 /*
  * my stuff from here
@@ -69,29 +80,19 @@ var deactivateCup = function(team, cup) {
  *
  *
  */
-var postEvent = function(type, team, player, cup1, cup2) {
+var postEvent = function(eventType, team, player, cup, cup2) {
 	/*
 	 * posts an event to this page
 	 */
-	var csrftoken = $.cookie('csrftoken')
-	$.ajaxSetup({
-		beforeSend : function(xhr, settings) {
-			if (!csrfSafeMethod(settings.type) && sameOrigin(settings.url)) {
-				// Send the token to same-origin, relative URLs only.
-				// Send the token only if the method warrants CSRF protection
-				// Using the CSRFToken value acquired earlier
-				xhr.setRequestHeader("X-CSRFToken", csrftoken);
-			}
-		}
-	})
+	console.log(eventType, team, player, cup, cup2)
 	$.ajax({
 		type : 'POST',
 		data : {
-			eventType: type,
-			team : team,
-			player : player,
-			cup : cup1,
-			cup2 : cup2
+			'eventType' : eventType,
+			'team' : team,
+			'player' : player,
+			'cup' : cup,
+			'cup2' : cup2
 		}
 	})
 }
@@ -150,7 +151,7 @@ var cupSunk = function(team, cup) {
 	var blameCupSunk = function(player) {
 		console.debug('Player', player, 'sunk the cup')
 		deactivateCup(team, cup)
-		recordEvent('regular', team, cup)
+		recordEvent('regular', team, player, cup)
 	}
 	blamePlayer(blameCupSunk)
 }
