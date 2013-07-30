@@ -28,6 +28,7 @@ function sameOrigin(url) {
 	// or any other URL that isn't scheme relative or absolute i.e relative.
 	!(/^(\/\/|http:|https:).*/.test(url));
 }
+
 var csrftoken = $.cookie('csrftoken')
 $.ajaxSetup({
 	beforeSend : function(xhr, settings) {
@@ -84,16 +85,19 @@ var postEvent = function(eventType, team, player, cup, cup2) {
 	/*
 	 * posts an event to this page
 	 */
+	myData = {
+		'eventType' : eventType,
+		'team' : team,
+		'player' : player,
+		'cup' : cup
+	}
+	if (cup2)
+		myData['cup2'] = cup2
+		
 	console.log(eventType, team, player, cup, cup2)
 	$.ajax({
 		type : 'POST',
-		data : {
-			'eventType' : eventType,
-			'team' : team,
-			'player' : player,
-			'cup' : cup,
-			'cup2' : cup2
-		}
+		data : myData
 	})
 }
 var recordEvent = function(type, team, player, cup) {
