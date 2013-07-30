@@ -58,13 +58,13 @@ def _getStats(user, events, game_id):
     for x in range(len(events)):
         if (events[x].getUser() == user):
             event = events[x].getEventType().getName()
-            if event == 'sunk':
+            if event == 'regular':
                 sunk += 1
             elif event == 'trick':
                 tricks += 1
             elif event == 'bounce':
                 bounces += 1
-            elif event == 'foul':
+            elif event == 'party_foul':
                 fouls += 1
             elif event == 'redemption':
                 redemptions += 1
