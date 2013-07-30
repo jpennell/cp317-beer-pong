@@ -7,10 +7,10 @@
  * JavaScript code which implements the Score Game aspect of the Pong Tracker project
  */
 
-/* 
- * 
- * global variables 
- * 
+/*
+ *
+ * global variables
+ *
  */
 game = {
 	/* game information for dialog boxes */
@@ -26,9 +26,9 @@ game = {
 /* array for storing most recent moves */
 lastMoves = new Array()
 /*
- * 
+ *
  * functions
- * 
+ *
  */
 var editDialogText = function(team) {
 	/* edits the current simpledialog to show the current player names in the buttons */
@@ -284,6 +284,26 @@ $(document).delegate('[name="undo"]', 'click', function() {
 // delegate for the abort button
 $(document).delegate('[name="abort"]', 'click', function() {
 	console.debug('clicked abort')
+	$('<div>').simpledialog2({
+		mode : 'button',
+		headerText : 'Are you sure?',
+		headerClose : true,
+		'buttons' : {
+			'Yes' : {
+				'click' : function() {
+					console.log('aborted game')
+				}
+			},
+			'No' : {
+				'click' : function() {
+					return undefined
+				}
+			}
+		},
+		forceInput : false,
+		showModal : true,
+		clickEvent : 'vclick'
+	})
 })
 // delegate for the end game button
 $(document).delegate('[name="end"]', 'click', function() {
