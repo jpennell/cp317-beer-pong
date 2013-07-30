@@ -31,11 +31,13 @@ def verifyGameRequest(request):
     otherGameForms = []
     
     for game in gamesToConfirm:
-        newData = ConfirmGameForm(game)
+        newData = ConfirmGameForm()
+        newData.setGameData(game)
         confirmGameForms.append(newData)
     
     for game in gamesOthersConfirm:
-        newData = ConfirmGameForm(game)
+        newData = ConfirmGameForm()
+        newData.setGameData(game)
         otherGameForms.append(newData)
     
     return render(request, 'game/confirm.html', { 'confirm_games': confirmGameForms, 'opponent_confirm_games': otherGameForms})
