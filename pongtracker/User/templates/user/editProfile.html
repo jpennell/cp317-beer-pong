@@ -15,7 +15,7 @@
     <h4>Fields marked with a * are required</h4>
     
     
-    <form method='post' action='/profile/edit'>
+    <form method='post' action='/profile/edit' enctype='multipart/form-data'>
         {% csrf_token %}
 		
 		{{ updated }}

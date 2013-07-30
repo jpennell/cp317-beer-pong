@@ -27,11 +27,16 @@
 	vertical-align: top;
 }
 
-#picture {
-	border: 1px solid #bbb;
+#default_picture{
+	
 	background-image: url("../img/profile.jpg");
 	background-size: cover;
 	background-position-x: -73px; /* this attribute is just for the sample image */
+	
+}
+
+.picture {
+	border: 1px solid #bbb;
 	width: 250px;
 	height: 250px;
 }
