@@ -88,6 +88,16 @@ h1, h2, h3, h4, h5 {
 	font-size: 24px;
 	font-weight: bold;
 }
+#logoimg {
+	width: 50px;
+	height: 50px;
+	display: block;
+	background-image: url("../img/ponglogo_SML_gen-01.png");
+	background-size: cover;
+	float: left;
+	margin-top: -20px;
+}
+
 #nav {
 	text-align: right;
 }
