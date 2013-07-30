@@ -82,6 +82,8 @@ MEDIA_ROOT = '/home/cram8680/public_html/uploads/'
 # Examples: "http://example.com/media/", "http://media.example.com/"
 MEDIA_URL = 'http://hopper.wlu.ca/~cram8680/uploads/'
 
+FILE_UPLOAD_PERMISSIONS = 0740
+
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
