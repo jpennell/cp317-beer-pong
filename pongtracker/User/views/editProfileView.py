@@ -60,10 +60,6 @@ def editProfile(request):
             termsAndConditions = form.cleaned_data['_hasAcceptedTerms']
             
             _updateUser(username,firstname,lastname,email,height,yearOfGradution,userProfilePhoto,deactivate,institution)
-           
-            #Declare that user has updated profile and password
-            user.setHasUpdatedProfile(True)
-            user.save()
             
             if deactivate:
                 return redirect('/deactivate')
@@ -124,6 +120,7 @@ def _updateUser(username,firstName,lastName,email,height,yearOfGradution,userPro
     user.setEmail(email)
     user.setIsActive(deactivate)
     user.setInstitution(institution)
+    user.setHasUpdatedProfile(True)
     user.save()
     return
 
