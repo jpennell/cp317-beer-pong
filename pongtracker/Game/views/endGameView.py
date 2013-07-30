@@ -44,7 +44,7 @@ def viewGameSummaryRequest(request, game_id):
         
         form.authErr = True
         
-    return
+    return render(request, 'game/summary.html', {'form': form})
 
 
 def _getStats(user, events, game_id):
