@@ -21,7 +21,13 @@
     <script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.js"></script>
     <script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.js"></script>
     <script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.js"></script>
-    
+
+	<script type="text/javascript">
+		var user1 = "{{ game.getTeam1.getUser1 }}";
+		var user2 = "{{ game.getTeam1.getUser2 }}";
+		var user3 = "{{ game.getTeam2.getUser1 }}";
+		var user4 = "{{ game.getTeam2.getUser2 }}";
+	</script>
     <script type="text/javascript" src="{% static 'js/score.js' %}"></script>
 
     <style>
@@ -97,12 +103,12 @@
                             <td align='center'>
                                 <div class="picture"></div>
                                 <br/>
-                                <span class="player-name">username1 </span>
+                                <span class="player-name">{{ game.getTeam1.getUser1 }}</span>
                             </td>
                             <td align="center">
                                 <div class="picture"></div>
                                 <br/>
-                                <span class="player-name">username2 </span>
+                                <span class="player-name">{{ game.getTeam1.getUser2 }}</span>
                             </td>
                         </tr>
                     </table>
@@ -125,13 +131,13 @@
                             <td>
                                 <div class="picture"></div>
                                 <br/>
-                                <span class="player-name">username3 </span>
+                                <span class="player-name">{{ game.getTeam2.getUser1 }}</span>
                             </td>
 
                             <td>
                                 <div class="picture"></div>
                                 <br/>
-                                <span class="player-name">username4 </span>
+                                <span class="player-name">{{ game.getTeam2.getUser2 }}</span>
                             </td>
                         </tr>
                     </table>
