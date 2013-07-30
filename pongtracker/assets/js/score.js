@@ -7,46 +7,34 @@
  * JavaScript code which implements the Score Game aspect of the Pong Tracker project
  */
 
-/*
- * Django provided these methods
+/* 
+ * 
+ * global variables 
+ * 
  */
-function csrfSafeMethod(method) {
-	// these HTTP methods do not require CSRF protection
-	return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-}
-
-function sameOrigin(url) {
-	// test that a given url is a same-origin URL
-	// url could be relative or scheme relative or absolute
-	var host = document.location.host;
-	// host + port
-	var protocol = document.location.protocol;
-	var sr_origin = '//' + host;
-	var origin = protocol + sr_origin;
-	// Allow absolute or scheme relative URLs to same origin
-	return (url == origin || url.slice(0, origin.length + 1) == origin + '/') || (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
-	// or any other URL that isn't scheme relative or absolute i.e relative.
-	!(/^(\/\/|http:|https:).*/.test(url));
-}
-
-var csrftoken = $.cookie('csrftoken')
-$.ajaxSetup({
-	beforeSend : function(xhr, settings) {
-		if (!csrfSafeMethod(settings.type) && sameOrigin(settings.url)) {
-			// Send the token to same-origin, relative URLs only.
-			// Send the token only if the method warrants CSRF protection
-			// Using the CSRFToken value acquired earlier
-			xhr.setRequestHeader("X-CSRFToken", csrftoken);
-		}
+game = {
+	/* game information for dialog boxes */
+	'team1' : {
+		1 : "Team 1 Player 1",
+		2 : "Team 1 Player 2"
+	},
+	'team2' : {
+		1 : "Team 2 Player 1",
+		2 : "Team 2 Player 2"
 	}
-})
-
-/*
- * my stuff from here
- */
-
+}
+/* array for storing most recent moves */
 lastMoves = new Array()
-
+/*
+ * 
+ * functions
+ * 
+ */
+var editDialogText = function(team) {
+	/* edits the current simpledialog to show the current player names in the buttons */
+	$("#button-player-1 .ui-btn-text").html(game[team][1])
+	$("#button-player-2 .ui-btn-text").html(game[team][2])
+}
 var canUndo = function() {
 	/* checks whether there are moves to undo */
 	return lastMoves.length > 0
@@ -93,7 +81,7 @@ var postEvent = function(eventType, team, player, cup, cup2) {
 	}
 	if (cup2)
 		myData['cup2'] = cup2
-		
+
 	console.log(eventType, team, player, cup, cup2)
 	$.ajax({
 		type : 'POST',
@@ -119,7 +107,7 @@ var recordBounce = function(team, player, cup1, cup2) {
  * Dialogs and such
  *
  */
-var blamePlayer = function(blameFunction) {
+var blamePlayer = function(team, blameFunction) {
 	/*
 	 * brings up a dialog box for selecting the user who performed the last move
 	 *  params:
@@ -132,11 +120,13 @@ var blamePlayer = function(blameFunction) {
 		headerClose : true,
 		buttons : {
 			'Player 1' : {
+				id : 'button-player-1',
 				click : function() {
 					blameFunction(1)
 				}
 			},
-			'Player 2' : {
+			"Player 2" : {
+				id : 'button-player-2',
 				click : function() {
 					blameFunction(2)
 				}
@@ -146,6 +136,7 @@ var blamePlayer = function(blameFunction) {
 		showModal : true,
 		clickEvent : 'vclick'
 	})
+	editDialogText(team)
 }
 var cupSunk = function(team, cup) {
 	/*
@@ -157,7 +148,7 @@ var cupSunk = function(team, cup) {
 		deactivateCup(team, cup)
 		recordEvent('regular', team, player, cup)
 	}
-	blamePlayer(blameCupSunk)
+	blamePlayer(team, blameCupSunk)
 }
 var partyFoul = function(team, cup) {
 	/*
@@ -169,7 +160,7 @@ var partyFoul = function(team, cup) {
 		deactivateCup(team, cup)
 		recordEvent('party_foul', team, player, cup)
 	}
-	blamePlayer(blamePartyFoul)
+	blamePlayer(team, blamePartyFoul)
 }
 var trickShot = function(team, cup) {
 	/*
@@ -181,7 +172,7 @@ var trickShot = function(team, cup) {
 		deactivateCup(team, cup)
 		recordEvent('trick', team, player, cup)
 	}
-	blamePlayer(blameTrickShot)
+	blamePlayer(team, blameTrickShot)
 }
 var bounceShot = function(team, cup) {
 	/*
@@ -229,7 +220,7 @@ var bounceShot = function(team, cup) {
 	var selectBounceCupWrap = function(player) {
 		selectBounceCup(team, cup, player)
 	}
-	blamePlayer(selectBounceCupWrap)
+	blamePlayer(team, selectBounceCupWrap)
 }
 var rotateCups = function() {
 	var t1 = '#team1 .cups'
