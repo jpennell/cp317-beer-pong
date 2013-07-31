@@ -38,9 +38,9 @@ def scoreGame( request, game_id ):
 
         if eventTypeName == 'undo':
             try:
-                _undoEvent()
-            except Error:
-                print "undo failed"
+                _undoEvent( game )
+            except Exception, e:
+                print "undo failed: %s" % e
 
         else:
             # create event
@@ -78,21 +78,18 @@ def scoreGame( request, game_id ):
 
 
 def _undoEvent( game ):
-        """Undo the previous event
+    """Undo the previous event
 
-        Keyword arguments:
-        gameID -- current game (int)
+    Keyword arguments:
+    gameID -- current game (int)
 
 
-        Contributors:
-        Erin Cramer
-        George Lifchits
+    Contributors:
+    Erin Cramer
+    George Lifchits
 
-        """
-        try:
-            game_events = game.getEvents()
-            last_event = game_events[-1]
-            last_event.delete()
-        except:
-            raise Error( 'undo failed' )
+    """
+    game_events = game.getEvents()
+    last_event = sorted( game_events, reverse = True )[0]
+    last_event.delete()
 

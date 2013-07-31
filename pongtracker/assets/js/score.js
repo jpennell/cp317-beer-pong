@@ -48,14 +48,22 @@ var deactivateCup = function(team, cup) {
 	console.debug('deactivating cup ' + selector)
 	$(selector).removeClass('active')
 }
+var activateCup = function(team, cup) {
+	/* makes a cup active (by adding CSS class 'active) */
+	if ( typeof cup == 'number')
+		cup = 'cup' + cup
+	if ( typeof team == 'number')
+		team = 'team' + team
+	var selector = '.' + team + '.' + cup
+	console.debug('activating cup ' + selector)
+	$(selector).addClass('active')
+}
 var refreshCups = function() {
 	console.debug('refreshing cups')
 	getGameStatus()
 	for (var cupIdx = 1; cupIdx <= 6; cupIdx++) {
-		if (game.team1.cups[cupIdx])
-			deactivateCup(1, cupIdx)
-		if (game.team2.cups[cupIdx])
-			deactivateCup(2, cupIdx)
+		game.team1.cups[cupIdx] ? deactivateCup(1, cupIdx) : activateCup(1, cupIdx)
+		game.team2.cups[cupIdx] ? deactivateCup(2, cupIdx) : activateCup(1, cupIdx)
 	}
 }
 /*
@@ -67,6 +75,7 @@ var refreshCups = function() {
 var undoMove = function() {
 	/* undoes the most recent event */
 	postEvent('undo')
+	documentRefresh()
 }
 var getGameStatus = function() {
 	console.debug('getting game status from JSON')
