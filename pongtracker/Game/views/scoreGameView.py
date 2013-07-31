@@ -86,13 +86,13 @@ def _undoEvent( game ):
 
         Contributors:
         Erin Cramer
+        George Lifchits
 
         """
         try:
             game_events = game.getEvents()
             last_event = game_events[-1]
             last_event.delete()
-            success = True
         except:
             raise Error( 'undo failed' )
 
