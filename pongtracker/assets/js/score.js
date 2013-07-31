@@ -314,7 +314,7 @@ $(document).delegate('[name="abort"]', 'click', function() {
 	})
 })
 var forfeitTeam = function(winners) {
-	console.log('team ' + team + ' forfeited')
+	console.log('team ' + winners + ' win because other team forfeited')
 	// var postEvent = function(eventType, team, player, cup, cup2)
 	postEvent('win', winners, 1, false, false)
 }
@@ -322,6 +322,8 @@ var deathCup = function(team) {
 	console.log('death cup by team ' + team)
 	var blameDeathCup = function(player) {
 		console.debug('Player', player, 'got the death cup')
+		postEvent('death', team, player, false, false)
+		postEvent('win', team, 1, false, false)
 	}
 	blamePlayer(team, blameDeathCup)
 }
