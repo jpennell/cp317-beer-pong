@@ -1,6 +1,6 @@
 from User.models import *
 from Game.models import Game, Team, Event
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse, Http404
 from Utilities.utilities import *
 from django.template import Context
 import json
@@ -8,14 +8,13 @@ import json
 
 
 def infoGameRequest(request, game_id):
-
     
-
-    game = Game.objects.get(id=game_id)
-    
-    jsonGame = _gameToJSON(game)
-    return HttpResponse(jsonGame)
-
+    try:
+        game = Game.objects.get(id=game_id)
+        jsonGame = _gameToJSON(game)
+        return HttpResponse(jsonGame)
+    except:
+        raise Http404
     
 
 
@@ -25,7 +24,7 @@ def _gameToJSON(game):
     team1User1 = game.getTeam1().getUser1().getUsername()
     team1User2 = game.getTeam1().getUser2().getUsername()
     team2User1 = game.getTeam2().getUser1().getUsername()
-    team1User2 = game.getTeam2().getUser2().getUsername()
+    team2User2 = game.getTeam2().getUser2().getUsername()
     team1Cup1 = False
     team1Cup2 = False
     team1Cup3 = False
