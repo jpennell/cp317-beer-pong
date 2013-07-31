@@ -33,6 +33,7 @@ def scoreGame( request, game_id ):
     # get the info we need
     if request.method == 'POST':
         print( "I am getting a post" )
+        print request.POST
         eventTypeName = request.POST['eventType']
 
         if eventTypeName == 'undo':
@@ -40,7 +41,6 @@ def scoreGame( request, game_id ):
 
         else:
             # create event
-            print 'post request\n', request.POST
             eventTypeString = request.POST.get( 'eventType' )
             cup = request.POST.get( 'cup' )
             cup2 = request.POST.get( 'cup2' )
