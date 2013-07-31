@@ -70,6 +70,18 @@ var deactivateCup = function(team, cup) {
  *
  *
  */
+var getGameStatus = function() {
+	$.ajax({
+		url : '../info',
+		dataType : 'json',
+		success : function(data) {
+			game.team1[1] = data.team1.user1
+			game.team1[2] = data.team1.user2
+			game.team2[1] = data.team2.user1
+			game.team2[2] = data.team2.user2
+		}
+	});
+}
 var postEvent = function(eventType, team, player, cup, cup2) {
 	/*
 	 * posts an event to this page
@@ -237,9 +249,10 @@ var rotateCups = function() {
 	$(t2).css(transform, $(t2).css(transform) == 'none' ? 'rotate(-90deg)' : '')
 }
 /*
-* Global action event delegates
-*
-*/
+ * Global action event delegates
+ *
+ */
+getGameStatus()
 // delegate for the main cup interface
 $(document).delegate('.cup.active:not(".bcup")', 'click', function() {
 	var classes = this.className.split(' ')
