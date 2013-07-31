@@ -59,6 +59,7 @@ var undoMove = function() {
 		var sel = '.' + lastMove.team + '.' + lastMove.cup2
 		$(sel).addClass('active')
 	}
+	postEvent('undo')
 }
 var deactivateCup = function(team, cup) {
 	/* makes a cup deactive (by removing CSS class 'active) */
@@ -110,7 +111,7 @@ var isOnRedemption = function() {
 var getGameStatus = function() {
 	console.debug('getting game status from JSON')
 	$.ajax({
-		url : '../info',
+		url : '../info/',
 		dataType : 'json',
 		success : function(data) {
 			game.team1[1] = data.team1.user1
@@ -337,7 +338,7 @@ while (document.readyState != 'complete') {
 }
 */
 getGameStatus()
-isOnRedemption()
+//isOnRedemption()
 // delegate for the main cup interface
 $(document).delegate('.cup.active:not(".bcup")', 'click', function() {
 	var classes = this.className.split(' ')
