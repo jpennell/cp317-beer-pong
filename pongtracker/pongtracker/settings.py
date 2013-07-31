@@ -4,7 +4,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = ( 
-     ( 'Quinton Black', 'blac2410@mylaurier.ca' ), ( 'Matt Hengeveld', 'heng7500@mylaurier.ca' ), 
+     ( 'Quinton Black', 'blac2410@mylaurier.ca' ),  
      ( 'Henry Goddard', 'godd9170@mylaurier.ca' )
  )
 

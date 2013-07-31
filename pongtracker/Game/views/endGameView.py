@@ -79,6 +79,7 @@ def _getStats(user, events):
     bounces = 0
     fouls = 0
     redemptions = 0
+    death = 0
     
     for x in range(len(events)):
         if (events[x].getUser() == user):
@@ -93,5 +94,6 @@ def _getStats(user, events):
                 fouls += 1
             elif event == 'redemption':
                 redemptions += 1
-    
-    return [sunk,tricks,bounces,fouls,redemptions]
+            elif event == 'death':
+                death+=1
+    return [sunk,tricks,bounces,fouls,redemptions,death]

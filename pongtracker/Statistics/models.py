@@ -10,6 +10,7 @@ class LifeStats(models.Model):
     _trickShots = models.IntegerField(default=0)
     _partyFouls = models.IntegerField(default=0)
     _redemptions = models.IntegerField(default=0)
+    _deathCups = models.IntegerField(default=0)
     _cup1Sunk = models.IntegerField(default=0)
     _cup2Sunk = models.IntegerField(default=0)
     _cup3Sunk = models.IntegerField(default=0)
@@ -35,6 +36,9 @@ class LifeStats(models.Model):
     
     def getRedemptions(self):
         return self._redemptions
+    
+    def getDeathCups(self):
+        return self._deathCups
     
     def getCup1Sunk(self):
         return self._cup1Sunk
@@ -71,7 +75,10 @@ class LifeStats(models.Model):
     
     def setRedemptions(self, value):
          self._redemptions= value
-    
+         
+    def setDeathCups(self, value):
+         self._deathCups= value
+         
     def setCup1Sunk(self, value):
          self._cup1Sunk= value
     
