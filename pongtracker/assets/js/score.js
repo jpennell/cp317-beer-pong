@@ -63,7 +63,7 @@ var refreshCups = function() {
 	getGameStatus()
 	for (var cupIdx = 1; cupIdx <= 6; cupIdx++) {
 		game.team1.cups[cupIdx] ? deactivateCup(1, cupIdx) : activateCup(1, cupIdx)
-		game.team2.cups[cupIdx] ? deactivateCup(2, cupIdx) : activateCup(1, cupIdx)
+		game.team2.cups[cupIdx] ? deactivateCup(2, cupIdx) : activateCup(2, cupIdx)
 	}
 }
 /*
