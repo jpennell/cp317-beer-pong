@@ -45,13 +45,6 @@
     "model": "Game.EventType",
     "pk": 7,
     "fields": {
-      "_typeName": "forfeit"
-    }
-  },
-    {
-    "model": "Game.EventType",
-    "pk": 8,
-    "fields": {
       "_typeName": "win"
     }
   }  

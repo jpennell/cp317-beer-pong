@@ -1,6 +1,6 @@
 from User.models import *
 from Game.models import Game, Team, Event
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse, Http404
 from Utilities.utilities import *
 from django.template import Context
 import json
@@ -8,14 +8,13 @@ import json
 
 
 def infoGameRequest(request, game_id):
-
     
-
-    game = Game.objects.get(id=game_id)
-    
-    jsonGame = _gameToJSON(game)
-    return HttpResponse(jsonGame)
-
+    try:
+        game = Game.objects.get(id=game_id)
+        jsonGame = _gameToJSON(game)
+        return HttpResponse(jsonGame)
+    except:
+        raise Http404
     
 
 
@@ -25,7 +24,7 @@ def _gameToJSON(game):
     team1User1 = game.getTeam1().getUser1().getUsername()
     team1User2 = game.getTeam1().getUser2().getUsername()
     team2User1 = game.getTeam2().getUser1().getUsername()
-    team1User2 = game.getTeam2().getUser2().getUsername()
+    team2User2 = game.getTeam2().getUser2().getUsername()
     team1Cup1 = False
     team1Cup2 = False
     team1Cup3 = False
@@ -40,9 +39,6 @@ def _gameToJSON(game):
     team2Cup6 = False
 
     for event in events:
-        print(event.getUser().getUsername)
-        print(team1User1)
-        print(team1User2)
         if event.getUser().getUsername()==team1User1 or event.getUser().getUsername()==team1User2:
             if event.getCup1():
                 team1Cup1 = True
@@ -70,13 +66,13 @@ def _gameToJSON(game):
             if event.getCup6():
                 team2Cup6 = True
     
-    dictTeam1 = {'team1User1':team1User1,'team1User2':team1User2,
-     'team1Cup1':team1Cup1,'team1Cup2':team1Cup2,'team1Cup3':team1Cup3,
-     'team1Cup4':team1Cup4,'team1Cup5':team1Cup5,'team1Cup6':team1Cup6,}
+    dictTeam1 = {'user1':team1User1,'user2':team1User2,
+     'cup1':team1Cup1,'cup2':team1Cup2,'cup3':team1Cup3,
+     'cup4':team1Cup4,'cup5':team1Cup5,'cup6':team1Cup6,}
     
-    dictTeam2 = {'team2User1':team2User1,'team2User2':team2User2,
-     'team2Cup1':team2Cup1,'team2Cup2':team2Cup2,'team2Cup3':team2Cup3,
-     'team2Cup4':team2Cup4,'team2Cup5':team2Cup5,'team2Cup6':team2Cup6}
+    dictTeam2 = {'user1':team2User1,'user2':team2User2,
+     'cup1':team2Cup1,'cup2':team2Cup2,'cup3':team2Cup3,
+     'cup4':team2Cup4,'cup5':team2Cup5,'cup6':team2Cup6}
     
     dictGame = {'team1':dictTeam1,'team2':dictTeam2}
     return json.dumps(dictGame,indent=5,sort_keys=True)
