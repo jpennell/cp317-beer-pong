@@ -1,5 +1,6 @@
 from Game.models import Game
 from Game.forms.confirmGameForm import ConfirmGameForm
+from utilities2 import isUserOnTeam, isGameEnded
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
@@ -16,29 +17,34 @@ def verifyGameRequest(request):
     Output: renders the webpage based on what Games the PongUser has to confirm.
         
     """
+    #redirect to login if they haven't logged in
     if not request.user.is_authenticated():
         messages.add_message(request,messages.INFO,'Please Login')
         return redirect('/login/')
-     
+    
+    #redirect to edit profile if they haven't filled in their profile details 
     if not request.user.getHasUpdatedProfile():
         messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
         return redirect('/profile/edit')
     
     username = request.session['username']
-
+    
+    #obtain the Games and write them to the forms
     gamesToConfirm, gamesOthersConfirm = _obtainGamesToBeConfirmed(username)
     confirmGameForms = []
     otherGameForms = []
     
+    #store the Game data for Games the PongUser can verify (in forms)
     for game in gamesToConfirm:
-        newData = ConfirmGameForm()
-        newData.setGameData(game)
-        confirmGameForms.append(newData)
+        confirmForm = ConfirmGameForm()
+        confirmForm.setGameData(game)
+        confirmGameForms.append(confirmForm)
     
+    #store the Game data for Games the PongUser's opponents can verify (in forms)
     for game in gamesOthersConfirm:
-        newData = ConfirmGameForm()
-        newData.setGameData(game)
-        otherGameForms.append(newData)
+        otherForm = ConfirmGameForm()
+        otherForm.setGameData(game)
+        otherGameForms.append(otherForm)
     
     return render(request, 'game/confirm.html', { 'confirm_games': confirmGameForms, 'opponent_confirm_games': otherGameForms})
 
@@ -62,29 +68,10 @@ def _obtainGamesToBeConfirmed(username):
     gamesOthersConfirm = []
     
     for game in allGames:
-        if game.getIsConfirmed():
+        if game.getIsConfirmed() or not isGameEnded(game):
             continue
-        elif _isUserOnTeam(game.getTeam2(), username):
+        elif isUserOnTeam(game.getTeam2(), username):
             gamesToConfirm.append(game)
-        elif _isUserOnTeam(game.getTeam1(), username):
+        elif isUserOnTeam(game.getTeam1(), username):
             gamesOthersConfirm.append(game)
     return gamesToConfirm, gamesOthersConfirm
-
-def _isUserOnTeam(team, username):
-    """
-    Determines whether the PongUser is on this particular Team.
-    
-    Keyword arguments:
-    team -- the Team we are checking
-    username -- the username of the PongUser
-    
-    Contributors: Richard Douglas
-    
-    Output: True if the PongUser is on the Team, False otherwise.
-    """
-    teamUsers = [team.getUser1(), team.getUser2()]
-    teamUsernames = [teamUser.getUsername() for teamUser in teamUsers]
-    return username in teamUsernames
-
-def isUserAllowedToVerifyGame(game,username):
-    return _isUserOnTeam(game.getTeam2(),username) 
