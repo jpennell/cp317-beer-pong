@@ -58,9 +58,48 @@ class LifeStats(models.Model):
     def getCup6Sunk(self):
         return self._cup6Sunk
     
+    def incWins(self, increment):
+        self._wins += increment
+    
+    def incLoses(self, increment):
+        self._loses += increment
+    
+    def incBounceShots(self, increment):
+        self._bounceShots += increment
+    
+    def incTrickShots(self, increment):
+        self._trickShots += increment
+    
+    def incPartyFouls(self, increment):
+        self._partyFouls += increment
+        
+    def incRedemptions(self, increment):
+        self._redemptions += increment
+        
+    def incDeathCups(self, increment):
+        self._deathCups += increment
+        
+    def incCup1Sunk(self, increment):
+        self._cup1Sunk += increment
+        
+    def incCup2Sunk(self, increment):
+        self._cup2Sunk += increment
+    
+    def incCup3Sunk(self, increment):
+        self._cup3Sunk += increment
+        
+    def incCup4Sunk(self, increment):
+        self._cup4Sunk += increment
+        
+    def incCup5Sunk(self, increment):
+        self._cup5Sunk += increment
+        
+    def incCup6Sunk(self, increment):
+        self._cup6Sunk += increment
+        
     def setWins(self, value):
          self._wins = value
-    
+         
     def setLoses(self, value):
          self._loses= value
     

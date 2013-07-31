@@ -1,4 +1,4 @@
-import trueskill
+#import trueskill
 from Game.models import Game
 from django.shortcuts import redirect
 from django.contrib import messages
@@ -82,7 +82,8 @@ def _confirmTheGame(game):
 
 def _updateCupShotStats(stats,event):
     """
-    
+    updates the statistics entries corresponding to
+    eventtypes with the Event that occurred.
 
     Keyword arguments:
     stats -- the LifeStats to update
@@ -90,29 +91,29 @@ def _updateCupShotStats(stats,event):
     
     Contributors: Richard Douglas
     
-    Output: stats has its cup1sunk, cup2sunk... attributes
-            updated if necessary
+    Output: None
     """
     eventType = event.getEventType()
     whatHappened = eventType.getName()
     
-    if (whatHappened == "bounce"):
-        #stats.incBounceShots(1) etc...
+    if (whatHappened == "regular"):
         pass
+    elif (whatHappened == "bounce"):
+        stats.incBounceShots(1)
     elif (whatHappened == "trick"):
-        pass
-    elif (whatHappened == "regular"):
-        pass
+        stats.incTrickShots(1)
     elif (whatHappened == "party_foul"):
-        pass
+        stats.incPartyFouls(1)
     elif (whatHappened == "redemption"):
-        pass
+        stats.incRedemptions(1)
     elif (whatHappened == "death"):
-        pass
+        stats.incDeathCups(1)
     return
 
 def _updateCupNumberStats(stats,event):
     """
+    updates the cup1sunk, cup2sunk, etc...
+    of LifeStats with the Event that occurred.
     
     Keyword arguments:
     stats -- the LifeStats to update
@@ -120,24 +121,18 @@ def _updateCupNumberStats(stats,event):
     
     Contributors: Richard Douglas
     
-    Output: stats has its cup1sunk, cup2sunk... attributes
-            updated if necessary
+    Output: None
     """
     if (event.getCup1()):
-        #stats.incCup1(1) etc...
-        pass 
+        stats.incCup1Sunk(1)
     if (event.getCup2()):
-        pass
+        stats.incCup2Sunk(1)
     if (event.getCup3()):
-        pass
+        stats.incCup3Sunk(1)
     if (event.getCup4()):
-        pass
+        stats.incCup4Sunk(1)
     if (event.getCup5()):
-        pass
+        stats.incCup5Sunk(1)
     if (event.getCup6()):
-        pass
+        stats.incCup6Sunk(1)
     return
-    
-
-
-
