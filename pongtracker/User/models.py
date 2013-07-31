@@ -104,7 +104,7 @@ class PongUser(AbstractUser):
         YEAR_CHOICES.append((r,r))
         
     _height = models.SmallIntegerField(null = True, blank = True,help_text="cm")
-    _photo = models.ImageField(upload_to="profile_photo")
+    _photo = models.ImageField(upload_to="profile_photo",blank=True,null=True)
     _graduationYear = models.IntegerField(('year'), max_length=4, choices=YEAR_CHOICES, default=datetime.datetime.now().year+1)
     _institution = models.ForeignKey(Institution,null = True, blank = True)
     _isBanned = models.BooleanField(default=False)

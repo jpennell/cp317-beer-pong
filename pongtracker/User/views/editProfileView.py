@@ -114,11 +114,14 @@ def _updateUser(username,firstName,lastName,email,height,yearOfGradution,userPro
     user = PongUser.objects.get(username=username)
     user.setHeight(height)
     user.setGraduationYear(yearOfGradution)
-    user.setPhoto(userProfilePhoto)
+    if userProfilePhoto:
+        user.setPhoto(userProfilePhoto)
+    else:
+        user.setPhoto(None)
     user.setFirstName(firstName)
     user.setLastName(lastName)
     user.setEmail(email)
-    user.setIsActive(deactivate)
+    user.setIsActive(not deactivate)
     user.setInstitution(institution)
     user.setHasUpdatedProfile(True)
     user.save()
