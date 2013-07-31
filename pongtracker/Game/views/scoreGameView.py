@@ -37,7 +37,10 @@ def scoreGame( request, game_id ):
         eventTypeName = request.POST['eventType']
 
         if eventTypeName == 'undo':
-           success = _undoEvent( game )
+            try:
+                _undoEvent()
+            except Error:
+                print "undo failed"
 
         else:
             # create event
@@ -91,6 +94,5 @@ def _undoEvent( game ):
             last_event.delete()
             success = True
         except:
-            success = False
+            raise Error( 'undo failed' )
 
-        return success
