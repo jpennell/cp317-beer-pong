@@ -9,62 +9,54 @@
 
 /*
  *
- * global variables
- *
- */
-
-game = {
-	/* game information for dialog boxes */
-	'team1' : {
-		1 : "Team 1 Player 1",
-		2 : "Team 1 Player 2"
-	},
-	'team2' : {
-		1 : "Team 2 Player 1",
-		2 : "Team 2 Player 2"
-	}
-}
-/* array for storing most recent moves */
-lastMoves = new Array()
-/*
- *
  * functions
  *
  */
-var editDialogText = function(team) {
-	/* edits the current simpledialog to show the current player names in the buttons */
-	$("#button-player-1 .ui-btn-text").html(game[team][1])
-	$("#button-player-2 .ui-btn-text").html(game[team][2])
-}
-var canUndo = function() {
-	/* checks whether there are moves to undo */
-	return lastMoves.length > 0
-}
-var updateUndoButton = function() {
-	/* updates the disabled status of the undo button */
-	var undoBox = '[name="undo"]'
-	canUndo() ? $(undoBox).removeAttr('disabled') : $(undoBox).attr('disabled', 'true')
-}
-var undoMove = function() {
-	/* undoes the most recent event */
-	if (!canUndo()) {
-		console.error('nothing to undo!')
-		return undefined
+game = {
+	'team1' : {
+		1 : 'Team 1, Player 1',
+		2 : 'Team 1, Player 2',
+		'cups' : {
+			1 : false,
+			2 : false,
+			3 : false,
+			4 : false,
+			5 : false,
+			6 : false
+		}
+	},
+	'team2' : {
+		1 : 'Team 2, Player 1',
+		2 : 'Team 2, Player 2',
+		'cups' : {
+			1 : false,
+			2 : false,
+			3 : false,
+			4 : false,
+			5 : false,
+			6 : false
+		}
 	}
-	lastMove = lastMoves.pop()
-	// construct css selector eg: .team1.cup1
-	var sel = '.' + lastMove.team + '.' + lastMove.cup
-	$(sel).addClass('active')
-	if ( typeof lastMove.cup2 !== 'undefined') {
-		var sel = '.' + lastMove.team + '.' + lastMove.cup2
-		$(sel).addClass('active')
-	}
-	postEvent('undo')
 }
 var deactivateCup = function(team, cup) {
 	/* makes a cup deactive (by removing CSS class 'active) */
+	if ( typeof cup == 'number')
+		cup = 'cup' + cup
+	if ( typeof team == 'number')
+		team = 'team' + team
 	var selector = '.' + team + '.' + cup
+	console.debug('deactivating cup ' + selector)
 	$(selector).removeClass('active')
+}
+var refreshCups = function() {
+	console.debug('refreshing cups')
+	getGameStatus()
+	for (var cupIdx = 1; cupIdx <= 6; cupIdx++) {
+		if (game.team1.cups[cupIdx])
+			deactivateCup(1, cupIdx)
+		if (game.team2.cups[cupIdx])
+			deactivateCup(2, cupIdx)
+	}
 }
 /*
  *
@@ -72,41 +64,9 @@ var deactivateCup = function(team, cup) {
  *
  *
  */
-var redemption = function(losingTeam) {
-	$(this).simpledialog2({
-		mode : 'button',
-		headerText : 'Did team ' + losingTeam + ' redeem themselves?',
-		buttons : {
-			'Yes' : {
-				click : function() {
-					var blameRedemption = function(player) {
-						console.debug('player', player, 'got the redemption')
-						postEvent('redemption', 'team' + losingTeam, player, false, false)
-						undoMove()
-					}
-					blamePlayer('team' + losingTeam, blameRedemption)
-				}
-			},
-			'No' : {
-				click : function() {
-					winningTeam = losingTeam == 1 ? 'team2' : 'team1'
-					postEvent('win', winningTeam, 1, false, false)
-				}
-			}
-		},
-		forceInput : false,
-		showModal : true,
-		clickEvent : 'vclick'
-	})
-}
-var isOnRedemption = function() {
-	console.debug('checking if on redemption')
-	team1cups = $('#team1 .cups .active')
-	team2cups = $('#team2 .cups .active')
-	if (team1cups.length == 0)
-		redemption(1)
-	if (team2cups.length == 0)
-		redemption(2)
+var undoMove = function() {
+	/* undoes the most recent event */
+	postEvent('undo')
 }
 var getGameStatus = function() {
 	console.debug('getting game status from JSON')
@@ -114,47 +74,15 @@ var getGameStatus = function() {
 		url : '../info/',
 		dataType : 'json',
 		success : function(data) {
-			game.team1[1] = data.team1.user1
-			game.team1[2] = data.team1.user2
-			game.team2[1] = data.team2.user1
-			game.team2[2] = data.team2.user2
+			game['team1'][1] = data.team1.user1
+			game['team1'][2] = data.team1.user2
+			game['team2'][1] = data.team2.user1
+			game['team2'][2] = data.team2.user2
 
-			if (data.team1.cup1)
-				deactivateCup('team1', 'cup1')
-			if (data.team1.cup2)
-				deactivateCup('team1', 'cup2')
-			if (data.team1.cup3)
-				deactivateCup('team1', 'cup3')
-			if (data.team1.cup4)
-				deactivateCup('team1', 'cup4')
-			if (data.team1.cup5)
-				deactivateCup('team1', 'cup5')
-			if (data.team1.cup6)
-				deactivateCup('team1', 'cup6')
-
-			if (data.team2.cup1)
-				deactivateCup('team2', 'cup1')
-			if (data.team2.cup2)
-				deactivateCup('team2', 'cup2')
-			if (data.team2.cup3)
-				deactivateCup('team2', 'cup3')
-			if (data.team2.cup4)
-				deactivateCup('team2', 'cup4')
-			if (data.team2.cup5)
-				deactivateCup('team2', 'cup5')
-			if (data.team2.cup6)
-				deactivateCup('team2', 'cup6')
-
-			/*
-			 if (data.team1.cup1 && data.team1.cup2 && data.team1.cup3 && data.team1.cup4 && data.team1.cup5 && data.team1.cup6) {
-			 redemption(1)
-			 }
-
-			 if (data.team2.cup1 && data.team2.cup2 && data.team2.cup3 && data.team2.cup4 && data.team2.cup5 && data.team2.cup6) {
-			 redemption(2)
-			 }
-			 */
-
+			for (var cupIdx = 1; cupIdx <= 6; cupIdx++) {
+				game['team1']['cups'][cupIdx] = data.team1['cup' + cupIdx]
+				game['team2']['cups'][cupIdx] = data.team2['cup' + cupIdx]
+			}
 		},
 		error : function() {
 			console.error('could not get JSON')
@@ -184,22 +112,13 @@ var postEvent = function(eventType, team, player, cup, cup2) {
 }
 var recordEvent = function(type, team, player, cup) {
 	console.debug('recording event')
-	lastMoves.push({
-		team : team,
-		cup : cup
-	})
 	postEvent(type, team, player, cup, false)
-	isOnRedemption()
+	documentRefresh()
 }
 var recordBounce = function(team, player, cup1, cup2) {
 	console.debug('recording bounce')
-	lastMoves.push({
-		team : team,
-		cup : cup1,
-		cup2 : cup2
-	})
 	postEvent('bounce', team, player, cup1, cup2)
-	isOnRedemption()
+	documentRefresh()
 }
 /*
  * Dialogs and such
@@ -209,8 +128,10 @@ var blamePlayer = function(team, blameFunction) {
 	/*
 	 * brings up a dialog box for selecting the user who performed the last move
 	 *  params:
-	 * 	 blameFunction: the function to invoke which continues the process
-	 * 		blameFunction must take exactly one parameter, player
+	 *   team: integer or string "teamX"
+	 * 		the team whose player is being questioned
+	 * 	 blameFunction: function(int player)
+	 * 		this function is invoked, which continues the blame process with a player to blame
 	 */
 	$(this).simpledialog2({
 		mode : 'button',
@@ -234,8 +155,17 @@ var blamePlayer = function(team, blameFunction) {
 		showModal : true,
 		clickEvent : 'vclick'
 	})
-	editDialogText(team)
+	/* edits this current simpledialog to show the current player names in the buttons */
+	if ( typeof team == 'number')
+		team = 'team' + team
+	$("#button-player-1 .ui-btn-text").html(game[team][1])
+	$("#button-player-2 .ui-btn-text").html(game[team][2])
 }
+/*
+ * General cup interaction events
+ *
+ *
+ */
 var cupSunk = function(team, cup) {
 	/*
 	 * what happens when a cup is sunk
@@ -321,6 +251,66 @@ var bounceShot = function(team, cup) {
 	}
 	blamePlayer(team, selectBounceCupWrap)
 }
+/*
+ * End condition events
+ *
+ *
+ */
+var redemption = function(losingTeam) {
+	$(this).simpledialog2({
+		mode : 'button',
+		headerText : 'Did team ' + losingTeam + ' redeem themselves?',
+		buttons : {
+			'Yes' : {
+				click : function() {
+					var blameRedemption = function(player) {
+						console.debug('player', player, 'got the redemption')
+						postEvent('redemption', 'team' + losingTeam, player, false, false)
+						undoMove()
+					}
+					blamePlayer(losingTeam, blameRedemption)
+				}
+			},
+			'No' : {
+				click : function() {
+					winningTeam = losingTeam == 1 ? 'team2' : 'team1'
+					postEvent('win', winningTeam, 1, false, false)
+				}
+			}
+		},
+		forceInput : false,
+		showModal : true,
+		clickEvent : 'vclick'
+	})
+}
+var isOnRedemption = function() {
+	console.debug('checking if on redemption')
+	team1cups = $('#team1 .cups .active')
+	team2cups = $('#team2 .cups .active')
+	if (team1cups.length == 0)
+		redemption(1)
+	if (team2cups.length == 0)
+		redemption(2)
+}
+var forfeitTeam = function(winners) {
+	console.log('team ' + winners + ' win because other team forfeited')
+	// var postEvent = function(eventType, team, player, cup, cup2)
+	postEvent('win', winners, 1, false, false)
+}
+var deathCup = function(team) {
+	console.log('death cup by team ' + team)
+	var blameDeathCup = function(player) {
+		console.debug('Player', player, 'got the death cup')
+		postEvent('death', team, player, false, false)
+		postEvent('win', team, 1, false, false)
+	}
+	blamePlayer(team, blameDeathCup)
+}
+/*
+ * Other functions
+ *
+ *
+ */
 var rotateCups = function() {
 	var t1 = '#team1 .cups'
 	var t2 = '#team2 .cups'
@@ -329,18 +319,28 @@ var rotateCups = function() {
 	$(t1).css(transform, $(t1).css(transform) == 'none' ? 'rotate( 90deg)' : '')
 	$(t2).css(transform, $(t2).css(transform) == 'none' ? 'rotate(-90deg)' : '')
 }
-/*
- *
- * Global action event delegates
- *
- *
-while (document.readyState != 'complete') {
+/**************************************************************************************************
+ **************************************************************************************************
+ **																								 **
+ **									Global action event delegates								 **
+ **																								 **
+ **************************************************************************************************
+ **************************************************************************************************/
+var documentRefresh = function() {
+	console.log('refresh function was invoked by delegate')
+	refreshCups()
 }
-*/
-getGameStatus()
-//isOnRedemption()
-// delegate for the main cup interface
+// any click will refresh the document (temporary hack solution)
+// $(document).delegate('html', 'click', documentRefresh)
+$(document.body).ready(function() {
+	/* refresh the document on load */
+	console.log('document loaded')
+	documentRefresh()
+})
 $(document).delegate('.cup.active:not(".bcup")', 'click', function() {
+	/*
+	 * delegate for the main cup interface
+	 */
 	var classes = this.className.split(' ')
 	var team = classes[1]
 	var cup = classes[2]
@@ -412,20 +412,6 @@ $(document).delegate('[name="abort"]', 'click', function() {
 		clickEvent : 'vclick'
 	})
 })
-var forfeitTeam = function(winners) {
-	console.log('team ' + winners + ' win because other team forfeited')
-	// var postEvent = function(eventType, team, player, cup, cup2)
-	postEvent('win', winners, 1, false, false)
-}
-var deathCup = function(team) {
-	console.log('death cup by team ' + team)
-	var blameDeathCup = function(player) {
-		console.debug('Player', player, 'got the death cup')
-		postEvent('death', team, player, false, false)
-		postEvent('win', team, 1, false, false)
-	}
-	blamePlayer(team, blameDeathCup)
-}
 // delegate for the end game button
 $(document).delegate('[name="end"]', 'click', function() {
 	console.debug('clicked end game')
