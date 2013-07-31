@@ -134,18 +134,48 @@
 				Party Fouls: {{ form.stats.3.3 }}
 			</td>
 		</tr>
-		<tr>
+		<tr>			
 			<td width="25%" align="center">
-				Redemption: {{ form.stats.0.4 }}
+			{% if form.stats.0.5 != 0 %}
+				<span style="color:green"><strong>Redemption: {{ form.stats.0.5 }}</strong></span>
+			{% endif %}
 			</td>
 			<td width="25%" align="center" style="border-right: 1px solid black">
-				Redemption: {{ form.stats.1.4 }}
+			{% if form.stats.1.5 != 0 %}
+				<span style="color:green"><strong>Redemption: {{ form.stats.1.5 }}</strong></span>
+			{% endif %}
 			</td>
 			<td width="25%" align="center">
-				Redemption: {{ form.stats.2.4 }}
+			{% if form.stats.2.5 != 0 %}
+				<span style="color:green"><strong>Redemption: {{ form.stats.2.5 }}</strong></span>
+			{% endif %}
 			</td>
 			<td width="25%" align="center">
-				Redemption: {{ form.stats.3.4 }}
+			{% if form.stats.3.5 != 0 %}
+				<span style="color:green"><strong>Redemption: {{ form.stats.3.5 }}</strong></span>
+			{% endif %}
+			</td>
+		</tr>
+		<tr>			
+			<td width="25%" align="center">
+			{% if form.stats.0.4 != 0 %}
+				<span style="color:red"><strong>Death Cups: {{ form.stats.0.4 }}</strong></span>
+			{% endif %}
+			</td>
+			<td width="25%" align="center" style="border-right: 1px solid black">
+			{% if form.stats.1.4 != 0 %}
+				<span style="color:red"><strong>Death Cups: {{ form.stats.1.4 }}</strong></span>
+			{% endif %}
+			</td>
+			<td width="25%" align="center">
+			{% if form.stats.2.4 != 0 %}
+				<span style="color:red"><strong>Death Cups: {{ form.stats.2.4 }}</strong></span>
+			{% endif %}
+			</td>
+			<td width="25%" align="center">
+			{% if form.stats.3.4 != 0 %}
+				<span style="color:red"><strong>Death Cups: {{ form.stats.3.4 }}</strong></span>
+			{% endif %}
 			</td>
 		</tr>
 	</table>
