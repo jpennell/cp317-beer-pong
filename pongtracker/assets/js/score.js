@@ -78,9 +78,10 @@ var postEvent = function(eventType, team, player, cup, cup2) {
 	myData = {
 		'eventType' : eventType,
 		'team' : team,
-		'player' : player,
-		'cup' : cup
+		'player' : player
 	}
+	if (cup)
+		myData['cup'] = cup
 	if (cup2)
 		myData['cup2'] = cup2
 
@@ -312,8 +313,10 @@ $(document).delegate('[name="abort"]', 'click', function() {
 		clickEvent : 'vclick'
 	})
 })
-var forfeitTeam = function(team) {
+var forfeitTeam = function(winners) {
 	console.log('team ' + team + ' forfeited')
+	// var postEvent = function(eventType, team, player, cup, cup2)
+	postEvent('win', winners, 1, false, false)
 }
 var deathCup = function(team) {
 	console.log('death cup by team ' + team)
