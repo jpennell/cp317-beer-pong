@@ -31,7 +31,7 @@ def scoreGame( request, game_id ):
 
     # get the info we need
     if request.method == 'POST':
-        print("I am getting a post")
+        print( "I am getting a post" )
 
         eventTypeName = request.POST['eventType']
 
@@ -43,20 +43,23 @@ def scoreGame( request, game_id ):
         else:
             # create event
             print 'post request\n', request.POST
-            cup = request.POST['cup']
+            cup = request.POST.get( 'cup' )
             cup2 = request.POST.get( 'cup2' )
-            user_number = int( request.POST['player'] )
-            team = request.POST['team']
+            user_number = int( request.POST.get( 'player', 0 ) )
+            team = request.POST.get( 'team' )
             eventType = EventType.objects.get( _typeName = eventTypeName )
 
-            team = int( team[-1] )
+            if team:
+                team = int( team[-1] )
+
             user = game.getTeam( team ).getUser( user_number )
 
             # initialize cups to a list of 6 False
             cups = [False] * 6
             # cup = "cupX", cup[-1] = "X"
             # make cup X true
-            cups[int( cup[-1] ) - 1] = True
+            if cup:
+                cups[int( cup[-1] ) - 1] = True
 
             if cup2:
                 cups[int( cup2[-1] ) - 1] = True
@@ -64,9 +67,9 @@ def scoreGame( request, game_id ):
             event = Event.objects.create( _game = game, _eventType = eventType, _user = user,
                                           _cup1 = cups[0], _cup2 = cups[1], _cup3 = cups[2],
                                           _cup4 = cups[3], _cup5 = cups[4], _cup6 = cups[5] )
-            
-            
-            
+
+
+
     return render( request, 'game/play.html', {'game': game} )
     # not sure what to render/redirect to if it even needs to happen
 
