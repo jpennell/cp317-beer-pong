@@ -171,36 +171,33 @@ var cupSunk = function(team, cup) {
 	 * what happens when a cup is sunk
 	 */
 	console.debug('cup', cup, 'on team', team, 'was sunk')
-	var blameCupSunk = function(player) {
+	blamePlayer(team, function(player) {
 		console.debug('Player', player, 'sunk the cup')
 		deactivateCup(team, cup)
 		recordEvent('regular', team, player, cup)
-	}
-	blamePlayer(team, blameCupSunk)
+	})
 }
 var partyFoul = function(team, cup) {
 	/*
 	 * what happens when a party foul occurs
 	 */
 	console.debug('team', team, 'cup', cup, 'was a party foul')
-	var blamePartyFoul = function(player) {
+	blamePlayer(team, function(player) {
 		console.debug('Player', player, 'got a party foul')
 		deactivateCup(team, cup)
 		recordEvent('party_foul', team, player, cup)
-	}
-	blamePlayer(team, blamePartyFoul)
+	})
 }
 var trickShot = function(team, cup) {
 	/*
 	 * what happens when a trick shot occurs
 	 */
 	console.debug('team', team, 'cup', cup, 'was a trick shot')
-	var blameTrickShot = function(player) {
+	blamePlayer(team, function(player) {
 		console.debug('Player', player, 'got a trick shot')
 		deactivateCup(team, cup)
 		recordEvent('trick', team, player, cup)
-	}
-	blamePlayer(team, blameTrickShot)
+	})
 }
 var bounceShot = function(team, cup) {
 	/*
@@ -246,10 +243,9 @@ var bounceShot = function(team, cup) {
 			$(document).undelegate('.bcup.active', 'click')
 		})
 	}
-	var selectBounceCupWrap = function(player) {
+	blamePlayer(team, function(player) {
 		selectBounceCup(team, cup, player)
-	}
-	blamePlayer(team, selectBounceCupWrap)
+	})
 }
 /*
  * End condition events
@@ -299,12 +295,11 @@ var forfeitTeam = function(winners) {
 }
 var deathCup = function(team) {
 	console.log('death cup by team ' + team)
-	var blameDeathCup = function(player) {
+	blamePlayer(team, function(player) {
 		console.debug('Player', player, 'got the death cup')
 		postEvent('death', team, player, false, false)
 		postEvent('win', team, 1, false, false)
-	}
-	blamePlayer(team, blameDeathCup)
+	})
 }
 /*
  * Other functions
