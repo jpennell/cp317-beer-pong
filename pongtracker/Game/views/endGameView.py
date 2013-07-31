@@ -45,12 +45,15 @@ def viewGameSummaryRequest(request, game_id):
         #go through users
         for x in range(len(users)):
             #get username
-            form.usernames[x] = users[x].getUsername()
+            form.users[x] = users[x]
             #get the users rank
             form.ranks[x] = getUserRank(users[x])
             #tally statistics for each user
             stats.append(_getStats(users[x], events))     
-            
+        
+        winner = _getWinner(game, events)
+        
+        form.winner = winner
         form.stats = stats
         
     else:
@@ -58,6 +61,28 @@ def viewGameSummaryRequest(request, game_id):
         form.authErr = True
         
     return render(request, 'game/summary.html', {'form': form})
+
+
+def _getWinner(game, events):
+    
+    team1 = game.getTeam1()
+    team2 = game.getTeam2()
+    
+    user = None
+    
+    for x in range(len(events)):
+        event = events[x].getEventType().getName()
+        if event == 'win':
+            user = events[x].getUser()
+            
+    if (user == team1.getUser1()) or (user == team1.getUser2()):
+        winner = 1
+    elif (user == team2.getUser1()) or (user == team2.getUser2()):
+        winner = 2
+    else:
+        winner = 0
+    
+    return winner
 
 
 def _getStats(user, events):
@@ -71,7 +96,7 @@ def _getStats(user, events):
     Matt Hengeveld
     
     Output:
-    list -- [sunk,tricks,bounces,fouls,redemptions]
+    list -- [sunk,tricks,bounces,fouls,death,redemptions]
         
     """
     sunk = 0

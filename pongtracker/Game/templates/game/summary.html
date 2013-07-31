@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block head %}
-
+<link href='{% static 'css/scoregame-styles.css' %}' rel='stylesheet' type='text/css'>
 {% endblock %}
 
 {% block pagetitle %} | Create Game{% endblock %}
@@ -21,33 +21,64 @@
 		</tr>
 	</table>
 	
-	<table width="100%"  align="center">
+	<table width="100%" align="center">
+		<tr>
+			<td width="50%" height="60px" align="center">
+				{% if form.winner == 1 %}
+					<span style="color:#66FF22; font-size:200%"><strong>Winner!</strong></span>
+				{% endif %}
+			</td>
+			<td width="50%" height="60px" align="center" style="border-left: 1px solid black">
+				{% if form.winner == 2 %}
+					<span style="color:#66FF22; font-size:200%"><strong>Winner!</strong></span>
+				{% endif %}
+			</td>
+		</tr>
+	</table>
+	
+	<table width="100%"  align="center">	
 		<tr>
 			<td width="25%" align="center">
-				Picture
+				{% if user.0.getPhoto %}
+            		<img class="picture" src="{{ user.0.getPhoto.url }}"/>
+            	{% else %}
+            		<div id="default_picture" class="picture"></div>
+            	{% endif %}
 			</td>
 			<td width="25%" align="center" style="border-right: 1px solid black">
-				Picture
+				{% if user.1.getPhoto %}
+            		<img class="picture" src="{{ user.1.getPhoto.url }}"/>
+            	{% else %}
+            		<div id="default_picture" class="picture"></div>
+            	{% endif %}
 			</td>
 			<td width="25%" align="center">
-				Picture
+				{% if user.2.getPhoto %}
+            		<img class="picture" src="{{ user.2.getPhoto.url }}"/>
+            	{% else %}
+            		<div id="default_picture" class="picture"></div>
+            	{% endif %}
 			</td>
 			<td width="25%" align="center">
-				Picture
+				{% if user.3.getPhoto %}
+            		<img class="picture" src="{{ user.3.getPhoto.url }}"/>
+            	{% else %}
+            		<div id="default_picture" class="picture"></div>
+            	{% endif %}
 			</td>
 		</tr>
 		<tr>
 			<td width="25%" align="center">
-				<strong><h4>{{ form.usernames.0 }}</h4></strong>
+				<strong><h4>{{ form.users.0.getUsername }}</h4></strong>
 			</td>
 			<td width="25%" align="center" style="border-right: 1px solid black">
-				<strong><h4>{{ form.usernames.1 }}</h4></strong>
+				<strong><h4>{{ form.users.1.getUsername }}</h4></strong>
 			</td>
 			<td width="25%" align="center">
-				<strong><h4>{{ form.usernames.2 }}</h4></strong>
+				<strong><h4>{{ form.users.2.getUsername }}</h4></strong>
 			</td>
 			<td width="25%" align="center">
-				<strong><h4>{{ form.usernames.3 }}</h4></strong>
+				<strong><h4>{{ form.users.3.getUsername }}</h4></strong>
 			</td>
 		</tr>
 		<tr>
@@ -137,22 +168,22 @@
 		<tr>			
 			<td width="25%" align="center">
 			{% if form.stats.0.5 != 0 %}
-				<span style="color:green"><strong>Redemption: {{ form.stats.0.5 }}</strong></span>
+				<span style="color:red"><strong>Redemption: {{ form.stats.0.5 }}</strong></span>
 			{% endif %}
 			</td>
 			<td width="25%" align="center" style="border-right: 1px solid black">
 			{% if form.stats.1.5 != 0 %}
-				<span style="color:green"><strong>Redemption: {{ form.stats.1.5 }}</strong></span>
+				<span style="color:red"><strong>Redemption: {{ form.stats.1.5 }}</strong></span>
 			{% endif %}
 			</td>
 			<td width="25%" align="center">
 			{% if form.stats.2.5 != 0 %}
-				<span style="color:green"><strong>Redemption: {{ form.stats.2.5 }}</strong></span>
+				<span style="color:red"><strong>Redemption: {{ form.stats.2.5 }}</strong></span>
 			{% endif %}
 			</td>
 			<td width="25%" align="center">
 			{% if form.stats.3.5 != 0 %}
-				<span style="color:green"><strong>Redemption: {{ form.stats.3.5 }}</strong></span>
+				<span style="color:red"><strong>Redemption: {{ form.stats.3.5 }}</strong></span>
 			{% endif %}
 			</td>
 		</tr>
