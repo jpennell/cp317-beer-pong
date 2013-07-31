@@ -31,33 +31,34 @@ def scoreGame( request, game_id ):
 
     # get the info we need
     if request.method == 'POST':
-        
+
         eventTypeName = request.POST['eventType']
-        
-        
+
+
         if eventTypeName == 'undo':
-            
-           success = _undoEvent(game)
-            
+
+           success = _undoEvent( game )
+
         else:
             # create event
+            print 'post request\n', request.POST
             cup = request.POST['cup']
             cup2 = request.POST.get( 'cup2' )
-            user_number = int(request.POST['player'])
+            user_number = int( request.POST['player'] )
             team = request.POST['team']
             eventType = EventType.objects.get( _typeName = eventTypeName )
-            
-            team = int(team[-1])
-            user = game.getTeam(team).getUser(user_number)
-            
+
+            team = int( team[-1] )
+            user = game.getTeam( team ).getUser( user_number )
+
             # initialize cups to a list of 6 False
             cups = [False] * 6
             # cup = "cupX", cup[-1] = "X"
             # make cup X true
-            cups[int( cup[-1] )] = True
-            
+            cups[int( cup[-1] ) - 1] = True
+
             if cup2:
-                cups[int( cup2[-1] )] = True
+                cups[int( cup2[-1] ) - 1] = True
 
             event = Event.objects.create( _game = game, _eventType = eventType, _user = user,
                                           _cup1 = cups[0], _cup2 = cups[1], _cup3 = cups[2],
@@ -85,5 +86,5 @@ def _undoEvent( game ):
             success = True
         except:
             success = False
-        
+
         return success
