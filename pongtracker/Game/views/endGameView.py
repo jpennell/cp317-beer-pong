@@ -96,4 +96,4 @@ def _getStats(user, events):
                 redemptions += 1
             elif event == 'death':
                 death+=1
-    return [sunk,tricks,bounces,fouls,redemptions,death]
+    return [sunk,tricks,bounces,fouls,death,redemptions]
