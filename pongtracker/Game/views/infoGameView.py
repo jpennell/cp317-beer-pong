@@ -40,9 +40,6 @@ def _gameToJSON(game):
     team2Cup6 = False
 
     for event in events:
-        print(event.getUser().getUsername)
-        print(team1User1)
-        print(team1User2)
         if event.getUser().getUsername()==team1User1 or event.getUser().getUsername()==team1User2:
             if event.getCup1():
                 team1Cup1 = True
