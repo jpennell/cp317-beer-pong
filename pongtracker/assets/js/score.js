@@ -12,6 +12,7 @@
  * global variables
  *
  */
+
 game = {
 	/* game information for dialog boxes */
 	'team1' : {
@@ -73,6 +74,7 @@ var postEvent = function(eventType, team, player, cup, cup2) {
 	/*
 	 * posts an event to this page
 	 */
+	console.debug('posting', eventType, team, player, cup, cup2)
 	myData = {
 		'eventType' : eventType,
 		'team' : team,
@@ -89,6 +91,7 @@ var postEvent = function(eventType, team, player, cup, cup2) {
 	})
 }
 var recordEvent = function(type, team, player, cup) {
+	console.debug('recording event')
 	lastMoves.push({
 		team : team,
 		cup : cup
@@ -96,6 +99,7 @@ var recordEvent = function(type, team, player, cup) {
 	postEvent(type, team, player, cup, false)
 }
 var recordBounce = function(team, player, cup1, cup2) {
+	console.debug('recording bounce')
 	lastMoves.push({
 		team : team,
 		cup : cup1,
@@ -125,7 +129,7 @@ var blamePlayer = function(team, blameFunction) {
 					blameFunction(1)
 				}
 			},
-			"Player 2" : {
+			'Player 2' : {
 				id : 'button-player-2',
 				click : function() {
 					blameFunction(2)
@@ -203,10 +207,10 @@ var bounceShot = function(team, cup) {
 		$('<div>').simpledialog2({
 			mode : 'blank',
 			headerText : 'Second cup removed?',
-			safeNuke : false,
 			headerClose : false,
 			blankContent : '<div class="cups">' + outHtml + '</div>'
 		})
+
 		// delegate for the bounce shot bonus cup dialog
 		$(document).delegate('.bcup.active', 'click', function() {
 			var classes = this.className.split(' ')
@@ -215,6 +219,7 @@ var bounceShot = function(team, cup) {
 			console.debug('... and the bonus cup is', cup2)
 			deactivateCup(team, cup2)
 			recordBounce(team, player, cup, cup2)
+			$(document).undelegate('.bcup.active', 'click')
 		})
 	}
 	var selectBounceCupWrap = function(player) {
@@ -291,11 +296,13 @@ $(document).delegate('[name="abort"]', 'click', function() {
 		'buttons' : {
 			'Yes' : {
 				'click' : function() {
-					console.log('aborted game')
+					console.debug('aborted game')
+					self.location = '/profile/'
 				}
 			},
 			'No' : {
 				'click' : function() {
+					console.debug('')
 					return undefined
 				}
 			}
@@ -305,8 +312,79 @@ $(document).delegate('[name="abort"]', 'click', function() {
 		clickEvent : 'vclick'
 	})
 })
+var forfeitTeam = function(team) {
+	console.log('team ' + team + ' forfeited')
+}
+var deathCup = function(team) {
+	console.log('death cup by team ' + team)
+	var blameDeathCup = function(player) {
+		console.debug('Player', player, 'got the death cup')
+	}
+	blamePlayer(team, blameDeathCup)
+}
 // delegate for the end game button
 $(document).delegate('[name="end"]', 'click', function() {
 	console.debug('clicked end game')
+
+	$('<div>').simpledialog2({
+		mode : 'button',
+		headerText : 'How did the game end?',
+		headerClose : true,
+		'buttons' : {
+			'Forfeit' : {
+				click : function() {
+					console.debug('forfeit')
+					$('<div>').simpledialog2({
+						mode : 'button',
+						headerText : 'Winning team?',
+						headerClose : true,
+						'buttons' : {
+							'Team 1' : {
+								click : function() {
+									forfeitTeam(1)
+								}
+							},
+							'Team 2' : {
+								click : function() {
+									forfeitTeam(2)
+								}
+							}
+						},
+						forceInput : false,
+						showModal : true,
+						clickEvent : 'vclick'
+					})
+				}
+			},
+			'Death Cup' : {
+				click : function() {
+					console.debug('death cup')
+					$('<div>').simpledialog2({
+						mode : 'button',
+						headerText : 'Winning team?',
+						headerClose : true,
+						'buttons' : {
+							'Team 1' : {
+								click : function() {
+									deathCup('team1')
+								}
+							},
+							'Team 2' : {
+								click : function() {
+									deathCup('team2')
+								}
+							}
+						},
+						forceInput : false,
+						showModal : true,
+						clickEvent : 'vclick'
+					})
+				}
+			}
+		},
+		forceInput : false,
+		showModal : true,
+		clickEvent : 'vclick'
+	})
 })
 
