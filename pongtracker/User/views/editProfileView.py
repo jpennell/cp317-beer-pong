@@ -118,7 +118,7 @@ def _updateUser(username,firstName,lastName,email,height,yearOfGradution,userPro
     user.setFirstName(firstName)
     user.setLastName(lastName)
     user.setEmail(email)
-    user.setIsActive(deactivate)
+    user.setIsActive(not deactivate)
     user.setInstitution(institution)
     user.setHasUpdatedProfile(True)
     user.save()
