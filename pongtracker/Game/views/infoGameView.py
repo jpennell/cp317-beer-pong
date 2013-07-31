@@ -74,7 +74,7 @@ def _gameToJSON(game):
      'team1Cup1':team1Cup1,'team1Cup2':team1Cup2,'team1Cup3':team1Cup3,
      'team1Cup4':team1Cup4,'team1Cup5':team1Cup5,'team1Cup6':team1Cup6,}
     
-    dictTeam2 = {'team2User1':team2User1,'team2User2':team1User2,
+    dictTeam2 = {'team2User1':team2User1,'team2User2':team2User2,
      'team2Cup1':team2Cup1,'team2Cup2':team2Cup2,'team2Cup3':team2Cup3,
      'team2Cup4':team2Cup4,'team2Cup5':team2Cup5,'team2Cup6':team2Cup6}
     
