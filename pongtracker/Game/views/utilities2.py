@@ -29,8 +29,9 @@ def isGameEnded(game):
     
     Output: True if the Game has ended, False otherwise
     """
-    #to be removed
-    return True
+    
+    """REMOVE THIS LINE WHEN Score Game IS READY"""
+    return True 
     
     events = game.getEvents()
     if events == []:
@@ -57,10 +58,9 @@ def isUserOnTeam(team, username):
     teamUsernames = [teamUser.getUsername() for teamUser in teamUsers]
     return username in teamUsernames
 
-
 def isUserAllowedToVerifyGame(game,username):
     """
-    Determines whether a PongUser is allowed to verify a particular Game
+    Determines whether a PongUser is allowed to verify a particular Game.
     
     Keyword arguments:
     game -- the Game we are checking
@@ -72,3 +72,31 @@ def isUserAllowedToVerifyGame(game,username):
     """
     return isUserOnTeam(game.getTeam2(),username) 
 
+def obtainWinningTeamLosingTeam(game):
+    """
+    Takes a Game and returns the Team who won and the Team who lost.
+    
+    Keyword arguments:
+    game -- the Game we are checking
+    
+    Contributors: Richard Douglas
+    
+    Output: winners -- the Team who won
+            losers -- the Team who lost
+            
+            these are set to None if the Game has not ended
+    """
+    if (not isGameEnded(game)):
+        winners = None
+        losers = None
+    else:
+        endGameEvent = game.getEvents()[-1]
+        teamCaptain = endGameEvent.getUser()
+        if isUserOnTeam(game.getTeam1(),teamCaptain.username):
+            winners = game.getTeam1()
+            losers = game.getTeam2()
+        else:
+            winners = game.getTeam2()
+            losers = game.getTeam1()
+    return winners, losers
+    

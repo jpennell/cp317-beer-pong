@@ -2,7 +2,7 @@
 from Game.models import Game
 from django.shortcuts import redirect
 from django.contrib import messages
-from utilities2 import obtainGame, isGameEnded, isUserAllowedToVerifyGame
+from utilities2 import obtainGame, isGameEnded, isUserAllowedToVerifyGame, obtainWinningTeamLosingTeam
 
 def confirmGame(request,game_id):
     """
@@ -21,12 +21,13 @@ def confirmGame(request,game_id):
             PongUsers are only allowed to confirm Games where they have played on the Team opposing
             the PongUser who created the Game. The Game must also exist, have ended, and not already
             have been confirmed/denied. 
-        
     """
+    #redirect to login page if the PongUser is not logged in
     if not request.user.is_authenticated():
         messages.add_message(request,messages.INFO,'Please Login')
         return redirect('/login/')
-     
+    
+    #redirect to edit profile page if the PongUser hasn't edited their profile  
     if not request.user.getHasUpdatedProfile():
         messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
         return redirect('/profile/edit')
@@ -43,7 +44,6 @@ def confirmGame(request,game_id):
     else:
         _confirmTheGame(game)
         message = "Game " + game_id + " confirmed"
-    
     messages.add_message(request,messages.INFO,message)
     return redirect('/game/verify')
 
@@ -61,15 +61,10 @@ def _confirmTheGame(game):
             The Game is then marked as being confirmed/denied and kept in the database.
     """
     
-    #get Teams and Users
-    team1 = game.getTeam1()
-    team2 = game.getTeam2()
-    users = [team1.getUser1(),team1.getUser2(),team2.getUser1(),team2.getUser2()]
-    
     #get Events
     events = game.getEvents()
-    if not events: return
-    cupEvents, endGameEvent = events[0:-1], events[-1]
+    if not events: return """<----REMOVE THIS LINE WHEN Score Game IS READY"""
+    cupEvents = events[:-1]
     
     #process Events that involve cups being sunk
     for cupEvent in cupEvents:
@@ -77,7 +72,11 @@ def _confirmTheGame(game):
         stats = responsibleUser.getLifeStats()
         _updateCupShotStats(stats,event)
         _updateCupNumberStats(stats,event)
-        #_updateStatsWithEvent(stats,cupEvent)
+    
+    winningTeam, losingTeam = obtainWinningTeamLosingTeam(game)
+    _updateWinsAndLosses(winningTeam,losingTeam)
+    #_updateRankings(winningTeam,losingTeam)
+    game.setConfirmed(True)
     return
 
 def _updateCupShotStats(stats,event):
@@ -136,3 +135,55 @@ def _updateCupNumberStats(stats,event):
     if (event.getCup6()):
         stats.incCup6Sunk(1)
     return
+
+def _updateWinsAndLosses(winningTeam,losingTeam):
+    winners = [winningTeam.getUser1(), winningTeam.getUser2()]
+    losers = [losingTeam.getUser1(), losingTeam.getUser2()]
+    
+    for winner in winners:
+        stats = winner.getLifeStats()
+        stats.incWins(1)
+    
+    for loser in losers:
+        stats = loser.getLifeStats()
+        stats.incLoses(1)
+    return
+
+#def _updateRankings(winningTeam,losingTeam):
+#    #obtain the Ranking objects
+#    winningRankings = _obtainRankings(winningTeam)
+#    losingRankings = _obtainRankings(losingTeam)
+#    
+#    #obtain the corresponding TrueSkill Rating objects
+#    oldWinningRatings = _obtainRatings(winningRankings)
+#    oldLosingRatings = _obtainRatings(losingRankings)
+#    
+#    #have TrueSkill rate the Game
+#    newWinningRatings, newLosingRatings = trueskill.rate([oldWinningRatings,oldLosingRatings], ranks = [0,1])
+#    
+#     #update Ranking objects with their new Mu and Sigma values
+#    _writeRatingsToRankings(newWinningRatings,winningRankings)
+#    _writeRatingsToRankings(newLosingRatings,losingRankings)
+#    return
+#
+#def _obtainRankings(team):
+#    users = [team.getUser1(), team.getUser2()]
+#    rankings = [users[0].getRanking(), users[1].getRanking()]
+#    return rankings
+#
+#def _obtainRatings(rankings):
+#    ratings = []
+#    for ranking in rankings:
+#        mu = ranking.getMu()
+#        sigma = ranking.getSigma()
+#        rating = trueskill.Rating(mu,sigma)
+#        ratings.append(rating)
+#    return ratings
+#
+#def _writeRatingsToRankings(ratings,rankings):
+#    for i in range(len(ratings)):
+#        mu = ratings[i].getMu()
+#        sigma = ratings[i].getSigma()
+#        rankings[i].setMu(mu)
+#        rankings[i].setSigma(sigma)
+#    return
