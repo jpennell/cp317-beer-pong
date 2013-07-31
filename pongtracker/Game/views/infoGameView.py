@@ -66,13 +66,13 @@ def _gameToJSON(game):
             if event.getCup6():
                 team2Cup6 = True
     
-    dictTeam1 = {'team1User1':team1User1,'team1User2':team1User2,
-     'team1Cup1':team1Cup1,'team1Cup2':team1Cup2,'team1Cup3':team1Cup3,
-     'team1Cup4':team1Cup4,'team1Cup5':team1Cup5,'team1Cup6':team1Cup6,}
+    dictTeam1 = {'user1':team1User1,'user2':team1User2,
+     'cup1':team1Cup1,'cup2':team1Cup2,'cup3':team1Cup3,
+     'cup4':team1Cup4,'cup5':team1Cup5,'cup6':team1Cup6,}
     
-    dictTeam2 = {'team2User1':team2User1,'team2User2':team2User2,
-     'team2Cup1':team2Cup1,'team2Cup2':team2Cup2,'team2Cup3':team2Cup3,
-     'team2Cup4':team2Cup4,'team2Cup5':team2Cup5,'team2Cup6':team2Cup6}
+    dictTeam2 = {'user1':team2User1,'user2':team2User2,
+     'cup1':team2Cup1,'cup2':team2Cup2,'cup3':team2Cup3,
+     'cup4':team2Cup4,'cup5':team2Cup5,'cup6':team2Cup6}
     
     dictGame = {'team1':dictTeam1,'team2':dictTeam2}
     return json.dumps(dictGame,indent=5,sort_keys=True)
