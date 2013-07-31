@@ -1,11 +1,6 @@
 from django import forms
 
 class ConfirmGameForm(forms.Form):
-
-    def __init__(self,game = None):
-        if game is not None:
-            self.setGameData(game)
-        return
     
     def setGameData(self, game):
         #obtain the usernames

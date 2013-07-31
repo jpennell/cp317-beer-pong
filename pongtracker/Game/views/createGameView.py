@@ -135,8 +135,8 @@ def _createNewGame(users):
     game -- game object
         
     """
-    team1 = Team.objects.create(_user1=user[0],_user2=user[1])
-    team2 = Team.objects.create(_user1=user[2],_user2=user[3])
+    team1 = Team.objects.create(_user1=users[0],_user2=users[1])
+    team2 = Team.objects.create(_user1=users[2],_user2=users[3])
 
     game = Game.objects.create(_team1=team1, _team2=team2)
     
