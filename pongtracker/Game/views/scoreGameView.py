@@ -43,11 +43,15 @@ def scoreGame( request, game_id ):
         else:
             # create event
             print 'post request\n', request.POST
+            eventTypeString = request.POST.get( 'eventType' )
             cup = request.POST.get( 'cup' )
             cup2 = request.POST.get( 'cup2' )
             user_number = int( request.POST.get( 'player', 0 ) )
             team = request.POST.get( 'team' )
             eventType = EventType.objects.get( _typeName = eventTypeName )
+
+            if eventType == 'death':
+                pass
 
             if team:
                 team = int( team[-1] )
