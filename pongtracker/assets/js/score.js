@@ -66,11 +66,49 @@ var deactivateCup = function(team, cup) {
 	$(selector).removeClass('active')
 }
 /*
+ *
  * Recording events and POST request
  *
  *
  */
+var redemption = function(losingTeam) {
+	$(this).simpledialog2({
+		mode : 'button',
+		headerText : 'Did team ' + losingTeam + ' redeem themselves?',
+		buttons : {
+			'Yes' : {
+				click : function() {
+					var blameRedemption = function(player) {
+						console.debug('player', player, 'got the redemption')
+						postEvent('redemption', 'team' + losingTeam, player, false, false)
+						undoMove()
+					}
+					blamePlayer('team' + losingTeam, blameRedemption)
+				}
+			},
+			'No' : {
+				click : function() {
+					winningTeam = losingTeam == 1 ? 'team2' : 'team1'
+					postEvent('win', winningTeam, 1, false, false)
+				}
+			}
+		},
+		forceInput : false,
+		showModal : true,
+		clickEvent : 'vclick'
+	})
+}
+var isOnRedemption = function() {
+	console.debug('checking if on redemption')
+	team1cups = $('#team1 .cups .active')
+	team2cups = $('#team2 .cups .active')
+	if (team1cups.length == 0)
+		redemption(1)
+	if (team2cups.length == 0)
+		redemption(2)
+}
 var getGameStatus = function() {
+	console.debug('getting game status from JSON')
 	$.ajax({
 		url : '../info',
 		dataType : 'json',
@@ -79,6 +117,46 @@ var getGameStatus = function() {
 			game.team1[2] = data.team1.user2
 			game.team2[1] = data.team2.user1
 			game.team2[2] = data.team2.user2
+
+			if (data.team1.cup1)
+				deactivateCup('team1', 'cup1')
+			if (data.team1.cup2)
+				deactivateCup('team1', 'cup2')
+			if (data.team1.cup3)
+				deactivateCup('team1', 'cup3')
+			if (data.team1.cup4)
+				deactivateCup('team1', 'cup4')
+			if (data.team1.cup5)
+				deactivateCup('team1', 'cup5')
+			if (data.team1.cup6)
+				deactivateCup('team1', 'cup6')
+
+			if (data.team2.cup1)
+				deactivateCup('team2', 'cup1')
+			if (data.team2.cup2)
+				deactivateCup('team2', 'cup2')
+			if (data.team2.cup3)
+				deactivateCup('team2', 'cup3')
+			if (data.team2.cup4)
+				deactivateCup('team2', 'cup4')
+			if (data.team2.cup5)
+				deactivateCup('team2', 'cup5')
+			if (data.team2.cup6)
+				deactivateCup('team2', 'cup6')
+
+			/*
+			 if (data.team1.cup1 && data.team1.cup2 && data.team1.cup3 && data.team1.cup4 && data.team1.cup5 && data.team1.cup6) {
+			 redemption(1)
+			 }
+
+			 if (data.team2.cup1 && data.team2.cup2 && data.team2.cup3 && data.team2.cup4 && data.team2.cup5 && data.team2.cup6) {
+			 redemption(2)
+			 }
+			 */
+
+		},
+		error : function() {
+			console.error('could not get JSON')
 		}
 	});
 }
@@ -110,6 +188,7 @@ var recordEvent = function(type, team, player, cup) {
 		cup : cup
 	})
 	postEvent(type, team, player, cup, false)
+	isOnRedemption()
 }
 var recordBounce = function(team, player, cup1, cup2) {
 	console.debug('recording bounce')
@@ -119,6 +198,7 @@ var recordBounce = function(team, player, cup1, cup2) {
 		cup2 : cup2
 	})
 	postEvent('bounce', team, player, cup1, cup2)
+	isOnRedemption()
 }
 /*
  * Dialogs and such
@@ -249,10 +329,15 @@ var rotateCups = function() {
 	$(t2).css(transform, $(t2).css(transform) == 'none' ? 'rotate(-90deg)' : '')
 }
 /*
+ *
  * Global action event delegates
  *
- */
+ *
+while (document.readyState != 'complete') {
+}
+*/
 getGameStatus()
+isOnRedemption()
 // delegate for the main cup interface
 $(document).delegate('.cup.active:not(".bcup")', 'click', function() {
 	var classes = this.className.split(' ')
