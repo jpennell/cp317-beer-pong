@@ -70,6 +70,9 @@ class Game( models.Model ):
     def getEvents( self ):
         return self.Events.all().order_by( '_eventTime' )
 
+    def getLastEvent( self ):
+        return self.Events.latest( '_eventTime' )
+
     def setIsConfirmed( self, value ):
         self._isConfirmed = value
 
