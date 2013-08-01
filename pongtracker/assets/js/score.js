@@ -5,14 +5,12 @@
  * July 2013
  *
  * JavaScript code which implements the Score Game aspect of the Pong Tracker project
- */
-
-/*
  *
- * functions
+ *
  *
  */
 game = {
+	/* global game variable */
 	'team1' : {
 		1 : 'Team 1, Player 1',
 		2 : 'Team 1, Player 2',
@@ -38,6 +36,11 @@ game = {
 		}
 	}
 }
+/*
+ *
+ * functions
+ *
+ */
 var deactivateCup = function(team, cup) {
 	/* makes a cup deactive (by removing CSS class 'active) */
 	if ( typeof cup == 'number')
@@ -48,8 +51,9 @@ var deactivateCup = function(team, cup) {
 	if ($(selector).hasClass('active')) {
 		console.debug('deactivating cup ' + selector)
 		$(selector).removeClass('active')
+		refreshUndo()
+		checkRedemption()
 	}
-	refreshUndo()
 }
 var activateCup = function(team, cup) {
 	/* makes a cup active (by adding CSS class 'active) */
@@ -61,8 +65,8 @@ var activateCup = function(team, cup) {
 	if (!$(selector).hasClass('active')) {
 		console.debug('activating cup ' + selector)
 		$(selector).addClass('active')
+		refreshUndo()
 	}
-	refreshUndo()
 }
 var refreshUndo = function() {
 	/*
@@ -73,6 +77,13 @@ var refreshUndo = function() {
 		$(undoBtn).attr('disabled', true)
 	else
 		$(undoBtn).removeAttr('disabled')
+}
+var checkRedemption = function() {
+	console.debug('checking redemption')
+	if ($('#team1 .cups .active').length == 0)
+		redemption(1)
+	if ($('#team2 .cups .active').length == 0)
+		redemption(2)
 }
 var refreshCups = function() {
 	/*
@@ -97,6 +108,9 @@ var undoMove = function() {
 	documentRefresh()
 }
 var getGameStatus = function() {
+	/*
+	 * gets the database's current view of the game and updates the front end accordingly
+	 */
 	console.debug('getting game status from JSON')
 	$.ajax({
 		url : '../info/',
@@ -154,14 +168,15 @@ var recordBounce = function(team, player, cup1, cup2) {
  */
 var blamePlayer = function(team, blameFunction) {
 	/*
-	 * brings up a dialog box for selecting the user who performed the last move
+	 * brings up a dialog box for the purpose of selecting the user who performed the last move.
 	 *  params:
 	 *   team: integer or string "teamX"
 	 * 		the team whose player is being questioned
 	 * 	 blameFunction: function(int player)
 	 * 		this function is invoked, which continues the blame process with a player to blame
 	 */
-	$(this).simpledialog2({
+	console.debug('called blame player')
+	$('<div>').simpledialog2({
 		mode : 'button',
 		headerText : 'Who sunk that?',
 		headerClose : true,
@@ -268,7 +283,7 @@ var bounceShot = function(team, cup) {
 			console.debug('... and the bonus cup is', cup2)
 			deactivateCup(team, cup2)
 			recordBounce(team, player, cup, cup2)
-			// DESTROY THIS DELEGATE!! SUPER IMPORTANT :)
+			// DESTROYS THIS DELEGATE!! SUPER IMPORTANT :)
 			$(document).undelegate('.bcup.active', 'click')
 		})
 	}
@@ -282,22 +297,26 @@ var bounceShot = function(team, cup) {
  *
  */
 var redemption = function(losingTeam) {
+	/*
+	 * function invoked when all of one team's cups are gone
+	 */
 	$(this).simpledialog2({
 		mode : 'button',
 		headerText : 'Did team ' + losingTeam + ' redeem themselves?',
 		buttons : {
 			'Yes' : {
 				click : function() {
-					var blameRedemption = function(player) {
+					console.debug('they did redeem themselves')
+					blamePlayer(losingTeam, function(player) {
 						console.debug('player', player, 'got the redemption')
-						postEvent('redemption', 'team' + losingTeam, player, false, false)
 						undoMove()
-					}
-					blamePlayer(losingTeam, blameRedemption)
+						//postEvent('redemption', 'team' + losingTeam, player, false, false)
+					})
 				}
 			},
 			'No' : {
 				click : function() {
+					console.debug('did not redeem themselves')
 					winningTeam = losingTeam == 1 ? 'team2' : 'team1'
 					postEvent('win', winningTeam, 1, false, false)
 				}
@@ -308,21 +327,13 @@ var redemption = function(losingTeam) {
 		clickEvent : 'vclick'
 	})
 }
-var isOnRedemption = function() {
-	console.debug('checking if on redemption')
-	team1cups = $('#team1 .cups .active')
-	team2cups = $('#team2 .cups .active')
-	if (team1cups.length == 0)
-		redemption(1)
-	if (team2cups.length == 0)
-		redemption(2)
-}
 var forfeitTeam = function(winners) {
+	/* invoked when a team forfeits */
 	console.debug('team ' + winners + ' win because other team forfeited')
-	// var postEvent = function(eventType, team, player, cup, cup2)
 	postEvent('win', winners, 1, false, false)
 }
 var deathCup = function(team) {
+	/* invoked when a team gets a death cup */
 	console.debug('death cup by team ' + team)
 	blamePlayer(team, function(player) {
 		console.debug('Player', player, 'got the death cup')
@@ -336,6 +347,7 @@ var deathCup = function(team) {
  *
  */
 var rotateCups = function() {
+	/* toggles the cups formation */
 	var t1 = '#team1 .cups'
 	var t2 = '#team2 .cups'
 	//var transforms = ['transform', '-webkit-transform', '-moz-transform']
@@ -352,13 +364,14 @@ var rotateCups = function() {
  **************************************************************************************************/
 var documentRefresh = function() {
 	/* function called to refresh the state of the page */
-	console.debug('refresh function was invoked by delegate')
+	console.debug('refresh function')
 	refreshCups()
 }
 $(document.body).ready(function() {
 	/* function to refresh the document on load */
 	console.debug('document loaded')
 	documentRefresh()
+	refreshUndo()
 })
 $(document).delegate('.cup.active:not(".bcup")', 'click', function() {
 	/*

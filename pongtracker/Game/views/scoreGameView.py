@@ -89,7 +89,14 @@ def _undoEvent( game ):
     George Lifchits
 
     """
+    print 'undo event called'
     game_events = game.getEvents()
-    last_event = sorted( game_events, reverse = True )[0]
+    if len( game_events ) == 0:
+        return
+    elif len( game_events ) == 1:
+        last_event = game_events[0]
+    else:
+        game_events.reverse()
+        last_event = game_events[0]
     last_event.delete()
 
