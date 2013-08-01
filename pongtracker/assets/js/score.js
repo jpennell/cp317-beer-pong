@@ -136,7 +136,7 @@ var postEvent = function(eventType, team, player, cup, cup2) {
 	/*
 	 * posts an event to this page
 	 */
-	console.debug('posting', eventType, team, player, cup, cup2)
+	console.debug('posting: ', eventType, team, player, cup, cup2)
 	myData = {
 		'eventType' : eventType,
 		'team' : team,
@@ -146,8 +146,7 @@ var postEvent = function(eventType, team, player, cup, cup2) {
 		myData['cup'] = cup
 	if (cup2)
 		myData['cup2'] = cup2
-
-	console.debug(eventType, team, player, cup, cup2)
+	console.debug('sending to post:', myData)
 	$.ajax({
 		type : 'POST',
 		async : false,
