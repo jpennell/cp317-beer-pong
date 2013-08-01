@@ -15,6 +15,7 @@ body {
 }
 #page-content {
 	padding: 0;
+	padding-top: 10px;
 }
 #page-content table {
 	margin: 0 auto;
@@ -66,9 +67,10 @@ body {
 #button-panel td {
 	padding: 10px;
 }
-/* This CSS is an icon from http://one-div.com/ */
+
+/* CSS from one-div.com */
 .rotate-icon {
-	font-size: 16px;
+	font-size: 12px;
 	display: block;
 	position: relative;
 	width: 3em;
@@ -76,7 +78,7 @@ body {
 	border-top: 0.4em solid #2c2c2c;
 	border-left: 0.4em solid #2c2c2c;
 	border-right: 0.4em solid transparent;
-	border-bottom: 0.4em dotted transparent;
+	border-bottom: 0.4em solid #2c2c2c;
 	-moz-transform: rotate(10deg);
 	-webkit-transform: rotate(10deg);
 	-o-transform: rotate(10deg);
@@ -105,25 +107,6 @@ body {
 	-o-transform: rotate(-45deg);
 	transform: rotate(-45deg);
 }
-.rotate-icon::before {
-	-webkit-box-sizing: border-box;
-	-o-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	left: -0.45em;
-	border-radius: 100%;
-	top: -0.4em;
-	display: block;
-	position: absolute;
-	content: "";
-	width: 3em;
-	height: 3em;
-	border-bottom: 0.4em dotted #2C2C2C;
-	border-top: 0.4em dotted rgba(44, 44, 44, 0);
-	border-left: 0.4em dotted rgba(44, 44, 44, 0);
-	border-right: 0.4em dotted transparent;
-}
-
 .rotate-icon {
 	-webkit-transition: all 0.2s ease-in-out;
 }
