@@ -103,10 +103,18 @@
                 <table id="player-stats">
                     <tr>
                         <td>
-                            Pong Tracker Rank
+                            Overall Rank
+                        </td>
+                        <td>
+                            {{ rank }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Rank in {{ user.getInstitution }}
                         </td>
                         <td height="30px">
-                            {{ rank }}
+                            {{ instRank }}
                         </td>
                     </tr>
                     <tr>

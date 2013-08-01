@@ -2,6 +2,7 @@ from django.db import models
 from User.models import PongUser
 
 class Team( models.Model ):
+
     _user1 = models.ForeignKey( PongUser, related_name = "Team1" )
     _user2 = models.ForeignKey( PongUser, related_name = "Team2" )
 
@@ -12,17 +13,22 @@ class Team( models.Model ):
         return self._user2
 
     def getUser( self, user_number ):
-
+        """ gets user based on user_number from scareGame
+    
+        Keyword arguments:
+        user_number -- number of user to return
+        
+        Contributors:
+        
+        Output:
+        
+                
+        """
         if user_number == 1:
-
             return self._user1
-
         elif user_number == 2:
-
             return self._user2
-
         else:
-
             return None
 
     def setUser1( self ):
@@ -48,17 +54,22 @@ class Game( models.Model ):
         return self._team2
 
     def getTeam( self, team_number ):
-
+        """ gets team based on team_number from scareGame
+    
+        Keyword arguments:
+        team_number -- number of team to return
+        
+        Contributors:
+        
+        Output:
+        
+                
+        """
         if team_number == 1:
-
             return self._team1
-
         elif team_number == 2:
-
             return self._team2
-
         else:
-
             return None
 
     def getDatePlayed( self ):

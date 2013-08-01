@@ -8,6 +8,7 @@ from Utilities.utilities import *
 
 
 def leaderboardPage(request):
+    #get form
     form = LeaderboardForm()
     
     if not request.user.is_authenticated():
@@ -20,22 +21,28 @@ def leaderboardPage(request):
     
     username = request.session['username']
     
+    #get the top ranked overall and display it by default
     topRanked = getTopRanked(10)
-        
+    
+    #push list to the form
     displayBoard(topRanked,form)
     
     if request.method == 'POST':
         
+        #get form information
         form = LeaderboardForm(request.POST)
         
+        #get filter choice
         filterChoice = request.POST['filterSelect']
         
+        #push a blank list to the form
         _blankBoard(form)
         
+        #if the user chooses 'Overall', display the top ranked users
         if filterChoice == form.choices[0]:
             topRanked = getTopRanked(10)
             displayBoard(topRanked,form)
-        else:
+        else:   #display the top ranked from selected institution
             instLeaders = getInstitutionLeaders(10, filterChoice)
             displayBoard(instLeaders, form)
                        
@@ -46,14 +53,22 @@ def leaderboardPage(request):
         return render(request, 'statistics/leaderboard.html', {'form':form})
     
 def _blankBoard(form):
+    """ clears the leaderboard form
+
+    Keyword arguments:
+    form -- leaderboard form
+    
+    Contributors:
+    Matthew Hengeveld
+
+    """
     for x in range(len(form.leaders)):
         form.leaders[x] = ''
         
     return
 
 def displayBoard(topRanked, form):
-    """
-    This method puts the top ten leaders into the leaderboard form
+    """ puts the top ten leaders into the leaderboard form
 
     Keyword arguments:
     topRanked -- list of the top ranked players, in order of rank
@@ -124,66 +139,47 @@ def getTopRanked(limit):
     
     return topRanked
 
-def _getInstitutionRank(username):
+def getInstitutionRank(user):
     """
     This method finds and retrieve's a User's ranking within their own institution
 
     Keyword arguments:
-    username -- the username of the user to find (string)
+    user -- PongUser object
     
     Contributors:
-    Quinton Black
+    Matt Hengeveld
     
     Output:
     rank -- the rank of the user at his or her institution (int)
     """
-    user = PongUser.objects.get(username=username)
-    institution = user.getInstitution()
-    insitutionUsers = PongUser.objects.filter(_institution=institution).order_by('ranking')
-    
-    rank = 0    
-    player = insitutionUsers[rank]
-    number_players = len(insitutionUsers)
-    while rank<number_players and player.username!=username:
-        player = insitutionUsers[rank]
-        rank+=1
-     
-    return rank+1
-
-def _getOverallRank(username):
-    """
-    This method retireves a user's overall ranking
-
-    Keyword arguments:
-    username -- the username of the user to find (string)
-    
-    Contributors:
-    Quinton Black
-    
-    Output:
-    rank -- the rank of the user overall (int)
-    """
-    user = PongUser.objects.get(username=username)
-    userId = user.getID()
-    rankingTable = Ranking.objects.order_by('id')
-    skillList = []
-   
-    for row in rankingTable:
-        #please insert actual true skill calculation
-        skill = row.mu - 3*row.sigma #<- here it is | Richard 
-        skillList += {'userID':row.user_id,'skill':skill}
-     
-    
-    skillList=sorted(skillList,key='rank')   
-    
-    overallRank = 0
+    rank = 1
     found = False
-    while overallRank<len(skillList) and found==False:
-        if skillList[overallRank]['userID']==userID:
-            found = True
-        overallRank+=1
+    count = 1
+    querySize = 1000
+    user_id = user.id
+    institution = user.getInstitution()
     
-    return overallRank    
+    while not found or (size < 1):
+        min = (count-1)*querySize
+        max = (count*querySize)-1
+        userRanks = RankView.objects.all()[min:max]
+        if (len(userRanks) < max):
+            size = len(userRanks)
+        else:
+            size = querySize
+        for x in range(size):
+            queryUser = PongUser.objects.get(id=userRanks[x].id)
+            queryInstitution = queryUser.getInstitution()
+            if (queryInstitution == institution):
+                if (queryUser == user):
+                    found = True
+                    break
+                else:
+                    rank += 1
+        count += 1
+    
+    return rank
+
     
 def getInstitutionLeaders(numberOfLeaders, institutionName):
     """

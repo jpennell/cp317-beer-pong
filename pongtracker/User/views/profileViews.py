@@ -40,10 +40,11 @@ def viewProfile( request, username=None ):
             user = PongUser.objects.get(username=username)
             
             rank = getUserRank(user)
+            instRank = getInstitutionRank(user)
             
             totalSunk = getTotalSunk(user.getLifeStats())
                    
-            return render( request, 'user/profile.html', {'user':user, 'rank':rank, 'totalSunk':totalSunk, 'form':form} )
+            return render( request, 'user/profile.html', {'user':user, 'rank':rank, 'instRank':instRank, 'totalSunk':totalSunk, 'form':form} )
         
     if username is None:
         username = request.session['username']
@@ -51,7 +52,8 @@ def viewProfile( request, username=None ):
     user = PongUser.objects.get(username=username)
 
     rank = getUserRank(user)
+    instRank = getInstitutionRank(user)
     
     totalSunk = getTotalSunk(user.getLifeStats())
            
-    return render( request, 'user/profile.html', {'user':user, 'rank':rank, 'totalSunk':totalSunk, 'form':form} )
+    return render( request, 'user/profile.html', {'user':user, 'rank':rank, 'instRank':instRank, 'totalSunk':totalSunk, 'form':form} )

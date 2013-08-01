@@ -159,12 +159,37 @@ class Ranking(models.Model):
     
     
 class RankView(models.Model):
+    """ Rank view -- represents a View in the database
+        ***VIEW MUST BE CREATED MANUALLY IN DATABASE USING FOLLOWING SCRIPT***
+        
+        CREATE 
+            ALGORITHM = UNDEFINED 
+            DEFINER = `pong`@`%` 
+            SQL SECURITY DEFINER
+        VIEW `pong`.`Statistics_rankView` AS
+            select 
+                `r`.`_user_id` AS `id`,
+                round((`r`.`_mu` - (3 * `r`.`_sigma`)), 5) AS `_skillNumber`
+            from
+                `pong`.`Statistics_ranking` `r`
+            order by (`r`.`_mu` - (3 * `r`.`_sigma`)) desc
+    
+    
+        Keyword arguments:
+        
+        Contributors:
+        Matt Hengeveld
+        
+        Output:
+        
+                
+        """
     id = models.IntegerField(primary_key=True)
     _skillNumber = models.FloatField()
     
     class Meta:
-        managed=False
-        db_table='Statistics_rankView'
+        managed=False #tells django not to create this as a table when doing a syncdb
+        db_table='Statistics_rankView' #tells django the name of the view
         
     def getSkillNumber(self):
         return self._skillNumber
