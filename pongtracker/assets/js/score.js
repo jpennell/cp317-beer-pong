@@ -133,7 +133,7 @@ var postEvent = function(eventType, team, player, cup, cup2) {
 	if (cup2)
 		myData['cup2'] = cup2
 
-	console.log(eventType, team, player, cup, cup2)
+	console.debug(eventType, team, player, cup, cup2)
 	$.ajax({
 		type : 'POST',
 		async : false,
@@ -317,12 +317,12 @@ var isOnRedemption = function() {
 		redemption(2)
 }
 var forfeitTeam = function(winners) {
-	console.log('team ' + winners + ' win because other team forfeited')
+	console.debug('team ' + winners + ' win because other team forfeited')
 	// var postEvent = function(eventType, team, player, cup, cup2)
 	postEvent('win', winners, 1, false, false)
 }
 var deathCup = function(team) {
-	console.log('death cup by team ' + team)
+	console.debug('death cup by team ' + team)
 	blamePlayer(team, function(player) {
 		console.debug('Player', player, 'got the death cup')
 		postEvent('death', team, player, false, false)
@@ -350,14 +350,14 @@ var rotateCups = function() {
  **************************************************************************************************
  **************************************************************************************************/
 var documentRefresh = function() {
-	console.log('refresh function was invoked by delegate')
+	console.debug('refresh function was invoked by delegate')
 	refreshCups()
 }
 // any click will refresh the document (temporary hack solution)
 // $(document).delegate('html', 'click', documentRefresh)
 $(document.body).ready(function() {
 	/* refresh the document on load */
-	console.log('document loaded')
+	console.debug('document loaded')
 	documentRefresh()
 })
 $(document).delegate('.cup.active:not(".bcup")', 'click', function() {
