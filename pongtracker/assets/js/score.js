@@ -236,8 +236,6 @@ var bounceShot = function(team, cup) {
 
 	var selectBounceCup = function(team, cup, player) {
 		console.debug('... by player', player)
-		// close all dialogs for good measure
-		//$.mobile.sdCurrentDialog.close()
 		// here we are getting the HTML of the appropriate set of cups
 		thatHtml = $('#' + team + ' .cups').html()
 		// outHtml will contain thatHtml after appropriate modifications
@@ -260,14 +258,17 @@ var bounceShot = function(team, cup) {
 			blankContent : '<div class="cups">' + outHtml + '</div>'
 		})
 
-		// delegate for the bounce shot bonus cup dialog
 		$(document).delegate('.bcup.active', 'click', function() {
+			/*
+			 * delegate for the bounce shot bonus cup dialog
+			 */
 			var classes = this.className.split(' ')
 			var team = classes[1]
 			var cup2 = classes[2]
 			console.debug('... and the bonus cup is', cup2)
 			deactivateCup(team, cup2)
 			recordBounce(team, player, cup, cup2)
+			// DESTROY THIS DELEGATE!! SUPER IMPORTANT :)
 			$(document).undelegate('.bcup.active', 'click')
 		})
 	}
@@ -350,13 +351,12 @@ var rotateCups = function() {
  **************************************************************************************************
  **************************************************************************************************/
 var documentRefresh = function() {
+	/* function called to refresh the state of the page */
 	console.debug('refresh function was invoked by delegate')
 	refreshCups()
 }
-// any click will refresh the document (temporary hack solution)
-// $(document).delegate('html', 'click', documentRefresh)
 $(document.body).ready(function() {
-	/* refresh the document on load */
+	/* function to refresh the document on load */
 	console.debug('document loaded')
 	documentRefresh()
 })
@@ -399,18 +399,20 @@ $(document).delegate('.cup.active:not(".bcup")', 'click', function() {
 		clickEvent : 'vclick'
 	})
 })
-// delegate for the rotate button
 $(document).delegate('[name="rotate"]', 'click', function() {
+	/* delegate for the rotate button */
 	console.debug('clicked rotate')
 	rotateCups()
 })
-// delegate for the undo button
 $(document).delegate('[name="undo"]', 'click', function() {
+	/* delegate for the undo button */
 	console.debug('clicked undo')
 	undoMove()
 })
-// delegate for the abort button
 $(document).delegate('[name="abort"]', 'click', function() {
+	/*
+	 * delegate for the abort button
+	 */
 	console.debug('clicked abort')
 	$('<div>').simpledialog2({
 		mode : 'button',
@@ -435,8 +437,10 @@ $(document).delegate('[name="abort"]', 'click', function() {
 		clickEvent : 'vclick'
 	})
 })
-// delegate for the end game button
 $(document).delegate('[name="end"]', 'click', function() {
+	/*
+	 * delegate for the end game button
+	 */
 	console.debug('clicked end game')
 
 	$('<div>').simpledialog2({
