@@ -49,6 +49,7 @@ var deactivateCup = function(team, cup) {
 		console.debug('deactivating cup ' + selector)
 		$(selector).removeClass('active')
 	}
+	refreshUndo()
 }
 var activateCup = function(team, cup) {
 	/* makes a cup active (by adding CSS class 'active) */
@@ -61,8 +62,22 @@ var activateCup = function(team, cup) {
 		console.debug('activating cup ' + selector)
 		$(selector).addClass('active')
 	}
+	refreshUndo()
+}
+var refreshUndo = function() {
+	/*
+	 * refreshes the disabled status of the undo button
+	 */
+	var undoBtn = '[name="undo"]'
+	if ($('.cups span.active').length == 12)
+		$(undoBtn).attr('disabled', true)
+	else
+		$(undoBtn).removeAttr('disabled')
 }
 var refreshCups = function() {
+	/*
+	 * refreshes the active status of cups on the screen using database info.
+	 */
 	console.debug('refreshing cups')
 	getGameStatus()
 	for (var cupIdx = 1; cupIdx <= 6; cupIdx++) {
@@ -85,7 +100,7 @@ var getGameStatus = function() {
 	console.debug('getting game status from JSON')
 	$.ajax({
 		url : '../info/',
-		async: false,
+		async : false,
 		dataType : 'json',
 		success : function(data) {
 			game['team1'][1] = data.team1.user1
@@ -121,7 +136,7 @@ var postEvent = function(eventType, team, player, cup, cup2) {
 	console.log(eventType, team, player, cup, cup2)
 	$.ajax({
 		type : 'POST',
-		async: false,
+		async : false,
 		data : myData
 	})
 }
@@ -337,11 +352,6 @@ var rotateCups = function() {
 var documentRefresh = function() {
 	console.log('refresh function was invoked by delegate')
 	refreshCups()
-	var undoBtn = '[name="undo"]'
-	if ($('cups span.active').length == 12)
-		$(undoBtn).attr('disabled', 'true')
-	else
-		$(undoBtn).removeAttr('disabled')
 }
 // any click will refresh the document (temporary hack solution)
 // $(document).delegate('html', 'click', documentRefresh)
