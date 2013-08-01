@@ -50,21 +50,35 @@ def viewGameSummaryRequest(request, game_id):
             form.ranks[x] = getUserRank(users[x])
             #tally statistics for each user
             stats.append(_getStats(users[x], events))     
+            
+        #get winner of game
+        form.winner = _getWinner(game, events)
         
-        winner = _getWinner(game, events)
-        
-        form.winner = winner
         form.stats = stats
         
     else:
         
+        #if the logged in user is not one of the players in the game, do not let them see the summary
         form.authErr = True
         
     return render(request, 'game/summary.html', {'form': form})
 
 
 def _getWinner(game, events):
+    """ gets winner of a game based on win event
+
+    Keyword arguments:
+    game -- game object
+    events -- list of events from the game
     
+    Contributors: 
+    Matt Hengeveld
+    
+    Output:
+    winner -- number of team of winner; if the winner is not able to be
+              determined, 0 is returned
+        
+    """
     team1 = game.getTeam1()
     team2 = game.getTeam2()
     
