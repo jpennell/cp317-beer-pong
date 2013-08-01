@@ -332,7 +332,9 @@ var forfeitTeam = function(winners) {
 	postEvent('win', winners, 1, false, false)
 }
 var deathCup = function(team) {
-	/* invoked when a team gets a death cup */
+	/*
+	 * invoked when a team gets a death cup
+	 */
 	console.debug('death cup by team ' + team)
 	blamePlayer(team, function(player) {
 		console.debug('Player', player, 'got the death cup')
@@ -346,13 +348,17 @@ var deathCup = function(team) {
  *
  */
 var rotateCups = function() {
-	/* toggles the cups formation */
+	/*
+	 * toggles the cups formation
+	 */
+	console.debug('rotating cups')
 	var t1 = '#team1 .cups'
 	var t2 = '#team2 .cups'
-	//var transforms = ['transform', '-webkit-transform', '-moz-transform']
-	var transform = '-webkit-transform'
-	$(t1).css(transform, $(t1).css(transform) == 'none' ? 'rotate( 90deg)' : '')
-	$(t2).css(transform, $(t2).css(transform) == 'none' ? 'rotate(-90deg)' : '')
+	var vendorPrefixes = ['transform', '-webkit-transform', '-moz-transform', '-o-transform']
+	$.each(vendorPrefixes, function(index, transform) {
+		$(t1).css(transform, $(t1).css(transform) == 'none' ? 'rotate(-90deg)' : '')
+		$(t2).css(transform, $(t2).css(transform) == 'none' ? 'rotate( 90deg)' : '')
+	})
 }
 /**************************************************************************************************
  **************************************************************************************************
@@ -365,12 +371,12 @@ var documentRefresh = function() {
 	/* function called to refresh the state of the page */
 	console.debug('refresh function')
 	refreshCups()
+	refreshUndo()
 }
 $(document.body).ready(function() {
 	/* function to refresh the document on load */
 	console.debug('document loaded')
 	documentRefresh()
-	refreshUndo()
 })
 $(document).delegate('.cup.active:not(".bcup")', 'click', function() {
 	/*

@@ -93,13 +93,6 @@ def _undoEvent( game ):
 
     """
     print 'undo event called'
-    game_events = game.getEvents()
-    if len( game_events ) == 0:
-        return
-    elif len( game_events ) == 1:
-        last_event = game_events[0]
-    else:
-        game_events.reverse()
-        last_event = game_events[0]
+    last_event = game.getLastEvent()
     last_event.delete()
 
