@@ -1,8 +1,10 @@
-#import trueskill
+#from trueskill import Rating, rate
 from Game.models import Game
 from django.shortcuts import redirect
 from django.contrib import messages
-from utilities2 import obtainGame, isGameEnded, isUserAllowedToVerifyGame, obtainWinningTeamLosingTeam
+from Utilities.game_utilities import obtainGame, isGameEnded, isUserAllowedToVerifyGame, obtainWinningTeam, obtainLosingTeam
+
+TRUESKILL_IMPORTED = False #<----- change when you comment/uncomment the "from trueskill import ..." line
 
 def confirmGame(request,game_id):
     """
@@ -43,7 +45,7 @@ def confirmGame(request,game_id):
         message = "Game already confirmed/denied"
     else:
         _confirmTheGame(game)
-        message = "Game " + game_id + " confirmed"
+        message = "Game successfully confirmed"
     messages.add_message(request,messages.INFO,message)
     return redirect('/game/verify')
 
@@ -63,20 +65,21 @@ def _confirmTheGame(game):
     
     #get Events
     events = game.getEvents()
-    if not events: return """<----REMOVE THIS LINE WHEN Score Game IS READY"""
-    cupEvents = events[:-1]
+    cupEvents = events[0:len(events) - 1]
     
     #process Events that involve cups being sunk
     for cupEvent in cupEvents:
         responsibleUser = cupEvent.getUser()
         stats = responsibleUser.getLifeStats()
-        _updateCupShotStats(stats,event)
-        _updateCupNumberStats(stats,event)
+        _updateCupShotStats(stats,cupEvent)
+        _updateCupNumberStats(stats,cupEvent)
     
-    winningTeam, losingTeam = obtainWinningTeamLosingTeam(game)
+    winningTeam, losingTeam = obtainWinningTeam(game), obtainLosingTeam(game)
     _updateWinsAndLosses(winningTeam,losingTeam)
-    #_updateRankings(winningTeam,losingTeam)
-    game.setConfirmed(True)
+    if TRUESKILL_IMPORTED:
+        _updateRankings(winningTeam,losingTeam)
+    game.setIsConfirmed(True)
+    game.save()
     return
 
 def _updateCupShotStats(stats,event):
@@ -107,6 +110,7 @@ def _updateCupShotStats(stats,event):
         stats.incRedemptions(1)
     elif (whatHappened == "death"):
         stats.incDeathCups(1)
+    stats.save()
     return
 
 def _updateCupNumberStats(stats,event):
@@ -134,56 +138,118 @@ def _updateCupNumberStats(stats,event):
         stats.incCup5Sunk(1)
     if (event.getCup6()):
         stats.incCup6Sunk(1)
+    stats.save()
     return
 
 def _updateWinsAndLosses(winningTeam,losingTeam):
+    """
+    Updates the win and loss statistics of the PongUsers who played the Game.
+    
+    PongUsers on winningTeam have their win statistics increased by 1.
+    PongUsers on losingTeam have their loss statistics increased by 1. 
+    
+    Keyword arguments:
+    winningTeam -- the Team who won the Game
+    losingTeam -- the Team who lost the Game
+    
+    Contributors: Richard Douglas
+    
+    Output: None
+    """
     winners = [winningTeam.getUser1(), winningTeam.getUser2()]
     losers = [losingTeam.getUser1(), losingTeam.getUser2()]
     
     for winner in winners:
         stats = winner.getLifeStats()
         stats.incWins(1)
+        stats.save()
     
     for loser in losers:
         stats = loser.getLifeStats()
         stats.incLoses(1)
+        stats.save()
     return
 
-#def _updateRankings(winningTeam,losingTeam):
-#    #obtain the Ranking objects
-#    winningRankings = _obtainRankings(winningTeam)
-#    losingRankings = _obtainRankings(losingTeam)
-#    
-#    #obtain the corresponding TrueSkill Rating objects
-#    oldWinningRatings = _obtainRatings(winningRankings)
-#    oldLosingRatings = _obtainRatings(losingRankings)
-#    
-#    #have TrueSkill rate the Game
-#    newWinningRatings, newLosingRatings = trueskill.rate([oldWinningRatings,oldLosingRatings], ranks = [0,1])
-#    
-#     #update Ranking objects with their new Mu and Sigma values
-#    _writeRatingsToRankings(newWinningRatings,winningRankings)
-#    _writeRatingsToRankings(newLosingRatings,losingRankings)
-#    return
-#
-#def _obtainRankings(team):
-#    users = [team.getUser1(), team.getUser2()]
-#    rankings = [users[0].getRanking(), users[1].getRanking()]
-#    return rankings
-#
-#def _obtainRatings(rankings):
-#    ratings = []
-#    for ranking in rankings:
-#        mu = ranking.getMu()
-#        sigma = ranking.getSigma()
-#        rating = trueskill.Rating(mu,sigma)
-#        ratings.append(rating)
-#    return ratings
-#
-#def _writeRatingsToRankings(ratings,rankings):
-#    for i in range(len(ratings)):
-#        mu = ratings[i].getMu()
-#        sigma = ratings[i].getSigma()
-#        rankings[i].setMu(mu)
-#        rankings[i].setSigma(sigma)
-#    return
+def _updateRankings(winningTeam,losingTeam):
+    """
+    Updates the Rankings of the PongUsers who played the Game.
+    
+    Keyword arguments:
+    winningTeam -- the Team who won the Game
+    losingTeam -- the Team who lost the Game
+    
+    Contributors: Richard Douglas
+    
+    Output: None
+    """
+    #obtain the Ranking objects
+    winningRankings = _obtainRankings(winningTeam)
+    losingRankings = _obtainRankings(losingTeam)
+    
+    #obtain the corresponding TrueSkill Rating objects
+    oldWinningRatings = _obtainRatings(winningRankings)
+    oldLosingRatings = _obtainRatings(losingRankings)
+    
+    #have TrueSkill rate the Game
+    newWinningRatings, newLosingRatings = rate([oldWinningRatings,oldLosingRatings], ranks = [0,1])
+    
+     #update Ranking objects with their new Mu and Sigma values
+    _writeRatingsToRankings(newWinningRatings,winningRankings)
+    _writeRatingsToRankings(newLosingRatings,losingRankings)
+    return
+
+def _obtainRankings(team):
+    """
+    obtains the Ranking objects of the PongUsers on a Team.
+    
+    Keyword arguments:
+    team -- the Team whose Ranking objects we want
+    
+    Contributors: Richard Douglas
+    
+    Output: rankings, a Python list of the Team's PongUser's Ranking objects
+    """
+    users = [team.getUser1(), team.getUser2()]
+    rankings = [users[0].getRanking(), users[1].getRanking()]
+    return rankings
+
+def _obtainRatings(rankings):
+    """
+    obtains the (TrueSkill) Rating objects that correspond to Ranking objects.
+    
+    Keyword arguments:
+    rankings -- a Python list of Ranking objects
+    
+    Contributors: Richard Douglas
+    
+    Output: ratings, a Python list of (TrueSkill) Rating objects 
+                     that have the Mu and Sigma values of their corresponding Ranking objects
+    """
+    ratings = []
+    for ranking in rankings:
+        mu = ranking.getMu()
+        sigma = ranking.getSigma()
+        rating = Rating(mu,sigma)
+        ratings.append(rating)
+    return ratings
+
+def _writeRatingsToRankings(ratings,rankings):
+    """
+    Updates the Ranking objects with the new Mu and Sigma values
+    held by the (TrueSkill) Rating objects.
+    
+    Keyword arguments:
+    ratings -- the (TrueSkill) Rating objects
+    rankings -- the PongUsers' Ranking objects
+    
+    Contributors: Richard Douglas
+    
+    Output: None
+    """
+    for i in range(len(ratings)):
+        mu = ratings[i].mu
+        sigma = ratings[i].sigma
+        rankings[i].setMu(mu)
+        rankings[i].setSigma(sigma)
+        rankings[i].save()
+    return

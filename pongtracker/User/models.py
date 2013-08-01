@@ -60,6 +60,9 @@ class PongUser(AbstractUser):
     
     def getConfirmRequired(self):
         return self._confirmRequired
+    
+    def getRanking(self):
+        return self.ranking
 
 
     def setHeight(self, value):

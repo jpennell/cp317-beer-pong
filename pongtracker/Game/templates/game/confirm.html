@@ -61,7 +61,7 @@
 					</table>
 				</div>
 			</td>
-			<td><div align="center">Win</div></td>
+			<td><div align="center">{{ c_game.outcome }}</div></td>
 			<td>
 				<form method = "POST" action = "/game/{{ c_game.game_id }}/confirm/">
 						
@@ -128,7 +128,7 @@ You have no games to verify.
 				</table>
 			</div>
 		</td>
-		<td><div align="center">Win</div></td>
+		<td><div align="center">{{ o_game.outcome }}</div></td>
 	</tr>
 {% endfor %}
 </table>

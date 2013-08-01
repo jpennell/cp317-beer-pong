@@ -1,7 +1,7 @@
 from Game.models import Game
 from django.shortcuts import redirect
 from django.contrib import messages
-from utilities2 import obtainGame, isGameEnded, isUserAllowedToVerifyGame 
+from Utilities.game_utilities import obtainGame, isGameEnded, isUserAllowedToVerifyGame 
 
 def denyGame(request,game_id):
     """
@@ -42,7 +42,7 @@ def denyGame(request,game_id):
         message = "Game already confirmed/denied"
     else:
         _denyTheGame(game)
-        message = "Game " + game_id + " denied"
+        message = "Game successfully denied"
         
     messages.add_message(request,messages.INFO,message)
     return redirect('/game/verify')

@@ -1,6 +1,6 @@
 from Game.models import Game
 from Game.forms.confirmGameForm import ConfirmGameForm
-from utilities2 import isUserOnTeam, isGameEnded
+from Utilities.game_utilities import isUserOnTeam, isGameEnded
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
@@ -58,7 +58,7 @@ def _obtainGamesToBeConfirmed(username):
     
     Contributors: Richard Douglas
     
-    Output: gamesToConfirm -- a Python list of Games that the User is to confirm/deny
+    Output: gamesToConfirm -- a Python list of Games that the PongUser is to confirm/deny
             gamesOthersConfirm -- a Python list of Games that the opposing Team is to confirm/deny
         
     """
