@@ -4,8 +4,6 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from Utilities.game_utilities import obtainGame, isGameEnded, isUserAllowedToVerifyGame, obtainWinningTeam, obtainLosingTeam
 
-TRUESKILL_IMPORTED = True #<----- change to True/False when you comment/uncomment the "from trueskill import ..." line
-
 def confirmGame(request,game_id):
     """
     Processes a Game's confirmation request
@@ -76,8 +74,7 @@ def _confirmTheGame(game):
     
     winningTeam, losingTeam = obtainWinningTeam(game), obtainLosingTeam(game)
     _updateWinsAndLosses(winningTeam,losingTeam)
-    if TRUESKILL_IMPORTED:
-        _updateRankings(winningTeam,losingTeam)
+    _updateRankings(winningTeam,losingTeam)
     game.setIsConfirmed(True)
     game.save()
     return
