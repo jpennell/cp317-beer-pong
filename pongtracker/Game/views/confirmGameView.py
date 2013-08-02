@@ -1,10 +1,10 @@
-#from trueskill import Rating, rate
+from trueskill import Rating, rate
 from Game.models import Game
 from django.shortcuts import redirect
 from django.contrib import messages
 from Utilities.game_utilities import obtainGame, isGameEnded, isUserAllowedToVerifyGame, obtainWinningTeam, obtainLosingTeam
 
-TRUESKILL_IMPORTED = False #<----- change when you comment/uncomment the "from trueskill import ..." line
+TRUESKILL_IMPORTED = True #<----- change to True/False when you comment/uncomment the "from trueskill import ..." line
 
 def confirmGame(request,game_id):
     """
