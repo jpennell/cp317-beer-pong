@@ -320,6 +320,7 @@ var redemption = function(winningTeam) {
 					console.debug('did not redeem themselves')
 					winningTeam = losingTeam == 1 ? 'team2' : 'team1'
 					postEvent('win', winningTeam, 1, false, false)
+					redirect('../summary/')
 				}
 			}
 		},
@@ -348,6 +349,10 @@ var deathCup = function(team) {
  *
  *
  */
+var redirect = function(url) {
+	/* just a consistent and clearly named way of redirecting to another url */
+	self.location = url
+}
 var rotateCups = function() {
 	/*
 	 * toggles the cups formation
@@ -440,7 +445,7 @@ $(document).delegate('[name="abort"]', 'click', function() {
 			'Yes' : {
 				'click' : function() {
 					console.debug('aborted game')
-					self.location = '/profile/'
+					redirect('/profile/')
 				}
 			},
 			'No' : {
