@@ -136,7 +136,6 @@ var postEvent = function(eventType, team, player, cup, cup2) {
 	/*
 	 * posts an event to this page
 	 */
-	console.debug('posting: ', eventType, team, player, cup, cup2)
 	myData = {
 		'eventType' : eventType,
 		'team' : team,
@@ -146,6 +145,7 @@ var postEvent = function(eventType, team, player, cup, cup2) {
 		myData['cup'] = cup
 	if (cup2)
 		myData['cup2'] = cup2
+		
 	console.debug('sending to post:', myData)
 	$.ajax({
 		type : 'POST',
@@ -165,20 +165,22 @@ var recordBounce = function(team, player, cup1, cup2) {
  * Dialogs and such
  *
  */
-var blamePlayer = function(team, blameFunction) {
+var blamePlayer = function(team, blameFunction, closeOption) {
 	/*
-	 * brings up a dialog box for the purpose of selecting the user who performed the last move.
-	 *  params:
-	 *   team: integer or string "teamX"
-	 * 		the team whose player is being questioned
-	 * 	 blameFunction: function(int player)
-	 * 		this function is invoked, which continues the blame process with a player to blame
-	 */
+	* brings up a dialog box for the purpose of selecting the user who performed the last move.
+	*  params:
+	*   team: integer or string "teamX"
+	* 		the team whose player is being questioned
+	* 	 blameFunction: function(int player)
+	* 		this function is invoked, which continues the blame process with a player to blame
+	*/
+	// if closeOption is defined as true OR undefined, can close. else false.
+	closeOption = (closeOption || typeof closeOption == 'undefined')
 	console.debug('called blame player')
 	$('<div>').simpledialog2({
 		mode : 'button',
 		headerText : 'Who sunk that?',
-		headerClose : true,
+		headerClose : closeOption,
 		buttons : {
 			'Player 1' : {
 				id : 'button-player-1',
@@ -194,8 +196,7 @@ var blamePlayer = function(team, blameFunction) {
 			}
 		},
 		forceInput : false,
-		showModal : true,
-		clickEvent : 'vclick'
+		showModal : true
 	})
 	/* edits this current simpledialog to show the current player names in the buttons */
 	if ( typeof team == 'number')
@@ -295,10 +296,11 @@ var bounceShot = function(team, cup) {
  *
  *
  */
-var redemption = function(losingTeam) {
+var redemption = function(winningTeam) {
 	/*
 	 * function invoked when all of one team's cups are gone
 	 */
+	var losingTeam = winningTeam == 1 ? 2 : 1
 	$(this).simpledialog2({
 		mode : 'button',
 		headerText : 'Did team ' + losingTeam + ' redeem themselves?',
@@ -310,7 +312,7 @@ var redemption = function(losingTeam) {
 						console.debug('player', player, 'got the redemption')
 						undoMove()
 						//postEvent('redemption', 'team' + losingTeam, player, false, false)
-					})
+					}, false)
 				}
 			},
 			'No' : {
@@ -322,8 +324,7 @@ var redemption = function(losingTeam) {
 			}
 		},
 		forceInput : false,
-		showModal : true,
-		clickEvent : 'vclick'
+		showModal : true
 	})
 }
 var forfeitTeam = function(winners) {
@@ -413,8 +414,7 @@ $(document).delegate('.cup.active:not(".bcup")', 'click', function() {
 			}
 		},
 		forceInput : false,
-		showModal : true,
-		clickEvent : 'vclick'
+		showModal : true
 	})
 })
 $(document).delegate('[name="rotate"]', 'click', function() {
@@ -451,8 +451,7 @@ $(document).delegate('[name="abort"]', 'click', function() {
 			}
 		},
 		forceInput : false,
-		showModal : true,
-		clickEvent : 'vclick'
+		showModal : true
 	})
 })
 $(document).delegate('[name="end"]', 'click', function() {
@@ -460,7 +459,6 @@ $(document).delegate('[name="end"]', 'click', function() {
 	 * delegate for the end game button
 	 */
 	console.debug('clicked end game')
-
 	$('<div>').simpledialog2({
 		mode : 'button',
 		headerText : 'How did the game end?',
@@ -486,8 +484,7 @@ $(document).delegate('[name="end"]', 'click', function() {
 							}
 						},
 						forceInput : false,
-						showModal : true,
-						clickEvent : 'vclick'
+						showModal : true
 					})
 				}
 			},
@@ -511,15 +508,13 @@ $(document).delegate('[name="end"]', 'click', function() {
 							}
 						},
 						forceInput : false,
-						showModal : true,
-						clickEvent : 'vclick'
+						showModal : true
 					})
 				}
 			}
 		},
 		forceInput : false,
-		showModal : true,
-		clickEvent : 'vclick'
+		showModal : true
 	})
 })
 
