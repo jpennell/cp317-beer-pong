@@ -2,8 +2,28 @@
 	width: 100%;
 }
 
-#profile td {
-/*	border: 1px dashed black;  /**/
+#profile .username {
+	padding-right: 20px;
+	font-weight: bold;
+	font-size: 15px;
+	color: #9400D3;
+}
+
+table {
+	width: 100%;
+}
+
+#top-bar td {
+	vertical-align: middle;
+	height: 100%;
+}
+#top-bar form {
+	padding: 0;
+	margin: 0;
+}
+
+.right {
+	text-align: right;
 }
 
 #personal-info {
@@ -28,11 +48,9 @@
 }
 
 #default_picture{
-	
 	background-image: url("../img/profile.jpg");
 	background-size: cover;
 	background-position-x: -73px; /* this attribute is just for the sample image */
-	
 }
 
 .picture {
@@ -57,7 +75,7 @@
 }
 #player-info table td:first-child {
 	font-weight: bold;
-	width: 170px;
+	width: 280px;
 }
 
 #player-info .player-name {
