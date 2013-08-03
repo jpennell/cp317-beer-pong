@@ -44,9 +44,11 @@
 
         {% if messages %}
         <div class="alert">
-	        {% for message in messages %}
-	    		{{ message }}<br>
-	    	{% endfor %}
+        	{% autoescape off %}
+	        	{% for message in messages %}
+	    			{{ message }}<br>
+	    		{% endfor %}
+	    	{%endautoescape %}
 	    </div>
         {% endif %}
 
@@ -66,6 +68,7 @@
                             <li><a href="/profile">Profile</a></li>
                             <li><a href="/leaderboard/">Leaderboard</a></li>
                             <li><a href="/game/create/">Create a Game</a></li>
+                            <li><a href="/game/verify">Verify Games</a></li>
                             {% endif %}
                             <li><a href="{% url 'rules' %}">Rules</a></li>
                             {% endblock %}

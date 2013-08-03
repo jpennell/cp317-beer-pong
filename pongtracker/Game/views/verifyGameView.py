@@ -1,6 +1,6 @@
 from Game.models import Game
 from Game.forms.confirmGameForm import ConfirmGameForm
-from Utilities.game_utilities import isUserOnTeam, isGameEnded
+from Utilities.game_utilities import obtainGamesToBeConfirmed
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
@@ -30,7 +30,7 @@ def verifyGameRequest(request):
     username = request.session['username']
     
     #obtain the Games and write them to the forms
-    gamesToConfirm, gamesOthersConfirm = _obtainGamesToBeConfirmed(username)
+    gamesToConfirm, gamesOthersConfirm = obtainGamesToBeConfirmed(username)
     confirmGameForms = []
     otherGameForms = []
     
@@ -47,31 +47,3 @@ def verifyGameRequest(request):
         otherGameForms.append(otherForm)
     
     return render(request, 'game/confirm.html', { 'confirm_games': confirmGameForms, 'opponent_confirm_games': otherGameForms})
-
-def _obtainGamesToBeConfirmed(username):
-    """
-    Finds and returns the Games which the PongUser has played
-    that need confirming/denying.
-
-    Keyword arguments:
-    username -- the username of the PongUser viewing the game/verify page  
-    
-    Contributors: Richard Douglas
-    
-    Output: gamesToConfirm -- a Python list of Games that the PongUser is to confirm/deny
-            gamesOthersConfirm -- a Python list of Games that the opposing Team is to confirm/deny
-        
-    """
-    allGames = Game.objects.all().order_by('-_datePlayed')
-    
-    gamesToConfirm = []
-    gamesOthersConfirm = []
-    
-    for game in allGames:
-        if game.getIsConfirmed() or not isGameEnded(game):
-            continue
-        elif isUserOnTeam(game.getTeam2(), username):
-            gamesToConfirm.append(game)
-        elif isUserOnTeam(game.getTeam1(), username):
-            gamesOthersConfirm.append(game)
-    return gamesToConfirm, gamesOthersConfirm

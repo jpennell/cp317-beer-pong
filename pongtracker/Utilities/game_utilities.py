@@ -115,3 +115,31 @@ def obtainLosingTeam(game):
         else:
             losingTeam = game.getTeam1()
     return losingTeam
+
+def obtainGamesToBeConfirmed(username):
+    """
+    Finds and returns the Games which the PongUser has played
+    that need confirming/denying.
+
+    Keyword arguments:
+    username -- the username of the PongUser viewing the game/verify page  
+    
+    Contributors: Richard Douglas
+    
+    Output: gamesToConfirm -- a Python list of Games that the PongUser is to confirm/deny
+            gamesOthersConfirm -- a Python list of Games that the opposing Team is to confirm/deny
+        
+    """
+    allGames = Game.objects.all().order_by('-_datePlayed')
+    
+    gamesToConfirm = []
+    gamesOthersConfirm = []
+    
+    for game in allGames:
+        if game.getIsConfirmed() or not isGameEnded(game):
+            continue
+        elif isUserOnTeam(game.getTeam2(), username):
+            gamesToConfirm.append(game)
+        elif isUserOnTeam(game.getTeam1(), username):
+            gamesOthersConfirm.append(game)
+    return gamesToConfirm, gamesOthersConfirm

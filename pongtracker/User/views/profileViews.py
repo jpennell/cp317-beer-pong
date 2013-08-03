@@ -3,6 +3,7 @@ from User.models import PongUser
 from django.contrib import messages
 from Statistics.views.leaderBoardView import *
 from User.forms.profileForm import ProfileForm
+from Utilities.game_utilities import obtainGamesToBeConfirmed
 
 def viewProfile( request, username=None ):
     """{{Description}}
@@ -45,9 +46,13 @@ def viewProfile( request, username=None ):
             totalSunk = getTotalSunk(user.getLifeStats())
                    
             return render( request, 'user/profile.html', {'user':user, 'rank':rank, 'instRank':instRank, 'totalSunk':totalSunk, 'form':form} )
-        
+    
     if username is None:
         username = request.session['username']
+    
+    gamesToConfirm = obtainGamesToBeConfirmed(username)[0]
+    if gamesToConfirm != []:
+        messages.add_message(request,messages.INFO,"You have games that need to be <a href = '/game/verify'>verified</a>")
  
     user = PongUser.objects.get(username=username)
 
