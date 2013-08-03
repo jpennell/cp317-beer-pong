@@ -311,7 +311,7 @@ var redemption = function(winningTeam) {
 					blamePlayer(losingTeam, function(player) {
 						console.debug('player', player, 'got the redemption')
 						undoMove()
-						//postEvent('redemption', 'team' + losingTeam, player, false, false)
+						postEvent('redemption', 'team' + losingTeam, player, false, false)
 					}, false)
 				}
 			},
@@ -332,6 +332,7 @@ var forfeitTeam = function(winners) {
 	/* invoked when a team forfeits */
 	console.debug('team ' + winners + ' win because other team forfeited')
 	postEvent('win', winners, 1, false, false)
+	redirect('../summary/')
 }
 var deathCup = function(team) {
 	/*
@@ -343,6 +344,7 @@ var deathCup = function(team) {
 		postEvent('death', team, player, false, false)
 		postEvent('win', team, 1, false, false)
 	})
+	redirect('../summary/')
 }
 /*
  * Other functions
