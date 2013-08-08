@@ -4,7 +4,7 @@ from django.template import Context
 from Statistics.forms.leaderboardForm import LeaderboardForm
 from Statistics.views.leaderBoardView import *
 
-def viewHomepage(request):
+def viewHomepageRequest(request):
     """
     {{Description}}
 
