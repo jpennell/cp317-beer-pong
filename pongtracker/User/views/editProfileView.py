@@ -4,7 +4,7 @@ from User.forms import EditProfileForm
 from django.template import Context
 from Utilities.utilities import *
 from django.contrib.auth import *
-
+from django.conf import settings
 from django.contrib import messages
 from pickle import FALSE
 
@@ -25,7 +25,7 @@ def editProfile(request):
 
     if not request.user.is_authenticated():
         messages.add_message(request,message.INFO,'Please Login')
-        return redirect('/login/')
+        return redirect(settings.SITE_URL+'login/')
      
     username = request.session['username']
     if request.method == 'POST':
@@ -62,11 +62,11 @@ def editProfile(request):
             _updateUser(username,firstname,lastname,email,height,yearOfGradution,userProfilePhoto,deactivate,institution)
             
             if deactivate:
-                return redirect('/deactivate')
+                return redirect(settings.SITE_URL+'/deactivate')
             
             
             messages.add_message(request,messages.SUCCESS,"Profile information has been updated")
-            return redirect('/user/profile/')
+            return redirect(settings.SITE_URL+'user/profile/')
         else:
             if user.getHasUpdatedProfile() is False:
                 form.fields['_hasAcceptedTerms'].label = 'I have read and agreed to the terms and conditions'

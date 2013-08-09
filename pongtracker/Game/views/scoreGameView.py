@@ -2,6 +2,7 @@ from Game.models import Game, Event, EventType
 from django.shortcuts import render, redirect
 from Utilities.utilities import *
 from User.models import PongUser
+from django.conf import settings
 
 def scoreGame( request, game_id ):
     """
@@ -22,11 +23,11 @@ def scoreGame( request, game_id ):
     """
     if not request.user.is_authenticated():
         messages.add_message( request, message.INFO, 'Please Login' )
-        return redirect( '/login/' )
+        return redirect( settings.SITE_URL+'login/' )
 
     if not request.user.getHasUpdatedProfile():
         messages.add_message( request, messages.INFO, 'Please edit your profile before continuing' )
-        return redirect( '/profile/edit' )
+        return redirect(settings.SITE_URL+ 'profile/edit' )
 
     game = Game.objects.get( pk = game_id )
 
@@ -74,7 +75,7 @@ def scoreGame( request, game_id ):
                                           _cup4 = cups[3], _cup5 = cups[4], _cup6 = cups[5] )
             
             if eventTypeName == 'win':
-                return redirect('/game/'+game_id+'/summary') #does not work; needs to redirect to summary.html page on win event
+                return redirect(settings.SITE_URL+'game/'+game_id+'/summary') #does not work; needs to redirect to summary.html page on win event
 
     return render( request, 'game/play.html', {'game': game} )
     # not sure what to render/redirect to if it even needs to happen

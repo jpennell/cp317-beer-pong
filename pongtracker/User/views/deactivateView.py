@@ -3,7 +3,7 @@ from User.models import PongUser
 from User.forms import DeactivateAccountForm
 from django.template import Context
 from django.contrib.auth import *
-
+from django.conf import settings
 from django.contrib import messages
 
 
@@ -21,11 +21,11 @@ def deactivateAccount(request):
         
     if not request.user.is_authenticated():
         messages.add_message(request,message.INFO,'Please Login')
-        return redirect('/login/')
+        return redirect(settings.SITE_URL+'login/')
      
     if not request.user.getHasUpdatedProfile():
         messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
-        return redirect('/profile/edit') 
+        return redirect(settings.SITE_URL+'profile/edit') 
     
     username = request.session['username']        
     user = PongUser.objects.get(username=username)
@@ -40,7 +40,7 @@ def deactivateAccount(request):
             messages.add_message(request,messages.SUCCESS,"Your account has been successfully deactivated. Hope your liver forgives you.")
             
                        
-            return redirect('/logout')
+            return redirect(settings.SITE_URL+'logout')
     
     else:
         form = DeactivateAccountForm(instance=user)

@@ -3,6 +3,7 @@ from Game.forms.confirmGameForm import ConfirmGameForm
 from Utilities.game_utilities import obtainGamesToBeConfirmed
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.conf import settings
 
 def verifyGameRequest(request):
     """
@@ -20,12 +21,12 @@ def verifyGameRequest(request):
     #redirect to login if they haven't logged in
     if not request.user.is_authenticated():
         messages.add_message(request,messages.INFO,'Please Login')
-        return redirect('/login/')
+        return redirect(settings.SITE_URL+'login/')
     
     #redirect to edit profile if they haven't filled in their profile details 
     if not request.user.getHasUpdatedProfile():
         messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
-        return redirect('/profile/edit')
+        return redirect(settings.SITE_URL+'profile/edit')
     
     username = request.session['username']
     

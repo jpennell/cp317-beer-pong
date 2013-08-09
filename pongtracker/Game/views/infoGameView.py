@@ -4,8 +4,7 @@ from django.shortcuts import render, redirect, HttpResponse, Http404
 from Utilities.utilities import *
 from django.template import Context
 import json
-
-
+from django.conf import settings
 
 def infoGameRequest(request, game_id):
     

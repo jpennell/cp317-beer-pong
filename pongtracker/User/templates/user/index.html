@@ -65,7 +65,7 @@
 						
 				<div id="register-form">
 					<h3>{{ regTitle }}</h3>
-					<form action="/register" name="register" method="post">
+					<form action='{{ SITE_URL }}register' name="register" method="post">
 						{% csrf_token %} 
 				            <br>
 				            {% for field in registrationForm %}

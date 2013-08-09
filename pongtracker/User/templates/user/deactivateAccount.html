@@ -14,7 +14,7 @@
     Liver getting tired eh? Oh well if your are sure you want to deactivate your
     account please provide your password and it will be deactivated.
     
-    <form method='post' action='/deactivate'>
+    <form method='post' action='{{ SITE_URL }}deactivate'>
         {% csrf_token %}
 
         <table id='edit-profile-form'>

@@ -14,7 +14,7 @@
         <div id="login-header">
             {% if 'username' in request.session %}
             
-            <form name="logout" action="/logout" class="form-inline" method="post">
+            <form name="logout" action='{{ SITE_URL }}logout' class="form-inline" method="post">
                 {% csrf_token %}
                 <label>Welcome, <span id="player-name">{{ request.session.username }}</span></label>
                 <button name="logout" class="btn" type="submit">
@@ -26,12 +26,12 @@
             
              
                                           
-            <form name="login" action="/login/" class="form-inline" method="post">
+            <form name="login" action='{{ SITE_URL }}login' class="form-inline" method="post">
                 {% csrf_token %}
                 {% if next %}
                 <input type="hidden" name="next" value="{{ next }}" />
                 {% endif %}
-                <a href="/forgotpassword/">Forgot Password?</a>   
+                <a href='{{ SITE_URL }}forgotpassword'>Forgot Password?</a>   
                 <input name="username" type="text" placeholder="username" value="" />
                 <input name="password" type="password" placeholder="password" value="" />
                 <button name="login" class="btn" type="submit">
@@ -58,19 +58,23 @@
             <table>
                 <tr>
                     <td id="logo">
-                    	<a href="/profile"><div id="logoimg" ></div></a>
+                        {% if 'username' in request.session %}
+                    	<a href='{{ SITE_URL }}profile'><div id="logoimg" ></div></a>
+                    	{% else %}
+                    	<a href='{{ SITE_URL }}index'><div id="logoimg" ></div></a> 		
+                    	{% endif %}
                     	Pong Tracker
                     </td>
                     <td id="nav">
                         <ul>
                             {% block navigation %}
                             {% if 'username' in request.session %}
-                            <li><a href="/profile">Profile</a></li>
-                            <li><a href="/leaderboard/">Leaderboard</a></li>
-                            <li><a href="/game/create/">Create a Game</a></li>
-                            <li><a href="/game/verify">Verify Games</a></li>
+                            <li><a href='{{ SITE_URL }}profile'>Profile</a></li>
+                            <li><a href='{{ SITE_URL }}leaderboard/'>Leaderboard</a></li>
+                            <li><a href='{{ SITE_URL }}game/create/'>Create a Game</a></li>
+                            <li><a href='{{ SITE_URL }}game/verify'>Verify Games</a></li>
                             {% endif %}
-                            <li><a href="{% url 'rules' %}">Rules</a></li>
+                            <li><a href='{{ SITE_URL }}rules'>Rules</a></li>
                             {% endblock %}
                         </ul>
                     </td>

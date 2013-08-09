@@ -1,6 +1,5 @@
 import urllib
 from django.http import HttpResponseRedirect
-from django.shortcuts import render,redirect
 import string
 import random
 from django.contrib.auth import authenticate, login

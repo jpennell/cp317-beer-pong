@@ -63,14 +63,14 @@
 			</td>
 			<td><div align="center">{{ c_game.outcome }}</div></td>
 			<td>
-				<form method = "POST" action = "/game/{{ c_game.game_id }}/confirm/">
+				<form method = "POST" action = "{{ SITE_URL }}/game/{{ c_game.game_id }}/confirm/">
 						
 							{% csrf_token %}
 							<button class="btn" type="submit">
 								Confirm
 							</button>
 				</form>
-				<form method = "POST" action = "/game/{{ c_game.game_id }}/deny/">
+				<form method = "POST" action = "{{ SITE_URL }}/game/{{ c_game.game_id }}/deny/">
 							{% csrf_token %}
 							<button class="btn" type="submit">
 								Deny

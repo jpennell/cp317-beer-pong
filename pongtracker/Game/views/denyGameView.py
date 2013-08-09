@@ -2,6 +2,7 @@ from Game.models import Game
 from django.shortcuts import redirect
 from django.contrib import messages
 from Utilities.game_utilities import obtainGame, isGameEnded, isUserAllowedToVerifyGame 
+from django.conf import settings
 
 def denyGame(request,game_id):
     """
@@ -24,12 +25,12 @@ def denyGame(request,game_id):
     #redirect to login page if the PongUser is not logged in
     if not request.user.is_authenticated():
         messages.add_message(request,messages.INFO,'Please Login')
-        return redirect('/login/')
+        return redirect(settings.SITE_URL+'login/')
      
     #redirect to edit profile page if the PongUser hasn't edited their profile 
     if not request.user.getHasUpdatedProfile():
         messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
-        return redirect('/profile/edit')
+        return redirect(settings.SITE_URL+'profile/edit')
     
     username = request.session['username']
     game = obtainGame(game_id)
@@ -45,7 +46,7 @@ def denyGame(request,game_id):
         message = "Game successfully denied"
         
     messages.add_message(request,messages.INFO,message)
-    return redirect('/game/verify')
+    return redirect(settings.SITE_URL+'game/verify')
 
 def _denyTheGame(game):
     """

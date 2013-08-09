@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from User.forms import RegistrationForm
 from django.template import Context
 from Statistics.forms.leaderboardForm import LeaderboardForm

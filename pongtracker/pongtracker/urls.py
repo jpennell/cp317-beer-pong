@@ -22,9 +22,9 @@ urlpatterns = patterns('',
 	url(r'^admin/', include(admin.site.urls)),
 	url(r'^game/',include('Game.urls')),
 	url(r'^',include('User.urls')),
-	url(r'^rules/', TemplateView.as_view(template_name="pongtracker/rules.html"), name='rules'),
+	url(r'^rules', TemplateView.as_view(template_name="pongtracker/rules.html"), name="rules"),
 	url(r'^',include('Statistics.urls')),
-	url(r'^$','User.views.viewHomepageRequest'),
+	url(r'^$','User.views.viewHomepageRequest',name="index"),
 )
 
 if settings.DEBUG:
