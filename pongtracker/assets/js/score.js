@@ -346,28 +346,6 @@ var deathCup = function(team) {
 	})
 	redirect('../summary/')
 }
-/*
- * Other functions
- *
- *
- */
-var redirect = function(url) {
-	/* just a consistent and clearly named way of redirecting to another url */
-	self.location = url
-}
-var rotateCups = function() {
-	/*
-	 * toggles the cups formation
-	 */
-	console.debug('rotating cups')
-	var t1 = '#team1 .cups'
-	var t2 = '#team2 .cups'
-	var vendorPrefixes = ['transform', '-webkit-transform', '-moz-transform', '-o-transform']
-	$.each(vendorPrefixes, function(index, transform) {
-		$(t1).css(transform, $(t1).css(transform) == 'none' ? 'rotate(-90deg)' : '')
-		$(t2).css(transform, $(t2).css(transform) == 'none' ? 'rotate( 90deg)' : '')
-	})
-}
 /**************************************************************************************************
  **************************************************************************************************
  **																								 **
@@ -380,6 +358,10 @@ var documentRefresh = function() {
 	console.debug('refresh function')
 	refreshCups()
 	refreshUndo()
+}
+var redirect = function(url) {
+	/* just a consistent and clearly named way of redirecting to another url */
+	self.location = url
 }
 $(document.body).ready(function() {
 	/* function to refresh the document on load */
