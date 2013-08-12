@@ -145,7 +145,7 @@ var postEvent = function(eventType, team, player, cup, cup2) {
 		myData['cup'] = cup
 	if (cup2)
 		myData['cup2'] = cup2
-		
+
 	console.debug('sending to post:', myData)
 	$.ajax({
 		type : 'POST',
@@ -265,12 +265,14 @@ var bounceShot = function(team, cup) {
 				outHtml += "<br/>"
 			i += 1
 		})
+		
+		var rotateClass = 'rotate-' + (team == 'team1' ? 'clockwise' : 'counterclockwise')
 
 		$('<div>').simpledialog2({
 			mode : 'blank',
 			headerText : 'Second cup removed?',
 			headerClose : false,
-			blankContent : '<div class="cups">' + outHtml + '</div>'
+			blankContent : '<div class="cups ' + rotateClass + '">' + outHtml + '</div>'
 		})
 
 		$(document).delegate('.bcup.active', 'click', function() {
@@ -434,8 +436,7 @@ $(document).delegate('[name="abort"]', 'click', function() {
 			},
 			'No' : {
 				'click' : function() {
-					console.debug('')
-					return undefined
+					console.debug('ignored abort')
 				}
 			}
 		},
