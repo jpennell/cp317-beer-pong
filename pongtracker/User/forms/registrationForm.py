@@ -6,19 +6,19 @@ import re
 
 class RegistrationForm(forms.Form):
     
-    email = forms.EmailField( 
-            max_length = 250,
-            label = "Email address",
-            widget = forms.TextInput( attrs = {'placeholder': 'email'} )
-        )
     
     username = forms.CharField( 
             max_length = 30,
             label = "Username",
             widget = forms.TextInput( attrs = {'placeholder': 'username'} )
         )
-        
-
+    
+    email = forms.EmailField( 
+            max_length = 250,
+            label = "Email address",
+            widget = forms.TextInput( attrs = {'placeholder': 'email'} )
+        )
+    
     def clean_username(self):
             """Applys custom validation to username
             Adds errors if is not a valid username
