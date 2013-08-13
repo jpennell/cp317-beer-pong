@@ -148,6 +148,7 @@ var postEvent = function(eventType, team, player, cup, cup2) {
 	/*
 	 * posts an event to this page
 	 */
+	console.debug('postEvent invoked')
 	myData = {
 		'eventType' : eventType,
 		'team' : team,
@@ -364,8 +365,8 @@ var deathCup = function(team) {
 		console.debug('Player', player, 'got the death cup')
 		postEvent('death', team, player, false, false)
 		postEvent('win', team, 1, false, false)
+		redirect('../summary/')
 	})
-	redirect('../summary/')
 }
 /*************************************************************************************************
  *************************************************************************************************
