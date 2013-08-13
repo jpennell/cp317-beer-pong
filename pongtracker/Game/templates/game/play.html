@@ -1,122 +1,123 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
 {% load staticfiles %}
+<html lang="en">
+<head>
+    <title>Pong Tracker | Play Game</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+    <link href='{% static "css/bootstrap.css" %}' rel='stylesheet' type='text/css'>
+    <link href='{% static "css/global-styles.css" %}' rel='stylesheet' type='text/css'>
+    <link type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.css" rel="stylesheet" />
+    <link type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.css" rel="stylesheet" />
+    <link href='{% static 'css/cup-style.css' %}' rel='stylesheet' type='text/css'>
+    <link href='{% static 'css/scoregame-styles.css' %}' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.0.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.js"></script>
+    <script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.js"></script>
+    <script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.js"></script>
+    <script type='text/javascript' src="{% static 'js/jquery.cookie.js'%}"></script>
+    <script type="text/javascript" src="{% static 'js/cookie.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/score.js' %}"></script>
+</head>
+<body>
+    <div data-role='page' id="page-content">
+        <table>
+            <tr>
+                <td id='team1' class='team-display'>
+                    <h1>Team 1</h1>
+                    <table class='players'>
+                        <tr>
+                            <td align='center'>
+                                {% if game.getTeam1.getUser1.getPhoto %}
+                                <img class="picture" src="{{ game.getTeam1.getUser1.getPhoto.url }}"/>
+                                {% else %}
+                                <div id="default_picture" class="picture"></div>
+                                {% endif %}
+                                <br/>
+                                <span class="player-name">{{ game.getTeam1.getUser1 }}</span>
+                            </td>
+                            <td align="center">
+                                {% if game.getTeam1.getUser2.getPhoto %}
+                                <img class="picture" src="{{ game.getTeam1.getUser2.getPhoto.url }}"/>
+                                {% else %}
+                                <div id="default_picture" class="picture"></div>
+                                {% endif %}
+                                <br/>
+                                <span class="player-name">{{ game.getTeam1.getUser2 }} </span>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="cups rotate-clockwise">
+                        <span class="cup team1 cup1 active"></span>
+                        <br/>
+                        <span class="cup team1 cup2 active"></span>
+                        <span class="cup team1 cup3 active"></span>
+                        <br/>
+                        <span class="cup team1 cup4 active"></span>
+                        <span class="cup team1 cup5 active"></span>
+                        <span class="cup team1 cup6 active"></span>
+                    </div>
+                </td>
 
-{% block pagetitle %} | Play Game{% endblock %}
+                <td id='team2' class='team-display'>
+                    <h1>Team 2</h1>
+                    <table class='players'>
+                        <tr align='center'>
+                            <td>
+                                {% if game.getTeam2.getUser1.getPhoto %}
+                                <img class="picture" src="{{ game.getTeam2.getUser1.getPhoto.url }}"/>
+                                {% else %}
+                                <div id="default_picture" class="picture"></div>
+                                {% endif %}
+                                <br/>
+                                <span class="player-name">{{ game.getTeam2.getUser1 }} </span>
+                            </td>
 
-{% block head %}
-<link type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.css" rel="stylesheet" />
-<link type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.css" rel="stylesheet" />
-<link href='{% static 'css/cup-style.css' %}' rel='stylesheet' type='text/css'>
-<link href='{% static 'css/scoregame-styles.css' %}' rel='stylesheet' type='text/css'>
+                            <td>
+                                {% if game.getTeam2.getUser2.getPhoto %}
+                                <img class="picture" src="{{ game.getTeam2.getUser2.getPhoto.url }}"/>
+                                {% else %}
+                                <div id="default_picture" class="picture"></div>
+                                {% endif %}
+                                <br/>
+                                <span class="player-name">{{ game.getTeam2.getUser2 }} </span>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="cups rotate-counterclockwise">
+                        <span class="cup team2 cup1 active"></span>
+                        <br/>
+                        <span class="cup team2 cup2 active"></span>
+                        <span class="cup team2 cup3 active"></span>
+                        <br/>
+                        <span class="cup team2 cup4 active"></span>
+                        <span class="cup team2 cup5 active"></span>
+                        <span class="cup team2 cup6 active"></span>
+                    </div>
+                </td>
+            </tr>
 
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.0.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.js"></script>
-<script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.js"></script>
-<script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.js"></script>
-<script type='text/javascript' src="{% static 'js/jquery.cookie.js'%}"></script>
-<script type="text/javascript" src="{% static 'js/cookie.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/score.js' %}"></script>
-{% endblock %}
-
-{% block pagecontent %}
-<div data-role='page' id="page-content">
-    <table>
-        <tr>
-            <td id='team1' class='team-display'>
-                <h1>Team 1</h1>
-                <table class='players'>
+            <tr>
+                <table id="button-panel">
                     <tr>
-                        <td align='center'>
-                            {% if game.getTeam1.getUser1.getPhoto %}
-                            <img class="picture" src="{{ game.getTeam1.getUser1.getPhoto.url }}"/>
-                            {% else %}
-                            <div id="default_picture" class="picture"></div>
-                            {% endif %}
-                            <br/>
-                            <span class="player-name">{{ game.getTeam1.getUser1 }}</span>
+                        <td>
+                            <button class="btn" name="undo">
+                                Undo
+                            </button>
                         </td>
-                        <td align="center">
-                            {% if game.getTeam1.getUser2.getPhoto %}
-                            <img class="picture" src="{{ game.getTeam1.getUser2.getPhoto.url }}"/>
-                            {% else %}
-                            <div id="default_picture" class="picture"></div>
-                            {% endif %}
-                            <br/>
-                            <span class="player-name">{{ game.getTeam1.getUser2 }} </span>
+                        <td>
+                            <button class="btn" name="abort">
+                                Abort
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn" name="end">
+                                End Game
+                            </button>
                         </td>
                     </tr>
                 </table>
-                <div class="cups rotate-clockwise">
-                    <span class="cup team1 cup1 active"></span>
-                    <br/>
-                    <span class="cup team1 cup2 active"></span>
-                    <span class="cup team1 cup3 active"></span>
-                    <br/>
-                    <span class="cup team1 cup4 active"></span>
-                    <span class="cup team1 cup5 active"></span>
-                    <span class="cup team1 cup6 active"></span>
-                </div>
-            </td>
-
-            <td id='team2' class='team-display'>
-                <h1>Team 2</h1>
-                <table class='players'>
-                    <tr align='center'>
-                        <td>
-                            {% if game.getTeam2.getUser1.getPhoto %}
-                            <img class="picture" src="{{ game.getTeam2.getUser1.getPhoto.url }}"/>
-                            {% else %}
-                            <div id="default_picture" class="picture"></div>
-                            {% endif %}
-                            <br/>
-                            <span class="player-name">{{ game.getTeam2.getUser1 }} </span>
-                        </td>
-
-                        <td>
-                            {% if game.getTeam2.getUser2.getPhoto %}
-                            <img class="picture" src="{{ game.getTeam2.getUser2.getPhoto.url }}"/>
-                            {% else %}
-                            <div id="default_picture" class="picture"></div>
-                            {% endif %}
-                            <br/>
-                            <span class="player-name">{{ game.getTeam2.getUser2 }} </span>
-                        </td>
-                    </tr>
-                </table>
-                <div class="cups rotate-counterclockwise">
-                    <span class="cup team2 cup1 active"></span>
-                    <br/>
-                    <span class="cup team2 cup2 active"></span>
-                    <span class="cup team2 cup3 active"></span>
-                    <br/>
-                    <span class="cup team2 cup4 active"></span>
-                    <span class="cup team2 cup5 active"></span>
-                    <span class="cup team2 cup6 active"></span>
-                </div>
-            </td>
-        </tr>
-
-        <tr>
-            <table id="button-panel">
-                <tr>
-                    <td>
-                        <button class="btn" name="undo">
-                            Undo
-                        </button>
-                    </td>
-                    <td>
-                        <button class="btn" name="abort">
-                            Abort
-                        </button>
-                    </td>
-                    <td>
-                        <button class="btn" name="end">
-                            End Game
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </tr>
-    </table>
-</div>
-{% endblock %}
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
