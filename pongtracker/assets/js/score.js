@@ -201,6 +201,7 @@ var blamePlayer = function(team, blameFunction, closeOption) {
 	/* edits this current simpledialog to show the current player names in the buttons */
 	if ( typeof team == 'number')
 		team = 'team' + team
+	team = team == 'team1' ? 'team2' : 'team1'
 	$("#button-player-1 .ui-btn-text").html(game[team][1])
 	$("#button-player-2 .ui-btn-text").html(game[team][2])
 }
