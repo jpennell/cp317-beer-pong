@@ -20,12 +20,16 @@
                 <button name="searchName" class="btn" type="submit">
                     Search
                 </button>
-                {% if form.search.errors %}
-                {{ form.search.errors }}
-                {% endif %}
             </form>
         </td>
 </table>
+
+{% if form.search.errors %}
+<span class='errors'> {% for error in form.search.errors %}
+    {{ error|escape }}
+    {% endfor %} </span>
+{% endif %}
+
 <div id="page-content">
     <table id="profile">
         <tr>
