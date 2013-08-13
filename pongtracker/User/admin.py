@@ -3,7 +3,8 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 from django import forms
 
-from User.models import PongUser
+from User.models import *
+
 
 class PongUserChangeForm(UserChangeForm):
     class Meta(UserChangeForm.Meta):

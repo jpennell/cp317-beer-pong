@@ -33,7 +33,6 @@ def scoreGame( request, game_id ):
 
     # get the info we need
     if request.method == 'POST':
-        print( "I am getting a post" )
         print request.POST
         eventTypeName = request.POST['eventType']
 
