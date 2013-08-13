@@ -23,7 +23,7 @@ DATABASES = {
     },
 }
 
-ALLOWED_HOSTS = ['hopper.wlu.ca/~pong/pongtracker']
+ALLOWED_HOSTS = ['hopper.wlu.ca']
 
 LOGIN_URL = '/index' 
 
