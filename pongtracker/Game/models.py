@@ -14,15 +14,15 @@ class Team( models.Model ):
 
     def getUser( self, user_number ):
         """ gets user based on user_number from scareGame
-    
+
         Keyword arguments:
         user_number -- number of user to return
-        
+
         Contributors:
-        
+
         Output:
-        
-                
+
+
         """
         if user_number == 1:
             return self._user1
@@ -31,7 +31,7 @@ class Team( models.Model ):
         else:
             return None
 
-    def setUser1( self ):
+    def setUser1( self, value ):
         self._user1 = value
 
     def setUser2( self, value ):
@@ -55,15 +55,15 @@ class Game( models.Model ):
 
     def getTeam( self, team_number ):
         """ gets team based on team_number from scareGame
-    
+
         Keyword arguments:
         team_number -- number of team to return
-        
+
         Contributors:
-        
+
         Output:
-        
-                
+
+
         """
         if team_number == 1:
             return self._team1

@@ -39,29 +39,29 @@
 	<table width="100%"  align="center">	
 		<tr>
 			<td width="25%" align="center">
-				{% if user.0.getPhoto %}
-            		<img class="picture" src="{{ user.0.getPhoto.url }}"/>
+				{% if form.users.0.getPhoto %}
+            		<img class="picture" src="{{ form.users.0.getPhoto.url }}"/>
             	{% else %}
             		<div id="default_picture" class="picture"></div>
             	{% endif %}
 			</td>
 			<td width="25%" align="center" style="border-right: 1px solid black">
-				{% if user.1.getPhoto %}
-            		<img class="picture" src="{{ user.1.getPhoto.url }}"/>
+				{% if form.users.1.getPhoto %}
+            		<img class="picture" src="{{ form.users.1.getPhoto.url }}"/>
             	{% else %}
             		<div id="default_picture" class="picture"></div>
             	{% endif %}
 			</td>
 			<td width="25%" align="center">
-				{% if user.2.getPhoto %}
-            		<img class="picture" src="{{ user.2.getPhoto.url }}"/>
+				{% if form.users.2.getPhoto %}
+            		<img class="picture" src="{{ form.users.2.getPhoto.url }}"/>
             	{% else %}
             		<div id="default_picture" class="picture"></div>
             	{% endif %}
 			</td>
 			<td width="25%" align="center">
-				{% if user.3.getPhoto %}
-            		<img class="picture" src="{{ user.3.getPhoto.url }}"/>
+				{% if form.users.3.getPhoto %}
+            		<img class="picture" src="{{ form.users.3.getPhoto.url }}"/>
             	{% else %}
             		<div id="default_picture" class="picture"></div>
             	{% endif %}

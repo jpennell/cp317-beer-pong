@@ -41,9 +41,7 @@ def createNewGameRequest(request):
         #get form POST data
         form = CreateGameForm(request.POST)
 
-        #if form is valid
         if form.is_valid():
-            
             # clean all data
             username2 = form.cleaned_data['username2']
             username3 = form.cleaned_data['username3']
