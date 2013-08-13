@@ -23,7 +23,6 @@ DATABASES = {
     },
 }
 
-ALLOWED_HOSTS = ['hopper.wlu.ca']
 
 LOGIN_URL = '/index' 
 
@@ -43,7 +42,7 @@ AUTH_USER_MODEL = 'User.PongUser'
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['hopper.wlu.ca']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -208,7 +207,7 @@ LOGGING = {
     }
 }
 
-try:
-	from local_settings import *
-except:
-	pass
+#try:
+#	from local_settings import *
+#except:
+#	pass
