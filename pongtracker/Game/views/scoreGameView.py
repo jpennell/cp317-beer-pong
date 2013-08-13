@@ -23,11 +23,11 @@ def scoreGame( request, game_id ):
     """
     if not request.user.is_authenticated():
         messages.add_message( request, message.INFO, 'Please Login' )
-        return redirect( settings.SITE_URL+'login/' )
+        return redirect( settings.SITE_URL + 'login/' )
 
     if not request.user.getHasUpdatedProfile():
         messages.add_message( request, messages.INFO, 'Please edit your profile before continuing' )
-        return redirect(settings.SITE_URL+ 'profile/edit' )
+        return redirect( settings.SITE_URL + 'profile/edit' )
 
     game = Game.objects.get( pk = game_id )
 
@@ -58,7 +58,9 @@ def scoreGame( request, game_id ):
             if team:
                 team = int( team[-1] )
 
-            user = game.getTeam( team ).getUser( user_number )
+            users_team = 1 if team == 2 else 2
+
+            user = game.getTeam( users_team ).getUser( user_number )
 
             # initialize cups to a list of 6 False
             cups = [False] * 6
@@ -73,9 +75,9 @@ def scoreGame( request, game_id ):
             event = Event.objects.create( _game = game, _eventType = eventType, _user = user,
                                           _cup1 = cups[0], _cup2 = cups[1], _cup3 = cups[2],
                                           _cup4 = cups[3], _cup5 = cups[4], _cup6 = cups[5] )
-            
+
             if eventTypeName == 'win':
-                return redirect(settings.SITE_URL+'game/'+game_id+'/summary') #does not work; needs to redirect to summary.html page on win event
+                return redirect( settings.SITE_URL + 'game/' + game_id + '/summary' )  # does not work; needs to redirect to summary.html page on win event
 
     return render( request, 'game/play.html', {'game': game} )
     # not sure what to render/redirect to if it even needs to happen
