@@ -78,7 +78,15 @@ var refreshUndo = function() {
 	else
 		$(undoBtn).removeAttr('disabled')
 }
+var isRedemption = function() {
+	/* the redemption check as a boolean */
+	return ($('#team1 .cups .active').length == 0)
+	or($('#team2 .cups .active').length == 0)
+}
 var checkRedemption = function() {
+	/*
+	 * calls the redemption dialogs
+	 */
 	console.debug('checking redemption')
 	if ($('#team1 .cups .active').length == 0)
 		redemption(1)
@@ -266,7 +274,6 @@ var bounceShot = function(team, cup) {
 				outHtml += "<br/>"
 			i += 1
 		})
-		
 		var rotateClass = 'rotate-' + (team == 'team1' ? 'clockwise' : 'counterclockwise')
 
 		$('<div>').simpledialog2({
@@ -290,9 +297,15 @@ var bounceShot = function(team, cup) {
 			$(document).undelegate('.bcup.active', 'click')
 		})
 	}
-	blamePlayer(team, function(player) {
-		selectBounceCup(team, cup, player)
-	})
+	if (!isRedemption()) {
+		blamePlayer(team, function(player) {
+			selectBounceCup(team, cup, player)
+		})
+	} else {
+		blamePlayer(team, function(player) {
+			recordEvent('bounce', team, player, cup)
+		})
+	}
 }
 /*
  * End condition events
