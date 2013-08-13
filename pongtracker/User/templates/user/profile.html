@@ -35,7 +35,9 @@
         <tr>
             <td>
                 <span class='username'>{{ user.getUsername }}</span>
+                {% if isMyself %}
                 <a href="edit">Edit profile</a>
+                {% endif %}
             </td>
             <td colspan="2"  valign="bottom">
                 <table id="personal-stats">
