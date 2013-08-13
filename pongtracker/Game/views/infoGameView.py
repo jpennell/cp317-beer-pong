@@ -36,6 +36,9 @@ def _gameToJSON( game ):
     team2Cup5 = False
     team2Cup6 = False
 
+    lastEvent = Event.objects.filter( _game_id = game.getID ).order_by( '-id' )[0]
+    is_over = str( lastEvent.getEventType() ) == 'win'
+
     for event in events:
         ''' event types
         1    regular
@@ -49,9 +52,8 @@ def _gameToJSON( game ):
         event_type = event.getEventType()
 
         user_on_team1 = event.getUser().getUsername() in [team1User1, team1User2]
-        # if party foul
+        # if party foul, flip the team attribution
         if str( event_type ) == 'party_foul':
-            # flip the team attribution
             user_on_team1 = not user_on_team1
 
         # have to switch the teams in order to get the cup attribution switched properly
@@ -90,5 +92,5 @@ def _gameToJSON( game ):
      'cup1':team2Cup1, 'cup2':team2Cup2, 'cup3':team2Cup3,
      'cup4':team2Cup4, 'cup5':team2Cup5, 'cup6':team2Cup6}
 
-    dictGame = {'team1':dictTeam1, 'team2':dictTeam2}
+    dictGame = {'is_over': is_over, 'team1':dictTeam1, 'team2':dictTeam2}
     return json.dumps( dictGame, indent = 5, sort_keys = True )

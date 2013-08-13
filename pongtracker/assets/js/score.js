@@ -11,6 +11,7 @@
  */
 game = {
 	/* global game variable */
+	'isOver' : false,
 	'team1' : {
 		1 : 'Team 1, Player 1',
 		2 : 'Team 1, Player 2',
@@ -78,6 +79,9 @@ var refreshUndo = function() {
 	else
 		$(undoBtn).removeAttr('disabled')
 }
+var gameOver = function() {
+	return game.isOver
+}
 var isRedemption = function() {
 	/* the redemption check as a boolean */
 	return ($('#team1 .cups .active').length == 0)
@@ -98,7 +102,6 @@ var refreshCups = function() {
 	 * refreshes the active status of cups on the screen using database info.
 	 */
 	console.debug('refreshing cups')
-	getGameStatus()
 	for (var cupIdx = 1; cupIdx <= 6; cupIdx++) {
 		game.team1.cups[cupIdx] ? deactivateCup(1, cupIdx) : activateCup(1, cupIdx)
 		game.team2.cups[cupIdx] ? deactivateCup(2, cupIdx) : activateCup(2, cupIdx)
@@ -125,6 +128,7 @@ var getGameStatus = function() {
 		async : false,
 		dataType : 'json',
 		success : function(data) {
+			game['isOver'] = data.is_over
 			game['team1'][1] = data.team1.user1
 			game['team1'][2] = data.team1.user2
 			game['team2'][1] = data.team2.user1
@@ -179,7 +183,7 @@ var blamePlayer = function(team, blameFunction, closeOption) {
 	*  params:
 	*   team: integer or string "teamX"
 	* 		the team whose player is being questioned
-	* 	 blameFunction: function(int player)
+	*   blameFunction: function(int player)
 	* 		this function is invoked, which continues the blame process with a player to blame
 	*/
 	// if closeOption is defined as true OR undefined, can close. else false.
@@ -373,8 +377,22 @@ var deathCup = function(team) {
 var documentRefresh = function() {
 	/* function called to refresh the state of the page */
 	console.debug('refresh function')
-	refreshCups()
-	refreshUndo()
+	getGameStatus()
+	if (!gameOver()) {
+		refreshCups()
+		refreshUndo()
+	} else {
+		$(document).undelegate()
+		console.debug('bringing up menu')
+		$('<div>').simpledialog2({
+			mode : 'blank',
+			headerText : 'This game has ended',
+			blankContent : "<div style='padding: 10px'>" +
+						   "<p style='text-align: center'>All actions are disabled.</br>" +
+						   "<a href='../summary'>View game summary</a></p>" + 
+						   "</div>"
+		})
+	}
 }
 var redirect = function(url) {
 	/* just a consistent and clearly named way of redirecting to another url */
@@ -522,4 +540,3 @@ $(document).delegate('[name="end"]', 'click', function() {
 		showModal : true
 	})
 })
-
