@@ -49,6 +49,10 @@ def _gameToJSON( game ):
         event_type = event.getEventType()
 
         user_on_team1 = event.getUser().getUsername() in [team1User1, team1User2]
+        # if party foul
+        if str( event_type ) == 'party_foul':
+            # flip the team attribution
+            user_on_team1 = not user_on_team1
 
         # have to switch the teams in order to get the cup attribution switched properly
         if user_on_team1:

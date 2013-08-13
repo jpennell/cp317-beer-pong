@@ -234,10 +234,11 @@ var partyFoul = function(team, cup) {
 	 * what happens when a party foul occurs
 	 */
 	console.debug('team', team, 'cup', cup, 'was a party foul')
-	blamePlayer(team, function(player) {
+	otherTeam = team == 'team1' ? 'team2' : 'team1'
+	blamePlayer(otherTeam, function(player) {
 		console.debug('Player', player, 'got a party foul')
 		deactivateCup(team, cup)
-		recordEvent('party_foul', team, player, cup)
+		recordEvent('party_foul', otherTeam, player, cup)
 	})
 }
 var trickShot = function(team, cup) {
