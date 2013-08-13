@@ -39,7 +39,7 @@ def _gameToJSON( game ):
     try:
         lastEvent = Event.objects.filter( _game_id = game.getID ).order_by( '-id' )[0]
         is_over = str( lastEvent.getEventType() ) == 'win'
-    except IndexError:  # this is when there are no events for the game yet
+    except IndexError:  # this occurs when there are no events for the game yet
         is_over = False
 
     for event in events:
