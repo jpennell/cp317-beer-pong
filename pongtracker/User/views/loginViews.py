@@ -84,5 +84,5 @@ def loginUser(username, password, request):
         messages.add_message(request,messages.WARNING,"You are currently banned or inactive, please bring a case of beer to the admin to have your account unbanned.")
         return BANNED
     else:
-        messages.add_message(request,messages.WARNING,"Incorrect Email/Password Combination, sober up a bit then try again")
+        messages.add_message(request,messages.WARNING,"Incorrect Username/Password Combination, sober up a bit then try again")
         return INCORRECT 
