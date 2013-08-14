@@ -13,12 +13,12 @@ def viewGameSummaryRequest(request, game_id):
     #check if user is logged in
     if not request.user.is_authenticated():
         messages.add_message(request,message.INFO,'Please Login')
-        return redirect(request.META['HTTP_REFERER']+'/login/')
+        return redirect(settings.SITE_URL+'login/')
     
     #check if user has updated profile
     if not request.user.getHasUpdatedProfile():
         messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
-        return redirect(request.META['HTTP_REFERER']+'/profile/edit')
+        return redirect(settings.SITE_URL+'profile/edit')
     
     #get form
     form = EndGameForm()

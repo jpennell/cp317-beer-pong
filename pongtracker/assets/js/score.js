@@ -465,7 +465,7 @@ $(document).delegate('[name="abort"]', 'click', function() {
 			'Yes' : {
 				'click' : function() {
 					console.debug('aborted game')
-					redirect('/profile/')
+					redirect('profile/')
 				}
 			},
 			'No' : {
