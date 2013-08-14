@@ -14,24 +14,30 @@
             <h2 class="player-name"> {{ user.getFirstName }} {{ user.getLastName }} </h2>
         </td>
         <td class='right'>
-            <form method='post' action="/user/profile/" class='form-inline'>
+            <form method='post' action="{{ SITE_URL }}user/profile/" class='form-inline'>
                 {% csrf_token %}
                 {{ form.search }}
                 <button name="searchName" class="btn" type="submit">
                     Search
                 </button>
-                {% if form.search.errors %}
-                {{ form.search.errors }}
-                {% endif %}
             </form>
         </td>
 </table>
+
+{% if form.search.errors %}
+<span class='errors'> {% for error in form.search.errors %}
+    {{ error|escape }}
+    {% endfor %} </span>
+{% endif %}
+
 <div id="page-content">
     <table id="profile">
         <tr>
             <td>
                 <span class='username'>{{ user.getUsername }}</span>
+                {% if isMyself %}
                 <a href="edit">Edit profile</a>
+                {% endif %}
             </td>
             <td colspan="2"  valign="bottom">
                 <table id="personal-stats">

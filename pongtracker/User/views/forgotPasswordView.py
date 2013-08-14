@@ -5,13 +5,14 @@ from django.template import Context
 from django.core.mail import send_mail, BadHeaderError
 from User.forms import ForgotPasswordForm
 from Utilities.utilities import *
+from django.conf import settings
 
 def forgotPasswordRequest(request):
     
     if request.user.is_authenticated():
         msg = 'You are already logged in'
         messages.add_message(request,messages.WARNING,msg)
-        return redirect('/index/')
+        return redirect(settings.SITE_URL+'index/')
     
     if request.method =='POST':
         
@@ -28,7 +29,7 @@ def forgotPasswordRequest(request):
                 messages.add_message(request,messages.WARNING,msg)
                 
                 context =Context( {'title':'Forget Me Not','form':form})
-                return redirect('/forgotpassword',context)
+                return redirect(settings.SITE_URL+'forgotpassword',context)
             
             new_password = generatePassword()
 
@@ -47,7 +48,7 @@ def forgotPasswordRequest(request):
             user.save()
             msg = 'A temporary password has been sent to your email.'
             messages.add_message(request,messages.SUCCESS,msg)
-            return redirect('/index') 
+            return redirect(settings.SITE_URL+'index') 
         
         context = Context({'title':'Forget Me Not','form':form})
         return render(request,'user/forgotPassword.html',context)

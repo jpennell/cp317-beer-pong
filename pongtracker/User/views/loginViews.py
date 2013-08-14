@@ -6,6 +6,7 @@ from django.template import RequestContext
 from User.models import PongUser
 from Utilities.utilities import *
 from django.contrib import messages
+from django.conf import settings
 
 SUCCESS = 'success'
 INCORRECT = 'incorrect'
@@ -36,12 +37,12 @@ def loginUserRequest( request ):
     #as long as username is not empty strings, we will attempt a login
     if username !='':
         if userState == INCORRECT:
-            return redirect_with_params('/index/', username=username)
+            return redirect_with_params(settings.SITE_URL+'index/', username=username)
         
         user = PongUser.objects.get(username=username)
         #if it was successful and it isn't their first login attempt, got to the login page
         if userState == SUCCESS and user.getHasUpdatedProfile():
-            return redirect('/profile/')
+            return redirect(settings.SITE_URL+'profile/')
         
         #it was successful and the user has never logged in before, set the login status to true, and force them to edit their profile
         elif userState == SUCCESS and not user.getHasUpdatedProfile():
@@ -50,12 +51,12 @@ def loginUserRequest( request ):
             msg = 'A temporary password has been sent to the provided email account.'     
             messages.add_message(request,messages.SUCCESS,msg)  
             
-            return redirect( '/profile/edit' )
+            return redirect( settings.SITE_URL+'profile/edit' )
         
         else:
-            return  redirect_with_params('/banned/', username=username)
+            return  redirect_with_params(settings.SITE_URL+'banned/', username=username)
 
-    return  redirect('/index/')
+    return  redirect(settings.SITE_URL+'index/')
 
 def loginUser(username, password, request):
     
@@ -83,5 +84,5 @@ def loginUser(username, password, request):
         messages.add_message(request,messages.WARNING,"You are currently banned or inactive, please bring a case of beer to the admin to have your account unbanned.")
         return BANNED
     else:
-        messages.add_message(request,messages.WARNING,"Incorrect Email/Password Combination, sober up a bit then try again")
+        messages.add_message(request,messages.WARNING,"Incorrect Username/Password Combination, sober up a bit then try again")
         return INCORRECT 

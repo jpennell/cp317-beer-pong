@@ -26,6 +26,14 @@ table {
 	text-align: right;
 }
 
+.errors {
+	display: block;
+	width: 100%;
+	text-align: right;
+	font-weight: bold;
+	color: red;
+}
+
 #personal-info {
 	width: 250px;
 	padding: 5px;

@@ -7,6 +7,7 @@ from Game.forms.createGameForm import CreateGameForm
 from django.template import Context
 from User.views.registrationView import *
 from django.contrib import messages
+from django.conf import settings
 
 def createNewGameRequest(request):
     """validates input; creates a new game based on valid input
@@ -23,12 +24,12 @@ def createNewGameRequest(request):
     #check if user is logged in
     if not request.user.is_authenticated():
         messages.add_message(request,messages.INFO,'Please Login')
-        return redirect('/login/')
+        return redirect(settings.SITE_URL+'login/')
      
     #check if user has updated their profile
     if not request.user.getHasUpdatedProfile():
         messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
-        return redirect('/profile/edit')
+        return redirect(settings.SITE_URL+'profile/edit')
     
     #get session username
     username = request.session['username']
@@ -40,9 +41,7 @@ def createNewGameRequest(request):
         #get form POST data
         form = CreateGameForm(request.POST)
 
-        #if form is valid
         if form.is_valid():
-            
             # clean all data
             username2 = form.cleaned_data['username2']
             username3 = form.cleaned_data['username3']
@@ -80,7 +79,7 @@ def createNewGameRequest(request):
                 game = _createNewGame(users)
                 
                 #redirect to play game
-                return redirect('/game/' + str(game.id) +'/play')
+                return redirect(settings.SITE_URL+'game/' + str(game.id) +'/play')
             
         else:
 

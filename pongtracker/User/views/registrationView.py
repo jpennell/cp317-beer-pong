@@ -10,7 +10,7 @@ from Statistics.models import Ranking, LifeStats
 import re
 from django.contrib import messages
 from django.template import Context
-
+from django.conf import settings
 
 def registerNewUser( request ):
     """
@@ -42,7 +42,7 @@ def registerNewUser( request ):
             user_status = loginUser( username, password, request )
 
 
-            return redirect_with_params( '/login', user_status = user_status, username = username )
+            return redirect_with_params( settings.SITE_URL+'login', user_status = user_status, username = username )
         context = Context( {'regTitle': 'Register', 'registrationForm':form} )
         return render( request, 'user/index.html', context )
 
@@ -51,7 +51,7 @@ def registerNewUser( request ):
     # otherwise you're register through the url and need to be redirected to the index
     form = RegistrationForm()
     context = Context( {'regTitle': 'Register', 'registrationForm':form} )
-    return  redirect( '/index/', context )
+    return  redirect( settings.SITE_URL+'index', context )
 
 
 

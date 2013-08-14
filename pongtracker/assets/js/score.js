@@ -11,6 +11,7 @@
  */
 game = {
 	/* global game variable */
+	'isOver' : false,
 	'team1' : {
 		1 : 'Team 1, Player 1',
 		2 : 'Team 1, Player 2',
@@ -78,7 +79,18 @@ var refreshUndo = function() {
 	else
 		$(undoBtn).removeAttr('disabled')
 }
+var gameOver = function() {
+	return game.isOver
+}
+var isRedemption = function() {
+	/* the redemption check as a boolean */
+	return ($('#team1 .cups .active').length == 0)
+	or($('#team2 .cups .active').length == 0)
+}
 var checkRedemption = function() {
+	/*
+	 * calls the redemption dialogs
+	 */
 	console.debug('checking redemption')
 	if ($('#team1 .cups .active').length == 0)
 		redemption(1)
@@ -90,7 +102,6 @@ var refreshCups = function() {
 	 * refreshes the active status of cups on the screen using database info.
 	 */
 	console.debug('refreshing cups')
-	getGameStatus()
 	for (var cupIdx = 1; cupIdx <= 6; cupIdx++) {
 		game.team1.cups[cupIdx] ? deactivateCup(1, cupIdx) : activateCup(1, cupIdx)
 		game.team2.cups[cupIdx] ? deactivateCup(2, cupIdx) : activateCup(2, cupIdx)
@@ -117,6 +128,7 @@ var getGameStatus = function() {
 		async : false,
 		dataType : 'json',
 		success : function(data) {
+			game['isOver'] = data.is_over
 			game['team1'][1] = data.team1.user1
 			game['team1'][2] = data.team1.user2
 			game['team2'][1] = data.team2.user1
@@ -136,6 +148,7 @@ var postEvent = function(eventType, team, player, cup, cup2) {
 	/*
 	 * posts an event to this page
 	 */
+	console.debug('postEvent invoked')
 	myData = {
 		'eventType' : eventType,
 		'team' : team,
@@ -145,7 +158,7 @@ var postEvent = function(eventType, team, player, cup, cup2) {
 		myData['cup'] = cup
 	if (cup2)
 		myData['cup2'] = cup2
-		
+
 	console.debug('sending to post:', myData)
 	$.ajax({
 		type : 'POST',
@@ -171,7 +184,7 @@ var blamePlayer = function(team, blameFunction, closeOption) {
 	*  params:
 	*   team: integer or string "teamX"
 	* 		the team whose player is being questioned
-	* 	 blameFunction: function(int player)
+	*   blameFunction: function(int player)
 	* 		this function is invoked, which continues the blame process with a player to blame
 	*/
 	// if closeOption is defined as true OR undefined, can close. else false.
@@ -201,6 +214,7 @@ var blamePlayer = function(team, blameFunction, closeOption) {
 	/* edits this current simpledialog to show the current player names in the buttons */
 	if ( typeof team == 'number')
 		team = 'team' + team
+	team = team == 'team1' ? 'team2' : 'team1'
 	$("#button-player-1 .ui-btn-text").html(game[team][1])
 	$("#button-player-2 .ui-btn-text").html(game[team][2])
 }
@@ -225,10 +239,11 @@ var partyFoul = function(team, cup) {
 	 * what happens when a party foul occurs
 	 */
 	console.debug('team', team, 'cup', cup, 'was a party foul')
-	blamePlayer(team, function(player) {
+	otherTeam = team == 'team1' ? 'team2' : 'team1'
+	blamePlayer(otherTeam, function(player) {
 		console.debug('Player', player, 'got a party foul')
 		deactivateCup(team, cup)
-		recordEvent('party_foul', team, player, cup)
+		recordEvent('party_foul', otherTeam, player, cup)
 	})
 }
 var trickShot = function(team, cup) {
@@ -265,12 +280,13 @@ var bounceShot = function(team, cup) {
 				outHtml += "<br/>"
 			i += 1
 		})
+		var rotateClass = 'rotate-' + (team == 'team1' ? 'clockwise' : 'counterclockwise')
 
 		$('<div>').simpledialog2({
 			mode : 'blank',
 			headerText : 'Second cup removed?',
 			headerClose : false,
-			blankContent : '<div class="cups">' + outHtml + '</div>'
+			blankContent : '<div class="cups ' + rotateClass + '">' + outHtml + '</div>'
 		})
 
 		$(document).delegate('.bcup.active', 'click', function() {
@@ -287,9 +303,15 @@ var bounceShot = function(team, cup) {
 			$(document).undelegate('.bcup.active', 'click')
 		})
 	}
-	blamePlayer(team, function(player) {
-		selectBounceCup(team, cup, player)
-	})
+	if (!isRedemption()) {
+		blamePlayer(team, function(player) {
+			selectBounceCup(team, cup, player)
+		})
+	} else {
+		blamePlayer(team, function(player) {
+			recordEvent('bounce', team, player, cup)
+		})
+	}
 }
 /*
  * End condition events
@@ -343,43 +365,39 @@ var deathCup = function(team) {
 		console.debug('Player', player, 'got the death cup')
 		postEvent('death', team, player, false, false)
 		postEvent('win', team, 1, false, false)
-	})
-	redirect('../summary/')
-}
-/*
- * Other functions
- *
- *
- */
-var redirect = function(url) {
-	/* just a consistent and clearly named way of redirecting to another url */
-	self.location = url
-}
-var rotateCups = function() {
-	/*
-	 * toggles the cups formation
-	 */
-	console.debug('rotating cups')
-	var t1 = '#team1 .cups'
-	var t2 = '#team2 .cups'
-	var vendorPrefixes = ['transform', '-webkit-transform', '-moz-transform', '-o-transform']
-	$.each(vendorPrefixes, function(index, transform) {
-		$(t1).css(transform, $(t1).css(transform) == 'none' ? 'rotate(-90deg)' : '')
-		$(t2).css(transform, $(t2).css(transform) == 'none' ? 'rotate( 90deg)' : '')
+		redirect('../summary/')
 	})
 }
-/**************************************************************************************************
- **************************************************************************************************
- **																								 **
- **									Global action event delegates								 **
- **																								 **
- **************************************************************************************************
- **************************************************************************************************/
+/*************************************************************************************************
+ *************************************************************************************************
+ **                                                                                             **
+ **                              Global action event delegates                                  **
+ **                                                                                             **
+ *************************************************************************************************
+ *************************************************************************************************/
 var documentRefresh = function() {
 	/* function called to refresh the state of the page */
 	console.debug('refresh function')
-	refreshCups()
-	refreshUndo()
+	getGameStatus()
+	if (!gameOver()) {
+		refreshCups()
+		refreshUndo()
+	} else {
+		$(document).undelegate()
+		console.debug('bringing up menu')
+		$('<div>').simpledialog2({
+			mode : 'blank',
+			headerText : 'This game has ended',
+			blankContent : "<div style='padding: 10px'>" +
+						   "<p style='text-align: center'>All actions are disabled.</br>" +
+						   "<a href='../summary'>View game summary</a></p>" + 
+						   "</div>"
+		})
+	}
+}
+var redirect = function(url) {
+	/* just a consistent and clearly named way of redirecting to another url */
+	self.location = url
 }
 $(document.body).ready(function() {
 	/* function to refresh the document on load */
@@ -447,13 +465,12 @@ $(document).delegate('[name="abort"]', 'click', function() {
 			'Yes' : {
 				'click' : function() {
 					console.debug('aborted game')
-					redirect('/profile/')
+					redirect('profile/')
 				}
 			},
 			'No' : {
 				'click' : function() {
-					console.debug('')
-					return undefined
+					console.debug('ignored abort')
 				}
 			}
 		},
@@ -524,4 +541,3 @@ $(document).delegate('[name="end"]', 'click', function() {
 		showModal : true
 	})
 })
-

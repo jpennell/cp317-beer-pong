@@ -41,8 +41,8 @@
 								<th>{{c_game.player1}}</th>
 								<th>{{c_game.player2}}</th>
 							</tr>
-							<td>1</td>
-							<td>2</td>
+							<td>{{c_game.player1.outcome}}</td>
+							<td>{{c_game.player2.outcome}}</td>
 						</center>
 					</table>
 				</div>
@@ -52,7 +52,7 @@
 					<table border="1">
 						<center>
 							<tr>
-								<th>{{ c_game.player3 }}</th>
+								<th>Test {{ c_game.player3 }}</th>
 								<th>{{ c_game.player4 }}</th>
 							</tr>
 							<td>3</td>
@@ -63,14 +63,14 @@
 			</td>
 			<td><div align="center">{{ c_game.outcome }}</div></td>
 			<td>
-				<form method = "POST" action = "/game/{{ c_game.game_id }}/confirm/">
+				<form method = "POST" action = "{{ SITE_URL }}game/{{ c_game.game_id }}/confirm/">
 						
 							{% csrf_token %}
 							<button class="btn" type="submit">
 								Confirm
 							</button>
 				</form>
-				<form method = "POST" action = "/game/{{ c_game.game_id }}/deny/">
+				<form method = "POST" action = "{{ SITE_URL }}game/{{ c_game.game_id }}/deny/">
 							{% csrf_token %}
 							<button class="btn" type="submit">
 								Deny

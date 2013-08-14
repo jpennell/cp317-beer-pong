@@ -5,7 +5,7 @@ from Statistics.forms.leaderboardForm import LeaderboardForm
 from Statistics.models import LifeStats, Ranking, RankView
 from django.contrib import messages
 from Utilities.utilities import *
-
+from django.conf import settings
 
 def leaderboardPage(request):
     #get form
@@ -13,11 +13,11 @@ def leaderboardPage(request):
     
     if not request.user.is_authenticated():
         messages.add_message(request,messages.INFO,'Please Login')
-        return redirect('/login/')
+        return redirect(settings.SITE_URL+'login/')
      
     if not request.user.getHasUpdatedProfile():
         messages.add_message(request,messages.INFO,'Please edit your profile before continuing')
-        return redirect('/profile/edit')
+        return redirect(settings.SITE_URL+'profile/edit')
     
     username = request.session['username']
     

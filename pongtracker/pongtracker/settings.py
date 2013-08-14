@@ -13,12 +13,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'heng7500',  # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.mysql',  # Add 'postgresql_psycopg2', 
+        'NAME': 'pong',  # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-        'USER': 'heng7500',
-        'PASSWORD': 'gsx1br48',
-        'HOST': 'hopper.wlu.ca',  # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'USER': 'pong',
+        'PASSWORD': 'pong',
+        'HOST': 'hopper.wlu.ca',  # Empty for localhost through domain 
         'PORT': '3306',  # Set to empty string for default.
     },
 }
@@ -42,7 +42,7 @@ AUTH_USER_MODEL = 'User.PongUser'
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['hopper.wlu.ca']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -62,6 +62,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 SITE_ID = 1
+SITE_URL = "http://hopper.wlu.ca/~pong/pongtracker/"
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -93,7 +94,7 @@ STATIC_ROOT = 'static/'
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
-STATIC_URL = '/static/'
+STATIC_URL = 'http://hopper.wlu.ca/~pong/assets/'
 
 # Additional locations of static files
 STATICFILES_DIRS = ( 
@@ -125,6 +126,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.request',
     'django.contrib.messages.context_processors.messages',
+    'pongtracker.context_processors.site',
  )
 
 MIDDLEWARE_CLASSES = ( 
@@ -159,7 +161,7 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    #'django.contrib.sites',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
@@ -205,7 +207,7 @@ LOGGING = {
     }
 }
 
-try:
-    from local_settings import *
-except:
-    pass
+#try:
+#	from local_settings import *
+#except:
+#	pass
