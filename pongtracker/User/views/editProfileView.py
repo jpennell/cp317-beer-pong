@@ -71,7 +71,7 @@ def editProfile(request):
             if user.getHasUpdatedProfile() is False:
                 form.fields['_hasAcceptedTerms'].label = 'I have read and agreed to the terms and conditions'
                 form.fields['_hasAcceptedTerms'].widget.attrs['style'] =''
-                
+                #crated the page /pongtracker/ToC
                 form.fields['oldPassword'].label = 'Temporary Password *'                
             
     else:
