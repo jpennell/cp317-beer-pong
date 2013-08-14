@@ -6,6 +6,12 @@
 <link href='{% static 'css/profile-styles.css' %}' rel='stylesheet' type='text/css'>
 <link href='{% static 'css/editprofile-styles.css' %}' rel='stylesheet' type='text/css'>
 
+<script type="text/javascript"> 
+function toggleCheck(selectObject,check) { 
+var ind=selectObject.selectedIndex; 
+document.getElementById(check).style.display=(ind==0)?'none':'block'; // or inline 
+} 
+</script>
 
 {% endblock %}
 
@@ -40,7 +46,13 @@
             </tr>
             {% endfor %}
         </table>
-
+		<b>
+		<div class = "terms" >
+		I have read and agreed to the the <a href='/ToC' target = '_blank'>terms and conditions</a>
+		<input type="checkbox" checked="checked" disabled="disabled" value="toc" onclick="this.checked='checked'">
+		</div>
+		</b>
+		
         <div class="field">
             <button name="editProfile" class="btn" type="submit">
                 Submit

@@ -112,6 +112,6 @@ class PongUser(AbstractUser):
     _institution = models.ForeignKey(Institution,null = True, blank = True)
     _isBanned = models.BooleanField(default=False)
     _hasUpdatedProfile = models.BooleanField(default = False)
-    _hasAcceptedTerms =  models.BooleanField(default = False)
+    #_hasAcceptedTerms =  models.BooleanField(default = False)
     _confirmRequired =  models.BooleanField(default = False)
     

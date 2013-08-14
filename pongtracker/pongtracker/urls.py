@@ -23,6 +23,7 @@ urlpatterns = patterns('',
 	url(r'^game/',include('Game.urls')),
 	url(r'^',include('User.urls')),
 	url(r'^rules', TemplateView.as_view(template_name="pongtracker/rules.html"), name="rules"),
+	url(r'^ToC', TemplateView.as_view(template_name="pongtracker/ToC.html"), name="toc"),
 	url(r'^',include('Statistics.urls')),
 	url(r'^$','User.views.viewHomepageRequest',name="index"),
 )

@@ -129,9 +129,9 @@ class EditProfileForm( forms.ModelForm ):
                 msg = u'Please provide a new password'
                 self._errors['newPassword'] = self.error_class([msg])
         
-        if hasUpdatedProfile is False and hasAcceptedTerms is False:
-            msg = u"We are not responsible for your liver, please accept the terms and conditions."  
-            self._errors['_hasAcceptedTerms'] = self.error_class([msg]) 
+        #if hasUpdatedProfile is False and hasAcceptedTerms is False:
+            #msg = u"We are not responsible for your liver, please accept the terms and conditions."  
+            #self._errors['_hasAcceptedTerms'] = self.error_class([msg]) 
         
         if height < MIN_HEIGHT:
             msg = u"You must be at least {0}cm to play this game.".format(MIN_HEIGHT)   
