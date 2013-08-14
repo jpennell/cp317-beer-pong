@@ -136,7 +136,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
  )
 
 ROOT_URLCONF = 'pongtracker.urls'
@@ -149,6 +149,8 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     "/pongtracker/templates",
+    "/Administrator/templates",
+    "/Database/templates",
     "/Game/templates",
     "/Statistics/templates",
     "/User/templates",
@@ -167,6 +169,8 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'pongtracker',
+    'Administrator',
+    'Database',
     'Game',
     'Statistics',
     'Utilities',
