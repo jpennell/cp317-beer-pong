@@ -16,7 +16,6 @@ def infoGameRequest( request, game_id ):
         raise Http404
 
 
-
 def _gameToJSON( game ):
     events = Event.objects.filter( _game_id = game.getID() )
     team1User1 = game.getTeam1().getUser1().getUsername()
