@@ -26,7 +26,6 @@ DATABASES = {
 
 LOGIN_URL = '/index' 
 
- 
 # This is correct for the Django 1.4-style project layout; for the old-style
 # project layout with ``settings.py`` and ``manage.py`` in the same directory,
 # you'd want to only call ``os.path.dirname`` once.
@@ -101,7 +100,8 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    'assets'
+    'assets',
+    '/usr/local/python2.7/site-packages/django/contrib/admin/static/admin/'    
 , )
 
 # List of finder classes that know how to find static files in
