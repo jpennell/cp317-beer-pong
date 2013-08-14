@@ -4,8 +4,7 @@ from Utilities.game_utilities import obtainWinningTeam
 class ConfirmGameForm(forms.Form):
     
     def setGameData(self, game):
-        """
-        Stores information about the Game in the form.
+        """Stores information about the Game in the form.
         This information can then be accessed by: 
         
         form.player1, ..., form.player4 -- the usernames of the PongUsers who played the Game
@@ -42,8 +41,7 @@ class ConfirmGameForm(forms.Form):
         return
     
     def _obtainOutcomeOfEndedGame(self, game):
-        """
-        Determines whether the form's outcome attribute should be "Team 1 Won" or "Team 2 Won"
+        """Determines whether the form's outcome attribute should be "Team 1 Won" or "Team 2 Won"
         when a Game's information is being written to it.
     
         Keyword arguments:

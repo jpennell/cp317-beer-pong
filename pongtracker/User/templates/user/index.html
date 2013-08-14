@@ -89,11 +89,19 @@
 				            {% endif %}
 				            
 						
-						<button name="submit" class="btn" type="submit">Submit</button>
+						<button name="submit" class="btn" type="submit" onclick="disabler()">Submit</button>
 					</form>
 				</div>
 			</td>
 		</tr>
 	</table>
 </div>
+<script>
+    clicks = 0
+	function disabler() {
+		clicks += 1
+		if (clicks > 1)
+		  $('#register-form button[type=submit]').attr('disabled',true)
+	}
+</script>
 {% endblock %}
