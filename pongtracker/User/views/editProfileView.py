@@ -69,8 +69,8 @@ def editProfile(request):
             return redirect(settings.SITE_URL+'user/profile/')
         else:
             if user.getHasUpdatedProfile() is False:
-                #form.fields['_hasAcceptedTerms'].label = 'I have read and agreed to the terms and conditions'
-                #form.fields['_hasAcceptedTerms'].widget.attrs['style'] =''
+                form.fields['_hasAcceptedTerms'].label = 'I have read and agreed to the terms and conditions'
+                form.fields['_hasAcceptedTerms'].widget.attrs['style'] =''
                 
                 form.fields['oldPassword'].label = 'Temporary Password *'                
             
@@ -83,9 +83,9 @@ def editProfile(request):
         form = EditProfileForm(instance=user)
         if user.getHasUpdatedProfile() is False:
             
-            #form.fields['_hasAcceptedTerms'].label = 'I have read and agreed to the the terms and conditions'
-            #form.fields['_hasAcceptedTerms'].widget.attrs['style'] =''
-            #form.fields['_hasAcceptedTerms'].widget.attrs['textarea'] ='test'
+            form.fields['_hasAcceptedTerms'].label = 'I have read and agreed to the the terms and conditions'
+            form.fields['_hasAcceptedTerms'].widget.attrs['style'] =''
+            form.fields['_hasAcceptedTerms'].widget.attrs['textarea'] ='test'
             
             form.fields['oldPassword'].label = 'Temporary Password *'
             
