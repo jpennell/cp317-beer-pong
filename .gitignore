@@ -6,3 +6,5 @@
 *.pyc
 pongtracker/local_settings.py
 *~
+
+pongtracker/uploads/
