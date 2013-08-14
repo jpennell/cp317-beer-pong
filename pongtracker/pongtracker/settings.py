@@ -149,8 +149,6 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     "/pongtracker/templates",
-    "/Administrator/templates",
-    "/Database/templates",
     "/Game/templates",
     "/Statistics/templates",
     "/User/templates",
@@ -169,8 +167,6 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'pongtracker',
-    'Administrator',
-    'Database',
     'Game',
     'Statistics',
     'Utilities',
