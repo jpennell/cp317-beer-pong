@@ -4,10 +4,64 @@
 {% block pagetitle %} | Confirm Game{% endblock %} 
 
 {% block head %}
+<script>
+function() 
+	{
+		game = {
+			/* global game variable */
+			'isOver' : false,
+			'team1' : {
+				1 : 'Team 1, Player 1',
+				2 : 'Team 1, Player 2',
+				'cups' : {
+					1 : false,
+					2 : false,
+					3 : false,
+					4 : false,
+					5 : false,
+					6 : false
+				}
+			},
+			'team2' : {
+				1 : 'Team 2, Player 1',
+				2 : 'Team 2, Player 2',
+				'cups' : {
+					1 : false,
+					2 : false,
+					3 : false,
+					4 : false,
+					5 : false,
+					6 : false
+				}
+			}
+		}
+	}
+</script>
+<script>
+$.ajax(gameid){
+	url : '../game/'&gameid&'/info/',
+	async : false,
+	dataType : 'json',
+	success : function(data) {
+		game['isOver'] = data.is_over
+		game['team1'][1] = data.team1.user1
+		game['team1'][2] = data.team1.user2
+		game['team2'][1] = data.team2.user1
+		game['team2'][2] = data.team2.user2
 
-<link href="{% static 'home-styles.css' %}" rel='stylesheet'
-	type='text/css'>
-
+		for (var cupIdx = 1; cupIdx <= 6; cupIdx++) {
+			game['team1']['cups'][cupIdx] = data.team1['cup' + cupIdx]
+			game['team2']['cups'][cupIdx] = data.team2['cup' + cupIdx]
+		}
+	},
+	error : function() {
+		console.error('could not get JSON')
+	}
+});
+</script>
+<link href="{% static 'home-styles.css' %}" rel='stylesheet'type='text/css'>
+<link href='{% static 'css/cup-style.css' %}' rel='stylesheet' type='text/css'>
+<link href='{% static 'css/scoregame-styles.css' %}' rel='stylesheet' type='text/css'>
 {% endblock %} 
 
 {% block pagecontent %}
@@ -31,18 +85,31 @@
 {% for c_game in confirm_games %}
 		<tr>
 			<td>
-				<div align="center">{{c_game.date_played}}</div>
+				<div align="center">{{ c_game.date_played }}</div>
 			</td>
 			<td>
 				<div align="center">
 					<table border="1">
 						<center>
 							<tr>
-								<th>{{c_game.player1}}</th>
-								<th>{{c_game.player2}}</th>
+								<th>{{ c_game.player1 }} and {{ c_game.player2 }}</th>
 							</tr>
-							<td>{{c_game.player1.outcome}}</td>
-							<td>{{c_game.player2.outcome}}</td>
+							<td>
+							{{ c_game.id }}
+							</td>
+							<td>
+							.ajax() 
+							<div class="cups rotate-clockwise">
+		                        <span class="cup team1 cup1 active"></span>
+		                        <br/>
+		                        <span class="cup team1 cup2 active"></span>
+		                        <span class="cup team1 cup3 active"></span>
+		                        <br/>
+		                        <span class="cup team1 cup4 active"></span>
+		                        <span class="cup team1 cup5 active"></span>
+		                        <span class="cup team1 cup6 active"></span>
+                    		</div>
+						</td>
 						</center>
 					</table>
 				</div>
@@ -52,11 +119,20 @@
 					<table border="1">
 						<center>
 							<tr>
-								<th>Test {{ c_game.player3 }}</th>
-								<th>{{ c_game.player4 }}</th>
+								<th>{{ c_game.player3 }} and {{ c_game.player4 }}</th>
 							</tr>
-							<td>3</td>
-							<td>4</td>
+							<td>
+							<div class="cups rotate-counterclockwise">
+		                        <span class="cup team2 cup1 active"></span>
+		                        <br/>
+		                        <span class="cup team2 cup2 active"></span>
+		                        <span class="cup team2 cup3 active"></span>
+		                        <br/>
+		                        <span class="cup team2 cup4 active"></span>
+		                        <span class="cup team2 cup5 active"></span>
+		                        <span class="cup team2 cup6 active"></span>
+                    		</div>
+						</td>
 						</center>
 					</table>
 				</div>
@@ -98,18 +174,27 @@ You have no games to verify.
 	{% for o_game in opponent_confirm_games %}
 	<tr>
 		<td>
-			<div align="center">{{o_game.date_played}}</div>
+			<div align="center">{{ o_game.date_played }}</div>
 		</td>
 		<td>
 			<div align="center">
 				<table border="1">
 					<center>
 						<tr>
-							<th>{{o_game.player1}}</th>
-							<th>{{o_game.player2}}</th>
+							<th>{{ o_game.player1 }} and {{ o_game.player2 }} </th>
 						</tr>
-						<td>1</td>
-						<td>2</td>
+						<td> 
+							<div class="cups rotate-clockwise">
+		                        <span class="cup team1 cup1"></span>
+		                        <br/>
+		                        <span class="cup team1 cup2 active"></span>
+		                        <span class="cup team1 cup3 active"></span>
+		                        <br/>
+		                        <span class="cup team1 cup4 active"></span>
+		                        <span class="cup team1 cup5 active"></span>
+		                        <span class="cup team1 cup6 active"></span>
+                    		</div>
+						</td>
 					</center>
 				</table>
 			</div>
@@ -119,11 +204,20 @@ You have no games to verify.
 				<table border="1">
 					<center>
 						<tr>
-							<th>{{o_game.player3}}</th>
-							<th>{{o_game.player4}}</th>
+							<th>{{ o_game.player3 }} and {{ o_game.player4 }}</th>
 						</tr>
-						<td>3</td>
-						<td>4</td>
+						<td>
+							<div class="cups rotate-counterclockwise">
+		                        <span class="cup team2 cup1 active"></span>
+		                        <br/>
+		                        <span class="cup team2 cup2 active"></span>
+		                        <span class="cup team2 cup3 active"></span>
+		                        <br/>
+		                        <span class="cup team2 cup4 active"></span>
+		                        <span class="cup team2 cup5 active"></span>
+		                        <span class="cup team2 cup6 active"></span>
+                    		</div>
+						</td>
 					</center>
 				</table>
 			</div>
