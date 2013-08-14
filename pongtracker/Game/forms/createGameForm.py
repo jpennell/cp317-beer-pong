@@ -3,7 +3,17 @@ from User.models import PongUser
 import re
 
 class CreateGameForm(forms.Form):
-        
+    """ This represents all the input fields for the Create Game page
+    
+    Keyword arguments:
+    forms.Form -- the built in django forms class 
+    
+    Contributors: 
+    Quinton Black
+    Matt Hengeveld
+    
+    Output: None
+    """
     #username fields
     username1 = forms.CharField(
         widget=forms.TextInput(attrs={'class':'disabled', 'readonly':'readonly'}),
