@@ -4,6 +4,10 @@
 {% block pagetitle %} | Confirm Game{% endblock %} 
 
 {% block head %}
+
+<link href="{% static 'home-styles.css' %}" rel='stylesheet'type='text/css'>
+<link href='{% static 'css/cup-style.css' %}' rel='stylesheet' type='text/css'>
+<link href='{% static 'css/scoregame-styles.css' %}' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="{% static 'js/score.js' %}"></script>
 <script>
 function call_ajax(game_id) {
@@ -33,11 +37,6 @@ function call_ajax(game_id) {
 	});
 }
 </script>
-
-
-<link href="{% static 'home-styles.css' %}" rel='stylesheet'type='text/css'>
-<link href='{% static 'css/cup-style.css' %}' rel='stylesheet' type='text/css'>
-<link href='{% static 'css/scoregame-styles.css' %}' rel='stylesheet' type='text/css'>
 {% endblock %} 
 
 {% block pagecontent %}
