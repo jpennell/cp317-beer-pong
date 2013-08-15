@@ -85,7 +85,7 @@ def editProfile(request):
             
             form.fields['_hasAcceptedTerms'].label = 'I have read and agreed to the the terms and conditions'
             form.fields['_hasAcceptedTerms'].widget.attrs['style'] =''
-
+            form.fields['_hasAcceptedTerms'].widget.attrs['textarea'] ='test'
             
             form.fields['oldPassword'].label = 'Temporary Password *'
             

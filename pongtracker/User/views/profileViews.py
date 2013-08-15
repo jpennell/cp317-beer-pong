@@ -22,7 +22,7 @@ def viewProfile( request, username = None ):
 
     """
     if not request.user.is_authenticated():
-        messages.add_message( request, message.INFO, 'Please Login' )
+        messages.add_message( request, messages.INFO, 'Please Login' )
         return redirect( settings.SITE_URL + 'login/' )
 
     if not request.user.getHasUpdatedProfile():
