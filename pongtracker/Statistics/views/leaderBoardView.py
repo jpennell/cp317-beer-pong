@@ -37,12 +37,13 @@ def leaderboardPage(request):
         
         #push a blank list to the form
         _blankBoard(form)
+
         
         #if the user chooses 'Overall', display the top ranked users
         if filterChoice == form.choices[0]:
-            topRanked = getTopRanked(10)
             displayBoard(topRanked,form)
         else:   #display the top ranked from selected institution
+      
             instLeaders = getInstitutionLeaders(10, filterChoice)
             displayBoard(instLeaders, form)
                        
@@ -128,15 +129,16 @@ def getTopRanked(limit):
     Output:
     topRanked -- list of top ranked (in order)
     """
-    topUsers = RankView.objects.all()[0:limit]
-    
+    topUsers = RankView.objects.order_by('-_skillNumber','-id')[:10]
     topRanked = []
     
-    for x in range(len(topUsers)):
-        user_id = topUsers[x].id
+    x=0
+    while x <limit and x<len(topUsers):
+        user_id = topUsers[x].user_id
         user = PongUser.objects.get(id=user_id)
         topRanked.append(user)
-    
+        x+=1
+
     return topRanked
 
 def getInstitutionRank(user):
@@ -162,20 +164,18 @@ def getInstitutionRank(user):
     while not found or (size < 1):
         min = (count-1)*querySize
         max = (count*querySize)-1
-        userRanks = RankView.objects.all()[min:max]
-        if (len(userRanks) < max):
-            size = len(userRanks)
+        institutionUserRankViews = RankView.objects.order_by('-_skillNumber','-id').filter(user___institution___name=institution)[min:max]
+        if (len(institutionUserRankViews) < max):
+            size = len(institutionUserRankViews)
         else:
             size = querySize
         for x in range(size):
-            queryUser = PongUser.objects.get(id=userRanks[x].id)
-            queryInstitution = queryUser.getInstitution()
-            if (queryInstitution == institution):
-                if (queryUser == user):
-                    found = True
-                    break
-                else:
-                    rank += 1
+            queryUser = PongUser.objects.get(id=institutionUserRankViews[x].id)
+            if (queryUser == user):
+                found = True
+                break
+            else:
+                rank += 1
         count += 1
     
     return rank
@@ -195,31 +195,16 @@ def getInstitutionLeaders(numberOfLeaders, institutionName):
     list of leaders -- [leader1(PongUser),leader2...]
     """
 
-    leaders = []
-    count = 1
-    querySize = 2000
-    while len(leaders) < numberOfLeaders:
-        min = (count-1)*querySize
-        max = (count*querySize)-1
-        userRanks = RankView.objects.all()[min:max]
-        if (len(userRanks) < 1):
-            break
-        elif (len(userRanks) < max):
-            size = len(userRanks)
-        else:
-            size = querySize
-        for x in range(size):
-            user_id = userRanks[x].id
-            user = PongUser.objects.get(id=user_id)
-            try:
-                userInstitution = user.getInstitution().getName()
-            except:
-                userInstitution = None
-                
-            if (userInstitution == institutionName):
-                leaders.append(user)
-        count += 1
-    
+    userRanks = RankView.objects.order_by('-_skillNumber','-id').filter(user___institution___name=institutionName)[:numberOfLeaders]
+
+    leaders=[]
+    x=0
+    while x <numberOfLeaders and x<len(userRanks):
+        user_id = userRanks[x].user_id
+        user = PongUser.objects.get(id=user_id)
+        leaders.append(user)
+        x+=1
+
     return leaders
     
 def getUserRank(user):
@@ -235,21 +220,22 @@ def getUserRank(user):
     rank -- rank of user (int)
     """
     rank = None
-    count = 1
+    page = 1
     querySize = 1000
     user_id = user.id
     
+    
     while rank == None:
-        min = (count-1)*querySize
-        max = (count*querySize)-1
-        userRanks = RankView.objects.all()[min:max]
+        min = (page-1)*querySize
+        max = (page*querySize)-1
+        userRanks = RankView.objects.order_by('-_skillNumber','-id')[min:max]
         if (len(userRanks) < max):
             size = len(userRanks)
         else:
             size = querySize
         for x in range(size):
-            if (userRanks[x].id == user_id):
-                rank = x+((count-1)*querySize)
-        count += 1
+            if (userRanks[x].user_id == user_id):
+                rank = x+((page-1)*querySize)
+        page += 1
     
     return rank + 1

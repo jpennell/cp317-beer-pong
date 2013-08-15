@@ -186,6 +186,7 @@ class RankView(models.Model):
         """
     id = models.IntegerField(primary_key=True)
     _skillNumber = models.FloatField()
+    user = models.OneToOneField (PongUser)
     
     class Meta:
         managed=False #tells django not to create this as a table when doing a syncdb

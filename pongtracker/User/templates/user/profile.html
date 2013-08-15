@@ -67,7 +67,7 @@
         <tr id="statistics">
             <td>
                 {% if user.getPhoto %}
-                <img class="picture" src="/{{ user.getPhoto.url }}"/>
+                <img class="picture" src="{{ user.getPhoto.url }}"/>
                 {% else %}
                 <div id="default_picture" class="picture"></div>
                 {% endif %}

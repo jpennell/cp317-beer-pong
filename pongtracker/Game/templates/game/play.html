@@ -28,7 +28,7 @@
                             <td align='center'>
                             	{% if game.getTeam1.getUser1.getPhoto %}
                             	{% with photo=game.getTeam1.getUser1.getPhoto.url %}
-                                    <div class="picture" style="background-image: url('/{{ photo }}');">
+                                    <div class="picture" style="background-image: url('{{ photo }}');">
                                 {% endwith %}
                                 {% else %}
                                     <div class="picture">
@@ -41,7 +41,7 @@
                             <td align="center">
                                 {% if game.getTeam1.getUser2.getPhoto %}
                                 {% with photo=game.getTeam1.getUser2.getPhoto.url %}
-                                    <div class="picture" style="background-image: url('/{{ photo }}');">
+                                    <div class="picture" style="background-image: url('{{ photo }}');">
                                 {% endwith %}
                                 {% else %}
                                     <div class="picture">
@@ -71,7 +71,7 @@
                             <td>
                             	{% if game.getTeam2.getUser1.getPhoto %}
                                 {% with photo=game.getTeam2.getUser1.getPhoto.url %}
-                                    <div class="picture" style="background-image: url('/{{ photo }}');">
+                                    <div class="picture" style="background-image: url('{{ photo }}');">
                                 {% endwith %}
                                 {% else %}
                                     <div class="picture">
@@ -84,7 +84,7 @@
                             <td>
                                 {% if game.getTeam2.getUser2.getPhoto %}
                                 {% with photo=game.getTeam2.getUser2.getPhoto.url %}
-                                    <div class="picture" style="background-image: url('/{{ photo }}');">
+                                    <div class="picture" style="background-image: url('{{ photo }}');">
                                 {% endwith %}
                                 {% else %}
                                     <div class="picture">
