@@ -8,6 +8,11 @@ MAX_HEIGHT = 300
 
 
 class EditProfileForm( forms.ModelForm ):
+    """The form for editing a profile
+    Contributors:
+        Quinton Black
+
+    """
     year_choices = []
 
     for r in range( ( datetime.datetime.now().year ), ( datetime.datetime.now().year + 6 ) ):
@@ -99,6 +104,12 @@ class EditProfileForm( forms.ModelForm ):
 
 
     def clean(self):
+        """cleans the data in deactivate form
+        
+        Contributors:
+            Quinton Black
+
+        """
         cleaned_data = super(EditProfileForm, self).clean()
         newPassword = cleaned_data.get('newPassword')
         confirmPassword = cleaned_data.get('confirmPassword')
