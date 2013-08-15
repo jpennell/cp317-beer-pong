@@ -167,6 +167,9 @@ h1, h2, h3, h4, h5 {
 }
 #footer td {
 }
+#footer td.center {
+	text-align: center;
+}
 #footer td.right {
 	text-align: right;
 }
