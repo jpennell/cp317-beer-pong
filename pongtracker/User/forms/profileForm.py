@@ -2,7 +2,12 @@ from django import forms
 from User.models import PongUser
 
 class ProfileForm(forms.Form):
+    """ The search box for profile
     
+    Contributors:
+        Quinton Black
+
+    """
     search = forms.CharField(
         widget=forms.TextInput(attrs={'placeholder': 'search for player'}),
         label="User Search",
@@ -15,18 +20,30 @@ class ProfileForm(forms.Form):
         
         #Check that non to be registered users are not inactive
         if not _checkUserInactive(username,self):
-            msg = "User inactive"
+            msg = "User inactive. Please enter a valid user."
             self._errors['search'] = self.error_class([msg])
         
         #Check that non to be registered users exist
         exists = _checkUserExists(username,self)
         if not exists:
-            msg = "No such user"
+            msg = "No such user exists. Please enter a valid user."
             self._errors['search'] = self.error_class([msg])
         
         return username
 
 def _checkUserExists(username,self):
+    """ checks that the user exists
+    
+    Keyword arguments:
+    username -- the username to test against
+    
+    Contributors:
+        Quinton Black
+         
+    Output:
+        exists -- True or False depending on the user's existance 
+
+    """
     
     exists = False
     
@@ -37,7 +54,18 @@ def _checkUserExists(username,self):
 
 
 def _checkUserInactive(username,self):
+    """ checks that the user is active
     
+    Keyword arguments:
+    username -- the username to test against
+    
+    Contributors:
+        Quinton Black
+         
+    Output:
+        active -- True or False depending on the user's activness 
+
+    """
     active = False
     user = _findUser(username)
     

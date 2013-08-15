@@ -7,7 +7,19 @@ import json
 from django.conf import settings
 
 def infoGameRequest( request, game_id ):
+    """ Provides information about the game associated with the game-id
 
+    Keyword arguments:
+    request - the request
+    game_id - id of the game(int)
+        
+    Contributors: 
+    Quinton Black
+    
+    Output:
+    HttpResponse - 404 if game doesn't exist, if game exists then a json representation of the game
+        
+    """
     try:
         game = Game.objects.get( id = game_id )
         jsonGame = _gameToJSON( game )
@@ -17,6 +29,18 @@ def infoGameRequest( request, game_id ):
 
 
 def _gameToJSON( game ):
+    """ converts the game, its events, and users into json
+
+    Keyword arguments:
+    game - the game to find the information for (Game)
+    
+    Contributors: 
+    Quinton Black, George Lifchits
+    
+    Output:
+    json dump representation of the current game
+        
+    """
     events = Event.objects.filter( _game_id = game.getID() )
     team1User1 = game.getTeam1().getUser1().getUsername()
     team1User2 = game.getTeam1().getUser2().getUsername()

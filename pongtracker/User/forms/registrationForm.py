@@ -5,7 +5,12 @@ import re
 
 
 class RegistrationForm(forms.Form):
+    """ The form for registration
     
+    Contributors:
+        Quinton Black
+
+    """
     
     username = forms.CharField( 
             max_length = 30,

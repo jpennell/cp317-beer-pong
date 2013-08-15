@@ -8,7 +8,15 @@ from Utilities.utilities import *
 from django.conf import settings
 
 def leaderboardPage(request):
-    #get form
+    """ handles the leaderboard
+
+    Keyword arguments:
+    request - the request for the leaderboard
+    
+    Contributors:
+    Matthew Hengeveld
+
+    """
     form = LeaderboardForm()
     
     if not request.user.is_authenticated():

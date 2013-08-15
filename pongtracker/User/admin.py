@@ -31,3 +31,4 @@ class PongUserAdmin(UserAdmin):
 
 admin.site.register(PongUser, PongUserAdmin)
 
+#admin.site.register(Institution)

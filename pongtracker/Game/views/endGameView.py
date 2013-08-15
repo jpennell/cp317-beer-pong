@@ -1,7 +1,7 @@
 from User.models import *
 from Game.models import Game, Team, Event
 from Statistics.models import RankView, Ranking
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, Http404
 from Utilities.utilities import *
 from django.template import Context
 from Game.forms.endGameForm import EndGameForm
@@ -28,8 +28,11 @@ def viewGameSummaryRequest(request, game_id):
     currUser = PongUser.objects.get(username=currUsername)
     
     #get game object
-    game = Game.objects.get(pk=game_id)
-    
+    try:
+        game = Game.objects.get(pk=game_id)
+    except:
+        messages.add_message(request,messages.ERROR,'There is no game with that id')
+        raise Http404
     #get users
     users = [game.getTeam1().getUser1(), game.getTeam1().getUser2(), game.getTeam2().getUser1(), game.getTeam2().getUser2()]
     
