@@ -7,17 +7,17 @@ from django.conf import settings
 
 
 def logoutUser(request):
-    """{{Description}}
+    """Handle logout request
 
     Keyword arguments:
-    variable -- description 
-    variable -- description 
+    request -- the logout request
     
     Contributors:
     Quinton Black
     Erin Cramer
     
     Output:
+        HTTP response
         
     """
     state = "You have been logged out successfully"    

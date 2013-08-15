@@ -7,11 +7,11 @@ from Utilities.game_utilities import obtainGamesToBeConfirmed
 from django.conf import settings
 
 def viewProfile( request, username = None ):
-    """{{Description}}
+    """Handles requests for a user to view their profile
 
     Keyword arguments:
-    variable -- description
-    variable -- description
+    request -- the request to view the profile
+    username -- the username of the user's profile do display (String, default None)
 
     Contributors:
     Quinton Black
@@ -19,6 +19,7 @@ def viewProfile( request, username = None ):
     Matthew Hengeveld
 
     Output:
+        HTTP response
 
     """
     if not request.user.is_authenticated():

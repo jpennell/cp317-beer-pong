@@ -13,14 +13,20 @@ INCORRECT = 'incorrect'
 BANNED = 'banned'
 
 def loginUserRequest( request ):
-    """
-
+    """Handles the login process 
+        - Adds messages and redirects depending on user statusw
+    Keyword arguments:
+    the request for the login
+    
     Contributors:
-    Quinton Black
     Erin Cramer
-
-
-    """
+    Quinton Black
+    Matthew Hengeveld
+    
+    Output:
+        HTTP response
+        
+    """ 
    #a login request has been made therefore must authenticate
     if request.POST:
         username = request.POST.get( 'username' )

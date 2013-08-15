@@ -13,7 +13,7 @@ from django.template import Context
 from django.conf import settings
 
 def registerNewUser( request ):
-    """
+    """ Handles the registration of the user
 
     attempts to register a new user
 
