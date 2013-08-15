@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<link href="../assets/css/global-styles.css" rel="stylesheet" type="text/css">
+<head>
+    <a id="top"> <title>Administrator Setup and Notes</title>
+</head>
+
+<h1>Administrator Setup and Notes</h1>
+
+<h2>Set Up: </h2>
+
+<ol>
+	<li>In the settings file you will need to set the following fields to meet any changes.</li>
+	<ul>
+		<li>ADMINS: The admins for the website</li>
+		<li>DATABASE: The database to use</li>
+		<li>ALLOWED_HOSTS: The domains that can run the code</li>
+		<li>EMAIL_HOST </li>
+		<li>EMAIL_HOST_USER</li>
+		<li>EMAIL_HOST_PASSWORD</li>
+		<li>EMAIL_PORT</li>
+		<li>EMAIL_USE_TLS</li>
+		<li>SITE_URL: This is required when part of the url gets truncated, a "/" may suffice depending on server configuration</li>
+		<li>MEDIA_ROOT: The location to upload profile photos</li>
+		<li>STATIC_URL: Where the static files are</li>
+		<li>STATICFILES_DIRS: names of the directories of static files</li>
+	</ul>
+	<li>Administration will also need to run ./manage.py syncdb and create a superuser</li>
+	<li>Please create the the corresponding rank rows for the super user</li>
+	<li>Load the event types ./manage.py loaddata fixtures/eventtypes.json</li>
+	<li>Load the universities you want ./manage.py loaddata fixtures/institutions.json</li>
+	<li>Run the RankView</li>
+	<li>If you have a database and want to keep the data use ./manage.py dumpdata --indent=4 app.model > fixtures/filename.json</li>
+	<li>If you want to update your code on an apache server run: touch wsgi.py</li>
+	<li>There are also some instances of the email in the code please feel free to change.</li>
+</ol>
+
+<h2>Notes: </h2>
+	<ol>
+	<li>If there an issue arises about Institution and admin, check the User admin file.</li>
+	<li>Testing files no longer work as functions have been moved, they are kept for reference. </li>
+	</ol>
+
+
+</html>
