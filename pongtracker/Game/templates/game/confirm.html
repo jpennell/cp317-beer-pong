@@ -9,38 +9,62 @@
 <link href='{% static 'css/cup-style.css' %}' rel='stylesheet' type='text/css'>
 <link href='{% static 'css/scoregame-styles.css' %}' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="{% static 'js/score.js' %}"></script>
+
+
 <script>
+
 function call_ajax(game_id) {
 	/*
 	 * gets the database's current view of the game and updates the front end accordingly
 	 */
+	 game = {
+				/* global game variable */
+				'isOver' : false,
+				'team1' : {
+					1 : 'Team 1, Player 1',
+					2 : 'Team 1, Player 2',
+					'cups' : {
+						1 : false,
+						2 : false,
+						3 : false,
+						4 : false,
+						5 : false,
+						6 : false
+					}
+				},
+				'team2' : {
+					1 : 'Team 2, Player 1',
+					2 : 'Team 2, Player 2',
+					'cups' : {
+						1 : false,
+						2 : false,
+						3 : false,
+						4 : false,
+						5 : false,
+						6 : false
+					}
+				}
+			}
 	console.debug('getting game status from JSON')
 	$.ajax({
-		url : '../game/'& gameid &'/info/',
+		url : '../game/'+ game_id +'/info/',
 		async : false,
 		dataType : 'json',
 		success : function(data) {
-			game['isOver'] = data.is_over
-			game['team1'][1] = data.team1.user1
-			game['team1'][2] = data.team1.user2
-			game['team2'][1] = data.team2.user1
-			game['team2'][2] = data.team2.user2
-
+		
 			for (var cupIdx = 1; cupIdx <= 6; cupIdx++) {
 				game['team1']['cups'][cupIdx] = data.team1['cup' + cupIdx]
 				game['team2']['cups'][cupIdx] = data.team2['cup' + cupIdx]
 			}
+		
 		},
 		error : function() {
 			console.error('could not get JSON')
 		}
 	});
+	return game
 }
 </script>
-
-<link href="{% static 'css/home-styles.css' %}" rel='stylesheet'type='text/css'>
-<link href='{% static 'css/cup-style.css' %}' rel='stylesheet' type='text/css'>
-<link href='{% static 'css/scoregame-styles.css' %}' rel='stylesheet' type='text/css'>
 
 {% endblock %} 
 
@@ -49,9 +73,9 @@ function call_ajax(game_id) {
 <h4>Games You Verify</h4>
 
 {% if confirm_games %}
-<table>
+<table id ="confirm">
 		<tr>
-			<th width="2%">Date</th>
+			<th width="3%">Date</th>
 			<th width="6%">Team 1</th>
 			<th width="6%">Team 2</th>
 			<th width="1%">Outcome</th>
@@ -61,9 +85,10 @@ function call_ajax(game_id) {
 				<div align="center">
 			</th>
 		</tr>
-	
+
 {% for c_game in confirm_games %}
-		<tr "window.onload = call_ajax({{c_game.game_id}})">
+
+		<tr id='{{ c_game.game_id }}'>
 			<td>
 				<div align="center">{{ c_game.date_played }}</div>
 			</td>
@@ -95,7 +120,6 @@ function call_ajax(game_id) {
 					<table border="1">
 						<center>
 							<tr>
-								
 								<th>{{ c_game.player3 }} and {{ c_game.player4 }}</th>
 							</tr>
 							<td>
@@ -125,7 +149,7 @@ function call_ajax(game_id) {
 				<form method = "POST" action = "{{ SITE_URL }}game/{{ c_game.game_id }}/deny/">
 							{% csrf_token %}
 							<button class="btn" type="submit">
-								Deny
+								Reject 
 							</button>
 				</form>
 			</td>
@@ -139,15 +163,15 @@ You have no games to verify.
 
 <h4>Games To Be Verified By The Opposing Team</h4>
 {% if opponent_confirm_games %}
-<table>
+<table id = "opp-confirm">
 	<tr>
-		<th width="2%">Date</th>
-		<th width="6%">Team 1</th>
-		<th width="6%">Team 2</th>
+		<th width="1.5%">Date</th>
+		<th width="5%">Team 1</th>
+		<th width="5%">Team 2</th>
 		<th width="1%">Outcome</th>
 	</tr>
 	{% for o_game in opponent_confirm_games %}
-	<tr onload = "window.onload = call_ajax({{o_game.game_id}})">
+	<tr id='{{ o_game.game_id }}'>
 		<td>
 			<div align="center">{{ o_game.date_played }} </div>
 		</td>
@@ -159,7 +183,7 @@ You have no games to verify.
 						<tr>
 							<th>{{ o_game.player1 }} and {{ o_game.player2 }} </th>
 						</tr>
-						<td> 
+						<td class='team1'> 
 						
 							<div class="cups rotate-clockwise">
 		                        <span class="cup team1 cup1 active"></span>
@@ -183,7 +207,7 @@ You have no games to verify.
 						<tr>
 							<th>{{ o_game.player3 }} and {{ o_game.player4 }}</th>
 						</tr>
-						<td>
+						<td class='team2'>
 							<div class="cups rotate-counterclockwise">
 		                        <span class="cup team2 cup1 active"></span>
 		                        <br/>
@@ -206,5 +230,24 @@ You have no games to verify.
 {% else %}
 Your opponents have no games that need verifying.
 {% endif %}
+
+<script>
+var idArr = [];
+
+var trs = document.getElementsByTagName("tr");
+
+for(var i=0;i<trs.length;i++)
+{
+	var game_state;
+	if (trs[i].id !== "")
+	{
+   	idArr.push(trs[i].id);
+   	//alert(trs[i].id);
+   	game_state = call_ajax(trs[i].id)
+   	//for each cup in game_state:
+		//$('#game'+game_id+' cup '+ cupIdx).removeClass('active'))
+	}
+}
+</script>
 
 {% endblock %}
