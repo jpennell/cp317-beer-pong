@@ -130,8 +130,6 @@ def getTopRanked(limit):
     topRanked -- list of top ranked (in order)
     """
     topUsers = RankView.objects.order_by('-_skillNumber','-id')[:10]
-    for i in topUsers:
-        print (i.user_id)
     topRanked = []
     
     x=0
