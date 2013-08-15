@@ -13,7 +13,7 @@
         <td>
             <h2 class="player-name"> {{ user.getFirstName }} {{ user.getLastName }} </h2>
         </td>
-        <td class='right'>
+        <td class='right' width='31%'>
             <form method='post' action="{{ SITE_URL }}user/profile/" class='form-inline'>
                 {% csrf_token %}
                 {{ form.search }}
@@ -21,14 +21,17 @@
                     Search
                 </button>
             </form>
+            {% if form.search.errors %}
+            <br>
+			<div class='errors'> 
+				{% for error in form.search.errors %}
+    				{{ error|escape }}
+    			{% endfor %} 
+    		</div>
+		{% endif %}
         </td>
+     </tr>
 </table>
-
-{% if form.search.errors %}
-<span class='errors'> {% for error in form.search.errors %}
-    {{ error|escape }}
-    {% endfor %} </span>
-{% endif %}
 
 <div id="page-content">
     <table id="profile">

@@ -20,13 +20,13 @@ class ProfileForm(forms.Form):
         
         #Check that non to be registered users are not inactive
         if not _checkUserInactive(username,self):
-            msg = "User inactive"
+            msg = "User inactive. Please enter a valid user."
             self._errors['search'] = self.error_class([msg])
         
         #Check that non to be registered users exist
         exists = _checkUserExists(username,self)
         if not exists:
-            msg = "No such user"
+            msg = "No such user exists. Please enter a valid user."
             self._errors['search'] = self.error_class([msg])
         
         return username
