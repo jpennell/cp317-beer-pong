@@ -1,72 +1,71 @@
-{% extends "base.html" %} 
-{% load staticfiles %} 
+{% extends "base.html" %}
+{% load staticfiles %}
 
-{% block pagetitle %} | Confirm Game{% endblock %} 
+{% block pagetitle %} | Confirm Game{% endblock %}
 
 {% block head %}
 
 <link href="{% static 'css/home-styles.css' %}" rel='stylesheet'type='text/css'>
 <link href='{% static 'css/cup-style.css' %}' rel='stylesheet' type='text/css'>
-<link href='{% static 'css/scoregame-styles.css' %}' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="{% static 'js/score.js' %}"></script>
-
-
+<link href='{% static 'css/scoregame-styles.css' %}' rel='stylesheet' type='text/css'> 
+<style>
+.cups span.active:hover {
+	 border: 4px solid #FF0000; !important;
+}
+</style>
 <script>
-
-function call_ajax(game_id) {
-	/*
-	 * gets the database's current view of the game and updates the front end accordingly
-	 */
-	 game = {
-				/* global game variable */
-				'isOver' : false,
-				'team1' : {
-					1 : 'Team 1, Player 1',
-					2 : 'Team 1, Player 2',
-					'cups' : {
-						1 : false,
-						2 : false,
-						3 : false,
-						4 : false,
-						5 : false,
-						6 : false
-					}
-				},
-				'team2' : {
-					1 : 'Team 2, Player 1',
-					2 : 'Team 2, Player 2',
-					'cups' : {
-						1 : false,
-						2 : false,
-						3 : false,
-						4 : false,
-						5 : false,
-						6 : false
-					}
+	function call_ajax(game_id) {
+		/*
+		 * gets the database's current view of the game and updates the front end accordingly
+		 */
+		game = {
+			'isOver' : false,
+			'team1' : {
+				1 : 'Team 1, Player 1',
+				2 : 'Team 1, Player 2',
+				'cups' : {
+					1 : false,
+					2 : false,
+					3 : false,
+					4 : false,
+					5 : false,
+					6 : false
+				}
+			},
+			'team2' : {
+				1 : 'Team 2, Player 1',
+				2 : 'Team 2, Player 2',
+				'cups' : {
+					1 : false,
+					2 : false,
+					3 : false,
+					4 : false,
+					5 : false,
+					6 : false
 				}
 			}
-	console.debug('getting game status from JSON')
-	$.ajax({
-		url : '../game/'+ game_id +'/info/',
-		async : false,
-		dataType : 'json',
-		success : function(data) {
-		
-			for (var cupIdx = 1; cupIdx <= 6; cupIdx++) {
-				game['team1']['cups'][cupIdx] = data.team1['cup' + cupIdx]
-				game['team2']['cups'][cupIdx] = data.team2['cup' + cupIdx]
-			}
-		
-		},
-		error : function() {
-			console.error('could not get JSON')
 		}
-	});
-	return game
-}
+		gameurl = '../game/' + game_id + '/info/';
+		console.debug('getting game status from JSON, url ' + gameurl)
+		$.ajax({
+			url : gameurl,
+			async : false,
+			dataType : 'json',
+			success : function(data) {
+				for (var cupIdx = 1; cupIdx <= 6; cupIdx++) {
+					game['team1']['cups'][cupIdx] = data.team1['cup' + cupIdx]
+					game['team2']['cups'][cupIdx] = data.team2['cup' + cupIdx]
+				}
+			},
+			error : function() {
+				console.error('could not get JSON')
+			}
+		});
+		return game;
+	}
 </script>
 
-{% endblock %} 
+{% endblock %}
 
 {% block pagecontent %}
 
@@ -74,87 +73,93 @@ function call_ajax(game_id) {
 
 {% if confirm_games %}
 <table id ="confirm">
-		<tr>
-			<th width="3%">Date</th>
-			<th width="6%">Team 1</th>
-			<th width="6%">Team 2</th>
-			<th width="1%">Outcome</th>
-			<th width="1%">
-				<div align="left">
-					Confirmation
-				<div align="center">
-			</th>
-		</tr>
+    <tr>
+        <th width="3%">Date</th>
+        <th width="6%">Team 1</th>
+        <th width="6%">Team 2</th>
+        <th width="1%">Outcome</th>
+        <th width="1%">
+        <div align="left">
+            Confirmation
+            <div align="center">
+        </th>
+    </tr>
 
-{% for c_game in confirm_games %}
+    {% for c_game in confirm_games %}
 
-		<tr id='{{ c_game.game_id }}'>
-			<td>
-				<div align="center">{{ c_game.date_played }}</div>
-			</td>
-			<td>
-				<div align="center">
-					<table border="1">
-						<center>
-							<tr>
-								<th>{{ c_game.player1 }} and {{ c_game.player2 }}</th>
-							</tr>
-							<td>
-							<div class="cups rotate-clockwise">
-		                        <span class="cup team1 cup1 active"></span>
-		                        <br/>
-		                        <span class="cup team1 cup2 active"></span>
-		                        <span class="cup team1 cup3 active"></span>
-		                        <br/>
-		                        <span class="cup team1 cup4 active"></span>
-		                        <span class="cup team1 cup5 active"></span>
-		                        <span class="cup team1 cup6 active"></span>
-                    		</div>
-						</td>
-						</center>
-					</table>
-				</div>
-			</td>
-			<td>
-				<div align="center">
-					<table border="1">
-						<center>
-							<tr>
-								<th>{{ c_game.player3 }} and {{ c_game.player4 }}</th>
-							</tr>
-							<td>
-							<div class="cups rotate-counterclockwise">
-		                        <span class="cup team2 cup1 active"></span>
-		                        <br/>
-		                        <span class="cup team2 cup2 active"></span>
-		                        <span class="cup team2 cup3 active"></span>
-		                        <br/>
-		                        <span class="cup team2 cup4 active"></span>
-		                        <span class="cup team2 cup5 active"></span>
-		                        <span class="cup team2 cup6 active"></span>
-                    		</div>
-						</td>
-						</center>
-					</table>
-				</div>
-			</td>
-			<td><div align="center">{{ c_game.outcome }}</div></td>
-			<td>
-				<form method = "POST" action = "{{ SITE_URL }}game/{{ c_game.game_id }}/confirm/">
-							{% csrf_token %}
-							<button class="btn" type="submit">
-								Confirm
-							</button>
-				</form>
-				<form method = "POST" action = "{{ SITE_URL }}game/{{ c_game.game_id }}/deny/">
-							{% csrf_token %}
-							<button class="btn" type="submit">
-								Reject 
-							</button>
-				</form>
-			</td>
-		</tr>
-{% endfor %}
+    <tr id='{{ c_game.game_id }}'>
+        <td>
+            <div align="center">
+                {{ c_game.date_played }}
+            </div>
+        </td>
+        <td>
+            <div align="center">
+                <table border="1">
+                    <center>
+                        <tr>
+                            <th>{{ c_game.player1 }} and {{ c_game.player2 }}</th>
+                        </tr>
+                        <td>
+                            <div class="cups rotate-clockwise">
+                                <span class="cup team1 cup1 active"></span>
+                                <br/>
+                                <span class="cup team1 cup2 active"></span>
+                                <span class="cup team1 cup3 active"></span>
+                                <br/>
+                                <span class="cup team1 cup4 active"></span>
+                                <span class="cup team1 cup5 active"></span>
+                                <span class="cup team1 cup6 active"></span>
+                            </div>
+                        </td>
+                    </center>
+                </table>
+            </div>
+        </td>
+        <td>
+            <div align="center">
+                <table border="1">
+                    <center>
+                        <tr>
+                            <th>{{ c_game.player3 }} and {{ c_game.player4 }}</th>
+                        </tr>
+                        <td>
+                            <div class="cups rotate-counterclockwise">
+                                <span class="cup team2 cup1 active"></span>
+                                <br/>
+                                <span class="cup team2 cup2 active"></span>
+                                <span class="cup team2 cup3 active"></span>
+                                <br/>
+                                <span class="cup team2 cup4 active"></span>
+                                <span class="cup team2 cup5 active"></span>
+                                <span class="cup team2 cup6 active"></span>
+                            </div>
+                        </td>
+                    </center>
+                </table>
+            </div>
+        </td>
+        <td>
+            <div align="center">
+                {{ c_game.outcome }}
+            </div>
+        </td>
+        <td>
+            <form method = "POST" action = "{{ SITE_URL }}game/{{ c_game.game_id }}/confirm/">
+                {% csrf_token %}
+                <button class="btn" type="submit">
+                    Confirm
+                </button>
+            </form>
+            <form method = "POST" action = "{{ SITE_URL }}game/{{ c_game.game_id }}/deny/">
+                {% csrf_token %}
+                <button class="btn" type="submit">
+                    Reject
+                </button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
 </table>
 
 {% else %}
@@ -164,90 +169,100 @@ You have no games to verify.
 <h4>Games To Be Verified By The Opposing Team</h4>
 {% if opponent_confirm_games %}
 <table id = "opp-confirm">
-	<tr>
-		<th width="1.5%">Date</th>
-		<th width="5%">Team 1</th>
-		<th width="5%">Team 2</th>
-		<th width="1%">Outcome</th>
-	</tr>
-	{% for o_game in opponent_confirm_games %}
-	<tr id='{{ o_game.game_id }}'>
-		<td>
-			<div align="center">{{ o_game.date_played }} </div>
-		</td>
-		
-		<td>
-			<div align="center">
-				<table border="1">
-					<center>
-						<tr>
-							<th>{{ o_game.player1 }} and {{ o_game.player2 }} </th>
-						</tr>
-						<td class='team1'> 
-						
-							<div class="cups rotate-clockwise">
-		                        <span class="cup team1 cup1 active"></span>
-		                        <br/>
-		                        <span class="cup team1 cup2 active"></span>
-		                        <span class="cup team1 cup3 active"></span>
-		                        <br/>
-		                        <span class="cup team1 cup4 active"></span>
-		                        <span class="cup team1 cup5 active"></span>
-		                        <span class="cup team1 cup6 active"></span>
-                    		</div>
-						</td>
-					</center>
-				</table>
-			</div>
-		</td>
-		<td>
-			<div align="center">
-				<table border="1">
-					<center>
-						<tr>
-							<th>{{ o_game.player3 }} and {{ o_game.player4 }}</th>
-						</tr>
-						<td class='team2'>
-							<div class="cups rotate-counterclockwise">
-		                        <span class="cup team2 cup1 active"></span>
-		                        <br/>
-		                        <span class="cup team2 cup2 active"></span>
-		                        <span class="cup team2 cup3 active"></span>
-		                        <br/>
-		                        <span class="cup team2 cup4 active"></span>
-		                        <span class="cup team2 cup5 active"></span>
-		                        <span class="cup team2 cup6 active"></span>
-                    		</div>
-						</td>
-					</center>
-				</table>
-			</div>
-		</td>
-		<td><div align="center">{{ o_game.outcome }}</div></td>
-	</tr>
-{% endfor %}
+    <tr>
+        <th width="1.5%">Date</th>
+        <th width="5%">Team 1</th>
+        <th width="5%">Team 2</th>
+        <th width="1%">Outcome</th>
+    </tr>
+    {% for o_game in opponent_confirm_games %}
+    <tr id='{{ o_game.game_id }}'>
+        <td>
+            <div align="center">
+                {{ o_game.date_played }}
+            </div>
+        </td>
+
+        <td>
+            <div align="center">
+                <table border="1">
+                    <center>
+                        <tr>
+                            <th>{{ o_game.player1 }} and {{ o_game.player2 }} </th>
+                        </tr>
+                        <td class='team1'>
+                            <div class="cups rotate-clockwise">
+                                <span class="cup team1 cup1 active"></span>
+                                <br/>
+                                <span class="cup team1 cup2 active"></span>
+                                <span class="cup team1 cup3 active"></span>
+                                <br/>
+                                <span class="cup team1 cup4 active"></span>
+                                <span class="cup team1 cup5 active"></span>
+                                <span class="cup team1 cup6 active"></span>
+                            </div>
+                        </td>
+                    </center>
+                </table>
+            </div>
+        </td>
+        <td>
+            <div align="center">
+                <table border="1">
+                    <center>
+                        <tr>
+                            <th>{{ o_game.player3 }} and {{ o_game.player4 }}</th>
+                        </tr>
+                        <td class='team2'>
+                            <div class="cups rotate-counterclockwise">
+                                <span class="cup team2 cup1 active"></span>
+                                <br/>
+                                <span class="cup team2 cup2 active"></span>
+                                <span class="cup team2 cup3 active"></span>
+                                <br/>
+                                <span class="cup team2 cup4 active"></span>
+                                <span class="cup team2 cup5 active"></span>
+                                <span class="cup team2 cup6 active"></span>
+                            </div>
+                        </td>
+                    </center>
+                </table>
+            </div>
+        </td>
+        <td>
+            <div align="center">
+                {{ o_game.outcome }}
+            </div>
+        </td>
+    </tr>
+    {% endfor %}
 </table>
 {% else %}
 Your opponents have no games that need verifying.
 {% endif %}
 
 <script>
-var idArr = [];
+	var idArr = [];
+	var trs = document.getElementsByTagName("tr");
 
-var trs = document.getElementsByTagName("tr");
+	for (var i = 0; i < trs.length; i++) {
+		var game_state;
+		if (trs[i].id !== "") {
+			idArr.push(trs[i].id);
+			game_state = call_ajax(trs[i].id)
+			console.debug(game_state)
+			game_id = trs[i].id
 
-for(var i=0;i<trs.length;i++)
-{
-	var game_state;
-	if (trs[i].id !== "")
-	{
-   	idArr.push(trs[i].id);
-   	//alert(trs[i].id);
-   	game_state = call_ajax(trs[i].id)
-   	//for each cup in game_state:
-		//$('#game'+game_id+' cup '+ cupIdx).removeClass('active'))
+			for (var cupIdx = 1; cupIdx <= 6; cupIdx++) {
+				var sel1 = "#"+game_id+' td.team1 .cup'+cupIdx;
+				var sel2 = "#"+game_id+' td.team2 .cup'+cupIdx;				
+				if (game_state['team1']['cups'][cupIdx])
+				    $(sel1).removeClass('active')
+			    if (game_state['team2']['cups'][cupIdx])
+                    $(sel2).removeClass('active')
+			}
+		}
 	}
-}
 </script>
 
 {% endblock %}
