@@ -24,7 +24,7 @@ def editProfile(request):
     """
 
     if not request.user.is_authenticated():
-        messages.add_message(request,message.INFO,'Please Login')
+        messages.add_message(request,messages.INFO,'Please Login')
         return redirect(settings.SITE_URL+'login/')
      
     username = request.session['username']
@@ -69,9 +69,9 @@ def editProfile(request):
             return redirect(settings.SITE_URL+'user/profile/')
         else:
             if user.getHasUpdatedProfile() is False:
-                #form.fields['_hasAcceptedTerms'].label = 'I have read and agreed to the terms and conditions'
-                #form.fields['_hasAcceptedTerms'].widget.attrs['style'] =''
-                
+                form.fields['_hasAcceptedTerms'].label = 'I have read and agreed to the terms and conditions'
+                form.fields['_hasAcceptedTerms'].widget.attrs['style'] =''
+                #created the page /pongtracker/ToC
                 form.fields['oldPassword'].label = 'Temporary Password *'                
             
     else:
@@ -83,9 +83,9 @@ def editProfile(request):
         form = EditProfileForm(instance=user)
         if user.getHasUpdatedProfile() is False:
             
-            #form.fields['_hasAcceptedTerms'].label = 'I have read and agreed to the the terms and conditions'
-            #form.fields['_hasAcceptedTerms'].widget.attrs['style'] =''
-            #form.fields['_hasAcceptedTerms'].widget.attrs['textarea'] ='test'
+            form.fields['_hasAcceptedTerms'].label = 'I have read and agreed to the the terms and conditions'
+            form.fields['_hasAcceptedTerms'].widget.attrs['style'] =''
+            form.fields['_hasAcceptedTerms'].widget.attrs['textarea'] ='test'
             
             form.fields['oldPassword'].label = 'Temporary Password *'
             
