@@ -28,7 +28,8 @@
                 <input type="hidden" name="next" value="{{ next }}" />
                 {% endif %}
                 <a href='{{ SITE_URL }}forgotpassword'>Forgot Password?</a>
-                <input name="username" type="text" placeholder="username" value="" />
+                
+                <input name="username" type="text" placeholder="username" value= {{ request.username }} />
                 <input name="password" type="password" placeholder="password" value="" />
                 <button name="login" class="btn" type="submit">
                     Log In
