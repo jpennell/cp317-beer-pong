@@ -2,7 +2,7 @@
  * score.js
  *
  * George Lifchits
- * July 2013
+ * July-August 2013
  *
  * JavaScript code which implements the Score Game aspect of the Pong Tracker project
  *
@@ -53,7 +53,6 @@ var deactivateCup = function(team, cup) {
 		console.debug('deactivating cup ' + selector)
 		$(selector).removeClass('active')
 		refreshUndo()
-		checkRedemption()
 	}
 }
 var activateCup = function(team, cup) {
@@ -84,8 +83,7 @@ var gameOver = function() {
 }
 var isRedemption = function() {
 	/* the redemption check as a boolean */
-	return ($('#team1 .cups .active').length == 0)
-	or($('#team2 .cups .active').length == 0)
+	return ($('#team1 .cups .active').length == 0) || ($('#team2 .cups .active').length == 0)
 }
 var checkRedemption = function() {
 	/*
@@ -169,10 +167,12 @@ var postEvent = function(eventType, team, player, cup, cup2) {
 var recordEvent = function(type, team, player, cup) {
 	console.debug('recording event')
 	postEvent(type, team, player, cup, false)
+	checkRedemption()
 }
 var recordBounce = function(team, player, cup1, cup2) {
 	console.debug('recording bounce')
 	postEvent('bounce', team, player, cup1, cup2)
+	checkRedemption()
 }
 /*
  * Dialogs and such

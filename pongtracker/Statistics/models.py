@@ -162,19 +162,19 @@ class RankView(models.Model):
     """ Rank view -- represents a View in the database
         ***VIEW MUST BE CREATED MANUALLY IN DATABASE USING FOLLOWING SCRIPT***
         
-        CREATE 
+         CREATE 
             ALGORITHM = UNDEFINED 
-            DEFINER = `pong`@`%` 
+            DEFINER = `blac2410`@`%` 
             SQL SECURITY DEFINER
-        VIEW `pong`.`Statistics_rankView` AS
+        VIEW `Statistics_rankView` AS
             select 
                 `r`.`_user_id` AS `id`,
+                `r`.`_user_id` As `user_id`,
                 round((`r`.`_mu` - (3 * `r`.`_sigma`)), 5) AS `_skillNumber`
             from
-                `pong`.`Statistics_ranking` `r`
+                `Statistics_ranking` `r`
             order by (`r`.`_mu` - (3 * `r`.`_sigma`)) desc
-    
-    
+            
         Keyword arguments:
         
         Contributors:

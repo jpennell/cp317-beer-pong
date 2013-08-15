@@ -2,8 +2,16 @@ from django import forms
 from User.models import *
 
 class LeaderboardForm(forms.Form):
+    """Creates a list of institutions, including 'Overall' option for leaderboard 'choice dropdown'
+
+    Keyword arguments:
+    form -- a django form object
     
-    #creates a list of institutions, including 'Overall' option for leaderboard 'choice dropdown'
+    Contributors:
+    Richard Douglas
+
+    """
+   
     choices = ["Overall"]
     queryset = Institution.objects.order_by('_name')
     for x in queryset:
