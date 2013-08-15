@@ -5,12 +5,10 @@ from Statistics.forms.leaderboardForm import LeaderboardForm
 from Statistics.views.leaderBoardView import *
 
 def viewHomepageRequest(request):
-    """
-    {{Description}}
+    """Renders the registration page 
 
     Keyword arguments:
-    variable -- description 
-    variable -- description 
+    the request for the homepage
     
     Contributors:
     Erin Cramer
@@ -18,6 +16,7 @@ def viewHomepageRequest(request):
     Matthew Hengeveld
     
     Output:
+        HTTP response
         
     """ 
     leaderForm = LeaderboardForm()
