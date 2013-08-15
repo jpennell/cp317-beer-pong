@@ -24,7 +24,7 @@ def editProfile(request):
     """
 
     if not request.user.is_authenticated():
-        messages.add_message(request,message.INFO,'Please Login')
+        messages.add_message(request,messages.INFO,'Please Login')
         return redirect(settings.SITE_URL+'login/')
      
     username = request.session['username']
@@ -71,7 +71,7 @@ def editProfile(request):
             if user.getHasUpdatedProfile() is False:
                 form.fields['_hasAcceptedTerms'].label = 'I have read and agreed to the terms and conditions'
                 form.fields['_hasAcceptedTerms'].widget.attrs['style'] =''
-                #crated the page /pongtracker/ToC
+                #created the page /pongtracker/ToC
                 form.fields['oldPassword'].label = 'Temporary Password *'                
             
     else:
