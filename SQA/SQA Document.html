@@ -9175,7 +9175,7 @@
                     <td class="med">
                         Medium
                     </td>
-                    <td></td>
+                    <td class="fixed">Fixed</td>
                     <td>
                         On a database level, yes.<br>As for our programming setup no.<br>Game has an Events array. <br><br>
                         I am not disputing the above is true however there is a two way street now. At a programming level these getters and setters exist (we have them in our implementation). Our latest entity diagram has a two way relationship between Game and Event. Event needs getGame and setGame. -Erin
@@ -9548,7 +9548,7 @@
                     <td class="med">
                         Medium
                     </td>
-                    <td></td>
+                    <td class="fixed">Fixed</td>
                     <td>Done</td>
                     <td></td>
                     <td>
@@ -9678,7 +9678,7 @@
                         institutionName
                     </td>
                     <td class='med'>Medium</td>
-                    <td></td>
+                    <td class="fixed">Fixed</td>
                     <td></td>
                     <td></td>
                     <td>Henry Goddard</td>
@@ -9692,7 +9692,7 @@
                         There is nothing for section 3.2.12 DeleteAccountController.
                     </td>
                     <td class='high'>High</td>
-                    <<td class="fixed">Fixed</td>
+                    <td class="fixed">Fixed</td>
                     <td>Done.</td>
                     <td>0.0.4</td>
                     <td>Erin Cramer</td>
@@ -9829,7 +9829,7 @@
                         fix external accesses
                     </td>
                     <td class='med'>Medium</td>
-                    <td></td>
+                    <td class="dismiss">Dismissed</td>
                     <td>The Game constructor can only take Teams as arguments,
 						whereas the CreateGameController is dealing with Users
 						so in order to create the Game, it must also create the Teams.
@@ -9847,7 +9847,7 @@
                         processEvent: fix external accesses<br />
                     </td>
                     <td class='med'>Medium</td>
-                    <td></td>
+                    <td class="fixed">Fixed</td>
                     <td>Fixed</td>
                     <td></td>
                     <td>Richard</td>
@@ -9861,7 +9861,7 @@
                         getTeamCupFormation: unnecessary method<br />
                     </td>
                     <td class='med'>Medium</td>
-                    <td></td>
+                    <td class="fixed">Fixed</td>
                     <td>Removed (but not by me.)</td>
                     <td></td>
                     <td>Richard</td>
@@ -9875,7 +9875,7 @@
                         abortGame: redundant method (EndGameController)<br />
                     </td>
                     <td class='med'>Medium</td>
-                    <td></td>
+                    <td class="fixed">Fixed</td>
                     <td>abortGame has been removed from ScoreGameController (but not by me.)
 						</br></br>
 						However, EndGameController has no method for handling abortions.
@@ -9892,7 +9892,7 @@
                         goToEndGame, undoEvent: method 'obtainGame' does not exist<br />
                     </td>
                     <td class='med'>Medium</td>
-                    <td></td>
+                    <td class="fixed">Fixed</td>
                     <td>Nonexistent method removed.</td>
                     <td></td>
                     <td>Richard</td>
@@ -9910,7 +9910,7 @@
                         fix external accesses
                     </td>
                     <td class='med'>Medium</td>
-                    <td></td>
+                    <td class="fixed">Fixed</td>
                     <td>They have to exist. Otherwise knowing which ended Games haven't been
 						confirmed/denied is impossible.
 					</td>
@@ -9928,7 +9928,7 @@
                         method 'getLifeStats' does not exist<br />
                     </td>
                     <td class='med'>Medium</td>
-                    <td></td>
+                    <td class="fixed">Fixed</td>
                     <td>Accesses Fixed. </br>
 						Method exists. User.getLifeStats</td>
                     <td></td>
@@ -9944,7 +9944,7 @@
                         fix external accesses
                     </td>
                     <td class='med'>Medium</td>
-                    <td></td>
+                    <td class="fixed">Fixed</td>
                     <td>Fixed.</td>
                     <td></td>
                     <td>Richard</td>
@@ -9961,7 +9961,7 @@
                         'Game' has no attribute 'isConfirmedOrDenied'
                     </td>
                     <td class='med'>Medium</td>
-                    <td></td>
+                    <td class="dismiss">Dismissed</td>
                     <td>Duplicate of D138.</td>
                     <td></td>
                     <td>Richard</td>
@@ -9977,7 +9977,7 @@
                         method getUser does not exist
                     </td>
                     <td class='med'>Medium</td>
-                    <td></td>
+                    <td class="dismiss">Dismissed</td>
                     <td>Methods exist. User.getLifeStats and Event.getUser</td>
                     <td></td>
                     <td>Richard</td>
@@ -9993,7 +9993,7 @@
 
                     </td>
                     <td class='med'>Medium</td>
-                    <td></td>
+                    <td class="fixed">Fixed</td>
                     <td>Fixed.</td>
                     <td></td>
                     <td>Richard</td>
@@ -10007,7 +10007,7 @@
                         undoEvent: should return the Event that was undone
                     </td>
                     <td class='med'>Medium</td>
-                    <td></td>
+                    <td class="fixed">Fixed</td>
                     <td>Return type updated.</td>
                     <td></td>
                     <td>Richard</td>
@@ -10022,7 +10022,7 @@
                         fix external accesses<br />
                     </td>
                     <td class='med'>Medium</td>
-                    <td></td>
+                    <td class="fixed">Fixed</td>
                     <td>Fixed.</td>
                     <td></td>
                     <td>Richard</td>
@@ -10037,7 +10037,7 @@
                         method 'rate' does not exist
                     </td>
                     <td class='med'>Medium</td>
-                    <td></td>
+                    <td class="dismiss">Dismissed</td>
                     <td>Method exists but is not one written by us. TrueSkill.rate</td>
                     <td></td>
                     <td>Richard</td>
@@ -10066,7 +10066,7 @@
                         methods 'authenticate', 'login' do not exist
                     </td>
                     <td class='med'>Medium</td>
-                    <td></td>
+                    <td class="dismiss">Dismissed</td>
                     <td>Methods exist but are not written by us.
 						<a href = "https://docs.djangoproject.com/en/1.5/topics/auth/default/">They are done by Django</a> in django.contrib.auth</td>
                     <td></td>
@@ -10083,7 +10083,7 @@
                         methods 'authenticate', 'logout', 'setActive' do not exist
                     </td>
                     <td class='med'>Medium</td>
-                    <td></td>
+                    <td class="dismiss">Dismissed</td>
                     <td>authenticate and logout are done by Django. User.setActive does not exist but should (note that User.isActive exists)
 						User.setActive has been changed to User.deactivate</td>
                     <td></td>
@@ -10558,7 +10558,7 @@
                         Medium
                     </td>
                     <td class='fixed'>Fixed</td>
-                    <td>removed slash worked in production</td> 
+                    <td>removed slash worked in production</td>
 		    <td></td>
                     <td>
                         George Lifchits/Quinton Black
@@ -10903,7 +10903,7 @@
 					<td>
                        Quinton Black
                     </td>
-					
+
                 </tr>
 				<tr class="table-body">
                     <td>
@@ -11020,7 +11020,7 @@
                        Matt Hengeveld, Quinton Black
                     </td>
                 </tr>
-				
+
 				<tr class="table-body">
                     <td>
                         I34
@@ -11033,7 +11033,7 @@
                     </td>
                     <td>
                         Intro paragraph on homepage: part of it says: If you answered yes to any of the above questions, join Pong Tracker and track your Beer Pong games. View your stats along with others on site. Get ready to make friends, handle lots of balls, and have a good time!
-						should say: 
+						should say:
 						If you answered yes to any of the above questions, join Pong Tracker and track your Beer Pong games. View your stats along with others on the site. Get ready to make friends, handle lots of balls,(get rid of) and have a good time!
 						</td>
                     <td class="med">
@@ -11046,7 +11046,7 @@
                        Reese Garth
                     </td>
                 </tr>
-				
+
 				<tr class="table-body">
                     <td>
                         I35
@@ -11058,7 +11058,7 @@
                         0.0.1
                     </td>
                     <td>
-                        Rules page says: 
+                        Rules page says:
 						Pong Tracker Roles Any non-compliance of the Pong Tracker Roles can resolt in a user ban.
 
 							No fictitious accounts. A fictitious account does not represent a human being.
@@ -11079,7 +11079,7 @@
                        Robin Tang
                     </td>
                 </tr>
-				
+
 				<tr class="table-body">
                     <td>
                         I36
@@ -11102,7 +11102,7 @@
                        Reese Garth
                     </td>
                 </tr>
-				
+
 				<tr class="table-body">
                     <td>
                         I37
@@ -11125,7 +11125,7 @@
                        Reese Garth
                     </td>
                 </tr>
-				
+
 				<tr class="table-body">
                     <td>
                         I38
@@ -11136,7 +11136,7 @@
                     <td>
                         0.0.1
                     </td>
-                    <td>	
+                    <td>
 						Someone did a ctrl f and replaced all 'ul's with 'ol's in the rules template.
 					</td>
 					<td class="med">
@@ -11149,7 +11149,7 @@
                        Reese Garth
                     </td>
                 </tr>
-				
+
 				<tr class="table-body">
                     <td>
                         I39
@@ -11160,7 +11160,7 @@
                     <td>
                         0.0.1
                     </td>
-                    <td>	
+                    <td>
 						The cups in verify/confirm game page should not look like they are click able.
 					</td>
 					<td class="med">
@@ -11173,8 +11173,8 @@
                        Robin Tang
                     </td>
                 </tr>
-				
-				
+
+
                 <div class="back-top">
                     <a href="#top">Back to Top</a>
                 </div>
